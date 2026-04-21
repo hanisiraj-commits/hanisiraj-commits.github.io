@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>F_WELCOME · Steak King UK · Flow Architecture Wireframe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#FAFAF8;color:#1A1A1A;font-family:'Barlow',sans-serif;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+.banner{background:#1A1208;color:#C8922A;text-align:center;padding:14px 20px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.14em;text-transform:uppercase}
+.container{max-width:1400px;margin:0 auto;padding:48px 40px}
+h1{font-family:'Playfair Display',serif;font-weight:900;font-size:42px;line-height:1.15;margin-bottom:12px;color:#1A1208;letter-spacing:-0.015em}
+h1 em{font-style:italic;color:#C8922A}
+.subtitle{font-size:16px;color:#666;margin-bottom:32px;max-width:820px;line-height:1.6}
+
+/* Header meta strip */
+.meta-strip{display:flex;gap:0;border:1px solid #E5E7EB;border-radius:3px;margin-bottom:40px;background:#fff;overflow:hidden;flex-wrap:wrap}
+.meta-cell{flex:1;min-width:160px;padding:18px 22px;border-right:1px solid #E5E7EB}
+.meta-cell:last-child{border-right:none}
+.meta-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#999;margin-bottom:6px}
+.meta-val{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1A1208}
+.meta-val small{display:block;font-family:'Barlow',sans-serif;font-size:12px;font-weight:400;color:#666;margin-top:4px}
+
+/* Profile filters block */
+.filters{background:#fff;border:1px solid #E5E7EB;border-left:3px solid #C8922A;padding:20px 24px;border-radius:3px;margin-bottom:40px;max-width:500px}
+.filters-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#C8922A;margin-bottom:10px}
+.filters ul{list-style:none;padding:0}
+.filters li{padding:4px 0 4px 18px;position:relative;font-size:13px;color:#333}
+.filters li::before{content:'→';position:absolute;left:0;color:#C8922A}
+
+/* Flow diagram */
+.flow-wrap{margin:32px 0}
+.row{display:grid;grid-template-columns:300px 56px 1fr;gap:0;align-items:center;margin:0}
+.node-col{display:flex;flex-direction:column;align-items:center;position:relative}
+.connector{width:2px;height:18px;background:#9CA3AF;margin:0}
+.row:first-child .connector{display:none}
+.node{min-width:240px;text-align:center;border-radius:8px;border:1px solid;padding:16px 20px;position:relative;font-family:'Barlow',sans-serif;display:flex;align-items:center;gap:12px;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.node-trigger{background:#CFF5D1;border-color:#4CAF50;color:#1A4A1F}
+.node-delay{background:#DBEAFE;border-color:#60A5FA;color:#1E3A8A;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:700}
+.node-email{background:#E9D5FF;border-color:#A855F7;color:#4A1D70}
+.node-icon-email,.node-icon-delay,.node-icon-trigger{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.node-icon-email{background:rgba(168,85,247,0.2)}
+.node-icon-delay{background:rgba(96,165,250,0.3);font-size:16px}
+.node-icon-trigger{background:rgba(76,175,80,0.25);font-size:16px}
+.node-label{text-align:left;flex:1}
+.node-day{display:block;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;opacity:0.7}
+.node-title{display:block;font-weight:600;font-size:14px;margin-top:2px}
+
+/* Connector from trigger is green */
+.trigger-arrow-wrap .connector{background:#4CAF50}
+
+/* Dash connector from email to content box */
+.dash-connector{height:1px;border-top:2px dashed #9CA3AF;align-self:center;margin:0 0}
+.row:has(.node-delay) .dash-connector{border-top:none}
+
+/* Content boxes */
+.content-col{align-self:center;padding:8px 0}
+.content-box{background:#F3F4F6;border:1px solid #D1D5DB;border-radius:4px;padding:16px 20px;max-width:600px}
+.content-header{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#4B5563;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #D1D5DB}
+.content-list{list-style:none;padding:0;font-size:12.5px;line-height:1.55}
+.content-list li{padding:3px 0 3px 14px;position:relative;color:#374151}
+.content-list li::before{content:'·';position:absolute;left:4px;color:#9CA3AF;font-weight:700}
+
+/* Implementation notes */
+.impl-notes{margin-top:56px;background:#FEF9E7;border:1px dashed #D4A017;border-radius:4px;padding:28px 32px}
+.impl-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#A77A00;margin-bottom:16px}
+.impl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.impl-item{font-size:13px;line-height:1.65}
+.impl-item strong{display:block;color:#1A1208;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+.impl-item code{background:rgba(0,0,0,0.06);padding:1px 6px;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#1A1208}
+
+.footer{margin-top:64px;padding-top:24px;border-top:1px solid #E5E7EB;text-align:center;font-size:12px;color:#999}
+</style>
+</head>
+<body>
+
+<div class="banner">STEAK KING · UK · F_WELCOME · FLOW ARCHITECTURE WIREFRAME · 2026-04-21</div>
+
+<div class="container">
+
+<h1>F_WELCOME — UK waitlist nurture<br><em>11 emails · ~20 days · referral-led</em></h1>
+<p class="subtitle">Pre-launch welcome flow for Steak King UK. Subscribers arrive via the Kickoff Labs squeeze or referral page and trigger the Filled Out Form event in Klaviyo. Every email drives toward the 100-referral top prize (free steak for a year). Native Klaviyo ↔ Kickoff Labs integration only (no Zapier). This wireframe is the topology reference for the Klaviyo implementation specialist.</p>
+
+<div class="meta-strip">
+  <div class="meta-cell"><div class="meta-label">Flow Key</div><div class="meta-val">F_WELCOME<small>Traditional welcome</small></div></div>
+  <div class="meta-cell"><div class="meta-label">Emails</div><div class="meta-val">11<small>Sequential, no splits</small></div></div>
+  <div class="meta-cell"><div class="meta-label">Channels</div><div class="meta-val">Email only<small>No SMS (GDPR)</small></div></div>
+  <div class="meta-cell"><div class="meta-label">Window</div><div class="meta-val">~20 days<small>Front-loaded warm-up</small></div></div>
+  <div class="meta-cell"><div class="meta-label">Smart Send</div><div class="meta-val">OFF<small>Pre-launch warm-up</small></div></div>
+</div>
+
+<div class="filters">
+  <div class="filters-title">Profile filters</div>
+  <ul>
+    <li>Can receive email marketing</li>
+    <li>Kickoff Labs Social ID profile property is set</li>
+    <li>Has not received F_WELCOME in the last 365 days</li>
+  </ul>
+</div>
+
+<div class="flow-wrap">
+
+<div class="row trigger-arrow-wrap">
+  <div class="node-col">
+    <div class="node node-trigger"><div class="node-icon-trigger">⚙</div><div class="node-label"><span class="node-title">Metric: Filled Out Form</span><span class="node-day">Kickoff Labs native trigger</span></div></div>
+  </div>
+  <div class="content-col"></div>
+</div>
+
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay"><div class="node-icon-delay">⏱</div><div class="node-label">Immediate</div></div>
+  </div>
+  <div class="content-col"></div>
+</div>
+
+
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 0</span><span class="node-title">E1 · You're in + share link</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E1 contains</div>
+      <ul class="content-list"><li>Subject (3 variants): 'Welcome to the proper steak club 🥩'</li>
+<li>Hero banner: 'PRE-ORDER YOURS · WAITLIST FOR LAUNCH'</li>
+<li>Hero image: 100-ref mega prize (free steak for a year)</li>
+<li>Hero CTA: START REFERRING, UNLOCK FREEBIES</li>
+<li>Primary: Johnny inline body shot + callout + visual list</li>
+<li>Secondary: 3-tier reward teaser</li>
+<li>Secondary CTA: FOLLOW STEAK KING UK ON IG</li>
+<li>Footer: Share link with Kickoff Labs Social ID</li>
+<li>Voice: Johnny, warm welcome, light swearing</li></ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon-delay">⏱</div>
+      <div class="node-label">Wait 1 day</div>
+    </div>
+  </div>
+  <div class="content-col"></div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 1</span><span class="node-title">E2 · Meet Johnny</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E2 contains</div>
+      <ul class="content-list"><li>Subject: 'Right then, who is Johnny? 👋'</li>
+<li>Hero: 'WHO THE HELL IS JOHNNY?'</li>
+<li>Hero CTA: FOLLOW STEAK KING UK ON IG</li>
+<li>Primary: founder story, stat row (13 days / Michelin / 6 countries / 30+), pull quote</li>
+<li>Secondary: referral tier teaser</li>
+<li>Voice: Johnny, story-led</li></ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon-delay">⏱</div>
+      <div class="node-label">Wait 1 day</div>
+    </div>
+  </div>
+  <div class="content-col"></div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 2</span><span class="node-title">E3 · The middleman scam</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E3 contains</div>
+      <ul class="content-list"><li>Subject: 'The UK meat scam, explained 💸'</li>
+<li>Hero banner: 'HOW THE UK MEAT INDUSTRY HAS BEEN TAKING THE PISS'</li>
+<li>Hero: 'THE UK MEAT INDUSTRY IS TAKING THE PISS'</li>
+<li>Hero CTA: SEND THIS TO A MATE</li>
+<li>Primary: supply chain flow diagram + 2-col comparison + pull quote</li>
+<li>Voice: Johnny, heaviest swearing of the series ('actual fucking Wagyu')</li></ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon-delay">⏱</div>
+      <div class="node-label">Wait 2 days</div>
+    </div>
+  </div>
+  <div class="content-col"></div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 4</span><span class="node-title">E4 · Aussie Wagyu explained</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E4 contains</div>
+      <ul class="content-list"><li>Subject: 'Aussie Wagyu > Japanese Wagyu, no BS 🥩'</li>
+<li>Hero: 'AUSTRALIAN WAGYU EXPLAINED'</li>
+<li>Hero CTA: SHARE WITH A MATE</li>
+<li>Primary: 2-col Japanese vs Australian comparison, timeline, stat block</li>
+<li>Voice: Brand voice (no Johnny signoff)</li></ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon-delay">⏱</div>
+      <div class="node-label">Wait 2 days</div>
+    </div>
+  </div>
+  <div class="content-col"></div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 6</span><span class="node-title">E5 · Marble score decoded</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E5 contains</div>
+      <ul class="content-list"><li>Subject: 'Never get rinsed at your supermarket again 🛒'</li>
+<li>Hero: 'THIS EMAIL IS GOING TO SAVE YOU £200 A YEAR'</li>
+<li>Hero CTA: SHARE WITH A MATE</li>
+<li>Primary: 4 marble-score cards (MS1-MS9+) + 4 red-flag cards</li>
+<li>Voice: Brand voice, educational</li></ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon-delay">⏱</div>
+      <div class="node-label">Wait 2 days</div>
+    </div>
+  </div>
+  <div class="content-col"></div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 8</span><span class="node-title">E6 · Top prize push</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E6 contains</div>
+      <ul class="content-list"><li>Subject: 'Here's how to get free steak for a year 🏆'</li>
+<li>Hero banner: 'TOP PRIZE · FREE STEAK FOR A YEAR'</li>
+<li>Hero: 'FREE STEAK FOR A YEAR'</li>
+<li>Hero CTA: GRAB YOUR LINK</li>
+<li>Primary: stat block (100/52/£4-6k/£0), profile cards, full 5-tier ladder</li>
+<li>Voice: Johnny, aspirational push</li></ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon-delay">⏱</div>
+      <div class="node-label">Wait 2 days</div>
+    </div>
+  </div>
+  <div class="content-col"></div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 10</span><span class="node-title">E7 · The cuts</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E7 contains</div>
+      <ul class="content-list"><li>Subject: 'Here's what's coming to the UK 🥩'</li>
+<li>Hero: 'THE CUTS COMING TO STEAK KING UK'</li>
+<li>Hero CTA: SHARE WITH A MATE</li>
+<li>Primary: 8-card product grid (Ribeye, Sirloin, Striploin, Tomahawk, Hanger, Picanha, Denver, Short Rib) + trust bar</li>
+<li>Voice: Brand voice</li></ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon-delay">⏱</div>
+      <div class="node-label">Wait 2 days</div>
+    </div>
+  </div>
+  <div class="content-col"></div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 12</span><span class="node-title">E8 · No subscription boxes</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E8 contains</div>
+      <ul class="content-list"><li>Subject: 'Bollocks to subscription boxes 📦'</li>
+<li>Hero banner: 'WHY WE DON'T DO SUBSCRIPTION BOXES'</li>
+<li>Hero: 'WE DON'T DO SUBSCRIPTION BOXES'</li>
+<li>Hero CTA: SHARE WITH A MATE</li>
+<li>Primary: 3-step con breakdown + 2-col comparison (subscription vs Steak King)</li>
+<li>Voice: Johnny, heavy opinion/rant</li></ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon-delay">⏱</div>
+      <div class="node-label">Wait 2 days</div>
+    </div>
+  </div>
+  <div class="content-col"></div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 14</span><span class="node-title">E9 · HK social proof</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E9 contains</div>
+      <ul class="content-list"><li>Subject: '50,000 Hongkongers can't be wrong 🇭🇰'</li>
+<li>Hero: '50,000 CUSTOMERS IN HONG KONG'</li>
+<li>Hero CTA: SHARE WITH A MATE</li>
+<li>Primary: 6-tile stat row + Trustpilot badge + 2x2 review card grid</li>
+<li>Voice: Johnny, credibility</li></ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon-delay">⏱</div>
+      <div class="node-label">Wait 2 days</div>
+    </div>
+  </div>
+  <div class="content-col"></div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 16</span><span class="node-title">E10 · How to cook Wagyu</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E10 contains</div>
+      <ul class="content-list"><li>Subject: 'Don't ruin a £40 steak 🔥'</li>
+<li>Hero: 'HOW NOT TO RUIN THE STEAK'</li>
+<li>Hero CTA: SHARE WITH A MATE</li>
+<li>Primary: 7 numbered step cards with icons (cooking rules)</li>
+<li>Voice: Brand voice, utility</li></ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon-delay">⏱</div>
+      <div class="node-label">Wait 2 days</div>
+    </div>
+  </div>
+  <div class="content-col"></div>
+</div>
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 18</span><span class="node-title">E11 · Final push for top prize</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E11 contains</div>
+      <ul class="content-list"><li>Subject: 'Last one before we go live 🏆'</li>
+<li>Hero banner: 'LAUNCH WEEK IS HERE'</li>
+<li>Hero: 'LAST NUDGE BEFORE LAUNCH'</li>
+<li>Hero CTA: GRAB YOUR LINK</li>
+<li>Primary: 3-tile what-you-get + final 5-tier ladder (100-tier spotlight)</li>
+<li>Voice: Johnny, personal close</li></ul>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="impl-notes">
+  <div class="impl-title">Implementation notes for Klaviyo setup</div>
+  <div class="impl-grid">
+    <div class="impl-item"><strong>Trigger</strong>Klaviyo metric <code>Filled Out Form</code>, created natively by the Kickoff Labs integration. Do not use list-subscribe as trigger — waits for Social ID sync.</div>
+    <div class="impl-item"><strong>Smart sending</strong>Turn OFF for this flow. Pre-launch warm-up needs every subscriber to receive every email for domain reputation. Revisit post-launch.</div>
+    <div class="impl-item"><strong>First-name fallback</strong>Use <code>{{ first_name|default:'mate' }}</code> across all emails. "Mate" is the approved fallback per voice guide.</div>
+    <div class="impl-item"><strong>Share link merge tag</strong>Every email's tertiary footer block uses: <code>https://steakking.co.uk?kid={{ person|lookup:'Kickoff Labs Social ID'|default:'' }}</code></div>
+    <div class="impl-item"><strong>Sender address</strong>Johnny-signed emails (E1, E2, E3, E6, E8, E9, E11) from <code>johnny@steakking.co.uk</code>. Brand-voice emails (E4, E5, E7, E10) from <code>hello@steakking.co.uk</code>.</div>
+    <div class="impl-item"><strong>Subject A/B test</strong>E1 has three subject line variants. Set up as Klaviyo A/B subject test with even split.</div>
+    <div class="impl-item"><strong>Domain warm-up</strong>Critical first 2-4 weeks. Do not run campaigns to this list until flow opens are stable. Monitor bounce rate daily.</div>
+    <div class="impl-item"><strong>Kickoff Labs Zapier</strong>Not required for v1 of this flow. All personalisation uses native properties. Zapier only needed if later adding dynamic referral count / tier content.</div>
+    <div class="impl-item"><strong>Asset prep before launch</strong>Johnny body shot (butchery, mid-cut) · 100-ref mega prize hero · supply chain diagram · MS grading comparison (MS1/3/5/9+) · Japanese vs Australian Wagyu side-by-side · 8-cut product grid · Hong Kong cityscape · cooking GIF · subscription lockbox · 5-tier reward ladder.</div>
+  </div>
+</div>
+
+<div class="footer">
+  Steak King UK · F_WELCOME · Flow Architecture Wireframe v1 · 2026-04-21<br>
+  Draft copy: <code>private/working/steak-king/flows/working/F_WELCOME-UK-2026-04-21-drafts-preview.html</code>
+</div>
+
+</div>
+
+</body>
+</html>
