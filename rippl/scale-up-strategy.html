@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rippl — Email Scale-Up Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#FFFFFF;
+  --bg-surface:#F7F6F5;
+  --bg-card:#FFFFFF;
+  --bg-elevated:#FBFAF9;
+  --border:#E0DEDC;
+  --border-md:#C8C5C2;
+  --text:#070909;
+  --text-secondary:#4A4A4A;
+  --text-muted:#888888;
+  
+  --accent:#EA4648;
+  --accent-soft:#D63A3C;
+  --accent-bg:rgba(234,70,72,0.06);
+  --accent-border:rgba(234,70,72,0.18);
+  
+  --gold:#B45309;
+  --gold-bg:rgba(180,83,9,0.07);
+  --gold-border:rgba(180,83,9,0.18);
+  
+  --green:#047857;
+  --green-bg:rgba(4,120,87,0.07);
+  --green-border:rgba(4,120,87,0.18);
+  
+  --amber:#B45309;
+  --amber-bg:rgba(180,83,9,0.07);
+  --amber-border:rgba(180,83,9,0.18);
+  
+  --red:#EA4648;
+  --red-bg:rgba(234,70,72,0.07);
+  --red-border:rgba(234,70,72,0.18);
+  
+  --r-sm:4px; --r-md:8px; --r-lg:14px; --r-full:999px;
+  --sidebar-w:240px; --content-max:1040px;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Inter', system-ui, sans-serif; font-size:15.5px; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
+a { color:var(--accent); text-decoration:none; }
+::selection { background:var(--accent); color:var(--bg); }
+
+/* Sidebar */
+.sidebar { position:fixed; top:0; left:0; width:var(--sidebar-w); height:100vh; background:rgba(255,255,255,0.97); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-right:1px solid var(--border); padding:32px 0; overflow-y:auto; z-index:100; }
+.sidebar-header { padding:0 26px 28px; border-bottom:1px solid var(--border); }
+.sidebar-header .mark { font-family:'Fraunces', serif; font-size:20px; font-weight:600; letter-spacing:-0.02em; color:var(--text); }
+.sidebar-header .mark::after { content:''; display:inline-block; width:5px; height:5px; background:var(--accent); border-radius:50%; margin-left:2px; vertical-align:super; }
+.sidebar-header .subtitle { font-size:11px; color:var(--text-muted); margin-top:6px; letter-spacing:0.04em; }
+.nav { padding:14px 0; }
+.nav a { display:block; padding:10px 26px; font-size:13px; font-weight:500; color:var(--text-secondary); transition:all 0.2s; }
+.nav a:hover { color:var(--text); background:var(--bg-surface); }
+.nav a.active { color:var(--accent); background:var(--accent-bg); border-right:2px solid var(--accent); }
+
+.main { margin-left:var(--sidebar-w); max-width:var(--content-max); padding:0 44px; margin-right:auto; }
+
+.section { padding:88px 0; border-bottom:1px solid var(--border); }
+.section:last-child { border-bottom:none; padding-bottom:60px; }
+.section-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.22em; color:var(--accent); margin-bottom:14px; }
+.section-title { font-family:'Fraunces', serif; font-size:clamp(30px, 4.5vw, 46px); font-weight:500; line-height:1.1; margin-bottom:22px; letter-spacing:-0.02em; color:var(--text); }
+.section-intro { font-size:17px; color:var(--text-secondary); max-width:780px; margin-bottom:36px; line-height:1.65; }
+
+/* Hero */
+.hero { padding:100px 0 80px; }
+.hero-eyebrow { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.24em; color:var(--accent); margin-bottom:28px; }
+.hero-headline { font-family:'Fraunces', serif; font-size:clamp(38px, 6vw, 64px); font-weight:400; letter-spacing:-0.025em; line-height:1.05; margin-bottom:32px; max-width:840px; color:var(--text); }
+.hero-headline em { font-style:italic; color:var(--accent); font-weight:500; }
+.hero-sub { font-size:18px; color:var(--text-secondary); max-width:640px; margin-bottom:48px; line-height:1.6; }
+.hero-pitch { font-size:15px; color:var(--text); max-width:720px; padding:28px 32px; background:var(--bg-surface); border-radius:var(--r-md); border-left:3px solid var(--accent); line-height:1.7; }
+.hero-pitch strong { color:var(--accent); font-weight:600; }
+
+/* KPIs */
+.kpi-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; margin-bottom:36px; }
+.kpi { padding:24px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-md); }
+.kpi .val { font-family:'Fraunces', serif; font-size:34px; font-weight:500; line-height:1; margin-bottom:6px; color:var(--text); letter-spacing:-0.02em; }
+.kpi .label { font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted); margin-bottom:6px; }
+.kpi .sub { font-size:12.5px; color:var(--text-secondary); line-height:1.5; }
+.kpi.accent .val { color:var(--accent); }
+.kpi.gold .val { color:var(--gold); }
+.kpi.red .val { color:var(--red); }
+
+/* Lever cards */
+.lever-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin-bottom:28px; }
+.lever-card { padding:28px 30px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-md); border-top:3px solid var(--accent); transition:all 0.2s; }
+.lever-card:hover { border-top-color:var(--gold); background:var(--bg-elevated); }
+.lever-card .num { font-family:'Fraunces', serif; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.18em; color:var(--accent); margin-bottom:10px; }
+.lever-card h3 { font-family:'Fraunces', serif; font-size:22px; font-weight:500; letter-spacing:-0.015em; margin-bottom:12px; color:var(--text); line-height:1.2; }
+.lever-card p { font-size:14.5px; color:var(--text-secondary); line-height:1.65; margin-bottom:12px; }
+.lever-card .outcome { display:inline-block; padding:6px 12px; background:var(--accent-bg); color:var(--accent); border:1px solid var(--accent-border); border-radius:var(--r-sm); font-size:12px; font-weight:500; }
+
+/* Strategy blocks */
+.strategy-block { margin-bottom:22px; padding:30px 34px; background:var(--bg-card); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:0 var(--r-md) var(--r-md) 0; }
+.strategy-block.gold { border-left-color:var(--gold); }
+.strategy-block.green { border-left-color:var(--green); }
+.strategy-block.amber { border-left-color:var(--amber); }
+.sb-title { font-family:'Fraunces', serif; font-size:22px; font-weight:500; margin-bottom:14px; letter-spacing:-0.015em; color:var(--text); line-height:1.25; }
+.sb-tags { display:flex; gap:6px; margin-bottom:18px; flex-wrap:wrap; }
+.sb-tag { padding:3px 10px; border-radius:var(--r-full); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; background:var(--bg-surface); color:var(--text-secondary); border:1px solid var(--border); }
+.sb-tag.accent { background:var(--accent-bg); color:var(--accent); border-color:var(--accent-border); }
+.sb-tag.gold { background:var(--gold-bg); color:var(--gold); border-color:var(--gold-border); }
+.sb-tag.green { background:var(--green-bg); color:var(--green); border-color:var(--green-border); }
+.sb-tag.amber { background:var(--amber-bg); color:var(--amber); border-color:var(--amber-border); }
+.sb-body { font-size:15px; color:var(--text-secondary); line-height:1.75; }
+.sb-body p { margin-bottom:14px; }
+.sb-body p:last-child { margin-bottom:0; }
+.sb-body strong { color:var(--text); font-weight:600; }
+.sb-body em { color:var(--accent); font-style:normal; font-weight:500; }
+.sb-body ul, .sb-body ol { margin:12px 0 16px 24px; }
+.sb-body li { margin-bottom:8px; }
+.sb-body h4 { font-size:12px; font-weight:700; color:var(--accent); margin:22px 0 10px; text-transform:uppercase; letter-spacing:0.14em; }
+
+/* Flow diagram */
+.flow-diagram { display:flex; gap:10px; margin:20px 0; flex-wrap:wrap; align-items:stretch; }
+.flow-step { flex:1; min-width:140px; padding:16px 14px; background:var(--bg-surface); border:1px solid var(--border); border-radius:var(--r-sm); font-size:12.5px; text-align:center; position:relative; }
+.flow-step .stage { font-size:9.5px; font-weight:700; text-transform:uppercase; color:var(--accent); letter-spacing:0.14em; margin-bottom:8px; }
+.flow-step .desc { color:var(--text-secondary); line-height:1.5; }
+.flow-step::after { content:'→'; position:absolute; right:-9px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:14px; font-weight:400; z-index:2; }
+.flow-step:last-child::after { display:none; }
+
+/* Compare */
+.compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:16px 0; }
+.compare-card { padding:22px 24px; background:var(--bg-surface); border:1px solid var(--border); border-radius:var(--r-sm); }
+.compare-card.current { border-top:2px solid var(--amber); }
+.compare-card.proposed { border-top:2px solid var(--green); }
+.compare-card .c-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; margin-bottom:12px; }
+.compare-card.current .c-label { color:var(--amber); }
+.compare-card.proposed .c-label { color:var(--green); }
+.compare-card h5 { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+.compare-card p { font-size:13px; color:var(--text-secondary); line-height:1.6; }
+.compare-card ul { font-size:13px; color:var(--text-secondary); margin-left:18px; }
+.compare-card li { margin-bottom:6px; }
+
+/* Tables */
+.tbl { width:100%; border-collapse:collapse; font-size:13px; margin:18px 0 24px; background:var(--bg-surface); border-radius:var(--r-md); overflow:hidden; border:1px solid var(--border); }
+.tbl th { text-align:left; padding:12px 16px; background:var(--bg-elevated); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted); border-bottom:1px solid var(--border); }
+.tbl td { padding:12px 16px; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text-secondary); }
+.tbl td strong { color:var(--text); }
+.tbl tr:last-child td { border-bottom:none; }
+.tbl td.num { text-align:right; font-variant-numeric:tabular-nums; font-weight:500; }
+.tbl td.accent { color:var(--accent); font-weight:600; }
+.tbl td.green { color:var(--green); font-weight:600; }
+
+/* Insight card */
+.insight-card { padding:24px 28px; background:var(--bg-surface); border-radius:var(--r-md); margin-bottom:22px; font-size:15px; color:var(--text-secondary); border-left:3px solid var(--accent); line-height:1.75; }
+.insight-card strong { color:var(--text); font-weight:600; }
+.insight-card em { color:var(--accent); font-style:normal; font-weight:500; }
+
+/* Phase cards */
+.phase-card { padding:28px 32px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-md); margin-bottom:14px; }
+.phase-card .phase-tag { display:inline-block; padding:5px 12px; background:var(--accent-bg); color:var(--accent); border:1px solid var(--accent-border); border-radius:var(--r-sm); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.14em; margin-bottom:14px; }
+.phase-card h3 { font-family:'Fraunces', serif; font-size:22px; font-weight:500; margin-bottom:14px; letter-spacing:-0.015em; color:var(--text); }
+.phase-card ul { margin:0 0 14px 22px; font-size:14px; color:var(--text-secondary); }
+.phase-card li { margin-bottom:7px; }
+
+.cta-box { padding:40px; background:var(--bg-elevated); color:var(--text); border:1px solid var(--border); border-radius:var(--r-md); text-align:center; margin-top:36px; position:relative; overflow:hidden; }
+.cta-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, transparent, var(--accent), var(--gold), transparent); }
+.cta-box h3 { font-family:'Fraunces', serif; font-size:28px; font-weight:500; margin-bottom:16px; letter-spacing:-0.015em; }
+.cta-box p { font-size:15px; color:var(--text-secondary); max-width:620px; margin:0 auto; line-height:1.7; }
+
+/* Ask box */
+.ask-box { padding:28px 32px; background:var(--bg-card); border:1px solid var(--accent-border); border-radius:var(--r-md); margin:16px 0; }
+.ask-box h4 { font-size:12px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.14em; margin-bottom:14px; }
+.ask-box ul { font-size:14px; color:var(--text-secondary); margin-left:22px; }
+.ask-box li { margin-bottom:7px; }
+
+/* Velocity callout */
+.velocity-callout { padding:32px 36px; background:linear-gradient(135deg, var(--accent-bg) 0%, var(--bg-card) 100%); border:1px solid var(--accent-border); border-radius:var(--r-md); margin:24px 0; }
+.velocity-callout .big-stat { font-family:'Fraunces', serif; font-size:56px; font-weight:500; line-height:1; color:var(--accent); letter-spacing:-0.03em; margin-bottom:12px; }
+.velocity-callout .big-stat-label { font-size:14px; color:var(--text); line-height:1.6; max-width:560px; }
+.velocity-callout .big-stat-label strong { color:var(--accent); }
+
+@media (max-width: 1024px) {
+  .kpi-grid { grid-template-columns:repeat(2, 1fr); }
+  .lever-grid { grid-template-columns:1fr; }
+  .compare-grid { grid-template-columns:1fr; }
+  .sidebar { transform:translateX(-100%); transition:transform .3s; }
+  .sidebar.open { transform:translateX(0); }
+  .main { margin-left:0; padding:0 24px; }
+  .flow-step::after { display:none; }
+  .flow-step { margin-bottom:8px; }
+}
+@media (max-width: 768px) {
+  .kpi-grid { grid-template-columns:1fr; }
+  .section { padding:60px 0; }
+  .hero-headline { font-size:36px !important; }
+  .velocity-callout .big-stat { font-size:44px; }
+}
+@media print {
+  @page { size:A4; margin:14mm; }
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .sidebar { display:none !important; }
+  .main { margin-left:0 !important; max-width:none; padding:0 !important; }
+  .section { break-inside:avoid; page-break-inside:avoid; padding:32px 0; }
+  body { font-size:12px; }
+}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="mark">Rippl</div>
+    <div class="subtitle">Email Scale-Up Strategy · April 2026</div>
+  </div>
+  <nav class="nav">
+    <a href="#hero" class="active">Overview</a>
+    <a href="#reality">The Business Reality</a>
+    <a href="#foundation">Where We Are Today</a>
+    <a href="#framework">Strategic Framework</a>
+    <a href="#lever1">List Growth</a>
+    <a href="#lever2">ZPD Activation</a>
+    <a href="#lever3">Retention & Referral</a>
+    <a href="#lever4">Corporate Custom</a>
+    <a href="#campaigns">Campaign Rebuild</a>
+    <a href="#plan">90-Day Plan</a>
+    <a href="#inputs">Decisions & Inputs</a>
+  </nav>
+</aside>
+
+<main class="main">
+
+<!-- HERO -->
+<section class="section hero" id="hero">
+  <div class="hero-eyebrow">Scale-Up Strategy · April 2026</div>
+  <h1 class="hero-headline">Build the list. Activate the data. <em>Turn customers into evangelists.</em></h1>
+  <p class="hero-sub">A four-lever plan to scale Rippl's email program from today's ~$45K/yr to $105–140K/yr in 90 days — without adding discounting pressure, without new paid tools required, and without compromising the deliverability recovery already underway.</p>
+  
+  <div class="hero-pitch">
+    Rippl is a premium hydration brand with unicorn-level social proof (650+ B2B brands including L'Oréal, Mercedes-Benz, New Balance) selling a one-time big-ticket product (<strong>Rippl Pure, ~$900</strong>) plus a recurring consumable (330ml mineral cans). The business model demands a retention-led email strategy — the revenue is not in winning first-time buyers over and over, it's in converting cold traffic into Pure buyers with conviction, then building a second income stream off those buyers through cans, remineralization education, replacement filters, and referrals. This doc lays out exactly how.
+  </div>
+</section>
+
+<!-- BUSINESS REALITY -->
+<section class="section" id="reality">
+  <div class="section-label">THE BUSINESS REALITY</div>
+  <h2 class="section-title">The numbers tell a story — now we shape it</h2>
+  <p class="section-intro">Before any strategy, a quick read on the store and email data from the last 180 days. This is what we're working with.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Annual Store Revenue</div><div class="val">~$396,974</div><div class="sub">551 orders in 180 days · ~1,102 orders/yr</div></div>
+    <div class="kpi red"><div class="label">Email Revenue Share</div><div class="val">11.4%</div><div class="sub">vs 25–35% benchmark — significant gap</div></div>
+    <div class="kpi accent"><div class="label">Refund Rate (Pure)</div><div class="val">2.2%</div><div class="sub">Healthy · mostly 30-day guarantee returns</div></div>
+    <div class="kpi gold"><div class="label">Popup Conversion</div><div class="val">2.92%</div><div class="sub">vs 5–8% benchmark · desktop at 1.98%</div></div>
+  </div>
+  
+  <h3 style="font-family:'Fraunces',serif; font-size:26px; font-weight:500; margin:32px 0 18px; letter-spacing:-0.015em;">Three truths we're planning around</h3>
+  
+  <div class="insight-card">
+    <strong>Truth 1 — Rippl Pure is a <em>conviction sale</em>, not a spontaneous buy.</strong> At ~$900 AUD with ongoing filter replacement cost, no one impulse-buys a reverse osmosis system online. The data backs this up: 9 of 12 refunds over 180 days were Pure returns under the 30-day guarantee, averaging $875 each. People buy it, live with it for 3–4 weeks, then decide whether to keep it. Every post-purchase email is either reinforcing the decision to keep it or losing the sale. This isn't a funnel. It's a conviction journey.
+  </div>
+  
+  <div class="insight-card">
+    <strong>Truth 2 — The recurring revenue isn't organic, it has to be engineered.</strong> Rippl Pure is one-off. Cans are consumable but bought infrequently at retail prices. Replacement filters are a 6–12 month cycle. None of this generates natural monthly revenue the way a subscription brand does. The brand either builds repeat purchase muscle through email — replenishment nudges, remineralization education, cross-sell ladders, referrals — or it's a pure acquisition business paying to replace customers each month.
+  </div>
+  
+  <div class="insight-card">
+    <strong>Truth 3 — The list is small. <em>All other levers follow from fixing that.</em></strong> Net growth of +3,546 subscribers in 180 days is mostly from one BFCM giveaway. Without that spike, organic growth is ~300/month. At a 2.92% popup conversion against ~22K monthly popup views, the ceiling is visible. Every other strategic recommendation in this document compounds off list size. Get list growth wrong and everything else runs into a wall.
+  </div>
+</section>
+
+<!-- FOUNDATION -->
+<section class="section" id="foundation">
+  <div class="section-label">FOUNDATION</div>
+  <h2 class="section-title">Where Rippl sits today</h2>
+  <p class="section-intro">A quick recap of the current email program so we're on the same page before the plan. The detailed 6-month audit is available separately — this is the executive version.</p>
+  
+  <div class="compare-grid">
+    <div class="compare-card proposed">
+      <div class="c-label">What's working</div>
+      <ul>
+        <li><strong>Welcome flow is excellent:</strong> 87% OR, 7% CTR, $4.43 RPR, $12K revenue on 935 recipients</li>
+        <li><strong>Shopify integration fully wired:</strong> every checkout, cart, browse, fulfilment event tracked</li>
+        <li><strong>Abandonment flows live & performing:</strong> $36/RPR on checkout abandon (best-in-class)</li>
+        <li><strong>Loox + Judge.me integrations active</strong> — the data pipe exists, just not being used yet</li>
+        <li><strong>Corporate B2B audience performing:</strong> 92–98% opens on PSAs, 0% spam, loyal engaged cohort</li>
+        <li><strong>29 segments built</strong> including exclusion infrastructure — mid-maturity foundation</li>
+      </ul>
+    </div>
+    <div class="compare-card current">
+      <div class="c-label">What still needs work</div>
+      <ul>
+        <li><strong>Deliverability recovering, not recovered:</strong> out of spam-complaint territory, but domain not warmed up enough to scale campaign sends. Careful ramp needed before bigger audiences</li>
+        <li><strong>Flows are the primary revenue lever for this account</strong> — and they still need significant build-out. Heavy focus on pre-purchase with post-purchase layered on top</li>
+        <li><strong>Welcome flow firing for only 22% of new subscribers</strong> — trigger gap means Pure Quiz, Corporate, and Pure Potential lists bypass it entirely</li>
+        <li><strong>No replenishment, cross-sell, VIP, NPS, or referral flows</strong> built yet</li>
+        <li><strong>Zero-party data collected but unused</strong> — popup captures it, welcome flow doesn't route on it</li>
+        <li><strong>Popup conversion below benchmark</strong> — 3.16% mobile, 1.98% desktop (vs 5–8% target)</li>
+        <li><strong>Seven state water report flows built but idle</strong> — not currently active, not driving signups, a capability we haven't activated</li>
+        <li><strong>No A/B testing program running</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="section-label">STRATEGIC FRAMEWORK</div>
+  <h2 class="section-title">Four levers, sequenced for impact</h2>
+  <p class="section-intro">Each lever addresses a specific stage of the Rippl customer lifecycle. The order matters — Lever 1 feeds Lever 2, which feeds Lever 3, with Lever 4 running in parallel against the B2B audience. Pull them in sequence and the compound effect closes the $60–95K/yr gap.</p>
+  
+  <div class="lever-grid">
+    <div class="lever-card">
+      <div class="num">Lever 01 · Top of Funnel</div>
+      <h3>3× the list with the right incentive mix</h3>
+      <p>Current 2.92% popup conversion is the ceiling on everything downstream. Test the water-report hook, quiz mechanic, and incentive structure to get to 5–7% sustained. The tactical goal: triple the current email subscriber growth rate within 90 days.</p>
+      <span class="outcome">Outcome: 3× monthly signups</span>
+    </div>
+    <div class="lever-card">
+      <div class="num">Lever 02 · Activation</div>
+      <h3>Use the ZPD we're already collecting</h3>
+      <p>The popup collects zero-party data (product interest, state, hydration goals) — but the welcome flow doesn't branch on it. Route subscribers down Pure vs Cans vs Corporate welcome tracks with content that earns the ask.</p>
+      <span class="outcome">Outcome: 2–3× welcome conversion</span>
+    </div>
+    <div class="lever-card">
+      <div class="num">Lever 03 · Retention & Referral</div>
+      <h3>Turn Pure buyers into evangelists</h3>
+      <p>Post-purchase conviction cadence reinforces the $900 decision, then ladders to upsells (cans → remineralization → replacement filters). NPS flow identifies the evangelist cohort → referral program with tangible incentives.</p>
+      <span class="outcome">Outcome: LTV lift + referral revenue stream</span>
+    </div>
+    <div class="lever-card">
+      <div class="num">Lever 04 · B2B Optimization</div>
+      <h3>Personalize corporate replenishment</h3>
+      <p>Stop blasting all corporate customers at the same cadence. Study per-account buying frequency, build a flow that fires on each account's cycle, keep broadcasts for content only.</p>
+      <span class="outcome">Outcome: higher reorder rate, lower unsub risk</span>
+    </div>
+  </div>
+</section>
+
+<!-- LEVER 1 -->
+<section class="section" id="lever1">
+  <div class="section-label">LEVER 01</div>
+  <h2 class="section-title">Grow the list — <em style="font-style:italic; color:var(--accent)">3× in 90 days</em></h2>
+  <p class="section-intro">The welcome popup converts at 2.92% blended (1.98% desktop, 3.16% mobile). Benchmark is 5–8%. With ~22K popup views in 180 days, closing that gap alone adds 700–1,100 subscribers per month. And the speed-to-first-purchase data below makes the business case for list growth almost self-proving.</p>
+  
+  <div class="velocity-callout">
+    <div class="big-stat">78%</div>
+    <div class="big-stat-label">
+      <strong>78% of welcome flow revenue happens on Email 1</strong> — the email that fires within the first hour of someone joining the list. 14 of 18 welcome-flow conversions ($9,738 of $11,996) come from that single email. Email 2 and 3 add another 22% combined. This is the strongest argument for aggressive list growth you'll see: <em>new subscribers don't hibernate — they convert almost immediately, or not at all via email.</em> Every extra person on the list who fits Rippl's profile is a ~1-hour window to a potential sale. The welcome flow is already built to capitalize. The only constraint is how many qualified people we're putting in front of it.
+    </div>
+  </div>
+  
+  <div class="strategy-block">
+    <div class="sb-title">The current state: free mystery gift (glass Rippl bottle)</div>
+    <div class="sb-tags"><span class="sb-tag accent">Context</span></div>
+    <div class="sb-body">
+      <p>The current popup offers a <strong>free mystery gift</strong> — a glass Rippl bottle with any first order. No percentage discount, no price-off. That positioning is aligned with the premium brand (no discount arms race) but the 2.92% conversion suggests the mechanic isn't landing strongly enough to overcome the friction of handing over an email.</p>
+      <p>Two diagnostic questions worth testing: (1) Is the mystery framing actually intriguing, or does "mystery gift" feel like another discount popup dressed up? (2) Does the glass bottle visually come through in the popup, or is it abstract? Visual specificity usually beats abstraction — a clear photo of the bottle + "Yours free with any order" often outperforms the mystery framing.</p>
+    </div>
+  </div>
+  
+  <div class="strategy-block gold">
+    <div class="sb-title">Three paths to test in parallel</div>
+    <div class="sb-tags"><span class="sb-tag gold">Testing</span><span class="sb-tag">Priority #1</span></div>
+    <div class="sb-body">
+      <p>Running these as parallel A/B cohorts (different traffic splits) rather than sequentially means we learn faster and the winner emerges within 4–6 weeks.</p>
+      <ol>
+        <li><strong>The water report hook (recommended test) —</strong> "See what's actually in your tap water. Enter your postcode and we'll send you your state's water report." Seven state water-report flows already exist in the account. They're currently idle and under-utilized. Reactivating them as the primary lead magnet gives Rippl a hook no competitor can copy. Expected conversion: 5–8%+.</li>
+        <li><strong>The quiz mechanic —</strong> a 4–6 question quiz ("What's your water quality goal?") that collects ZPD AND functions as the capture point. The Rippl Pure Quiz form hit 69.81% conversion in its limited run. Even at 15% sustained, it's 5× current popup performance. Quizzes also front-load the ZPD collection that powers Lever 2.</li>
+        <li><strong>Keep the mystery-gift incentive, refine the creative —</strong> show the glass bottle in the popup explicitly, test "your welcome gift" vs "mystery gift" framing, tighten the headline. If this beats the water report angle, we've got our winner without leaving the current value prop.</li>
+      </ol>
+    </div>
+  </div>
+  
+  <div class="strategy-block">
+    <div class="sb-title">The water report as exit-intent specifically</div>
+    <div class="sb-tags"><span class="sb-tag accent">Tactic</span><span class="sb-tag">Quick Build</span></div>
+    <div class="sb-body">
+      <p>Right now we're not funneling visitors into the water report flow at all — it sits idle even though the state flows are built. One clean way to drive traffic into it without cannibalizing the main welcome popup: <strong>run "See What's In Your Water" as an exit-intent form</strong>.</p>
+      <p>The logic:</p>
+      <ul>
+        <li>First-visit visitors see the standard welcome popup (mystery gift or whichever winner from test above)</li>
+        <li>If they dismiss or don't convert, they browse</li>
+        <li>On exit-intent, they get the water report popup: "Before you go — see what's in your state's tap water"</li>
+        <li>It's a lower-commitment ask (no purchase context, just curiosity) with a unique hook</li>
+        <li>Second-chance capture rate on exit-intent popups typically runs 2–4% — pure upside on subscribers who would have left empty-handed</li>
+      </ul>
+      <p>Once captured, they land in the state-specific water report flow we already have built, which doubles as the top of the welcome nurture. Two birds.</p>
+    </div>
+  </div>
+  
+  <div class="strategy-block">
+    <div class="sb-title">Kill the 10 draft popups · activate exactly two</div>
+    <div class="sb-tags"><span class="sb-tag amber">Cleanup</span><span class="sb-tag">Quick Win</span></div>
+    <div class="sb-body">
+      <p>10 of 12 forms are sitting in draft: Rippl Giveaway, Rippl 10% First Order, New Customer $75 Pure, 2 Free Glass Bottles, Rippl Pure Discount, BF Pure 2025, etc. More popups = more overlap = worse user experience. Rippl needs exactly two live popups:</p>
+      <ol>
+        <li><strong>Site-wide welcome popup</strong> — whichever mechanic wins the test above (mystery gift refined / water report / quiz). Collects email + core ZPD fields.</li>
+        <li><strong>Exit-intent water report popup</strong> — second-chance capture for visitors who dismissed the primary. Routes into the state water report flow.</li>
+      </ol>
+      <p>Archive every other draft. One entry popup, one exit popup. Nothing else.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEVER 2 -->
+<section class="section" id="lever2">
+  <div class="section-label">LEVER 02</div>
+  <h2 class="section-title">Activate the zero-party data we're already collecting</h2>
+  <p class="section-intro">The popup collects ZPD (product interest, state, sometimes goals) but the welcome flow ignores it — everyone gets the same generic sequence. Routing subscribers down different welcome tracks based on their stated interest is the single highest-leverage change we can make on the flow side.</p>
+  
+  <div class="strategy-block amber">
+    <div class="sb-title">Current state: one-size-fits-all welcome</div>
+    <div class="sb-tags"><span class="sb-tag amber">Problem</span></div>
+    <div class="sb-body">
+      <p>Today, someone who signs up via the "I'm interested in Rippl Pure" popup gets the same welcome flow as someone who signs up to see their state's water report. These are two completely different buying intents — one is a $900 considered purchase, the other is cold curiosity. One message can't serve both.</p>
+      <p>The flow's aggregate conversion at 1.92% is solid but flat across 935 recipients. With proper routing, Pure-intent subscribers should convert at 3–5% to Pure (higher AOV, higher consideration), cans-intent subscribers should convert at 4–6% to cans (lower AOV, easier yes), and corporate leads should be nurtured toward a sample pack or booked call rather than pushed to a retail checkout.</p>
+    </div>
+  </div>
+
+  <div class="strategy-block green">
+    <div class="sb-title">Proposed architecture: three tracks branching on ZPD</div>
+    <div class="sb-tags"><span class="sb-tag green">Build</span><span class="sb-tag">Lever 02 Core</span></div>
+    <div class="sb-body">
+      <h4>Track A — Rippl Pure interested (conviction journey)</h4>
+      <div class="flow-diagram">
+        <div class="flow-step"><div class="stage">Email 1 · Day 0</div><div class="desc">"Here's your water report" + intro to Pure</div></div>
+        <div class="flow-step"><div class="stage">Email 2 · Day 2</div><div class="desc">What RO actually removes (education)</div></div>
+        <div class="flow-step"><div class="stage">Email 3 · Day 4</div><div class="desc">Social proof — L'Oréal, Mercedes, UGC</div></div>
+        <div class="flow-step"><div class="stage">Email 4 · Day 7</div><div class="desc">30-day guarantee + first-order incentive</div></div>
+        <div class="flow-step"><div class="stage">Email 5 · Day 10</div><div class="desc">Founder plain-text: "Why we built Pure"</div></div>
+      </div>
+      <p>The conviction journey doesn't rush the sale. It educates first (problem awareness), establishes credibility through the B2B client roster, reassures through the 30-day guarantee, then lands the offer. Pure is a hard yes online — this sequence earns it.</p>
+      
+      <h4>Track B — Cans interested (direct-to-purchase)</h4>
+      <div class="flow-diagram">
+        <div class="flow-step"><div class="stage">Email 1 · Day 0</div><div class="desc">Welcome + glass bottle gift reminder</div></div>
+        <div class="flow-step"><div class="stage">Email 2 · Day 2</div><div class="desc">Bundle comparison: 12 vs 24 vs 48-pack</div></div>
+        <div class="flow-step"><div class="stage">Email 3 · Day 5</div><div class="desc">Recipe/pairing content</div></div>
+        <div class="flow-step"><div class="stage">Email 4 · Day 8</div><div class="desc">Offer last chance + soft Pure pitch</div></div>
+      </div>
+      
+      <h4>Track C — Corporate / B2B (entirely different buying motion)</h4>
+      <div class="flow-diagram">
+        <div class="flow-step"><div class="stage">Email 1 · Day 0</div><div class="desc">"Welcome to Rippl for business"</div></div>
+        <div class="flow-step"><div class="stage">Email 2 · Day 3</div><div class="desc">Case study: how L'Oréal/Mercedes use Rippl</div></div>
+        <div class="flow-step"><div class="stage">Email 3 · Day 7</div><div class="desc">Book a call / custom sample pack</div></div>
+      </div>
+      <p>Corporate leads go straight to relationship-building. No discount. No urgency. The ask is a booked call or sample pack.</p>
+      
+      <h4>How it's built in Klaviyo (native, no external tools)</h4>
+      <p>Single welcome flow triggered on "Subscribed to Email Marketing", conditional split on the ZPD profile property <em>product_interest</em> (Pure / Cans / B2B). Each branch gets its own 3–5 email sequence. Klaviyo's native conditional split handles this without any custom build. Implementation: ~8–12 hours depending on how much copy is reusable from existing templates.</p>
+      <p><strong>And critically — this same flow needs to fire on the Pure Quiz list and Corporate Can Customers list</strong>, not just the primary Email List. The current trigger gap is why only 22% of new subscribers see a welcome sequence at all.</p>
+    </div>
+  </div>
+
+  <div class="strategy-block">
+    <div class="sb-title">ZPD fields to collect (and what they unlock)</div>
+    <div class="sb-tags"><span class="sb-tag accent">Popup Design</span></div>
+    <div class="sb-body">
+      <p>Three ZPD fields have the highest downstream leverage. Keep the popup short (max 3 steps) to protect conversion rate.</p>
+      <table class="tbl">
+        <thead><tr><th>ZPD Field</th><th>Example Question</th><th>Unlocks</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Product interest</strong></td><td>"What are you most curious about?" (Pure / Cans / Custom B2B)</td><td>Welcome flow track routing (Lever 2 core)</td></tr>
+          <tr><td><strong>State/postcode</strong></td><td>"Enter your postcode for your water report"</td><td>State water report flow + state-based campaigns</td></tr>
+          <tr><td><strong>Hydration goal</strong></td><td>"What's driving your interest?" (Family health / Taste / Sustainability / Office)</td><td>Content personalization in flows and campaigns</td></tr>
+        </tbody>
+      </table>
+      <p>Every one of these is already being collected in one popup or another — they need consolidating into the primary popup and wiring into flow logic.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEVER 3 -->
+<section class="section" id="lever3">
+  <div class="section-label">LEVER 03</div>
+  <h2 class="section-title">Retention, upsell & evangelism — after the Pure sale</h2>
+  <p class="section-intro">When someone buys a $900 Rippl Pure, we don't stop marketing to them — we start. The post-purchase period is when buyer's remorse happens (the 30-day guarantee window), when product habits form, and when a customer decides if they're an advocate or a one-and-done. This is the single biggest retention lever in the account.</p>
+  
+  <div class="strategy-block green">
+    <div class="sb-title">The Pure Owner Conviction Cadence — 90 days of reinforcement</div>
+    <div class="sb-tags"><span class="sb-tag green">Core Flow</span><span class="sb-tag">Retention</span></div>
+    <div class="sb-body">
+      <p>The idea: after someone buys Pure, we reinforce their decision every 2 weeks with content that makes them notice the benefits (some genuinely sensory, some placebo-adjacent — both valid). By Day 60 they're emotionally bought in. By Day 90 they're telling friends. The flow doesn't sell — it reinforces.</p>
+      <table class="tbl">
+        <thead><tr><th>Day</th><th>Email Theme</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td class="num">0</td><td><strong>Order confirmation + unboxing expectations</strong></td><td>Set the stage, reduce anxiety</td></tr>
+          <tr><td class="num">3</td><td>"Your Pure has arrived — 10-minute setup guide"</td><td>Reduce friction, ensure they actually install it</td></tr>
+          <tr><td class="num">7</td><td>"First week with Pure — what to notice" (taste, clarity, skin)</td><td>Prime them to observe the changes</td></tr>
+          <tr><td class="num">14</td><td>"How your water compares — before/after mineral test"</td><td>Tangible proof their water changed</td></tr>
+          <tr><td class="num">21</td><td>UGC/testimonial roundup: "What 2 weeks with Pure looks like"</td><td>Validate they're not alone, build community</td></tr>
+          <tr><td class="num">28</td><td><strong>"Still within your 30-day guarantee — here's why most customers keep theirs"</strong></td><td>Reinforce confidence before the window closes</td></tr>
+          <tr><td class="num">45</td><td>The remineralization education email ← pivot to upsell</td><td>Set up cans cross-sell</td></tr>
+          <tr><td class="num">60</td><td>"Rippl cans — remineralized mineral water made the right way"</td><td>Upsell #1 (cans)</td></tr>
+          <tr><td class="num">75</td><td>Share + refer incentive email</td><td>Activate evangelism</td></tr>
+          <tr><td class="num">90</td><td><strong>NPS survey email</strong></td><td>Identify evangelist cohort (feeds referral program)</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Why this works:</strong> the first 30 days reinforce the purchase decision (including harnessing the sensory/placebo-adjacent effects — "my water tastes better," "my skin feels different" — which are real experiences regardless of mechanism). The next 60 days layer in cross-sell logic (remineralization → cans) and the referral ask. Each email earns the right to send the next.</p>
+      <p><strong>Build notes:</strong> triggered on "Placed Order where Product contains 'Pure'". Conditional split at Day 45 on whether a repeat order has been placed (if yes, skip to evangelism; if no, continue the upsell). Day 90 NPS captures a custom profile property that downstream flows and campaigns target.</p>
+    </div>
+  </div>
+
+  <div class="strategy-block">
+    <div class="sb-title">The upsell ladder — cans, remineralization, replacement filters</div>
+    <div class="sb-tags"><span class="sb-tag accent">Upsell</span></div>
+    <div class="sb-body">
+      <p>Once a Pure buyer is in the conviction cadence, there are three upsell angles in priority order:</p>
+      <ol>
+        <li><strong>Mineral cans (the immediate win)</strong> — "You filter water at home. What about out of the house?" Cans solve the "Rippl-quality water on the go" problem. Low AOV, higher frequency. This is the 90-day conversion target.</li>
+        <li><strong>Remineralization (the education play)</strong> — counter-intuitive but important: RO removes minerals. Most Pure owners don't know this. Educational campaigns on remineralization ("Your RO water is perfect — here's how to add the good stuff back") position Rippl's own mineral cans as the solution, or sell a mineral drops product if launched. Irony aside, it's an authentic use case and a natural cross-sell.</li>
+        <li><strong>Replacement filters (the long game)</strong> — 6–12 month cycle. Can't drive immediate spikes. Build the flow so it fires at Month 5, Month 9, Month 11 post-purchase with escalating reminders + auto-ship offer. Annuity revenue, not a short-term win.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="strategy-block">
+    <div class="sb-title">UGC & testimonials — the conviction fuel</div>
+    <div class="sb-tags"><span class="sb-tag accent">Content</span><span class="sb-tag">Cross-cutting</span></div>
+    <div class="sb-body">
+      <p>Every email in Lever 2 (Pure welcome) and Lever 3 (Pure conviction cadence) relies on testimonials and UGC imagery. Without this asset library, the sequences feel generic. With it, they feel credible.</p>
+      <h4>What we need for the content library</h4>
+      <ul>
+        <li>10–15 Pure customer testimonials (written), mixed angles: health, taste, sustainability, family</li>
+        <li>5–8 UGC images of Pure in real homes (kitchen installs, family use, office setups)</li>
+        <li>2–3 short video testimonials (30–60 sec ideally — one B2B client, one family, one health-focused)</li>
+        <li>Before/after water tests — mineral content, TDS readings, clarity visuals</li>
+        <li>Logo permissions + 1-paragraph case study from 2+ of the 650 B2B clients (L'Oréal, Mercedes, New Balance, Prada)</li>
+      </ul>
+      <h4>How to source this if Rippl doesn't already have it</h4>
+      <p>One-time review drive to existing Pure customers: email + SMS to everyone who bought Pure 30–120 days ago, offering a $30 credit toward cans in exchange for a testimonial + photo. 200 emails at 5% response = 10 testimonials. Automate going forward via review request email at Day 14 post-purchase (Loox and Judge.me are both integrated and currently under-used).</p>
+    </div>
+  </div>
+
+  <div class="strategy-block green">
+    <div class="sb-title">The referral program — NPS intersection, tangible incentives</div>
+    <div class="sb-tags"><span class="sb-tag green">Evangelism</span><span class="sb-tag">Revenue Stream</span></div>
+    <div class="sb-body">
+      <p>Identify the intersection of high-NPS × high-spend customers, turn them into referral partners. Everyone else gets standard email. The evangelist cohort gets special attention.</p>
+      
+      <h4>Step 1 — Capture NPS via flow</h4>
+      <p>Post-Purchase Day 90 email asks a single NPS question (0–10). Response writes to a custom profile property <em>nps_score</em>. Klaviyo handles this natively.</p>
+      
+      <h4>Step 2 — Build the evangelist segment</h4>
+      <p>Segment definition: nps_score ≥ 9 AND total_order_value ≥ $900 (i.e., they bought Pure) AND days_since_last_open ≤ 30. This isolates the engaged, high-value, happy cohort. Initial size likely 5–15% of the Pure customer base.</p>
+      
+      <h4>Step 3 — Evangelist activation flow</h4>
+      <p>Triggered on entering the evangelist segment. 3-email sequence:</p>
+      <ul>
+        <li><strong>Email 1:</strong> "We noticed you love Rippl — want to share it?" (no ask yet, just recognition)</li>
+        <li><strong>Email 2:</strong> The referral offer — <strong>$50 Amazon gift card for every successful referral; referred friend gets a free glass bottle with their first order</strong></li>
+        <li><strong>Email 3:</strong> Ready-to-paste share templates (WhatsApp / SMS / social)</li>
+      </ul>
+      
+      <h4>Step 4 — Track the loop</h4>
+      <p>Each evangelist gets a unique Shopify discount code tied to their email. Track: codes used, revenue driven, gift cards owed. Klaviyo + Shopify handles this natively, or use a referral-specific tool (ReferralCandy, Friendbuy) if volume warrants.</p>
+      
+      <h4>Expected economics</h4>
+      <p>If the evangelist cohort starts at 20–40 Pure owners and each refers even 1–2 sales in the first year, that's 20–80 Pure sales from referral = $18K–72K in referred revenue at $900 AOV, with $1K–4K in gift card cost. Payback ~20:1. Referred customers also have materially higher LTV (industry data: ~16% higher) because they enter already trusting the brand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEVER 4 -->
+<section class="section" id="lever4">
+  <div class="section-label">LEVER 04</div>
+  <h2 class="section-title">Corporate customers — personalize the replenishment</h2>
+  <p class="section-intro">The Corporate Can Customers list is currently blasted 1–2× per month with generic update emails. Efficient to produce, suboptimal in impact — over-sending to low-frequency accounts (unsub risk) and under-sending to high-frequency accounts (lost reorder revenue).</p>
+  
+  <div class="strategy-block amber">
+    <div class="sb-title">Current state: spray-and-pray to B2B</div>
+    <div class="sb-tags"><span class="sb-tag amber">Problem</span></div>
+    <div class="sb-body">
+      <p>Over the last 180 days, 7 corporate update campaigns went out ("APRIL UPDATE CORPORATE CUSTOMERS", "FEBRUARY UPDATE", "MARCH UPDATE" — some sent twice as reminders). They perform well on engagement metrics: 92–98% open rates, 0% spam, ~1–2% unsub rate. B2B subscribers are paying attention.</p>
+      <p>But engagement is vanity here — we don't know if these emails are driving reorders, and we don't know if we're hitting each customer at the right point in their buying cycle. A company that reorders every 3 weeks needs different cadence than one that reorders every 4 months.</p>
+    </div>
+  </div>
+
+  <div class="strategy-block green">
+    <div class="sb-title">Proposed state: per-account personalized replenishment</div>
+    <div class="sb-tags"><span class="sb-tag green">Build</span><span class="sb-tag">Lever 04 Core</span></div>
+    <div class="sb-body">
+      <h4>Step 1 — Study actual buying frequency</h4>
+      <p>Pull 12 months of corporate orders from Shopify. For each account, calculate:</p>
+      <ul>
+        <li>Average days between orders (their "replenishment cycle")</li>
+        <li>Average order value</li>
+        <li>Typical product mix (flavours, sizes)</li>
+      </ul>
+      <p>This surfaces natural clusters — likely some accounts at 2–3 weeks (high-traffic offices, event spaces), some at 4–6 weeks (mid-size offices), some at 8–12 weeks (seasonal use). Data-driven, not guessed.</p>
+      
+      <h4>Step 2 — Store the cycle as a profile property</h4>
+      <p>Write each account's <em>replenishment_cycle_days</em> to their Klaviyo profile via Shopify sync or one-time CSV import. This becomes the fuel for Step 3.</p>
+      
+      <h4>Step 3 — Build the per-account replenishment flow</h4>
+      <p>Single flow triggered on "Placed Order where customer is tagged Corporate". Flow waits for the profile's replenishment_cycle_days value minus 5 days (reminder arrives before they run out). First email: friendly "Time to reorder?" with a one-click reorder link pre-filled with their last order's contents.</p>
+      <div class="flow-diagram">
+        <div class="flow-step"><div class="stage">Trigger</div><div class="desc">Corporate customer places order</div></div>
+        <div class="flow-step"><div class="stage">Wait</div><div class="desc">(cycle_days − 5)</div></div>
+        <div class="flow-step"><div class="stage">Email 1</div><div class="desc">"Ready to reorder?" + one-click cart</div></div>
+        <div class="flow-step"><div class="stage">Wait 4 days</div><div class="desc">If no order yet</div></div>
+        <div class="flow-step"><div class="stage">Email 2</div><div class="desc">"Running low?" + account manager contact</div></div>
+      </div>
+      
+      <h4>Step 4 — Keep broadcast campaigns for content only</h4>
+      <p>Corporate campaigns still go out — but they shift from "reminder/update" to "content" (new product launches, case studies, seasonal bundles). The reminder role moves to the personalized flow. Reduces overall send volume (lower unsub risk) while increasing relevant touches (reorder revenue).</p>
+      
+      <h4>Expected economics</h4>
+      <p>A well-timed nudge is typically worth a 10–20% bump in reorder frequency for accounts that would have reordered anyway. For a segment driving the bulk of consistent monthly volume, this compounds — especially in Q4 when offices ramp up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGN REBUILD -->
+<section class="section" id="campaigns">
+  <div class="section-label">CAMPAIGN REBUILD</div>
+  <h2 class="section-title">Rebuild sending cadence — carefully</h2>
+  <p class="section-intro">The deliverability recovery has made real progress. Spam complaints have come way down and bounce rates have normalized from the BFCM crisis. We're out of the worst of it — but the domain isn't warmed up enough yet to send to a larger campaign audience without risking another setback. Every campaign expansion from here is a <em>deliberate warming step</em>, not a pivot back to pre-BFCM volume.</p>
+  
+  <div class="strategy-block green">
+    <div class="sb-title">The ramp plan: 4 weeks from current state to steady baseline</div>
+    <div class="sb-tags"><span class="sb-tag green">Rebuild</span><span class="sb-tag">Deliverability-Safe</span></div>
+    <div class="sb-body">
+      <table class="tbl">
+        <thead><tr><th>Week</th><th>Audience</th><th>Frequency</th><th>Content</th></tr></thead>
+        <tbody>
+          <tr><td class="num"><strong>1</strong></td><td>Engaged L30 only (~1–2K profiles)</td><td class="num">2 emails</td><td>Water report content + 1 soft promo</td></tr>
+          <tr><td class="num"><strong>2</strong></td><td>Engaged L30 only</td><td class="num">2 emails</td><td>UGC feature + educational (remineralization)</td></tr>
+          <tr><td class="num"><strong>3</strong></td><td>Engaged L60 (expansion)</td><td class="num">2 emails</td><td>Mix promo + content</td></tr>
+          <tr><td class="num"><strong>4</strong></td><td>Engaged L60</td><td class="num">2 emails</td><td>Mix promo + content</td></tr>
+          <tr><td class="num"><strong>5+</strong></td><td>Engaged L60 (steady state)</td><td class="num">2–3/wk</td><td>50/50 promo/content</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Critical constraint:</strong> never expand audience during the ramp. Keep sending to the same engaged base until bounce rate is below 0.5% and unsub rate below 0.3% for 2 consecutive weeks. Only then expand to Engaged L90 or full active list.</p>
+      <p>Apply exclusion segments to every send (Recently Purchased L7, Received 3+ Emails L24h, Bounce L30, Suppressed). These are already built — just need to be actively applied on each campaign.</p>
+    </div>
+  </div>
+
+  <div class="strategy-block">
+    <div class="sb-title">Content calendar — 50/50 promo/content mix</div>
+    <div class="sb-tags"><span class="sb-tag accent">Planning</span></div>
+    <div class="sb-body">
+      <p>Target 8–10 campaigns per month at steady state. Rough mix:</p>
+      <ul>
+        <li><strong>4 content emails/month</strong> — water quality reports (seasonal/state-specific), remineralization education, B2B case studies, UGC roundups, recipe/pairing content, founder plain-text</li>
+        <li><strong>4 promo emails/month</strong> — product launches, bundle offers, seasonal sales (never same-day doubles, always with exclusion segments)</li>
+        <li><strong>1–2 operational</strong> — corporate updates, new state availability, shipping cutoffs</li>
+      </ul>
+      <p>Content emails keep the list warm between promos — the World Water Day email at 94% open / 2.11% CTR shows what's possible when content is genuinely useful. Replicating that 4× per month compounds engagement signal and protects deliverability on promo sends.</p>
+    </div>
+  </div>
+
+  <div class="strategy-block">
+    <div class="sb-title">A/B testing — start with subject lines, expand from there</div>
+    <div class="sb-tags"><span class="sb-tag accent">Testing</span></div>
+    <div class="sb-body">
+      <p>Zero A/B tests currently running. Klaviyo has native A/B testing on every send — it costs nothing to start.</p>
+      <ul>
+        <li><strong>Month 1:</strong> subject line A/B on every send (10% holdout each variant, 80% to winner)</li>
+        <li><strong>Month 2:</strong> sender name tests ("Rippl" vs "Rippl Team" vs "[Founder name]")</li>
+        <li><strong>Month 3:</strong> send time tests (morning vs evening, weekday vs weekend)</li>
+      </ul>
+      <p>Document winners monthly. Winning patterns feed back into template defaults. Expect 5–15% open rate lift within 90 days from subject-line testing alone — and that compounds across every flow and campaign going forward.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 90-DAY PLAN -->
+<section class="section" id="plan">
+  <div class="section-label">THE PLAN</div>
+  <h2 class="section-title">90 days · sequenced for impact</h2>
+  <p class="section-intro">Levers stacked by dependency and effort. Weeks 1–2 is foundation (deliverability + popup), which unlocks Weeks 3–4 (core flows), which unlocks Month 2 (retention/evangelism), which runs alongside Month 3 (scale + corporate).</p>
+  
+  <div class="phase-card">
+    <span class="phase-tag">Weeks 1–2 · Foundation</span>
+    <h3>Continue the deliverability warm-up, set the popup foundation</h3>
+    <ul>
+      <li>Google Postmaster Tools setup (if not already complete) — mandatory for monitoring Gmail spam rate going forward</li>
+      <li>Verify DKIM/SPF/DMARC + dedicated sending domain status</li>
+      <li>One-time suppression sweep on 2+ soft-bouncers (last 90 days)</li>
+      <li>Archive the 7 stale BFCM draft flows + 10 inactive popup drafts</li>
+      <li>Decide and launch the two popup tests (site-wide primary + exit-intent water report)</li>
+      <li>Apply exclusion segments to every campaign by default</li>
+      <li>Continue campaign ramp to Engaged L30 (2 sends/week)</li>
+    </ul>
+  </div>
+  
+  <div class="phase-card">
+    <span class="phase-tag">Weeks 3–4 · Core Flow Build</span>
+    <h3>Activate the ZPD-routed welcome + fix the broken flows</h3>
+    <ul>
+      <li>Rewrite welcome flow with ZPD conditional splits (Track A Pure / B Cans / C Corporate)</li>
+      <li>Extend welcome flow trigger to Pure Quiz + Corporate Can Customers lists (close the 22% gap)</li>
+      <li>Activate Browse Abandonment flow (dual-track: Pure browsers vs Cans browsers)</li>
+      <li>Reactivate and wire state water report flows to the exit-intent popup</li>
+      <li>Diagnose F_ABANDONED CHECKOUT low trigger rate (Smart Send setting, exclusion logic)</li>
+      <li>Refresh Customer Winback with 3-email escalating incentive ladder</li>
+      <li>Refresh Sunset with plain-text founder "last chance" email</li>
+      <li>Start subject line A/B testing on every campaign</li>
+    </ul>
+  </div>
+  
+  <div class="phase-card">
+    <span class="phase-tag">Month 2 · Retention Engine</span>
+    <h3>Build the Pure conviction cadence + NPS/referral infrastructure</h3>
+    <ul>
+      <li>Build Pure Owner 90-day conviction cadence (10 emails, D0–D90)</li>
+      <li>Wire review request flow (Loox + Judge.me) at D14 post-purchase</li>
+      <li>Launch replenishment flow for cans buyers (D21/D35/D60)</li>
+      <li>Build NPS capture at D90, write to nps_score profile property</li>
+      <li>Source initial UGC/testimonial library from existing Pure customers (review drive with $30 credit incentive)</li>
+      <li>Expand campaign audience to Engaged L60 once bounce/unsub stable for 2 weeks</li>
+    </ul>
+  </div>
+  
+  <div class="phase-card">
+    <span class="phase-tag">Month 3 · Evangelism + Corporate + Scale</span>
+    <h3>Activate referral loop, personalize corporate, plan BFCM</h3>
+    <ul>
+      <li>Build evangelist segment (NPS ≥ 9 × order value ≥ $900) and activation flow</li>
+      <li>Launch referral program ($50 Amazon card / free glass bottle)</li>
+      <li>Study corporate account buying frequency → build per-account replenishment flow</li>
+      <li>Shift corporate campaigns to content-only (case studies, product launches)</li>
+      <li>Expand A/B testing to sender name + send time</li>
+      <li>Plan BFCM 2026: domain warmup schedule, tentpole cadence, flow refresh</li>
+      <li>Hit steady-state cadence (2–3/wk engaged audience)</li>
+    </ul>
+  </div>
+  
+  <div class="cta-box">
+    <h3>The outcome by Day 90</h3>
+    <p>Email revenue moves from ~$45K/yr to $105–140K/yr. Deliverability stays clean. List growth triples. Pure buyers become evangelists. Corporate reorders personalize. BFCM 2026 launches from a clean-sender, warm-list, well-segmented position. Everything compounds into Year 2.</p>
+  </div>
+</section>
+
+<!-- INPUTS -->
+<section class="section" id="inputs">
+  <div class="section-label">DECISIONS & INPUTS</div>
+  <h2 class="section-title">What we need from Rippl</h2>
+  <p class="section-intro">The plan is fully actionable on our side. These are the decisions and inputs that need to come from Rippl to move at speed.</p>
+  
+  <div class="ask-box">
+    <h4>Decisions (client-side)</h4>
+    <ul>
+      <li><strong>Popup mechanic —</strong> OK to run the 3-way test (refined mystery gift / water report / quiz) as parallel A/Bs?</li>
+      <li><strong>Exit-intent popup —</strong> sign-off on adding the water report as a second popup (exit-intent only, after dismissal)?</li>
+      <li><strong>Third-party tool budget —</strong> is there openness to a tool like Alia if native testing caps out below 5%? (~$300–500/mo)</li>
+      <li><strong>Referral incentive approval —</strong> sign-off on $50 Amazon gift card per successful referral + free glass bottle for referees</li>
+      <li><strong>Content mix direction —</strong> OK with 50/50 promo/content shift?</li>
+      <li><strong>BFCM 2026 scope —</strong> start scoping now or defer to Q3?</li>
+    </ul>
+  </div>
+  
+  <div class="ask-box">
+    <h4>Assets (needed by end of Month 1)</h4>
+    <ul>
+      <li>10–15 written Pure customer testimonials (mixed angles: health, taste, sustainability, family)</li>
+      <li>5–8 UGC images of Pure in real home/office settings</li>
+      <li>2–3 short video testimonials (30–60 sec: 1 B2B client, 1 family, 1 health)</li>
+      <li>Before/after water tests (visual — mineral content, TDS, clarity)</li>
+      <li>Logo permissions + 1-paragraph case studies from 2+ B2B clients (L'Oréal, Mercedes, New Balance, Prada)</li>
+      <li>Founder plain-text story content for welcome flow Email 5</li>
+      <li>Product education assets for remineralization content</li>
+    </ul>
+  </div>
+  
+  <div class="ask-box">
+    <h4>Data inputs (needed by end of Week 2)</h4>
+    <ul>
+      <li>Export of corporate account order history (12 months) for buying frequency study</li>
+      <li>List of Pure customers who'd opt into a review/testimonial drive</li>
+      <li>Confirmation of dedicated sending domain + authentication status</li>
+    </ul>
+  </div>
+  
+  <div style="margin-top:36px; padding:28px 32px; background:var(--bg-surface); border-radius:var(--r-md); border-left:3px solid var(--accent);">
+    <p style="margin:0; font-size:15px; color:var(--text-secondary); line-height:1.75;">
+      <strong style="color:var(--text)">The commitment:</strong> every piece of this plan is deliverable with native Klaviyo + the assets above. No new stack introductions required. 90 days end-to-end. Weekly reviews. Revenue bridge reporting every 30 days.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<script>
+document.querySelectorAll('.nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({behavior:'smooth'});
+  });
+});
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 200) current = s.id;
+  });
+  navLinks.forEach(l => {
+    l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+</body>
+</html>
