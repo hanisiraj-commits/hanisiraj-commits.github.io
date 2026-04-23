@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siblings — Klaviyo Audit | 23 April 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #8B5E3C;
+  --accent-dark: #6B4630;
+  --accent-soft: rgba(139,94,60,0.08);
+  --accent-border: rgba(139,94,60,0.22);
+  --green: #047857;
+  --green-bg: rgba(4,120,87,0.07);
+  --green-border: rgba(4,120,87,0.15);
+  --amber: #B45309;
+  --amber-bg: rgba(180,83,9,0.07);
+  --amber-border: rgba(180,83,9,0.15);
+  --red: #C03936;
+  --red-bg: rgba(192,57,54,0.07);
+  --red-border: rgba(192,57,54,0.15);
+  --blue: #1D4ED8;
+  --blue-bg: rgba(29,78,216,0.07);
+  --bg: #FFFFFF;
+  --bg-alt: #FAF8F5;
+  --bg-card: #FFFFFF;
+  --border: #E6E2DC;
+  --border-md: #C8C2BA;
+  --text: #1A1614;
+  --text-secondary: #4A443F;
+  --text-muted: #8A8580;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+  --r-full: 999px;
+  --sidebar-w: 240px;
+  --content-max: 1000px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 16px; color: var(--text); background: var(--bg);
+  line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed; top: 0; left: 0;
+  width: var(--sidebar-w); height: 100vh;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid var(--border);
+  padding: 28px 0; overflow-y: auto; z-index: 100;
+}
+.sidebar-brand { padding: 0 20px 20px; }
+.sidebar-brand .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); font-weight: 600; }
+.sidebar-brand .account { font-size: 15px; font-weight: 700; margin-top: 4px; }
+.sidebar-brand .period { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.sidebar nav { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 14px; }
+.sidebar a {
+  display: block; padding: 10px 20px;
+  font-size: 13px; font-weight: 600;
+  color: var(--text-secondary); text-decoration: none;
+  transition: all 0.15s;
+}
+.sidebar a:hover { color: var(--text); background: var(--bg-alt); }
+.sidebar a.active { color: var(--accent); background: var(--accent-soft); }
+
+/* Main */
+.main {
+  margin-left: var(--sidebar-w);
+  max-width: var(--content-max);
+  padding: 0 48px;
+}
+.section { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+.section:last-child { border-bottom: none; }
+.section-label {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.16em; color: var(--accent); margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(26px, 4vw, 40px); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px;
+}
+.section-intro { font-size: 17px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 36px; max-width: 820px; }
+
+/* Hero */
+.hero { padding-top: 64px; padding-bottom: 48px; }
+.hero-badge {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-soft);
+  padding: 7px 14px; border-radius: var(--r-full);
+  border: 1px solid var(--accent-border); margin-bottom: 24px;
+}
+.hero-title { font-size: clamp(30px, 5vw, 48px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; }
+.hero-revenue {
+  font-size: clamp(48px, 8vw, 76px); font-weight: 900;
+  color: var(--accent); letter-spacing: -0.04em; line-height: 1; margin: 32px 0 14px;
+}
+.hero-subtitle { font-size: 18px; color: var(--text-secondary); max-width: 720px; line-height: 1.55; }
+.hero-pitch {
+  margin-top: 32px; padding: 20px 24px; background: var(--bg-alt);
+  border-left: 4px solid var(--accent); border-radius: 0 var(--r-md) var(--r-md) 0;
+  font-size: 16px; color: var(--text-secondary); line-height: 1.65;
+}
+.hero-pitch strong { color: var(--text); font-weight: 700; }
+
+/* Score ring */
+.score-section { display: flex; gap: 40px; align-items: center; margin-top: 40px; flex-wrap: wrap; }
+.score-ring { position: relative; width: 140px; height: 140px; flex-shrink: 0; }
+.score-ring svg { transform: rotate(-90deg); }
+.score-ring .score-label {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.score-ring .score-num { font-size: 38px; font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
+.score-ring .score-total { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-top: 2px; }
+.score-ring .score-rag {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; margin-top: 4px;
+}
+
+/* Pillars */
+.pillars { display: flex; gap: 12px; flex-wrap: wrap; }
+.pillar {
+  padding: 14px 20px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--r-md);
+  min-width: 160px;
+}
+.pillar-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+.pillar-score { font-size: 22px; font-weight: 800; margin-top: 4px; }
+.pillar.green .pillar-score { color: var(--green); }
+.pillar.amber .pillar-score { color: var(--amber); }
+.pillar.red .pillar-score { color: var(--red); }
+
+/* KPI grid */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 36px; }
+.kpi {
+  padding: 22px 24px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--r-md);
+}
+.kpi-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+.kpi-value { font-size: 30px; font-weight: 900; letter-spacing: -0.02em; margin-top: 6px; }
+.kpi-context { font-size: 12px; color: var(--text-secondary); margin-top: 6px; }
+.kpi-value.pos { color: var(--green); }
+.kpi-value.neg { color: var(--red); }
+
+/* Summary table */
+.summary-table {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+  margin-bottom: 24px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden;
+}
+.summary-table th {
+  text-align: left; padding: 12px 14px;
+  background: var(--bg-alt);
+  border-bottom: 2px solid var(--border-md);
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.summary-table th.num { text-align: right; min-width: 70px; }
+.summary-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); }
+.summary-table td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.summary-table td.num.strong { font-weight: 800; }
+.summary-table td.num.muted { color: var(--text-muted); font-weight: 400; }
+.summary-table td.num.pos { color: var(--green); }
+.summary-table td.num.neg { color: var(--red); }
+.summary-table tr.section-header td {
+  font-weight: 700; font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--text-muted);
+  background: var(--bg-alt); padding: 9px 14px;
+}
+.summary-table tr:last-child td { border-bottom: none; }
+.summary-table td.flow-name { font-weight: 600; color: var(--text); }
+
+/* Metrics table */
+.metrics-table {
+  width: 100%; border-collapse: collapse;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r-md); overflow: hidden; margin-bottom: 24px;
+}
+.metrics-table th { text-align: left; padding: 12px 16px; background: var(--bg-alt); border-bottom: 2px solid var(--border-md); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+.metrics-table td { padding: 13px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+.metrics-table tr:last-child td { border-bottom: none; }
+.metrics-table td.current { font-weight: 800; font-size: 15px; }
+.metrics-table td.benchmark { color: var(--text-muted); font-size: 13px; }
+.metrics-table td .rag { display: inline-block; padding: 3px 8px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border-radius: var(--r-full); margin-left: 8px; }
+.rag.green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+.rag.amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+.rag.red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+
+/* Improvement blocks */
+.improvement-block {
+  margin-bottom: 20px; padding: 22px 26px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+.improvement-block.critical { border-left-color: var(--red); }
+.improvement-block.high { border-left-color: var(--amber); }
+.improvement-block.medium { border-left-color: var(--blue); }
+.improvement-block .ib-title { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 10px; }
+.improvement-block .ib-tags { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.tag {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; padding: 3px 8px; border-radius: var(--r-full);
+  border: 1px solid var(--border);
+}
+.tag.critical { background: var(--red-bg); color: var(--red); border-color: var(--red-border); }
+.tag.high { background: var(--amber-bg); color: var(--amber); border-color: var(--amber-border); }
+.tag.medium { background: var(--blue-bg); color: var(--blue); border-color: rgba(29,78,216,0.20); }
+.tag.quick { background: var(--green-bg); color: var(--green); border-color: var(--green-border); }
+.tag.effort { color: var(--text-muted); }
+.improvement-block .ib-body { font-size: 14.5px; color: var(--text-secondary); line-height: 1.7; }
+.improvement-block .ib-body p { margin-bottom: 10px; }
+.improvement-block .ib-body p:last-of-type { margin-bottom: 0; }
+.improvement-block .ib-body strong { color: var(--text); font-weight: 700; }
+.improvement-block .ib-body ul { margin: 8px 0 10px 18px; }
+.improvement-block .ib-body li { margin-bottom: 4px; }
+.improvement-block .ib-revenue {
+  margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border);
+  font-size: 15px; font-weight: 800; color: var(--accent);
+}
+
+/* Insight card */
+.insight-card {
+  padding: 20px 24px; background: var(--accent-soft);
+  border: 1px solid var(--accent-border); border-radius: var(--r-md);
+  margin-bottom: 28px; font-size: 14.5px; color: var(--text-secondary); line-height: 1.65;
+}
+.insight-card strong { color: var(--text); font-weight: 700; }
+.insight-card.warn { background: var(--red-bg); border-color: var(--red-border); }
+.insight-card.info { background: var(--blue-bg); border-color: rgba(29,78,216,0.20); }
+.insight-card.good { background: var(--green-bg); border-color: var(--green-border); }
+
+/* Details toggle */
+.details-toggle {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 16px; font-size: 13px; font-weight: 700;
+  color: var(--text-secondary); cursor: pointer;
+  border: 1px solid var(--border); background: var(--bg-card);
+  border-radius: var(--r-md); transition: all 0.15s;
+  width: 100%; text-align: left;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.details-toggle:hover { color: var(--text); background: var(--bg-alt); }
+.details-toggle svg { transition: transform 0.2s; margin-left: auto; }
+.details-toggle[aria-expanded="true"] svg { transform: rotate(90deg); }
+.details-content { display: none; padding-top: 20px; margin-top: 16px; }
+.details-content.open { display: block; }
+.details-wrap { margin-bottom: 24px; }
+
+/* Strengths */
+.strengths-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.strength-card {
+  padding: 22px; background: var(--green-bg);
+  border: 1px solid var(--green-border); border-radius: var(--r-md);
+}
+.strength-card .metric { font-size: 28px; font-weight: 900; color: var(--green); letter-spacing: -0.02em; }
+.strength-card .label { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
+.strength-card .desc { font-size: 13px; color: var(--text-secondary); margin-top: 6px; line-height: 1.55; }
+
+/* Roadmap */
+.rev-bridge {
+  display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 16px;
+  align-items: center; padding: 28px; background: var(--accent-soft);
+  border: 1px solid var(--accent-border); border-radius: var(--r-md); margin-bottom: 32px;
+}
+.rev-bridge .step { text-align: center; }
+.rev-bridge .step-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+.rev-bridge .step-value { font-size: 28px; font-weight: 900; color: var(--text); margin-top: 6px; letter-spacing: -0.02em; }
+.rev-bridge .step.target .step-value { color: var(--accent); }
+.rev-bridge .step.delta .step-value { color: var(--green); }
+.rev-bridge .arrow { font-size: 22px; color: var(--text-muted); }
+
+.phase-card {
+  padding: 24px 28px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--r-md);
+  margin-bottom: 14px;
+}
+.phase-card .phase-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); }
+.phase-card .phase-title { font-size: 20px; font-weight: 800; margin-top: 6px; letter-spacing: -0.01em; }
+.phase-card .phase-rev { font-size: 15px; font-weight: 800; color: var(--green); margin-top: 8px; }
+.phase-card ul { margin: 14px 0 0 20px; font-size: 14px; color: var(--text-secondary); }
+.phase-card li { margin-bottom: 6px; }
+
+.progress-bar {
+  display: flex; align-items: center; gap: 12px; margin: 6px 0 14px;
+  font-size: 12px; color: var(--text-muted); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+.progress-bar .bar { flex: 1; height: 6px; background: var(--bg-alt); border-radius: var(--r-full); overflow: hidden; }
+.progress-bar .fill { height: 100%; background: var(--accent); border-radius: var(--r-full); transition: width 0.3s; }
+
+.cta-box {
+  padding: 32px; background: var(--text); color: #FFFFFF;
+  border-radius: var(--r-md); text-align: center; margin-top: 32px;
+}
+.cta-box h3 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+.cta-box p { color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.6; margin-bottom: 18px; }
+.cta-box .big { font-size: 36px; font-weight: 900; color: var(--accent); letter-spacing: -0.03em; }
+
+/* Mobile header */
+.mobile-header { display: none; }
+
+@media (max-width: 1024px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .strengths-grid { grid-template-columns: 1fr; }
+  .sidebar { transform: translateX(-100%); transition: transform .3s; }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; padding: 0 24px; }
+  .mobile-header {
+    display: flex; position: sticky; top: 0;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(16px); padding: 14px 16px;
+    border-bottom: 1px solid var(--border); z-index: 90;
+    align-items: center; gap: 12px;
+  }
+  .hamburger { cursor: pointer; font-size: 20px; background: none; border: none; }
+  .rev-bridge { grid-template-columns: 1fr; }
+  .rev-bridge .arrow { display: none; }
+}
+@media (max-width: 768px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+  .hero-revenue { font-size: 44px !important; }
+  .summary-table { font-size: 11px; }
+  .summary-table th, .summary-table td { padding: 8px 6px; }
+  .section { padding: 48px 0 32px; }
+}
+
+@media print {
+  @page { size: A4; margin: 14mm 16mm; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sidebar, .mobile-header, .hamburger, .details-toggle { display: none !important; }
+  .main { margin-left: 0 !important; max-width: none; padding: 0 !important; }
+  body { font-size: 12px; }
+  .section-title { font-size: 22px; }
+  .section { break-inside: avoid; page-break-inside: avoid; padding: 32px 0 18px; }
+  .details-content { display: block !important; }
+  .hero-revenue { font-size: 48px !important; }
+  .improvement-block { break-inside: avoid; page-break-inside: avoid; }
+  .kpi-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .kpi { padding: 12px; }
+  .kpi-value { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="label">Klaviyo Audit</div>
+    <div class="account">Siblings</div>
+    <div class="period">Oct 2025 — Apr 2026</div>
+  </div>
+  <nav>
+    <a href="#hero" class="active">The Opportunity</a>
+    <a href="#overall">Overall Email Stats</a>
+    <a href="#flows">Flows</a>
+    <a href="#campaigns">Campaigns</a>
+    <a href="#list-growth">List Growth</a>
+    <a href="#strengths">What's Working</a>
+    <a href="#roadmap">90-Day Roadmap</a>
+    <a href="#appendix">Technical Appendix</a>
+  </nav>
+</aside>
+
+<div class="mobile-header">
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+  <div><strong>Siblings</strong> — Klaviyo Audit</div>
+</div>
+
+<main class="main">
+
+<!-- ============= SECTION 1: HERO ============= -->
+<section class="section hero" id="hero">
+  <div class="hero-badge">Deep Audit · 180-day analysis</div>
+  <h1 class="hero-title">The Opportunity</h1>
+  <div class="hero-revenue">+$320K/yr</div>
+  <p class="hero-subtitle">in unrealised email revenue, sitting inside your Klaviyo account right now. This report shows you exactly where it's leaking and how to capture it over the next 90 days.</p>
+
+  <div class="score-section">
+    <div class="score-ring">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <circle cx="70" cy="70" r="62" fill="none" stroke="#E6E2DC" stroke-width="10"/>
+        <circle cx="70" cy="70" r="62" fill="none" stroke="#C03936" stroke-width="10"
+                stroke-dasharray="179.2 1000" stroke-linecap="round"/>
+      </svg>
+      <div class="score-label">
+        <div class="score-num">46</div>
+        <div class="score-total">/ 100</div>
+        <div class="score-rag" style="color:#C03936">
+          Critical
+        </div>
+      </div>
+    </div>
+    <div class="pillars">
+      <div class="pillar red">
+        <div class="pillar-label">Flows</div>
+        <div class="pillar-score">10/100</div>
+      </div>
+      <div class="pillar red">
+        <div class="pillar-label">Campaigns</div>
+        <div class="pillar-score">40/100</div>
+      </div>
+      <div class="pillar red">
+        <div class="pillar-label">List Growth</div>
+        <div class="pillar-score">40/100</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-pitch">
+    <p><strong>Siblings sits in a rare position:</strong> a subscription-led, premium home-fragrance brand with ~70k emailable profiles, 27 segments, and a store that turns over ~$1.2M annualised — but three structural problems are compressing email revenue to 30% of store revenue when it should be comfortably pushing 40%.</p>
+    <p style="margin-top:10px"><strong>The 3 holes:</strong> (1) Klaviyo popup/form is effectively off — <strong>zero active forms</strong> in 180 days; (2) the list is <strong>shrinking — 1,321 net subscribers lost</strong> in the last 6 months; (3) automated flows pull just <strong>18.5% of email revenue</strong> versus the 30–50% benchmark.</p>
+    <p style="margin-top:10px">Your email program generates $371K/yr right now. With the fixes below, it realistically gets to <strong>$690K/yr</strong> — an annualised <strong>+$320K</strong> in recovered revenue.</p>
+  </div>
+</section>
+
+<!-- ============= SECTION 2: OVERALL EMAIL STATS ============= -->
+<section class="section" id="overall">
+  <div class="section-label">Overall Email Stats</div>
+  <h2 class="section-title">Overall Email Stats</h2>
+  <p class="section-intro">High-level view of where email sits in the Siblings business today — how much of store revenue it drives, and where the rate signals point.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">Email Revenue (180d)</div>
+      <div class="kpi-value">$185K</div>
+      <div class="kpi-context">30.3% of $611K store revenue</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Flow Revenue Share</div>
+      <div class="kpi-value neg">18.5%</div>
+      <div class="kpi-context">Benchmark: 30–50%. You're leaving 2× on the table.</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Campaign Open Rate</div>
+      <div class="kpi-value pos">56.2%</div>
+      <div class="kpi-context">Well above 35% benchmark (MPP-inflated but strong)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Campaign Click Rate</div>
+      <div class="kpi-value neg">0.46%</div>
+      <div class="kpi-context">Benchmark 1%+. Opens but no action = hook/CTA problem.</div>
+    </div>
+  </div>
+
+  <div class="details-wrap">
+    <button class="details-toggle" aria-expanded="false">
+      View detailed monthly breakdown + current vs benchmark rates
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <div class="details-content">
+      <div class="insight-card">
+        <strong>Why % of brand revenue?</strong> Expressing each flow and campaign as a percentage of <em>total store revenue</em> (not just email revenue) reveals the true contribution of each piece to the business. It cuts through seasonal swings and exposes exactly where email is earning its keep — and where it isn't.
+      </div>
+
+      <table class="summary-table">
+        <thead>
+          <tr><th>Metric</th><th class="num">Total</th><th class="num">Oct '25</th><th class="num">Nov '25</th><th class="num">Dec '25</th><th class="num">Jan '26</th><th class="num">Feb '26</th><th class="num">Mar '26</th><th class="num">Apr '26</th></tr>
+        </thead>
+        <tbody>
+          <tr class="section-header"><td colspan="9">Overall</td></tr>
+          <tr><td>Brand Revenue</td><td class="num strong">$611,217</td><td class="num ">$26,166</td><td class="num ">$195,194</td><td class="num ">$137,262</td><td class="num ">$73,763</td><td class="num ">$55,301</td><td class="num ">$80,768</td><td class="num ">$42,763</td></tr>
+          <tr><td>Email Revenue</td><td class="num strong">$182,091</td><td class="num ">$9,326</td><td class="num ">$72,850</td><td class="num ">$39,642</td><td class="num ">$13,804</td><td class="num ">$12,523</td><td class="num ">$28,985</td><td class="num ">$4,962</td></tr>
+          <tr><td>Email % of Brand</td><td class="num strong">30.3%</td><td class="num ">35.6%</td><td class="num ">37.3%</td><td class="num ">28.9%</td><td class="num ">18.7%</td><td class="num ">22.6%</td><td class="num ">35.9%</td><td class="num ">11.6%</td></tr>
+          <tr class="section-header"><td colspan="9">Flow Summary</td></tr>
+          <tr><td>Flows Revenue</td><td class="num strong">$34,605</td><td class="num ">$1,939</td><td class="num ">$8,885</td><td class="num ">$9,207</td><td class="num ">$5,288</td><td class="num ">$2,496</td><td class="num ">$5,086</td><td class="num ">$1,704</td></tr>
+          <tr><td>Flows % of Brand</td><td class="num strong">5.6%</td><td class="num ">7.4%</td><td class="num ">4.6%</td><td class="num ">6.7%</td><td class="num ">7.2%</td><td class="num ">4.5%</td><td class="num ">6.3%</td><td class="num ">4.0%</td></tr>
+          <tr class="section-header"><td colspan="9">Campaign Summary</td></tr>
+          <tr><td>Campaigns Revenue</td><td class="num strong">$147,486</td><td class="num ">$7,387</td><td class="num ">$63,965</td><td class="num ">$30,435</td><td class="num ">$8,516</td><td class="num ">$10,027</td><td class="num ">$23,899</td><td class="num ">$3,258</td></tr>
+          <tr><td>Campaigns % of Brand</td><td class="num strong">24.7%</td><td class="num ">28.2%</td><td class="num ">32.8%</td><td class="num ">22.2%</td><td class="num ">11.5%</td><td class="num ">18.1%</td><td class="num ">29.6%</td><td class="num ">7.6%</td></tr>
+          <tr><td>Campaigns Sent</td><td class="num strong">86</td><td class="num ">5</td><td class="num ">27</td><td class="num ">21</td><td class="num ">9</td><td class="num ">9</td><td class="num ">11</td><td class="num ">4</td></tr>
+          <tr><td>Open Rate</td><td class="num strong">56.2%</td><td class="num ">50.2%</td><td class="num ">56.5%</td><td class="num ">59.1%</td><td class="num ">62.6%</td><td class="num ">56.0%</td><td class="num ">53.1%</td><td class="num ">54.4%</td></tr>
+          <tr><td>Click Rate</td><td class="num strong">0.46%</td><td class="num ">0.69%</td><td class="num ">0.47%</td><td class="num ">0.40%</td><td class="num ">0.43%</td><td class="num ">0.40%</td><td class="num ">0.57%</td><td class="num ">0.31%</td></tr>
+          <tr><td>Placed Order Rate</td><td class="num strong">0.076%</td><td class="num ">0.072%</td><td class="num ">0.097%</td><td class="num ">0.072%</td><td class="num ">0.061%</td><td class="num ">0.041%</td><td class="num ">0.086%</td><td class="num ">0.038%</td></tr>
+        </tbody>
+      </table>
+
+      <h4 style="font-size:15px; font-weight:800; margin:28px 0 12px">Current rates vs benchmarks</h4>
+      <table class="metrics-table">
+        <thead><tr><th>Metric</th><th>Current</th><th>Benchmark</th></tr></thead>
+        <tbody>
+          <tr><td>Email revenue contribution</td><td class="current">30.3% <span class="rag amber">On track</span></td><td class="benchmark">30–35%</td></tr>
+          <tr><td>Flow revenue share</td><td class="current">18.5% <span class="rag red">Below</span></td><td class="benchmark">30–50%</td></tr>
+          <tr><td>Campaign open rate</td><td class="current">56.2% <span class="rag green">Strong</span></td><td class="benchmark">&gt;35%</td></tr>
+          <tr><td>Campaign click rate</td><td class="current">0.46% <span class="rag red">Critical</span></td><td class="benchmark">&gt;1%</td></tr>
+          <tr><td>Campaign conversion rate</td><td class="current">0.076% <span class="rag red">Low</span></td><td class="benchmark">&gt;0.10%</td></tr>
+          <tr><td>Bounce rate</td><td class="current">0.377% <span class="rag amber">Slightly elevated</span></td><td class="benchmark">&lt;0.3%</td></tr>
+          <tr><td>Unsubscribe rate</td><td class="current">0.227% <span class="rag amber">Elevated</span></td><td class="benchmark">&lt;0.2%</td></tr>
+          <tr><td>Spam complaint rate</td><td class="current">0.0074% <span class="rag green">Healthy</span></td><td class="benchmark">&lt;0.03%</td></tr>
+          <tr><td>Hard bounce ratio</td><td class="current">5.1% of bounces <span class="rag green">Clean</span></td><td class="benchmark">&lt;30% of bounces</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SECTION 3: FLOWS ============= -->
+<section class="section" id="flows">
+  <div class="section-label">Automated Emails (Flows)</div>
+  <h2 class="section-title">Flow Performance &amp; Opportunities</h2>
+  <p class="section-intro">Flows are the compounding revenue engine in Klaviyo — they work while you sleep. Right now, flows pull <strong>18.5% of email revenue</strong> when the benchmark is 30–50%. The architecture is there (27 flows total, 16 live) but it's been built in layers without cleanup, and the core automations are bleeding subscribers at the wrong moments.</p>
+
+  <div class="insight-card warn">
+    <strong>The single biggest flow signal:</strong> your two live welcome flows are driving <strong>2.11% and 2.22% unsubscribe rates</strong> — roughly <strong>10× the healthy benchmark</strong> of &lt;0.3%. Combined with three overlapping welcome flows running in parallel, new subscribers are being hit 3–4 times in the first 48 hours. That's both unsubscribes and the list shrinkage you see in Section 5 — directly connected.
+  </div>
+
+  <h3 style="font-size:18px; font-weight:800; margin: 28px 0 12px">Monthly flow revenue (% of brand revenue)</h3>
+  <table class="summary-table">
+    <thead>
+      <tr><th>Flow</th><th class="num">Total 180d</th><th class="num">Oct '25</th><th class="num">Nov '25</th><th class="num">Dec '25</th><th class="num">Jan '26</th><th class="num">Feb '26</th><th class="num">Mar '26</th><th class="num">Apr '26</th></tr>
+    </thead>
+    <tbody>
+      <tr class="section-header"><td colspan="9">Flow Summary</td></tr>
+      <tr><td><strong>Flows Total</strong></td><td class="num strong">$34,605</td><td class="num ">7.4%</td><td class="num ">4.6%</td><td class="num ">6.7%</td><td class="num ">7.2%</td><td class="num ">4.5%</td><td class="num ">6.3%</td><td class="num ">4.0%</td></tr>
+      <tr class="section-header"><td colspan="9">Per-Flow Contribution (% of brand revenue)</td></tr>
+      <tr><td class="flow-name">Welcome Series - New</td><td class="num strong">$5,069</td><td class="num ">1.6%</td><td class="num ">1.1%</td><td class="num ">1.7%</td><td class="num ">0.3%</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td></tr>
+<tr><td class="flow-name">Welcome to Cozy Club</td><td class="num strong">$4,783</td><td class="num muted">—</td><td class="num ">0.4%</td><td class="num ">1.6%</td><td class="num ">0.8%</td><td class="num ">0.5%</td><td class="num ">0.8%</td><td class="num ">0.8%</td></tr>
+<tr><td class="flow-name">Browse Abandonment</td><td class="num strong">$3,428</td><td class="num ">2.1%</td><td class="num ">0.5%</td><td class="num ">0.6%</td><td class="num ">0.2%</td><td class="num ">0.2%</td><td class="num ">0.6%</td><td class="num ">1.1%</td></tr>
+<tr><td class="flow-name">Welcome Series 2026</td><td class="num strong">$3,102</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num ">1.3%</td><td class="num ">1.6%</td><td class="num ">1.6%</td><td class="num muted">—</td></tr>
+<tr><td class="flow-name">Junip - Post purchase review (new events)</td><td class="num strong">$2,658</td><td class="num muted">—</td><td class="num ">0.2%</td><td class="num ">0.4%</td><td class="num ">0.9%</td><td class="num ">0.2%</td><td class="num ">0.7%</td><td class="num ">0.7%</td></tr>
+<tr><td class="flow-name">Back In Stock Flow - New</td><td class="num strong">$2,572</td><td class="num ">1.3%</td><td class="num ">0.6%</td><td class="num ">0.5%</td><td class="num ">0.2%</td><td class="num muted">—</td><td class="num ">0.2%</td><td class="num muted">—</td></tr>
+<tr><td class="flow-name">Post Purchase - New &amp; Returning - Sep 2025</td><td class="num strong">$2,348</td><td class="num ">0.2%</td><td class="num ">0.5%</td><td class="num ">0.5%</td><td class="num ">0.6%</td><td class="num muted">—</td><td class="num ">0.2%</td><td class="num ">0.2%</td></tr>
+<tr><td class="flow-name">Abandoned Checkout</td><td class="num strong">$2,330</td><td class="num ">0.7%</td><td class="num ">0.3%</td><td class="num ">0.4%</td><td class="num ">0.9%</td><td class="num muted">—</td><td class="num ">0.4%</td><td class="num muted">—</td></tr>
+<tr><td class="flow-name">Reorder</td><td class="num strong">$2,185</td><td class="num ">0.3%</td><td class="num ">0.3%</td><td class="num ">0.6%</td><td class="num ">1.0%</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td></tr>
+<tr><td class="flow-name">Abandoned Cart</td><td class="num strong">$1,634</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num ">0.2%</td><td class="num ">0.7%</td><td class="num ">0.8%</td><td class="num ">1.1%</td></tr>
+<tr><td class="flow-name">Relo Repeat Buy</td><td class="num strong">$921</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num ">0.2%</td><td class="num ">0.6%</td><td class="num ">0.5%</td><td class="num muted">—</td></tr>
+<tr><td class="flow-name">Sunset Unengaged Subscribers - Standard</td><td class="num strong">$801</td><td class="num muted">—</td><td class="num ">0.1%</td><td class="num ">0.2%</td><td class="num ">0.2%</td><td class="num ">0.6%</td><td class="num muted">—</td><td class="num muted">—</td></tr>
+<tr><td class="flow-name">Cozy Club Member - 400 Pts Reward</td><td class="num strong">$715</td><td class="num ">0.2%</td><td class="num ">0.1%</td><td class="num ">0.1%</td><td class="num ">0.3%</td><td class="num ">0.1%</td><td class="num ">0.1%</td><td class="num ">0.1%</td></tr>
+<tr><td class="flow-name">Royal Family</td><td class="num strong">$359</td><td class="num ">0.1%</td><td class="num ">0.0%</td><td class="num ">0.1%</td><td class="num muted">—</td><td class="num ">0.0%</td><td class="num ">0.3%</td><td class="num ">0.0%</td></tr>
+<tr><td class="flow-name">Relo Subscription Converter</td><td class="num strong">$179</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num ">0.1%</td><td class="num muted">—</td><td class="num ">0.1%</td><td class="num muted">—</td></tr>
+<tr><td class="flow-name">Cozy Club Referral</td><td class="num strong">$73</td><td class="num ">0.0%</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num ">0.1%</td><td class="num muted">—</td><td class="num muted">—</td></tr>
+<tr><td class="flow-name">Candle People - Clarity</td><td class="num strong">$35</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num ">0.1%</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:18px; font-weight:800; margin: 36px 0 12px">Key improvement areas</h3>
+
+  <div class="improvement-block critical">
+    <div class="ib-title">1. Three overlapping welcome flows are cannibalising each other</div>
+    <div class="ib-tags">
+      <span class="tag critical">Critical</span>
+      <span class="tag effort">Effort: Medium</span>
+    </div>
+    <div class="ib-body">
+      <p>Right now, a new subscriber triggers <strong>three separate live welcome flows</strong> in parallel: <em>Welcome Series 2026</em> (10 emails), <em>Welcome to Cozy Club</em> (1 email + A/B test), and one of the three <em>Candle People</em> quiz-triggered flows (Calm / Clarity / Comfort). Two more welcome flows — <em>Welcome Series – New</em> and <em>Welcome – L//S</em> — sit in draft but still generated $5,069 in revenue, meaning at least one probably fires for some trigger condition.</p>
+      <p>The downstream consequence is in the data: <strong>Welcome Series 2026 has a 2.22% unsubscribe rate and Welcome to Cozy Club has 2.11%</strong>. Benchmark is 0.3%. These aren't bad emails individually — they're good emails being sent on top of each other to the same person in the same 48-hour window. People unsubscribe because they feel bombarded, not because any one message is poor.</p>
+      <p><strong>What to fix:</strong></p>
+      <ul>
+        <li>Kill or merge duplicate welcome flows. One canonical welcome flow, full stop.</li>
+        <li>Use the quiz answer as a <em>split inside</em> that one flow — Email 1 stays generic, Emails 2+ swap content blocks based on Candle Person Type (Calm / Clarity / Comfort).</li>
+        <li>Consolidate the 10-email sequence to 4–5 messages. Any welcome flow with 10 emails has diminishing returns after Email 4.</li>
+        <li>Move the "Welcome to Cozy Club" loyalty content to Email 3 of the consolidated flow, not its own parallel flow.</li>
+      </ul>
+      <div class="ib-revenue">Revenue impact: Expected drop in welcome unsub rate from 2.2% to &lt;0.5% preserves ~4,800 subscribers/year who are currently unsubscribing in the first week. At ~$50 per subscriber lifetime email value, that's <strong>+$240K annualised</strong> — the single largest lever in this audit.</div>
+    </div>
+  </div>
+
+  <div class="improvement-block critical">
+    <div class="ib-title">2. Back-in-Stock flow is dormant — despite 6 of 9 products being sold out</div>
+    <div class="ib-tags">
+      <span class="tag critical">Critical</span>
+      <span class="tag quick">Effort: Quick Win</span>
+    </div>
+    <div class="ib-body">
+      <p>Scraping siblings.co right now: <strong>six of nine refill scents are sold out or waitlisted</strong> (Yuzu Bloom, No. 04, Green Hus, Pistachio Milk, No. 05, Neroli Noir). Yet the <em>Back In Stock Flow – New</em> processed only <strong>822 recipients in 180 days</strong> and generated $2,572 — with flow revenue dropping to $0 in both February and April.</p>
+      <p>This is a brand where scarcity <em>is</em> the product. Customers actively want to be told when their scent returns. The mechanism exists in Klaviyo via the <em>Subscribed to Back in Stock</em> metric (it's already firing — it's just not being routed through a robust flow).</p>
+      <p><strong>What to fix:</strong></p>
+      <ul>
+        <li>Expand the single-email Back-in-Stock flow into a 3-touch sequence: (1) "It's back" immediate, (2) "Scents go fast — here's what's left" 24hr, (3) "Final chance" 72hr with inventory countdown if stock &lt;100 units.</li>
+        <li>Verify the Back-in-Stock widget is deployed on <em>every</em> sold-out PDP. Siblings has more sold-out SKUs than most brands ever will — this is the scarcity flywheel.</li>
+        <li>Add a Klaviyo segment: "Back-in-Stock subscriber | Never purchased" and route them into a short nurture sequence between restocks.</li>
+      </ul>
+      <div class="ib-revenue">Revenue impact: Conservatively 10× the current 822-recipient volume (at minimum) if the widget is deployed properly. At the current $3.04 RPR of this flow, scaling to 8,000 recipients/yr = <strong>+$24K annualised</strong>.</div>
+    </div>
+  </div>
+
+  <div class="improvement-block high">
+    <div class="ib-title">3. Abandoned Cart and Checkout flows are under-triggering</div>
+    <div class="ib-tags">
+      <span class="tag high">High</span>
+      <span class="tag effort">Effort: Medium</span>
+    </div>
+    <div class="ib-body">
+      <p>The numbers don't add up: you sent <strong>86 campaigns at ~26k recipients each</strong> over 180 days, meaning around 2.3M email sends — but the <em>Abandoned Cart</em> flow only reached 702 recipients and <em>Abandoned Checkout</em> reached 1,389. For a store doing 7,565 orders in the same period, the cart/checkout funnel should be producing far more flow entries than this.</p>
+      <p>Abandoned Cart also didn't generate any revenue until January 2026 — strongly suggesting the flow was rebuilt/switched on recently and the earlier version wasn't firing. The good news is when they <em>do</em> fire, they work: Abandoned Cart produces <strong>$2.33 RPR</strong> and Abandoned Checkout <strong>$1.68 RPR</strong> — both multiples above any campaign.</p>
+      <p><strong>What to fix:</strong></p>
+      <ul>
+        <li>Audit the Klaviyo <em>Started Checkout</em> and <em>Added to Cart</em> events. Both are firing (confirmed in metrics inventory) but the flow filters may be excluding too much.</li>
+        <li>Check that Smart Sending is NOT enabled on Email 1 of either flow — this commonly skips 90%+ of events.</li>
+        <li>Tighten timing: Abandoned Checkout Email 1 should fire within 30 minutes (not 2+ hours), Abandoned Cart within 1 hour.</li>
+        <li>Split both flows for first-time vs returning customers. For a brand with subscription + refill LTV, returning customer carts deserve different messaging (social proof about retention) vs first-time (trust + product education).</li>
+      </ul>
+      <div class="ib-revenue">Revenue impact: If event routing is fixed and the flow reaches even a modest 6,000 recipients over 180 days (~8× current volume) at the current RPR, that's <strong>+$28K annualised</strong>. Add a plain-text founder email as the final touch — commonly lifts recovery 15–25%.</div>
+    </div>
+  </div>
+
+  <div class="improvement-block high">
+    <div class="ib-title">4. No automated winback flow — 33k "lapsing engaged" profiles sitting idle</div>
+    <div class="ib-tags">
+      <span class="tag high">High</span>
+      <span class="tag effort">Effort: Medium</span>
+    </div>
+    <div class="ib-body">
+      <p>The <em>Lapsing engaged</em> segment has <strong>33,113 profiles</strong> — nearly <strong>half of your entire sendable list</strong>. But three potential winback flows — <em>Subscriber Churn Winback</em>, <em>Relo Winback</em>, and <em>Activate One-Time Recent Buyers</em> (the last is live but only reached 136 recipients in 180 days) — are either in draft or essentially idle.</p>
+      <p>For a subscription-first candle brand, winback is the #2 highest-leverage flow after welcome. A sub who skipped a quarter isn't gone — they're waiting for the right prompt. And a one-time buyer who's 90+ days out is 5× more likely to convert to a subscriber than a cold lead.</p>
+      <p><strong>What to build:</strong></p>
+      <ul>
+        <li><strong>Subscription Winback</strong> (3 emails over 14 days) for churned Smartrr subscribers: Email 1 — "Your seasonal scent just landed", Email 2 — "Here's what you missed" (shows the last box), Email 3 — "Rebuild your ritual" with 20% reactivation offer.</li>
+        <li><strong>One-Time Buyer Winback</strong> (3 emails over 30 days) triggered at 90 days post-purchase for non-subscribers: Email 1 — scent check-in, Email 2 — "Try the box" (seasonal box subscription pitch with 45% first-box), Email 3 — "Switch to refills" with refill stock update.</li>
+        <li>Both flows should suppress from campaign sends during their active window — nothing kills a winback like being blasted with a generic promo email 2 days before the winback's discount email lands.</li>
+      </ul>
+      <div class="ib-revenue">Revenue impact: If 3% of the 33k lapsing segment reconverts via winback (benchmark for food/bev-style subscription brands), that's ~990 orders × $80 AOV = <strong>+$79K annualised</strong>.</div>
+    </div>
+  </div>
+
+  <div class="improvement-block high">
+    <div class="ib-title">5. Post-purchase + cross-sell flows are stuck in draft</div>
+    <div class="ib-tags">
+      <span class="tag high">High</span>
+      <span class="tag effort">Effort: Medium</span>
+    </div>
+    <div class="ib-body">
+      <p>You have <strong>three post-purchase-related draft flows</strong> that never shipped: <em>Post Purchase – New &amp; Returning – Sep 2025</em> (already generated $2,348 in whatever preview state it's in), <em>Relo Cross-sell</em>, and <em>Cross sell/Up sell</em>. The only live post-purchase automation is the Junip review request flow.</p>
+      <p>For a subscription brand where the natural customer journey is <strong>Buy a Forever Candle → Refill every season → Cross-sell into a second vessel / Ritual Set</strong>, missing this stage is money. The Reorder flow exists and works ($0.29 RPR) but it's treating everyone as a single-product buyer.</p>
+      <p><strong>What to ship:</strong></p>
+      <ul>
+        <li>Activate <em>Post Purchase – New &amp; Returning – Sep 2025</em> — run the content against current brand tone, then enable. It's already drafted.</li>
+        <li>Build a <strong>Subscription Upsell flow</strong> for one-time Forever Candle buyers (Relo already has subscription conversion prediction data flowing in — metric <code>Upgrade to subscription prediction by Blueprint</code> is active). Trigger: 14 days after first purchase, if no subscription started. Pitch: "You just joined — let's make this a ritual" with the 45% first-box discount.</li>
+        <li>Add a <strong>Cross-sell Ritual Set flow</strong> for Forever Candle + 2 refills purchasers at 60 days post-purchase: Email 1 — "You're ready for the full ritual", Email 2 — social proof + UGC.</li>
+      </ul>
+      <div class="ib-revenue">Revenue impact: If 5% of 16,424 "one-time customers" convert to subscription via the upsell flow (conservative — Smartrr's Blueprint prediction should boost this), that's ~820 conversions × avg subscription LTV contribution ~$60 email-attributable = <strong>+$49K annualised</strong>.</div>
+    </div>
+  </div>
+
+  <div class="improvement-block medium">
+    <div class="ib-title">6. Zero-party data from quiz is collected but under-used</div>
+    <div class="ib-tags">
+      <span class="tag medium">Medium</span>
+      <span class="tag effort">Effort: Quick Win</span>
+    </div>
+    <div class="ib-body">
+      <p>The <em>Candle Person Type</em> quiz is generating exactly the signal every candle brand wishes they had: Calm (3,134 profiles), Comfort (2,598), Clarity (~2,000 est). Yet the three Candle People flows that consume this signal each triggered just 15–61 recipients over 180 days — effectively inactive.</p>
+      <p>This data should be powering conditional content blocks in <em>every</em> flow, not just dedicated welcome variants. A "Comfort" type gets different hero product recommendations in their winback email than a "Clarity" type. Klaviyo's native conditional template blocks handle this without any code.</p>
+      <p><strong>What to do:</strong></p>
+      <ul>
+        <li>Audit the trigger of the three Candle People flows — they should be firing on every quiz completion, not just a subset. Confirm the list add is happening reliably.</li>
+        <li>Use <code>{{ person.candle_type }}</code> (or the actual property name) in conditional blocks across Welcome, Browse Abandonment, Reorder, and Winback flows — different hero product per type.</li>
+        <li>Add a subject-line personalisation token: "Sarah, your Calm scent just came back" vs "Sarah, your Clarity scent just came back" — same email, 2× subject-line relevance.</li>
+      </ul>
+      <div class="ib-revenue">Revenue impact: Conservative 8–12% lift in click-through across personalised sections. On current campaign volume that's <strong>+$12–18K annualised</strong>, plus higher subscription conversion on welcome (harder to quantify but real).</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============= SECTION 4: CAMPAIGNS ============= -->
+<section class="section" id="campaigns">
+  <div class="section-label">Campaigns</div>
+  <h2 class="section-title">Campaign Performance &amp; Opportunities</h2>
+  <p class="section-intro">Campaigns are currently pulling <strong>24.7% of store revenue</strong> — the bigger share of email revenue today. But the open-rate / click-rate gap tells the real story: people are opening but barely clicking. That's not a volume problem, it's a relevance-and-CTA problem.</p>
+
+  <div class="insight-card">
+    <strong>The headline campaign number:</strong> 56.2% open rate (excellent) paired with 0.46% click rate (critical). That's roughly <strong>a 120:1 open-to-click ratio</strong> when healthy is around 30:1. Opens are inflated by Apple MPP, but even adjusting for that, click engagement is well below where it should be for a brand with this level of editorial content. Messages need sharper hooks, tighter CTAs, and better audience matching.
+  </div>
+
+  <h3 style="font-size:18px; font-weight:800; margin: 28px 0 12px">Monthly campaign summary</h3>
+  <table class="summary-table">
+    <thead>
+      <tr><th>Metric</th><th class="num">Total</th><th class="num">Oct '25</th><th class="num">Nov '25</th><th class="num">Dec '25</th><th class="num">Jan '26</th><th class="num">Feb '26</th><th class="num">Mar '26</th><th class="num">Apr '26</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Campaigns Revenue</strong></td><td class="num strong">$147,486</td><td class="num ">$7,387</td><td class="num ">$63,965</td><td class="num ">$30,435</td><td class="num ">$8,516</td><td class="num ">$10,027</td><td class="num ">$23,899</td><td class="num ">$3,258</td></tr>
+      <tr><td>Campaign % of Brand Revenue</td><td class="num strong">24.7%</td><td class="num ">28.2%</td><td class="num ">32.8%</td><td class="num ">22.2%</td><td class="num ">11.5%</td><td class="num ">18.1%</td><td class="num ">29.6%</td><td class="num ">7.6%</td></tr>
+      <tr><td>Open Rate</td><td class="num strong">56.2%</td><td class="num ">50.2%</td><td class="num ">56.5%</td><td class="num ">59.1%</td><td class="num ">62.6%</td><td class="num ">56.0%</td><td class="num ">53.1%</td><td class="num ">54.4%</td></tr>
+      <tr><td>Click Rate</td><td class="num strong">0.46%</td><td class="num ">0.69%</td><td class="num ">0.47%</td><td class="num ">0.40%</td><td class="num ">0.43%</td><td class="num ">0.40%</td><td class="num ">0.57%</td><td class="num ">0.31%</td></tr>
+      <tr><td>Placed Order Rate</td><td class="num strong">0.076%</td><td class="num ">0.072%</td><td class="num ">0.097%</td><td class="num ">0.072%</td><td class="num ">0.061%</td><td class="num ">0.041%</td><td class="num ">0.086%</td><td class="num ">0.038%</td></tr>
+      <tr><td>Campaigns Sent</td><td class="num strong">86</td><td class="num ">5</td><td class="num ">27</td><td class="num ">21</td><td class="num ">9</td><td class="num ">9</td><td class="num ">11</td><td class="num ">4</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:18px; font-weight:800; margin: 36px 0 12px">Key improvement areas</h3>
+
+  <div class="improvement-block critical">
+    <div class="ib-title">1. Campaigns reach only 37% of your sendable list</div>
+    <div class="ib-tags">
+      <span class="tag critical">Critical</span>
+      <span class="tag effort">Effort: Medium</span>
+    </div>
+    <div class="ib-body">
+      <p>Your Klaviyo — All Emails segment has <strong>69,344 profiles</strong>. Avg recipients per campaign: <strong>25,994</strong> — that's <strong>37.5% of your sendable base</strong>. Every campaign is leaving 43,000+ profiles untouched.</p>
+      <p>Looking at the segments, here's where they're sitting:</p>
+      <ul>
+        <li><strong>Engaged 90 days (Email):</strong> 14,690 profiles — these are the people actually getting every campaign</li>
+        <li><strong>HS // Engaged 120:</strong> 27,173 profiles — this is what you're sending to</li>
+        <li><strong>Lapsing engaged:</strong> 33,113 profiles — <strong>48% of the list, essentially getting nothing</strong></li>
+        <li><strong>Privy Sign ups:</strong> 39,410 legacy profiles — unclear if they're being fed content at all</li>
+      </ul>
+      <p>There's a good reason to exclude the Sunset segment (10,066) — those are the non-responders on their way to suppression. But the Lapsing 33k should be getting <em>targeted, lower-frequency content</em> — not cut off entirely. Right now they just drift toward Sunset without any re-engagement attempt.</p>
+      <p><strong>What to do:</strong></p>
+      <ul>
+        <li>Introduce a "Re-engagement Tier" campaign cadence for the Lapsing 33k: 1 campaign every 2–3 weeks, chosen specifically to re-spark interest (strongest-performing content pieces, scent feature emails, subscriber-only perks teasers).</li>
+        <li>Segment campaign content by audience: quiz-completers get scent-personalised campaigns, one-time buyers get subscription pitches, active subscribers get content (not promos).</li>
+        <li>Rename the legacy <em>HS // Engaged 120</em> segment to a proper naming convention — it's the single most-used segment but the name is opaque.</li>
+      </ul>
+      <div class="ib-revenue">Revenue impact: Reaching even 20% of the Lapsing 33k with targeted content at current email RPR ($0.065) = 6,600 recipients × $0.065 × 20 sends/year = <strong>+$8.6K</strong>. But winback conversions (1–2% of re-engaged) add <strong>+$40–60K annualised</strong>.</div>
+    </div>
+  </div>
+
+  <div class="improvement-block high">
+    <div class="ib-title">2. 56% open rate, 0.46% click rate — hooks and CTAs aren't converting interest into action</div>
+    <div class="ib-tags">
+      <span class="tag high">High</span>
+      <span class="tag effort">Effort: Medium</span>
+    </div>
+    <div class="ib-body">
+      <p>Opens are exceptional. Clicks are critical. That gap tells you the subject lines and preview text are doing their job of getting the email opened — but then the email content isn't moving people to click. Look at the worst performers:</p>
+      <ul>
+        <li><em>Thanksgiving Recipe</em>: 64.9% open, 0.11% click — great hook, content wasn't commerce-linked</li>
+        <li><em>Gift Cards</em>: 56.5% open, 0.09% click, $0.017 RPR — 31k recipients saw it, 28 bought</li>
+        <li><em>Free expedited shipping</em>: 49.2% open, 0.12% click — shipping alone isn't a reason-to-click</li>
+      </ul>
+      <p>Compare to the winners:</p>
+      <ul>
+        <li><em>XL Forever Candle – Oud &amp; Peach</em>: product launch, $0.366 RPR, 2.60% click — <strong>5.6× account avg RPR</strong></li>
+        <li><em>Persuadable Gifters</em>: segmented send to a smart audience, $0.344 RPR, 1.68% click — <strong>segmentation beats blast</strong></li>
+        <li><em>Black Week Sale Kick Off</em>: $0.205 RPR at 40k recipients — the tentpole promo with clear urgency</li>
+      </ul>
+      <p>The pattern: product launches and clearly-targeted sends with a single CTA outperform content emails with multiple links. Content emails (<em>Notes from the North</em>, recipe content, scent layering) are beautifully written but don't give the reader a clear next step.</p>
+      <p><strong>What to fix:</strong></p>
+      <ul>
+        <li>Every editorial email needs a <em>commerce hook</em> in the bottom third — "Read more" isn't a CTA, "Shop the Forest Bathing bundle" is.</li>
+        <li>Start a formal A/B testing cadence — currently zero systematic testing is visible. Test subject lines on every campaign (Klaviyo native, 10–20% holdout).</li>
+        <li>Tighten subject-line format to 3–7 words with one emoji max. Current longer subject lines are hurting mobile rendering.</li>
+        <li>Kill the "Gift Cards" campaign format or heavily segment it — gift cards as a promotional standalone to 31k profiles performs worse than almost any other campaign type.</li>
+      </ul>
+      <div class="ib-revenue">Revenue impact: Even a 50% lift in click rate (0.46% → 0.70%) at constant conversion lift rate adds <strong>+$50–70K annualised</strong>.</div>
+    </div>
+  </div>
+
+  <div class="improvement-block high">
+    <div class="ib-title">3. Same-day double sends are spiking unsubscribes</div>
+    <div class="ib-tags">
+      <span class="tag high">High</span>
+      <span class="tag quick">Effort: Quick Win</span>
+    </div>
+    <div class="ib-body">
+      <p>In the 180-day window there are <strong>13 same-day double-send occurrences</strong> plus 4 triple+ send days. And the unsubscribe pattern is consistent: the highest unsub event in the entire window was <em>Happy New Year</em> (196 unsubs / 0.639% rate) — sent on a day with another send.</p>
+      <p><em>Cyber Monday – Night – Text Only</em> drove 171 unsubs at 0.423% — also same-day as the Cyber Monday main send.</p>
+      <p>This is a frequency-fatigue pattern. Subscribers accept 1 email on a given day; a second within hours feels spammy and triggers unsubs.</p>
+      <p><strong>What to fix:</strong></p>
+      <ul>
+        <li>Introduce a hard frequency cap: max 1 campaign per day per subscriber. Use Klaviyo's built-in "received email in last 24 hours" exclusion on every send.</li>
+        <li>For tentpole events (BFCM, Spring Box launch), use <em>layered segmentation</em> instead of same-day doubles — morning send to engaged tier, afternoon send to broader tier, so no single person gets two emails.</li>
+        <li>The "Text Only" follow-up format is smart but should target non-openers of the main send, not the full list.</li>
+      </ul>
+      <div class="ib-revenue">Revenue impact: Preserves ~2,000 subscribers/year who currently unsubscribe after same-day doubles. At conservative $50 LTV, <strong>+$100K over 12 months</strong> preserved subscriber value.</div>
+    </div>
+  </div>
+
+  <div class="improvement-block medium">
+    <div class="ib-title">4. Content mix is genuinely good — but missing a few natural wins</div>
+    <div class="ib-tags">
+      <span class="tag medium">Medium</span>
+      <span class="tag effort">Effort: Medium</span>
+    </div>
+    <div class="ib-body">
+      <p>Rare to say this — your content mix is <strong>better than most audited accounts</strong>. Only 18.6% of campaigns are pure promo/sale, and you have strong editorial pillars (<em>Notes from the North</em>, <em>Fika Time</em>, scent-layering guides, <em>Behind the scent</em> series). That's the right instinct for a premium candle brand where the story sells the product.</p>
+      <p>What's missing for <em>this</em> brand specifically:</p>
+      <ul>
+        <li><strong>Scent &amp; Stockholm origin stories.</strong> You sell Scandinavian sensibility. A "Meet the makers in Portugal" or "Why Stockholm winters shape our blends" campaign, done with photography and voice, would outperform any sale email for click-through.</li>
+        <li><strong>Seasonal ritual emails.</strong> "The April morning ritual" / "Your Sunday reset" — product tied to moment of use, not just product spec.</li>
+        <li><strong>Subscriber-exclusive drops.</strong> A Seasonal Box subscriber should get a campaign their one-time peers never see — a preview scent, an early refill, a Stockholm-shipped postcard. This drives subscription signups via FOMO when you <em>do</em> do a public promo.</li>
+        <li><strong>Customer spotlights &amp; UGC roundups.</strong> The reviews on your PDPs ("elegant design", "pleasant experience") are warm but generic — a monthly "Customers' favourite corner" campaign with photos of candles in real homes gives product social proof at scale.</li>
+      </ul>
+      <p><strong>Also kill:</strong> Shipping-based promos as standalone campaigns (<em>Free expedited shipping</em>, <em>Last call for standard shipping</em>) — these are great as a banner inside a product campaign, not as a whole send.</p>
+      <div class="ib-revenue">Revenue impact: 2 additional brand-story campaigns per month at your content-email RPR ($0.052) across 26k recipients = <strong>+$16K annualised</strong>, plus higher subscription signup through FOMO.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SECTION 5: LIST GROWTH ============= -->
+<section class="section" id="list-growth">
+  <div class="section-label">List Growth</div>
+  <h2 class="section-title">List Growth Overview</h2>
+  <p class="section-intro">New email subscribers is the north-star metric for the top of the funnel. It controls everything downstream — flow volume, campaign reach, and compounding email revenue. Right now, Siblings is losing subscribers faster than acquiring them.</p>
+
+  <div class="insight-card warn">
+    <strong>The headline:</strong> in the last 180 days you added <strong>5,056 new subscribers</strong> but lost <strong>6,377 to unsubscribes</strong> — <strong>net -1,321 subscribers</strong>. Only November was positive (BFCM). Every other month has been net negative. This is the single fastest-moving health metric in the account.
+  </div>
+
+  <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="kpi">
+      <div class="kpi-label">New Subscribers (180d)</div>
+      <div class="kpi-value">5,056</div>
+      <div class="kpi-context">Avg 842/month</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Unsubscribes (180d)</div>
+      <div class="kpi-value neg">6,377</div>
+      <div class="kpi-context">Avg 1,062/month</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Net 180d Growth</div>
+      <div class="kpi-value neg">-1,321</div>
+      <div class="kpi-context">List is actively shrinking</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:18px; font-weight:800; margin: 28px 0 12px">Monthly subscriber flow</h3>
+  <table class="summary-table">
+    <thead>
+      <tr><th>Metric</th><th class="num">Total 180d</th><th class="num">Oct '25</th><th class="num">Nov '25</th><th class="num">Dec '25</th><th class="num">Jan '26</th><th class="num">Feb '26</th><th class="num">Mar '26</th><th class="num">Apr '26</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>New Subscribers</td><td class="num strong">5,056</td><td class="num ">265</td><td class="num ">2,223</td><td class="num ">808</td><td class="num ">642</td><td class="num ">425</td><td class="num ">507</td><td class="num ">186</td></tr>
+      <tr><td>Unsubscribes</td><td class="num strong">6,377</td><td class="num ">337</td><td class="num ">1,609</td><td class="num ">1,394</td><td class="num ">1,076</td><td class="num ">731</td><td class="num ">843</td><td class="num ">387</td></tr>
+      <tr><td><strong>Net Growth</strong></td><td class="num strong" style="color:#C03936">-1,321</td><td class="num neg">-72</td><td class="num pos">+614</td><td class="num neg">-586</td><td class="num neg">-434</td><td class="num neg">-306</td><td class="num neg">-336</td><td class="num neg">-201</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:18px; font-weight:800; margin: 36px 0 12px">Key improvement areas</h3>
+
+  <div class="improvement-block critical">
+    <div class="ib-title">1. All 5 Klaviyo forms are in DRAFT — you have zero active popups</div>
+    <div class="ib-tags">
+      <span class="tag critical">Critical</span>
+      <span class="tag quick">Effort: Quick Win</span>
+    </div>
+    <div class="ib-body">
+      <p>Every form in the Klaviyo account is currently in draft status:</p>
+      <ul>
+        <li><em>New Subscriber Sign Up</em> — draft</li>
+        <li><em>Multi-step email &amp; SMS</em> — draft</li>
+        <li><em>Newsletter Signup</em> — draft</li>
+        <li><em>Subscription</em> — draft</li>
+        <li><em>Join the club – Mobile</em> — draft</li>
+      </ul>
+      <p>The forms API confirms <strong>zero form views or submits in the last 180 days</strong>. Whatever sign-ups are coming in (the 5,056 new subs this period) are arriving via Shopify checkout consent, the website footer "Keep your inbox cozy" form (likely posting direct-to-Shopify, not Klaviyo), the Candle Person Type quiz, or legacy Privy flow.</p>
+      <p>For a premium brand with ~100k monthly visitors (conservative estimate based on store revenue and AOV), a properly-optimised popup should convert at 3–8%. That's <strong>3,000–8,000 new subscribers per month</strong> — versus the current ~842/month.</p>
+      <p><strong>What to ship this week:</strong></p>
+      <ul>
+        <li>Activate the <em>Multi-step email &amp; SMS</em> form. Desktop + mobile delivery, 3-second delay, exit-intent trigger on mobile.</li>
+        <li>Frontload the value prop: "Get 15% off your first candle + first to know when sold-out scents return" — the back-in-stock hook is unique to Siblings and taps the scarcity that's already real.</li>
+        <li>Use a 2-step capture: email on step 1, SMS opt-in with additional 10% on step 2 (ties into your existing Postscript setup).</li>
+        <li>Set popup reappearance to 1 day (not 90). High-intent browsers who didn't sign up the first visit will return.</li>
+        <li>Add an exit-intent popup on product pages for sold-out items: "Be first when [Scent Name] returns" — single-field email capture, feeds directly into Back-in-Stock flow.</li>
+      </ul>
+      <div class="ib-revenue">Revenue impact: A popup at 5% conversion on even 40k unique monthly visitors = 2,000 new subs/month = ~24,000/year vs current 10,112/year. At $50 subscriber email-attributable value, that's <strong>+$697K/yr</strong> at the high end, but more conservatively (with ramp): <strong>+$150K annualised in Year 1</strong>. This is the single highest-impact quick win in this audit.</div>
+    </div>
+  </div>
+
+  <div class="improvement-block high">
+    <div class="ib-title">2. Churn from welcome flows = direct driver of negative net growth</div>
+    <div class="ib-tags">
+      <span class="tag high">High</span>
+      <span class="tag effort">Effort: Medium</span>
+    </div>
+    <div class="ib-body">
+      <p>There's a direct line from the welcome-flow unsub rates (2.11% and 2.22%) to the list-shrinkage problem. When you average ~840 new subs/month and your welcome flow unsubs 2%+ of them, you're losing 15–20 of your newest, highest-intent subscribers every month <em>before</em> they ever shop.</p>
+      <p>This is why fixing the welcome flow overlap (Section 3, Finding #1) isn't just about flow revenue — it's about list growth. Slashing welcome unsub rate from 2.2% to the benchmark 0.3% preserves ~160 new subscribers/month who currently exit the list within the first week.</p>
+      <div class="ib-revenue">Revenue impact: Covered in Finding #1 above (part of the +$240K welcome flow fix). Mentioned here because <strong>it's the same subscriber — shown from the list-growth angle.</strong></div>
+    </div>
+  </div>
+
+  <div class="improvement-block high">
+    <div class="ib-title">3. Privy legacy list (39,410 profiles) is sitting idle</div>
+    <div class="ib-tags">
+      <span class="tag high">High</span>
+      <span class="tag effort">Effort: Medium</span>
+    </div>
+    <div class="ib-body">
+      <p>Your <em>Privy Sign ups</em> list has 39,410 single-opt-in profiles going back to September 2021. That's nearly <strong>57% of your Klaviyo — All Emails base</strong>. These are historical newsletter signups that pre-date the Klaviyo migration.</p>
+      <p>The question is whether they're being emailed at all. Based on the avg campaign audience size (25,994), at least some of them aren't. This is a huge dormant asset — but it's also risky to email cold without re-permissioning.</p>
+      <p><strong>What to do:</strong></p>
+      <ul>
+        <li>Run a <strong>permission reconfirmation campaign</strong> to the Privy list: "Want to stay in the loop on new scents?" — one email, single CTA, auto-suppress non-responders after 14 days. Low-risk if done carefully.</li>
+        <li>Profiles who click/open get moved into the main engaged segment and enter a shortened welcome variant.</li>
+        <li>Non-responders are suppressed (they weren't engaging anyway). Cleaner list, no deliverability risk.</li>
+      </ul>
+      <div class="ib-revenue">Revenue impact: Conservative 5–10% reactivation = 2,000–4,000 re-engaged subs. At avg campaign RPR of $0.065 × 20 campaigns/year = <strong>+$2.6–5.2K/yr direct</strong>, plus ~$10–20K in flow-triggered revenue from new activity.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SECTION 6: STRENGTHS ============= -->
+<section class="section" id="strengths">
+  <div class="section-label">Strengths</div>
+  <h2 class="section-title">What's Already Working</h2>
+  <p class="section-intro">It's easy to read an audit and come away feeling like the whole program is broken. It isn't. These are the foundations that are solid and should not be touched.</p>
+
+  <div class="strengths-grid">
+    <div class="strength-card">
+      <div class="metric">56.2%</div>
+      <div class="label">Campaign open rate — well above 35% benchmark</div>
+      <div class="desc">Subject-line craft and sender reputation are strong. Inbox placement is working. The Gmail/Apple MPP boost doesn't fully explain this — your list is genuinely engaged on opens.</div>
+    </div>
+    <div class="strength-card">
+      <div class="metric">27</div>
+      <div class="label">Segments — mature, thoughtful architecture</div>
+      <div class="desc">Most audited accounts have 5–10 segments. Yours includes engagement tiers, purchase behaviour, subscription status, zero-party data (Candle Person Type), and lifecycle exclusions. The foundation for advanced personalisation is already there.</div>
+    </div>
+    <div class="strength-card">
+      <div class="metric">0.0074%</div>
+      <div class="label">Spam complaint rate — healthy, well below benchmark</div>
+      <div class="desc">The 0.03% benchmark threshold is where Gmail/Outlook start throttling. You're 4× below it. Your list quality and content relevance are clearly earning subscriber trust.</div>
+    </div>
+    <div class="strength-card">
+      <div class="metric">81%</div>
+      <div class="label">Non-promo content mix — rare and valuable</div>
+      <div class="desc">Most audited brands are 85–100% promotional. You're ~19% promo / 81% content, launches, and seasonal editorial. <em>Notes from the North</em>, <em>Fika Time</em>, <em>Behind the scent</em> are exactly the kind of content that builds a long-term brand.</div>
+    </div>
+    <div class="strength-card">
+      <div class="metric">5.1%</div>
+      <div class="label">Hard bounce ratio — clean acquisition</div>
+      <div class="desc">Only 495 hard bounces from 9,659 total bounces. Benchmark is &lt;30% of total bounces; yours is way under. Your sources for new email addresses are high-quality.</div>
+    </div>
+    <div class="strength-card">
+      <div class="metric">Quiz</div>
+      <div class="label">Zero-party data from Candle Person Type</div>
+      <div class="desc">Capturing Calm / Clarity / Comfort preference is exactly the kind of signal that powers personalisation. You have 5,700+ quiz-completed profiles. The data exists — it just needs to be plugged into the rest of your flows and campaigns.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SECTION 7: ROADMAP ============= -->
+<section class="section" id="roadmap">
+  <div class="section-label">The Plan</div>
+  <h2 class="section-title">Your 90-Day Revenue Roadmap</h2>
+  <p class="section-intro">A phased plan to capture the $320K/yr opportunity. Each phase stacks — you don't need to wait for Phase 2 to see Phase 1 results.</p>
+
+  <div class="rev-bridge">
+    <div class="step">
+      <div class="step-label">Today</div>
+      <div class="step-value">$371K</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step target">
+      <div class="step-label">12-Month Target</div>
+      <div class="step-value">$690K</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step delta">
+      <div class="step-label">Delta</div>
+      <div class="step-value">+$320K</div>
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-label">Phase 1 · Weeks 1–2</div>
+    <div class="phase-title">Quick Wins &amp; Foundation</div>
+    <div class="phase-rev">Expected incremental: +$40–60K annualised</div>
+    <ul>
+      <li>Activate <em>Multi-step email &amp; SMS</em> popup (exit-intent + 3-sec delay, 15% off first order hook)</li>
+      <li>Expand Back-in-Stock flow from 1 email to 3 emails with inventory urgency</li>
+      <li>Introduce frequency cap: "received email in last 24hr" exclusion on every campaign</li>
+      <li>Verify &amp; fix Abandoned Cart and Abandoned Checkout event triggers (low volumes suggest broken routing)</li>
+      <li>Turn off Smart Sending on Email 1 of browse/cart flows if currently enabled</li>
+      <li>Rename legacy <em>HS // Engaged 120</em> segment under a clean naming convention</li>
+    </ul>
+    <div class="progress-bar">
+      <div>25% of target</div>
+      <div class="bar"><div class="fill" style="width:25%"></div></div>
+      <div>$451K</div>
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-label">Phase 2 · Weeks 3–4</div>
+    <div class="phase-title">Fix the Welcome Flow Chaos</div>
+    <div class="phase-rev">Expected incremental: +$80–100K annualised (cumulative)</div>
+    <ul>
+      <li>Consolidate 3 live welcome flows + 2 drafts into ONE canonical welcome flow (5 emails max)</li>
+      <li>Use Candle Person Type as a <em>conditional split inside</em> the single flow, not parallel flows</li>
+      <li>Target welcome unsub rate: &lt;0.5% (currently 2.1–2.2%)</li>
+      <li>Add plain-text founder email as Email 3 (consistent outperformer in welcome flows)</li>
+      <li>Ship the drafted <em>Post Purchase – New &amp; Returning</em> flow</li>
+      <li>Add first-time vs returning split to Abandoned Cart and Checkout flows</li>
+    </ul>
+    <div class="progress-bar">
+      <div>50% of target</div>
+      <div class="bar"><div class="fill" style="width:50%"></div></div>
+      <div>$531K</div>
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-label">Phase 3 · Month 2</div>
+    <div class="phase-title">Build the Winback &amp; Cross-sell Stack</div>
+    <div class="phase-rev">Expected incremental: +$90K annualised (cumulative)</div>
+    <ul>
+      <li>Build Subscription Winback flow (3 emails, 14 days) — targets churned Smartrr subscribers</li>
+      <li>Build One-Time Buyer Winback flow (3 emails, 30 days) — converts one-time buyers to subscribers</li>
+      <li>Build Subscription Upsell flow using Blueprint prediction data — one-time buyers → Seasonal Box</li>
+      <li>Build Cross-sell Ritual Set flow for Forever Candle + 2 refills purchasers</li>
+      <li>Launch Privy list re-permissioning campaign (39k dormant profiles)</li>
+      <li>Start formal A/B testing cadence on every campaign (subject line, 10% holdout)</li>
+    </ul>
+    <div class="progress-bar">
+      <div>75% of target</div>
+      <div class="bar"><div class="fill" style="width:75%"></div></div>
+      <div>$611K</div>
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-label">Phase 4 · Month 3</div>
+    <div class="phase-title">Personalisation &amp; Content Depth</div>
+    <div class="phase-rev">Expected incremental: +$30K annualised (cumulative)</div>
+    <ul>
+      <li>Deploy Candle Person Type conditional blocks across all flows (Welcome, Browse, Reorder, Winback)</li>
+      <li>Add 2 brand-story campaigns per month (Stockholm origin, "Meet the makers" Portugal, seasonal ritual)</li>
+      <li>Launch subscriber-exclusive campaigns (previews, early drops) to drive FOMO</li>
+      <li>Build "Editorial Engagers | No Purchase" targeted product-sell campaigns (788 profiles already segmented)</li>
+      <li>Set up Google Postmaster Tools for Gmail deliverability visibility (blind spot today)</li>
+      <li>Set up monthly A/B test review to compound learnings</li>
+    </ul>
+    <div class="progress-bar">
+      <div>100% of target</div>
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div>$690K</div>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>The destination</h3>
+    <p>Current annualised email revenue is $371K. Execute this roadmap end-to-end and you're on a realistic path to:</p>
+    <div class="big">$690K/yr</div>
+    <p style="margin-top:12px">That's a <strong>+$320K/year</strong> uplift — most of it from structural fixes, not new spend.</p>
+  </div>
+</section>
+
+<!-- ============= SECTION 8: TECHNICAL APPENDIX ============= -->
+<section class="section" id="appendix">
+  <div class="section-label">Reference</div>
+  <h2 class="section-title">Technical Appendix</h2>
+  <p class="section-intro">Full metric breakdown, score components, and flow/campaign inventory. For marketing managers who want to see the underlying data.</p>
+
+  <div class="details-wrap">
+    <button class="details-toggle" aria-expanded="false">
+      Score breakdown (6 areas, weighted)
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <div class="details-content">
+      <table class="metrics-table">
+        <thead><tr><th>Area</th><th>Score</th><th>Weight</th><th>Contribution</th></tr></thead>
+        <tbody>
+          <tr><td>Deliverability</td><td class="current">75/100 <span class="rag amber">Needs attention</span></td><td>20%</td><td>15.0</td></tr>
+          <tr><td>Flows</td><td class="current">10/100 <span class="rag red">Critical</span></td><td>25%</td><td>2.5</td></tr>
+          <tr><td>Campaigns</td><td class="current">40/100 <span class="rag red">Critical</span></td><td>20%</td><td>8.0</td></tr>
+          <tr><td>List Health</td><td class="current">40/100 <span class="rag red">Critical</span></td><td>15%</td><td>6.0</td></tr>
+          <tr><td>Segmentation</td><td class="current">85/100 <span class="rag green">Healthy</span></td><td>10%</td><td>8.5</td></tr>
+          <tr><td>Revenue</td><td class="current">60/100 <span class="rag amber">Needs attention</span></td><td>10%</td><td>6.0</td></tr>
+          <tr><td><strong>Overall</strong></td><td class="current"><strong>46/100</strong></td><td><strong>100%</strong></td><td><strong>46.0</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="details-wrap">
+    <button class="details-toggle" aria-expanded="false">
+      Account inventory at a glance
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <div class="details-content">
+      <table class="metrics-table">
+        <thead><tr><th>Item</th><th>Count / Value</th></tr></thead>
+        <tbody>
+          <tr><td>Lists</td><td class="current">8</td></tr>
+          <tr><td>Segments</td><td class="current">27</td></tr>
+          <tr><td>Flows (total)</td><td class="current">27</td></tr>
+          <tr><td>Flows live</td><td class="current">16</td></tr>
+          <tr><td>Flows draft</td><td class="current">11</td></tr>
+          <tr><td>Forms (total)</td><td class="current">5</td></tr>
+          <tr><td>Forms live</td><td class="current"><strong style="color:#C03936">0</strong></td></tr>
+          <tr><td>Total emailable profiles</td><td class="current">69,344</td></tr>
+          <tr><td>Campaigns sent (180d)</td><td class="current">86</td></tr>
+          <tr><td>Avg recipients per campaign</td><td class="current">25,994 (37.5% of sendable)</td></tr>
+          <tr><td>AOV (180d)</td><td class="current">$80.80</td></tr>
+          <tr><td>Hard bounces</td><td class="current">495</td></tr>
+          <tr><td>Soft bounces</td><td class="current">9,164</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="details-wrap">
+    <button class="details-toggle" aria-expanded="false">
+      Benchmarks reference
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <div class="details-content">
+      <table class="metrics-table">
+        <thead><tr><th>Metric</th><th>Healthy</th><th>Warning</th><th>Critical</th></tr></thead>
+        <tbody>
+          <tr><td>Open rate</td><td class="benchmark">&gt;35%</td><td class="benchmark">&lt;20%</td><td class="benchmark">&lt;15%</td></tr>
+          <tr><td>Click rate</td><td class="benchmark">&gt;2%</td><td class="benchmark">&lt;1%</td><td class="benchmark">&lt;0.5%</td></tr>
+          <tr><td>Unsubscribe rate</td><td class="benchmark">&lt;0.2%</td><td class="benchmark">&gt;0.3%</td><td class="benchmark">&gt;0.5%</td></tr>
+          <tr><td>Spam complaint rate</td><td class="benchmark">&lt;0.03%</td><td class="benchmark">&gt;0.05%</td><td class="benchmark">&gt;0.1%</td></tr>
+          <tr><td>Bounce rate</td><td class="benchmark">&lt;0.3%</td><td class="benchmark">&gt;0.5%</td><td class="benchmark">&gt;1%</td></tr>
+          <tr><td>Flow revenue share of email</td><td class="benchmark">30–50%</td><td class="benchmark">&lt;15% or &gt;70%</td><td class="benchmark">—</td></tr>
+          <tr><td>Email revenue % of store</td><td class="benchmark">25–35%</td><td class="benchmark">&lt;15%</td><td class="benchmark">&lt;10%</td></tr>
+          <tr><td>Popup conversion</td><td class="benchmark">3–8%</td><td class="benchmark">&lt;2%</td><td class="benchmark">&lt;1%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+document.querySelectorAll('.details-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    btn.nextElementSibling.classList.toggle('open');
+  });
+});
+// Sidebar active link
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.sidebar a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
