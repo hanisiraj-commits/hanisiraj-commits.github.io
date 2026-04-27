@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lohnr — May 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color: #1a1a1a; }
+
+.cover { background: #0a0a0a; color: #fff; padding: 80px 60px 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; page-break-after: always; }
+.cover-brand { font-size: 11px; letter-spacing: 6px; color: #666; font-weight: 400; }
+.cover-middle { margin: auto 0; }
+.cover-title { font-size: 56px; font-weight: 300; letter-spacing: -1px; line-height: 1.1; margin-bottom: 12px; }
+.cover-subtitle { font-size: 22px; font-weight: 300; color: #777; margin-bottom: 48px; }
+.cover-stats { display: flex; gap: 48px; margin-bottom: 40px; }
+.cover-stat-num { font-size: 36px; font-weight: 600; letter-spacing: -1px; }
+.cover-stat-label { font-size: 10px; letter-spacing: 3px; color: #666; margin-top: 4px; text-transform: uppercase; }
+.cover-products { font-size: 13px; color: #888; letter-spacing: 0.5px; }
+.cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+.cover-date { font-size: 11px; color: #555; }
+.cover-approval { font-size: 11px; color: #444; letter-spacing: 2px; text-transform: uppercase; }
+
+.page { padding: 50px 60px; page-break-after: always; }
+.page:last-child { page-break-after: avoid; }
+.section-label { font-size: 10px; letter-spacing: 4px; color: #bbb; text-transform: uppercase; font-weight: 500; margin-bottom: 8px; }
+.page-title { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 6px; }
+.page-desc { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 32px; max-width: 600px; }
+
+.insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+.insight-card { background: #fafafa; border-radius: 6px; padding: 18px 22px; }
+.insight-card.win { border-left: 3px solid #2d6a4f; }
+.insight-card.note { border-left: 3px solid #8a5a1f; }
+.insight-label { font-size: 9px; letter-spacing: 3px; color: #888; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.insight-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
+.insight-body { font-size: 12px; color: #555; line-height: 1.55; }
+
+.metrics-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 11px; }
+.metrics-table th { text-align: left; padding: 8px 10px 6px; color: #999; font-weight: 500; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; border-bottom: 1px solid #eee; }
+.metrics-table td { padding: 9px 10px; border-bottom: 1px solid #f5f5f5; color: #444; }
+.metrics-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.metrics-table tr.win-row td { background: #f4faf6; }
+.metrics-table tr.pending-row td { background: #fdf9f0; color: #666; font-style: italic; }
+.metrics-table tr.pending-row td .pending-badge { font-size: 9px; background: #f4d68a; color: #8a5a1f; padding: 2px 6px; border-radius: 3px; font-style: normal; margin-left: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+.cal { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+.cal th { font-size: 10px; letter-spacing: 2px; color: #bbb; font-weight: 500; text-transform: uppercase; padding: 8px 0; text-align: center; border-bottom: 1px solid #eee; }
+.cal td { border: 1px solid #f0f0f0; vertical-align: top; padding: 8px 8px 12px; height: 80px; width: 14.28%; }
+.cal td.empty { background: #fafafa; }
+.cal .day-num { font-size: 11px; color: #ccc; font-weight: 500; margin-bottom: 6px; }
+.cal .cal-event { font-size: 10px; font-weight: 600; line-height: 1.3; padding: 3px 6px; border-radius: 3px; margin-bottom: 3px; display: inline-block; }
+.cal .cal-note { font-size: 9px; color: #ccc; display: block; margin-top: 2px; }
+.ev-feat { background: #e8edf2; color: #264653; }
+.ev-elena { background: #ecf0e6; color: #606c38; }
+.ev-md { background: #f5e6e8; color: #9d4348; }
+.ev-mem { background: #e8e6f2; color: #4a3d8b; }
+.ev-content { background: #fdf3e8; color: #8a5a1f; }
+.ev-npd { background: #e6f2ee; color: #1f6a4f; }
+.ev-gabby { background: #f0f0f0; color: #555; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 14px 20px; margin-top: 8px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #999; }
+.legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+.week-group { margin-bottom: 36px; }
+.week-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+.week-num { font-size: 10px; letter-spacing: 3px; color: #ccc; text-transform: uppercase; font-weight: 500; }
+.week-title { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; }
+.card { display: flex; background: #fafafa; border-radius: 6px; overflow: hidden; margin-bottom: 12px; page-break-inside: avoid; }
+.card-accent { width: 4px; flex-shrink: 0; }
+.card-body { padding: 20px 24px; flex: 1; }
+.card-num { font-size: 10px; font-weight: 600; letter-spacing: 2px; margin-bottom: 4px; }
+.card-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; margin-bottom: 6px; line-height: 1.3; }
+.card-meta { font-size: 10px; color: #999; letter-spacing: 0.5px; margin-bottom: 10px; text-transform: uppercase; }
+.card-desc { font-size: 12px; color: #555; line-height: 1.6; margin-bottom: 8px; }
+.card-detail { font-size: 11px; color: #888; line-height: 1.5; }
+.card-detail strong { color: #333; font-weight: 600; }
+.card-promo { font-size: 11px; font-weight: 600; margin-top: 8px; padding: 6px 10px; border-radius: 3px; display: inline-block; }
+.promo-md { background: #f5e6e8; color: #9d4348; }
+.promo-mem { background: #e8e6f2; color: #4a3d8b; }
+.promo-review { background: #f0f0f0; color: #444; }
+.card-rationale { font-size: 11px; color: #777; line-height: 1.55; margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee; font-style: italic; }
+.card-rationale strong { color: #555; font-style: normal; }
+
+.footer { padding: 20px 60px; border-top: 1px solid #1a1a1a; margin-top: 40px; }
+.footer-text { font-size: 9px; letter-spacing: 4px; color: #ccc; text-transform: uppercase; text-align: center; }
+
+@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .cover { min-height: auto; height: 100vh; } .page { padding: 40px 50px; } }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-brand">LOHNR</div>
+  <div class="cover-middle">
+    <div class="cover-title">May 2026</div>
+    <div class="cover-subtitle">Email Calendar</div>
+    <div class="cover-stats">
+      <div><div class="cover-stat-num">9</div><div class="cover-stat-label">Emails</div></div>
+      <div><div class="cover-stat-num">2</div><div class="cover-stat-label">Sale Events</div></div>
+      <div><div class="cover-stat-num">3</div><div class="cover-stat-label">New Arrivals</div></div>
+    </div>
+    <div class="cover-products">Mother&rsquo;s Day Close &nbsp;&middot;&nbsp; New Arrivals Launch &nbsp;&middot;&nbsp; Memorial Day Sale &nbsp;&middot;&nbsp; Review Drive</div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-date">27 April 2026 &middot; v3</div>
+    <div class="cover-approval">Draft &middot; For Approval</div>
+  </div>
+</div>
+
+<!-- INSIGHTS FROM APRIL -->
+<div class="page">
+  <div class="section-label">Notes from April</div>
+  <div class="page-title">Insights Driving May</div>
+  <div class="page-desc">Pulled from Klaviyo across nine April campaigns. Open rates were strong at 56% on average, with click rate sitting at 0.28%. The Mother&rsquo;s Day sale is still inside its 5-day attribution window, so the figures below are an early read, not a final read.</div>
+
+  <table class="metrics-table">
+    <thead>
+      <tr><th>Send</th><th>Campaign</th><th class="num">Recip</th><th class="num">Open%</th><th class="num">Click%</th><th class="num">Orders</th><th class="num">Revenue</th><th class="num">RPR</th></tr>
+    </thead>
+    <tbody>
+      <tr class="win-row"><td>Apr 14</td><td>Solene, Why Women Keep Reordering</td><td class="num">19,129</td><td class="num">66.7%</td><td class="num">0.19%</td><td class="num">17</td><td class="num">$1,716</td><td class="num">$0.09</td></tr>
+      <tr class="win-row"><td>Apr 9</td><td>Solene Dress, The One Dress</td><td class="num">20,699</td><td class="num">50.5%</td><td class="num">0.31%</td><td class="num">16</td><td class="num">$1,416</td><td class="num">$0.07</td></tr>
+      <tr class="win-row"><td>Apr 6</td><td>Easter Last Chance, Elena Letter</td><td class="num">21,118</td><td class="num">59.5%</td><td class="num">0.34%</td><td class="num">19</td><td class="num">$1,384</td><td class="num">$0.07</td></tr>
+      <tr class="win-row"><td>Apr 14</td><td>Our #1 Best-seller (Split Dress Set)</td><td class="num">6,474</td><td class="num">68.5%</td><td class="num">0.60%</td><td class="num">10</td><td class="num">$950</td><td class="num">$0.15</td></tr>
+      <tr><td>Apr 2</td><td>Easter Sale LIVE</td><td class="num">21,174</td><td class="num">60.9%</td><td class="num">0.21%</td><td class="num">11</td><td class="num">$725</td><td class="num">$0.03</td></tr>
+      <tr><td>Apr 21</td><td>Cloud Modal Set, Solene Companion</td><td class="num">15,717</td><td class="num">46.2%</td><td class="num">0.28%</td><td class="num">10</td><td class="num">$729</td><td class="num">$0.05</td></tr>
+      <tr><td>Apr 1</td><td>Easter Hype Teaser</td><td class="num">18,238</td><td class="num">68.6%</td><td class="num">0.22%</td><td class="num">5</td><td class="num">$663</td><td class="num">$0.04</td></tr>
+      <tr><td>Apr 21</td><td>Spring Outfit Builder</td><td class="num">13,835</td><td class="num">46.7%</td><td class="num">0.18%</td><td class="num">6</td><td class="num">$547</td><td class="num">$0.04</td></tr>
+      <tr class="pending-row"><td>Apr 24</td><td>Mother&rsquo;s Day Dress Sale <span class="pending-badge">Attribution Open</span></td><td class="num">36,318</td><td class="num">36.2%</td><td class="num">0.15%</td><td class="num">6+</td><td class="num">$415+</td><td class="num">&mdash;</td></tr>
+    </tbody>
+  </table>
+  <div style="font-size: 11px; color: #888; margin-top: 8px; line-height: 1.5;">Mother&rsquo;s Day Dress Sale numbers are a 3-day snapshot. The 5-day window closes 29 Apr and the Apr 30 Elena Close is still pending. Final read available after 1 May.</div>
+
+  <div style="height: 28px;"></div>
+
+  <div class="insights-grid">
+    <div class="insight-card win">
+      <div class="insight-label">Note</div>
+      <div class="insight-title">Solene is the proven hero</div>
+      <div class="insight-body">Two Solene-led emails generated $3,132, which is 37% of April&rsquo;s revenue from 22% of the sends. The dress is doing the heavy lifting and the May plan continues to feature it.</div>
+    </div>
+    <div class="insight-card win">
+      <div class="insight-label">Note</div>
+      <div class="insight-title">Elena letters drive the most orders</div>
+      <div class="insight-body">The Easter Last Chance Elena Letter produced 19 orders, the highest single-email order count of the month. The plain-text founder format converts when a sale is closing.</div>
+    </div>
+    <div class="insight-card win">
+      <div class="insight-label">Note</div>
+      <div class="insight-title">Plain text is winning click rate right now</div>
+      <div class="insight-body">The two highest click rates of April both came from plain-text founder letters (0.34% and 0.60%). The image-led editorial sends are landing opens but not clicks. We&rsquo;re continuing to test this.</div>
+    </div>
+    <div class="insight-card win">
+      <div class="insight-label">Note</div>
+      <div class="insight-title">Narrow segments lift click rate and RPR</div>
+      <div class="insight-body">The "#1 Best-seller" send hit 6,474 people instead of the usual 18-21k and produced $0.15 RPR, two to three times the broad-send average. Tighter audiences are pulling more revenue per send.</div>
+    </div>
+    <div class="insight-card note">
+      <div class="insight-label">Watch</div>
+      <div class="insight-title">Click rate is the bottleneck</div>
+      <div class="insight-body">Open rate is healthy at 56% on average, but click rate sits at 0.28%. The audience is engaged with the brand, just not converting through the email itself. We&rsquo;re testing format and CTA mechanics across May to lift this.</div>
+    </div>
+    <div class="insight-card note">
+      <div class="insight-label">Watch</div>
+      <div class="insight-title">Mother&rsquo;s Day, still open</div>
+      <div class="insight-body">Apr 24 launch reached 36,318 (the largest blast of the month) and the Apr 30 Elena Close is queued. Early click rate is soft at 0.15% but the 5-day attribution window doesn&rsquo;t close until 29 Apr. Three more touches across May 5-10 will compound the read before the final number is in.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDAR OVERVIEW -->
+<div class="page">
+  <div class="section-label">Overview</div>
+  <div class="page-title">Month at a Glance</div>
+  <div class="page-desc">Two sale events bookend May. Mother&rsquo;s Day carryover (15% off dresses, ends 10 May) sits at the front of the month. Memorial Day (sitewide, 22-25 May) closes it. Between them, a Game Day Set social proof play, the new arrivals launch, and a Clara spotlight. The month closes with a Gabby review-backfill ask.</div>
+
+  <table class="cal">
+    <thead>
+      <tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="empty"><div class="day-num">27</div></td>
+        <td class="empty"><div class="day-num">28</div></td>
+        <td class="empty"><div class="day-num">29</div></td>
+        <td class="empty"><div class="day-num">30</div><span class="cal-note">Apr 30 close (queued)</span></td>
+        <td><div class="day-num">1 May</div></td>
+        <td><div class="day-num">2</div></td>
+        <td><div class="day-num">3</div></td>
+      </tr>
+      <tr>
+        <td><div class="day-num">4</div></td>
+        <td><div class="day-num">5</div><span class="cal-event ev-md">MD Gift Edit</span></td>
+        <td><div class="day-num">6</div></td>
+        <td><div class="day-num">7</div></td>
+        <td><div class="day-num">8</div></td>
+        <td><div class="day-num">9</div></td>
+        <td><div class="day-num">10</div><span class="cal-event ev-elena">MD Last Chance</span><span class="cal-note">Mother&rsquo;s Day &middot; sale ends</span></td>
+      </tr>
+      <tr>
+        <td><div class="day-num">11</div></td>
+        <td><div class="day-num">12</div></td>
+        <td><div class="day-num">13</div><span class="cal-event ev-content">Game Day Social Proof</span></td>
+        <td><div class="day-num">14</div></td>
+        <td><div class="day-num">15</div></td>
+        <td><div class="day-num">16</div><span class="cal-event ev-npd">New Arrivals Launch</span></td>
+        <td><div class="day-num">17</div></td>
+      </tr>
+      <tr>
+        <td><div class="day-num">18</div></td>
+        <td><div class="day-num">19</div><span class="cal-event ev-npd">Clara Bodysuit</span></td>
+        <td><div class="day-num">20</div></td>
+        <td><div class="day-num">21</div></td>
+        <td><div class="day-num">22</div><span class="cal-event ev-elena">Memorial Launch</span></td>
+        <td><div class="day-num">23</div></td>
+        <td><div class="day-num">24</div><span class="cal-event ev-mem">Memorial Mid</span></td>
+      </tr>
+      <tr>
+        <td><div class="day-num">25</div><span class="cal-event ev-elena">Memorial Close</span><span class="cal-note">Memorial Day</span></td>
+        <td><div class="day-num">26</div></td>
+        <td><div class="day-num">27</div></td>
+        <td><div class="day-num">28</div><span class="cal-event ev-gabby">Review Drive</span></td>
+        <td><div class="day-num">29</div></td>
+        <td><div class="day-num">30</div></td>
+        <td><div class="day-num">31</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#9d4348"></div>Mother&rsquo;s Day</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#606c38"></div>Elena Letter</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#8a5a1f"></div>Social Proof / Content</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#1f6a4f"></div>New Arrivals</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4a3d8b"></div>Memorial Day</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#555"></div>Gabby / Community</div>
+  </div>
+</div>
+
+<!-- CAMPAIGNS -->
+<div class="page">
+  <div class="section-label">Campaigns</div>
+  <div class="page-title">The Plan</div>
+  <div class="page-desc">Nine sends across May. Each one grouped by week with its objective, products, promo requirements, and the April insight that informed it.</div>
+
+  <div class="week-group">
+    <div class="week-header">
+      <span class="week-num">Week One</span>
+      <span class="week-title">Mother&rsquo;s Day Close</span>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#9d4348"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#9d4348">01</div>
+        <div class="card-name">The Mother&rsquo;s Day Edit, 5 Days to Go</div>
+        <div class="card-meta">Mother&rsquo;s Day &middot; Tuesday 5 May &middot; Image Editorial</div>
+        <div class="card-desc">A curated dress gift guide. Five dresses styled for different mum archetypes. The brunch mum, the holiday mum, the at-home mum, the busy mum, and one for yourself. Time-poor gifters who haven&rsquo;t bought yet are the main target.</div>
+        <div class="card-detail">Solene (11 colours) &middot; Calypso Tiered &middot; Odette &middot; Riviera Floral Maxi &middot; Verona Two-piece</div>
+        <div class="card-promo promo-md">15% off dresses &middot; code MOM15 &middot; ends 10 May</div>
+        <div class="card-rationale"><strong>Why now:</strong> Same five dresses featured in the Apr 24 launch, so consistency reinforces the offer. Five days from Mother&rsquo;s Day is the prime "I haven&rsquo;t bought a gift yet" window. Send to engaged segments only, not the full database.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#606c38"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#606c38">02</div>
+        <div class="card-name">Mother&rsquo;s Day Last Chance</div>
+        <div class="card-meta">Elena Letter &middot; Sunday 10 May &middot; Plain Text</div>
+        <div class="card-desc">Plain text founder letter. Sale ends midnight tonight. Personal urgency: "I just genuinely don&rsquo;t want you to miss out." Names two or three specific dresses in specific colourways with a hyperlinked text CTA. Same template that drove 19 orders for Easter.</div>
+        <div class="card-detail">Solene in Oatstone &middot; Calypso in Onyx &middot; Odette as Elena&rsquo;s pick</div>
+        <div class="card-promo promo-md">15% off dresses &middot; code MOM15 &middot; ends 10 May 11:59pm PT</div>
+        <div class="card-rationale"><strong>Why now:</strong> Easter Last Chance Elena Letter generated the most orders of any April send (19). Send Sunday morning so it lands the morning of Mother&rsquo;s Day, perfect timing for the treat-yourself segment.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="week-group">
+    <div class="week-header">
+      <span class="week-num">Week Two</span>
+      <span class="week-title">Game Day Social Proof + New Arrivals Launch</span>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#8a5a1f"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#8a5a1f">03</div>
+        <div class="card-name">Why Women Keep Coming Back to Game Day</div>
+        <div class="card-meta">Social Proof &middot; Wednesday 13 May &middot; Image Editorial</div>
+        <div class="card-desc">Same template that pulled $1,716 for the April Solene send, this time on the Game Day Set. Image-led with customer quotes embedded as image cards, single-product focus, four PDP links. The angle: built-in shorts, 15 colours, the set that earns its place in the rotation.</div>
+        <div class="card-detail">Game Day Set ($58, 15 colours) &middot; Cross-sell: Cabin Cuff Socks</div>
+        <div class="card-rationale"><strong>Why now:</strong> The Solene "Why Women Keep Reordering" template was the top revenue email of April. Switching the product to Game Day Set keeps the format fresh while running the same play that&rsquo;s already proven. Game Day is the brand&rsquo;s current bestseller and hasn&rsquo;t had its own social proof moment yet.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#1f6a4f"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#1f6a4f">04</div>
+        <div class="card-name">New In: Three Just Landed</div>
+        <div class="card-meta">NPD Launch &middot; Saturday 16 May &middot; Image Editorial</div>
+        <div class="card-desc">One consolidated launch for the three new arrivals. Image-led with one stack per product (hero shot, colour grid, quick lifestyle context). Each product gets its own block but they share the email. Drives traffic to the new arrivals collection page as the umbrella destination.</div>
+        <div class="card-detail">
+          <strong>Elara Pinafore</strong> ($58, jumper dress, 6 colours, S to 3XL) &middot;
+          <strong>Ease Two-Piece</strong> ($68, ribbed loungewear set, 6 colours, S to XL) &middot;
+          <strong>Clara Sculpt Bodysuit</strong> ($48, ribbed foundational layer, 9 colours, S to 2XL)
+        </div>
+        <div class="card-rationale"><strong>Why now:</strong> One email, three products. Avoids the multi-product roundup trap by giving each piece its own dedicated block instead of a blended "build a wardrobe" pitch. Tests which of the three pulls hardest before committing follow-up real estate.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="week-group">
+    <div class="week-header">
+      <span class="week-num">Week Three</span>
+      <span class="week-title">Clara Spotlight + Memorial Day Open</span>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#1f6a4f"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#1f6a4f">05</div>
+        <div class="card-name">Meet Clara, The Foundational Layer</div>
+        <div class="card-meta">NPD Spotlight &middot; Tuesday 19 May &middot; Image Editorial</div>
+        <div class="card-desc">Single-product feature for the Clara Sculpt Bodysuit. The foundational layer angle: ribbed, square neckline, smoothing, opaque, layers under everything. Picks up on the launch email&rsquo;s standout if performance data comes in clearly, or runs anyway because the layering story doesn&rsquo;t fit inside a multi-product launch.</div>
+        <div class="card-detail">Clara Sculpt Bodysuit ($48, 9 colours, S to 2XL) &middot; Cross-sell: Loop Wrap or Cloud Modal Set</div>
+        <div class="card-rationale"><strong>Why now:</strong> Bodysuits convert best when shown solo with clear positioning. Three days from launch is the right window to drill into the standout piece while it&rsquo;s still warm.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#606c38"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#606c38">06</div>
+        <div class="card-name">Memorial Day Sale Launch</div>
+        <div class="card-meta">Elena Letter &middot; Friday 22 May &middot; Plain Text</div>
+        <div class="card-desc">Sitewide sale opens. Elena letter format with personal context: the new arrivals are now in the mix, customers asked about the sets, end of spring. Names three or four specific products in specific colours, hyperlinked text CTA.</div>
+        <div class="card-detail">Hero callouts: Solene &middot; Game Day Set &middot; Clara Sculpt &middot; New arrivals all eligible</div>
+        <div class="card-promo promo-mem">Sitewide discount needed (suggest 20% off, 22-25 May, code TBC)</div>
+        <div class="card-rationale"><strong>Why now:</strong> April&rsquo;s only sitewide event was Easter. The MD sale ran on dresses only. Memorial Day is the moment for a sitewide lever. Broader product mix, end-of-month revenue push, and the new arrivals get a discount window in their first 6 days on site.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#4a3d8b"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#4a3d8b">07</div>
+        <div class="card-name">Memorial Day, The Long-Weekend Edit</div>
+        <div class="card-meta">Memorial Day &middot; Sunday 24 May &middot; Image Editorial</div>
+        <div class="card-desc">Mid-sale image-led reminder. Hero products and the new arrivals featured visually. Aimed at shoppers who opened Friday&rsquo;s letter but didn&rsquo;t click. Closes with "ends midnight Monday."</div>
+        <div class="card-detail">Solene &middot; Clara Sculpt Bodysuit &middot; Elara Pinafore &middot; Ease Two-Piece &middot; Game Day Set</div>
+        <div class="card-promo promo-mem">Sitewide discount &middot; ends 25 May 11:59pm</div>
+        <div class="card-rationale"><strong>Why now:</strong> Two-day gap from the Friday letter keeps the sale top of mind without fatigue. The image format gives the new arrivals their proper visual moment alongside the proven heroes.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="week-group">
+    <div class="week-header">
+      <span class="week-num">Week Four</span>
+      <span class="week-title">Memorial Day Close + Review Drive</span>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#606c38"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#606c38">08</div>
+        <div class="card-name">Memorial Day Last Chance</div>
+        <div class="card-meta">Elena Letter &middot; Monday 25 May &middot; Plain Text</div>
+        <div class="card-desc">Plain text founder letter. Sale ends tonight at midnight. Names what&rsquo;s been moving over the weekend with specific colourways. Soft urgency, hyperlinked text CTA, same proven template as the Easter Last Chance and the 10 May MD close.</div>
+        <div class="card-detail">Top performers from the weekend (live data, but Solene, Clara, and Game Day Set are the most likely callouts)</div>
+        <div class="card-promo promo-mem">Sitewide discount &middot; ends tonight 11:59pm</div>
+        <div class="card-rationale"><strong>Why now:</strong> Three Elena letter closes across May (Apr 30, 10 May, 25 May) is the highest-converting cadence we have evidence for. This is the template that owns the close.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#555"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#555">09</div>
+        <div class="card-name">A Quick Favour from Gabby</div>
+        <div class="card-meta">Review Drive &middot; Thursday 28 May &middot; Gabby Letter</div>
+        <div class="card-desc">Casual letter from Gabby asking recent buyers (post-MD and post-Memorial Day) for a TrustPilot review. Personal tone, no pressure. The thank-you is real money: $50 off your next order for anyone who leaves a verified review.</div>
+        <div class="card-detail">Audience: anyone who placed an order in the last 60 days. Direct link to TrustPilot. Code delivered post-review or via auto-trigger if Klaviyo + TrustPilot integration supports it.</div>
+        <div class="card-promo promo-review">$50 off your next order &middot; for verified TrustPilot reviews</div>
+        <div class="card-rationale"><strong>Why now:</strong> Reviews are an open pain point. Two back-to-back sale events have just delivered hundreds of orders, the freshest possible review pool. Gabby is the right voice for this ask. The $50 thank-you is generous enough to actually move people to write the review, which is the bottleneck.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="week-group" style="margin-top: 32px; padding: 22px 24px; background: #fafafa; border-radius: 6px;">
+    <div class="week-num" style="margin-bottom: 10px;">Open Decisions</div>
+    <ul style="font-size: 12px; color: #555; line-height: 1.8; padding-left: 20px;">
+      <li><strong>Memorial Day discount level &amp; mechanics.</strong> Suggesting 20% off sitewide, 22-25 May. Needs sign-off on % and code.</li>
+      <li><strong>Mother&rsquo;s Day audience targeting.</strong> Recommend tighter segments for May 5 (engaged 60-day) given the Apr 24 broad blast already went to 36k. Confirm the segment shape.</li>
+      <li><strong>Clara Sculpt Bodysuit availability.</strong> Site shows several sizes sold out. Confirm full size range will be in stock for the 16 May launch and 19 May spotlight.</li>
+      <li><strong>$50-off review code mechanics.</strong> One-time use, minimum spend (if any), expiry, and whether Klaviyo or TrustPilot fires the email after the review is verified.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">Lohnr &nbsp;&middot;&nbsp; May 2026 &nbsp;&middot;&nbsp; Email Calendar &middot; v3</div>
+  </div>
+</div>
+
+</body>
+</html>
