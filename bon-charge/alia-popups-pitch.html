@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alia Pop-ups for Bon Charge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #0A0A0A;
+    --bg: #FAFAF7;
+    --white: #FFFFFF;
+    --accent: #C8472D;
+    --accent-deep: #9B3520;
+    --warm: #E8E2D8;
+    --muted: #5A5A5A;
+    --border: #E5E5E0;
+    --green: #2E6B4F;
+  }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--black);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 56px;
+  }
+  /* Header */
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .logo-group { display: flex; align-items: center; gap: 18px; }
+  .logo { width: auto; display: block; }
+  .logo-bc { height: 22px; }
+  .logo-alia {
+    height: 24px;
+    filter: brightness(0) saturate(100%);
+    opacity: 0.92;
+  }
+  .logo-x { font-size: 16px; color: #B5B5B5; font-weight: 300; line-height: 1; }
+
+  /* Hero */
+  .hero { margin-bottom: 36px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(200, 71, 45, 0.08);
+    padding: 7px 13px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 56px;
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    max-width: 940px;
+  }
+  h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 800px;
+    line-height: 1.55;
+  }
+  /* Stat bar */
+  .stat-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 36px 0;
+  }
+  .stat { background: var(--white); padding: 26px 22px; }
+  .stat-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .stat-num .accent { color: var(--accent); }
+  .stat-label {
+    font-size: 11.5px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  /* Section */
+  section { margin-bottom: 56px; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+  h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+  .section-intro {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 800px;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  /* Comparison table */
+  .compare {
+    background: var(--white);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .compare-head {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    background: var(--black);
+    color: var(--white);
+  }
+  .compare-head > div {
+    padding: 20px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .compare-head .col-alia {
+    background: var(--accent);
+    position: relative;
+  }
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    border-top: 1px solid var(--border);
+  }
+  .compare-row > div {
+    padding: 18px 24px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .compare-row .feature {
+    font-weight: 600;
+    color: var(--black);
+    background: #FBFAF7;
+  }
+  .compare-row .klaviyo {
+    color: var(--muted);
+    border-left: 1px solid var(--border);
+  }
+  .compare-row .alia {
+    color: var(--black);
+    background: rgba(200, 71, 45, 0.04);
+    border-left: 1px solid var(--border);
+    font-weight: 500;
+  }
+  .check, .cross {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 14px;
+    font-size: 9px;
+    font-weight: 700;
+    margin-right: 8px;
+    vertical-align: 1px;
+  }
+  .check { background: var(--green); color: white; }
+  .cross { background: #C9C9C9; color: white; }
+
+  /* === DECK SHOWCASE === */
+  .deck-intro {
+    background: var(--black);
+    color: var(--white);
+    padding: 36px 40px;
+    margin-bottom: 28px;
+  }
+  .deck-intro .section-label { color: #F5A088; margin-bottom: 12px; }
+  .deck-intro .section-label::before { background: #F5A088; }
+  .deck-intro h2 { color: var(--white); margin-bottom: 12px; font-size: 32px; }
+  .deck-intro p {
+    color: rgba(255,255,255,0.72);
+    font-size: 15.5px;
+    max-width: 800px;
+    line-height: 1.55;
+  }
+
+  /* Each slide — image on top, meta below */
+  .slide {
+    background: var(--white);
+    border: 1px solid var(--border);
+    margin-bottom: 22px;
+    padding: 36px 36px 32px;
+  }
+  .slide-img-wrap {
+    width: 100%;
+    background: var(--bg);
+    padding: 28px;
+    border-radius: 4px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slide-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    box-shadow:
+      0 22px 50px rgba(0,0,0,0.14),
+      0 6px 12px rgba(0,0,0,0.06);
+    border-radius: 4px;
+  }
+  .slide-meta {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1.4fr;
+    gap: 36px;
+    align-items: start;
+  }
+  .slide-left .slide-tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: var(--warm);
+    color: var(--accent-deep);
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+  .slide-left .slide-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+  .slide-left .slide-type {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+  .slide-middle {
+    border-left: 1px solid var(--border);
+    padding-left: 28px;
+  }
+  .slide-bignum {
+    font-family: 'Fraunces', serif;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .slide-biglbl {
+    font-size: 13px;
+    color: var(--black);
+    font-weight: 600;
+    margin-top: 8px;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+  }
+  .slide-substats {
+    list-style: none;
+    border-left: 1px solid var(--border);
+    padding-left: 28px;
+  }
+  .slide-substats li {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .slide-substats li::before {
+    content: "→";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-weight: 600;
+  }
+  .slide-substats strong { color: var(--black); font-weight: 600; }
+  .slide-quote {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--black);
+    line-height: 1.5;
+    max-width: 820px;
+  }
+  .slide-quote cite {
+    display: block;
+    font-style: normal;
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Pricing */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 24px;
+  }
+  .price-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 26px 24px;
+    position: relative;
+  }
+  .price-card.recommended { border: 2px solid var(--accent); }
+  .price-tag {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background: var(--accent);
+    color: white;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 4px 10px;
+    letter-spacing: 0.12em;
+    border-radius: 3px;
+  }
+  .price-name {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+  .price-traffic {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .price-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .price-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1;
+  }
+  .price-period { font-size: 13px; color: var(--muted); }
+  .price-billing {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .price-billing s { color: #B5B5B5; }
+  .price-features {
+    list-style: none;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .price-features li {
+    font-size: 12.5px;
+    color: var(--black);
+    padding: 4px 0;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .price-features li::before {
+    content: "→";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-weight: 600;
+  }
+  .pricing-note {
+    background: var(--warm);
+    border-left: 3px solid var(--accent);
+    padding: 22px 28px;
+    margin-top: 24px;
+    font-size: 14.5px;
+    color: var(--black);
+    line-height: 1.6;
+  }
+  .pricing-note strong { color: var(--accent-deep); }
+  .trial-strip {
+    background: var(--black);
+    color: white;
+    padding: 22px 28px;
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .trial-strip .ts-h {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .trial-strip .ts-h em { color: #F5A088; font-style: normal; font-weight: 600; }
+  .trial-strip .ts-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+  }
+  /* Footer */
+  .doc-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 880px) {
+    .page { padding: 28px 20px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 26px; }
+    .stat-bar, .pricing-grid { grid-template-columns: 1fr; }
+    .compare-head, .compare-row { grid-template-columns: 1fr; }
+    .slide { padding: 24px 20px; }
+    .slide-img-wrap { padding: 16px; }
+    .slide-meta { grid-template-columns: 1fr; gap: 24px; }
+    .slide-middle, .slide-substats { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 20px; }
+    .trial-strip { flex-direction: column; align-items: flex-start; }
+  }
+  @media print {
+    body { background: white; }
+    .page { padding: 24px; max-width: none; }
+    section { page-break-inside: avoid; margin-bottom: 28px; }
+    .slide, .price-card { page-break-inside: avoid; }
+    .deck-intro { page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="doc-header">
+    <div class="logo-group">
+      <img src="https://boncharge.com/cdn/shop/files/BonCharge_logo.png?v=1758612476&amp;width=600" alt="Bon Charge" class="logo logo-bc">
+      <span class="logo-x">×</span>
+      <img src="https://cdn.prod.website-files.com/67f73f7113c2a47b5e2117c1/69a82397179ba529d4112f91_Alia%201.png" alt="Alia" class="logo logo-alia">
+    </div>
+    <div>April 2026 · Pitch Deck</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="eyebrow">Email list growth · Pop-up tooling upgrade</div>
+    <h1>Klaviyo's native pop-up converts at 3–5%. Alia averages <em>15%+.</em></h1>
+    <p class="hero-sub">Same Bon Charge traffic, same Klaviyo backend — better front door. The trial is free for 30 days, paid only if the lift shows up in the data.</p>
+  </div>
+
+  <!-- Stat Bar -->
+  <div class="stat-bar">
+    <div class="stat">
+      <div class="stat-num">15<span class="accent">%+</span></div>
+      <div class="stat-label">Alia avg opt-in (Klaviyo: 3–5%)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3–5<span class="accent">×</span></div>
+      <div class="stat-label">Typical lift in subscribers captured</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30<span class="accent">d</span></div>
+      <div class="stat-label">Free trial on live traffic</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2,500<span class="accent">+</span></div>
+      <div class="stat-label">DTC brands running Alia</div>
+    </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <section>
+    <div class="section-label">Klaviyo native vs Alia</div>
+    <h2>Where the gap actually shows up.</h2>
+
+    <div class="compare">
+      <div class="compare-head">
+        <div>Capability</div>
+        <div>Klaviyo Native Pop-up</div>
+        <div class="col-alia">Alia</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="feature">Design flexibility</div>
+        <div class="klaviyo"><span class="cross">×</span>Stuck inside the template builder. Most Figma designs need compromises or custom code to ship.</div>
+        <div class="alia"><span class="check">✓</span>Whatever you design in Figma gets built 1:1 inside Alia. Custom fonts, layouts, animations — all of it.</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="feature">Triggering intelligence</div>
+        <div class="klaviyo"><span class="cross">×</span>Static rules: time on page, scroll, exit intent. Same trigger fires for every visitor.</div>
+        <div class="alia"><span class="check">✓</span>AI Smart Triggering reads engagement signals per visitor and picks the moment to fire.</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="feature">New vs returning customer logic</div>
+        <div class="klaviyo"><span class="cross">×</span>No way to branch the next steps based on whether the email belongs to a new or existing customer.</div>
+        <div class="alia"><span class="check">✓</span><strong>Detects new vs returning customers at email entry.</strong> Then changes what's shown next — different offer, upsell, or content per cohort.</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="feature">Gamified pop-ups</div>
+        <div class="klaviyo"><span class="cross">×</span>Not natively available.</div>
+        <div class="alia"><span class="check">✓</span><strong>Scratch-and-win, spin-the-wheel, click-to-unlock prizes — all built in.</strong> Kopari uses scratch-off and doubled their opt-in rate.</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="feature">Educational pop-up series</div>
+        <div class="klaviyo"><span class="cross">×</span>Offer-only. Can't run a multi-step educational sequence inside the pop-up.</div>
+        <div class="alia"><span class="check">✓</span>Multi-step educational pop-ups that teach the brand or product before asking for the email. JOI runs this format and gets a 21% purchase rate after signup.</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="feature">Average opt-in rate</div>
+        <div class="klaviyo"><span class="cross">×</span>3–5% (industry benchmark)</div>
+        <div class="alia"><span class="check">✓</span>15%+ across 2,500+ brands. Top performers like Graza hit 13.8% (up from 4.5%).</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="feature">Integration stack</div>
+        <div class="klaviyo">Native to Klaviyo only.</div>
+        <div class="alia"><span class="check">✓</span>Native to Klaviyo and every other major ESP. Mixed setups work — different provider for SMS than email, both integrate. Plus performance reporting tools like <strong>Hiro</strong>.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUAL DECK -->
+  <section>
+    <div class="deck-intro">
+      <div class="section-label">Visual showcase</div>
+      <h2>Some of Alia&rsquo;s standout designs.</h2>
+      <p>Pulled straight from Alia's published case studies. Every one of these is a Figma design that got built 1:1 inside Alia — the kind of front-end Klaviyo's native pop-up builder cannot ship. Scroll through the deck.</p>
+    </div>
+
+    <!-- Slide 1: HexClad -->
+    <div class="slide">
+      <div class="slide-img-wrap">
+        <img src="https://cdn.prod.website-files.com/680788605b4d00c41609b63d/69cc8f7df63e436fbe596ea6_Hexclad-Solutions.png" alt="HexClad pop-up" class="slide-img">
+      </div>
+      <div class="slide-meta">
+        <div class="slide-left">
+          <div class="slide-tag">Smart intent-aware funnel</div>
+          <div class="slide-brand">HexClad</div>
+          <div class="slide-type">Premium hybrid cookware · DTC</div>
+        </div>
+        <div class="slide-middle">
+          <div class="slide-bignum">2×</div>
+          <div class="slide-biglbl">Email opt-in rate</div>
+        </div>
+        <ul class="slide-substats">
+          <li><strong>Welcome flow revenue +68%</strong> downstream of the new pop-up</li>
+          <li><strong>Post-signup conversion: 7% → 12%</strong></li>
+          <li><strong>SMS confirmation drop-off cut by 90%</strong> via smart targeting</li>
+          <li><strong>Sale-period flow enrollment +33%</strong></li>
+        </ul>
+      </div>
+      <div class="slide-quote">
+        "Alia is table stakes for any ecommerce brand that's serious about scaling."
+        <cite>— HexClad</cite>
+      </div>
+    </div>
+
+    <!-- Slide 2: Kopari -->
+    <div class="slide">
+      <div class="slide-img-wrap">
+        <img src="https://cdn.prod.website-files.com/680788605b4d00c41609b63d/69cc9ce6bf4928572c3c34ab_Kopari-Solution.png" alt="Kopari Beauty scratch-and-win pop-up" class="slide-img">
+      </div>
+      <div class="slide-meta">
+        <div class="slide-left">
+          <div class="slide-tag">Scratch-and-win · Gamified</div>
+          <div class="slide-brand">Kopari Beauty</div>
+          <div class="slide-type">Clean beauty &amp; skincare · DTC</div>
+        </div>
+        <div class="slide-middle">
+          <div class="slide-bignum">18.5%</div>
+          <div class="slide-biglbl">Email submit rate (doubled from 9%)</div>
+        </div>
+        <ul class="slide-substats">
+          <li><strong>+37% signup lift</strong> from switching to scratch-off vs the previous yes/no format</li>
+          <li><strong>+142% list growth</strong> in the first 90 days</li>
+          <li>Format unavailable inside Klaviyo's native builder</li>
+        </ul>
+      </div>
+      <div class="slide-quote">
+        "Their team is proactive, strategic, and extremely responsive."
+        <cite>— Kopari Beauty</cite>
+      </div>
+    </div>
+
+    <!-- Slide 3: Graza -->
+    <div class="slide">
+      <div class="slide-img-wrap">
+        <img src="https://cdn.prod.website-files.com/680788605b4d00c41609b63d/6936ef59fba707b2b309f53c_Graza-Solutions%201.png" alt="Graza quiz pop-up" class="slide-img">
+      </div>
+      <div class="slide-meta">
+        <div class="slide-left">
+          <div class="slide-tag">Multi-step preference quiz</div>
+          <div class="slide-brand">Graza</div>
+          <div class="slide-type">Premium olive oil · DTC</div>
+        </div>
+        <div class="slide-middle">
+          <div class="slide-bignum">13.8%</div>
+          <div class="slide-biglbl">Email signup rate (up from 4.5% — a 206% lift)</div>
+        </div>
+        <ul class="slide-substats">
+          <li><strong>SMS subscribers grew 377%</strong> off the same pop-up</li>
+          <li><strong>Email subscribers grew 39%</strong></li>
+          <li>Quiz answers feed into Klaviyo as zero-party data for segmentation</li>
+        </ul>
+      </div>
+      <div class="slide-quote">
+        "Alia's interactive popups completely changed how we attract and convert new visitors."
+        <cite>— Graza</cite>
+      </div>
+    </div>
+
+    <!-- Slide 4: JOI -->
+    <div class="slide">
+      <div class="slide-img-wrap">
+        <img src="https://cdn.prod.website-files.com/680788605b4d00c41609b63d/6914012c106de87a4380cdfc_JOI-Challenge.png" alt="JOI educational widget pop-up" class="slide-img">
+      </div>
+      <div class="slide-meta">
+        <div class="slide-left">
+          <div class="slide-tag">Educational widget format</div>
+          <div class="slide-brand">JOI</div>
+          <div class="slide-type">Plant-based food · DTC</div>
+        </div>
+        <div class="slide-middle">
+          <div class="slide-bignum">21%</div>
+          <div class="slide-biglbl">Purchase rate after signup</div>
+        </div>
+        <ul class="slide-substats">
+          <li><strong>Email opt-in 11.6%</strong> (up from 8.5%)</li>
+          <li><strong>Email-driven revenue +15%</strong></li>
+          <li>Educational format teaches the product before asking for the email — Klaviyo offer-only pop-ups can't run this</li>
+        </ul>
+      </div>
+      <div class="slide-quote">
+        "I like the widget style educational format as opposed to just a two-dimensional collecting of emails."
+        <cite>— JOI</cite>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Pricing -->
+  <section>
+    <div class="section-label">Investment</div>
+    <h2>Pricing.</h2>
+    <p class="section-intro">Alia&rsquo;s pricing scales with monthly site traffic, so the exact figure depends on the volume Bon Charge sees. It can vary, but on the current profile we&rsquo;re expecting it to come in <strong>under $300 USD per month</strong>.</p>
+
+    <div class="trial-strip">
+      <div>
+        <div class="ts-h">30 days. <em>Live on Bon Charge traffic.</em></div>
+        <div class="ts-sub">If the lift doesn't show up in the data, walk away — no spend committed.</div>
+      </div>
+      <div style="font-family: 'Fraunces', serif; font-size: 32px; color: #F5A088; font-weight: 500; white-space: nowrap;">→ Let's start.</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="doc-footer">
+    <div>Bon Charge × Alia · Pitch Deck</div>
+    <div>Source: aliapopups.com · April 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
