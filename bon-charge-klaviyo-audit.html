@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bon Charge — Klaviyo Audit</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --wp:#EA4648; --wp-soft:#D63A3C; --wp-bg:rgba(234,70,72,.06); --wp-border:rgba(234,70,72,.15);
+  --green:#047857; --green-bg:rgba(4,120,87,.07); --green-border:rgba(4,120,87,.15);
+  --amber:#B45309; --amber-bg:rgba(180,83,9,.07); --amber-border:rgba(180,83,9,.15);
+  --red:#EA4648; --red-bg:rgba(234,70,72,.07); --red-border:rgba(234,70,72,.15);
+  --blue:#1D4ED8; --blue-bg:rgba(29,78,216,.07); --blue-border:rgba(29,78,216,.15);
+  --bg:#FFFFFF; --bg-alt:#F7F6F5; --bg-card:#FFFFFF;
+  --border:#E0DEDC; --border-md:#C8C5C2;
+  --text:#070909; --text-secondary:#4A4A4A; --text-muted:#888888;
+  --r-sm:6px; --r-md:10px; --r-lg:14px; --r-xl:20px; --r-full:999px;
+  --sidebar-w:240px; --content-max:1000px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,sans-serif;font-size:16px;color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--wp);text-decoration:none}
+a:hover{text-decoration:underline}
+.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-right:1px solid var(--border);padding:28px 0;overflow-y:auto;z-index:100}
+.sidebar-header{padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:14px}
+.sidebar-header .brand{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--text-muted);font-weight:700}
+.sidebar-header .acct{font-size:13px;font-weight:600;margin-top:6px;color:var(--text)}
+.sidebar-header .period{font-size:11px;color:var(--text-muted);margin-top:2px}
+.sidebar nav a{display:block;padding:10px 20px;font-size:13px;font-weight:600;color:var(--text-secondary);border-left:3px solid transparent;transition:all .15s}
+.sidebar nav a:hover{color:var(--text);background:var(--bg-alt);text-decoration:none}
+.sidebar nav a.active{color:var(--wp);background:var(--wp-bg);border-left-color:var(--wp)}
+.main{margin-left:var(--sidebar-w);max-width:var(--content-max);padding:0 36px;margin-right:auto;padding-bottom:80px}
+.section{padding:64px 0;border-top:1px solid var(--border)}
+.section:first-child{border-top:none;padding-top:48px}
+.section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--wp);margin-bottom:14px}
+.section-title{font-size:clamp(26px,4vw,40px);font-weight:800;line-height:1.12;letter-spacing:-.02em;margin-bottom:16px}
+.section-intro{font-size:16px;color:var(--text-secondary);max-width:720px;margin-bottom:32px}
+.hero-period{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--text-muted);background:var(--bg-alt);padding:6px 14px;border-radius:var(--r-full);margin-bottom:24px}
+.hero-account{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:8px}
+.hero-revenue{font-size:clamp(48px,8vw,72px);font-weight:900;color:var(--wp);line-height:1;letter-spacing:-.04em;margin:8px 0}
+.hero-subtitle{font-size:18px;color:var(--text-secondary);max-width:720px;margin-bottom:32px}
+.hero-pitch{margin-top:30px;padding:18px 22px;background:var(--wp-bg);border:1px solid var(--wp-border);border-left:4px solid var(--wp);border-radius:var(--r-md);font-size:15px;color:var(--text);line-height:1.6;max-width:760px}
+.pillar-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;max-width:760px}
+.pill{padding:14px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-md);border-left:4px solid var(--wp)}
+.pill .l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted)}
+.pill .v{font-size:24px;font-weight:900;margin-top:4px}
+.pill .s{font-size:12px;color:var(--text-muted);margin-top:2px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}
+.kpi{padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-md)}
+.kpi.green{border-left:4px solid var(--green);background:var(--green-bg)}
+.kpi.amber{border-left:4px solid var(--amber);background:var(--amber-bg)}
+.kpi.red{border-left:4px solid var(--red);background:var(--red-bg)}
+.kpi.blue{border-left:4px solid var(--blue);background:var(--blue-bg)}
+.kpi .label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted)}
+.kpi .value{font-size:32px;font-weight:900;line-height:1.1;margin-top:4px;letter-spacing:-.02em}
+.kpi .sub{font-size:12px;color:var(--text-secondary);margin-top:4px}
+.metrics-table{width:100%;border-collapse:collapse;font-size:14px;margin:18px 0}
+.metrics-table th{text-align:left;padding:12px 16px;background:var(--bg-alt);border-bottom:2px solid var(--border-md);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted)}
+.metrics-table td{padding:12px 16px;border-bottom:1px solid var(--border)}
+.metrics-table td.current{font-weight:700;font-size:16px}
+.metrics-table td.benchmark{color:var(--text-muted);font-size:13px}
+.metrics-table td.green{color:var(--green)}
+.metrics-table td.amber{color:var(--amber)}
+.metrics-table td.red{color:var(--red)}
+.improvement-block{margin-bottom:22px;padding:22px 26px;background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--wp);border-radius:0 var(--r-md) var(--r-md) 0}
+.improvement-block.amber{border-left-color:var(--amber)}
+.improvement-block.red{border-left-color:var(--red)}
+.improvement-block.green{border-left-color:var(--green)}
+.improvement-block .ib-title{font-size:18px;font-weight:800;margin-bottom:10px;line-height:1.2}
+.improvement-block .ib-tags{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:var(--r-full)}
+.tag.critical{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border)}
+.tag.high{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.tag.medium{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
+.tag.quick{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+.improvement-block .ib-body{font-size:14px;color:var(--text-secondary);line-height:1.7}
+.improvement-block .ib-body strong{color:var(--text);font-weight:700}
+.improvement-block .ib-body p{margin-bottom:10px}
+.improvement-block .ib-body ul, .improvement-block .ib-body ol{margin:8px 0 8px 22px}
+.improvement-block .ib-body li{margin-bottom:4px}
+.improvement-block .ib-revenue{font-size:16px;font-weight:800;color:var(--wp);margin-top:14px;padding-top:12px;border-top:1px dashed var(--border)}
+.insight-card{padding:18px 22px;background:var(--blue-bg);border:1px solid var(--blue-border);border-left:4px solid var(--blue);border-radius:var(--r-md);font-size:14px;color:var(--text-secondary);line-height:1.6;margin:18px 0}
+.insight-card strong{color:var(--text)}
+.summary-table{width:100%;border-collapse:collapse;font-size:13px;margin:18px 0}
+.summary-table th{text-align:left;padding:10px 12px;border-bottom:2px solid var(--border-md);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted)}
+.summary-table th.month{text-align:right;min-width:78px}
+.summary-table td{padding:10px 12px;border-bottom:1px solid var(--border)}
+.summary-table td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.summary-table td.green{color:var(--green)}
+.summary-table td.amber{color:var(--amber)}
+.summary-table td.red{color:var(--red)}
+.strengths-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.strength{padding:18px 20px;background:var(--green-bg);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:var(--r-md)}
+.strength .v{font-size:24px;font-weight:900;color:var(--green);line-height:1}
+.strength .t{font-size:13px;font-weight:700;margin-top:6px}
+.strength .s{font-size:13px;color:var(--text-secondary);margin-top:6px;line-height:1.5}
+.mobile-header{display:none}
+@media (max-width: 800px){
+  .sidebar{transform:translateX(-100%);transition:transform .2s}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0;padding:0 18px}
+  .mobile-header{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);background:#fff;position:sticky;top:0;z-index:99}
+  .hamburger{font-size:22px;background:none;border:none;cursor:pointer}
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .pillar-row{grid-template-columns:1fr}
+  .strengths-grid{grid-template-columns:1fr}
+}
+@media print{
+  .sidebar{display:none}.main{margin-left:0}
+  .section{page-break-inside:avoid;padding:24px 0;border-top:1px solid var(--border)}
+  .improvement-block{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="brand">Klaviyo Audit</div>
+    <div class="acct">Bon Charge</div>
+    <div class="period">Klaviyo Audit | Nov 2025 — May 2026</div>
+  </div>
+  <nav>
+    <a href="#opportunity" class="active">The Opportunity</a>
+    <a href="#list-growth">List Growth</a>
+    <a href="#compliance">Compliance</a>
+    <a href="#flows">Flows</a>
+    <a href="#campaigns">Campaigns</a>
+    <a href="#strengths">What's Working</a>
+  </nav>
+</aside>
+
+<header class="mobile-header">
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+  <strong>Bon Charge — Klaviyo Audit</strong>
+</header>
+
+<main class="main">
+
+<!-- ================ 1. THE OPPORTUNITY ================ -->
+<section class="section" id="opportunity" style="border-top:none;padding-top:36px">
+  <span class="hero-period">Audit Period: 5 Nov 2025 — 4 May 2026 (180 days)</span>
+  <div class="hero-account">BON CHARGE | Klaviyo Account ID: XHbFHq</div>
+  <h1 style="font-size:clamp(30px,5vw,48px);font-weight:900;letter-spacing:-.03em;line-height:1.1">The Opportunity</h1>
+  <div class="hero-revenue">+$1.5M—$2.5M / yr</div>
+  <p class="hero-subtitle">in unrealised email revenue we've identified through forensic analysis of your Klaviyo account over the last 180 days.</p>
+
+  <div class="pillar-row">
+    <div class="pill" style="border-left-color:var(--red)">
+      <div class="l">List Growth (priority #1)</div>
+      <div class="v">−65,621</div>
+      <div class="s">subs lost in 180 days</div>
+    </div>
+    <div class="pill" style="border-left-color:var(--amber)">
+      <div class="l">Flows</div>
+      <div class="v">$3.98M / yr</div>
+      <div class="s">55% from one 3-email Welcome Series</div>
+    </div>
+    <div class="pill" style="border-left-color:var(--amber)">
+      <div class="l">Campaigns</div>
+      <div class="v">$9.13M / yr</div>
+      <div class="s">86% revenue from promotional sends</div>
+    </div>
+  </div>
+
+  <div class="hero-pitch">
+    <strong>Email generated $13.1M / yr (27.7% of store revenue) — the program works.</strong> The biggest issue isn't on the revenue side. It's that the list is shrinking by ~11K subscribers / month, the Welcome Series is doing 55% of flow revenue from just 3 emails, and the campaign program leans 86% on promotional discount sends with very little educational content connecting them. Fix list growth first, plug the compliance gaps, extend Welcome with zero-party data, swap the Add-to-Cart trigger to Shopify integration, and rebalance the campaign content mix — these are operational moves on an asset already carrying $13M / yr.
+  </div>
+</section>
+
+<!-- ================ 2. LIST GROWTH (TOP PRIORITY) ================ -->
+<section class="section" id="list-growth">
+  <div class="section-label">PRIORITY #1 — LIST GROWTH</div>
+  <h2 class="section-title">The list is shrinking. Everything else is downstream of this.</h2>
+  <p class="section-intro">In 180 days you added 90,195 subscribers and lost 155,816 — a net loss of 65,621. The list is contracting roughly 11K subscribers / month. Email revenue holds today because the engaged core still converts, but every shrinking month compounds.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi green">
+      <div class="label">New Subs (180d)</div>
+      <div class="value">90,195</div>
+      <div class="sub">~15K / mo average</div>
+    </div>
+    <div class="kpi red">
+      <div class="label">Unsubs (180d)</div>
+      <div class="value">155,816</div>
+      <div class="sub">1.7x replacement rate</div>
+    </div>
+    <div class="kpi red">
+      <div class="label">Net Growth (180d)</div>
+      <div class="value">−65,621</div>
+      <div class="sub">List contracting every month</div>
+    </div>
+    <div class="kpi amber">
+      <div class="label">Form Conversion</div>
+      <div class="value">3.6%</div>
+      <div class="sub">vs 5%+ benchmark for premium</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:18px;margin:30px 0 12px;font-weight:800">Where the unsubscribes come from</h3>
+  <table class="metrics-table">
+  <thead><tr><th>Source</th><th>Unsubs (180d)</th><th>% of total</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Campaigns (broad list sends)</strong></td><td class="current red">~125,529</td><td class="current red">93.8%</td><td class="benchmark">Driven by frequency (167 sends in 180d) + content mismatch</td></tr>
+    <tr><td><strong>Flows (automated)</strong></td><td class="current">8,335</td><td class="current">6.2%</td><td class="benchmark">Concentrated in one bad flow — see below</td></tr>
+    <tr style="background:var(--bg-alt);font-weight:700"><td>Total email unsubs (180d)</td><td class="current">~133,864</td><td class="current">100%</td><td class="benchmark">Per-month allocation; balance is from list-level events</td></tr>
+  </tbody>
+  </table>
+
+  <h4 style="font-size:14px;font-weight:800;margin:18px 0 10px;color:var(--text-secondary)">Flow unsubs — concentration is severe</h4>
+  <table class="metrics-table">
+  <thead><tr><th>Flow source</th><th>Unsubs</th><th>% of flow unsubs</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Retention.com Welcome v2 flow</strong></td><td class="current red">5,888</td><td class="current red">70.6%</td></tr>
+    <tr><td>Other Retention.com reclaim flows</td><td class="current">61</td><td class="current">0.7%</td></tr>
+    <tr><td>All other flows combined (15 flows)</td><td class="current">2,386</td><td class="current">28.6%</td></tr>
+    <tr style="background:var(--bg-alt);font-weight:700"><td>Total flow unsubs</td><td class="current">8,335</td><td class="current">100%</td></tr>
+  </tbody>
+  </table>
+
+  <div class="insight-card">
+    <strong>One flow drives 71% of all flow unsubs.</strong> The Retention.com Welcome v2 flow runs cold-identified (cookie-resolved) profiles through a marketing series they never opted into. Its 3.35% unsub rate is 17x the 0.20% benchmark, and at 175,661 recipients that's 5,888 unsubs against just $34,534 in revenue — $0.20 RPR vs $10.81 for the real Welcome. This isn't a flow problem. It's a "we're emailing people who don't want to hear from us" problem.
+  </div>
+
+  <h3 style="font-size:22px;margin:36px 0 16px;font-weight:800">List Growth Improvement Areas</h3>
+
+  <div class="improvement-block red">
+    <div class="ib-tags">
+      <span class="tag critical">Critical</span>
+      <span class="tag quick">Quick Win</span>
+      <span class="tag medium">Pillar: List Health</span>
+    </div>
+    <div class="ib-title">1. Pause the Retention.com Welcome v2 flow this week</div>
+    <div class="ib-body">
+      <p>Of all 17 live flows, this one stands out as net-negative. <strong>175,661 recipients in 180 days, 5,888 unsubscribes (3.35%), $34,534 revenue ($0.20 RPR).</strong> Every other welcome flow runs at 1-2% unsub and $5-15 RPR. The reason: these aren't subscribers who opted in. They're identity-resolved cookies getting marketing email for the first time.</p>
+      <p>Beyond the direct unsub damage, this flow is contaminating the wider list. Every spam complaint or "this is unwanted mail" signal feeds Gmail's domain reputation model — which then degrades inbox placement for the <em>real</em> subscribers' Welcome Series, sale campaigns, and post-purchase emails.</p>
+      <p><strong>What to do this week:</strong></p>
+      <ul>
+        <li>Pause the Retention.com Welcome v2 flow. Keep the 3 reclaim flows live (Checkout Started Reclaim, Reclaim Browse, Reclaim Add to Cart) — they only fire on real intent signals and produce healthy $2.25-$7.10 RPR.</li>
+        <li>Re-evaluate the Retention.com subscription. If you're paying for full identity resolution but only using it for reclaim, downgrade or cancel. Estimated saving: $30-60K / yr.</li>
+        <li>Monitor spam complaint rate weekly for 30 days. Expect a drop from current ~48/day toward ~25/day.</li>
+      </ul>
+    </div>
+    <div class="ib-revenue">Revenue at stake: +$200K-$350K / yr (recovered domain reputation + saved unsubs)</div>
+  </div>
+
+  <div class="improvement-block amber">
+    <div class="ib-tags">
+      <span class="tag high">High Priority</span>
+      <span class="tag medium">Effort: Medium</span>
+      <span class="tag medium">Pillar: List Growth</span>
+    </div>
+    <div class="ib-title">2. Lift form conversion from 3.6% → 6%+ with the four-form approach</div>
+    <div class="ib-body">
+      <p>Right now there's effectively one main popup, plus the Aliya third-party form optimisation tool already under test. Aliya should drive a meaningful lift on its own. The bigger structural win is running <strong>parallel forms with different intents</strong>, not optimising one form harder. Build out the following:</p>
+      <ul>
+        <li><strong>Main popup (existing) — optimised by Aliya.</strong> Continue the current test.</li>
+        <li><strong>Exit-intent popup on PDP / cart / checkout.</strong> Captures abandoners separately from main popup. Typical lift: 1-2% incremental signups on top of main popup.</li>
+        <li><strong>Anniversary / birthday data-collection form for existing subscribers.</strong> Embedded in the welcome flow + footer of post-purchase emails. The goal isn't acquisition — it's enriching zero-party data on existing subscribers (birthday, household, health goals).</li>
+        <li><strong>Health-goal selector inside the main popup.</strong> Single-question add: "What's your #1 health goal?" with options: Better Sleep / Faster Recovery / Skin &amp; Anti-Aging / EMF Protection / Overall Wellness. This becomes the segmentation lever for everything downstream — onboarding personalisation, campaign content selection, post-purchase cross-sell paths.</li>
+      </ul>
+      <p><strong>Why zero-party data matters specifically for this brand:</strong> Bon Charge sells across 6 categories with high educational complexity. When we know a subscriber's stated health goal at signup, the entire onboarding can be personalised to that path. Personalised welcome flows in audited accounts produce 30-50% more revenue than generic ones, and unsub rates drop too because content matches stated interest.</p>
+    </div>
+    <div class="ib-revenue">Revenue at stake: +$300K-$500K / yr (form conversion + downstream personalisation)</div>
+  </div>
+</section>
+
+<!-- ================ 3. COMPLIANCE ================ -->
+<section class="section" id="compliance">
+  <div class="section-label">COMPLIANCE GAPS</div>
+  <h2 class="section-title">Two compliance gaps to fix this week</h2>
+  <p class="section-intro">Bon Charge runs one Klaviyo account for US, UK, and Australia. Two specific gaps create real legal exposure — both are quick fixes worth making before the next campaign sends.</p>
+
+  <div class="improvement-block red">
+    <div class="ib-tags">
+      <span class="tag critical">Critical — Legal Risk</span>
+      <span class="tag quick">Quick Win</span>
+      <span class="tag medium">Effort: 1 hour</span>
+    </div>
+    <div class="ib-title">1. Footer is missing a visible postal address</div>
+    <div class="ib-body">
+      <p>Inspecting campaign and flow templates, there's no <strong>visible text postal address</strong> in the footer of Bon Charge's emails. CAN-SPAM (US), CASL (Canada), Spam Act 2003 (Australia), and GDPR/PECR (UK/EU) all require a clearly displayed physical postal address of the sender on every commercial email. Right now, recipients can't easily see one.</p>
+      <p>Any single recipient could file a complaint with their regulator and the path to a settlement starts. CAN-SPAM penalties alone are up to $51,744 per violation; CASL is up to CAD $10M per violation. Regulators pursue these specifically because they're easy wins.</p>
+      <p><strong>Fix this week:</strong></p>
+      <ul>
+        <li>Edit the master email footer template. Add a visible text block with: company legal name (BLUBlox Pty Ltd t/a Bon Charge), full street address, and the unsubscribe link.</li>
+        <li>Use country-conditional rendering (you already have <code>{% if person.location.country %}</code> blocks elsewhere) to show a US-relevant address for US recipients if applicable, and the AU registered office for everyone else.</li>
+        <li>Apply across all live flow templates and the campaign master template.</li>
+      </ul>
+    </div>
+    <div class="ib-revenue">Cost of inaction: $50K-$10M+ in regulatory exposure. Cost of fix: 1 hour.</div>
+  </div>
+
+  <div class="improvement-block amber">
+    <div class="ib-tags">
+      <span class="tag high">High Priority — GDPR</span>
+      <span class="tag medium">Effort: Medium</span>
+    </div>
+    <div class="ib-title">2. UK / EU sending isn't separated from implicit-consent regions</div>
+    <div class="ib-body">
+      <p>The 25,361-profile UK Segment exists, but campaign audiences mostly send via the broader "Engaged 0-180D" or "10-day engaged" segments — which don't filter for explicit GDPR-style consent. UK and EU subscribers require <strong>active opt-in</strong> (not implied or pre-ticked). Profiles added without explicit consent shouldn't be receiving marketing email at all.</p>
+      <p><strong>What needs to change:</strong></p>
+      <ul>
+        <li><strong>Geo-targeted popups:</strong> The main popup needs a UK/EU variant with explicit consent language ("I consent to receive marketing emails from Bon Charge"), no pre-ticked checkboxes, and a clear opt-out path.</li>
+        <li><strong>UK-specific sending segment:</strong> Build "UK + Confirmed Opt-In" segment definition. Use this as the inclusion for any campaign that includes UK recipients. Exclude implicit-consent profiles entirely.</li>
+        <li><strong>Flow cloning for UK:</strong> The Welcome Series, Browse Abandonment, and Cart Abandonment flows currently fire on any profile regardless of region. Clone them and add region-conditional logic — UK profiles only enter if they have explicit consent on file.</li>
+        <li><strong>Checkout consent capture:</strong> Verify the Shopify checkout marketing consent checkbox shows for UK/EU customers and isn't pre-ticked.</li>
+      </ul>
+    </div>
+    <div class="ib-revenue">Cost of inaction: GDPR fines up to 4% of global turnover or €20M, whichever is higher.</div>
+  </div>
+</section>
+
+<!-- ================ 4. FLOWS ================ -->
+<section class="section" id="flows">
+  <div class="section-label">FLOWS</div>
+  <h2 class="section-title">Flow Performance &amp; Opportunities</h2>
+  <p class="section-intro">Flows generate $1.99M / 180 days (30.3% of email revenue). The Welcome Series alone produces $1.087M — 55% of all flow revenue from a single 3-email automation. There's room to grow this materially, plus six structural gaps below.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi green">
+      <div class="label">Flow Revenue (180d)</div>
+      <div class="value">$1.99M</div>
+      <div class="sub">$3.98M annualised</div>
+    </div>
+    <div class="kpi red">
+      <div class="label">Welcome Concentration</div>
+      <div class="value">55%</div>
+      <div class="sub">of all flow revenue from one flow</div>
+    </div>
+    <div class="kpi red">
+      <div class="label">Repeat Customer Rate</div>
+      <div class="value">~12.6%</div>
+      <div class="sub">vs 25-35% premium D2C benchmark</div>
+    </div>
+    <div class="kpi amber">
+      <div class="label">Live Flows</div>
+      <div class="value">34</div>
+      <div class="sub">of 139 total (100 in draft)</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:18px;margin:30px 0 12px;font-weight:800">Top Flows by Revenue (180d)</h3>
+  <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">Open / click / unsub rates are recipient-weighted averages of unique-engagement rates per flow message. Revenue is total over 180 days.</p>
+  <table class="metrics-table">
+  <thead><tr><th>Flow</th><th>Msgs</th><th>Recipients</th><th>OR</th><th>CR</th><th>Unsub</th><th>RPR</th><th>Revenue</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Welcome Series</strong></td>
+      <td class="current">3</td>
+      <td class="current">100,554</td>
+      <td class="current green">55.9%</td>
+      <td class="current green">5.81%</td>
+      <td class="current amber">1.23%</td>
+      <td class="current green">$10.81</td>
+      <td class="current">$1,087,137</td>
+    </tr>
+    <tr>
+      <td><strong>Abandoned Cart Reminder</strong></td>
+      <td class="current">8</td>
+      <td class="current">38,686</td>
+      <td class="current green">55.2%</td>
+      <td class="current green">9.00%</td>
+      <td class="current green">0.47%</td>
+      <td class="current green">$7.75</td>
+      <td class="current">$299,691</td>
+    </tr>
+    <tr>
+      <td><strong>Product Browse Abandonment</strong></td>
+      <td class="current">32</td>
+      <td class="current">105,453</td>
+      <td class="current green">57.7%</td>
+      <td class="current green">5.02%</td>
+      <td class="current amber">0.55%</td>
+      <td class="current amber">$2.00</td>
+      <td class="current">$211,205</td>
+    </tr>
+    <tr>
+      <td><strong>Abandoned Checkout Reminder</strong></td>
+      <td class="current">12</td>
+      <td class="current">15,744</td>
+      <td class="current green">59.5%</td>
+      <td class="current green">10.52%</td>
+      <td class="current amber">0.92%</td>
+      <td class="current green">$13.38</td>
+      <td class="current">$210,579</td>
+    </tr>
+    <tr>
+      <td><strong>Welcome Series - Retention.com v2 ⚠</strong></td>
+      <td class="current">4</td>
+      <td class="current">175,660</td>
+      <td class="current green">62.9%</td>
+      <td class="current red">0.75%</td>
+      <td class="current red">3.36%</td>
+      <td class="current red">$0.20</td>
+      <td class="current">$34,534</td>
+    </tr>
+    <tr>
+      <td><strong>Starshipit Shipping Notification - Subscribers</strong></td>
+      <td class="current">10</td>
+      <td class="current">66,786</td>
+      <td class="current green">58.7%</td>
+      <td class="current green">10.66%</td>
+      <td class="current green">0.07%</td>
+      <td class="current red">$0.50</td>
+      <td class="current">$33,368</td>
+    </tr>
+
+  </tbody>
+  </table>
+
+  <h3 style="font-size:22px;margin:36px 0 16px;font-weight:800">Flow Improvement Areas</h3>
+
+  <div class="improvement-block red">
+    <div class="ib-tags">
+      <span class="tag critical">Critical</span>
+      <span class="tag medium">Effort: Medium</span>
+      <span class="tag medium">Pillar: Flows + Data</span>
+    </div>
+    <div class="ib-title">1. Welcome Series is 50-60% of flow revenue from 3 emails — extend with zero-party data</div>
+    <div class="ib-body">
+      <p>The Welcome Series produces <strong>$1.087M / 180 days at $10.81 RPR</strong> — exceptional. But it's only 3 emails over 2 days, with no personalisation. For a brand selling $200-$3,349 wellness devices across 6 categories with high educational complexity, that's leaving the biggest revenue lever untouched.</p>
+      <p><strong>The right approach is paired</strong>: extend the series AND capture zero-party data at signup so the extension is personalised, not generic. Without data the extra emails are just more volume; with data they're tailored education that pays off.</p>
+      <p><strong>Step 1 — capture in the popup:</strong></p>
+      <ul>
+        <li>Add a single question after email submission: <em>"What's your #1 health goal?"</em></li>
+        <li>Options: Better Sleep / Faster Recovery / Skin &amp; Anti-Aging / EMF Protection / Overall Wellness</li>
+        <li>Store as profile property. Drives every downstream personalisation.</li>
+      </ul>
+      <p><strong>Step 2 — rebuild Welcome as 5 emails over 7 days, conditional on health goal:</strong></p>
+      <ul>
+        <li><strong>Email 1 (immediate):</strong> Welcome + 15% offer + brand authority hero (Scientific Advisory Board, 400K customers, Fulham FC). Common to all paths.</li>
+        <li><strong>Email 2 (24hr):</strong> "Here's why [Sleep / Recovery / Skin / EMF] matters" — educational deep-dive matched to their answer. Different copy per path.</li>
+        <li><strong>Email 3 (Day 3):</strong> Hero product for their goal (Sleep → Sleep Mask + Blackout Stack; Recovery → Red Light + PEMF; Skin → Face Mask). Plain-text founder/scientist email.</li>
+        <li><strong>Email 4 (Day 5):</strong> Social proof — review montage + athlete UGC for their category.</li>
+        <li><strong>Email 5 (Day 7):</strong> Final discount reminder + bundle pivot if they didn't convert on Email 3.</li>
+      </ul>
+      <p>Personalised welcome flows in audited accounts produce 30-50% more revenue than generic ones, and unsub rates drop because the content matches the subscriber's stated interest.</p>
+    </div>
+    <div class="ib-revenue">Revenue at stake: +$400K-$700K / yr</div>
+  </div>
+
+  <div class="improvement-block red">
+    <div class="ib-tags">
+      <span class="tag critical">Critical</span>
+      <span class="tag medium">Effort: Medium</span>
+      <span class="tag medium">Pillar: Flow Triggers</span>
+    </div>
+    <div class="ib-title">2. Switch the Add-to-Cart trigger from API integration to Shopify integration</div>
+    <div class="ib-body">
+      <p>Bon Charge currently has the live Abandoned Cart flow triggered off the <strong>API integration "Added to Cart" metric</strong> (Klaviyo's older event source — <code>SGN3DX</code>). Klaviyo deprecated this approach ~2 years ago in favour of the <strong>Shopify integration "Added to Cart" metric</strong> (<code>YqTY7r</code>). Both metrics are firing in the account today:</p>
+      <ul>
+        <li><strong>API integration ATC:</strong> 191,897 events / 180d (currently the trigger)</li>
+        <li><strong>Shopify integration ATC:</strong> 130,214 events / 180d (currently unused for the flow)</li>
+      </ul>
+      <p>Across every client we've migrated, the Shopify-integration ATC metric converts materially better than the API-tracked one. Reason: it's more accurate. The API metric fires on onsite cart actions whether or not the cart actually persists at the Shopify level, leading to "false trigger" recipients (people who clicked but didn't actually have a session that became a cart). The Shopify webhook fires only on real cart-update events tied to a session.</p>
+      <p><strong>What to do:</strong></p>
+      <ul>
+        <li>Clone the current live Abandoned Cart flow. Set the new clone's trigger to the Shopify integration "Added to Cart" metric.</li>
+        <li>Add a <strong>"Has been in this flow recently"</strong> filter and a profile-level dedup check on both flows so a single user doesn't get hit twice (once from API, once from Shopify).</li>
+        <li>Activate the Shopify-trigger flow as the primary; keep the API-trigger flow live with the dedup filter as a fallback.</li>
+        <li>Monitor for 14-30 days, compare RPR + unsub rate. Once Shopify trigger is proven to outperform, archive the API-trigger flow.</li>
+      </ul>
+    </div>
+    <div class="ib-revenue">Revenue at stake: +$50K-$150K / yr (cleaner triggers + better RPR)</div>
+  </div>
+
+  <div class="improvement-block amber">
+    <div class="ib-tags">
+      <span class="tag high">High Priority</span>
+      <span class="tag medium">Effort: Major</span>
+      <span class="tag medium">Pillar: Post-Purchase</span>
+    </div>
+    <div class="ib-title">3. Post-Purchase is one thank-you + 20% off — no education, no nurture, no cross-sell</div>
+    <div class="ib-body">
+      <p>The Post-Purchase Thank You Series (UjZGex) does <strong>$22K / 180d at $1.73 RPR</strong>. Right now it's essentially: thank you + 20% off your next order, sent immediately after purchase. There's no dedicated post-purchase educational + nurture + cross-sell architecture. The core problem: we're trying to sell the next thing before they've even unboxed the first one.</p>
+      <p>For a brand selling $200-$3,349 devices with real educational complexity (red light protocols, PEMF settings, EMF stacking strategies), post-purchase should first ensure customers <strong>get more use out of the product they just bought</strong>. Only after they've activated and are satisfied with the product should we start nurturing them toward cross-sell and upsell.</p>
+      <p><strong>Rebuild as 3-stage NPS-driven sequence:</strong></p>
+      <ol>
+        <li><strong>Stage 1 (Day 0-14) — Activation.</strong> Order confirmation, "what to expect", how-to-use guides matched to product purchased, founder/scientist context on protocol, review request at Day 12. Goal is product activation, not selling.</li>
+        <li><strong>Stage 2 (Day 14-X, X = brand-specific average) — Satisfied → cross-sell.</strong> Don't pick an arbitrary day. Pull the actual data: what's the average days-to-second-purchase for repeat customers? That number is your X. Trigger Stage 2 emails 7 days before X and at X. Cross-sell into adjacent categories (the Holistic Beauty Customer Journey pattern already exists for Face Mask and Neck/Chest Mask buyers — extend to all 6 categories).</li>
+        <li><strong>Stage 3 (Day 60+) — VIP gateway.</strong> Customers who hit 2+ orders auto-enter VIP path. Currently the VIP Early Access flow sits in DRAFT — activate it with quarterly exclusivity content (early access, member-only bundles, podcast access).</li>
+      </ol>
+      <p><strong>On the existing product-specific upgrade flows:</strong> The Holistic Beauty Neck &amp; Chest Mask flow uses a generic 180-day delay. Replace with data-driven personalisation — pull the actual days-to-upgrade distribution from order data, set delays accordingly. Same logic for Face Mask → Wand → Blanket upgrade paths.</p>
+    </div>
+    <div class="ib-revenue">Revenue at stake: +$300K-$500K / yr (cross-sell + repeat purchase rate lift)</div>
+  </div>
+
+  <div class="improvement-block amber">
+    <div class="ib-tags">
+      <span class="tag high">High Priority</span>
+      <span class="tag quick">Quick Win</span>
+      <span class="tag medium">Pillar: VIP / Membership</span>
+    </div>
+    <div class="ib-title">4. VIP membership is invisible — needs flow + footer presence</div>
+    <div class="ib-body">
+      <p>The VIP membership program has flows for Started / Successful Charge / Cancelled / Reactivated (all live, all working — small audience, $47.03 RPR). But the program isn't being <strong>marketed</strong> anywhere. The "VIP Early Access" flow sits in DRAFT. There's no consistent VIP pitch in regular email footers. Non-VIP subscribers don't know the program exists or what it does.</p>
+      <p>Membership programs at this brand profile are typically the highest LTV-driving asset. The 14,467-profile VIP segment already exists — they're just not being treated as VIPs.</p>
+      <p><strong>What to do:</strong></p>
+      <ul>
+        <li><strong>Footer module — non-VIP subscribers only:</strong> Add a small "Become a VIP — early access, member pricing, exclusive content" block to every flow + campaign template. Use audience-conditional render so existing VIPs don't see it.</li>
+        <li><strong>VIP-only flows:</strong> Activate the VIP Early Access flow. Build a quarterly VIP campaign cadence — new launch previews, member-only bundles, founder Q&amp;As, podcast guest features.</li>
+        <li><strong>VIP campaigns:</strong> Send 2-3 VIP-only campaigns per month. They're already converting at $0.90 RPR vs $0.05-0.08 for broad sends.</li>
+        <li><strong>VIP onboarding flow:</strong> When someone joins VIP, they currently get one "Membership Started" email. Build a 3-email onboarding series — what you get, how to use early access, member-only resource hub link.</li>
+      </ul>
+    </div>
+    <div class="ib-revenue">Revenue at stake: +$200K-$350K / yr</div>
+  </div>
+
+  <div class="improvement-block amber">
+    <div class="ib-tags">
+      <span class="tag high">High Priority</span>
+      <span class="tag medium">Effort: Medium</span>
+      <span class="tag medium">Pillar: Quiz / Personalisation</span>
+    </div>
+    <div class="ib-title">5. The Wellness Quiz captures rich data — and there's no flow tied to completion</div>
+    <div class="ib-body">
+      <p>Bon Charge runs a wellness quiz on the website (the <code>completed_product_finder</code> metric exists in the account, with the TZ // Lantern Wellness Quiz Profiles list growing at ~525/mo). The quiz collects category interest, sleep habits, recovery needs, lighting preferences — exactly the zero-party data we'd otherwise have to build a popup question to capture.</p>
+      <p><strong>And there's no flow tied to quiz completion.</strong> The audit found three "Essential Flow Recommendation_" placeholders in draft, and that's it. Subscribers complete a 10-question quiz with detailed product recommendations, then receive nothing automated.</p>
+      <p><strong>Build a quiz-completion flow:</strong></p>
+      <ul>
+        <li><strong>Email 1 (immediate):</strong> "Here are your personalised picks" — render the products the quiz recommended. CTA to PDP.</li>
+        <li><strong>Email 2 (24hr):</strong> Education on the recommended hero product — the science, the protocol, who else uses it. Soft sell.</li>
+        <li><strong>Email 3 (Day 3):</strong> Reviews / UGC for the recommended bundle. Discount reminder.</li>
+        <li><strong>Email 4 (Day 5):</strong> Final discount + alternative recommendation if they didn't engage with Email 3.</li>
+      </ul>
+      <p>Quiz-completion flows in audited accounts run at $5-12 RPR — 2-3x normal Welcome Series RPR — because the audience self-selects and self-categorises before entering. With ~500 completions/mo, even at $7 RPR, that's $42K/yr direct from a single flow build.</p>
+    </div>
+    <div class="ib-revenue">Revenue at stake: +$80K-$150K / yr</div>
+  </div>
+
+  <div class="improvement-block">
+    <div class="ib-tags">
+      <span class="tag medium">Medium Priority</span>
+      <span class="tag medium">Effort: Medium</span>
+      <span class="tag medium">Pillar: SMS</span>
+    </div>
+    <div class="ib-title">6. No SMS in the cart / checkout abandonment flows</div>
+    <div class="ib-body">
+      <p>SMS Welcome Flow is live, and the SMS subscriber list grew by ~5,500 in 180 days. But the abandoned cart and abandoned checkout flows are <strong>email-only</strong>. SMS in cart/checkout abandonment is one of the highest-ROI plays in D2C — typical lift is 8-15% incremental conversion on top of email alone, because SMS hits faster and gets read.</p>
+      <p><strong>Add SMS touches:</strong></p>
+      <ul>
+        <li>Cart abandonment: SMS at the 30-minute mark for SMS-consented subscribers, before the first email reminder fires.</li>
+        <li>Checkout abandonment: SMS at the 15-minute mark for SMS-consented subscribers — checkout abandoners are highest intent and respond fast.</li>
+        <li>Use Klaviyo's native SMS-channel-only branch logic; don't double-message email-only subscribers.</li>
+      </ul>
+    </div>
+    <div class="ib-revenue">Revenue at stake: +$60K-$120K / yr</div>
+  </div>
+
+  <div class="improvement-block">
+    <div class="ib-tags">
+      <span class="tag medium">Medium Priority</span>
+      <span class="tag medium">Effort: Major</span>
+      <span class="tag medium">Pillar: Flow Architecture</span>
+    </div>
+    <div class="ib-title">7. Browse Abandonment is over-built — 32 message nodes and conditional branches</div>
+    <div class="ib-body">
+      <p>The live Browse Abandonment flow has 32 SEND_EMAIL nodes plus conditional branches per product category. It's generating $211K (180d) at $2.00 RPR — respectable, but the operational reality is that <strong>no one can audit, A/B test, or improve individual paths at this complexity</strong>. Most of the 32 emails haven't been touched in 12+ months.</p>
+      <p>This is a lower-priority cleanup — the flow isn't broken, it's just expensive to maintain. When time allows: strip back to a 3-email shell using Klaviyo's native dynamic product blocks (one template renders dynamically per the viewed product), then build 2-3 supplementary collection-specific 1-2 email flows for top categories. Same revenue, half the complexity.</p>
+    </div>
+    <div class="ib-revenue">Revenue at stake: indirect — operational time freed up + ability to A/B test</div>
+  </div>
+</section>
+
+<!-- ================ 5. CAMPAIGNS ================ -->
+<section class="section" id="campaigns">
+  <div class="section-label">CAMPAIGNS</div>
+  <h2 class="section-title">Campaigns: 86% of revenue from promo sends — unbalanced content mix</h2>
+  <p class="section-intro">Campaigns generate $4.56M / 180 days (70% of email revenue). To understand what's actually driving revenue, we read every campaign name and classified the 167 sends into Promotional (active discount push), Educational (content / podcast / science), Partnership/Event, and Other. Three structural patterns emerge: frequency too high, audience too narrow, and content mix is dramatically promo-skewed without educational anchors connecting them.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi amber">
+      <div class="label">Campaigns Sent (180d)</div>
+      <div class="value">167</div>
+      <div class="sub">6.8/wk avg (vs 2-4 recommended)</div>
+    </div>
+    <div class="kpi red">
+      <div class="label">Revenue from Promo Sends</div>
+      <div class="value">86%</div>
+      <div class="sub">$3.93M of $4.56M total</div>
+    </div>
+    <div class="kpi amber">
+      <div class="label">Revenue from Educational</div>
+      <div class="value">9.9%</div>
+      <div class="sub">$449K — biggest under-leverage</div>
+    </div>
+    <div class="kpi red">
+      <div class="label">RPR Decline (Nov → Apr)</div>
+      <div class="value">−66%</div>
+      <div class="sub">$0.156 → $0.053</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:18px;margin:30px 0 12px;font-weight:800">Campaign content breakdown by category (180d)</h3>
+  <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">Each of 167 campaigns classified by name + content cues. Promotional = explicit discount/sale push. Educational = content, podcast, science, expert.</p>
+  <table class="metrics-table">
+  <thead><tr><th>Category</th><th># Sends</th><th>Recipients</th><th>Revenue</th><th>RPR</th><th>Open Rate</th><th>% of Total Rev</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Promotional</strong></td>
+      <td class="current">106</td>
+      <td class="current">40,557,029</td>
+      <td class="current">$3,926,287</td>
+      <td class="current">$0.097</td>
+      <td class="current">49.9%</td>
+      <td class="current">86.0%</td>
+    </tr>
+    <tr>
+      <td><strong>Educational</strong></td>
+      <td class="current">33</td>
+      <td class="current">11,200,261</td>
+      <td class="current">$449,684</td>
+      <td class="current">$0.040</td>
+      <td class="current">72.0%</td>
+      <td class="current">9.9%</td>
+    </tr>
+    <tr>
+      <td><strong>Partnership/Event</strong></td>
+      <td class="current">8</td>
+      <td class="current">2,587,740</td>
+      <td class="current">$83,931</td>
+      <td class="current">$0.032</td>
+      <td class="current">69.3%</td>
+      <td class="current">1.8%</td>
+    </tr>
+    <tr>
+      <td><strong>Other</strong></td>
+      <td class="current">6</td>
+      <td class="current">980,426</td>
+      <td class="current">$31,555</td>
+      <td class="current">$0.032</td>
+      <td class="current">57.5%</td>
+      <td class="current">0.7%</td>
+    </tr>
+    <tr>
+      <td><strong>Transactional/Stock</strong></td>
+      <td class="current">2</td>
+      <td class="current">639,431</td>
+      <td class="current">$30,771</td>
+      <td class="current">$0.048</td>
+      <td class="current">81.9%</td>
+      <td class="current">0.7%</td>
+    </tr>
+    <tr>
+      <td><strong>Other/Operational</strong></td>
+      <td class="current">10</td>
+      <td class="current">415,770</td>
+      <td class="current">$23,361</td>
+      <td class="current">$0.056</td>
+      <td class="current">59.0%</td>
+      <td class="current">0.5%</td>
+    </tr>
+    <tr>
+      <td><strong>HSA/FSA</strong></td>
+      <td class="current">2</td>
+      <td class="current">694,744</td>
+      <td class="current">$17,349</td>
+      <td class="current">$0.025</td>
+      <td class="current">61.8%</td>
+      <td class="current">0.4%</td>
+    </tr>
+
+  </tbody>
+  </table>
+
+  <h3 style="font-size:18px;margin:30px 0 12px;font-weight:800">Monthly promo-vs-educational revenue mix</h3>
+  <table class="summary-table">
+  <thead><tr><th>Month</th><th class="month">Total Rev</th><th class="month">% Promo</th><th class="month">% Edu</th><th class="month">% Other</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Nov 25</strong></td>
+      <td class="num">$1,688,152</td>
+      <td class="num red">100%</td>
+      <td class="num">0%</td>
+      <td class="num">0%</td>
+    </tr>
+    <tr>
+      <td><strong>Dec 25</strong></td>
+      <td class="num">$904,499</td>
+      <td class="num red">95%</td>
+      <td class="num">4%</td>
+      <td class="num">1%</td>
+    </tr>
+    <tr>
+      <td><strong>Jan 26</strong></td>
+      <td class="num">$369,855</td>
+      <td class="num amber">84%</td>
+      <td class="num">2%</td>
+      <td class="num">14%</td>
+    </tr>
+    <tr>
+      <td><strong>Feb 26</strong></td>
+      <td class="num">$244,508</td>
+      <td class="num ">41%</td>
+      <td class="num">37%</td>
+      <td class="num">22%</td>
+    </tr>
+    <tr>
+      <td><strong>Mar 26</strong></td>
+      <td class="num">$567,864</td>
+      <td class="num ">66%</td>
+      <td class="num">29%</td>
+      <td class="num">5%</td>
+    </tr>
+    <tr>
+      <td><strong>Apr 26</strong></td>
+      <td class="num">$783,437</td>
+      <td class="num amber">76%</td>
+      <td class="num">19%</td>
+      <td class="num">6%</td>
+    </tr>
+
+  </tbody>
+  </table>
+
+  <div class="insight-card">
+    <strong>The content mix is dramatically promo-skewed.</strong> Five of six full months have 65-100% of revenue from promotional sends. Only February shows real balance (41% promo / 37% edu). Educational content has stronger engagement (72% open rate vs 50% for promo) but weaker monetisation ($0.040 RPR vs $0.097). The opportunity isn't to send more educational — it's to <em>connect</em> educational content to upcoming promotional sales so engagement converts. Right now educational lives in a silo and promotional lives in another, with very few bridge sends linking them.
+  </div>
+
+  <h3 style="font-size:22px;margin:36px 0 16px;font-weight:800">Campaign Improvement Areas</h3>
+
+  <div class="improvement-block red">
+    <div class="ib-tags">
+      <span class="tag critical">Critical</span>
+      <span class="tag medium">Effort: Quick</span>
+      <span class="tag medium">Pillar: Frequency / Cadence</span>
+    </div>
+    <div class="ib-title">1. Drop campaign frequency to 2-4 / week and follow the engagement-tier cadence</div>
+    <div class="ib-body">
+      <p>April hit 45 sends in 30 days (1.5/day). RPR has fallen 66% since November ($0.156 → $0.053). Subscribers are fatiguing — and the data shows it cleanly: even with the engaged-only audience, RPR is below benchmark, and unsub rate hit 0.33% in Jan.</p>
+      <p>The fix isn't just "send less" — it's <strong>send less, to wider audiences, on a tier-cadence cycle</strong>:</p>
+      <ul>
+        <li><strong>30D Engaged (~122K):</strong> Max every alternate day. The most active core. Daily content and sale stages.</li>
+        <li><strong>60D Engaged (~144K):</strong> 2-3 sends / week. Slightly lower-frequency content + sale touches.</li>
+        <li><strong>90D Engaged (~161K):</strong> 1-2 sends / week. Weekly digest, monthly product education, sale tease.</li>
+        <li><strong>180D Engaged (~212K):</strong> 1 send / week max. Monthly polished content piece + sale.</li>
+        <li><strong>365D Engaged (build this segment):</strong> 1 send / month. Re-engagement / sunset prelude.</li>
+        <li><strong>Whole list:</strong> 1 send / month MAX, reserved exclusively for major sales (BFCM, Recharge, Memorial, Holiday) and new-product launch announcements.</li>
+      </ul>
+      <p><strong>Important: even 180D engaged subscribers show 50%+ open rates</strong> on the rare campaigns they receive. That segment is healthy — it's just being under-used. Cycling content through 30 / 60 / 90 / 180 / 365 / whole-list buckets gives the program <em>more</em> reach with <em>less</em> frequency-per-subscriber. Net effect: RPR recovers, unsubs drop, list health holds.</p>
+      <p>Conservative target: drop total send volume 30% (from 6.8/wk to ~4.5/wk avg), widen audience by 60%, recover 50% of lost RPR.</p>
+    </div>
+    <div class="ib-revenue">Revenue at stake: +$500K-$900K / yr</div>
+  </div>
+
+  <div class="improvement-block amber">
+    <div class="ib-tags">
+      <span class="tag high">High Priority</span>
+      <span class="tag medium">Effort: Medium</span>
+      <span class="tag medium">Pillar: Content Mix</span>
+    </div>
+    <div class="ib-title">2. Build a monthly content calendar where educational content sets up product sales</div>
+    <div class="ib-body">
+      <p>Current mix: 86% revenue from promotional pushes, 10% from educational, the rest is brand/partnership. The data tells us that educational has higher engagement (72% open rate vs 50% promo), but doesn't convert because it sits unconnected from the sales arc.</p>
+      <p><strong>Restructure the calendar so each month has a coherent product-led story:</strong></p>
+      <ul>
+        <li><strong>Each month picks one hero product or category.</strong> e.g. May = Sleep Mask + Blackout. July = PEMF / Sauna. October = Red Light Therapy.</li>
+        <li><strong>Educational content (40% of monthly sends)</strong> early and mid-month builds the case for that hero — the science, athlete UGC, customer stories, comparison guides, doctor features. These are tied to the hero product, not random topics.</li>
+        <li><strong>Product-specific sale (30% of monthly sends)</strong> closes the month — a 3-5 day sale on the hero category. The educational content of the prior weeks has done the heavy lift of skepticism elimination, so the sale converts harder.</li>
+        <li><strong>Major tentpole sales (15%)</strong> — 4-6 events / yr (BFCM, Recharge, Memorial, Christmas etc.). Whole-list eligible. The frequency-cap exception window.</li>
+        <li><strong>Pure brand authority (15%)</strong> — podcast features, athlete partnerships, newsletter pieces. Sent to engaged-only segments. These don't need to convert in-window; they build long-term trust.</li>
+      </ul>
+      <p>Educational content can also reach a wider audience tier than promotional sends — content sends cause less unsub harm at 60D+ engaged audiences than discount pushes do, so they're the right vehicle to gently re-engage less-active subscribers.</p>
+    </div>
+    <div class="ib-revenue">Revenue at stake: +$300K-$500K / yr</div>
+  </div>
+
+  <div class="improvement-block amber">
+    <div class="ib-tags">
+      <span class="tag high">High Priority</span>
+      <span class="tag medium">Effort: Quick</span>
+      <span class="tag medium">Pillar: VIP Targeting</span>
+    </div>
+    <div class="ib-title">3. Treat VIPs as VIPs — dedicated campaigns + member-only access</div>
+    <div class="ib-body">
+      <p>VIP campaigns convert at $0.90 RPR — 10-15x broader campaign rates. But the VIP audience (14,467 profiles) only receives 1-2 dedicated campaigns / month. The rest of the time they're treated identically to the broad list.</p>
+      <p>For a brand actively trying to grow VIP membership, this is the wrong direction. Every regular campaign that goes to a VIP subscriber is a missed signal — they're paying for VIP status, they should feel it.</p>
+      <p><strong>Build a VIP campaign rhythm:</strong></p>
+      <ul>
+        <li><strong>1-2 VIP-only campaigns per week:</strong> Special discounts, member pricing on bundles, free gifts with purchase, podcast access, Q&amp;A invites.</li>
+        <li><strong>Insider content access:</strong> Exclusive podcast episodes, founder/scientist Q&amp;A recordings, early product previews. Make membership feel like a club.</li>
+        <li><strong>VIP-first launches:</strong> New product drops go to VIPs 24-48 hours before general list. Drives both retention and acquisition (people join VIP to get access).</li>
+      </ul>
+    </div>
+    <div class="ib-revenue">Revenue at stake: +$200K-$350K / yr (preserved VIP retention + expanded membership)</div>
+  </div>
+</section>
+
+<!-- ================ 6. WHAT'S WORKING ================ -->
+<section class="section" id="strengths">
+  <div class="section-label">WHAT'S WORKING</div>
+  <h2 class="section-title">What's already strong — protect these</h2>
+  <p class="section-intro">A short list — most of this audit focused on what to improve, but plenty is working at Bon Charge already. Worth being explicit so we don't break good things while fixing the rest.</p>
+
+  <div class="strengths-grid">
+    <div class="strength">
+      <div class="v">$1.09M</div>
+      <div class="t">Welcome Series — exceptional baseline</div>
+      <div class="s">3 emails, $10.81 RPR. The flow architecture works; the engagement is real. Don't break it — extend it with zero-party data.</div>
+    </div>
+    <div class="strength">
+      <div class="v">$13.37</div>
+      <div class="t">Abandoned Checkout RPR</div>
+      <div class="s">Highest-RPR flow in the account. High-intent abandoners convert. Trim email count to 4, but keep the magic.</div>
+    </div>
+    <div class="strength">
+      <div class="v">72</div>
+      <div class="t">Mature segment library</div>
+      <div class="s">30D / 60D / 90D / 180D engagement, VIP, 1st-time, regional, RFM. The infrastructure to fix targeting is already built — just under-used.</div>
+    </div>
+    <div class="strength">
+      <div class="v">27.7%</div>
+      <div class="t">Email % of store revenue</div>
+      <div class="s">Right in the healthy zone (25-35%). Email is pulling its weight. This audit is about pushing it from "good" to "exceptional".</div>
+    </div>
+    <div class="strength">
+      <div class="v">0.11%</div>
+      <div class="t">Bounce rate</div>
+      <div class="s">Well below the 0.30% warning threshold. List hygiene fundamentals are healthy — Sunset flow is doing its job on the unengaged tail.</div>
+    </div>
+    <div class="strength">
+      <div class="v">$339</div>
+      <div class="t">AOV — premium positioning validated</div>
+      <div class="s">Customers spend confidently. Brand authority (Scientific Advisory Board, Fulham FC, 4.95/5 rating) is converting. Email needs to monetise the post-purchase relationship better.</div>
+    </div>
+  </div>
+
+  <p style="margin-top:32px;font-size:13px;color:var(--text-muted);text-align:center">
+    Audit conducted via Klaviyo API. Period: 5 Nov 2025 — 4 May 2026 (180 days).
+  </p>
+</section>
+
+</main>
+
+<script>
+const navLinks = document.querySelectorAll('.sidebar nav a');
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    }
+  });
+}, { threshold: 0.2, rootMargin: '-100px 0px -50% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
