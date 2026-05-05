@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palmora — 3-Month Roadmap</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+  :root {
+    --accent: #B5876D;
+    --accent-soft: #A07659;
+    --accent-bg: rgba(181,135,109,0.08);
+    --green: #047857; --green-bg: rgba(4,120,87,0.07);
+    --blue: #1D4ED8; --blue-bg: rgba(29,78,216,0.07);
+    --rose: #B7506E; --rose-bg: rgba(183,80,110,0.07);
+    --amber: #B45309; --amber-bg: rgba(180,83,9,0.07);
+    --text-primary: #1A1614; --text-secondary: #4A4340; --text-muted: #8C8580;
+    --bg-base: #FBF9F7; --bg-alt: #F4EFEA; --bg-card: #FFFFFF;
+    --border: #E5DED7;
+    --r-sm: 6px; --r-md: 10px; --r-lg: 14px; --r-full: 999px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Poppins', system-ui, sans-serif; color: var(--text-primary); background: var(--bg-base); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(251,249,247,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); height: 58px; display: flex; align-items: center; }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+  .nav-brand { font-weight: 800; letter-spacing: 0.02em; font-size: 15px; }
+  .nav-brand em { font-style: normal; color: var(--accent); }
+  .nav-badge { font-size: 11px; font-weight: 600; color: var(--text-muted); background: var(--bg-alt); padding: 4px 12px; border-radius: var(--r-full); border: 1px solid var(--border); }
+  .hero { padding: 80px 0 56px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border); border-radius: var(--r-full); background: var(--bg-card); padding: 6px 16px; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 22px; }
+  .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .hero h1 { font-size: clamp(32px, 5vw, 50px); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 16px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero .sub { font-size: 16px; color: var(--text-secondary); font-weight: 400; max-width: 680px; }
+  .section { padding: 56px 0 60px; border-top: 1px solid var(--border); }
+  .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--accent); margin-bottom: 8px; }
+  .section-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; line-height: 1.12; margin-bottom: 10px; letter-spacing: -0.02em; }
+  .section-sub { font-size: 14px; color: var(--text-secondary); max-width: 700px; margin-bottom: 32px; }
+  .stream-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
+  .stream-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 22px 22px 24px; }
+  .stream-card .ico { width: 38px; height: 38px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 14px; letter-spacing: -0.02em; }
+  .stream-card.s-a .ico { background: var(--accent); }
+  .stream-card.s-b .ico { background: var(--green); }
+  .stream-card.s-c .ico { background: var(--blue); }
+  .stream-card.s-d .ico { background: var(--rose); }
+  .stream-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .stream-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+  .month-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 20px; }
+  .month-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
+  .month-hd { padding: 22px 24px; background: linear-gradient(135deg, var(--accent), var(--accent-soft)); color: #fff; }
+  .month-hd .label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.9; }
+  .month-hd h3 { font-size: 22px; font-weight: 800; margin-top: 4px; line-height: 1.1; }
+  .month-bd { padding: 24px; }
+  .month-bd h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 18px 0 8px; }
+  .month-bd h4:first-child { margin-top: 0; }
+  .month-bd ul { padding-left: 18px; margin-bottom: 4px; }
+  .month-bd li { font-size: 13.5px; margin-bottom: 6px; color: var(--text-secondary); line-height: 1.55; }
+  .month-bd li strong { color: var(--text-primary); font-weight: 700; }
+  .footer { padding: 36px 0 56px; text-align: center; font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 20px; }
+  @media (max-width: 900px) {
+    .stream-grid { grid-template-columns: repeat(2, 1fr); }
+    .month-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .stream-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+  }
+  @media print {
+    .nav { display: none; }
+    .section { padding: 28px 0 32px; page-break-inside: avoid; }
+    .month-card, .stream-card { page-break-inside: avoid; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="wrap">
+    <span class="nav-brand">Palmora<em>™</em></span>
+    <span class="nav-badge">3-Month Roadmap</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-badge"><span class="dot"></span> Email & Lifecycle</div>
+    <h1>A roadmap for the <em>first 3 months</em>.</h1>
+    <div class="sub">Two flows per month, list growth running in parallel, a content calendar live by month 3, and a VIP Club ready to launch on the back of it.</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <div class="section-label">Scope</div>
+    <h2 class="section-title">Four workstreams.</h2>
+    <div class="stream-grid">
+      <div class="stream-card s-a">
+        <div class="ico">A</div>
+        <h3>Pre-purchase flows</h3>
+        <p>Six flows shipped over three months — Welcome, Abandoned Checkout, Abandoned Cart, Browse Abandonment, VIP Welcome, Post-purchase.</p>
+      </div>
+      <div class="stream-card s-b">
+        <div class="ico">B</div>
+        <h3>List growth</h3>
+        <p>Continuous popup A/B testing plus a dedicated VIP landing page in M2 to support Meta-ad opt-in.</p>
+      </div>
+      <div class="stream-card s-c">
+        <div class="ico">C</div>
+        <h3>Content calendar</h3>
+        <p>Monthly campaign calendar built and shipping from M3, running month-by-month.</p>
+      </div>
+      <div class="stream-card s-d">
+        <div class="ico">D</div>
+        <h3>VIP Club</h3>
+        <p>Members-only community for limited drops and early access. Direct opt-in via Meta ads, supported by VIP Welcome flow.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <div class="section-label">Month-by-Month</div>
+    <h2 class="section-title">The 90-day build.</h2>
+
+    <div class="month-grid">
+      <div class="month-card">
+        <div class="month-hd">
+          <div class="label">Month 1</div>
+          <h3>Foundation</h3>
+        </div>
+        <div class="month-bd">
+          <h4>Pre-purchase flows</h4>
+          <ul>
+            <li><strong>Welcome series</strong> — fortified series anchored on WELCOME10, sets the brand voice and routes new subscribers</li>
+            <li><strong>Abandoned Checkout</strong></li>
+          </ul>
+          <h4>List growth</h4>
+          <ul>
+            <li>Install <strong>Alia popup</strong> (or confirm if already live)</li>
+            <li>Run <strong>first A/B test</strong> on the popup</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="month-card">
+        <div class="month-hd">
+          <div class="label">Month 2</div>
+          <h3>Rollout</h3>
+        </div>
+        <div class="month-bd">
+          <h4>Pre-purchase flows</h4>
+          <ul>
+            <li><strong>Abandoned Cart</strong></li>
+            <li><strong>Browse Abandonment</strong></li>
+          </ul>
+          <h4>List growth</h4>
+          <ul>
+            <li><strong>Second round A/B test</strong> on the popup</li>
+            <li>Build <strong>full-page landing pages</strong> for Meta-ad traffic — direct VIP Club opt-in</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="month-card">
+        <div class="month-hd">
+          <div class="label">Month 3</div>
+          <h3>Engagement + VIP launch</h3>
+        </div>
+        <div class="month-bd">
+          <h4>Pre-purchase flows</h4>
+          <ul>
+            <li><strong>VIP Welcome</strong> — for new members entering the VIP Club</li>
+            <li><strong>Post-purchase</strong></li>
+          </ul>
+          <h4>Content calendar</h4>
+          <ul>
+            <li>Build the <strong>monthly campaign calendar</strong> — running month-by-month from here</li>
+          </ul>
+          <h4>VIP Club</h4>
+          <ul>
+            <li>Launch <strong>dedicated Meta ads</strong> driving to the VIP landing page built in M2</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer wrap">
+  Palmora™ · 3-Month Roadmap
+</div>
+
+</body>
+</html>
