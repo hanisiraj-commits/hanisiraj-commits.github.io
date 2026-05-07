@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>F_WELCOME · Palmora · Flow Architecture Wireframe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#FAF6EE;color:#2A2422;font-family:'Inter',sans-serif;font-size:14px;line-height:1.65;font-weight:300;-webkit-font-smoothing:antialiased;min-height:100vh}
+.banner{background:#2A2422;color:#D4B68A;text-align:center;padding:14px 20px;font-family:'Inter',sans-serif;font-weight:500;font-size:11px;letter-spacing:0.18em;text-transform:uppercase}
+.container{max-width:1500px;margin:0 auto;padding:56px 48px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:48px;line-height:1.1;margin-bottom:14px;color:#2A2422;letter-spacing:-0.012em}
+h1 em{font-style:italic;color:#B8935A}
+.subtitle{font-size:16px;color:#5A524E;margin-bottom:36px;max-width:840px;line-height:1.7;font-weight:300}
+
+.meta-strip{display:flex;gap:0;border:0.5px solid rgba(184,147,90,0.25);border-radius:3px;margin-bottom:40px;background:#fff;overflow:hidden;flex-wrap:wrap}
+.meta-cell{flex:1;min-width:160px;padding:20px 24px;border-right:0.5px solid rgba(184,147,90,0.18)}
+.meta-cell:last-child{border-right:none}
+.meta-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#9A8F86;margin-bottom:8px;font-weight:500}
+.meta-val{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:#2A2422;line-height:1.25}
+.meta-val small{display:block;font-family:'Inter',sans-serif;font-size:12px;font-weight:300;color:#5A524E;margin-top:4px;letter-spacing:normal;text-transform:none}
+
+.filters{background:#fff;border:0.5px solid rgba(184,147,90,0.22);border-left:2px solid #B8935A;padding:22px 28px;border-radius:3px;margin-bottom:40px;max-width:560px}
+.filters-title{font-family:'Inter',sans-serif;font-weight:600;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:#B8935A;margin-bottom:12px}
+.filters ul{list-style:none;padding:0}
+.filters li{padding:5px 0 5px 20px;position:relative;font-size:13.5px;color:#2A2422;font-weight:300}
+.filters li::before{content:'→';position:absolute;left:0;color:#B8935A}
+
+.flow-wrap{margin:32px 0}
+.row{display:grid;grid-template-columns:340px 60px 1fr;gap:0;align-items:center;margin:0}
+.node-col{display:flex;flex-direction:column;align-items:center;position:relative}
+.connector{width:2px;height:22px;background:#9CA3AF;margin:0}
+.row:first-child .connector{display:none}
+.node{min-width:280px;text-align:center;border-radius:6px;border:1px solid;padding:18px 22px;position:relative;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:14px;justify-content:flex-start;box-shadow:0 1px 3px rgba(42,36,34,0.05)}
+.node-trigger{background:#CFF5D1;border-color:#4CAF50;color:#1A4A1F}
+.node-filter{background:#FBF7F0;border-color:#D4B68A;color:#5A524E;font-size:12.5px;letter-spacing:0.04em;font-weight:400}
+.node-delay{background:#DBEAFE;border-color:#60A5FA;color:#1E3A8A;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+.node-email{background:#F0E6D6;border-color:#B8935A;color:#3A2E1E}
+.node-email-plain{background:#FDE9D9;border-color:#D4895A;color:#3A2E1E}
+.node-icon{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;font-weight:600}
+.node-icon-trigger{background:rgba(76,175,80,0.25)}
+.node-icon-filter{background:rgba(184,147,90,0.2)}
+.node-icon-delay{background:rgba(96,165,250,0.3);font-size:14px}
+.node-icon-email{background:rgba(184,147,90,0.3)}
+.node-icon-email-plain{background:rgba(212,137,90,0.25)}
+.node-label{text-align:left;flex:1}
+.node-day{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;opacity:0.65;margin-bottom:3px}
+.node-title{display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:17px;line-height:1.3;letter-spacing:-0.005em}
+.node-badge{display:inline-block;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;background:rgba(212,137,90,0.25);color:#7C4A28;padding:2px 7px;border-radius:2px;margin-top:5px;font-weight:600;font-family:'Inter',sans-serif}
+
+.trigger-row + .row .connector{background:#4CAF50}
+
+.dash-connector{height:1px;border-top:2px dashed #9CA3AF;align-self:center;margin:0 0}
+.row.no-content .dash-connector{border-top:none}
+
+.content-col{align-self:center;padding:8px 0}
+.content-box{background:#fff;border:0.5px solid rgba(184,147,90,0.22);border-radius:4px;padding:18px 22px;max-width:680px;box-shadow:0 1px 3px rgba(42,36,34,0.03)}
+.content-header{font-family:'Inter',sans-serif;font-weight:600;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#B8935A;margin-bottom:12px;padding-bottom:8px;border-bottom:0.5px solid rgba(184,147,90,0.18)}
+.content-list{list-style:none;padding:0;font-size:12.5px;line-height:1.7;font-weight:300}
+.content-list li{padding:3px 0 3px 14px;position:relative;color:#2A2422}
+.content-list li::before{content:'·';position:absolute;left:4px;color:#B8935A;font-weight:700}
+.content-list li strong{font-weight:500;color:#2A2422}
+.content-list li code{background:rgba(184,147,90,0.1);padding:1px 6px;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#7C5E2E}
+
+.exit-node{background:#F3F4F6;border:0.5px dashed #9CA3AF;color:#6B7280;font-style:italic}
+
+.impl-notes{margin-top:64px;background:#FEF9E7;border:1px dashed #D4A017;border-radius:4px;padding:32px 36px}
+.impl-title{font-family:'Inter',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#A77A00;margin-bottom:20px}
+.impl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.impl-item{font-size:13px;line-height:1.7;font-weight:300}
+.impl-item strong{display:block;color:#2A2422;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:7px;font-weight:600}
+.impl-item code{background:rgba(0,0,0,0.06);padding:2px 7px;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#2A2422}
+.impl-item ul{list-style:none;padding:0;margin-top:4px}
+.impl-item li{padding:2px 0 2px 14px;position:relative}
+.impl-item li::before{content:'·';position:absolute;left:4px;color:#B8935A;font-weight:700}
+
+.footer{margin-top:64px;padding-top:24px;border-top:0.5px solid rgba(184,147,90,0.18);text-align:center;font-size:11.5px;color:#9A8F86;font-weight:300}
+.footer code{font-family:'JetBrains Mono',monospace;font-size:11px;color:#7C5E2E}
+
+@media(max-width:1100px){
+  .row{grid-template-columns:1fr;gap:14px}
+  .node-col{align-items:flex-start}
+  .connector{margin-left:30px}
+  .dash-connector{display:none}
+  .content-col{padding:0 0 12px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="banner">PALMORA · F_WELCOME · FLOW ARCHITECTURE WIREFRAME · 2026-05-07</div>
+
+<div class="container">
+
+<h1>F_WELCOME — Welcome series<br><em>5 emails · 9 days · brand identification + 15% conversion</em></h1>
+<p class="subtitle">Welcome flow for Palmora newsletter / popup / "Notify Me When It's Available" subscribers. Single track, no audience splits. E1 sends to all new subscribers; E2–E5 filtered to non-purchasers (0 orders since signup). Modern prestige register — short, sectional, designed. E4 is the deliberate plain-text rhythm break — single-block letter from the founder. This wireframe is the topology reference for the Klaviyo implementation specialist.</p>
+
+<div class="meta-strip">
+  <div class="meta-cell"><div class="meta-label">Flow Key</div><div class="meta-val">F_WELCOME<small>Newsletter / popup nurture</small></div></div>
+  <div class="meta-cell"><div class="meta-label">Emails</div><div class="meta-val">5<small>Sequential, no splits</small></div></div>
+  <div class="meta-cell"><div class="meta-label">Channels</div><div class="meta-val">Email only<small>No SMS in v1</small></div></div>
+  <div class="meta-cell"><div class="meta-label">Window</div><div class="meta-val">9 days<small>Day 0 · 2 · 4 · 7 · 9</small></div></div>
+  <div class="meta-cell"><div class="meta-label">Smart Send</div><div class="meta-val">ON<small>24h window</small></div></div>
+</div>
+
+<div class="filters">
+  <div class="filters-title">Profile filters</div>
+  <ul>
+    <li>Can receive email marketing</li>
+    <li>For E2–E5: Number of Placed Order events since signup = 0</li>
+    <li>Has not received F_WELCOME in the last 365 days</li>
+  </ul>
+</div>
+
+<div class="flow-wrap">
+
+<!-- TRIGGER -->
+<div class="row trigger-row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-trigger">
+      <div class="node-icon node-icon-trigger">⚙</div>
+      <div class="node-label"><span class="node-day">Trigger</span><span class="node-title">Subscribed to list</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">Trigger sources</div>
+      <ul class="content-list">
+        <li>Footer newsletter signup</li>
+        <li>Site-wide popup (15% off offer)</li>
+        <li>"Notify Me When It's Available" (back-in-stock subscribers)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SMART SENDING FILTER -->
+<div class="row no-content">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-filter">
+      <div class="node-icon node-icon-filter">⊞</div>
+      <div class="node-label"><span class="node-day">Filter</span><span class="node-title">Smart sending · 24h</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col"></div>
+</div>
+
+<!-- E1 -->
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 0 · E1</span><span class="node-title">Welcome in</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E1 contains</div>
+      <ul class="content-list">
+        <li><strong>Subject:</strong> Welcome in 🤍 your 15% code is inside</li>
+        <li><strong>Audience:</strong> All new subscribers (no purchase filter)</li>
+        <li><strong>Hero:</strong> high-fidelity range shot of all 4 bottles · "Welcome in" + WELCOME15 code overlay rendered IN the image</li>
+        <li><strong>Sections:</strong> Hello block · How we develop a scent (3-step visual) · 4-cell trust strip · Product grid w/ 15% stickers · Universal Inner Circle section · Sign-off</li>
+        <li><strong>Primary CTA:</strong> SHOP THE FOUR → <code>/collections/all</code></li>
+        <li><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_WELCOME_E1.1_WELCOME-IN</code></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DELAY -->
+<div class="row no-content">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon node-icon-delay">⏱</div>
+      <div class="node-label"><span class="node-title" style="font-size:13px">2 days</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col"></div>
+</div>
+
+<!-- NON-PURCHASER FILTER -->
+<div class="row no-content">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-filter">
+      <div class="node-icon node-icon-filter">⊞</div>
+      <div class="node-label"><span class="node-day">Filter</span><span class="node-title">0 orders since signup</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box" style="background:#FBF7F0">
+      <div class="content-header">Filter rationale</div>
+      <ul class="content-list">
+        <li>E2–E5 only send to non-purchasers — once someone buys, they exit the welcome track and enter post-purchase flows</li>
+        <li>Klaviyo flow filter: <code>Number of Placed Order events since starting this flow is 0</code></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- E2 -->
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 2 · E2</span><span class="node-title">How we make it</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E2 contains</div>
+      <ul class="content-list">
+        <li><strong>Subject:</strong> What skin-close fragrance actually means 🤍</li>
+        <li><strong>Audience:</strong> Non-purchasers (0 orders since signup)</li>
+        <li><strong>Pre-hero banner:</strong> WELCOME15 push with CLAIM 15% OFF CTA — first-fold conversion enabler</li>
+        <li><strong>Hero:</strong> process / material moment (a pour, fabric, hand) · "Soft, skin-close, clean."</li>
+        <li><strong>Sections:</strong> Opening text · What's in / What's out (2-col list) · The wear test · 4-cell trust strip · Product grid w/ 15% stickers · Universal Inner Circle section</li>
+        <li><strong>Primary CTA:</strong> HAVE A LOOK → <code>/collections/all</code></li>
+        <li><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_WELCOME_E2_HOW-WE-MAKE-IT</code></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DELAY -->
+<div class="row no-content">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon node-icon-delay">⏱</div>
+      <div class="node-label"><span class="node-title" style="font-size:13px">2 days</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col"></div>
+</div>
+
+<!-- E3 -->
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 4 · E3</span><span class="node-title">The Inner Circle</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E3 contains</div>
+      <ul class="content-list">
+        <li><strong>Subject:</strong> Do you want access to limited-edition fragrances? 🌸</li>
+        <li><strong>Audience:</strong> Non-purchasers</li>
+        <li><strong>Pre-hero banner:</strong> WELCOME15 push (banner-only — body is invitation-led)</li>
+        <li><strong>Hero:</strong> single bottle, low-light, intimate · "Join the Palmora Inner Circle." + JOIN THE INNER CIRCLE CTA inside the hero image</li>
+        <li><strong>Sections:</strong> Invitation framing · 3-column member benefits (Exclusive Access · A Real Vote · Inner Launches) · Apply CTA block</li>
+        <li><strong>Primary CTA:</strong> APPLY TO JOIN THE INNER CIRCLE → <code>/pages/inner-circle</code></li>
+        <li><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_WELCOME_E3_INNER-CIRCLE</code></li>
+        <li><strong>Note:</strong> No universal IC section here — this email IS the IC pitch</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DELAY -->
+<div class="row no-content">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon node-icon-delay">⏱</div>
+      <div class="node-label"><span class="node-title" style="font-size:13px">3 days</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col"></div>
+</div>
+
+<!-- E4 PLAIN TEXT -->
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email-plain">
+      <div class="node-icon node-icon-email-plain">📝</div>
+      <div class="node-label"><span class="node-day">Day 7 · E4</span><span class="node-title">A note from me</span><span class="node-badge">Plain text</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E4 contains · plain text</div>
+      <ul class="content-list">
+        <li><strong>Subject:</strong> A note from me 🤍</li>
+        <li><strong>Audience:</strong> Non-purchasers</li>
+        <li><strong>Format:</strong> Plain text — single-block letter, no images, no banner, no logo, no design</li>
+        <li><strong>Voice:</strong> Singular founder ("I", not "we") · signed [FOUNDER NAME], Founder, Palmora</li>
+        <li><strong>Reply-to:</strong> [founder-first-name]@thepalmora.com (TBC) — replies route to founder's inbox</li>
+        <li><strong>CTA:</strong> Hyperlink-text "Claim your 15% off →" linking to <code>/collections/all</code> with WELCOME15 auto-applied</li>
+        <li><strong>No PS, no Inner Circle reference</strong> — letter ends on the brand tag</li>
+        <li><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_WELCOME_E4_LETTER_PLAIN-TEXT</code></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DELAY -->
+<div class="row no-content">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-delay">
+      <div class="node-icon node-icon-delay">⏱</div>
+      <div class="node-label"><span class="node-title" style="font-size:13px">2 days</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col"></div>
+</div>
+
+<!-- E5 -->
+<div class="row">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node node-email">
+      <div class="node-icon node-icon-email">✉</div>
+      <div class="node-label"><span class="node-day">Day 9 · E5</span><span class="node-title">Stay close</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col">
+    <div class="content-box">
+      <div class="content-header">E5 contains · final conversion push</div>
+      <ul class="content-list">
+        <li><strong>Subject:</strong> Stay close — what's coming next 🤍</li>
+        <li><strong>Audience:</strong> Non-purchasers · last conversion push before exit</li>
+        <li><strong>Pre-hero banner:</strong> WELCOME15 last call</li>
+        <li><strong>Hero:</strong> product-led — single bottle (Bedtime Baby Bath default, or rotate by send) · "A few last things — before you decide."</li>
+        <li><strong>Sections:</strong> Opening text · Skepticism closers (4 FAQ-style Q&As: longevity / selection / price / clean) · Quick scent guide (2x2 "for the woman who...") · 4-cell trust strip · Final product grid w/ 15% stickers · Universal Inner Circle section · Sign-off</li>
+        <li><strong>Primary CTA:</strong> USE WELCOME15 — 15% OFF → <code>/collections/all</code></li>
+        <li><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_WELCOME_E5_STAY-CLOSE</code></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- EXIT -->
+<div class="row no-content">
+  <div class="node-col">
+    <div class="connector"></div>
+    <div class="node exit-node">
+      <div class="node-label" style="text-align:center"><span class="node-title" style="font-size:14px;color:#6B7280">Exit to CRM cadence</span></div>
+    </div>
+  </div>
+  <div class="dash-connector"></div>
+  <div class="content-col"></div>
+</div>
+
+</div>
+
+<!-- IMPLEMENTATION NOTES -->
+<div class="impl-notes">
+  <div class="impl-title">Implementation notes for Klaviyo</div>
+  <div class="impl-grid">
+    <div class="impl-item">
+      <strong>Smart sending</strong>
+      ON · 24h window · suppresses sends to anyone who's received another email in the last 24h.
+    </div>
+    <div class="impl-item">
+      <strong>Initial delay</strong>
+      None — E1 sends immediately on subscription event, gated only by smart sending.
+    </div>
+    <div class="impl-item">
+      <strong>Profile filters</strong>
+      <ul>
+        <li>All emails: Can receive email marketing</li>
+        <li>E2–E5: <code>Placed Order events since signup = 0</code></li>
+        <li>Has not received F_WELCOME in the last 365 days</li>
+      </ul>
+    </div>
+    <div class="impl-item">
+      <strong>Discount code</strong>
+      <code>WELCOME15</code> · evergreen · 15% off first order · sitewide (TBC any product exclusions). Single-use per customer · cannot combine with other offers.
+    </div>
+    <div class="impl-item">
+      <strong>Reply-to addresses</strong>
+      <ul>
+        <li>E1, E2, E3, E5: <code>hello@thepalmora.com</code></li>
+        <li>E4 (plain text): <code>[founder]@thepalmora.com</code> (TBC) — routes to founder's inbox for personal replies</li>
+      </ul>
+    </div>
+    <div class="impl-item">
+      <strong>Universal blocks (build once, reuse)</strong>
+      <ul>
+        <li>4-cell trust strip (E1, E2, E5)</li>
+        <li>Product grid w/ 15% sticker overlay (E1, E2, E5)</li>
+        <li>Universal Inner Circle section (E1, E2, E5)</li>
+        <li>Pre-hero WELCOME15 banner (E2, E3, E5)</li>
+        <li>Unified footer block (all 5)</li>
+      </ul>
+    </div>
+    <div class="impl-item">
+      <strong>Asset prep before launch</strong>
+      <ul>
+        <li>E1 hero: range shot of all 4 bottles · cream/blush palette · "Welcome in" + WELCOME15 code overlaid in image</li>
+        <li>E2 hero: process moment (pour / fabric / hand) — editorial, not product</li>
+        <li>E3 hero: single bottle, low-light, intimate (invitation card cover feel) · CTA inside image</li>
+        <li>E5 hero: product-led single bottle (Bedtime Baby Bath default)</li>
+        <li>15% sticker design: small circular angled badge (red/cream) for product cards</li>
+      </ul>
+    </div>
+    <div class="impl-item">
+      <strong>Open decisions before launch</strong>
+      <ul>
+        <li>Founder's first name for E4 sign-off + reply-to</li>
+        <li>Inner Circle apply URL — <code>/pages/inner-circle</code> is placeholder</li>
+        <li>Confirm WELCOME15 has no product exclusions</li>
+        <li>Confirm Shopify product handles match display names (or use collection links throughout)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <code>palmora · F_WELCOME · flow architecture wireframe · v1 · 2026-05-07</code><br>
+  Companion to drafts v5 in <code>palmora/flows/working/F_WELCOME-2026-05-04-drafts-preview.html</code> · Sheet: Palmora Customer Lifecycle Planner › Flows Copy
+</div>
+
+</div>
+
+</body>
+</html>
