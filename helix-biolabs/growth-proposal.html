@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Helix Bio Labs — 3-Month Email Growth Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0F1218;
+    --bg-deep: #0A0C12;
+    --surface: #171B24;
+    --surface-2: #1E2330;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --purple: #5B38ED;
+    --purple-deep: #4928CF;
+    --purple-soft: rgba(91, 56, 237, 0.12);
+    --yellow: #FFD60A;
+    --yellow-soft: rgba(255, 214, 10, 0.10);
+    --text: #F5F7FA;
+    --text-2: #A8B0BE;
+    --text-3: #6B7280;
+    --danger: #FF6B6B;
+    --danger-soft: rgba(255, 107, 107, 0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(91, 56, 237, 0.15) 0%, transparent 60%),
+      var(--bg);
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============ HEADER ============ */
+  .top-bar {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+  }
+  .top-bar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .logo-wrap img { height: 36px; width: auto; display: block; }
+  .top-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .top-meta b { color: var(--yellow); font-weight: 500; }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 120px 0 100px;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 24px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--yellow);
+  }
+  h1 {
+    font-size: clamp(40px, 6.5vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+    margin-bottom: 28px;
+    max-width: 900px;
+  }
+  h1 .y { color: var(--yellow); }
+  .hero-sub {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--text-2);
+    max-width: 680px;
+    margin-bottom: 48px;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .hero-stat {
+    background: var(--surface);
+    padding: 28px 24px;
+  }
+  .hero-stat .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 12px;
+  }
+  .hero-stat .value {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .hero-stat .value .y { color: var(--yellow); }
+  .hero-stat .sub {
+    font-size: 12px;
+    color: var(--text-2);
+    margin-top: 6px;
+  }
+
+  /* ============ SECTION ============ */
+  section {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+  }
+  .section-head .title-block { flex: 1; min-width: 280px; }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-size: clamp(32px, 4.5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    max-width: 720px;
+  }
+  .section-intro {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-2);
+    max-width: 420px;
+  }
+
+  /* ============ ROADMAP ============ */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    top: 56px;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--yellow), var(--yellow), transparent);
+    opacity: 0.4;
+    z-index: 0;
+  }
+  .phase {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    position: relative;
+    z-index: 1;
+    transition: border-color 0.2s;
+  }
+  .phase:hover { border-color: var(--border-strong); }
+  .phase-num {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .phase-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--yellow);
+    box-shadow: 0 0 0 4px rgba(255, 214, 10, 0.15);
+  }
+  .phase-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-2);
+  }
+  .phase h3 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: 6px;
+  }
+  .phase .subtitle {
+    font-size: 13px;
+    color: var(--text-3);
+    margin-bottom: 24px;
+  }
+  .phase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .phase-stat .n {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--yellow);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .phase-stat .l {
+    font-size: 11px;
+    color: var(--text-2);
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+  .phase ul {
+    list-style: none;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+  .phase ul li {
+    font-size: 13px;
+    color: var(--text-2);
+    padding: 6px 0 6px 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .phase ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 6px;
+    height: 1px;
+    background: var(--yellow);
+  }
+
+  /* ============ COMPLIANCE PITFALLS ============ */
+  .pitfalls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .pitfall {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--danger);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+  .pitfall .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--danger);
+    margin-bottom: 14px;
+  }
+  .pitfall h4 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+  }
+  .pitfall p {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+
+  /* ============ SMS BOX ============ */
+  .sms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .sms-reason {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .sms-reason .n {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--yellow);
+    margin-bottom: 12px;
+  }
+  .sms-reason h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .sms-reason p {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+  .sms-instead {
+    background: var(--yellow-soft);
+    border: 1px solid rgba(255, 214, 10, 0.25);
+    border-radius: 12px;
+    padding: 28px 32px;
+  }
+  .sms-instead .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 14px;
+  }
+  .sms-instead ul {
+    list-style: none;
+  }
+  .sms-instead li {
+    font-size: 14px;
+    color: var(--text);
+    padding: 6px 0 6px 22px;
+    position: relative;
+  }
+  .sms-instead li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--yellow);
+    font-weight: 600;
+  }
+
+  /* ============ MONTH DETAIL ============ */
+  .month {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    padding: 64px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .month:last-child { border-bottom: 0; }
+  .month-meta .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 14px;
+  }
+  .month-meta h3 {
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+  .month-meta .focus {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.55;
+  }
+  .month-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .block.full { grid-column: 1 / -1; }
+  .block .block-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .block .count {
+    background: var(--yellow);
+    color: var(--bg-deep);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 0;
+  }
+  .flow-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .flow-item:last-child { border-bottom: 0; padding-bottom: 0; }
+  .flow-item:first-child { padding-top: 0; }
+  .flow-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-3);
+    min-width: 22px;
+    padding-top: 2px;
+  }
+  .flow-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .flow-desc {
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+  .campaign-desc {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+  .priorities {
+    list-style: none;
+  }
+  .priorities li {
+    font-size: 13px;
+    color: var(--text-2);
+    padding: 8px 0 8px 20px;
+    position: relative;
+    line-height: 1.55;
+    border-bottom: 1px dashed var(--border);
+  }
+  .priorities li:last-child { border-bottom: 0; }
+  .priorities li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 8px;
+    height: 1px;
+    background: var(--yellow);
+  }
+
+  /* ============ WARMUP TABLE ============ */
+  .warmup-table {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+  }
+  th, td {
+    text-align: left;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: var(--bg-deep);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-2);
+    font-weight: 500;
+  }
+  td { font-size: 14px; color: var(--text); }
+  td .audience-tag {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--text-2);
+    margin-top: 4px;
+  }
+  td.week { font-family: 'JetBrains Mono', monospace; color: var(--yellow); font-size: 13px; }
+  tr:last-child td { border-bottom: 0; }
+  .guardrails {
+    background: var(--yellow-soft);
+    border: 1px solid rgba(255, 214, 10, 0.25);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-top: 20px;
+  }
+  .guardrails .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 14px;
+  }
+  .guardrails-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 28px;
+    list-style: none;
+  }
+  .guardrails-list li {
+    font-size: 13px;
+    color: var(--text);
+    padding-left: 18px;
+    position: relative;
+  }
+  .guardrails-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--yellow);
+    font-weight: 600;
+  }
+
+  /* ============ LIST GROWTH ============ */
+  .growth-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .growth-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+  }
+  .growth-card.lead {
+    background: linear-gradient(135deg, rgba(91, 56, 237, 0.18), rgba(255, 214, 10, 0.06));
+    border: 1px solid rgba(91, 56, 237, 0.35);
+  }
+  .growth-card h4 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  .growth-card p {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .growth-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .tag-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-2);
+    border: 1px solid var(--border);
+    padding: 5px 10px;
+    border-radius: 100px;
+  }
+  .growth-tactics {
+    list-style: none;
+  }
+  .growth-tactics li {
+    font-size: 13px;
+    color: var(--text-2);
+    padding: 9px 0 9px 22px;
+    position: relative;
+    border-bottom: 1px dashed var(--border);
+    line-height: 1.5;
+  }
+  .growth-tactics li:last-child { border-bottom: 0; }
+  .growth-tactics li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    color: var(--yellow);
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ============ CLOSING ============ */
+  .closing {
+    padding: 120px 0;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(91, 56, 237, 0.18) 0%, transparent 65%),
+      var(--bg);
+  }
+  .closing .eyebrow {
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+  .closing h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    margin: 0 auto 32px;
+    max-width: 820px;
+    text-align: center;
+  }
+  .closing .body-copy {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-2);
+    max-width: 720px;
+    margin: 0 auto 24px;
+  }
+  .closing .body-copy.lead {
+    font-size: 19px;
+    color: var(--text);
+  }
+  .closing-sig {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .closing-sig img { height: 28px; margin-bottom: 12px; opacity: 0.85; }
+  .closing-sig .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    background: var(--bg-deep);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .footer-inner b { color: var(--yellow); font-weight: 500; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 880px) {
+    .container { padding: 0 20px; }
+    .hero { padding: 72px 0 60px; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .roadmap { grid-template-columns: 1fr; }
+    .roadmap::before { display: none; }
+    .pitfalls { grid-template-columns: 1fr; }
+    .sms-grid { grid-template-columns: 1fr; }
+    .month { grid-template-columns: 1fr; gap: 28px; }
+    .month-body { grid-template-columns: 1fr; }
+    .growth-wrap { grid-template-columns: 1fr; }
+    .guardrails-list { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+    table { font-size: 12px; }
+    th, td { padding: 12px 14px; }
+  }
+
+  @media print {
+    body { background: white; color: #111; }
+    .hero, section, .closing { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="container top-bar-inner">
+    <div class="logo-wrap">
+      <img src="helix-logo.png" alt="Helix Bio Labs" />
+    </div>
+    <div class="top-meta">Email &amp; SMS Launch · <b>3-Month Roadmap</b></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="border-bottom: 1px solid var(--border); padding-top: 100px; padding-bottom: 96px;">
+  <div class="container">
+    <div class="eyebrow">Growth Proposal</div>
+    <h1>A <span class="y">90-day plan</span> to launch retention without burning the domain.</h1>
+    <p class="hero-sub">
+      A focused, three-month build of flows, campaigns, and list growth — designed for a category where compliance lines are tight and one wrong send sets the program back months.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="label">Total flows live</div>
+        <div class="value"><span class="y">6</span></div>
+        <div class="sub">By end of Q1</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Campaigns sent</div>
+        <div class="value"><span class="y">22</span></div>
+        <div class="sub">6 + 8 + 8 across 90 days</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">List growth program</div>
+        <div class="value"><span class="y">3 mo</span></div>
+        <div class="sub">Continuous A/B testing</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Domain</div>
+        <div class="value"><span class="y">Warmed</span></div>
+        <div class="sub">Full list send by Month 2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE 3-MONTH PLAN AT A GLANCE -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="title-block">
+        <div class="section-num">01 · The Plan</div>
+        <h2>Three phases, building on each other.</h2>
+      </div>
+      <p class="section-intro">
+        Each month opens a new layer of the lifecycle. Month 1 builds the rails. Month 2 deepens engagement. Month 3 turns first-time buyers into repeat customers.
+      </p>
+    </div>
+
+    <div class="roadmap">
+      <div class="phase">
+        <div class="phase-num">
+          <span class="phase-dot"></span>
+          <span class="phase-label">Month 01 · Foundation</span>
+        </div>
+        <h3>Build the rails.</h3>
+        <p class="subtitle">Warm the domain. Launch core flows.</p>
+        <div class="phase-grid">
+          <div class="phase-stat"><div class="n">2</div><div class="l">Pre-purchase<br/>flows live</div></div>
+          <div class="phase-stat"><div class="n">6</div><div class="l">Targeted<br/>campaigns</div></div>
+        </div>
+        <ul>
+          <li>Welcome &amp; Checkout Abandoned flows</li>
+          <li>Manual domain warm-up</li>
+          <li>Aggressive list growth begins</li>
+          <li>Revenue from welcome + abandoned</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-num">
+          <span class="phase-dot"></span>
+          <span class="phase-label">Month 02 · Engagement</span>
+        </div>
+        <h3>Deepen the funnel.</h3>
+        <p class="subtitle">Full-list sending opens. Coverage widens.</p>
+        <div class="phase-grid">
+          <div class="phase-stat"><div class="n">2</div><div class="l">More pre-purchase<br/>flows live</div></div>
+          <div class="phase-stat"><div class="n">8</div><div class="l">Targeted<br/>campaigns</div></div>
+        </div>
+        <ul>
+          <li>Added-to-Cart &amp; Site/Browse Abandoned</li>
+          <li>Full list send unlocked</li>
+          <li>Promo calendar live (educational + offer)</li>
+          <li>List growth continues at pace</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-num">
+          <span class="phase-dot"></span>
+          <span class="phase-label">Month 03 · Retention</span>
+        </div>
+        <h3>Make them come back.</h3>
+        <p class="subtitle">Post-purchase journey. Repeat revenue scales.</p>
+        <div class="phase-grid">
+          <div class="phase-stat"><div class="n">2</div><div class="l">Post-purchase<br/>flows live</div></div>
+          <div class="phase-stat"><div class="n">8</div><div class="l">Targeted<br/>campaigns</div></div>
+        </div>
+        <ul>
+          <li>Post-Purchase Education + Reorder/Repeat Buyer</li>
+          <li>Reorder logic on 60-day cycle</li>
+          <li>Loyalty program scoping for Q2</li>
+          <li>First quarterly performance readout</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MONTH 1 DETAIL -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="title-block">
+        <div class="section-num">02 · Month-by-Month</div>
+        <h2>What we ship, week by week.</h2>
+      </div>
+      <p class="section-intro">
+        Each month has a clear focus, a fixed flow count, a campaign count, and a list growth target. Nothing speculative. Every deliverable maps to revenue or reputation.
+      </p>
+    </div>
+
+    <div class="month">
+      <div class="month-meta">
+        <div class="tag">Month 01</div>
+        <h3>Foundation</h3>
+        <p class="focus">Setup, warm-up, first revenue flows live. The list grows in parallel — every new subscriber drops into a flow that earns trust and a first order.</p>
+      </div>
+      <div class="month-body">
+        <div class="block">
+          <div class="block-title">Flows live <span class="count">2</span></div>
+          <div class="flow-item">
+            <div class="flow-num">01</div>
+            <div>
+              <div class="flow-name">Welcome Flow</div>
+              <div class="flow-desc">Brand intro, research-use framing, COA transparency, soft first-order incentive. Built for the high-intent new subscriber.</div>
+            </div>
+          </div>
+          <div class="flow-item">
+            <div class="flow-num">02</div>
+            <div>
+              <div class="flow-name">Checkout Abandoned Flow</div>
+              <div class="flow-desc">Triggered the moment checkout is started but not completed. Highest-revenue pre-purchase flow in this category.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block-title">Campaigns <span class="count">6</span></div>
+          <p class="campaign-desc">Warmup-paced and education-heavy. Brand story, third-party lab credentials, COA spotlights. Soft first-order incentive lands in week 4 once domain trust is established.</p>
+        </div>
+
+        <div class="block full">
+          <div class="block-title">Priorities</div>
+          <ul class="priorities">
+            <li>Rebuild signup popup — 21+ age gate, double opt-in, research-use context inline</li>
+            <li>List cleaning + engagement-tier segmentation runs in Week 0</li>
+            <li>Manual domain warm-up in parallel (see Warm-up Plan section)</li>
+            <li>Country segmentation locked in before any SMS send</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="month">
+      <div class="month-meta">
+        <div class="tag">Month 02</div>
+        <h3>Engagement</h3>
+        <p class="focus">Domain is warmed. Full-list sending opens. Two more pre-purchase flows cover the upper funnel — the customer who browsed but didn't buy, the customer who added but didn't checkout.</p>
+      </div>
+      <div class="month-body">
+        <div class="block">
+          <div class="block-title">Flows live <span class="count">2</span></div>
+          <div class="flow-item">
+            <div class="flow-num">03</div>
+            <div>
+              <div class="flow-name">Added-to-Cart Abandoned</div>
+              <div class="flow-desc">Triggered when a product is added to cart but checkout is never initiated. Captures intent earlier than checkout abandonment.</div>
+            </div>
+          </div>
+          <div class="flow-item">
+            <div class="flow-num">04</div>
+            <div>
+              <div class="flow-name">Site / Browse Abandoned</div>
+              <div class="flow-desc">Triggered on product views without a cart add. Educates the researcher on what they were looking at — COA, purity, batch testing.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block-title">Campaigns <span class="count">8</span></div>
+          <p class="campaign-desc">Mix of educational deep-dives, COA/lab spotlights, and the first wave of promotional sends. Promo calendar — educational anchor + offer cadence — is fully locked in by week 5.</p>
+        </div>
+
+        <div class="block full">
+          <div class="block-title">Priorities</div>
+          <ul class="priorities">
+            <li>Resume full-list sending at normal cadence — domain trust established</li>
+            <li>Tighten segmentation by product category and last-engagement window</li>
+            <li>Launch first non-US SMS campaigns (limited, monitored, see SMS section)</li>
+            <li>Promo calendar live — educational + promotional mix locked monthly</li>
+            <li>List growth program continues with new A/B tests rolling weekly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="month">
+      <div class="month-meta">
+        <div class="tag">Month 03</div>
+        <h3>Retention</h3>
+        <p class="focus">All pre-purchase coverage is live. Now we focus on the customer who already bought — the highest-LTV cohort in any peptide brand. Reorder cycles, loyalty perks, and deeper education.</p>
+      </div>
+      <div class="month-body">
+        <div class="block">
+          <div class="block-title">Flows live <span class="count">2</span></div>
+          <div class="flow-item">
+            <div class="flow-num">05</div>
+            <div>
+              <div class="flow-name">Post-Purchase Education</div>
+              <div class="flow-desc">COA delivery, research framing, what to expect from the batch, brand storytelling. Builds trust before the next purchase window opens.</div>
+            </div>
+          </div>
+          <div class="flow-item">
+            <div class="flow-num">06</div>
+            <div>
+              <div class="flow-name">Repeat Purchaser / Reorder</div>
+              <div class="flow-desc">Triggered on a 60-day reorder cycle for typical SKUs. Early access, bundle offers, and loyalty perks for 2nd-order+ customers.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block-title">Campaigns <span class="count">8</span></div>
+          <p class="campaign-desc">Reorder reminders, bundle drops, social proof from research professionals, and category education. Promotional weight is highest here — the list is mature, the domain is trusted.</p>
+        </div>
+
+        <div class="block full">
+          <div class="block-title">Priorities</div>
+          <ul class="priorities">
+            <li>Layer non-US SMS into Checkout/Cart Abandonment with A/B test</li>
+            <li>Build reorder logic — 60-day cycle for typical SKUs</li>
+            <li>First quarterly deliverability + revenue readout</li>
+            <li>Plan Q2: Loyalty program scoping, push notification channel exploration</li>
+            <li>List growth program wraps Q1 with learnings rolled into Q2</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIST GROWTH -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="title-block">
+        <div class="section-num">03 · List Growth</div>
+        <h2>Aggressive, tested, all three months.</h2>
+      </div>
+      <p class="section-intro">
+        Built and run in partnership with Alia. Continuous A/B testing across popups, forms, and incentives — every new subscriber drops straight into a live flow.
+      </p>
+    </div>
+
+    <div class="growth-wrap">
+      <div class="growth-card lead">
+        <h4>The continuous testing program</h4>
+        <p>
+          List growth is not a one-month sprint — it runs every week for all 90 days. Each week we ship a new test against the previous winner: popup copy, design, offer angle, timing trigger, exit-intent variant. The winners stay, the losers go.
+        </p>
+        <p>
+          Every new subscriber lands inside a working flow, so each test compounds: more subs into Welcome, more revenue from abandoned, more reputation signal for the domain. Setup carries through to Q2.
+        </p>
+        <div class="growth-tags">
+          <span class="tag-pill">A/B testing weekly</span>
+          <span class="tag-pill">Cross-month scope</span>
+          <span class="tag-pill">Partnered with Alia</span>
+          <span class="tag-pill">Compliant by design</span>
+        </div>
+      </div>
+
+      <div class="growth-card">
+        <h4>What we test &amp; ship</h4>
+        <ul class="growth-tactics">
+          <li>Signup popup — copy, design, offer, trigger timing, exit intent</li>
+          <li>Embedded forms across PDPs and the research/COA library</li>
+          <li>COA download / research library as lead magnet</li>
+          <li>Footer subscription with research-focused angle</li>
+          <li>Post-purchase email opt-in capture (for non-opt-in buyers)</li>
+          <li>21+ age gate doubling as identity-qualified opt-in</li>
+          <li>Referral program scoped for Q2 rollout</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABILITY -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="title-block">
+        <div class="section-num">04 · Deliverability</div>
+        <h2>How the domain gets warmed.</h2>
+      </div>
+      <p class="section-intro">
+        Manual, four-week warm-up. Volume scales gradually. Audience widens each week. Education-only in weeks 1–2 — no heavy promo until the domain has earned the trust signal.
+      </p>
+    </div>
+
+    <div class="warmup-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Week</th>
+            <th>Volume per send</th>
+            <th>Cadence</th>
+            <th>Audience</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="week">Week 1</td>
+            <td>50–75</td>
+            <td>2 sends</td>
+            <td>Most-engaged only<div class="audience-tag">Educational. Brand story + social proof.</div></td>
+          </tr>
+          <tr>
+            <td class="week">Week 2</td>
+            <td>75–125</td>
+            <td>2 sends</td>
+            <td>5–10 day engaged<div class="audience-tag">Educational. Trust + COA spotlight.</div></td>
+          </tr>
+          <tr>
+            <td class="week">Week 3</td>
+            <td>125–200</td>
+            <td>2 sends</td>
+            <td>15–30 day engaged<div class="audience-tag">First soft promotional message permitted.</div></td>
+          </tr>
+          <tr>
+            <td class="week">Week 4</td>
+            <td>200–300</td>
+            <td>2 sends</td>
+            <td>90 day engaged<div class="audience-tag">Resume normal cadence as domain stabilises.</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="guardrails">
+      <div class="label">Guardrails (non-negotiable)</div>
+      <ul class="guardrails-list">
+        <li>Max 1 campaign per day</li>
+        <li>Open rate ≥ 30%</li>
+        <li>Complaint rate &lt; 0.08%</li>
+        <li>Bounce rate &lt; 2%</li>
+        <li>No heavy promo weeks 1–2</li>
+        <li>Pre-flight list clean Week 0</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE PITFALLS -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="title-block">
+        <div class="section-num">05 · Compliance</div>
+        <h2>Where peptide programs break down.</h2>
+      </div>
+      <p class="section-intro">
+        These are the lines we work inside. Every flow, every campaign, every popup gets reviewed against this list before it ships.
+      </p>
+    </div>
+
+    <div class="pitfalls">
+      <div class="pitfall">
+        <div class="tag">Risk · FDA</div>
+        <h4>"Research Use Only" is not a shield.</h4>
+        <p>FDA has stated RUO labeling is "a ruse" when dosing, testimonials, or human-use cues appear. The March 2025 Final Guidance (enforceable Jan 2026) prohibits consumer-facing marketing of unapproved peptides.</p>
+      </div>
+      <div class="pitfall">
+        <div class="tag">Risk · GLP-1</div>
+        <h4>GLP-1s are the highest-risk SKUs.</h4>
+        <p>The Sept 2025 FDA "green list" import alert targets semaglutide, tirzepatide, retatrutide. 50+ warning letters have already gone out for comparative claims ("like Ozempic"). Most conservative copy here, always.</p>
+      </div>
+      <div class="pitfall">
+        <div class="tag">Risk · FTC</div>
+        <h4>FTC overlay on every health claim.</h4>
+        <p>Even if FDA never knocks, any "lose weight," "build muscle," "heal injuries," or "anti-aging" copy creates direct FTC exposure. Outcome language gets stripped before any send.</p>
+      </div>
+      <div class="pitfall">
+        <div class="tag">Rule · Creative</div>
+        <h4>Content must look like a lab.</h4>
+        <p>No dosing. No before/after. No testimonials with results. No comparisons to FDA-approved drugs. Lead with COAs, purity reports, vials, batch numbers, and research framing.</p>
+      </div>
+      <div class="pitfall">
+        <div class="tag">Rule · Platform</div>
+        <h4>Omnisend AUP is the soft ceiling.</h4>
+        <p>More permissive than Klaviyo, but not unlimited. A complaint rate above 0.3% or a single high-profile report can trigger review. We mitigate with double opt-in, aggressive sunset, and research-coded creative.</p>
+      </div>
+      <div class="pitfall">
+        <div class="tag">Rule · Site</div>
+        <h4>Site-level compliance is the gate.</h4>
+        <p>21+ age gate on entry. Double opt-in popup with Privacy and Terms in context. Country detection drives SMS opt-in. None of the above is optional — these are pre-flight checks before the first send goes out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SMS WHY US IS OFF -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="title-block">
+        <div class="section-num">06 · SMS</div>
+        <h2>Why US SMS stays off the table.</h2>
+      </div>
+      <p class="section-intro">
+        The toll-free denial wasn't a paperwork issue. It's structural — three reasons why the program failed verification, and what we run instead.
+      </p>
+    </div>
+
+    <div class="sms-grid">
+      <div class="sms-reason">
+        <div class="n">01</div>
+        <h4>The product itself.</h4>
+        <p>US carriers extend the SHAFT framework (sex, hate, alcohol, firearms, tobacco) to include drug-adjacent categories: prescription drugs, research chemicals, peptides, SARMs. Auto-rejected at the carrier level, regardless of RUO labelling.</p>
+      </div>
+      <div class="sms-reason">
+        <div class="n">02</div>
+        <h4>Site &amp; opt-in scrutiny.</h4>
+        <p>TCR and Twilio review the site for marketing/promotional consent text, STOP and HELP language, visible Privacy and Terms, business phone, and a sample message. Multiple gaps were likely present in the application.</p>
+      </div>
+      <div class="sms-reason">
+        <div class="n">03</div>
+        <h4>TCPA exposure.</h4>
+        <p>Statutory damages run $500–$1,500 per message for unapproved-drug categories. Reading the denial generously: the carrier is shielding the brand from a class-action vector that's actively being pursued in this category.</p>
+      </div>
+    </div>
+
+    <div class="sms-instead">
+      <div class="label">What we do instead</div>
+      <ul>
+        <li>Do not retry the US toll-free. Geo-suppress US numbers from all SMS sends in Omnisend.</li>
+        <li>Run SMS to non-US subscribers only — UK, EU, AU, CA — under CASL/GDPR-compliant frameworks. The existing list of 117 international subscribers is fully usable.</li>
+        <li>Layer non-US SMS into Checkout Abandonment in Month 3 with an A/B test against email-only.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing" style="border-bottom: 0;">
+  <div class="container">
+    <div class="eyebrow">The Closing Note</div>
+    <h2>Confidence inside the constraints.</h2>
+    <p class="body-copy lead">
+      This category has lines that don't move — regulatory, platform-level, commercial. We've laid them out upfront because pretending they don't exist is what kills peptide retention programs before they're even live.
+    </p>
+    <p class="body-copy">
+      Inside those lines, there's a real, measurable amount of room to grow. Six flows. Twenty-two campaigns. Three months of continuous list growth testing. A domain that's warmed, a list that's segmented, and a retention engine that compounds every week it runs.
+    </p>
+    <p class="body-copy">
+      We won't promise what we can't deliver inside this category. What we will do is execute every piece of this plan with the discipline the regulations demand, and the speed the business deserves.
+    </p>
+    <div class="closing-sig">
+      <img src="helix-logo.png" alt="Helix Bio Labs" />
+      <div class="label">Helix Bio Labs · Q1 Retention Launch</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div>Helix Bio Labs · Email &amp; SMS Launch Proposal</div>
+    <div>Prepared by <b>Hani Siraj</b></div>
+  </div>
+</footer>
+
+</body>
+</html>
