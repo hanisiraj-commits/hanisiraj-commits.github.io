@@ -1,0 +1,2372 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tethrd × BON CHARGE · Welcome + Abandoned Checkout · v5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Serif:wght@400;500&family=Spectral:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* TETHRD BRAND PALETTE */
+    --white: #FFFFFF;
+    --black: #000000;
+    --ink: #1A1A1A;
+    --ink-2: #2A2A2A;
+    --graphite: #6E7180;
+    --space: #9DA2B3;
+    --steel: #BCBFCC;
+    --smoke: #D3D6E0;
+    --cloud: #EDEFF7;
+    --text-primary: var(--ink);
+    --text-secondary: var(--graphite);
+    --text-muted: var(--space);
+    --status-green: #0D7D3A;
+    --status-green-dark: #4ADE80;
+    --hero-grad-black: linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
+    --hero-grad-green: linear-gradient(135deg, #1E3A3A 0%, #0D1F1F 100%);
+    --bg-marketing:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(157,162,179,0.18), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(110,113,128,0.12), transparent 60%),
+      linear-gradient(180deg, #0B0B0C 0%, #000000 100%);
+
+    /* BON CHARGE WARM PALETTE — preserved for email previews */
+    --bc-cream: #F8F6F1;
+    --bc-warm: #FBF9F4;
+    --bc-warm-deep: #F4EFE6;
+    --bc-limestone: #EFE7DA;
+    --bc-border: #E5E1D8;
+    --bc-border-strong: #C9C3B5;
+    --bc-warm-tone: #E8D2BD;
+    --bc-warm-tone-deep: #C49579;
+    --bc-accent: #B8755A;
+    --bc-accent-soft: #E8D5CC;
+    --bc-accent-deep: #8A4F38;
+
+    /* SPACING */
+    --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px; --s-6: 24px;
+    --s-7: 28px; --s-8: 32px; --s-10: 40px; --s-12: 48px; --s-16: 64px; --s-20: 80px; --s-24: 96px;
+    --r-sm: 8px; --r-md: 10px; --r-lg: 12px; --r-xl: 16px; --r-2xl: 20px;
+
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: 'Roboto Serif', 'Source Serif Pro', Georgia, serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-sans); font-size: 15px; font-weight: 300; line-height: 1.55;
+    color: var(--text-primary); background: var(--white);
+    font-feature-settings: "ss01","cv11";
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-sans); font-weight: 600;
+    letter-spacing: -.03em; color: var(--text-primary); line-height: 1.15;
+  }
+  p { color: var(--text-secondary); font-weight: 300; line-height: 1.65; }
+  strong { color: var(--text-primary); font-weight: 600; }
+  em { font-style: italic; color: var(--text-primary); }
+  a { color: var(--ink); border-bottom: 1px solid var(--steel); text-decoration: none; }
+  code { font-family: ui-monospace, 'SF Mono', monospace; font-size: 0.92em; background: var(--cloud); padding: 1px 6px; border-radius: 3px; color: var(--ink); }
+  .serif { font-family: var(--font-serif); font-weight: 500; letter-spacing: -.03em; }
+  .tabular, td, th, [data-numeric] { font-variant-numeric: tabular-nums; }
+
+  /* TOP NAV — Tethrd minimal */
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--smoke);
+  }
+  .topbar-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px;
+  }
+  .nav-left { display: flex; align-items: center; gap: var(--s-3); }
+  .nav-wordmark {
+    font-family: var(--font-sans); font-weight: 700; font-size: 16px;
+    color: var(--ink); letter-spacing: -.02em;
+  }
+  .nav-sep { color: var(--steel); font-size: 13px; margin: 0 var(--s-2); font-weight: 300; }
+  .nav-client { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--text-secondary); }
+  .nav-date { font-size: 11px; font-weight: 600; color: var(--text-secondary); letter-spacing: .10em; text-transform: uppercase; }
+  @media (max-width: 600px) { .nav-date { display: none; } }
+  .tabnav { display: flex; gap: 4px; }
+  .tab {
+    background: transparent; border: 0; font-family: var(--font-sans);
+    font-size: 12px; font-weight: 600; color: var(--text-secondary);
+    padding: 8px 14px; cursor: pointer; border-radius: 999px;
+    letter-spacing: .02em; transition: all .15s ease;
+  }
+  .tab:hover { color: var(--ink); background: var(--cloud); }
+  .tab.active { color: var(--white); background: var(--ink); }
+
+  /* PAGE container */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* HERO / OPENING — dark Tethrd hero */
+  .hero {
+    background: var(--bg-marketing); color: var(--white);
+    padding: var(--s-24) 0 var(--s-20);
+    position: relative; overflow: hidden;
+  }
+  .hero .container { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); }
+  .hero .eyebrow {
+    font-family: var(--font-sans); font-size: 11px; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-bottom: var(--s-6);
+  }
+  .hero h1 {
+    font-family: var(--font-sans); font-weight: 600;
+    font-size: clamp(36px, 5vw, 60px); line-height: 1.04;
+    letter-spacing: -.035em; color: var(--white);
+    margin-bottom: var(--s-6); max-width: 22ch;
+  }
+  .hero h1 em { color: var(--status-green-dark); font-style: normal; font-weight: 500; }
+  .hero .hero-sub {
+    font-size: clamp(16px, 1.5vw, 19px); line-height: 1.55;
+    color: rgba(255,255,255,0.70); max-width: 62ch;
+    font-weight: 300;
+  }
+  .hero .hero-sub strong { color: var(--white); font-weight: 500; }
+
+  /* SECTION */
+  section { padding: var(--s-24) 0; }
+  @media (max-width: 700px) { section { padding: var(--s-16) 0; } }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); }
+  .container.narrow { max-width: 1020px; }
+  .bg-cloud { background: var(--cloud); }
+  .bg-white { background: var(--white); }
+
+  .eyebrow { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: .10em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: var(--s-5); }
+  .section-title {
+    font-family: var(--font-sans); font-weight: 600;
+    font-size: clamp(28px, 3.4vw, 42px); line-height: 1.08;
+    letter-spacing: -.035em; color: var(--text-primary);
+    margin-bottom: var(--s-4); max-width: 26ch;
+  }
+  .section-title .muted { color: var(--text-secondary); font-weight: 300; }
+  .section-lede { font-size: 17px; line-height: 1.6; color: var(--text-secondary); max-width: 62ch; margin-bottom: var(--s-12); font-weight: 300; }
+  .section-lede strong { color: var(--text-primary); font-weight: 500; }
+  .sub-head { font-family: var(--font-sans); font-weight: 600; font-size: 22px; letter-spacing: -.02em; color: var(--text-primary); margin: var(--s-16) 0 var(--s-3); line-height: 1.25; }
+
+  /* PROTAGONIST CARD */
+  .protagonist {
+    background: var(--white); border: 1px solid var(--smoke); border-radius: var(--r-xl);
+    padding: var(--s-10) var(--s-12); margin-top: var(--s-12);
+    display: grid; grid-template-columns: 72px 1fr; gap: var(--s-7);
+    align-items: start;
+  }
+  @media (max-width: 540px) { .protagonist { grid-template-columns: 1fr; padding: var(--s-7); } }
+  .ptg-avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--ink); color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-serif); font-size: 28px; font-weight: 500;
+    letter-spacing: -.02em;
+  }
+  .ptg-body h3 { font-size: 24px; margin-bottom: var(--s-3); font-weight: 600; letter-spacing: -.025em; }
+  .ptg-body p { font-size: 15.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: var(--s-4); }
+  .ptg-body p strong { color: var(--text-primary); font-weight: 600; }
+  .ptg-pillar-note {
+    background: var(--cloud); border: 1px solid var(--smoke); border-radius: var(--r-md);
+    padding: var(--s-3) var(--s-5); margin: var(--s-4) 0 var(--s-4);
+    display: flex; gap: var(--s-3); align-items: flex-start;
+    font-size: 13px; color: var(--text-secondary); line-height: 1.55;
+  }
+  .ptg-pillar-note .pn-icon { color: var(--status-green); font-weight: 600; flex-shrink: 0; }
+  .ptg-pillar-note strong { color: var(--text-primary); }
+  .ptg-signal {
+    background: var(--ink); color: var(--white); border-radius: var(--r-md);
+    padding: var(--s-3) var(--s-5);
+    display: flex; align-items: center; gap: var(--s-4);
+    font-size: 12px;
+  }
+  .ptg-signal .signal-label { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 600; }
+  .ptg-signal .signal-value { font-family: var(--font-serif); font-size: 16px; color: var(--white); font-weight: 500; }
+
+  /* THREE SHIFTS */
+  .shift-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4); }
+  @media (max-width: 880px) { .shift-grid { grid-template-columns: 1fr; } }
+  .shift-card {
+    background: var(--white); border: 1px solid var(--smoke); border-radius: var(--r-xl);
+    padding: var(--s-8); position: relative;
+  }
+  .shift-card .num {
+    font-family: var(--font-serif); color: var(--status-green); font-size: 36px;
+    font-weight: 500; line-height: 1; margin-bottom: var(--s-5); display: block;
+    letter-spacing: -.03em;
+  }
+  .shift-card h3 { font-size: 18px; margin-bottom: var(--s-3); font-weight: 600; letter-spacing: -.02em; }
+  .shift-card .sub { font-size: 14px; color: var(--text-secondary); margin-bottom: var(--s-5); line-height: 1.6; }
+  .shift-card .delta { background: var(--cloud); border-radius: var(--r-sm); padding: var(--s-3) var(--s-4); font-size: 12px; display: flex; flex-direction: column; gap: var(--s-2); }
+  .shift-card .delta .row { display: flex; align-items: baseline; gap: var(--s-2); }
+  .shift-card .delta .tag { font-size: 9px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-secondary); min-width: 30px; font-weight: 600; }
+  .shift-card .delta .from { color: var(--text-muted); text-decoration: line-through; }
+  .shift-card .delta .to { color: var(--text-primary); font-weight: 500; }
+
+  /* DATA BRIDGE — Tethrd marquee style (dark) */
+  .data-bridge {
+    background: var(--ink); color: var(--white); border-radius: var(--r-2xl);
+    padding: var(--s-12) var(--s-12);
+    display: grid; grid-template-columns: 1fr 1.05fr; gap: var(--s-12); align-items: center;
+    margin-top: var(--s-7);
+    position: relative; overflow: hidden;
+  }
+  .data-bridge::before {
+    content: ''; position: absolute; top: -30%; right: -10%; width: 50%; height: 160%;
+    background: radial-gradient(ellipse at top right, rgba(74,222,128,0.10), transparent 60%);
+    pointer-events: none;
+  }
+  .data-bridge > * { position: relative; }
+  @media (max-width: 880px) { .data-bridge { grid-template-columns: 1fr; padding: var(--s-8); } }
+  .data-bridge .copy .marquee-tag {
+    font-size: 11px; font-weight: 600; letter-spacing: .10em; text-transform: uppercase;
+    color: var(--status-green-dark); margin-bottom: var(--s-4);
+  }
+  .data-bridge .copy h3 {
+    font-family: var(--font-sans); font-weight: 600;
+    font-size: clamp(22px, 2.2vw, 30px); line-height: 1.2;
+    letter-spacing: -.025em; color: var(--white); margin-bottom: var(--s-4);
+    max-width: 28ch;
+  }
+  .data-bridge .copy p {
+    font-size: 14.5px; color: rgba(255,255,255,0.70); line-height: 1.65;
+    margin-bottom: var(--s-5);
+  }
+  .data-bridge .copy .marquee-num {
+    font-family: var(--font-serif); font-weight: 500;
+    font-size: clamp(80px, 10vw, 130px); line-height: 0.9;
+    letter-spacing: -.05em; color: var(--status-green-dark);
+    font-variant-numeric: tabular-nums; margin-top: var(--s-5);
+  }
+  .data-bridge .copy .marquee-num .unit {
+    display: block; font-family: var(--font-sans); font-weight: 600; font-size: 12px;
+    letter-spacing: .10em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-top: var(--s-2);
+  }
+  .chart-frame {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--r-lg); padding: var(--s-6);
+  }
+  .chart-title { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: var(--s-1); text-transform: uppercase; letter-spacing: .08em; }
+  .chart-sub { font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: var(--s-5); }
+  .chart-area { position: relative; height: 160px; display: flex; align-items: flex-end; gap: 2px; padding-left: 32px; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .y-axis { position: absolute; left: 0; top: 0; bottom: 16px; width: 28px; display: flex; flex-direction: column; justify-content: space-between; font-size: 9px; color: rgba(255,255,255,0.45); text-align: right; font-variant-numeric: tabular-nums; }
+  .bar { flex: 1; background: rgba(255,255,255,0.15); position: relative; border-radius: 1px 1px 0 0; min-height: 1px; }
+  .bar .bar-fill { position: absolute; bottom: 0; left: 0; right: 0; background: var(--status-green-dark); border-radius: 1px 1px 0 0; }
+  .x-axis { display: flex; justify-content: space-between; padding-left: 32px; margin-top: 8px; font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: .04em; }
+  .chart-legend { display: flex; gap: 16px; margin-top: 12px; font-size: 10.5px; color: rgba(255,255,255,0.65); }
+  .chart-legend .key { display: flex; align-items: center; gap: 6px; }
+  .chart-legend .swatch { width: 10px; height: 10px; border-radius: 2px; }
+  .chart-source { margin-top: 10px; font-size: 9.5px; color: rgba(255,255,255,0.35); }
+
+  /* JOURNEY OPENING */
+  .journey-opening { max-width: 1180px; margin: var(--s-12) auto 0; padding: 0 var(--s-6); }
+  .journey-opening h2 { font-family: var(--font-sans); font-weight: 600; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.1; margin-bottom: var(--s-4); max-width: 28ch; letter-spacing: -.035em; }
+  .journey-opening .intro { font-size: 16px; color: var(--text-secondary); max-width: 720px; line-height: 1.6; }
+
+  /* PHASE DIVIDER */
+  .phase-divider {
+    margin: var(--s-16) 0 var(--s-12); padding: var(--s-10) var(--s-12);
+    background: var(--cloud); border-radius: var(--r-xl);
+    display: grid; grid-template-columns: 64px 1fr; gap: var(--s-7); align-items: center;
+  }
+  @media (max-width: 720px) { .phase-divider { grid-template-columns: 1fr; padding: var(--s-8); } }
+  .phase-divider .phase-num {
+    font-family: var(--font-serif); font-size: 44px; color: var(--status-green);
+    line-height: 1; font-weight: 500; letter-spacing: -.03em;
+  }
+  .phase-divider .phase-copy h3 { font-size: 19px; margin-bottom: var(--s-2); font-weight: 600; }
+  .phase-divider .phase-copy p { font-size: 14px; color: var(--text-secondary); margin: 0; }
+
+  /* DAY BLOCK */
+  .day-block { margin-bottom: var(--s-20); padding-top: var(--s-4); }
+  .day-marker {
+    display: flex; align-items: baseline; gap: var(--s-5); margin-bottom: var(--s-7);
+    padding-bottom: var(--s-5); border-bottom: 1px solid var(--smoke);
+  }
+  .day-marker .day-num {
+    font-family: var(--font-serif); font-size: 56px; color: var(--text-primary);
+    line-height: 1; font-weight: 500; letter-spacing: -.04em;
+  }
+  .day-marker .day-meta { flex: 1; }
+  .day-marker .day-label { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--text-secondary); margin-bottom: var(--s-2); font-weight: 600; }
+  .day-marker .day-title { font-family: var(--font-sans); font-size: 22px; color: var(--text-primary); font-weight: 600; letter-spacing: -.02em; line-height: 1.25; }
+  .day-marker .day-position {
+    font-family: var(--font-sans); font-size: 12px; color: var(--text-secondary);
+    border-left: 1px solid var(--smoke); padding-left: var(--s-5);
+    min-width: 110px; font-weight: 500;
+  }
+  .day-marker .day-position strong { display: block; font-family: var(--font-serif); color: var(--status-green); font-size: 22px; font-weight: 500; margin-bottom: 2px; }
+
+  .day-content { display: grid; grid-template-columns: 360px 1fr; gap: var(--s-12); align-items: start; }
+  @media (max-width: 880px) { .day-content { grid-template-columns: 1fr; gap: var(--s-7); } }
+
+  /* ============================================================== */
+  /* EMAIL PREVIEW — KEEP BON CHARGE WARM PALETTE                  */
+  /* These represent actual BON CHARGE emails, not Tethrd surfaces */
+  /* ============================================================== */
+  .email-preview {
+    background: var(--bc-cream); border: 1px solid var(--bc-border); border-radius: var(--r-xl);
+    padding: 14px; box-shadow: 0 1px 3px rgba(26,26,26,.06), 0 12px 36px rgba(26,26,26,.08);
+    display: flex; flex-direction: column; gap: 6px;
+    position: sticky; top: 96px;
+  }
+  .email-preview .ep-meta { display: flex; align-items: center; justify-content: space-between; padding: 4px 6px 8px; border-bottom: 1px dashed var(--bc-border); font-size: 10px; color: var(--graphite); letter-spacing: .06em; text-transform: uppercase; font-family: var(--font-sans); }
+  .email-preview .ep-meta .from { color: var(--ink); font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 11px; }
+  .ep-subject { padding: 8px 6px 6px; font-size: 12px; color: var(--ink); font-weight: 500; line-height: 1.4; font-family: var(--font-sans); }
+  .ep-preheader { padding: 0 6px 6px; font-size: 10.5px; color: var(--graphite); line-height: 1.4; font-style: italic; font-family: var(--font-sans); }
+
+  .ep-banner-trust { background: var(--ink); color: white; border-radius: 4px; padding: 7px 10px; text-align: center; font-size: 8.5px; letter-spacing: .12em; font-weight: 500; line-height: 1.2; }
+  .ep-banner-shipping { background: var(--bc-limestone); color: var(--ink); border-radius: 4px; padding: 7px 10px; text-align: center; font-size: 8.5px; letter-spacing: .12em; font-weight: 600; line-height: 1.2; }
+  .ep-banner-urgent { background: #8A4F38; color: white; border-radius: 4px; padding: 7px 10px; text-align: center; font-size: 8.5px; letter-spacing: .12em; font-weight: 600; line-height: 1.2; }
+  .ep-banner-subdued { background: var(--bc-warm); color: var(--ink); border: 1px solid var(--bc-border); border-radius: 4px; padding: 7px 10px; text-align: center; font-size: 8.5px; letter-spacing: .08em; font-weight: 500; line-height: 1.2; }
+
+  .ep-hero {
+    background: linear-gradient(135deg, var(--bc-warm-tone) 0%, var(--bc-warm-tone-deep) 100%);
+    border-radius: 6px; padding: 22px 18px; min-height: 130px;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
+    color: white; position: relative; overflow: hidden;
+  }
+  .ep-hero.cool { background: linear-gradient(135deg, #C8C0B5 0%, #7A6E5E 100%); }
+  .ep-hero.deep { background: linear-gradient(135deg, #6B5648 0%, #3A2D24 100%); }
+  .ep-hero.editorial { background: linear-gradient(135deg, #D4C5B5 0%, #B0998A 100%); }
+  .ep-hero.portrait { background: linear-gradient(160deg, #C9A98A 0%, #8B6E54 70%, #5C4838 100%); min-height: 160px; }
+  .ep-hero.subdued { background: linear-gradient(135deg, #E8DFD2 0%, #C8B8A4 100%); }
+  .ep-hero .ep-hero-eyebrow { font-size: 9px; letter-spacing: .16em; text-transform: uppercase; opacity: .85; font-family: var(--font-sans); }
+  .ep-hero .ep-hero-headline { font-family: var(--font-serif); font-size: 15px; line-height: 1.22; font-weight: 500; }
+  .ep-hero .ep-hero-sub { font-size: 10px; line-height: 1.4; opacity: .9; font-family: var(--font-sans); }
+  .ep-hero .ep-code-block { background: rgba(255,255,255,.95); color: var(--ink); padding: 6px 10px; border-radius: 4px; font-size: 10px; display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; letter-spacing: .04em; }
+  .ep-hero .ep-code-block .label { color: var(--graphite); font-size: 8px; text-transform: uppercase; letter-spacing: .1em; }
+  .ep-hero .ep-code-block .code { font-weight: 600; color: var(--bc-accent-deep); font-family: monospace; }
+
+  .ep-banner-block { background: var(--ink); color: white; border-radius: 6px; padding: 14px 12px; text-align: center; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+  .ep-banner-block .bb-headline { font-family: var(--font-serif); font-size: 12px; font-weight: 500; }
+  .ep-banner-block .bb-code { background: white; color: var(--ink); padding: 4px 10px; border-radius: 3px; font-family: monospace; font-size: 10px; font-weight: 600; letter-spacing: .06em; }
+  .ep-banner-block .bb-cta { background: var(--bc-accent); color: white; font-size: 9px; padding: 6px 14px; border-radius: 3px; letter-spacing: .1em; font-weight: 600; }
+  .ep-banner-block.urgent { background: #8A4F38; }
+  .ep-banner-block.urgent .bb-headline { font-family: var(--font-serif); font-size: 14px; }
+  .ep-banner-block.subdued { background: var(--bc-warm); color: var(--ink); border: 1px solid var(--bc-border); }
+  .ep-banner-block.subdued .bb-headline { color: var(--ink); font-size: 11px; }
+
+  .ep-ticker { background: var(--ink); color: white; padding: 8px 0; overflow: hidden; position: relative; border-radius: 4px; }
+  .ep-ticker .ticker-inner { display: flex; gap: 24px; white-space: nowrap; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; padding: 0 12px; animation: tickerScroll 20s linear infinite; font-family: var(--font-sans); }
+  .ep-ticker .ticker-inner span { display: inline-flex; align-items: center; gap: 8px; }
+  .ep-ticker .ticker-inner span::after { content: '·'; opacity: .5; }
+  @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  .ep-stats-block { background: var(--bc-limestone); border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .ep-stats-block .sb-headline { font-family: var(--font-serif); font-size: 12px; color: var(--ink); text-align: center; margin-bottom: 4px; font-weight: 500; }
+  .ep-stats-block .sb-stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .ep-stats-block .sb-stat { text-align: center; padding: 4px; }
+  .ep-stats-block .sb-stat-num { font-family: var(--font-serif); font-size: 18px; color: var(--bc-accent-deep); display: block; line-height: 1; font-weight: 500; }
+  .ep-stats-block .sb-stat-lbl { font-size: 7px; color: var(--graphite); line-height: 1.3; margin-top: 4px; display: block; font-family: var(--font-sans); }
+
+  .ep-lifestyle { background: linear-gradient(135deg, #E8DFD2 0%, #C8B8A4 100%); border-radius: 4px; height: 70px; position: relative; }
+  .ep-lifestyle.tall { height: 100px; }
+  .ep-lifestyle.editorial::after { content: 'PRODUCT TRIO STILL LIFE'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 7px; color: rgba(0,0,0,.4); letter-spacing: .1em; font-family: var(--font-sans); }
+
+  .ep-best-block { text-align: center; padding: 8px 4px; }
+  .ep-best-block .bb-headline { font-family: var(--font-serif); font-size: 11px; color: var(--ink); margin-bottom: 2px; font-weight: 500; }
+  .ep-best-block .bb-sub { font-size: 9px; color: var(--graphite); font-family: var(--font-sans); }
+
+  .ep-ugc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
+  .ep-ugc-tile { aspect-ratio: 1; background: linear-gradient(135deg, #D4C5B5 0%, #A89684 100%); border-radius: 3px; position: relative; }
+  .ep-ugc-tile.video::after { content: '▶'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 10px; opacity: .9; }
+
+  .ep-product-section .ps-headline { font-family: var(--font-serif); font-size: 11px; color: var(--ink); text-align: center; padding: 6px 4px; font-weight: 500; }
+  .ep-product-cards { display: flex; flex-direction: column; gap: 6px; }
+  .ep-product-card { background: var(--bc-limestone); border-radius: 5px; padding: 8px; display: flex; gap: 8px; align-items: stretch; }
+  .ep-product-card .pc-img { width: 50px; height: 50px; flex-shrink: 0; background: linear-gradient(135deg, #D9D4CB 0%, #B5AEA4 100%); border-radius: 3px; position: relative; }
+  .ep-product-card .pc-img::after { content: '15%'; position: absolute; top: 2px; right: 2px; background: var(--bc-accent); color: white; font-size: 6px; padding: 1px 3px; border-radius: 2px; font-weight: 600; }
+  .ep-product-card .pc-body { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .ep-product-card .pc-eyebrow { font-size: 6px; letter-spacing: .1em; color: var(--bc-accent-deep); text-transform: uppercase; font-weight: 600; font-family: var(--font-sans); }
+  .ep-product-card .pc-name { font-family: var(--font-serif); font-size: 10px; color: var(--ink); font-weight: 500; }
+  .ep-product-card .pc-stars { font-size: 7px; color: var(--bc-accent); letter-spacing: .15em; }
+  .ep-product-card .pc-pick { font-size: 7.5px; color: var(--graphite); font-style: italic; line-height: 1.3; margin-top: 2px; font-family: var(--font-sans); }
+  .ep-product-card .pc-stat { background: var(--bc-accent-soft); color: var(--bc-accent-deep); padding: 3px 6px; border-radius: 2px; font-size: 7px; font-weight: 600; margin-top: 2px; align-self: flex-start; font-family: var(--font-sans); }
+  .ep-product-card .pc-cta { background: var(--ink); color: white; padding: 3px 8px; border-radius: 2px; font-size: 7px; letter-spacing: .1em; text-align: center; margin-top: 4px; align-self: flex-start; font-family: var(--font-sans); }
+
+  .ep-diagram { background: var(--bc-warm); border: 1px solid var(--bc-border); border-radius: 6px; padding: 12px; }
+  .ep-diagram .dia-title { font-size: 8px; color: var(--graphite); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; text-align: center; font-family: var(--font-sans); }
+  .ep-diagram .dia-layer { height: 16px; border-radius: 2px; position: relative; margin-bottom: 4px; display: flex; align-items: center; padding: 0 8px; font-size: 7px; font-weight: 500; color: white; font-family: var(--font-sans); }
+  .ep-diagram .dia-layer.epi { background: linear-gradient(90deg, #C49579, #B8755A); }
+  .ep-diagram .dia-layer.dermis { background: linear-gradient(90deg, #8A4F38, #6B3624); }
+  .ep-diagram .dia-arrow { position: relative; height: 12px; display: flex; justify-content: center; align-items: center; }
+  .ep-diagram .dia-arrow::after { content: '↓ RED LIGHT REACHES HERE'; font-size: 6.5px; color: var(--bc-accent-deep); font-weight: 600; letter-spacing: .08em; font-family: var(--font-sans); }
+  .ep-diagram .dia-caption { font-size: 7.5px; color: var(--graphite); margin-top: 6px; text-align: center; font-style: italic; font-family: var(--font-sans); }
+
+  .ep-faq { background: var(--bc-warm); border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+  .ep-faq .faq-item { padding: 4px 0; border-bottom: 1px dashed var(--bc-border); }
+  .ep-faq .faq-item:last-child { border-bottom: 0; }
+  .ep-faq .faq-q { font-size: 8.5px; color: var(--ink); font-weight: 600; margin-bottom: 2px; font-family: var(--font-sans); }
+  .ep-faq .faq-a { font-size: 7.5px; color: var(--graphite); line-height: 1.4; font-family: var(--font-sans); }
+
+  .ep-trust-strip { background: var(--bc-limestone); border-radius: 4px; padding: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .ep-trust-strip .ts-item { text-align: center; padding: 4px 2px; }
+  .ep-trust-strip .ts-icon { width: 18px; height: 18px; border-radius: 50%; background: var(--bc-accent-soft); margin: 0 auto 4px; }
+  .ep-trust-strip .ts-lbl { font-size: 7px; color: var(--graphite); line-height: 1.3; font-family: var(--font-sans); }
+
+  .ep-fulham { background: linear-gradient(180deg, #1A1A1A 0%, #000 100%); color: white; border-radius: 6px; padding: 16px 14px; text-align: center; }
+  .ep-fulham .fc-eyebrow { font-size: 8px; letter-spacing: .18em; opacity: .7; margin-bottom: 8px; font-weight: 600; font-family: var(--font-sans); }
+  .ep-fulham .fc-headline { font-family: var(--font-serif); font-size: 16px; line-height: 1.2; margin-bottom: 6px; font-weight: 500; }
+  .ep-fulham .fc-locker { font-size: 8px; opacity: .7; font-style: italic; font-family: var(--font-sans); }
+  .ep-fulham .fc-shield { width: 24px; height: 28px; background: linear-gradient(180deg, white 0%, #DDD 100%); margin: 0 auto 8px; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; font-size: 7px; color: var(--ink); font-weight: 700; font-family: var(--font-sans); }
+
+  .ep-dynamic-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .ep-dyn-cell { background: var(--bc-limestone); border-radius: 4px; padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+  .ep-dyn-cell .dyn-img { height: 40px; background: linear-gradient(135deg, #D9D4CB 0%, #B5AEA4 100%); border-radius: 3px; }
+  .ep-dyn-cell .dyn-name { font-family: var(--font-serif); font-size: 9px; color: var(--ink); text-align: center; font-weight: 500; }
+  .ep-dyn-cell .dyn-cta { background: var(--ink); color: white; font-size: 7px; padding: 3px; border-radius: 2px; text-align: center; letter-spacing: .08em; font-family: var(--font-sans); }
+
+  .ep-try-it { background: var(--bc-warm-deep); border: 1px solid var(--bc-accent-soft); border-radius: 8px; padding: 12px 14px; text-align: center; }
+  .ep-try-it .ti-headline { font-family: var(--font-serif); font-size: 12px; color: var(--ink); margin-bottom: 4px; font-weight: 500; }
+  .ep-try-it .ti-sub { font-size: 8px; color: var(--graphite); line-height: 1.5; font-family: var(--font-sans); }
+  .ep-try-it .ti-foot { font-size: 6.5px; color: var(--steel); margin-top: 4px; font-family: var(--font-sans); }
+
+  .ep-review-block { background: var(--bc-limestone); border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+  .ep-review-block .rb-stars { font-size: 10px; color: var(--bc-accent); letter-spacing: .2em; }
+  .ep-review-block .rb-quote { font-family: var(--font-serif); font-size: 9.5px; color: var(--ink); line-height: 1.45; font-style: italic; font-weight: 400; }
+  .ep-review-block .rb-author { font-size: 8px; color: var(--ink); font-weight: 600; font-family: var(--font-sans); }
+  .ep-review-block .rb-meta { font-size: 7px; color: var(--graphite); font-style: italic; font-family: var(--font-sans); }
+  .ep-review-block .rb-verified { background: var(--status-green); color: white; font-size: 6px; padding: 2px 5px; border-radius: 2px; letter-spacing: .08em; font-weight: 600; align-self: flex-start; text-transform: uppercase; font-family: var(--font-sans); }
+  .ep-review-block .rb-cta { background: transparent; color: var(--ink); border: 1px solid var(--ink); padding: 5px 8px; font-size: 7px; letter-spacing: .1em; text-align: center; border-radius: 3px; font-weight: 500; font-family: var(--font-sans); }
+
+  .ep-plain { background: white; padding: 18px 16px; border-radius: 4px; font-family: var(--font-sans); font-size: 10px; line-height: 1.65; color: var(--ink); font-weight: 400; }
+  .ep-plain p { margin-bottom: 8px; color: var(--ink); font-weight: 400; }
+  .ep-plain p:last-child { margin-bottom: 0; }
+  .ep-plain .salutation { color: var(--ink); }
+  .ep-plain .signoff { color: var(--ink); margin-top: 10px; }
+  .ep-plain code { background: var(--bc-warm); padding: 1px 4px; border-radius: 2px; font-size: 9px; color: var(--bc-accent-deep); font-family: monospace; }
+
+  /* ABANDONED CHECKOUT specific blocks */
+  .ep-checkout-cart {
+    background: var(--bc-warm); border: 1px solid var(--bc-border); border-radius: 6px;
+    padding: 10px 12px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .ep-checkout-cart .cc-label { font-size: 7px; text-transform: uppercase; letter-spacing: .1em; color: var(--graphite); font-weight: 600; font-family: var(--font-sans); }
+  .ep-checkout-cart .cc-item { display: flex; gap: 8px; align-items: center; }
+  .ep-checkout-cart .cc-img { width: 36px; height: 36px; background: linear-gradient(135deg, #D9D4CB 0%, #B5AEA4 100%); border-radius: 3px; flex-shrink: 0; }
+  .ep-checkout-cart .cc-info { flex: 1; min-width: 0; }
+  .ep-checkout-cart .cc-name { font-family: var(--font-serif); font-size: 9.5px; color: var(--ink); font-weight: 500; }
+  .ep-checkout-cart .cc-qty { font-size: 7px; color: var(--graphite); font-family: var(--font-sans); }
+  .ep-checkout-cart .cc-price { font-family: var(--font-serif); font-size: 10px; color: var(--ink); font-weight: 500; }
+  .ep-checkout-cart .cc-total { display: flex; justify-content: space-between; padding-top: 6px; border-top: 1px solid var(--bc-border); font-size: 9px; }
+  .ep-checkout-cart .cc-total .total-lbl { font-family: var(--font-sans); color: var(--graphite); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; font-size: 7px; }
+  .ep-checkout-cart .cc-total .total-val { font-family: var(--font-serif); color: var(--ink); font-weight: 500; font-size: 13px; }
+
+  .ep-bnpl {
+    background: var(--bc-warm-deep); border: 1px solid var(--bc-accent-soft);
+    border-radius: 8px; padding: 14px 16px; text-align: center;
+  }
+  .ep-bnpl .bnpl-headline { font-family: var(--font-serif); font-size: 13px; color: var(--ink); margin-bottom: 4px; font-weight: 500; }
+  .ep-bnpl .bnpl-math { font-family: var(--font-serif); font-size: 18px; color: var(--bc-accent-deep); font-weight: 500; margin: 4px 0; }
+  .ep-bnpl .bnpl-sub { font-size: 8px; color: var(--graphite); line-height: 1.5; font-family: var(--font-sans); }
+  .ep-bnpl .bnpl-logos { display: flex; gap: 4px; justify-content: center; margin-top: 8px; }
+  .ep-bnpl .bnpl-logo {
+    background: var(--bc-warm); border: 1px solid var(--bc-border);
+    padding: 3px 8px; border-radius: 3px; font-size: 7px; font-weight: 600;
+    color: var(--ink); font-family: var(--font-sans);
+    letter-spacing: .02em;
+  }
+
+  .ep-vip-block {
+    background: linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
+    color: white; border-radius: 8px; padding: 14px 16px;
+  }
+  .ep-vip-block .vip-eyebrow { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; color: var(--status-green-dark); margin-bottom: 6px; font-weight: 600; font-family: var(--font-sans); }
+  .ep-vip-block .vip-headline { font-family: var(--font-serif); font-size: 14px; margin-bottom: 4px; font-weight: 500; }
+  .ep-vip-block .vip-price { font-family: var(--font-serif); font-size: 18px; color: var(--status-green-dark); margin: 6px 0; font-weight: 500; }
+  .ep-vip-block .vip-benefits { display: flex; flex-direction: column; gap: 3px; margin: 8px 0; }
+  .ep-vip-block .vip-benefit { font-size: 8px; color: rgba(255,255,255,0.85); padding-left: 10px; position: relative; font-family: var(--font-sans); line-height: 1.4; }
+  .ep-vip-block .vip-benefit::before { content: '✓'; position: absolute; left: 0; color: var(--status-green-dark); font-weight: 700; }
+  .ep-vip-block .vip-cta { background: white; color: var(--ink); font-size: 8px; padding: 6px 10px; border-radius: 3px; font-weight: 600; text-align: center; margin-top: 8px; letter-spacing: .08em; font-family: var(--font-sans); }
+
+  .ep-countdown {
+    background: #8A4F38; color: white; border-radius: 6px;
+    padding: 10px 12px; text-align: center;
+    display: flex; flex-direction: column; gap: 4px; align-items: center;
+  }
+  .ep-countdown .cd-label { font-size: 7px; text-transform: uppercase; letter-spacing: .14em; opacity: .8; font-family: var(--font-sans); font-weight: 600; }
+  .ep-countdown .cd-time { font-family: var(--font-serif); font-size: 22px; font-weight: 500; letter-spacing: -.02em; }
+  .ep-countdown .cd-sub { font-size: 8px; opacity: .85; font-family: var(--font-sans); }
+
+  .ep-30day {
+    background: var(--bc-warm-deep); border: 1px solid var(--bc-accent-soft);
+    border-radius: 8px; padding: 12px 14px; text-align: center;
+  }
+  .ep-30day .day-headline { font-family: var(--font-serif); font-size: 13px; color: var(--ink); margin-bottom: 4px; font-weight: 500; }
+  .ep-30day .day-sub { font-size: 8px; color: var(--graphite); line-height: 1.5; font-family: var(--font-sans); }
+
+  .ep-welcome-callout {
+    background: var(--bc-warm); border: 1px dashed var(--bc-accent);
+    border-radius: 6px; padding: 10px 12px; text-align: center;
+  }
+  .ep-welcome-callout .wc-headline { font-family: var(--font-serif); font-size: 11px; color: var(--ink); margin-bottom: 4px; font-weight: 500; }
+  .ep-welcome-callout .wc-code { font-family: monospace; font-size: 9px; background: white; padding: 2px 6px; border-radius: 2px; color: var(--bc-accent-deep); font-weight: 600; display: inline-block; }
+  .ep-welcome-callout .wc-sub { font-size: 7.5px; color: var(--graphite); margin-top: 4px; font-family: var(--font-sans); }
+
+  .ep-cta { background: var(--ink); color: white; padding: 11px; border-radius: 4px; text-align: center; font-size: 11px; letter-spacing: .14em; font-weight: 600; font-family: var(--font-sans); }
+  .ep-cta-secondary { background: transparent; color: var(--ink); padding: 9px; border: 1px solid var(--ink); border-radius: 4px; text-align: center; font-size: 10px; letter-spacing: .14em; font-weight: 500; font-family: var(--font-sans); }
+  .ep-footer { background: var(--bc-warm); border-radius: 4px; padding: 8px; display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .ep-footer .line { height: 3px; background: var(--bc-border); border-radius: 1px; }
+  .ep-footer .line.short { width: 40%; }
+  .ep-footer .line.tiny { width: 25%; height: 2px; }
+
+  /* DAY NARRATIVE (right column) */
+  .day-narrative h3 { font-family: var(--font-sans); font-size: 22px; margin-bottom: var(--s-3); line-height: 1.25; font-weight: 600; letter-spacing: -.025em; color: var(--text-primary); }
+  .day-narrative .opener { font-family: var(--font-serif); font-size: 19px; color: var(--ink-2); line-height: 1.55; margin-bottom: var(--s-5); font-weight: 400; }
+  .day-narrative .opener em { color: var(--status-green); font-style: italic; font-weight: 500; }
+
+  .narrative-meta { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); margin-bottom: var(--s-6); }
+  @media (max-width: 540px) { .narrative-meta { grid-template-columns: 1fr; } }
+  .narrative-meta .nm-cell { background: var(--cloud); border: 1px solid var(--smoke); border-radius: var(--r-sm); padding: var(--s-3) var(--s-4); }
+  .narrative-meta .nm-label { font-size: 9px; text-transform: uppercase; letter-spacing: .12em; color: var(--text-secondary); font-weight: 600; margin-bottom: 4px; }
+  .narrative-meta .nm-value { font-family: var(--font-serif); font-size: 14px; color: var(--text-primary); line-height: 1.4; font-style: italic; font-weight: 400; }
+
+  .narrative-block { margin-bottom: var(--s-6); }
+  .narrative-block h4 { font-family: var(--font-sans); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--status-green); margin-bottom: var(--s-3); }
+  .narrative-block p { font-size: 15px; line-height: 1.65; color: var(--text-secondary); margin-bottom: var(--s-3); }
+  .narrative-block p:last-child { margin-bottom: 0; }
+  .narrative-block p strong { color: var(--text-primary); font-weight: 600; }
+
+  .narrative-block.intent { background: var(--cloud); border-left: 3px solid var(--status-green); border-radius: var(--r-sm); padding: var(--s-5) var(--s-6); margin-bottom: var(--s-6); }
+  .narrative-block.intent h4 { color: var(--status-green); }
+  .narrative-block.intent p { color: var(--text-primary); }
+
+  .narrative-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: var(--s-5); padding-top: var(--s-4); border-top: 1px solid var(--smoke); }
+  .narrative-tags .tag { font-size: 10.5px; padding: 5px 10px; border-radius: 999px; background: var(--cloud); border: 1px solid var(--smoke); color: var(--text-secondary); letter-spacing: .02em; font-weight: 500; }
+  .narrative-tags .tag.zpd { background: rgba(13,125,58,0.08); border-color: rgba(13,125,58,0.25); color: var(--status-green); }
+  .narrative-tags .tag.proof { background: rgba(74,222,128,0.10); border-color: rgba(74,222,128,0.30); color: var(--status-green); }
+  .narrative-tags .tag.shared { background: var(--cloud); border-color: var(--steel); color: var(--text-primary); }
+  .narrative-tags .tag.founder { background: var(--ink); color: white; border-color: var(--ink); }
+  .narrative-tags .tag.urgent { background: rgba(138,79,56,.08); border-color: rgba(138,79,56,.3); color: #8A4F38; }
+
+  /* LIFT SECTION */
+  .lift-stack { background: var(--white); border: 1px solid var(--smoke); border-radius: var(--r-xl); padding: var(--s-10) var(--s-12); }
+  .lift-row { display: grid; grid-template-columns: 56px 1fr 160px; gap: var(--s-7); align-items: center; padding: var(--s-5) 0; border-bottom: 1px solid var(--smoke); }
+  .lift-row:last-child { border-bottom: 0; }
+  .lift-row .num { font-family: var(--font-serif); font-size: 32px; color: var(--status-green); line-height: 1; font-weight: 500; letter-spacing: -.03em; }
+  .lift-row .copy h4 { font-family: var(--font-sans); font-size: 17px; font-weight: 600; margin-bottom: var(--s-1); letter-spacing: -.02em; }
+  .lift-row .copy p { font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; }
+  .lift-row .meta { text-align: right; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); font-weight: 500; }
+  .lift-row .meta strong { display: block; font-family: var(--font-serif); font-size: 22px; color: var(--status-green); text-transform: none; letter-spacing: -.02em; font-weight: 500; margin-bottom: 2px; }
+
+  .note { background: var(--cloud); border-left: 3px solid var(--graphite); padding: var(--s-4) var(--s-5); border-radius: var(--r-sm); font-size: 13.5px; color: var(--text-secondary); margin: var(--s-5) 0; line-height: 1.6; }
+  .note.warning { border-left-color: #B8893C; background: #FCF7EC; }
+  .note.accent { border-left-color: var(--status-green); background: rgba(13,125,58,0.05); }
+  .note strong { color: var(--text-primary); }
+
+  /* ARCHITECTURE */
+  .arch { background: var(--white); border: 1px solid var(--smoke); border-radius: var(--r-xl); padding: var(--s-10); overflow-x: auto; }
+  .arch-inner { min-width: 720px; }
+  .arch-row { display: flex; flex-direction: column; align-items: center; gap: var(--s-5); }
+  .arch-node { border-radius: var(--r-sm); padding: var(--s-3) var(--s-5); font-size: 13px; border: 1px solid var(--smoke); background: var(--cloud); text-align: center; font-weight: 500; }
+  .arch-node.entry { background: var(--ink); color: var(--white); border-color: var(--ink); padding: var(--s-4) var(--s-6); }
+  .arch-node.split { background: rgba(13,125,58,0.10); border-color: var(--status-green); color: var(--status-green); font-weight: 600; }
+  .arch-node.merge { background: var(--ink-2); color: var(--white); border-color: var(--ink-2); }
+  .arch-node.shared { background: var(--cloud); border-color: var(--steel); border-style: dashed; }
+  .arrow-down { width: 1px; height: 22px; background: var(--steel); position: relative; }
+  .arrow-down::after { content: ''; position: absolute; bottom: 0; left: -3px; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid var(--steel); }
+  .branch-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; width: 100%; }
+  .branch-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; max-width: 540px; }
+  .branch-col { display: flex; flex-direction: column; gap: 6px; }
+  .branch-label { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; text-align: center; color: var(--text-secondary); padding: 6px 4px; border-bottom: 1px solid var(--smoke); font-weight: 600; }
+  .branch-label.skin { color: #8A6440; }
+  .branch-label.rec { color: #5A6A4D; }
+  .branch-label.sleep { color: #4D5C7A; }
+  .branch-label.hair { color: #7A4D5C; }
+  .branch-label.new { color: var(--status-green); }
+  .branch-label.repeat { color: var(--graphite); }
+  .mini-email { background: var(--white); border: 1px solid var(--smoke); border-radius: 4px; padding: 6px 4px; text-align: center; font-size: 10px; color: var(--text-secondary); }
+  .mini-email .e { font-family: var(--font-serif); color: var(--text-primary); font-size: 12px; display: block; font-weight: 500; }
+
+  /* META FOOTER */
+  .meta-footer { max-width: 1180px; margin: 0 auto; padding: var(--s-7) var(--s-6); border-top: 1px solid var(--smoke); margin-top: var(--s-12); font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between; font-weight: 500; letter-spacing: .02em; }
+
+  /* PAGE 3 — Memorial Day style (compact) */
+  .frame { background: var(--cloud); border-left: 3px solid var(--status-green); border-radius: var(--r-md); padding: var(--s-7) var(--s-8); margin-bottom: var(--s-7); }
+  .frame h3 { margin-bottom: var(--s-3); font-size: 19px; }
+  .frame p { color: var(--text-secondary); font-size: 14.5px; }
+  .frame .stat-row { display: flex; gap: var(--s-8); margin-top: var(--s-5); padding-top: var(--s-5); border-top: 1px solid var(--smoke); flex-wrap: wrap; }
+  .frame .stat-num { font-family: var(--font-serif); font-size: 28px; color: var(--status-green); display: block; font-weight: 500; letter-spacing: -.02em; }
+  .frame .stat-label { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .08em; margin-top: 4px; font-weight: 600; }
+
+  .tactic { background: var(--white); border: 1px solid var(--smoke); border-radius: var(--r-xl); padding: var(--s-8); margin-bottom: var(--s-5); }
+  .tactic-head { display: flex; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-5); }
+  .tactic-num { font-family: var(--font-serif); font-size: 36px; color: var(--status-green); line-height: 1; min-width: 40px; font-weight: 500; letter-spacing: -.03em; }
+  .tactic h3 { font-size: 22px; margin-bottom: 0; font-weight: 600; letter-spacing: -.02em; }
+  .tactic .tactic-sub { color: var(--text-secondary); font-size: 14px; margin-top: 4px; }
+  .tactic-body p { font-size: 15px; line-height: 1.65; margin-bottom: var(--s-3); color: var(--text-secondary); }
+  .tactic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4); margin-top: var(--s-6); }
+  @media (max-width: 760px) { .tactic-grid { grid-template-columns: 1fr; } }
+  .tactic-grid .col { background: var(--cloud); border-radius: var(--r-sm); padding: var(--s-5); }
+  .tactic-grid .col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-secondary); font-weight: 600; margin-bottom: var(--s-3); font-family: var(--font-sans); }
+  .tactic-grid .col p { font-size: 13px; color: var(--text-secondary); margin: 0; }
+  .tactic-grid .col .big { font-family: var(--font-serif); font-size: 22px; color: var(--status-green); display: block; margin-bottom: 4px; line-height: 1.1; font-weight: 500; letter-spacing: -.02em; }
+
+  .timeline { background: var(--white); border: 1px solid var(--smoke); border-radius: var(--r-xl); padding: var(--s-8); }
+  .timeline-track { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; margin-top: var(--s-4); }
+  .tl-day { border-top: 2px solid var(--smoke); padding-top: var(--s-3); }
+  .tl-day.active { border-top-color: var(--status-green); }
+  .tl-day.sale { border-top-color: var(--ink); border-top-width: 3px; }
+  .tl-day .tl-date { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+  .tl-day .tl-label { font-size: 13px; color: var(--text-primary); margin-top: 4px; font-weight: 600; }
+  .tl-day .tl-events { margin-top: var(--s-2); display: flex; flex-direction: column; gap: 4px; }
+  .tl-day .tl-event { font-size: 11px; padding: 4px 6px; border-radius: 3px; background: var(--cloud); border: 1px solid var(--smoke); color: var(--text-secondary); line-height: 1.3; }
+  .tl-day .tl-event.hot { background: rgba(13,125,58,0.1); border-color: var(--status-green); color: var(--status-green); }
+  .tl-day .tl-event.email { background: var(--cloud); border-color: var(--steel); }
+
+  .checklist { background: var(--white); border: 1px solid var(--smoke); border-radius: var(--r-xl); padding: var(--s-7) var(--s-8); }
+  .checklist h4 { margin-bottom: var(--s-4); font-family: var(--font-sans); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-secondary); font-weight: 600; }
+  .checklist ul { list-style: none; }
+  .checklist li { padding: var(--s-3) 0 var(--s-3) 28px; border-bottom: 1px solid var(--smoke); position: relative; font-size: 14px; color: var(--text-secondary); }
+  .checklist li:last-child { border-bottom: 0; }
+  .checklist li::before { content: ''; position: absolute; left: 0; top: 14px; width: 14px; height: 14px; border: 1.5px solid var(--steel); border-radius: 3px; }
+  .checklist li strong { color: var(--text-primary); font-weight: 600; }
+
+  .proj { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--smoke); border-radius: var(--r-sm); overflow: hidden; }
+  .proj th, .proj td { padding: var(--s-4); text-align: left; font-size: 14px; border-bottom: 1px solid var(--smoke); }
+  .proj th { background: var(--cloud); font-weight: 600; color: var(--text-secondary); text-transform: uppercase; font-size: 11px; letter-spacing: .08em; }
+  .proj td.num { font-family: var(--font-serif); color: var(--status-green); font-size: 16px; text-align: right; width: 140px; font-weight: 500; }
+  .proj tr:last-child td { border-bottom: 0; }
+  .proj td .sub { display: block; font-size: 11px; color: var(--text-secondary); margin-top: 2px; font-family: var(--font-sans); }
+
+  .pending-block { border: 2px dashed var(--steel); border-radius: var(--r-xl); padding: var(--s-16) var(--s-8); text-align: center; background: var(--cloud); }
+  .pending-block .ghost-tag { display: inline-block; padding: 4px 12px; font-size: 11px; background: #B8893C; color: white; border-radius: 4px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: var(--s-5); font-weight: 600; }
+  .pending-block h3 { font-size: 20px; margin-bottom: var(--s-3); color: var(--text-primary); }
+  .pending-block p { max-width: 480px; margin: 0 auto; color: var(--text-secondary); }
+
+  @media (max-width: 720px) {
+    .topbar-inner { flex-direction: column; gap: var(--s-4); padding: var(--s-4); }
+    .tabnav { flex-wrap: wrap; justify-content: center; }
+    h1, .hero h1 { font-size: 30px; }
+    .section-title, h2 { font-size: 24px; }
+    .day-marker { flex-wrap: wrap; }
+    .day-marker .day-num { font-size: 40px; }
+    .email-preview { position: static; }
+    .timeline-track { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* PILLAR TOGGLE */
+  .email-preview-wrapper { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 10px; }
+  .pillar-toggle {
+    display: flex; gap: 2px; align-items: center;
+    background: var(--white); border: 1px solid var(--smoke);
+    border-radius: 999px; padding: 4px;
+    align-self: flex-start;
+  }
+  .pillar-toggle .pt-label {
+    font-size: 9.5px; text-transform: uppercase; letter-spacing: .12em;
+    color: var(--graphite); padding: 0 8px 0 10px; font-weight: 600;
+  }
+  .pillar-toggle .pt-btn {
+    background: transparent; border: 0; font-family: var(--font-sans);
+    font-size: 10.5px; font-weight: 600; color: var(--text-secondary);
+    padding: 5px 11px; cursor: pointer; border-radius: 999px;
+    letter-spacing: .02em; transition: all .15s ease;
+  }
+  .pillar-toggle .pt-btn:hover { color: var(--ink); }
+  .pillar-toggle .pt-btn.active { background: var(--ink); color: var(--white); }
+
+  .pillar-variant { display: none; }
+  .pillar-variant.active { display: flex; }
+  .email-preview.pillar-variant { position: static; }
+
+  /* Per-pillar hero tints */
+  .ep-hero.pillar-skin { background: linear-gradient(135deg, var(--bc-warm-tone) 0%, var(--bc-warm-tone-deep) 100%); }
+  .ep-hero.pillar-hair { background: linear-gradient(135deg, #D9B89A 0%, #9C6F4F 100%); }
+  .ep-hero.pillar-recovery { background: linear-gradient(135deg, #B8B095 0%, #6E6953 100%); }
+  .ep-hero.pillar-sleep { background: linear-gradient(135deg, #97A5B5 0%, #4A5A6E 100%); }
+  /* Cool variant for E2 hero per pillar */
+  .ep-hero.pillar-skin.cool { background: linear-gradient(135deg, #C8C0B5 0%, #7A6E5E 100%); }
+  .ep-hero.pillar-hair.cool { background: linear-gradient(135deg, #C9A589 0%, #7A5B47 100%); }
+  .ep-hero.pillar-recovery.cool { background: linear-gradient(135deg, #A8A89A 0%, #5C5C4A 100%); }
+  .ep-hero.pillar-sleep.cool { background: linear-gradient(135deg, #8A98A8 0%, #3C4A5C 100%); }
+
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="nav-left">
+      <span class="nav-wordmark">Tethrd</span>
+      <span class="nav-sep">×</span>
+      <span class="nav-client">BON CHARGE</span>
+    </div>
+    <nav class="tabnav">
+      <button class="tab active" data-page="welcome">Welcome Flow</button>
+      <button class="tab" data-page="checkout">Abandoned Checkout</button>
+      <button class="tab" data-page="memorial">Memorial Day</button>
+    </nav>
+    <div class="nav-date">20 May 2026</div>
+  </div>
+</header>
+
+<!-- ================================================ -->
+<!-- PAGE 1 — WELCOME FLOW                            -->
+<!-- ================================================ -->
+<main class="page active" id="page-welcome">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Strategic brief · 01 — The redesigned welcome flow</div>
+      <h1>The proposed welcome flow, walked through from the <em>customer's perspective.</em></h1>
+      <p class="hero-sub">A single subscriber's experience through every email of the proposed flow — what she sees, why she sees it, and the strategic intent behind each design choice.</p>
+    </div>
+  </section>
+
+  <!-- PROTAGONIST -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="protagonist">
+        <div class="ptg-avatar">S</div>
+        <div class="ptg-body">
+          <h3>Meet Sarah.</h3>
+          <p>Sarah saw a few BON CHARGE ads on Instagram, clicked through to the homepage, and was caught by a mystery-gift popup asking what wellness goal she's working on. She picked <strong>Skin</strong> — and that single click is what branches the rest of her welcome flow.</p>
+          <div class="ptg-pillar-note">
+            <span class="pn-icon">→</span>
+            <span>Sarah's journey is shown for the <strong>Skin</strong> pillar. Subscribers who pick Recovery, Sleep, or Hair receive the same flow structure with their pillar's content swapped through E1–E3.</span>
+          </div>
+          <div class="ptg-signal">
+            <span class="signal-label">Zero-party signal captured</span>
+            <span class="signal-value">Pillar = <strong>Skin</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE SHIFTS -->
+  <section class="bg-cloud">
+    <div class="container">
+      <div class="eyebrow">02 — Why this flow is different</div>
+      <h2 class="section-title">Three structural shifts vs the welcome flow running today.</h2>
+      <p class="section-lede">Before walking through Sarah's ten days, the three changes Belle should know about — each addressed at a specific weakness of the current flow.</p>
+
+      <div class="shift-grid">
+        <div class="shift-card">
+          <span class="num">01</span>
+          <h3>Personalised to the customer's goal</h3>
+          <p class="sub">The pillar Sarah picks at signup branches the first three emails around her stated goal. Product trio, hero image, stats, subject lines — all swap by pillar.</p>
+          <div class="delta">
+            <div class="row"><span class="tag">Now</span><span class="from">Same content for every subscriber</span></div>
+            <div class="row"><span class="tag">New</span><span class="to">Pillar-branched E1–E3</span></div>
+          </div>
+        </div>
+        <div class="shift-card">
+          <span class="num">02</span>
+          <h3>Proof and authority in every send</h3>
+          <p class="sub">A running brand-trust ticker (Fulham FC · Scientific Advisory Board · Elite Athletes) opens every email. Stats trios, UGC grids, long-form reviews, and a Fulham FC partnership block run all the way through.</p>
+          <div class="delta">
+            <div class="row"><span class="tag">Now</span><span class="from">Product-first, light proof</span></div>
+            <div class="row"><span class="tag">New</span><span class="to">Authority + proof in all 6 sends</span></div>
+          </div>
+        </div>
+        <div class="shift-card">
+          <span class="num">03</span>
+          <h3>Closing send is a founder note</h3>
+          <p class="sub">The current flow closes with a templated last-chance email. The new one closes with a plain-text note from Andy. No design, no buttons, just text. A different way to reach the 10-day non-buyer.</p>
+          <div class="delta">
+            <div class="row"><span class="tag">Now</span><span class="from">Templated last-chance close</span></div>
+            <div class="row"><span class="tag">New</span><span class="to">Plain-text founder letter from Andy</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA BRIDGE -->
+      <div class="data-bridge">
+        <div class="copy">
+          <div class="marquee-tag">The data behind the structure</div>
+          <h3>The Day 0 reality drove every structural choice.</h3>
+          <p>Historical welcome flow data tells you most of what you need to know about how to structure this sequence. The first 24 hours do the work. By Day 5 the signal is gone. That's why the new flow stops pushing the same pillar after E3 and opens up the catalogue, then closes with a personal note from Andy.</p>
+          <div class="marquee-num">~90%<span class="unit">of welcome conversions on Day 0</span></div>
+        </div>
+        <div class="chart-frame">
+          <div class="chart-title">Conversions by Days from Subscription</div>
+          <div class="chart-sub">Subscribers Converted — historical welcome flow</div>
+          <div class="chart-area" id="chartArea">
+            <div class="y-axis"><span>4000</span><span>3000</span><span>2000</span><span>1000</span><span>0</span></div>
+          </div>
+          <div class="x-axis"><span>Day 0</span><span>Day 5</span><span>Day 10</span><span>Day 15</span><span>Day 20</span><span>Day 25</span><span>Day 30</span></div>
+          <div class="chart-legend">
+            <div class="key"><span class="swatch" style="background:var(--status-green-dark)"></span>Attributed</div>
+            <div class="key"><span class="swatch" style="background:rgba(255,255,255,0.15)"></span>Unattributed</div>
+          </div>
+          <div class="chart-source">Source: Klaviyo conversions by days from subscription, historical welcome flow.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="bg-white">
+    <div class="journey-opening">
+      <div class="eyebrow">03 — Sarah's 10 days, email by email</div>
+      <h2>What Sarah opens, what she sees, and why each email earns its place.</h2>
+      <p class="intro">Each day below shows the stylised preview of the email Sarah receives (using the actual copy and module structure from the planner sheet), what she experiences when she opens it, and why the email is built that way.</p>
+    </div>
+
+    <div class="container narrow">
+
+      <!-- PHASE 1 -->
+      <div class="phase-divider">
+        <div class="phase-num">01</div>
+        <div class="phase-copy">
+          <h3>Phase one · The high-intent window (Day 0 → Day 3)</h3>
+          <p>Personalised to Sarah's Skin pillar. Every email speaks to the goal she picked at signup, because this is where personalisation actually moves conversion.</p>
+        </div>
+      </div>
+
+      <!-- DAY 0 — E1 SKIN -->
+      <div class="day-block">
+        <div class="day-marker">
+          <div class="day-num">0</div>
+          <div class="day-meta">
+            <div class="day-label">Tuesday · Immediate · 1 hour after signup</div>
+            <div class="day-title">Welcome Sarah. Reveal the code. Show her she's been heard.</div>
+          </div>
+          <div class="day-position"><strong>E1</strong>Skin pillar</div>
+        </div>
+        <div class="day-content">
+          <div class="email-preview-wrapper">
+          <div class="pillar-toggle">
+            <span class="pt-label">View as</span>
+            <button class="pt-btn active" data-pillar="skin">Skin</button>
+            <button class="pt-btn" data-pillar="hair">Hair</button>
+            <button class="pt-btn" data-pillar="recovery">Recovery</button>
+            <button class="pt-btn" data-pillar="sleep">Sleep</button>
+          </div>
+          <div class="email-preview pillar-variant pillar-skin active" data-pillar="skin">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">Welcome to BON CHARGE. Open for 15% off!</div>
+            <div class="ep-preheader">Three science-backed skin tools, plus 15% off to get you started.</div>
+            <div class="ep-banner-trust">⭐⭐⭐⭐⭐ 5,700+ REVIEWS · TRUSTED BY 400,000+ CUSTOMERS</div>
+            <div class="ep-hero pillar-skin">
+              <div class="ep-hero-eyebrow">FOR YOUR SKIN GOAL</div>
+              <div class="ep-hero-headline">15% Off Your First Step Toward Better Skin</div>
+              <div class="ep-hero-sub">Science-backed technology designed to enhance skin appearance, texture, glow and tone.</div>
+              <div class="ep-code-block"><span class="label">Code</span><span class="code">{{dynamic_code}}</span></div>
+            </div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span></div></div>
+            <div class="ep-stats-block">
+              <div class="sb-headline">Light that speaks to your skin</div>
+              <div class="sb-stats-row"><div class="sb-stat"><span class="sb-stat-num">98%</span><span class="sb-stat-lbl">more even-looking<br>skin tone</span></div><div class="sb-stat"><span class="sb-stat-num">400k+</span><span class="sb-stat-lbl">customers<br>worldwide</span></div><div class="sb-stat"><span class="sb-stat-num">n=50</span><span class="sb-stat-lbl">Face Mask<br>reviews analysed</span></div></div>
+            </div>
+            <div class="ep-lifestyle"></div>
+            <div class="ep-best-block">
+              <div class="bb-headline">Best in its class.</div>
+              <div class="bb-sub">Our award-winning, advanced skin technology.</div>
+            </div>
+            <div class="ep-ugc-grid"><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div></div>
+            <div class="ep-product-section">
+              <div class="ps-headline">Our most loved skin products.</div>
+              <div class="ep-product-cards">
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Red Light Face Mask</span><span class="pc-stars">★★★★★ 4.9</span><span class="pc-pick">For tone, texture, fine lines.</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Red Light Neck & Chest Mask</span><span class="pc-stars">★★★★★ 5.0</span><span class="pc-pick">Where skincare misses.</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Red Light Face Wand</span><span class="pc-stars">★★★★★ 4.8</span><span class="pc-pick">Targeted skin recovery.</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              </div>
+            </div>
+            <div class="ep-cta">EXPLORE EVERYTHING BON CHARGE →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          <div class="email-preview pillar-variant pillar-hair" data-pillar="hair">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">Welcome to BON CHARGE. Open for 15% off!</div>
+            <div class="ep-preheader">Science-backed light technology designed to support healthier-looking hair.</div>
+            <div class="ep-banner-trust">⭐⭐⭐⭐⭐ 5,700+ REVIEWS · TRUSTED BY 400,000+ CUSTOMERS</div>
+            <div class="ep-hero pillar-hair">
+              <div class="ep-hero-eyebrow">FOR YOUR HAIR GOAL</div>
+              <div class="ep-hero-headline">15% off your first step toward better hair</div>
+              <div class="ep-hero-sub">Science-backed light technology designed to support healthier-looking hair and scalp.</div>
+              <div class="ep-code-block"><span class="label">Code</span><span class="code">{{dynamic_code}}</span></div>
+            </div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span></div></div>
+            <div class="ep-stats-block">
+              <div class="sb-headline">Light that speaks to your scalp</div>
+              <div class="sb-stats-row"><div class="sb-stat"><span class="sb-stat-num">400k+</span><span class="sb-stat-lbl">customers<br>worldwide</span></div><div class="sb-stat"><span class="sb-stat-num">5,700+</span><span class="sb-stat-lbl">5-star<br>reviews</span></div><div class="sb-stat"><span class="sb-stat-num">Award</span><span class="sb-stat-lbl">Get The Gloss<br>Beauty Awards</span></div></div>
+            </div>
+            <div class="ep-lifestyle"></div>
+            <div class="ep-best-block">
+              <div class="bb-headline">Best in its class.</div>
+              <div class="bb-sub">Our award-winning, advanced hair technology.</div>
+            </div>
+            <div class="ep-ugc-grid"><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div></div>
+            <div class="ep-product-section">
+              <div class="ps-headline">Our most loved hair product.</div>
+              <div class="ep-product-cards">
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER · AWARD</span><span class="pc-name">Red Light Cap</span><span class="pc-stars">★★★★★ Five-star rated</span><span class="pc-pick">Thicker, fuller, healthier-looking hair. 10 min / day. Hands-free.</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              </div>
+            </div>
+            <div class="ep-cta">EXPLORE THE RED LIGHT CAP →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          <div class="email-preview pillar-variant pillar-recovery" data-pillar="recovery">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">Welcome to BON CHARGE. Open for 15% off!</div>
+            <div class="ep-preheader">Science-backed light technology designed to support recovery and wellbeing.</div>
+            <div class="ep-banner-trust">⭐⭐⭐⭐⭐ 5,700+ REVIEWS · TRUSTED BY 400,000+ CUSTOMERS</div>
+            <div class="ep-hero pillar-recovery">
+              <div class="ep-hero-eyebrow">FOR YOUR RECOVERY GOAL</div>
+              <div class="ep-hero-headline">15% off your first step toward better recovery</div>
+              <div class="ep-hero-sub">Science-backed light technology designed to support post-activity muscle comfort and a recovery routine you'll actually keep.</div>
+              <div class="ep-code-block"><span class="label">Code</span><span class="code">{{dynamic_code}}</span></div>
+            </div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span></div></div>
+            <div class="ep-stats-block">
+              <div class="sb-headline">Light that speaks to your muscles</div>
+              <div class="sb-stats-row"><div class="sb-stat"><span class="sb-stat-num">87%</span><span class="sb-stat-lbl">felt more<br>recovered</span></div><div class="sb-stat"><span class="sb-stat-num">64%</span><span class="sb-stat-lbl">deeper<br>relaxation</span></div><div class="sb-stat"><span class="sb-stat-num">64%</span><span class="sb-stat-lbl">noticeable<br>within weeks</span></div></div>
+            </div>
+            <div class="ep-lifestyle"></div>
+            <div class="ep-best-block">
+              <div class="bb-headline">Best in its class.</div>
+              <div class="bb-sub">Our award-winning, advanced recovery technology.</div>
+            </div>
+            <div class="ep-ugc-grid"><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div></div>
+            <div class="ep-product-section">
+              <div class="ps-headline">Our most loved recovery devices.</div>
+              <div class="ep-product-cards">
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Red Light Therapy Blanket</span><span class="pc-stars">★★★★★</span><span class="pc-pick">Post-activity muscle comfort.</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Infrared Sauna Blanket</span><span class="pc-stars">★★★★★</span><span class="pc-pick">Deep, evening relaxation.</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Infrared PEMF Sauna Dome</span><span class="pc-stars">★★★★★</span><span class="pc-pick">Full-body recovery routine.</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              </div>
+            </div>
+            <div class="ep-cta">EXPLORE THE RANGE →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          <div class="email-preview pillar-variant pillar-sleep" data-pillar="sleep">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">Welcome to BON CHARGE. Open for 15% off!</div>
+            <div class="ep-preheader">Science-backed light technology designed to support a healthier evening.</div>
+            <div class="ep-banner-trust">⭐⭐⭐⭐⭐ 5,700+ REVIEWS · TRUSTED BY 400,000+ CUSTOMERS</div>
+            <div class="ep-hero pillar-sleep">
+              <div class="ep-hero-eyebrow">FOR YOUR SLEEP GOAL</div>
+              <div class="ep-hero-headline">15% off your first step toward better sleep</div>
+              <div class="ep-hero-sub">Science-backed light technology designed to support a healthier evening environment and a wind-down routine you'll actually keep.</div>
+              <div class="ep-code-block"><span class="label">Code</span><span class="code">{{dynamic_code}}</span></div>
+            </div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span></div></div>
+            <div class="ep-stats-block">
+              <div class="sb-headline">Light that speaks to your evenings</div>
+              <div class="sb-stats-row"><div class="sb-stat"><span class="sb-stat-num">90%</span><span class="sb-stat-lbl">improved relaxation<br>+ sleep</span></div><div class="sb-stat"><span class="sb-stat-num">61%</span><span class="sb-stat-lbl">enhanced recovery<br>+ energy</span></div><div class="sb-stat"><span class="sb-stat-num">57%</span><span class="sb-stat-lbl">noticeable<br>within weeks</span></div></div>
+            </div>
+            <div class="ep-lifestyle"></div>
+            <div class="ep-best-block">
+              <div class="bb-headline">Best in its class.</div>
+              <div class="bb-sub">Our award-winning, advanced sleep technology.</div>
+            </div>
+            <div class="ep-ugc-grid"><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div><div class="ep-ugc-tile"></div></div>
+            <div class="ep-product-section">
+              <div class="ps-headline">Our most loved sleep tools.</div>
+              <div class="ep-product-cards">
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Infrared PEMF Mat Max</span><span class="pc-stars">★★★★★</span><span class="pc-pick">Evening relaxation.</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Full Spectrum Light Bulb</span><span class="pc-stars">★★★★★</span><span class="pc-pick">Calmer evening environment.</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Brooklyn Blue Light Glasses</span><span class="pc-stars">★★★★★</span><span class="pc-pick">Screen-time wind-down.</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              </div>
+            </div>
+            <div class="ep-cta">EXPLORE THE RANGE →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          </div>
+
+          <div class="day-narrative">
+            <h3>The brand opens by recognising her, not greeting a stranger.</h3>
+            <p class="opener">Sarah opens the email on her phone about an hour after signing up. After a banner that flags 400k+ customers, the hero speaks directly to <em>her</em> wellness goal. Not a generic "Welcome to BON CHARGE." The 15% code sits inside the hero so she doesn't have to scroll for it.</p>
+            <div class="narrative-meta">
+              <div class="nm-cell"><div class="nm-label">Subject</div><div class="nm-value">"Welcome to BON CHARGE. Open for 15% off!"</div></div>
+              <div class="nm-cell"><div class="nm-label">Job to be done</div><div class="nm-value">Welcome · reveal code · speak her pillar</div></div>
+            </div>
+            <div class="narrative-block">
+              <h4>What Sarah experiences</h4>
+              <p>Scroll past the hero and the email is dense with proof. A running ticker — Elite Athletes Worldwide, Fulham FC, Scientific Advisory Board — sits directly under the hero. In two seconds she's clocked that this brand isn't another DTC startup.</p>
+              <p>Underneath, a "Light that speaks to your skin" stats block: <strong>98% more even-looking skin tone, 400k+ customers, n=50 Face Mask reviews analysed by Ana</strong>. A lifestyle image, then a 4-up UGC grid, then three product cards. The cards aren't random. They're <strong>the three products a skin customer would actually start with</strong>: Face Mask, Neck & Chest Mask, Face Wand. Each one carries the BEST SELLER eyebrow, the 15% sticker, a star rating, and a single line on who it's for.</p>
+            </div>
+            <div class="narrative-block intent">
+              <h4>Why this email earns its place</h4>
+              <p>Day 0 is where the welcome flow is won. Every choice in E1 exists for the first hour after signup. <strong>The code sits in the hero so she doesn't go looking for it. The ticker frontloads brand authority. The stats use real numbers from Ana's review analysis — nothing fabricated. The product trio matches her pillar so she doesn't have to filter the catalogue herself.</strong></p>
+            </div>
+            <div class="narrative-tags">
+              <span class="tag zpd">Pillar-personalised</span>
+              <span class="tag proof">Brand-trust ticker</span>
+              <span class="tag proof">Stats from Ana's review analysis</span>
+              <span class="tag">6 branch variants</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 1 — E2 SKIN -->
+      <div class="day-block">
+        <div class="day-marker">
+          <div class="day-num">1</div>
+          <div class="day-meta">
+            <div class="day-label">Wednesday · +24 hours</div>
+            <div class="day-title">Teach the mechanism. Make the science real.</div>
+          </div>
+          <div class="day-position"><strong>E2</strong>Skin pillar</div>
+        </div>
+        <div class="day-content">
+          <div class="email-preview-wrapper">
+          <div class="pillar-toggle">
+            <span class="pt-label">View as</span>
+            <button class="pt-btn active" data-pillar="skin">Skin</button>
+            <button class="pt-btn" data-pillar="hair">Hair</button>
+            <button class="pt-btn" data-pillar="recovery">Recovery</button>
+            <button class="pt-btn" data-pillar="sleep">Sleep</button>
+          </div>
+          <div class="email-preview pillar-variant pillar-skin active" data-pillar="skin">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">How red light reaches what skincare can't</div>
+            <div class="ep-preheader">Your 15% off is still active. Here's why red light actually works.</div>
+            <div class="ep-banner-trust">⭐⭐⭐⭐⭐ 5,700+ REVIEWS · TRUSTED BY 400,000+ CUSTOMERS</div>
+            <div class="ep-hero pillar-skin cool">
+              <div class="ep-hero-eyebrow">THE SCIENCE OF SKIN</div>
+              <div class="ep-hero-headline">How red light reaches what skincare can't</div>
+              <div class="ep-hero-sub">Red light works at a layer your products can't physically reach.</div>
+              <div class="ep-code-block"><span class="label">15% off site wide</span><span class="code">{{dynamic_code}}</span></div>
+            </div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span></div></div>
+            <div class="ep-best-block"><div class="bb-headline">Visible red light reaches a layer your serums don't.</div><div class="bb-sub">Skincare stays on top. Red light goes underneath.</div></div>
+            <div class="ep-diagram">
+              <div class="dia-title">Skin cross-section</div>
+              <div class="dia-layer epi">EPIDERMIS · where skincare lives</div>
+              <div class="dia-arrow"></div>
+              <div class="dia-layer dermis">DERMIS · where collagen + fibroblasts live</div>
+              <div class="dia-caption">Red light at 660nm / 850nm reaches the dermis layer where the appearance of tone and texture is shaped.</div>
+            </div>
+            <div class="ep-faq">
+              <div class="faq-item"><div class="faq-q">Q: How long until I see results?</div><div class="faq-a">Most customers notice softer-looking texture and a more even-looking complexion within the first few weeks of consistent use.</div></div>
+              <div class="faq-item"><div class="faq-q">Q: Will this replace my skincare routine?</div><div class="faq-a">No. Red light works at a layer your serums and creams can't physically reach. It's designed to support what you already do.</div></div>
+              <div class="faq-item"><div class="faq-q">Q: How often should I use it?</div><div class="faq-a">Ten minutes a day, most days. Hands-free. Most customers slot it into their evening routine.</div></div>
+            </div>
+            <div class="ep-trust-strip">
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">5,700+<br>reviews</div></div>
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">Scientific<br>Advisory Board</div></div>
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">400,000+<br>customers</div></div>
+            </div>
+            <div class="ep-cta">EXPLORE THE SKIN COLLECTION →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          <div class="email-preview pillar-variant pillar-hair" data-pillar="hair">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">The hair routine you can actually wear</div>
+            <div class="ep-preheader">Ten hands-free minutes a day. Your 15% off is still active.</div>
+            <div class="ep-banner-trust">⭐⭐⭐⭐⭐ 5,700+ REVIEWS · TRUSTED BY 400,000+ CUSTOMERS</div>
+            <div class="ep-hero pillar-hair cool">
+              <div class="ep-hero-eyebrow">THE SCIENCE OF HAIR</div>
+              <div class="ep-hero-headline">How red light reaches what hair serums can't</div>
+              <div class="ep-hero-sub">Red light works at a layer your topical products can't physically reach.</div>
+              <div class="ep-code-block"><span class="label">15% off site wide</span><span class="code">{{dynamic_code}}</span></div>
+            </div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span></div></div>
+            <div class="ep-best-block"><div class="bb-headline">Red light reaches a layer your serums don't.</div><div class="bb-sub">Topicals stay on top. Red light goes underneath.</div></div>
+            <div class="ep-diagram">
+              <div class="dia-title">Scalp + follicle cross-section</div>
+              <div class="dia-layer epi">EPIDERMIS · where serums live</div>
+              <div class="dia-arrow"></div>
+              <div class="dia-layer dermis">FOLLICLE · where growth originates</div>
+              <div class="dia-caption">Red light at 660nm reaches the follicle layer where hair growth and scalp health are shaped.</div>
+            </div>
+            <div class="ep-faq">
+              <div class="faq-item"><div class="faq-q">Q: How long until I see a difference?</div><div class="faq-a">Hair changes happen gradually. Most customers wear the Cap consistently for several months as part of an ongoing routine.</div></div>
+              <div class="faq-item"><div class="faq-q">Q: Can I wear it while doing other things?</div><div class="faq-a">Yes. The Cap is hands-free. Most customers wear it while working, reading, or winding down. Ten minutes a day.</div></div>
+              <div class="faq-item"><div class="faq-q">Q: How is the Cap different from cheaper options?</div><div class="faq-a">Built around two wavelengths backed by red-light research, with build quality designed for daily use over years.</div></div>
+            </div>
+            <div class="ep-trust-strip">
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">5,700+<br>reviews</div></div>
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">Scientific<br>Advisory Board</div></div>
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">400,000+<br>customers</div></div>
+            </div>
+            <div class="ep-cta">EXPLORE THE RED LIGHT CAP →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          <div class="email-preview pillar-variant pillar-recovery" data-pillar="recovery">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">Most bodies recover at half-speed. Yours doesn't have to.</div>
+            <div class="ep-preheader">Science-backed recovery, designed for daily use. Your 15% off is still active.</div>
+            <div class="ep-banner-trust">⭐⭐⭐⭐⭐ 5,700+ REVIEWS · TRUSTED BY 400,000+ CUSTOMERS</div>
+            <div class="ep-hero pillar-recovery cool">
+              <div class="ep-hero-eyebrow">THE SCIENCE OF RECOVERY</div>
+              <div class="ep-hero-headline">Most people recover at half-speed. You don't have to.</div>
+              <div class="ep-hero-sub">Science-backed red light and infrared therapy, designed for recovery.</div>
+              <div class="ep-code-block"><span class="label">15% off site wide</span><span class="code">{{dynamic_code}}</span></div>
+            </div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span></div></div>
+            <div class="ep-best-block"><div class="bb-headline">Recovery isn't what happens after a workout.</div><div class="bb-sub">It's what your body does every day, whether you're paying attention or not.</div></div>
+            <div class="ep-diagram">
+              <div class="dia-title">Tissue penetration</div>
+              <div class="dia-layer epi">SKIN + SURFACE · topical massage</div>
+              <div class="dia-arrow"></div>
+              <div class="dia-layer dermis">MUSCLE + JOINT · where recovery happens</div>
+              <div class="dia-caption">Red light + infrared reach the muscle and joint layer where post-activity comfort is supported.</div>
+            </div>
+            <div class="ep-faq">
+              <div class="faq-item"><div class="faq-q">Q: I'm not an athlete. Will I benefit?</div><div class="faq-a">Recovery isn't only for training. It's how your body resets after long days, travel, stress, or hours at a desk.</div></div>
+              <div class="faq-item"><div class="faq-q">Q: How long do sessions need to be?</div><div class="faq-a">Ten to twenty minutes is the typical session. Short, repeatable, daily — the kind of routine that fits a real schedule.</div></div>
+              <div class="faq-item"><div class="faq-q">Q: Can I use it every day?</div><div class="faq-a">Yes. Most customers use BON CHARGE recovery devices daily, often as part of a wind-down ritual.</div></div>
+            </div>
+            <div class="ep-trust-strip">
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">5,700+<br>reviews</div></div>
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">Scientific<br>Advisory Board</div></div>
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">400,000+<br>customers</div></div>
+            </div>
+            <div class="ep-cta">EXPLORE THE RECOVERY COLLECTION →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          <div class="email-preview pillar-variant pillar-sleep" data-pillar="sleep">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">Most sleep problems start three hours before bed</div>
+            <div class="ep-preheader">Your evening shapes the night. Your 15% off is still active.</div>
+            <div class="ep-banner-trust">⭐⭐⭐⭐⭐ 5,700+ REVIEWS · TRUSTED BY 400,000+ CUSTOMERS</div>
+            <div class="ep-hero pillar-sleep cool">
+              <div class="ep-hero-eyebrow">THE SCIENCE OF SLEEP</div>
+              <div class="ep-hero-headline">Most sleep problems start three hours before bed</div>
+              <div class="ep-hero-sub">BON CHARGE sleep technology supports the evening environment your body actually responds to.</div>
+              <div class="ep-code-block"><span class="label">15% off site wide</span><span class="code">{{dynamic_code}}</span></div>
+            </div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span><span>Elite Athletes Worldwide</span><span>Official Recovery Partner of Fulham FC</span><span>Guided by Our Scientific Advisory Board</span></div></div>
+            <div class="ep-best-block"><div class="bb-headline">Your bedtime isn't usually the problem.</div><div class="bb-sub">Your evening is.</div></div>
+            <div class="ep-diagram">
+              <div class="dia-title">Circadian light spectrum</div>
+              <div class="dia-layer epi">BLUE LIGHT · suppresses wind-down</div>
+              <div class="dia-arrow"></div>
+              <div class="dia-layer dermis">AMBER + INFRARED · supports wind-down</div>
+              <div class="dia-caption">The light environment in the hours before bed shapes how the body signals wind-down.</div>
+            </div>
+            <div class="ep-faq">
+              <div class="faq-item"><div class="faq-q">Q: Will light bulbs actually make a difference?</div><div class="faq-a">Your evening light environment is one of the strongest cues your body uses to wind down. Switching out two or three rooms is the change most customers notice first.</div></div>
+              <div class="faq-item"><div class="faq-q">Q: Do I need to wear blue light glasses every evening?</div><div class="faq-a">Most customers wear them in the one or two hours before bed, especially when using screens.</div></div>
+              <div class="faq-item"><div class="faq-q">Q: How long until I notice a difference?</div><div class="faq-a">Most customers report a calmer evening wind-down within the first weeks of a more intentional light environment.</div></div>
+            </div>
+            <div class="ep-trust-strip">
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">5,700+<br>reviews</div></div>
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">Scientific<br>Advisory Board</div></div>
+              <div class="ts-item"><div class="ts-icon"></div><div class="ts-lbl">400,000+<br>customers</div></div>
+            </div>
+            <div class="ep-cta">EXPLORE THE SLEEP COLLECTION →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          </div>
+
+          <div class="day-narrative">
+            <h3>The Day 1 email isn't selling. It's making the science real.</h3>
+            <p class="opener">Sarah didn't buy yesterday. The new flow doesn't push harder. It gets calmer. Instead of another offer, she gets the mechanism — <em>why red light actually works, shown as a cross-section diagram of her skin with the light reaching the dermis layer where her serums can't go</em>.</p>
+            <div class="narrative-meta">
+              <div class="nm-cell"><div class="nm-label">Subject</div><div class="nm-value">"How red light reaches what skincare can't"</div></div>
+              <div class="nm-cell"><div class="nm-label">Job to be done</div><div class="nm-value">Educate · build intellectual trust</div></div>
+            </div>
+            <div class="narrative-block">
+              <h4>What Sarah experiences</h4>
+              <p>The hero is calmer. A single image, a confident headline ("How red light reaches what skincare can't"), and a sub-headline that quietly reframes how she's been thinking about skin products. The 15% code sits underneath, but as supporting text, not the main act.</p>
+              <p>Underneath, the centrepiece: <strong>a cross-section diagram of skin layers</strong>, with Epidermis on top (where skincare lives) and Dermis underneath (where collagen and fibroblasts live). Red light reaches the lower layer. A paragraph would have to explain this. The diagram just shows it.</p>
+              <p>Then an FAQ block — three questions a sceptical first-time buyer would actually ask. How long until results. Will it replace her routine. How often. Answers stay brief and honest, and stay inside TGA-aligned language ("experiences may vary", "designed to support what you already do").</p>
+            </div>
+            <div class="narrative-block intent">
+              <h4>Why this email earns its place</h4>
+              <p>The customer who didn't buy on Day 0 needs a different reason to open on Day 1. <strong>Push the offer harder, you lose trust. Teach her something, you build it.</strong> The diagram and FAQ together answer her objections before she has to voice them. Each pillar gets its own version of this email: Hair → "The hair routine you can actually wear." Recovery → "Most bodies recover at half-speed." Sleep → "Most sleep problems start three hours before bed."</p>
+            </div>
+            <div class="narrative-tags">
+              <span class="tag zpd">Pillar-personalised subject + mechanism</span>
+              <span class="tag proof">Cross-section diagram</span>
+              <span class="tag proof">FAQ answers objections</span>
+              <span class="tag">4 branch variants</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 3 — E3 SKIN -->
+      <div class="day-block">
+        <div class="day-marker">
+          <div class="day-num">3</div>
+          <div class="day-meta">
+            <div class="day-label">Friday · +3 days</div>
+            <div class="day-title">Remove the friction. Show her the simplest path.</div>
+          </div>
+          <div class="day-position"><strong>E3</strong>Skin pillar</div>
+        </div>
+        <div class="day-content">
+          <div class="email-preview-wrapper">
+          <div class="pillar-toggle">
+            <span class="pt-label">View as</span>
+            <button class="pt-btn active" data-pillar="skin">Skin</button>
+            <button class="pt-btn" data-pillar="hair">Hair</button>
+            <button class="pt-btn" data-pillar="recovery">Recovery</button>
+            <button class="pt-btn" data-pillar="sleep">Sleep</button>
+          </div>
+          <div class="email-preview pillar-variant pillar-skin active" data-pillar="skin">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">You don't need a complicated skin routine</div>
+            <div class="ep-preheader">Three places to start. Your 15% off is still active.</div>
+            <div class="ep-banner-shipping">FREE SHIPPING · 12-MONTH WARRANTY</div>
+            <div class="ep-banner-block"><div class="bb-headline">15% off your first order</div><div class="bb-code">{{dynamic_code}}</div><div class="bb-cta">SHOP NOW →</div></div>
+            <div class="ep-lifestyle editorial tall"></div>
+            <div class="ep-best-block"><div class="bb-headline">You don't need a complicated skin routine.</div><div class="bb-sub">Most BON CHARGE customers start with one product, and add from there.</div></div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Beauty Shortlist Award Winner '24, '25, '26</span><span>Get The Gloss Gold Badge</span><span>Featured in Beauty Press</span><span>Beauty Shortlist Award Winner '24, '25, '26</span><span>Get The Gloss Gold Badge</span><span>Featured in Beauty Press</span></div></div>
+            <div class="ep-product-section">
+              <div class="ep-product-cards">
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Red Light Face Mask</span><span class="pc-stars">★★★★★ 4.9 / 5 (183)</span><span class="pc-pick">Pick this if: full-face tone, texture, fine lines.</span><span class="pc-stat">98% reported more even-looking tone</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Red Light Neck & Chest Mask</span><span class="pc-stars">★★★★★ 5.0 / 5</span><span class="pc-pick">Pick this if: places skincare misses.</span><span class="pc-stat">Verified five-star reviewed</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Red Light Face Wand</span><span class="pc-stars">★★★★★ 4.8 / 5</span><span class="pc-pick">Pick this if: targeted areas, on-the-go.</span><span class="pc-stat">Designed for daily use</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              </div>
+            </div>
+            <div class="ep-cta-secondary">TAKE THE WELLNESS FINDER →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          <div class="email-preview pillar-variant pillar-hair" data-pillar="hair">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">You don't need a complicated hair routine</div>
+            <div class="ep-preheader">Just ten minutes a day. Your 15% off is still active.</div>
+            <div class="ep-banner-shipping">FREE SHIPPING · 12-MONTH WARRANTY</div>
+            <div class="ep-banner-block"><div class="bb-headline">15% off your first order</div><div class="bb-code">{{dynamic_code}}</div><div class="bb-cta">SHOP NOW →</div></div>
+            <div class="ep-lifestyle editorial tall"></div>
+            <div class="ep-best-block"><div class="bb-headline">You don't need a complicated hair routine.</div><div class="bb-sub">Just ten minutes a day, hands-free, every day.</div></div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Beauty Shortlist Award Winner '24, '25, '26</span><span>Get The Gloss Gold Badge</span><span>Featured in Beauty Press</span><span>Beauty Shortlist Award Winner '24, '25, '26</span><span>Get The Gloss Gold Badge</span><span>Featured in Beauty Press</span></div></div>
+            <div class="ep-product-section">
+              <div class="ep-product-cards">
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER · GET THE GLOSS AWARD</span><span class="pc-name">Red Light Cap</span><span class="pc-stars">★★★★★ Five-star rated</span><span class="pc-pick">If you're on the fence about the Cap.</span><span class="pc-stat">30-day return · 12-month warranty · hands-free daily wear</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              </div>
+            </div>
+            <div class="ep-cta-secondary">TAKE THE WELLNESS FINDER →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          <div class="email-preview pillar-variant pillar-recovery" data-pillar="recovery">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">You don't need a complete recovery setup</div>
+            <div class="ep-preheader">Three places to start. Your 15% off is still active.</div>
+            <div class="ep-banner-shipping">FREE SHIPPING · 12-MONTH WARRANTY</div>
+            <div class="ep-banner-block"><div class="bb-headline">15% off your first order</div><div class="bb-code">{{dynamic_code}}</div><div class="bb-cta">SHOP NOW →</div></div>
+            <div class="ep-lifestyle editorial tall"></div>
+            <div class="ep-best-block"><div class="bb-headline">You don't need a complete recovery setup.</div><div class="bb-sub">Most BON CHARGE customers start with one device, and add from there.</div></div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Beauty Shortlist Award Winner '24, '25, '26</span><span>Get The Gloss Gold Badge</span><span>Featured in Beauty Press</span><span>Beauty Shortlist Award Winner '24, '25, '26</span><span>Get The Gloss Gold Badge</span><span>Featured in Beauty Press</span></div></div>
+            <div class="ep-product-section">
+              <div class="ep-product-cards">
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Red Light Therapy Blanket</span><span class="pc-stars">★★★★★ 4.96 / 5 (24)</span><span class="pc-pick">Pick this if: post-activity muscle comfort.</span><span class="pc-stat">87% reported feeling more recovered</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Infrared Sauna Blanket</span><span class="pc-stars">★★★★★</span><span class="pc-pick">Pick this if: evening wind-down warmth.</span><span class="pc-stat">Verified five-star reviewed</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Infrared PEMF Sauna Dome</span><span class="pc-stars">★★★★★</span><span class="pc-pick">Pick this if: full-body recovery setup.</span><span class="pc-stat">Designed for daily routine</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              </div>
+            </div>
+            <div class="ep-cta-secondary">TAKE THE WELLNESS FINDER →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          <div class="email-preview pillar-variant pillar-sleep" data-pillar="sleep">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">You don't need a complete sleep setup</div>
+            <div class="ep-preheader">Three places to start. Your 15% off is still active.</div>
+            <div class="ep-banner-shipping">FREE SHIPPING · 12-MONTH WARRANTY</div>
+            <div class="ep-banner-block"><div class="bb-headline">15% off your first order</div><div class="bb-code">{{dynamic_code}}</div><div class="bb-cta">SHOP NOW →</div></div>
+            <div class="ep-lifestyle editorial tall"></div>
+            <div class="ep-best-block"><div class="bb-headline">You don't need a complete sleep setup.</div><div class="bb-sub">Most BON CHARGE customers start with one product, and add from there.</div></div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>Beauty Shortlist Award Winner '24, '25, '26</span><span>Get The Gloss Gold Badge</span><span>Featured in Beauty Press</span><span>Beauty Shortlist Award Winner '24, '25, '26</span><span>Get The Gloss Gold Badge</span><span>Featured in Beauty Press</span></div></div>
+            <div class="ep-product-section">
+              <div class="ep-product-cards">
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Infrared PEMF Mat Max</span><span class="pc-stars">★★★★★</span><span class="pc-pick">Pick this if: evening relaxation and wind-down.</span><span class="pc-stat">90% improved relaxation + sleep</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Full Spectrum Light Bulb</span><span class="pc-stars">★★★★★</span><span class="pc-pick">Pick this if: calmer evening environment.</span><span class="pc-stat">Verified five-star reviewed</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              <div class="ep-product-card"><div class="pc-img"></div><div class="pc-body"><span class="pc-eyebrow">BEST SELLER</span><span class="pc-name">Brooklyn Blue Light Glasses</span><span class="pc-stars">★★★★★</span><span class="pc-pick">Pick this if: screen-time wind-down.</span><span class="pc-stat">n=1,519 reviews</span><span class="pc-cta">SHOP NOW →</span></div></div>
+              </div>
+            </div>
+            <div class="ep-cta-secondary">TAKE THE WELLNESS FINDER →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+          </div>
+
+          <div class="day-narrative">
+            <h3>The last personalised send. Tight, deliberate, every friction stripped out.</h3>
+            <p class="opener">By Day 3 the brand has earned the right to put specific products in front of her. E3 looks visually different from the first two emails. <em>A free-shipping and 12-month-warranty banner up top, then a chunky code-reveal block (not a thin strip), then an editorial product trio still life, then the three Face products with more detail on each one.</em></p>
+            <div class="narrative-meta">
+              <div class="nm-cell"><div class="nm-label">Subject</div><div class="nm-value">"You don't need a complicated skin routine"</div></div>
+              <div class="nm-cell"><div class="nm-label">Job to be done</div><div class="nm-value">Convert via simplicity + stat-backed certainty</div></div>
+            </div>
+            <div class="narrative-block">
+              <h4>What Sarah experiences</h4>
+              <p>The shipping and warranty banner does work before she's even seen a product. It tells her <strong>the transaction is low-risk</strong>. Free shipping. Twelve-month warranty. The code block underneath is intentionally bigger than a sticker. The offer is treated as a section in its own right, not a footnote at the top.</p>
+              <p>The three product cards now use "Pick this if:" framing. Short, declarative lines matching a concern to a product — full-face, neck-and-chest, or targeted. Underneath each card a <strong>stat callout</strong>: "98% reported more even-looking tone." Real numbers from Ana's n=50 review analysis. Nothing made up.</p>
+              <p>Closes on a secondary "TAKE THE WELLNESS FINDER" CTA. For the customer who's still not sure, the quiz is the soft landing.</p>
+            </div>
+            <div class="narrative-block intent">
+              <h4>Why this email earns its place</h4>
+              <p>This is the final send in the high-intent window. <strong>Every module is taking a different kind of risk off the table.</strong> The banner takes off financial risk. The "Pick this if:" lines take off decision risk. The stat callouts take off outcome risk. The Wellness Finder takes off choice paralysis. If Sarah is going to buy from the personalised arm of the flow, E3 is the email that closes her. After this, the flow widens — past Day 3 the data says pushing one ZPD signal further costs more than it earns.</p>
+            </div>
+            <div class="narrative-tags">
+              <span class="tag zpd">Pillar-personalised product trio</span>
+              <span class="tag">Shipping + warranty reassurance</span>
+              <span class="tag proof">Stat callouts per product</span>
+              <span class="tag">6 branch variants</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="phase-divider" style="background: rgba(13,125,58,0.06);">
+        <div class="phase-num">02</div>
+        <div class="phase-copy">
+          <h3>Phase two · The cooled-intent window (Day 5 → Day 10)</h3>
+          <p>Sarah didn't buy from her pillar trio. The conversion signal has dropped. The new flow stops pushing skin and opens up: Fulham FC authority and the full catalogue, then long-form customer voices, then a personal note from Andy.</p>
+        </div>
+      </div>
+
+      <!-- DAY 5 — E4 SHARED -->
+      <div class="day-block">
+        <div class="day-marker">
+          <div class="day-num">5</div>
+          <div class="day-meta">
+            <div class="day-label">Sunday · +5 days</div>
+            <div class="day-title">Open the catalogue. Lead with elite-athlete authority.</div>
+          </div>
+          <div class="day-position"><strong>E4</strong>Shared trunk</div>
+        </div>
+        <div class="day-content">
+          <div class="email-preview">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">Your 15% works on every BON CHARGE product</div>
+            <div class="ep-preheader">Used by elite athletes. Trusted by 400,000+ customers. Your welcome code goes site-wide.</div>
+            <div class="ep-banner-shipping">FREE SHIPPING · 12-MONTH WARRANTY</div>
+            <div class="ep-banner-block"><div class="bb-headline">15% off your first order</div><div class="bb-code">{{dynamic_code}}</div><div class="bb-cta">SHOP NOW →</div></div>
+            <div class="ep-hero editorial">
+              <div class="ep-hero-eyebrow">EVERY CATEGORY · EVERY CUSTOMER</div>
+              <div class="ep-hero-headline">Your 15% works on every BON CHARGE product</div>
+              <div class="ep-hero-sub">Skin, recovery, sleep, hair. Wherever your routine takes you, your code follows.</div>
+            </div>
+            <div class="ep-fulham">
+              <div class="fc-shield">FFC</div>
+              <div class="fc-eyebrow">AS USED BY FULHAM FOOTBALL CLUB</div>
+              <div class="fc-headline">Recover Like A Pro</div>
+              <div class="fc-locker">The devices Fulham FC use to recover<br>between matches are the same ones we ship to your house.</div>
+            </div>
+            <div class="ep-stats-block">
+              <div class="sb-stats-row">
+                <div class="sb-stat"><span class="sb-stat-num">400k+</span><span class="sb-stat-lbl">Customers<br>worldwide</span></div>
+                <div class="sb-stat"><span class="sb-stat-num">5,700+</span><span class="sb-stat-lbl">5-star<br>reviews</span></div>
+                <div class="sb-stat"><span class="sb-stat-num">4 lanes</span><span class="sb-stat-lbl">Skin · Rec ·<br>Sleep · Hair</span></div>
+              </div>
+            </div>
+            <div class="ep-dynamic-2x2">
+              <div class="ep-dyn-cell"><div class="dyn-img"></div><div class="dyn-name">Red Light Face Mask</div><div class="dyn-cta">BUY NOW</div></div>
+              <div class="ep-dyn-cell"><div class="dyn-img"></div><div class="dyn-name">Sauna Blanket</div><div class="dyn-cta">BUY NOW</div></div>
+              <div class="ep-dyn-cell"><div class="dyn-img"></div><div class="dyn-name">Blue Light Glasses</div><div class="dyn-cta">BUY NOW</div></div>
+              <div class="ep-dyn-cell"><div class="dyn-img"></div><div class="dyn-name">Red Light Cap</div><div class="dyn-cta">BUY NOW</div></div>
+            </div>
+            <div class="ep-try-it"><div class="ti-headline">Try it before you commit</div><div class="ti-sub">30 days from delivery to try it at home. If it's not for you, return it for a refund.</div><div class="ti-foot">*Customer covers return shipping. Some exclusions apply.</div></div>
+            <div class="ep-cta">EXPLORE THE RANGE →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+
+          <div class="day-narrative">
+            <h3>The pivot. The brand brings in its biggest authority play.</h3>
+            <p class="opener">By Day 5 the data says Sarah probably isn't going to buy a Face Mask. The new flow stops asking her the same question and asks a wider one. It leads with the strongest authority play BON CHARGE has: <em>"The devices Fulham FC use to recover between matches are the same ones we ship to your house."</em></p>
+            <div class="narrative-meta">
+              <div class="nm-cell"><div class="nm-label">Subject</div><div class="nm-value">"Your 15% works on every BON CHARGE product"</div></div>
+              <div class="nm-cell"><div class="nm-label">Job to be done</div><div class="nm-value">Open the catalogue · land Fulham FC authority</div></div>
+            </div>
+            <div class="narrative-block">
+              <h4>What Sarah experiences</h4>
+              <p>The hero is wider — an editorial composition showing 2-3 categories instead of just skin. The chunky code-reveal block returns (matching E3's treatment) so the offer is back in front of anyone who hasn't used it.</p>
+              <p>Then <strong>the Fulham FC Partnership block</strong>. A locker-room visual, the "AS USED BY FULHAM FOOTBALL CLUB" eyebrow, the "Recover Like A Pro" headline. It's the brand's biggest authority play, and it sits here on purpose. Borrowed authority lands hardest on the customer who's already gone cold.</p>
+              <p>Below it, a 2x2 dynamic product block pulled from Klaviyo's bestseller feed — catalogue-wide, not pillar-specific. Then a <strong>"Try it before you commit"</strong> section: 30-day refund from delivery, given its own accent-colour block. The financial-risk objection comes off in one read.</p>
+            </div>
+            <div class="narrative-block intent">
+              <h4>Why this email earns its place</h4>
+              <p>This is the strategic pivot. <strong>Past Day 3, pushing one ZPD signal harder costs more than a wider net would.</strong> E4 changes the conversation: from "here's your skin path" to "here's the whole range your 15% works on." The Fulham FC block borrows credibility a DTC brand can't manufacture on its own. And Try-It-Before-You-Commit converts the customer who hasn't pulled the trigger because she's not sure it'll work for her — by taking the cost of being wrong off the table.</p>
+            </div>
+            <div class="narrative-tags">
+              <span class="tag shared">Shared trunk · 1 design</span>
+              <span class="tag proof">Fulham FC partnership block</span>
+              <span class="tag">2x2 dynamic bestseller feed</span>
+              <span class="tag">30-day try-it-before-you-commit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 8 — E5 SHARED -->
+      <div class="day-block">
+        <div class="day-marker">
+          <div class="day-num">8</div>
+          <div class="day-meta">
+            <div class="day-label">Wednesday · +8 days</div>
+            <div class="day-title">Let real customers do the selling, in their own words.</div>
+          </div>
+          <div class="day-position"><strong>E5</strong>Shared trunk</div>
+        </div>
+        <div class="day-content">
+          <div class="email-preview">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">400,000+ customers trust BON CHARGE worldwide</div>
+            <div class="ep-preheader">BON CHARGE has made a substantial impact on our customers. Read how, in their own words.</div>
+            <div class="ep-hero portrait">
+              <div class="ep-hero-eyebrow">A REAL CUSTOMER</div>
+              <div class="ep-hero-headline">400,000+ customers trust BON CHARGE worldwide</div>
+              <div class="ep-hero-sub">BON CHARGE has made a substantial impact on the wellbeing of our customers. Read how, in their own words.</div>
+            </div>
+            <div class="ep-review-block">
+              <div class="rb-stars">★★★★★</div>
+              <div class="rb-quote">"From the first session, I noticed that it removes stiffness that I have been feeling in the body of late. Every time I'm on it, I can feel the body saying Ahh."</div>
+              <div class="rb-author">Andrea B.</div>
+              <div class="rb-meta">Verified customer · on the Red Light Therapy Blanket</div>
+              <div class="rb-verified">VERIFIED</div>
+              <div class="rb-cta">SHOP THE RED LIGHT THERAPY BLANKET →</div>
+            </div>
+            <div class="ep-review-block">
+              <div class="rb-stars">★★★★★</div>
+              <div class="rb-quote">"I've used red light masks before but the build quality on this one is on a different level. Ten minutes a day is all it takes and I notice the difference within a week."</div>
+              <div class="rb-author">Megan T.</div>
+              <div class="rb-meta">Verified customer · on the Red Light Face Mask</div>
+              <div class="rb-verified">VERIFIED</div>
+              <div class="rb-cta">SHOP THE RED LIGHT FACE MASK →</div>
+            </div>
+            <div class="ep-review-block">
+              <div class="rb-stars">★★★★★</div>
+              <div class="rb-quote">"The Sauna Blanket has become a non-negotiable in my evening wind-down. The warmth is deep, not surface, and I sleep better on the nights I use it."</div>
+              <div class="rb-author">Sophie L.</div>
+              <div class="rb-meta">Verified customer · on the Infrared Sauna Blanket</div>
+              <div class="rb-verified">VERIFIED</div>
+              <div class="rb-cta">SHOP THE INFRARED SAUNA BLANKET →</div>
+            </div>
+            <div class="ep-cta">EXPLORE THE RANGE →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+
+          <div class="day-narrative">
+            <h3>The brand steps back. Real customers step forward, in long form.</h3>
+            <p class="opener">After two days off the list, Sarah opens E5 and finds a different kind of email. The hero isn't a product still life or a UGC grid. It's <em>an editorial portrait of one real customer. Candid, warm-lit, more like meeting someone than being marketed to.</em></p>
+            <div class="narrative-meta">
+              <div class="nm-cell"><div class="nm-label">Subject</div><div class="nm-value">"400,000+ customers trust BON CHARGE worldwide"</div></div>
+              <div class="nm-cell"><div class="nm-label">Job to be done</div><div class="nm-value">Long-form proof · letting customers tell the story</div></div>
+            </div>
+            <div class="narrative-block">
+              <h4>What Sarah experiences</h4>
+              <p>Three long-form review blocks, each in its own warm-limestone section with pull-quote typography. <strong>Real verified reviews from the BON CHARGE site, attributed to real customers.</strong> Andrea B. on the Red Light Therapy Blanket. Megan T. on the Face Mask. Sophie L. on the Sauna Blanket. Each block has a VERIFIED badge, a star rating, and a direct CTA to the product the review is about.</p>
+              <p>The reviews span pillars on purpose, not just skin. Sarah signed up for skin, but eight days in we're not trying to drag her back to it. We're showing her the kind of customer she could become across the whole range.</p>
+            </div>
+            <div class="narrative-block intent">
+              <h4>Why this email earns its place</h4>
+              <p>Trust is the limiting factor for the customer who's been on the list for eight days and hasn't bought. <strong>Brand voice has done what it can. Peer voice is the next move — and long-form peer voice carries more weight than a UGC mosaic.</strong> The customer portrait does what a product hero can't: it makes the customer the subject of the email, not the product. Three full pull-quote reviews, each attributed and verified, do work that stat blocks can't.</p>
+            </div>
+            <div class="narrative-tags">
+              <span class="tag shared">Shared trunk · 1 design</span>
+              <span class="tag proof">Editorial customer portrait hero</span>
+              <span class="tag proof">3 long-form verified reviews</span>
+              <span class="tag">Cross-pillar — Skin · Rec · Sleep</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 10 — E6 FOUNDER -->
+      <div class="day-block">
+        <div class="day-marker">
+          <div class="day-num">10</div>
+          <div class="day-meta">
+            <div class="day-label">Friday · +10 days · Last send</div>
+            <div class="day-title">The brand stops being a brand. Andy writes personally.</div>
+          </div>
+          <div class="day-position"><strong>E6</strong>Founder note</div>
+        </div>
+        <div class="day-content">
+          <div class="email-preview">
+            <div class="ep-meta"><span class="from">Andy Mant · BON CHARGE</span></div>
+            <div class="ep-subject">A note from Andy</div>
+            <div class="ep-preheader">I noticed you haven't claimed your code yet. Just wanted to reach out.</div>
+            <div class="ep-plain">
+              <p class="salutation">Hi Sarah,</p>
+              <p>Andy here. I'm the founder of BON CHARGE.</p>
+              <p>I see you joined the list a while back and haven't used your welcome code yet, so I wanted to write personally and ask why.</p>
+              <p>I won't give you the usual founder pitch. The short version is I started this company because I was annoyed at most of the wellness tech being sold to people. A lot of it either didn't work, or was overpriced kit that lived in a cupboard after week two.</p>
+              <p>What we wanted to build was the version that holds up. Science behind it. Premium enough to want to use. Priced so it's worth keeping for years, not weeks.</p>
+              <p>Your welcome code <code>{{dynamic_code}}</code> still works site-wide. 15% off your first order, on anything.</p>
+              <p>If there's something holding you back, just hit reply and tell me. I read these.</p>
+              <p class="signoff">— Andy</p>
+              <p style="font-size: 8.5px; color: var(--graphite); margin-top: 14px;">Andy Mant · Founder, BON CHARGE</p>
+            </div>
+          </div>
+
+          <div class="day-narrative">
+            <h3>The brand removes itself. One person writes to another.</h3>
+            <p class="opener">Sarah's been on the list for ten days without buying. The last send doesn't try harder. It takes everything away. <em>No banner, no hero image, no product cards, no buttons, no countdown, no "Ends Tonight."</em> Just a plain text email from the founder. Black text on white. Reads like an actual personal note.</p>
+            <div class="narrative-meta">
+              <div class="nm-cell"><div class="nm-label">Subject</div><div class="nm-value">"A note from Andy"</div></div>
+              <div class="nm-cell"><div class="nm-label">Job to be done</div><div class="nm-value">Reset the relationship · personal reach-out</div></div>
+            </div>
+            <div class="narrative-block">
+              <h4>What Sarah experiences</h4>
+              <p>The subject line — "A note from Andy" — doesn't read like a marketing send. It reads like an email from a person. The preview ("I noticed you haven't claimed your code yet. Just wanted to reach out.") backs it up. When she opens it, there's no brand decoration. Just text.</p>
+              <p>Andy introduces himself, says he noticed she hasn't used her code, and explains briefly why he started the company. ("Annoyed at most of the wellness tech being sold to people.") No big claims. No urgency. The code shows up in plain text, mid-paragraph. He signs off with <strong>"If there's something holding you back, just hit reply and tell me. I read these."</strong></p>
+            </div>
+            <div class="narrative-block intent">
+              <h4>Why this email earns its place</h4>
+              <p>By Day 10, anyone still on the list has been resistant to brand messaging for over a week. <strong>A founder note pulls the brand out of the way.</strong> Same conversion goal, completely different mechanic — and the data from other brands using this pattern (plain-text founder closes tend to lift CTR over designed last-chance templates) supports the call. It also opens a reply channel: anyone who writes back becomes a qualified, hand-raised lead the brand can convert one-to-one. And it lets the welcome flow end on a register of <em>care</em>, not pressure.</p>
+            </div>
+            <div class="narrative-tags">
+              <span class="tag founder">Plain-text founder note</span>
+              <span class="tag">No design treatment</span>
+              <span class="tag">Reply-to opens 1:1 channel</span>
+              <span class="tag shared">Shared trunk · all branches</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIFT -->
+  <section class="bg-cloud">
+    <div class="container narrow">
+      <div class="eyebrow">04 — What Sarah's journey means at scale</div>
+      <h2 class="section-title">Three multipliers, stacked.</h2>
+      <p class="section-lede">Sarah is one of thousands. Each shift moves something on its own; together they compound. And they're all aimed at the part of the curve where lift is hardest to find.</p>
+
+      <div class="lift-stack">
+        <div class="lift-row">
+          <div class="num">01</div>
+          <div class="copy">
+            <h4>ZPD personalisation in the high-intent window</h4>
+            <p>E1–E3 speak directly to the concern the customer raised at signup, while intent is still hot. Pillar-specific hero, stats, products, subject lines. Industry benchmarks for DTC wellness: pillar-personalised welcome series tend to outperform generic ones by 35–55% on first-purchase conversion.</p>
+          </div>
+          <div class="meta"><strong>+35–55%</strong>First-purchase conversion</div>
+        </div>
+        <div class="lift-row">
+          <div class="num">02</div>
+          <div class="copy">
+            <h4>Authority and proof in every send</h4>
+            <p>Brand-trust ticker (Fulham FC · Elite Athletes · Scientific Advisory Board) opens every email. Stats from Ana's review analysis. Fulham FC partnership block in E4. Long-form pull-quote reviews in E5. Send-level engagement typically lifts 20–30% on welcome series with this kind of proof density vs. product-only sends.</p>
+          </div>
+          <div class="meta"><strong>+20–30%</strong>Send-level engagement</div>
+        </div>
+        <div class="lift-row">
+          <div class="num">03</div>
+          <div class="copy">
+            <h4>Curve-aware structure: tight 1–3, broad 4–5, founder 6</h4>
+            <p>Past Day 3 we stop pushing the same pillar. E4 opens the catalogue with the Fulham FC partnership. E5 brings long-form customer voice. E6 strips everything to a plain-text founder note. Each phase is built to convert a different kind of non-buyer.</p>
+          </div>
+          <div class="meta"><strong>+8–15%</strong>Tail revenue recovery</div>
+        </div>
+      </div>
+
+      <div class="note warning"><strong>Projections are modeled, not promised.</strong> Numbers sit on industry benchmarks for DTC wellness/beauty tech welcome series. They'll firm up once the new flow has 30+ days of live data.</div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="bg-white">
+    <div class="container narrow">
+      <div class="eyebrow">05 — For the technical reviewer</div>
+      <h2 class="section-title">The architecture, briefly.</h2>
+      <p class="section-lede">How Sarah's journey actually runs in Klaviyo. The entry splits on the zero-party <code>pillar</code> property, feeding six branch entry points. Recovery and Sleep split a second time on country (AU vs ex-AU) because the recommended product trios differ. E1 is 6 variants, E2 is 4 variants, E3 is 6 variants. E4–E6 are the shared trunk.</p>
+
+      <div class="arch">
+        <div class="arch-inner">
+          <div class="arch-row">
+            <div class="arch-node entry">Form signup · zero-party pillar selector</div>
+            <div class="arrow-down"></div>
+            <div class="arch-node split">Conditional split on <code>pillar</code> · country sub-split on Recovery + Sleep at E1 + E3</div>
+            <div class="arrow-down"></div>
+            <div class="branch-grid">
+              <div class="branch-col"><div class="branch-label skin">Skin</div><div class="mini-email"><span class="e">E1</span>Welcome</div><div class="mini-email"><span class="e">E2</span>Mechanism</div><div class="mini-email"><span class="e">E3</span>Trio</div></div>
+              <div class="branch-col"><div class="branch-label rec">Rec · AU</div><div class="mini-email"><span class="e">E1</span>Welcome</div><div class="mini-email"><span class="e">E2</span>Mechanism</div><div class="mini-email"><span class="e">E3</span>Trio</div></div>
+              <div class="branch-col"><div class="branch-label rec">Rec · exAU</div><div class="mini-email"><span class="e">E1</span>Welcome</div><div class="mini-email"><span class="e">E2</span>Mechanism</div><div class="mini-email"><span class="e">E3</span>Trio</div></div>
+              <div class="branch-col"><div class="branch-label sleep">Sleep · AU</div><div class="mini-email"><span class="e">E1</span>Welcome</div><div class="mini-email"><span class="e">E2</span>Mechanism</div><div class="mini-email"><span class="e">E3</span>Trio</div></div>
+              <div class="branch-col"><div class="branch-label sleep">Sleep · exAU</div><div class="mini-email"><span class="e">E1</span>Welcome</div><div class="mini-email"><span class="e">E2</span>Mechanism</div><div class="mini-email"><span class="e">E3</span>Trio</div></div>
+              <div class="branch-col"><div class="branch-label hair">Hair</div><div class="mini-email"><span class="e">E1</span>Welcome</div><div class="mini-email"><span class="e">E2</span>Mechanism</div><div class="mini-email"><span class="e">E3</span>Cap</div></div>
+            </div>
+            <div class="arrow-down"></div>
+            <div class="arch-node merge">Converge · shared trunk · catalogue widens</div>
+            <div class="arrow-down"></div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+              <div class="arch-node shared"><strong>E4</strong> · Site-wide + Fulham FC</div>
+              <div class="arch-node shared"><strong>E5</strong> · Long-form reviews</div>
+              <div class="arch-node shared"><strong>E6</strong> · Founder plain text</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note accent"><strong>Design economy.</strong> The six branch variants of E1 are layout-identical: same hero structure, same stats block, same product card design. Only the content swaps — pillar headline, hero image, stats, product trio. Same rule for E2 (4 variants) and E3 (6 variants). The designer builds <strong>six unique designs, not twenty-one</strong>.</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================================================ -->
+<!-- PAGE 2 — ABANDONED CHECKOUT                      -->
+<!-- ================================================ -->
+<main class="page" id="page-checkout">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Strategic brief · 02 — The abandoned checkout flow</div>
+      <h1>The proposed abandoned checkout flow, walked through from the <em>customer's perspective.</em></h1>
+      <p class="hero-sub">A single customer at checkout, walked through every email of the recovery sequence. Two paths run in parallel — one for first-time buyers, one for repeat customers — because they need different pushes. And neither is trained to abandon their cart in the hopes of a discount code.</p>
+    </div>
+  </section>
+
+  <!-- PROTAGONIST CONTINUATION -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="protagonist">
+        <div class="ptg-avatar">S</div>
+        <div class="ptg-body">
+          <h3>Meet Sarah at checkout.</h3>
+          <p>Sarah adds a Red Light Face Mask to her cart, makes it through email and shipping, and gets interrupted. She closes the tab. <strong>15 minutes later, E1 of the abandoned checkout flow fires.</strong></p>
+          <p>How the flow responds depends on one question: has Sarah bought from BON CHARGE before? The flow branches on that answer between E1 and E2, and the two paths optimise for different things — because a first-time buyer who's never converted needs a fundamentally different push than a customer who's already trusted the brand with one order.</p>
+          <div class="ptg-pillar-note">
+            <span class="pn-icon">→</span>
+            <span>Sarah here is shown as a <strong>new customer</strong> (never purchased). Customers who've bought before see a different version of E2 and E3 focused on VIP membership instead of a fresh discount. Both paths covered below.</span>
+          </div>
+          <div class="ptg-signal">
+            <span class="signal-label">Trigger event</span>
+            <span class="signal-value">Started Checkout · 48h flow window</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY THIS FLOW IS DIFFERENT -->
+  <section class="bg-cloud">
+    <div class="container">
+      <div class="eyebrow">01 — Why this flow is different</div>
+      <h2 class="section-title">Three shifts vs a standard abandoned checkout flow.</h2>
+      <p class="section-lede">Most AC flows fire the same generic discount at every customer. This one branches on whether they've bought before, escalates the discount on a real timeline, and weaves BNPL math through every send so cash flow stops being a quiet objection.</p>
+
+      <div class="shift-grid">
+        <div class="shift-card">
+          <span class="num">01</span>
+          <h3>Discount escalates with discipline</h3>
+          <p class="sub">E1 doesn't lead with a fresh discount on purpose — we're not training customers to abandon their cart in the hopes of a code. New customers then see a measured climb: 15% (existing welcome, if unused) → 20% (24h) → 25% (48h, expires in 24h), each paired with a real Klaviyo dynamic coupon.</p>
+          <div class="delta">
+            <div class="row"><span class="tag">Standard</span><span class="from">Same 10% every email</span></div>
+            <div class="row"><span class="tag">This</span><span class="to">15% → 20% → 25% with real expiry</span></div>
+          </div>
+        </div>
+        <div class="shift-card">
+          <span class="num">02</span>
+          <h3>Repeat customers get VIP, not another % off</h3>
+          <p class="sub">A repeat customer doesn't need a fresh discount — they need a reason to stay loyal. E2.2 and E3.2 push the BON CHARGE VIP membership ($19.99/yr, 30% off four member sales, early access) instead of cutting margin.</p>
+          <div class="delta">
+            <div class="row"><span class="tag">Standard</span><span class="from">Discount everyone the same way</span></div>
+            <div class="row"><span class="tag">This</span><span class="to">VIP push for repeat buyers</span></div>
+          </div>
+        </div>
+        <div class="shift-card">
+          <span class="num">03</span>
+          <h3>BNPL math in every email</h3>
+          <p class="sub">Pay-in-4 (Afterpay · Klarna · Shop Pay) appears in every send with the actual quarter-cart figure: "Your cart breaks down to $62.25 every two weeks." Removes the cash-flow objection without touching the price.</p>
+          <div class="delta">
+            <div class="row"><span class="tag">Standard</span><span class="from">BNPL logos in footer only</span></div>
+            <div class="row"><span class="tag">This</span><span class="to">BNPL math as a feature module</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="bg-white">
+    <div class="journey-opening">
+      <div class="eyebrow">02 — Sarah's three sends, email by email</div>
+      <h2>What Sarah opens, what she sees, and why each email earns its place.</h2>
+      <p class="intro">Each day below shows the stylised preview of the email Sarah receives (using the actual copy and module structure from the planner sheet), what she experiences when she opens it, and why the email is built that way.</p>
+    </div>
+
+    <div class="container narrow">
+
+      <!-- E1 — 15 MIN -->
+      <div class="day-block">
+        <div class="day-marker">
+          <div class="day-num">0</div>
+          <div class="day-meta">
+            <div class="day-label">Tuesday · +15 minutes after Started Checkout</div>
+            <div class="day-title">A soft tap on the shoulder. The cart is still there.</div>
+          </div>
+          <div class="day-position"><strong>E1</strong>All customers</div>
+        </div>
+        <div class="day-content">
+          <div class="email-preview">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">Picking up where you left off?</div>
+            <div class="ep-preheader">Your BON CHARGE checkout is saved. Plus pay-in-4 if it helps.</div>
+            <div class="ep-banner-shipping">FREE SHIPPING · 12-MONTH WARRANTY</div>
+            <div class="ep-banner-block subdued">
+              <div class="bb-headline">Your checkout is saved · plus pay-in-4 if it helps</div>
+            </div>
+            <div class="ep-hero subdued">
+              <div class="ep-hero-eyebrow">SAVED FOR YOU</div>
+              <div class="ep-hero-headline">Picking up where you left off?</div>
+              <div class="ep-hero-sub">Your BON CHARGE checkout is still here. So is the option to split it across four payments.</div>
+            </div>
+            <div class="ep-checkout-cart">
+              <div class="cc-label">Your saved checkout</div>
+              <div class="cc-item">
+                <div class="cc-img"></div>
+                <div class="cc-info"><div class="cc-name">Red Light Face Mask</div><div class="cc-qty">Qty: 1</div></div>
+                <div class="cc-price">$249</div>
+              </div>
+              <div class="cc-total">
+                <span class="total-lbl">Total</span>
+                <span class="total-val">$249.00</span>
+              </div>
+            </div>
+            <div class="ep-bnpl">
+              <div class="bnpl-headline">Pay it in four.</div>
+              <div class="bnpl-math">$62.25 every two weeks</div>
+              <div class="bnpl-sub">Zero interest. Same checkout flow.</div>
+              <div class="bnpl-logos">
+                <span class="bnpl-logo">Afterpay</span>
+                <span class="bnpl-logo">Klarna</span>
+                <span class="bnpl-logo">Shop Pay</span>
+              </div>
+            </div>
+            <div class="ep-welcome-callout">
+              <div class="wc-headline">You're also still eligible for 15% off your first order</div>
+              <div class="wc-code">Use code {{dynamic_code}} at checkout</div>
+              <div class="wc-sub">Stacks with your saved cart.</div>
+            </div>
+            <div class="ep-cta">RETURN TO CHECKOUT →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+
+          <div class="day-narrative">
+            <h3>No discount push. Just the cart, the BNPL math, and the welcome code she forgot.</h3>
+            <p class="opener">Fifteen minutes after Sarah closes the tab, E1 lands. <em>It doesn't lead with a fresh discount.</em> It leads with the fact that her cart is saved, and that there's a way to split the cost across four payments if cash flow is the actual reason she paused.</p>
+            <div class="narrative-meta">
+              <div class="nm-cell"><div class="nm-label">Subject</div><div class="nm-value">"Picking up where you left off?"</div></div>
+              <div class="nm-cell"><div class="nm-label">Job to be done</div><div class="nm-value">Re-engage softly · surface BNPL · re-arm welcome 15%</div></div>
+            </div>
+            <div class="narrative-block">
+              <h4>What Sarah experiences</h4>
+              <p>The banner is subdued. The hero copy is conversational ("Picking up where you left off?"). Then the Klaviyo dynamic Started Checkout block pulls in <strong>the actual product she had in her cart</strong> — Red Light Face Mask, $249, with a one-click CTA back into checkout.</p>
+              <p>The Pay-in-4 module is the biggest single thing in the email. <strong>$62.25 every two weeks. Zero interest. Same checkout flow.</strong> The math is calculated from her actual cart total, not a generic "starting from" line.</p>
+              <p>Underneath, a conditional callout: Sarah's welcome 15% code is still unused, so the email surfaces it as a stacking offer she might've forgotten. (For customers who already used the welcome code, this block hides.)</p>
+            </div>
+            <div class="narrative-block intent">
+              <h4>Why this email earns its place</h4>
+              <p>The 15-minute send is for the customer who got interrupted — not the customer who's price-sensitive. <strong>Leading with a fresh discount here trains people to abandon for the markdown.</strong> Instead, E1 re-engages on three levers: convenience (cart is saved), payment flexibility (BNPL math), and a reminder of the offer she already has. If she's going to come back without further discounting, this email is where she does it.</p>
+            </div>
+            <div class="narrative-tags">
+              <span class="tag shared">All customers · 1 design</span>
+              <span class="tag">Subdued, not discount-led</span>
+              <span class="tag">BNPL math as feature module</span>
+              <span class="tag zpd">Conditional welcome 15% callout</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E2.1 NEW — 24H -->
+      <div class="day-block">
+        <div class="day-marker">
+          <div class="day-num">1</div>
+          <div class="day-meta">
+            <div class="day-label">Wednesday · +24 hours · NEW customer path</div>
+            <div class="day-title">20% on, 30 days to live with it, social proof to seal it.</div>
+          </div>
+          <div class="day-position"><strong>E2.1</strong>New customer</div>
+        </div>
+        <div class="day-content">
+          <div class="email-preview">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">20% off your saved checkout</div>
+            <div class="ep-preheader">Plus 30 days to try it. Plus pay-in-4 if it helps.</div>
+            <div class="ep-banner-shipping">FREE SHIPPING · 30-DAY RETURN · 12-MONTH WARRANTY</div>
+            <div class="ep-banner-block">
+              <div class="bb-headline">20% off your first order</div>
+              <div class="bb-code">{{dynamic_code_20}}</div>
+              <div class="bb-cta">COMPLETE YOUR ORDER →</div>
+            </div>
+            <div class="ep-hero">
+              <div class="ep-hero-eyebrow">A ONE-TIME OFFER ON THE ORDER YOU SAVED</div>
+              <div class="ep-hero-headline">20% off, on the order you saved</div>
+              <div class="ep-hero-sub">A one-time discount to help you finish what you started.</div>
+            </div>
+            <div class="ep-checkout-cart">
+              <div class="cc-label">Your saved checkout · with 20% off applied</div>
+              <div class="cc-item">
+                <div class="cc-img"></div>
+                <div class="cc-info"><div class="cc-name">Red Light Face Mask</div><div class="cc-qty">Qty: 1</div></div>
+                <div class="cc-price">$199.20</div>
+              </div>
+              <div class="cc-total">
+                <span class="total-lbl">Total (20% off)</span>
+                <span class="total-val">$199.20</span>
+              </div>
+            </div>
+            <div class="ep-bnpl">
+              <div class="bnpl-headline">Pay it in four.</div>
+              <div class="bnpl-math">$49.80 every two weeks</div>
+              <div class="bnpl-sub">With 20% off, zero interest.</div>
+              <div class="bnpl-logos">
+                <span class="bnpl-logo">Afterpay</span>
+                <span class="bnpl-logo">Klarna</span>
+                <span class="bnpl-logo">Shop Pay</span>
+              </div>
+            </div>
+            <div class="ep-30day">
+              <div class="day-headline">30 days to live with it.</div>
+              <div class="day-sub">If the order doesn't fit your routine, send it back for a refund.* That covers every BON CHARGE order, every time.</div>
+            </div>
+            <div class="ep-review-block">
+              <div class="rb-stars">★★★★★</div>
+              <div class="rb-quote">"I have really enjoyed using this red light face mask. I can certainly feel the difference and am starting to notice a visual change in the appearance of my skin."</div>
+              <div class="rb-author">Madeleine West</div>
+              <div class="rb-meta">Verified customer · Red Light Face Mask</div>
+              <div class="rb-verified">VERIFIED</div>
+            </div>
+            <div class="ep-review-block">
+              <div class="rb-stars">★★★★★</div>
+              <div class="rb-quote">"From the first session, I noticed that it removes stiffness that I have been feeling in the body of late."</div>
+              <div class="rb-author">Andrea B.</div>
+              <div class="rb-meta">Verified customer · Red Light Therapy Blanket</div>
+              <div class="rb-verified">VERIFIED</div>
+            </div>
+            <div class="ep-cta">COMPLETE YOUR ORDER →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+
+          <div class="day-narrative">
+            <h3>The discount steps up, but only after a day of restraint.</h3>
+            <p class="opener">Twenty-four hours after the soft tap, the offer escalates. <em>20% off, on the order you saved.</em> Not a sitewide sale — a one-time discount specifically on the cart Sarah already built. And the email pairs it with two friction-killers: <strong>a 30-day return window and three verified five-star reviews</strong> for the exact products she was looking at.</p>
+            <div class="narrative-meta">
+              <div class="nm-cell"><div class="nm-label">Subject</div><div class="nm-value">"20% off your saved checkout"</div></div>
+              <div class="nm-cell"><div class="nm-label">Job to be done</div><div class="nm-value">Step up the offer · remove outcome risk · close with peer proof</div></div>
+            </div>
+            <div class="narrative-block">
+              <h4>What Sarah experiences</h4>
+              <p>The banner now carries 30-day return alongside free shipping and warranty — the brand is signalling she has runway to try this without commitment. The big code-reveal block is substantial: <strong>20% off · CODE · COMPLETE YOUR ORDER</strong>. The hero declares the offer in plain words.</p>
+              <p>Underneath, her cart re-appears with the 20% applied to the actual price — $249 → $199.20. The BNPL math updates too: <strong>$49.80 every two weeks</strong>. Then a dedicated "30 days to live with it" module — accent colour, curved corner, treated as its own section.</p>
+              <p>Closes on three long-form verified reviews from the BON CHARGE site. Madeleine West on the Face Mask first (matching her cart). Andrea B. on the Blanket. David McEwen on the Sauna Blanket. Real names, real reviews, VERIFIED badges.</p>
+            </div>
+            <div class="narrative-block intent">
+              <h4>Why this email earns its place</h4>
+              <p>By 24 hours after abandonment, the customer who's still interested but hasn't completed needs three things solved at once: <strong>price (20%), outcome risk (30-day return), and confidence (peer reviews).</strong> The discount is real but disciplined — escalated only after E1 had its shot. The 30-day return block is what converts the customer who's worried she's making the wrong call. The reviews convert the customer who's worried it won't work for someone like her.</p>
+            </div>
+            <div class="narrative-tags">
+              <span class="tag">NEW customer path</span>
+              <span class="tag">20% saved-checkout offer</span>
+              <span class="tag proof">30-day return block</span>
+              <span class="tag proof">3 long-form verified reviews</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E3.1 NEW — 48H -->
+      <div class="day-block">
+        <div class="day-marker">
+          <div class="day-num">2</div>
+          <div class="day-meta">
+            <div class="day-label">Thursday · +48 hours · NEW customer path · expires in 24h</div>
+            <div class="day-title">The strongest offer. A real countdown. Then it's done.</div>
+          </div>
+          <div class="day-position"><strong>E3.1</strong>New customer</div>
+        </div>
+        <div class="day-content">
+          <div class="email-preview">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">25% off · expires in 24 hours</div>
+            <div class="ep-preheader">The strongest offer we'll send on your saved checkout.</div>
+            <div class="ep-banner-urgent">25% OFF EXPIRES IN 24 HOURS</div>
+            <div class="ep-banner-block urgent">
+              <div class="bb-headline">25% off your saved checkout</div>
+              <div class="bb-code">{{dynamic_code_25}}</div>
+            </div>
+            <div class="ep-countdown">
+              <div class="cd-label">CODE EXPIRES IN</div>
+              <div class="cd-time">23:47:12</div>
+              <div class="cd-sub">Dynamic countdown · per-customer 24h validity</div>
+            </div>
+            <div class="ep-hero deep">
+              <div class="ep-hero-eyebrow">FINAL OFFER ON THIS CHECKOUT</div>
+              <div class="ep-hero-headline">25% off. Expires in 24 hours.</div>
+              <div class="ep-hero-sub">This is the strongest offer we'll send on your saved checkout. After tomorrow, the 25% code becomes inactive.</div>
+            </div>
+            <div class="ep-checkout-cart">
+              <div class="cc-label">Your saved checkout · with 25% off applied</div>
+              <div class="cc-item">
+                <div class="cc-img"></div>
+                <div class="cc-info"><div class="cc-name">Red Light Face Mask</div><div class="cc-qty">Qty: 1</div></div>
+                <div class="cc-price">$186.75</div>
+              </div>
+              <div class="cc-total">
+                <span class="total-lbl">Total (25% off)</span>
+                <span class="total-val">$186.75</span>
+              </div>
+            </div>
+            <div class="ep-welcome-callout" style="border-color:#8A4F38; background:#FCF7EC;">
+              <div class="wc-headline">After tomorrow, the discount comes off this checkout permanently.</div>
+              <div class="wc-sub">The 20% from yesterday is also no longer available. This is the last reminder we'll send on this order.</div>
+            </div>
+            <div class="ep-bnpl">
+              <div class="bnpl-headline">Even with 25% off, you can still pay in four.</div>
+              <div class="bnpl-math">$46.69 every two weeks</div>
+              <div class="bnpl-sub">Zero interest.</div>
+              <div class="bnpl-logos">
+                <span class="bnpl-logo">Afterpay</span>
+                <span class="bnpl-logo">Klarna</span>
+                <span class="bnpl-logo">Shop Pay</span>
+              </div>
+            </div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>400,000+ customers worldwide</span><span>Backed by SAB</span><span>Official Recovery Partner of Fulham FC</span><span>400,000+ customers worldwide</span><span>Backed by SAB</span><span>Official Recovery Partner of Fulham FC</span></div></div>
+            <div class="ep-cta">COMPLETE YOUR ORDER →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+
+          <div class="day-narrative">
+            <h3>One last lever, with a real deadline behind it.</h3>
+            <p class="opener">At 48 hours, the brand makes its strongest offer and tells Sarah it's the last one. <em>25% off. A live countdown timer. A clear declaration that after tomorrow the discount permanently comes off this checkout.</em> No "ENDS TONIGHT!!!" theatre. Just the math, the deadline, and one final CTA.</p>
+            <div class="narrative-meta">
+              <div class="nm-cell"><div class="nm-label">Subject</div><div class="nm-value">"25% off · expires in 24 hours"</div></div>
+              <div class="nm-cell"><div class="nm-label">Job to be done</div><div class="nm-value">Final conversion swing · real deadline · honest urgency</div></div>
+            </div>
+            <div class="narrative-block">
+              <h4>What Sarah experiences</h4>
+              <p>The banner is darker. The code block is larger and uses the urgent treatment. Right underneath sits a <strong>Klaviyo dynamic countdown timer</strong> — 24 hours from the moment Sarah received this email, calculated per-customer via a dynamic coupon. The timer ticks down whether she's looking or not.</p>
+              <p>The hero spells it out: "25% off. Expires in 24 hours. This is the strongest offer we'll send on your saved checkout." The cart re-appears at $186.75 (25% off $249). A reinforcement block underneath confirms that after tomorrow, both this and the 20% from yesterday are gone.</p>
+              <p>The BNPL math is recalculated one more time: <strong>$46.69 every two weeks</strong>. A compact authority ticker closes the email — 400k+ customers, SAB, Fulham FC — same brand-trust signals that opened the welcome flow on Day 0 a month ago.</p>
+            </div>
+            <div class="narrative-block intent">
+              <h4>Why this email earns its place</h4>
+              <p>This is the final send in the recovery sequence. <strong>The countdown is real or the flow doesn't work</strong> — Klaviyo's dynamic coupon generates a per-customer code that genuinely expires 24h after send, so the brand can say "expires in 24 hours" without losing trust. The reinforcement block is brutal but honest: after tomorrow the discount is gone, full stop. If Sarah is going to convert from this sequence, this is the email. If she doesn't, the flow exits cleanly without further pressure — and she stays on the list for the next campaign, the next welcome offer, or a future founder-style reach-out.</p>
+            </div>
+            <div class="narrative-tags">
+              <span class="tag">NEW customer path</span>
+              <span class="tag urgent">25% final offer</span>
+              <span class="tag urgent">Real dynamic countdown</span>
+              <span class="tag">BNPL math + compact authority ticker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPEAT PATH SIDEBAR -->
+      <div class="phase-divider" style="background: rgba(13,125,58,0.06); margin-top: var(--s-16);">
+        <div class="phase-num">↗</div>
+        <div class="phase-copy">
+          <h3>How the flow looks for repeat customers</h3>
+          <p>A customer who's bought before doesn't need a fresh discount — they need a reason to stay loyal. E2 and E3 swap the escalating-% offer for a VIP membership push. Same trigger, different lever.</p>
+        </div>
+      </div>
+
+      <!-- E2.2 REPEAT (compact) -->
+      <div class="day-block">
+        <div class="day-marker">
+          <div class="day-num">1</div>
+          <div class="day-meta">
+            <div class="day-label">Wednesday · +24 hours · REPEAT customer path</div>
+            <div class="day-title">No fresh discount. A smarter way to save.</div>
+          </div>
+          <div class="day-position"><strong>E2.2</strong>Repeat customer</div>
+        </div>
+        <div class="day-content">
+          <div class="email-preview">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">Your saved checkout · and a smarter way to save</div>
+            <div class="ep-preheader">VIP membership unlocks more than this one order ever could.</div>
+            <div class="ep-banner-shipping">FREE SHIPPING · 12-MONTH WARRANTY</div>
+            <div class="ep-banner-block subdued">
+              <div class="bb-headline">Picking up where you left off</div>
+            </div>
+            <div class="ep-hero subdued">
+              <div class="ep-hero-eyebrow">SAVED FOR YOU</div>
+              <div class="ep-hero-headline">Picking up where you left off</div>
+              <div class="ep-hero-sub">Plus a smarter way to save going forward.</div>
+            </div>
+            <div class="ep-checkout-cart">
+              <div class="cc-label">Your saved checkout</div>
+              <div class="cc-item">
+                <div class="cc-img"></div>
+                <div class="cc-info"><div class="cc-name">Infrared Sauna Blanket</div><div class="cc-qty">Qty: 1</div></div>
+                <div class="cc-price">$599</div>
+              </div>
+              <div class="cc-total">
+                <span class="total-lbl">Total</span>
+                <span class="total-val">$599.00</span>
+              </div>
+            </div>
+            <div class="ep-bnpl">
+              <div class="bnpl-headline">Pay it in four.</div>
+              <div class="bnpl-math">$149.75 every two weeks</div>
+              <div class="bnpl-sub">Zero interest.</div>
+              <div class="bnpl-logos">
+                <span class="bnpl-logo">Afterpay</span>
+                <span class="bnpl-logo">Klarna</span>
+                <span class="bnpl-logo">Shop Pay</span>
+              </div>
+            </div>
+            <div class="ep-vip-block">
+              <div class="vip-eyebrow">A SMARTER DISCOUNT THAN A ONE-OFF</div>
+              <div class="vip-headline">BON CHARGE VIP Membership</div>
+              <div class="vip-price">$19.99 / year</div>
+              <div class="vip-benefits">
+                <div class="vip-benefit">30% off all four quarterly member sales (+5% bonus = 35%)</div>
+                <div class="vip-benefit">24-hour early access to new releases &amp; exclusive sales</div>
+                <div class="vip-benefit">30-day price match guarantee</div>
+                <div class="vip-benefit">Invite-only VIP events</div>
+              </div>
+              <div class="vip-cta">LEARN ABOUT VIP MEMBERSHIP →</div>
+            </div>
+            <div class="ep-cta">RETURN TO CHECKOUT →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+
+          <div class="day-narrative">
+            <h3>For a repeat buyer, a one-off discount is worth less than membership.</h3>
+            <p class="opener">A customer who already trusts BON CHARGE enough to buy a second time doesn't need 20% off this order. <em>They need a reason to consolidate everything they're going to buy this year into one membership.</em> E2.2 makes that case directly.</p>
+            <div class="narrative-meta">
+              <div class="nm-cell"><div class="nm-label">Subject</div><div class="nm-value">"Your saved checkout · and a smarter way to save"</div></div>
+              <div class="nm-cell"><div class="nm-label">Job to be done</div><div class="nm-value">Convert this order + introduce VIP membership</div></div>
+            </div>
+            <div class="narrative-block">
+              <h4>What the repeat customer sees</h4>
+              <p>The banner stays subdued (no fresh discount). The cart re-appears. The BNPL module is there. Then the dominant module of the email: <strong>the VIP membership block</strong>. $19.99 a year. 30% off four quarterly member sales (35% with bonus). 24-hour early access. 30-day price match. Invite-only events.</p>
+              <p>The math is explicit: across a year of sales, VIP saves significantly more than any one-off AC discount could match. The 30-day price match alone usually pays for the membership on a single order.</p>
+            </div>
+            <div class="narrative-block intent">
+              <h4>Why this email earns its place</h4>
+              <p>Repeat customers are the brand's most valuable cohort. <strong>Cutting margin on every recovery email teaches them to wait for the discount</strong> — and they have the brand familiarity to do exactly that. VIP membership flips the relationship: instead of a one-off price cut, the customer locks into a structure that benefits BON CHARGE (annual fee, ongoing engagement) and the customer (stacked savings, exclusivity). The AC moment is the right time to make this case because the customer is already on the verge of buying.</p>
+            </div>
+            <div class="narrative-tags">
+              <span class="tag">REPEAT customer path</span>
+              <span class="tag proof">VIP membership push</span>
+              <span class="tag">No fresh % discount</span>
+              <span class="tag">Margin-preserving</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E3.2 REPEAT (compact) -->
+      <div class="day-block">
+        <div class="day-marker">
+          <div class="day-num">2</div>
+          <div class="day-meta">
+            <div class="day-label">Thursday · +48 hours · REPEAT customer path</div>
+            <div class="day-title">Last reminder. VIP math, again. 30-day safety net.</div>
+          </div>
+          <div class="day-position"><strong>E3.2</strong>Repeat customer</div>
+        </div>
+        <div class="day-content">
+          <div class="email-preview">
+            <div class="ep-meta"><span class="from">BON CHARGE</span></div>
+            <div class="ep-subject">Last reminder on your saved checkout</div>
+            <div class="ep-preheader">Plus the VIP math, again, in case it makes a difference.</div>
+            <div class="ep-banner-shipping">FREE SHIPPING · 30-DAY RETURN · 12-MONTH WARRANTY</div>
+            <div class="ep-banner-block subdued">
+              <div class="bb-headline">Last reminder on your saved checkout</div>
+            </div>
+            <div class="ep-hero subdued">
+              <div class="ep-hero-eyebrow">FINAL NUDGE</div>
+              <div class="ep-hero-headline">Last reminder on your saved checkout</div>
+              <div class="ep-hero-sub">Picking up where you left off, with everything still in place.</div>
+            </div>
+            <div class="ep-checkout-cart">
+              <div class="cc-label">Your saved checkout</div>
+              <div class="cc-item">
+                <div class="cc-img"></div>
+                <div class="cc-info"><div class="cc-name">Infrared Sauna Blanket</div><div class="cc-qty">Qty: 1</div></div>
+                <div class="cc-price">$599</div>
+              </div>
+              <div class="cc-total">
+                <span class="total-lbl">Total</span>
+                <span class="total-val">$599.00</span>
+              </div>
+            </div>
+            <div class="ep-vip-block">
+              <div class="vip-eyebrow">THE MATH, AGAIN</div>
+              <div class="vip-headline">VIP Membership · $19.99 / year</div>
+              <div class="vip-benefits">
+                <div class="vip-benefit">30% off four member sales (+5% bonus = 35%)</div>
+                <div class="vip-benefit">Across a year, savings typically run into the hundreds</div>
+                <div class="vip-benefit">If the 30-day price match alone is worth it on this checkout, the membership pays itself off in one order</div>
+                <div class="vip-benefit">More than any one-off AC discount could match</div>
+              </div>
+              <div class="vip-cta">LEARN ABOUT VIP MEMBERSHIP →</div>
+            </div>
+            <div class="ep-bnpl">
+              <div class="bnpl-headline">Pay it in four.</div>
+              <div class="bnpl-math">$149.75 every two weeks</div>
+              <div class="bnpl-sub">Zero interest.</div>
+              <div class="bnpl-logos">
+                <span class="bnpl-logo">Afterpay</span>
+                <span class="bnpl-logo">Klarna</span>
+                <span class="bnpl-logo">Shop Pay</span>
+              </div>
+            </div>
+            <div class="ep-30day">
+              <div class="day-headline">30 days to live with it.</div>
+              <div class="day-sub">If the order doesn't fit your routine, send it back for a refund.* Every order, every time.</div>
+            </div>
+            <div class="ep-ticker"><div class="ticker-inner"><span>400,000+ customers worldwide</span><span>Backed by SAB</span><span>Official Recovery Partner of Fulham FC</span><span>400,000+ customers worldwide</span><span>Backed by SAB</span><span>Official Recovery Partner of Fulham FC</span></div></div>
+            <div class="ep-cta">RETURN TO CHECKOUT →</div>
+            <div class="ep-footer"><div class="line short"></div><div class="line tiny"></div></div>
+          </div>
+
+          <div class="day-narrative">
+            <h3>Last reminder, and the VIP case made stronger.</h3>
+            <p class="opener">The repeat customer's last send doesn't add new pressure. It reinforces the VIP math one more time and adds the 30-day return as the final risk-removal lever. <em>If VIP didn't land on E2.2, this is the email that gets a second swing — with the math made explicit.</em></p>
+            <div class="narrative-meta">
+              <div class="nm-cell"><div class="nm-label">Subject</div><div class="nm-value">"Last reminder on your saved checkout"</div></div>
+              <div class="nm-cell"><div class="nm-label">Job to be done</div><div class="nm-value">Final nudge · VIP reinforcement · 30-day safety net</div></div>
+            </div>
+            <div class="narrative-block">
+              <h4>What the repeat customer sees</h4>
+              <p>The VIP block returns, this time as the dominant module of the email. The framing is direct: "The math, again." Then the explicit case — if the 30-day price match alone applies to this checkout, the membership pays itself off in one order.</p>
+              <p>The 30-day return module sits underneath as a final risk-removal lever, and the brand-trust ticker (same one that opened the welcome flow on Day 0) provides the closing authority signal.</p>
+            </div>
+            <div class="narrative-block intent">
+              <h4>Why this email earns its place</h4>
+              <p>The repeat customer who's still not converting needs the brand to stop selling and start showing the math. <strong>This email is built around the assumption that the customer is calculating ROI in their head</strong> — so the email makes the calculation for them. If VIP makes sense on this single order, it's worth pointing that out one more time before the flow exits.</p>
+            </div>
+            <div class="narrative-tags">
+              <span class="tag">REPEAT customer path</span>
+              <span class="tag proof">VIP membership reinforcement</span>
+              <span class="tag">30-day return final lever</span>
+              <span class="tag">Closing brand-trust ticker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIFT (AC) -->
+  <section class="bg-cloud">
+    <div class="container narrow">
+      <div class="eyebrow">03 — What this flow means at scale</div>
+      <h2 class="section-title">Recovery rate, AOV, and lifetime value.</h2>
+      <p class="section-lede">The AC flow doesn't just recover this order — it shapes the long-term relationship with the customer. NEW and REPEAT paths each move different levers.</p>
+
+      <div class="lift-stack">
+        <div class="lift-row">
+          <div class="num">01</div>
+          <div class="copy">
+            <h4>NEW path · escalating-discount recovery</h4>
+            <p>15% (existing welcome) → 20% (24h) → 25% (48h, real countdown). Each step paired with BNPL math, 30-day return reassurance, and pillar-matched social proof. Industry benchmark recovery rates for DTC wellness AC flows: 10–18% of abandoned carts.</p>
+          </div>
+          <div class="meta"><strong>10–18%</strong>AC recovery rate</div>
+        </div>
+        <div class="lift-row">
+          <div class="num">02</div>
+          <div class="copy">
+            <h4>REPEAT path · VIP membership conversion</h4>
+            <p>Margin-preserving alternative to discount escalation. Each repeat customer who converts to VIP contributes the $19.99 fee and stays in for the four quarterly member sales. Typical VIP conversion rate from a targeted AC push: 4–8% of triggered repeat customers.</p>
+          </div>
+          <div class="meta"><strong>4–8%</strong>VIP conversion (repeat)</div>
+        </div>
+        <div class="lift-row">
+          <div class="num">03</div>
+          <div class="copy">
+            <h4>BNPL surfacing · cart-completion lift</h4>
+            <p>Surfacing pay-in-4 math as a feature module (not a footer logo) tends to lift cart completion 4–9% on carts above $200. Highest impact on Sarah-style first-time premium-product buyers where cash flow is the real friction.</p>
+          </div>
+          <div class="meta"><strong>+4–9%</strong>Completion lift on $200+ carts</div>
+        </div>
+      </div>
+
+      <div class="note warning"><strong>Projections are modeled, not promised.</strong> Numbers sit on industry benchmarks for DTC wellness/beauty tech AC flows. They'll firm up once the new flow has 30+ days of live data.</div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE (AC) -->
+  <section class="bg-white">
+    <div class="container narrow">
+      <div class="eyebrow">04 — For the technical reviewer</div>
+      <h2 class="section-title">The AC architecture.</h2>
+      <p class="section-lede">Trigger: Klaviyo Started Checkout event. E1 fires 15 minutes after the event for all customers. After E1, the flow splits on <code>Has Placed Order at least 1 time over all time</code> — false routes to the NEW path, true routes to the REPEAT path. E2 and E3 differ across the two paths. 48-hour total flow window.</p>
+
+      <div class="arch">
+        <div class="arch-inner">
+          <div class="arch-row">
+            <div class="arch-node entry">Started Checkout event · Klaviyo</div>
+            <div class="arrow-down"></div>
+            <div class="arch-node">E1 · 15 min · shared · all customers</div>
+            <div class="arrow-down"></div>
+            <div class="arch-node split">Conditional split on <code>Has Placed Order ≥ 1</code></div>
+            <div class="arrow-down"></div>
+            <div class="branch-grid cols-3" style="grid-template-columns: 1fr 1fr; max-width: 380px;">
+              <div class="branch-col">
+                <div class="branch-label new">NEW (never bought)</div>
+                <div class="mini-email"><span class="e">E2.1</span>20% +24h</div>
+                <div class="mini-email"><span class="e">E3.1</span>25% +48h · 24h countdown</div>
+              </div>
+              <div class="branch-col">
+                <div class="branch-label repeat">REPEAT (≥1 order)</div>
+                <div class="mini-email"><span class="e">E2.2</span>VIP push</div>
+                <div class="mini-email"><span class="e">E3.2</span>VIP + 30-day</div>
+              </div>
+            </div>
+            <div class="arrow-down"></div>
+            <div class="arch-node merge">Flow exits · 48h window closed</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note accent"><strong>Design economy.</strong> E1 is one shared design. E2 and E3 are two designs each (NEW vs REPEAT) but share module-level components (cart, BNPL, banner block, etc.). Total unique designs: <strong>five</strong>. Total content pieces: <strong>five</strong>.</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================================================ -->
+<!-- PAGE 3 — MEMORIAL DAY                            -->
+<!-- ================================================ -->
+<main class="page" id="page-memorial">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Strategic brief · 03 — Memorial Day 2026</div>
+      <h1>A three-stack mechanism that makes <em>customer lifecycle</em> a strong contributor to the Memorial Day sale.</h1>
+      <p class="hero-sub">VIP early access for the warm list, a daily-deals layer that rewards return visits, and on-site countdown popups that convert browsers. Each mechanic hits a different segment of the CLC base, so they compound instead of cannibalising — and CLC pulls real weight alongside paid through the sale window.</p>
+    </div>
+  </section>
+
+  <!-- CASE IN ONE MINUTE -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="eyebrow">01 — The case in one minute</div>
+      <div class="frame">
+        <h3>Memorial Day, restructured.</h3>
+        <p>Memorial Day is a high-intent shopping window, but most brands flatten it into a single sitewide discount and leave a lot of revenue on the floor. The recommendation: stack three mechanics. VIP early access for the warm list, a daily-deals layer that rewards return visits, and on-site countdown popups that convert browsers. Every day of the sale gets a fresh reason to open, click, and check out.</p>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-num">3</span><div class="stat-label">Stacking mechanics</div></div>
+          <div class="stat"><span class="stat-num">7 days</span><div class="stat-label">Sale window (19–26 May)</div></div>
+          <div class="stat"><span class="stat-num">1.6–2.1×</span><div class="stat-label">Modeled baseline uplift*</div></div>
+          <div class="stat"><span class="stat-num">+12–18%</span><div class="stat-label">Modeled AOV lift on stack days*</div></div>
+        </div>
+      </div>
+      <div class="note warning"><strong>*Modeled, not promised.</strong> Projections sit on industry sale benchmarks for DTC wellness/beauty tech. They'll firm up once last year's Memorial Day Klaviyo + Shopify pulls are run.</div>
+    </div>
+  </section>
+
+  <!-- TACTICS -->
+  <section class="bg-cloud">
+    <div class="container">
+      <div class="eyebrow">02 — Tactics</div>
+
+      <div class="tactic">
+        <div class="tactic-head"><div class="tactic-num">01</div>
+          <div><h3>VIP Early Access — give the warm list a reason to opt in.</h3><div class="tactic-sub">Existing + new subscribers · additional discount layered on top of the public sale</div></div>
+        </div>
+        <div class="tactic-body">
+          <p>The highest-leverage move in the lead-up week is converting the warm list into a self-identified buyer cohort. Open a VIP early-access opt-in form (Klaviyo form + dedicated landing page) that promises an extra discount on top of the Memorial Day sale, in exchange for the subscriber telling us they're in. A one-email confirmation flow fires immediately with the code, a minimum order value, and multi-use enabled.</p>
+          <p>The real value is in the segment we build out of it. Every opt-in is now a high-intent CLC segment we can use for the rest of the year. Lift on a VIP code over a standard public sale code typically runs <strong>1.4–1.8×</strong> on CTR and <strong>1.2–1.5×</strong> on purchase rate.</p>
+        </div>
+        <div class="tactic-grid">
+          <div class="col"><h4>Mechanic</h4><p><span class="big">Stack on sale</span>Additional VIP discount on top of public sale. Min order value enforced. Multi-use code so the same buyer can return.</p></div>
+          <div class="col"><h4>CLC segment fit</h4><p><span class="big">Warm list</span>Subscribers who have opened or clicked in last 60 days but not purchased.</p></div>
+          <div class="col"><h4>Asset stack</h4><p><span class="big">3 pieces</span>Opt-in form · landing page · 1-email confirmation flow with code reveal.</p></div>
+        </div>
+      </div>
+
+      <div class="tactic">
+        <div class="tactic-head"><div class="tactic-num">02</div>
+          <div><h3>Daily stackable deals — a fresh reason to open every day.</h3><div class="tactic-sub">Three sub-mechanics rotated through the seven-day window</div></div>
+        </div>
+        <div class="tactic-body">
+          <p>A single sitewide discount runs hot on day one and fades by day three. The fix: a daily-deals layer that rotates a new, time-bound mechanic on top of the base sale. Subscribers get a reason to come back, and list fatigue turns into list engagement.</p>
+        </div>
+        <div class="tactic-grid">
+          <div class="col"><h4>Mechanic A — Spend & Save</h4><p><span class="big">Tiered</span>Tier-based discount that scales with cart value. Lifts AOV <strong>+15–25%</strong> on tier days.</p></div>
+          <div class="col"><h4>Mechanic B — Boosted Welcome</h4><p><span class="big">Temp lift</span>Welcome offer temporarily increased for non-purchasers. Lifts new-buyer conversion <strong>+30–45%</strong>.</p></div>
+          <div class="col"><h4>Mechanic C — Hero Flash</h4><p><span class="big">Single SKU</span>Deeper discount on one hero product per day. Creates a "today only" reason to look.</p></div>
+        </div>
+        <div class="note accent" style="margin-top: 20px;"><strong>Why these compound rather than cannibalise.</strong> Each mechanic targets a different motivation — Spend &amp; Save for the bundler, Boosted Welcome for the unconverted, Hero Flash for the comparison shopper.</div>
+      </div>
+
+      <div class="tactic">
+        <div class="tactic-head"><div class="tactic-num">03</div>
+          <div><h3>On-site countdown pop-ups and fly-bys.</h3><div class="tactic-sub">The mechanic that converts the daily-deal browser into the daily-deal buyer</div></div>
+        </div>
+        <div class="tactic-body">
+          <p>Every daily deal needs an on-site moment that surfaces it before the visitor has to think. A countdown popup on the homepage and a sticky fly-by on collection and product pages, paired to the email send. The visitor who clicked through sees the same countdown reinforcing the same deal.</p>
+        </div>
+        <div class="tactic-grid">
+          <div class="col"><h4>Homepage popup</h4><p><span class="big">First visit</span>Full-screen takeover with day's deal, countdown, one CTA. Suppressed after dismissal.</p></div>
+          <div class="col"><h4>Sticky fly-by</h4><p><span class="big">Persistent</span>Right-side fly-by on collection + product pages. Compact countdown + code + 1 CTA.</p></div>
+          <div class="col"><h4>Modeled lift</h4><p><span class="big">+10–15%</span>Sale-window conversion lift when countdown popups are paired to email send.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="eyebrow">03 — Sale week timeline</div>
+      <h2 class="section-title">How the week sequences.</h2>
+      <div class="timeline">
+        <div class="timeline-track">
+          <div class="tl-day active"><div class="tl-date">Mon 19</div><div class="tl-label">VIP opt-in opens</div><div class="tl-events"><div class="tl-event email">Email: VIP early access invite</div><div class="tl-event">Homepage popup: opt-in</div></div></div>
+          <div class="tl-day active"><div class="tl-date">Tue 20</div><div class="tl-label">VIP reminder</div><div class="tl-events"><div class="tl-event email">Email: opt-in reminder</div></div></div>
+          <div class="tl-day active"><div class="tl-date">Wed 21</div><div class="tl-label">Sale teaser</div><div class="tl-events"><div class="tl-event email">Email: "sale starts Friday"</div><div class="tl-event">Fly-by: countdown to launch</div></div></div>
+          <div class="tl-day sale"><div class="tl-date">Thu 22</div><div class="tl-label">VIP day · early access</div><div class="tl-events"><div class="tl-event hot">VIP code live · 24h only</div><div class="tl-event email">Email: VIPs get first crack</div></div></div>
+          <div class="tl-day sale"><div class="tl-date">Fri 23</div><div class="tl-label">Sale launch · Spend & Save</div><div class="tl-events"><div class="tl-event hot">Tier mechanic live</div><div class="tl-event email">Email: sale is live + tiers</div></div></div>
+          <div class="tl-day sale"><div class="tl-date">Sat 24</div><div class="tl-label">Boosted Welcome day</div><div class="tl-events"><div class="tl-event hot">Lifted welcome offer · non-buyers</div><div class="tl-event email">Email to non-purchasers</div></div></div>
+          <div class="tl-day sale"><div class="tl-date">Sun 25</div><div class="tl-label">Hero Flash day</div><div class="tl-events"><div class="tl-event hot">Single-SKU flash deal</div><div class="tl-event email">Email: today only</div></div></div>
+          <div class="tl-day sale"><div class="tl-date">Mon 26</div><div class="tl-label">Memorial Day · Last call</div><div class="tl-events"><div class="tl-event hot">Closing day · all mechanics</div><div class="tl-event email">AM + PM sends</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+<div class="meta-footer">
+  <span>Tethrd × BON CHARGE · Welcome Flow + Abandoned Checkout · v5</span>
+  <span>Prepared by Hani Siraj · 20 May 2026</span>
+</div>
+
+<script>
+  // Pillar toggle handler
+  document.querySelectorAll('.pillar-toggle').forEach(toggle => {
+    toggle.querySelectorAll('.pt-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const pillar = btn.dataset.pillar;
+        const wrapper = btn.closest('.email-preview-wrapper');
+        wrapper.querySelectorAll('.pt-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        wrapper.querySelectorAll('.pillar-variant').forEach(v => v.classList.remove('active'));
+        wrapper.querySelector('.pillar-variant[data-pillar="' + pillar + '"]').classList.add('active');
+      });
+    });
+  });
+
+  const tabs = document.querySelectorAll('.tab');
+  const pages = document.querySelectorAll('.page');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.page;
+      tabs.forEach(t => t.classList.remove('active'));
+      pages.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('page-' + target).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  const chartHeights = [98,5,4,3,3,2.5,2,2,1.8,1.5,1.5,1.3,1.2,1.0,1.0,0.9,0.8,0.8,0.7,0.6,0.6,0.5,0.5,0.5,0.4,0.4,0.3,0.3,0.3,0.2,0.2];
+  const attribRatio = chartHeights.map((h, i) => i === 0 ? 0.22 : 0.4);
+  const chartArea = document.getElementById('chartArea');
+  chartHeights.forEach((h, i) => {
+    const bar = document.createElement('div'); bar.className = 'bar';
+    bar.style.height = h + '%';
+    const fill = document.createElement('div'); fill.className = 'bar-fill';
+    fill.style.height = (attribRatio[i] * 100) + '%';
+    bar.appendChild(fill);
+    chartArea.appendChild(bar);
+  });
+</script>
+
+</body>
+</html>
