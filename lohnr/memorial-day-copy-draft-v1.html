@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lohnr — Memorial Day Sequence — Draft v1</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e0e0e0; }
+  .top { padding: 40px 32px 20px; border-bottom: 1px solid #222; }
+  .top h1 { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .top .meta { font-size: 13px; color: #666; }
+  .top .meta span { color: #16a34a; }
+  .instructions { padding: 16px 32px; background: #0d1a0d; border-bottom: 1px solid #1a3a1a; }
+  .instructions p { font-size: 13px; color: #4ade80; line-height: 1.5; }
+  .campaign-header { padding: 28px 32px 16px; background: #0f0f0f; border-bottom: 1px solid #1f1f1f; border-top: 2px solid #f59e0b; }
+  .campaign-header .tag { display: inline-block; font-size: 11px; font-weight: 700; color: #f59e0b; background: #2a1f00; padding: 4px 10px; border-radius: 4px; letter-spacing: 1px; margin-bottom: 8px; }
+  .campaign-header h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .campaign-header .send { font-size: 13px; color: #888; }
+  .brief { padding: 16px 32px 20px; background: #0f0f0f; border-bottom: 1px solid #222; }
+  .brief h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin-bottom: 6px; }
+  .brief p { font-size: 13px; color: #bbb; line-height: 1.5; }
+  .variations { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 0; }
+  .variation { border: 1px solid #222; padding: 0; }
+  .var-header { padding: 18px 22px; background: #111; border-bottom: 1px solid #222; }
+  .var-number { font-size: 11px; font-weight: 700; color: #16a34a; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+  .var-angle { font-size: 15px; font-weight: 600; color: #fff; }
+  .var-body { padding: 18px 22px; }
+  .field { margin-bottom: 14px; }
+  .field-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin-bottom: 4px; display: flex; justify-content: space-between; }
+  .field-label .row-ref { color: #444; font-weight: 400; }
+  .field-value { font-size: 14px; color: #e0e0e0; line-height: 1.55; padding: 10px 12px; background: #151515; border-radius: 6px; border-left: 3px solid #222; white-space: pre-wrap; }
+  .field-value.subject { font-size: 15px; font-weight: 600; color: #fff; border-left-color: #f59e0b; }
+  .field-value.preview { color: #d0d0d0; }
+  .field-value.headline { font-size: 17px; font-weight: 600; color: #fff; border-left-color: #16a34a; }
+  .field-value.cta { font-size: 13px; font-weight: 600; color: #fff; border-left-color: #ef4444; }
+  .field-value.designer-note { font-size: 12px; color: #a78bfa; font-style: italic; border-left-color: #7c3aed; }
+  .field-value.tandc { font-size: 11px; color: #94a3b8; border-left-color: #475569; line-height: 1.5; }
+  .field-value.body { font-size: 13.5px; line-height: 1.65; }
+  .section-divider { height: 1px; background: #1f1f1f; margin: 16px 0; }
+  @media (max-width: 1100px) { .variations { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>Lohnr — Memorial Day Weekend Sequence</h1>
+  <div class="meta">Draft v1 &middot; <span>2026-05-19</span> &middot; 3 emails &middot; 9 variations</div>
+</div>
+
+<div class="instructions">
+  <p>Three Memorial Day emails, three variations each. Pick a variation per email, or Frankenstein across them: "AD V2 subject, AD V1 body, change the sign-off." Tell me what to change.</p>
+</div>
+
+<!-- ============== CAMPAIGN 1: AC ============== -->
+<div class="campaign-header">
+  <span class="tag">PROMO TEASER &middot; THU 21 MAY</span>
+  <h2>1 / Memorial Day Hype — Unlocks Tomorrow</h2>
+  <div class="send">Image hero with hidden "xx% off" + live countdown timer to Fri 22 May 9:00am PT</div>
+</div>
+<div class="brief">
+  <h3>Brief</h3>
+  <p>Build anticipation before tomorrow's launch. Discount stays hidden ("xx" reads deliberate, not a placeholder). Drive cart-prep behaviour. Full list.</p>
+</div>
+<div class="variations">
+
+  <div class="variation">
+    <div class="var-header">
+      <div class="var-number">Variation 1</div>
+      <div class="var-angle">Tomorrow Reveal</div>
+    </div>
+    <div class="var-body">
+      <div class="field"><div class="field-label">Subject <span class="row-ref">Row 22</span></div><div class="field-value subject">tomorrow.</div></div>
+      <div class="field"><div class="field-label">Preview <span class="row-ref">Row 23</span></div><div class="field-value preview">memorial day sale unlocks at 9am pt.</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Hero Pre-header <span class="row-ref">Row 26</span></div><div class="field-value">memorial day sale savings.</div></div>
+      <div class="field"><div class="field-label">Hero Headline <span class="row-ref">Row 27</span></div><div class="field-value headline">xx% off sitewide. unlocks tomorrow.</div></div>
+      <div class="field"><div class="field-label">Hero Sub-headline / Designer <span class="row-ref">Row 28</span></div><div class="field-value designer-note">[ Bold "xx% OFF SITEWIDE" type treatment over a soft moody background or branded Lohnr texture. Below it, a live ticking countdown timer to Friday 22 May 9:00am PT (Klaviyo dynamic countdown block). The "xx" must read as deliberately hidden, not a placeholder error. ]</div></div>
+      <div class="field"><div class="field-label">Hero CTA <span class="row-ref">Row 29</span></div><div class="field-value cta">See What's New</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Primary Content <span class="row-ref">Row 30</span></div><div class="field-value body">memorial day weekend has always meant a lot to us. it's the proper start of summer, when you start reaching for the easier pieces.
+
+this year, we're making it easier still.
+
+tomorrow morning, an email-exclusive discount unlocks. site-wide. every single piece.
+
+in the meantime, take a look around. anything you've been circling, drop it in the cart. it'll be there tomorrow.
+
+[ See What's New ]</div></div>
+      <div class="field"><div class="field-label">T&amp;Cs <span class="row-ref">Row 34</span></div><div class="field-value tandc">Sale starts Friday 22 May 9:00am PT for email subscribers. Ends Monday 25 May 11:59pm PT. While stocks last.</div></div>
+    </div>
+  </div>
+
+  <div class="variation">
+    <div class="var-header">
+      <div class="var-number">Variation 2</div>
+      <div class="var-angle">What's In Your Cart</div>
+    </div>
+    <div class="var-body">
+      <div class="field"><div class="field-label">Subject <span class="row-ref">Row 22</span></div><div class="field-value subject">what's in your cart?</div></div>
+      <div class="field"><div class="field-label">Preview <span class="row-ref">Row 23</span></div><div class="field-value preview">tomorrow it's worth more than you think.</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Hero Pre-header <span class="row-ref">Row 26</span></div><div class="field-value">memorial day sale starts tomorrow.</div></div>
+      <div class="field"><div class="field-label">Hero Headline <span class="row-ref">Row 27</span></div><div class="field-value headline">have your cart ready.</div></div>
+      <div class="field"><div class="field-label">Hero Sub-headline / Designer <span class="row-ref">Row 28</span></div><div class="field-value designer-note">[ Soft editorial hero: a single Lohnr set laid out on a sunlit surface, or a styled flat-lay. A small live countdown timer overlaid bottom-left, ticking to Friday 22 May 9:00am PT. ]</div></div>
+      <div class="field"><div class="field-label">Hero CTA <span class="row-ref">Row 29</span></div><div class="field-value cta">Shop Now</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Primary Content <span class="row-ref">Row 30</span></div><div class="field-value body">here's how memorial day works this year.
+
+tomorrow at 9am pt, an email-exclusive code unlocks. site-wide. every set, every dress, every essential.
+
+we're not saying how much yet.
+
+what we'd suggest: take an hour today, walk through the site, drop what you've been quietly thinking about into your cart. it'll hold.
+
+then check your inbox tomorrow.
+
+[ Shop Now ]</div></div>
+      <div class="field"><div class="field-label">T&amp;Cs <span class="row-ref">Row 34</span></div><div class="field-value tandc">Email-exclusive code. Live Friday 22 May 9:00am PT through Monday 25 May 11:59pm PT. While stocks last.</div></div>
+    </div>
+  </div>
+
+  <div class="variation">
+    <div class="var-header">
+      <div class="var-number">Variation 3</div>
+      <div class="var-angle">The Quiet Drop</div>
+    </div>
+    <div class="var-body">
+      <div class="field"><div class="field-label">Subject <span class="row-ref">Row 22</span></div><div class="field-value subject">something for tomorrow.</div></div>
+      <div class="field"><div class="field-label">Preview <span class="row-ref">Row 23</span></div><div class="field-value preview">your memorial day window opens in 24 hours.</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Hero Pre-header <span class="row-ref">Row 26</span></div><div class="field-value">(skip)</div></div>
+      <div class="field"><div class="field-label">Hero Headline <span class="row-ref">Row 27</span></div><div class="field-value headline">memorial day, the lohnr way.</div></div>
+      <div class="field"><div class="field-label">Hero Sub-headline / Designer <span class="row-ref">Row 28</span></div><div class="field-value designer-note">[ Editorial product still life: a folded set in a summer-toned palette, soft natural light. The line "your window opens in 24 hours" set small below, and a live countdown to Friday 22 May 9:00am PT. ]</div></div>
+      <div class="field"><div class="field-label">Hero CTA <span class="row-ref">Row 29</span></div><div class="field-value cta">See What's New</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Primary Content <span class="row-ref">Row 30</span></div><div class="field-value body">it's the weekend most of us mark as the start of the season. the one where the wardrobe shifts, even just a little.
+
+tomorrow, we're opening a small window for that shift. a site-wide, email-exclusive discount. live for three days.
+
+the amount stays quiet until then.
+
+what we'd do in your shoes: browse what's new, save anything you've been thinking about. that's it.
+
+[ See What's New ]</div></div>
+      <div class="field"><div class="field-label">T&amp;Cs <span class="row-ref">Row 34</span></div><div class="field-value tandc">Email-exclusive discount. Site-wide. Live Friday 22 May 9:00am PT through Monday 25 May 11:59pm PT. While stocks last.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============== CAMPAIGN 2: AD ============== -->
+<div class="campaign-header">
+  <span class="tag">PROMO LAUNCH &middot; ELENA LETTER &middot; FRI 22 MAY</span>
+  <h2>2 / Memorial Day Sale Launch</h2>
+  <div class="send">Plain-text founder letter. Reveal 20% off, code MEMDAY20, ends Mon 25 May 11:59pm PT.</div>
+</div>
+<div class="brief">
+  <h3>Brief</h3>
+  <p>Elena founder-letter format (plain text — top-performing format per April data). One CTA, hyperlinked. Honest, no manufactured urgency.</p>
+</div>
+<div class="variations">
+
+  <div class="variation">
+    <div class="var-header">
+      <div class="var-number">Variation 1</div>
+      <div class="var-angle">As Promised</div>
+    </div>
+    <div class="var-body">
+      <div class="field"><div class="field-label">Subject <span class="row-ref">Row 22</span></div><div class="field-value subject">as promised.</div></div>
+      <div class="field"><div class="field-label">Preview <span class="row-ref">Row 23</span></div><div class="field-value preview">your 20% off code is inside.</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Primary Content (Letter Body) <span class="row-ref">Row 30</span></div><div class="field-value body">Hey {{ first_name|default:"there" }},
+
+Elena here, founder of Lohnr.
+
+As promised, here's your email-exclusive code.
+
+Memorial Day weekend has always felt like the proper start of summer to me, the one where you start reaching for your rotation pieces. So I wanted to give you a clean window to build that rotation with us.
+
+20% off sitewide with code MEMDAY20.
+Valid now through Monday at midnight PT.
+
+No exclusions, no minimums. Just a clean three days.
+
+If there's a set you've been circling, this is the time.
+
+Shop The Sale
+
+Elena</div></div>
+      <div class="field"><div class="field-label">T&amp;Cs <span class="row-ref">Row 34</span></div><div class="field-value tandc">20% off sitewide with code MEMDAY20. Ends 25 May 11:59pm PT. While stocks last. Cannot be combined with other offers. View Terms and Conditions.</div></div>
+    </div>
+  </div>
+
+  <div class="variation">
+    <div class="var-header">
+      <div class="var-number">Variation 2</div>
+      <div class="var-angle">A Note From Elena</div>
+    </div>
+    <div class="var-body">
+      <div class="field"><div class="field-label">Subject <span class="row-ref">Row 22</span></div><div class="field-value subject">a note from elena.</div></div>
+      <div class="field"><div class="field-label">Preview <span class="row-ref">Row 23</span></div><div class="field-value preview">20% off sitewide, ends monday.</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Primary Content (Letter Body) <span class="row-ref">Row 30</span></div><div class="field-value body">Hey {{ first_name|default:"there" }},
+
+Elena here, founder of Lohnr.
+
+Quick one.
+
+Memorial Day weekend feels like the proper start of summer to me. The point where the wardrobe quietly shifts and the easier pieces come forward.
+
+So we've opened a small window.
+
+20% off sitewide. Code MEMDAY20 at checkout. Live now, closes Monday at midnight PT.
+
+If there's something you've been thinking about, this is a good moment for it.
+
+Shop The Sale
+
+Elena</div></div>
+      <div class="field"><div class="field-label">T&amp;Cs <span class="row-ref">Row 34</span></div><div class="field-value tandc">20% off sitewide with code MEMDAY20. Ends 25 May 11:59pm PT. While stocks last. Cannot be combined with other offers. View Terms and Conditions.</div></div>
+    </div>
+  </div>
+
+  <div class="variation">
+    <div class="var-header">
+      <div class="var-number">Variation 3</div>
+      <div class="var-angle">Three Days</div>
+    </div>
+    <div class="var-body">
+      <div class="field"><div class="field-label">Subject <span class="row-ref">Row 22</span></div><div class="field-value subject">you've got three days.</div></div>
+      <div class="field"><div class="field-label">Preview <span class="row-ref">Row 23</span></div><div class="field-value preview">memday20 unlocks 20% off sitewide.</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Primary Content (Letter Body) <span class="row-ref">Row 30</span></div><div class="field-value body">Hey {{ first_name|default:"there" }},
+
+Elena here, founder of Lohnr.
+
+Memorial Day weekend, in this household, is the moment where I admit the wardrobe needs to shift. The denim goes back, the sets come out, and I start dressing for the warmer half of the year.
+
+This is the window we built for that shift.
+
+20% off everything on the site. Code MEMDAY20 at checkout. Three days, closes Monday at midnight PT.
+
+No tiers, no minimums, no exclusions.
+
+If you've had a set saved for a while, this is the moment for it.
+
+Shop The Sale
+
+Elena</div></div>
+      <div class="field"><div class="field-label">T&amp;Cs <span class="row-ref">Row 34</span></div><div class="field-value tandc">20% off sitewide with code MEMDAY20. Ends 25 May 11:59pm PT. While stocks last. Cannot be combined with other offers. View Terms and Conditions.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============== CAMPAIGN 3: AE ============== -->
+<div class="campaign-header">
+  <span class="tag">MID-SALE EDITORIAL &middot; SUN 24 MAY</span>
+  <h2>3 / Memorial Day — The Long-Weekend Edit</h2>
+  <div class="send">Image-led editorial stack. One day left in sale. Re-engage with curated weekend looks.</div>
+</div>
+<div class="brief">
+  <h3>Brief</h3>
+  <p>Mid-sale push framed through the long-weekend lens. Reinforce one day to go. Lifestyle-led (not sale-shouty). Full list, exclude AD purchasers.</p>
+</div>
+<div class="variations">
+
+  <div class="variation">
+    <div class="var-header">
+      <div class="var-number">Variation 1</div>
+      <div class="var-angle">The Long-Weekend Edit</div>
+    </div>
+    <div class="var-body">
+      <div class="field"><div class="field-label">Subject <span class="row-ref">Row 22</span></div><div class="field-value subject">the long-weekend edit.</div></div>
+      <div class="field"><div class="field-label">Preview <span class="row-ref">Row 23</span></div><div class="field-value preview">what we'd wear from now through monday.</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Hero Pre-header <span class="row-ref">Row 26</span></div><div class="field-value">20% off ends tomorrow.</div></div>
+      <div class="field"><div class="field-label">Hero Headline <span class="row-ref">Row 27</span></div><div class="field-value headline">the long-weekend edit.</div></div>
+      <div class="field"><div class="field-label">Hero Sub-headline / Designer <span class="row-ref">Row 28</span></div><div class="field-value designer-note">[ Editorial flat-lay or styled hero: three Lohnr pieces curated for the long weekend (set + dress + a layering piece), arranged on a sunlit surface in a summer palette. ]</div></div>
+      <div class="field"><div class="field-label">Hero CTA <span class="row-ref">Row 29</span></div><div class="field-value cta">Shop The Edit</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Primary Content <span class="row-ref">Row 30</span></div><div class="field-value body">three days. three looks. one weekend.
+
+[ Editorial image 1: a relaxed set on a slow saturday morning. Caption below image: "saturday slow. the solace set in oatstone." ]
+
+[ Editorial image 2: a dress styled for sunday lunch outdoors. Caption: "sunday outdoors. the solene dress in onyx." ]
+
+[ Editorial image 3: a layered look for a cool monday evening. Caption: "monday evening. the elara set, with a thrown-on layer." ]
+
+20% off sitewide with code MEMDAY20.
+closes monday at midnight pt.
+
+[ Shop The Edit ]</div></div>
+      <div class="field"><div class="field-label">T&amp;Cs <span class="row-ref">Row 34</span></div><div class="field-value tandc">20% off sitewide with code MEMDAY20. Ends 25 May 11:59pm PT. While stocks last. Cannot be combined with other offers. View Terms and Conditions.</div></div>
+    </div>
+  </div>
+
+  <div class="variation">
+    <div class="var-header">
+      <div class="var-number">Variation 2</div>
+      <div class="var-angle">How We're Wearing It</div>
+    </div>
+    <div class="var-body">
+      <div class="field"><div class="field-label">Subject <span class="row-ref">Row 22</span></div><div class="field-value subject">how we're wearing it.</div></div>
+      <div class="field"><div class="field-label">Preview <span class="row-ref">Row 23</span></div><div class="field-value preview">three days, three sets, one easy weekend.</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Hero Pre-header <span class="row-ref">Row 26</span></div><div class="field-value">(skip)</div></div>
+      <div class="field"><div class="field-label">Hero Headline <span class="row-ref">Row 27</span></div><div class="field-value headline">memorial day, made easy.</div></div>
+      <div class="field"><div class="field-label">Hero Sub-headline / Designer <span class="row-ref">Row 28</span></div><div class="field-value designer-note">[ Lifestyle hero: someone moving through a sunlit space in a Lohnr set, mid-action. Soft natural tones, summer light. Image carries the mood, not the offer. ]</div></div>
+      <div class="field"><div class="field-label">Hero CTA <span class="row-ref">Row 29</span></div><div class="field-value cta">Build The Weekend</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Primary Content <span class="row-ref">Row 30</span></div><div class="field-value body">the trick to a long weekend is wearing things you don't have to think about.
+
+[ Lifestyle image 1: morning, set styled with sneakers. Caption: "the morning piece. goes with: trainers and an espresso." ]
+
+[ Lifestyle image 2: afternoon, dress with slides. Caption: "the afternoon piece. goes with: slides and the sun." ]
+
+[ Lifestyle image 3: evening, layered. Caption: "the evening piece. goes with: a denim layer and a glass of something." ]
+
+one code holds for all three.
+
+20% off sitewide with MEMDAY20. closes monday at midnight pt.
+
+[ Build The Weekend ]</div></div>
+      <div class="field"><div class="field-label">T&amp;Cs <span class="row-ref">Row 34</span></div><div class="field-value tandc">20% off sitewide with code MEMDAY20. Ends 25 May 11:59pm PT. While stocks last. Cannot be combined with other offers. View Terms and Conditions.</div></div>
+    </div>
+  </div>
+
+  <div class="variation">
+    <div class="var-header">
+      <div class="var-number">Variation 3</div>
+      <div class="var-angle">While You're Here</div>
+    </div>
+    <div class="var-body">
+      <div class="field"><div class="field-label">Subject <span class="row-ref">Row 22</span></div><div class="field-value subject">while you're here.</div></div>
+      <div class="field"><div class="field-label">Preview <span class="row-ref">Row 23</span></div><div class="field-value preview">20% off sitewide, one more day.</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Hero Pre-header <span class="row-ref">Row 26</span></div><div class="field-value">memorial day sale, still on.</div></div>
+      <div class="field"><div class="field-label">Hero Headline <span class="row-ref">Row 27</span></div><div class="field-value headline">still 20% off sitewide.</div></div>
+      <div class="field"><div class="field-label">Hero Sub-headline / Designer <span class="row-ref">Row 28</span></div><div class="field-value designer-note">[ Clean product grid hero: six hero pieces from the sale photographed on soft tone, summer palette. No text overlays — let the products carry. ]</div></div>
+      <div class="field"><div class="field-label">Hero CTA <span class="row-ref">Row 29</span></div><div class="field-value cta">Shop Now</div></div>
+      <div class="section-divider"></div>
+      <div class="field"><div class="field-label">Primary Content <span class="row-ref">Row 30</span></div><div class="field-value body">in case the weekend got busy.
+
+the sale's still on. 20% off everything. one more day after this.
+
+some of what's gone well so far:
+
+[ 3-product grid: solene dress / solace set / elara set. Best-selling colourway for each. Product name below each card. ]
+
+[ Shop Now ]
+
+code memday20 at checkout. closes monday at midnight pt.</div></div>
+      <div class="field"><div class="field-label">T&amp;Cs <span class="row-ref">Row 34</span></div><div class="field-value tandc">20% off sitewide with code MEMDAY20. Ends 25 May 11:59pm PT. While stocks last. Cannot be combined with other offers. View Terms and Conditions.</div></div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
