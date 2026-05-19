@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lohnr — June 2026 Calendar (v3)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color: #1a1a1a; }
+
+.cover { background: #0a0a0a; color: #fff; padding: 80px 60px 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; page-break-after: always; }
+.cover-brand { font-size: 11px; letter-spacing: 6px; color: #666; font-weight: 400; }
+.cover-middle { margin: auto 0; }
+.cover-title { font-size: 56px; font-weight: 300; letter-spacing: -1px; line-height: 1.1; margin-bottom: 12px; }
+.cover-subtitle { font-size: 22px; font-weight: 300; color: #777; margin-bottom: 48px; }
+.cover-stats { display: flex; gap: 48px; margin-bottom: 40px; }
+.cover-stat-num { font-size: 36px; font-weight: 600; letter-spacing: -1px; }
+.cover-stat-label { font-size: 10px; letter-spacing: 3px; color: #666; margin-top: 4px; text-transform: uppercase; }
+.cover-products { font-size: 13px; color: #888; letter-spacing: 0.5px; }
+.cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+.cover-date { font-size: 11px; color: #555; }
+.cover-approval { font-size: 11px; color: #444; letter-spacing: 2px; text-transform: uppercase; }
+
+.theme-banner { background: #fff5f0; border-left: 3px solid #c87a5a; border-radius: 4px; padding: 16px 20px; margin-bottom: 28px; }
+.theme-banner-label { font-size: 9px; letter-spacing: 2.5px; color: #c87a5a; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+.theme-banner-body { font-size: 13px; color: #555; line-height: 1.6; }
+.theme-banner-body strong { color: #333; }
+
+.page { padding: 50px 60px; page-break-after: always; }
+.page:last-child { page-break-after: avoid; }
+.section-label { font-size: 10px; letter-spacing: 4px; color: #bbb; text-transform: uppercase; font-weight: 500; margin-bottom: 8px; }
+.page-title { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 6px; }
+.page-desc { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 32px; max-width: 680px; }
+
+.npd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+.npd-card { background: #fafafa; border-left: 3px solid #1f6a4f; padding: 16px 20px; border-radius: 6px; }
+.npd-card.hero { border-left-color: #c87a5a; }
+.npd-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.npd-meta { font-size: 10px; letter-spacing: 1.5px; color: #888; text-transform: uppercase; margin-bottom: 8px; }
+.npd-body { font-size: 12px; color: #555; line-height: 1.55; }
+.npd-role { font-size: 10px; color: #1f6a4f; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-top: 8px; }
+.npd-card.hero .npd-role { color: #c87a5a; }
+
+.cal { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+.cal th { font-size: 10px; letter-spacing: 2px; color: #bbb; font-weight: 500; text-transform: uppercase; padding: 8px 0; text-align: center; border-bottom: 1px solid #eee; }
+.cal td { border: 1px solid #f0f0f0; vertical-align: top; padding: 8px 8px 12px; height: 84px; width: 14.28%; }
+.cal td.empty { background: #fafafa; }
+.cal .day-num { font-size: 11px; color: #ccc; font-weight: 500; margin-bottom: 6px; }
+.cal .cal-event { font-size: 10px; font-weight: 600; line-height: 1.3; padding: 3px 6px; border-radius: 3px; margin-bottom: 3px; display: inline-block; }
+.cal .cal-note { font-size: 9px; color: #c89c4a; display: block; margin-top: 4px; font-style: italic; }
+.ev-dress { background: #fce8de; color: #a14f30; }
+.ev-elena { background: #ecf0e6; color: #606c38; }
+.ev-npd { background: #e6f2ee; color: #1f6a4f; }
+.ev-sale { background: #e8e6f2; color: #4a3d8b; }
+.ev-gabby { background: #f0f0f0; color: #555; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 14px 20px; margin-top: 8px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #999; }
+.legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+.week-group { margin-bottom: 36px; }
+.week-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+.week-num { font-size: 10px; letter-spacing: 3px; color: #ccc; text-transform: uppercase; font-weight: 500; }
+.week-title { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; }
+.card { display: flex; background: #fafafa; border-radius: 6px; overflow: hidden; margin-bottom: 12px; page-break-inside: avoid; }
+.card-accent { width: 4px; flex-shrink: 0; }
+.card-body { padding: 20px 24px; flex: 1; }
+.card-num { font-size: 10px; font-weight: 600; letter-spacing: 2px; margin-bottom: 4px; }
+.card-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; margin-bottom: 6px; line-height: 1.3; }
+.card-meta { font-size: 10px; color: #999; letter-spacing: 0.5px; margin-bottom: 14px; text-transform: uppercase; }
+.card-obj-label { font-size: 9px; letter-spacing: 2.5px; color: #999; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+.card-desc { font-size: 12.5px; color: #333; line-height: 1.65; margin-bottom: 14px; }
+.card-detail-label { font-size: 9px; letter-spacing: 2.5px; color: #999; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+.card-detail { font-size: 11px; color: #666; line-height: 1.5; margin-bottom: 8px; }
+.card-promo { font-size: 11px; font-weight: 600; margin-top: 8px; padding: 6px 10px; border-radius: 3px; display: inline-block; }
+.promo-sale { background: #e8e6f2; color: #4a3d8b; }
+.card-rationale { font-size: 11px; color: #777; line-height: 1.55; margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee; }
+.card-rationale strong { color: #555; }
+
+.options-box { background: #fffaf0; border-left: 3px solid #c89c4a; border-radius: 4px; padding: 14px 18px; margin-top: 12px; }
+.options-title { font-size: 10px; letter-spacing: 2px; color: #8a5a1f; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
+.option-row { font-size: 11px; color: #555; line-height: 1.6; margin-bottom: 4px; }
+.option-row strong { color: #333; }
+.option-row.rec { color: #1f6a4f; font-weight: 600; }
+
+.footer { padding: 20px 60px; border-top: 1px solid #1a1a1a; margin-top: 40px; }
+.footer-text { font-size: 9px; letter-spacing: 4px; color: #ccc; text-transform: uppercase; text-align: center; }
+
+@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .cover { min-height: auto; height: 100vh; } .page { padding: 40px 50px; } }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-brand">LOHNR</div>
+  <div class="cover-middle">
+    <div class="cover-title">June 2026</div>
+    <div class="cover-subtitle">Email Calendar</div>
+    <div class="cover-stats">
+      <div><div class="cover-stat-num">10</div><div class="cover-stat-label">Emails</div></div>
+      <div><div class="cover-stat-num">5</div><div class="cover-stat-label">Dress Moments</div></div>
+      <div><div class="cover-stat-num">1</div><div class="cover-stat-label">Sale Event</div></div>
+      <div><div class="cover-stat-num">4</div><div class="cover-stat-label">New Arrivals</div></div>
+    </div>
+    <div class="cover-products">Summer Dress Push &nbsp;&middot;&nbsp; Solstice Sale &nbsp;&middot;&nbsp; Hero NPDs &nbsp;&middot;&nbsp; July Bridge</div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-date">19 May 2026 &middot; v3</div>
+    <div class="cover-approval">Draft &middot; For Review</div>
+  </div>
+</div>
+
+<!-- NPD INTEL -->
+<div class="page">
+  <div class="section-label">New Arrivals</div>
+  <div class="page-title">The Four-Piece Drop</div>
+  <div class="page-desc">Four new products landing in week one. Vivienne anchors the announcement as the season&rsquo;s statement dress and carries the summer-dress theme through the drop. Bound Rib Set sits alongside as the hero two-piece. Muse and Staple round out the release as the staple layer underneath.</div>
+
+  <div class="npd-grid">
+    <div class="npd-card hero">
+      <div class="npd-name">Vivienne Bustier Dress</div>
+      <div class="npd-meta">Statement Dress &middot; Denim Bustier</div>
+      <div class="npd-body">The season&rsquo;s event piece. Bustier silhouette in a denim build. Anchors the summer-dress narrative and the most photographic of the four.</div>
+      <div class="npd-role">Drop Hero &middot; Dress Spotlight (Jun 12)</div>
+    </div>
+    <div class="npd-card">
+      <div class="npd-name">Bound Rib Set</div>
+      <div class="npd-meta">Two-Piece Mini &middot; 230gsm Ribbed Knit</div>
+      <div class="npd-body">Sleeveless top with asymmetric mini skirt and contrast edge binding. A clean coordinated look. Highest-AOV piece in the drop.</div>
+      <div class="npd-role">Hero NPD &middot; Dedicated Spotlight (Jun 9)</div>
+    </div>
+    <div class="npd-card">
+      <div class="npd-name">Muse Shoulder Tee</div>
+      <div class="npd-meta">Capped Sleeve Tee &middot; Soft Feminine</div>
+      <div class="npd-body">Capped-sleeve tee. Sits between the staple tank and a structured top. An easy summer layering piece.</div>
+      <div class="npd-role">Staple NPD &middot; Drop Coverage Only</div>
+    </div>
+    <div class="npd-card">
+      <div class="npd-name">Staple Scoop Tank</div>
+      <div class="npd-meta">Everyday Tank &middot; 230gsm Stretch</div>
+      <div class="npd-body">Wrinkle-resistant 230gsm stretch tank. Foundational entry-price piece. Highest-volume potential, lowest AOV.</div>
+      <div class="npd-role">Staple NPD &middot; Drop Coverage Only</div>
+    </div>
+  </div>
+
+  <div style="background: #fafafa; border-radius: 6px; padding: 16px 20px; font-size: 12px; color: #555; line-height: 1.6;">
+    <strong style="color: #333;">Asset status:</strong> Drive folders shared for all four. Confirm by 4 June that imagery is editorial-ready for the 6 June drop send.
+  </div>
+</div>
+
+<!-- CALENDAR OVERVIEW -->
+<div class="page">
+  <div class="section-label">Overview</div>
+  <div class="page-title">Month at a Glance</div>
+
+  <div class="theme-banner">
+    <div class="theme-banner-label">June Theme</div>
+    <div class="theme-banner-body"><strong>Summer Dress Push.</strong> Summer in the US opens the dress window. Five dedicated dress moments across the month (Solene, Vivienne, Elara, the Summer Dress Edit, plus dress-forward sale framing). The four new arrivals still get their drop and spotlights, but dresses anchor the conversation.</div>
+  </div>
+
+  <div class="page-desc">Ten sends across June. One sale event &mdash; the Solstice Sale &mdash; runs Juneteenth weekend through to Father&rsquo;s Day evening, then closes Monday. Dress moments anchor every week. The basics duo (Muse + Staple) is covered through the drop launch only; spotlight real estate this month belongs to dresses.</div>
+
+  <table class="cal">
+    <thead>
+      <tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="day-num">1</div></td>
+        <td><div class="day-num">2</div><span class="cal-event ev-dress">Solene Summer</span></td>
+        <td><div class="day-num">3</div></td>
+        <td><div class="day-num">4</div></td>
+        <td><div class="day-num">5</div></td>
+        <td><div class="day-num">6</div><span class="cal-event ev-npd">Four Just Landed</span></td>
+        <td><div class="day-num">7</div></td>
+      </tr>
+      <tr>
+        <td><div class="day-num">8</div></td>
+        <td><div class="day-num">9</div><span class="cal-event ev-npd">Bound Rib Set</span></td>
+        <td><div class="day-num">10</div></td>
+        <td><div class="day-num">11</div></td>
+        <td><div class="day-num">12</div><span class="cal-event ev-dress">Vivienne Dress</span></td>
+        <td><div class="day-num">13</div></td>
+        <td><div class="day-num">14</div></td>
+      </tr>
+      <tr>
+        <td><div class="day-num">15</div></td>
+        <td><div class="day-num">16</div><span class="cal-event ev-dress">Elara Spotlight</span></td>
+        <td><div class="day-num">17</div></td>
+        <td><div class="day-num">18</div></td>
+        <td><div class="day-num">19</div><span class="cal-event ev-elena">Solstice Dress Sale Open</span><span class="cal-note">Juneteenth</span></td>
+        <td><div class="day-num">20</div></td>
+        <td><div class="day-num">21</div><span class="cal-event ev-sale">Solstice Mid</span><span class="cal-note">Father&rsquo;s Day &middot; Solstice</span></td>
+      </tr>
+      <tr>
+        <td><div class="day-num">22</div><span class="cal-event ev-elena">Solstice Close</span><span class="cal-note">Sale ends 11:59pm PT</span></td>
+        <td><div class="day-num">23</div></td>
+        <td><div class="day-num">24</div></td>
+        <td><div class="day-num">25</div><span class="cal-event ev-dress">The Dress Edit</span></td>
+        <td><div class="day-num">26</div></td>
+        <td><div class="day-num">27</div><span class="cal-event ev-gabby">Gabby / July Tease</span></td>
+        <td><div class="day-num">28</div></td>
+      </tr>
+      <tr>
+        <td><div class="day-num">29</div></td>
+        <td><div class="day-num">30</div></td>
+        <td class="empty"><div class="day-num">1 Jul</div></td>
+        <td class="empty"><div class="day-num">2</div></td>
+        <td class="empty"><div class="day-num">3</div></td>
+        <td class="empty"><div class="day-num">4</div></td>
+        <td class="empty"><div class="day-num">5</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#a14f30"></div>Dress Moment</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#1f6a4f"></div>New Arrivals</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#606c38"></div>Sale Letter</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4a3d8b"></div>Solstice Sale</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#555"></div>Community</div>
+  </div>
+</div>
+
+<!-- CAMPAIGNS -->
+<div class="page">
+  <div class="section-label">Campaigns</div>
+  <div class="page-title">The Plan</div>
+  <div class="page-desc">Ten sends grouped by week. Each campaign shows what the email is for, the products it features, and the strategic reasoning behind the slot.</div>
+
+  <!-- WEEK ONE -->
+  <div class="week-group">
+    <div class="week-header">
+      <span class="week-num">Week One</span>
+      <span class="week-title">Summer Dress Setup + The Drop</span>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#a14f30"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#a14f30">01</div>
+        <div class="card-name">Solene, Made for the Months Ahead</div>
+        <div class="card-meta">Tuesday 2 June &middot; Dress Spotlight</div>
+        <div class="card-obj-label">Objective</div>
+        <div class="card-desc">Open the month on the brand&rsquo;s hero dress. Reposition Solene from spring favourite to the summer dress in the wardrobe &mdash; the one you reach for through every kind of warm-weather day.</div>
+        <div class="card-detail-label">Products</div>
+        <div class="card-detail">Solene Dress (11 colours) &middot; Cloud Modal Set as the companion piece</div>
+        <div class="card-rationale"><strong>Why now:</strong> Solene has been the brand&rsquo;s top revenue piece across April and May. Opening June on it sets the dress-led tone for the month and carries proven momentum into the new season.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#1f6a4f"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#1f6a4f">02</div>
+        <div class="card-name">Four New, Just Landed</div>
+        <div class="card-meta">Saturday 6 June &middot; NPD Launch</div>
+        <div class="card-obj-label">Objective</div>
+        <div class="card-desc">Announce the full drop and bank a first-touch read on each piece. Lead the announcement with the Vivienne dress as the season&rsquo;s statement headliner, with the rest of the release introduced underneath.</div>
+        <div class="card-detail-label">Products</div>
+        <div class="card-detail">Vivienne Bustier Dress (lead) &middot; Bound Rib Set &middot; Muse Shoulder Tee &middot; Staple Scoop Tank</div>
+        <div class="card-rationale"><strong>Why now:</strong> One brand-level moment to introduce the release together. Vivienne as the lead reinforces the dress-led theme of the month. Each product still gets its own block in the email so the drop reads as a release announcement.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK TWO -->
+  <div class="week-group">
+    <div class="week-header">
+      <span class="week-num">Week Two</span>
+      <span class="week-title">Hero NPD Spotlights</span>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#1f6a4f"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#1f6a4f">03</div>
+        <div class="card-name">Meet The Bound Rib Set</div>
+        <div class="card-meta">Tuesday 9 June &middot; Product Spotlight</div>
+        <div class="card-obj-label">Objective</div>
+        <div class="card-desc">Establish the Bound Rib Set as the hero of the drop. Convert the early demand built by the Saturday launch and position the set as the standout non-dress piece of the release.</div>
+        <div class="card-detail-label">Products</div>
+        <div class="card-detail">Bound Rib Set &middot; Solene Dress as the companion piece</div>
+
+        <div class="options-box">
+          <div class="options-title">Spotlight Angle &mdash; pick one</div>
+          <div class="option-row rec"><strong>A &middot; Recommended.</strong> "A clean coordinated look." Lead with the two-piece styling story &mdash; how it wears as a set or splits across the wardrobe.</div>
+          <div class="option-row"><strong>B.</strong> Fabric-led: 230gsm ribbed knit, built for repeats.</div>
+          <div class="option-row"><strong>C.</strong> Detail-led: lead with the contrast edge binding as the design hook.</div>
+        </div>
+        <div class="card-rationale"><strong>Why now:</strong> Three days after the launch is the right window to give the highest-AOV piece its own moment while the introduction is still fresh. Solene as companion brings the proven seller into the frame as a natural cross-sell.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#a14f30"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#a14f30">04</div>
+        <div class="card-name">Vivienne, The Summer Dress</div>
+        <div class="card-meta">Friday 12 June &middot; Dress Spotlight</div>
+        <div class="card-obj-label">Objective</div>
+        <div class="card-desc">Position Vivienne as the season&rsquo;s statement-occasion dress. Capture weekend buying intent from customers shopping for something to wear to an event.</div>
+        <div class="card-detail-label">Products</div>
+        <div class="card-detail">Vivienne Bustier Dress &middot; Solene Dress as the everyday companion to the statement piece</div>
+
+        <div class="options-box">
+          <div class="options-title">Spotlight Angle &mdash; pick one</div>
+          <div class="option-row rec"><strong>A &middot; Recommended.</strong> "The summer event piece." Lead with occasion-wear positioning &mdash; the dress you put on when something&rsquo;s happening.</div>
+          <div class="option-row"><strong>B.</strong> Denim reframe: lead with the unexpected denim build &mdash; "the dress version of your favourite jeans."</div>
+          <div class="option-row"><strong>C.</strong> Silhouette-led: lead with the bustier shape as the new Lohnr summer silhouette.</div>
+        </div>
+        <div class="card-rationale"><strong>Why now:</strong> Friday before a weekend creates the buying window for customers with something coming up. Second dress moment of the month, distinct from the everyday Solene angle &mdash; this one is occasion-led.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK THREE -->
+  <div class="week-group">
+    <div class="week-header">
+      <span class="week-num">Week Three</span>
+      <span class="week-title">Elara Spotlight + Solstice Dress Sale Opens</span>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#a14f30"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#a14f30">05</div>
+        <div class="card-name">Elara, Cotton in the Heat</div>
+        <div class="card-meta">Tuesday 16 June &middot; Dress Spotlight</div>
+        <div class="card-obj-label">Objective</div>
+        <div class="card-desc">Give the Elara Pinafore its summer moment. Reposition the May launch from "100% cotton" to "the dress that breathes when nothing else will" &mdash; built for the season the customer is actually in right now.</div>
+        <div class="card-detail-label">Products</div>
+        <div class="card-detail">Elara Pinafore ($58, 6 colours, S-3XL, 100% cotton) &middot; Solene as the companion dress</div>
+        <div class="card-rationale"><strong>Why now:</strong> Elara has been pulling steadily since launch and the cotton story is the angle the customer base responded to. Sliding into the third week gives the dress its own moment ahead of the sale and keeps the dress-led cadence rolling. Sits between the NPD heroes and the sale window.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#606c38"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#606c38">06</div>
+        <div class="card-name">The Solstice Dress Sale, Open Now</div>
+        <div class="card-meta">Friday 19 June &middot; Sale Launch</div>
+        <div class="card-obj-label">Objective</div>
+        <div class="card-desc">Open the sale on a dress-forward note. Sitewide eligibility, but the email leads with summer dresses as the call to action &mdash; the season&rsquo;s reason to shop. Frame the moment as a seasonal dress reset, not a holiday hook.</div>
+        <div class="card-detail-label">Products</div>
+        <div class="card-detail">Vivienne, Solene, Elara called out by name &middot; Bound Rib Set as the non-dress hero callout &middot; Sitewide eligibility including the new arrivals</div>
+
+        <div class="options-box">
+          <div class="options-title">Sale Mechanics &mdash; needs sign-off</div>
+          <div class="option-row rec"><strong>A &middot; Recommended.</strong> 20% off sitewide, code SOLSTICE20, 19-22 June. Sitewide lever, dress-led email framing.</div>
+          <div class="option-row"><strong>B.</strong> 25% off all dresses + 15% off everything else. Mechanical dress preference.</div>
+          <div class="option-row"><strong>C.</strong> 15% off sitewide + extra 10% on new arrivals only.</div>
+        </div>
+        <div class="card-rationale"><strong>Why now:</strong> Juneteenth, Solstice and Father&rsquo;s Day land in the same weekend &mdash; the natural June retail moment. Dress-forward framing matches the month&rsquo;s theme. Sitewide mechanic keeps optionality open for the customer.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#4a3d8b"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#4a3d8b">07</div>
+        <div class="card-name">The Solstice Dress Edit</div>
+        <div class="card-meta">Sunday 21 June &middot; Sale Mid-Send</div>
+        <div class="card-obj-label">Objective</div>
+        <div class="card-desc">Catch the shoppers who saw Friday&rsquo;s sale launch but haven&rsquo;t bought yet. Surface the season&rsquo;s dresses visually &mdash; Vivienne, Solene, Elara, Calypso Tiered &mdash; so the sale stays present through Father&rsquo;s Day evening.</div>
+        <div class="card-detail-label">Products</div>
+        <div class="card-detail">Vivienne &middot; Solene &middot; Elara Pinafore &middot; Calypso Tiered &middot; Bound Rib Set as the non-dress slot</div>
+        <div class="card-promo promo-sale">20% off sitewide &middot; ends 22 June 11:59pm PT</div>
+        <div class="card-rationale"><strong>Why now:</strong> Two-day gap from the open keeps the sale present without saturation. Lands on Father&rsquo;s Day morning when households are browsing. Visual dress-led reminder reinforces the month&rsquo;s theme inside the sale window.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK FOUR -->
+  <div class="week-group">
+    <div class="week-header">
+      <span class="week-num">Week Four</span>
+      <span class="week-title">Sale Close + Dress Edit + July Bridge</span>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#606c38"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#606c38">08</div>
+        <div class="card-name">The Solstice Sale, Last Chance</div>
+        <div class="card-meta">Monday 22 June &middot; Sale Close</div>
+        <div class="card-obj-label">Objective</div>
+        <div class="card-desc">Close the sale and capture the final wave of conversions. A personal, soft-urgency note from the founder that prompts hesitant shoppers without manufacturing panic. Dresses lead the product callouts.</div>
+        <div class="card-detail-label">Products</div>
+        <div class="card-detail">Top performers from the weekend &mdash; Vivienne, Solene, Elara most likely as the dress callouts</div>
+        <div class="card-promo promo-sale">20% off sitewide &middot; ends tonight 11:59pm PT</div>
+        <div class="card-rationale"><strong>Why now:</strong> The founder-letter close has been the brand&rsquo;s strongest sale-end format across the last three sale events. This is the template that owns the close.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#a14f30"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#a14f30">09</div>
+        <div class="card-name">The Summer Dress Edit</div>
+        <div class="card-meta">Thursday 25 June &middot; Dress Edit</div>
+        <div class="card-obj-label">Objective</div>
+        <div class="card-desc">A curated dress moment matched to summer occasions. Each dress mapped to a specific kind of warm-weather day &mdash; everyday, event, heat, brunch, travel. Reads as category discovery within the dress world, not a styling roundup.</div>
+        <div class="card-detail-label">Products</div>
+        <div class="card-detail">Solene (everyday) &middot; Vivienne (event) &middot; Elara Pinafore (cotton heat) &middot; Calypso Tiered (brunch/romantic) &middot; Riviera Floral Maxi (travel)</div>
+
+        <div class="options-box">
+          <div class="options-title">Edit Composition &mdash; pick one</div>
+          <div class="option-row rec"><strong>A &middot; Recommended.</strong> Five dresses, each matched to a summer occasion. Best balance of breadth and focus.</div>
+          <div class="option-row"><strong>B.</strong> Three dresses only (Solene, Vivienne, Elara), tighter focus. Lower fatigue risk.</div>
+          <div class="option-row"><strong>C.</strong> Customer-led: dresses ranked by what&rsquo;s actually moving across June. Live, data-driven.</div>
+        </div>
+        <div class="card-rationale"><strong>Why now:</strong> Two days post-sale gives the audience breathing room and the dress edit reinforces the month&rsquo;s theme. Different from a "build your wardrobe" roundup &mdash; this is single-category discovery, the way COS or Toteme run a Trouser Edit.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#555"></div>
+      <div class="card-body">
+        <div class="card-num" style="color:#555">10</div>
+        <div class="card-name">What&rsquo;s Coming In July</div>
+        <div class="card-meta">Saturday 27 June &middot; Community Letter</div>
+        <div class="card-obj-label">Objective</div>
+        <div class="card-desc">Bridge into July with a warm, brand-led moment. Reflect on the dresses that landed and moved in June, seed the July 4 sale ahead, and give the customer a soft touch that isn&rsquo;t commerce-first. No offer attached.</div>
+        <div class="card-detail-label">Products</div>
+        <div class="card-detail">Light references to the dress edit standouts and the four NPDs &middot; No new product feature</div>
+
+        <div class="options-box">
+          <div class="options-title">Slot Alternative &mdash; flexible</div>
+          <div class="option-row rec"><strong>A &middot; Recommended.</strong> Community letter with a July 4 sale tease. Warms without giving mechanics away.</div>
+          <div class="option-row"><strong>B.</strong> Review drive: TrustPilot ask with the $50-off-next-order incentive. Repeat of May&rsquo;s play &mdash; second pass within 30 days may be premature.</div>
+          <div class="option-row"><strong>C.</strong> Subtle Pride acknowledgment + brand values letter.</div>
+        </div>
+        <div class="card-rationale"><strong>Why now:</strong> The post-sale window is the right place for a brand-voice moment. Builds the bridge into July without sending another commerce-heavy email so soon after the Solstice close.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPEN DECISIONS -->
+  <div class="week-group" style="margin-top: 32px; padding: 22px 24px; background: #fafafa; border-radius: 6px;">
+    <div class="week-num" style="margin-bottom: 10px;">Open Decisions</div>
+    <ul style="font-size: 12px; color: #555; line-height: 1.8; padding-left: 20px;">
+      <li><strong>Solstice Sale mechanics.</strong> Recommended: 20% off sitewide, code SOLSTICE20, 19-22 June. Sign-off needed on discount level, code, and NPD eligibility. Alternative is a dress-preferential mechanic (25% dresses / 15% everything else).</li>
+      <li><strong>Bound Rib Set spotlight angle (9 June).</strong> Three options listed. Recommended: two-piece styling story.</li>
+      <li><strong>Vivienne spotlight angle (12 June).</strong> Three options listed. Recommended: summer event piece positioning.</li>
+      <li><strong>Summer Dress Edit composition (25 June).</strong> Three options. Recommended: five dresses each matched to a summer occasion.</li>
+      <li><strong>NPD inventory + asset readiness.</strong> Confirm by 4 June that all four NPDs have full size ranges live and editorial assets are ready for the 6 June drop send.</li>
+      <li><strong>Muse + Staple coverage.</strong> Both staples get covered through the drop launch only this month. No dedicated spotlight. Confirm comfort given the dress-led theme &mdash; alternative is to swap the 25 June dress edit for a basics duo.</li>
+      <li><strong>27 June slot.</strong> Three alternatives listed. Recommended: community letter with July 4 tease.</li>
+      <li><strong>Pride Month posture.</strong> Confirm whether to acknowledge with a soft brand-values moment or to let June stay commerce-led.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">Lohnr &nbsp;&middot;&nbsp; June 2026 &nbsp;&middot;&nbsp; Email Calendar &middot; v3</div>
+  </div>
+</div>
+
+</body>
+</html>
