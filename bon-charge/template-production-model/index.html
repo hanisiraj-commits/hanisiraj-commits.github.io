@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variants aren't new templates. Klaviyo Production Model</title>
+<style>
+:root { --bg:#ffffff; --ink:#0a0a0a; --ink-soft:#4a4a4a; --line:#e6e6e6; --soft:#fafafa; --accent:#c02029; --green:#1f6b3a; --amber:#9a6900; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; }
+body { font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: var(--ink); background: var(--bg); }
+.brand-bar { border-bottom: 1px solid var(--line); padding: 14px 32px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); display: flex; justify-content: space-between; align-items: center; }
+.brand-bar strong { color: var(--ink); letter-spacing: 0.22em; font-weight: 700; }
+.container { max-width: 1040px; margin: 0 auto; padding: 56px 32px 80px; }
+.kicker { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 28px; }
+h1 { font-size: clamp(38px, 6vw, 60px); line-height: 1.02; letter-spacing: -0.025em; font-weight: 800; margin-bottom: 20px; }
+h1 .accent { color: var(--accent); }
+.lede { font-size: 19px; line-height: 1.55; color: var(--ink-soft); max-width: 780px; margin-bottom: 64px; }
+.lede strong { color: var(--ink); font-weight: 600; }
+h2 { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: var(--ink); margin-top: 64px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2:first-of-type { margin-top: 0; }
+p { font-size: 16px; line-height: 1.6; color: var(--ink); margin-bottom: 16px; }
+p.small { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+strong { font-weight: 600; }
+.defs { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.def { border: 1px solid var(--line); padding: 28px; background: var(--soft); }
+.def .label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 14px; font-weight: 700; }
+.def .word { font-size: 32px; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 14px; line-height: 1; }
+.def .what { font-size: 15px; line-height: 1.55; color: var(--ink); margin-bottom: 14px; }
+.def .meta { font-size: 13px; color: var(--ink-soft); font-style: italic; padding-top: 12px; border-top: 1px solid var(--line); }
+.anatomy { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start; }
+.anatomy-frame { position: sticky; top: 20px; width: 300px; align-self: start; }
+.anatomy-frame img { width: 100%; height: auto; display: block; border: 1px solid var(--line); user-select: none; -webkit-user-drag: none; }
+.anatomy-frame .frame-label { text-align: center; margin-top: 12px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; }
+.anatomy-frame .frame-label strong { color: var(--ink); }
+.badge { position: absolute; left: -14px; width: 30px; height: 30px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; transform: translateY(-50%); box-shadow: 0 2px 6px rgba(0,0,0,0.18); z-index: 5; border: 2px solid #fff; }
+.anatomy-list { display: flex; flex-direction: column; gap: 14px; }
+.anatomy-item { display: flex; gap: 16px; padding: 18px 22px; background: var(--soft); border: 1px solid var(--line); border-left: 3px solid var(--ink); }
+.anatomy-item .num { width: 32px; height: 32px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.anatomy-item .body { flex: 1; }
+.anatomy-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.anatomy-item .stays { font-size: 13px; line-height: 1.5; color: var(--ink); margin-bottom: 6px; }
+.anatomy-item .swap { font-size: 12px; line-height: 1.5; color: var(--ink-soft); }
+.anatomy-item .swap strong { color: var(--amber); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 10px; }
+.variants-intro { background: var(--soft); border: 1px solid var(--line); padding: 20px 24px; margin: 24px 0; }
+.variants-intro p { margin-bottom: 0; }
+.thumb-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 0 0 24px; align-items: start; }
+.thumb { display: flex; flex-direction: column; align-items: center; position: relative; }
+.thumb a { display: block; width: 100%; }
+.thumb img { width: 100%; height: auto; display: block; border: 1px solid var(--line); transition: opacity 0.15s ease; }
+.thumb a:hover img { opacity: 0.85; }
+.thumb .anchor-tag { position: absolute; top: 10px; left: 10px; background: var(--accent); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 9px; z-index: 2; }
+.thumb .label { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; color: var(--ink); margin-top: 14px; }
+.thumb .role { font-size: 10px; color: var(--ink-soft); margin-top: 4px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; }
+.thumb .id { font-size: 11px; color: var(--ink-soft); margin-top: 6px; letter-spacing: 0.04em; }
+.caption { font-size: 14px; color: var(--ink); border-left: 3px solid var(--ink); padding: 6px 0 6px 16px; margin: 24px 0 0; line-height: 1.55; }
+.caption strong { font-weight: 700; }
+.flow-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin: 16px 0 8px; }
+.flow-cell { padding: 16px 8px; text-align: center; border: 1px solid var(--ink); background: #fff; font-size: 12px; font-weight: 600; }
+.flow-cell .pos { font-size: 10px; color: var(--ink-soft); letter-spacing: 0.16em; text-transform: uppercase; display: block; margin-bottom: 4px; font-weight: 700; }
+.flow-cell.variants { background: var(--ink); color: #fff; border-color: var(--ink); }
+.flow-cell.variants .pos { color: rgba(255,255,255,0.55); }
+.flow-cell .vcount { display: block; margin-top: 6px; font-size: 10px; font-weight: 400; letter-spacing: 0.06em; opacity: 0.75; }
+.scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.scope-col { padding: 28px; border: 1px solid var(--line); }
+.scope-col.welcome { background: #f3f8f4; border-color: #bcd9c3; }
+.scope-col.future { background: var(--soft); }
+.scope-col .scope-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 12px; font-weight: 700; }
+.scope-col.welcome .scope-label { color: var(--green); }
+.scope-col.future .scope-label { color: var(--ink-soft); }
+.scope-col .scope-headline { font-size: 18px; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.005em; line-height: 1.3; }
+.scope-col p { font-size: 14px; line-height: 1.55; margin-bottom: 12px; color: var(--ink); }
+.scope-col ul { list-style: none; padding: 0; margin: 8px 0 0; }
+.scope-col ul li { font-size: 13px; line-height: 1.5; padding: 6px 0; display: flex; gap: 10px; }
+.scope-col ul li::before { font-weight: 700; width: 14px; flex-shrink: 0; }
+.scope-col.welcome ul li::before { content: "•"; color: var(--green); }
+.scope-col.future ul li::before { content: "•"; color: var(--ink); }
+.reassurance { background: var(--ink); color: #fff; padding: 32px 36px; margin: 16px 0 8px; }
+.reassurance .label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.55; margin-bottom: 14px; font-weight: 700; }
+.reassurance .headline { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 14px; }
+.reassurance p { font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.85); margin-bottom: 12px; }
+.reassurance p:last-child { margin-bottom: 0; }
+.reassurance strong.bright { color: #fff; font-weight: 700; }
+.numbers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 24px 0 8px; }
+.number { padding: 24px 0 4px; border-top: 2px solid var(--ink); }
+.number .big { font-size: 56px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 10px; }
+.number .desc { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.16em; font-weight: 600; text-transform: uppercase; }
+.bottom-line { background: var(--ink); color: #fff; padding: 44px 36px; margin-top: 64px; }
+.bottom-line .label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.55; margin-bottom: 18px; font-weight: 700; }
+.bottom-line .statement { font-size: 22px; line-height: 1.5; font-weight: 500; letter-spacing: -0.005em; }
+.bottom-line strong { font-weight: 700; }
+.footer-meta { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 11px; color: var(--ink-soft); letter-spacing: 0.08em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+
+@media (max-width: 860px) {
+  .anatomy { grid-template-columns: 1fr; }
+  .anatomy-frame { width: 100%; max-width: 320px; margin: 0 auto; position: relative; top: auto; }
+  .badge { left: 8px; }
+}
+@media (max-width: 760px) {
+  .container { padding: 40px 22px 60px; }
+  .defs, .scope-grid { grid-template-columns: 1fr; }
+  .thumb-strip { grid-template-columns: repeat(2, 1fr); }
+  .flow-row { grid-template-columns: repeat(3, 1fr); }
+  .numbers { grid-template-columns: 1fr; gap: 8px; }
+  .number { padding: 18px 0 4px; }
+  .number .big { font-size: 44px; }
+  h1 { font-size: 40px; }
+}
+@media print {
+  body { padding: 0; }
+  .brand-bar { padding: 10px 20px; }
+  .container { padding: 28px 24px; max-width: 100%; }
+  .anatomy-frame { position: relative; top: auto; }
+  .bottom-line, .reassurance { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .scope-col.welcome, .anatomy-item, .flow-cell.variants { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .thumb a { pointer-events: none; }
+  h1 { font-size: 38px; }
+  h2 { margin-top: 36px; }
+}
+</style>
+</head>
+<body>
+
+<div class="brand-bar">
+  <strong>TETHRD × BON CHARGE</strong>
+  <span>Klaviyo Production Model</span>
+</div>
+
+<div class="container">
+  <div class="kicker">For Marco &amp; Steffen · Sprint 1 + 2 Sign-off</div>
+  <h1>Variants aren't<br><span class="accent">new templates.</span></h1>
+
+  <p class="lede">
+    Welcome Email 1 is one bespoke template. We call it Email 1.1, the Skin version. <strong>Emails 1.2, 1.3 and 1.6 (Hair, Recovery and Sleep) are variants of that same template, with products swapped and copy tightened to match the wellness goal the customer told us at signup.</strong> Same structure end to end. Same sections in the same order. Different products inside. That's a variant, not another template.
+  </p>
+
+  <h2>Template vs. variant</h2>
+  <p>Two distinct things. Treating them as the same is what's making one bespoke build look like many.</p>
+  <div class="defs">
+    <div class="def">
+      <div class="label">Designed once</div>
+      <div class="word">Bespoke template</div>
+      <div class="what">The custom-designed email for a specific position in the flow (Welcome Email 1, Welcome Email 2, Welcome Email 3). Section order, design system, modules and brand expression are built once and locked.</div>
+      <div class="meta">Welcome Email 1's bespoke template is <strong>Email 1.1, the Skin version</strong>.</div>
+    </div>
+    <div class="def">
+      <div class="label">Adapted from the template</div>
+      <div class="word">Variant</div>
+      <div class="what">The same bespoke template, with products swapped and copy adjusted to match a user wellness goal. A Sleep customer sees sleep products and sleep-aligned messaging instead of generic content.</div>
+      <div class="meta">Variants of Email 1.1: Email 1.2 (Hair), 1.3 (Recovery), 1.6 (Sleep). Region splits 1.4 / 1.5 omitted for clarity.</div>
+    </div>
+  </div>
+
+  <h2>Anatomy of Email 1.1, the bespoke template</h2>
+  <p>Below is Email 1.1, end to end. The bespoke Welcome Email 1 template, designed around the Skin wellness goal. Every section is part of the template and carries through every variant. Only the products and the wellness-aligned copy swap.</p>
+
+  <div class="anatomy">
+    <div class="anatomy-frame">
+      <img src="assets/e1-skin-cropped.png" alt="Email 1.1, Welcome Email 1 Skin (bespoke template)">
+      <span class="badge" style="top:7.0%">1</span>
+      <span class="badge" style="top:28.0%">2</span>
+      <span class="badge" style="top:47.0%">3</span>
+      <span class="badge" style="top:57.5%">4</span>
+      <span class="badge" style="top:64.9%">5</span>
+      <span class="badge" style="top:71.6%">6</span>
+      <span class="badge" style="top:79.1%">7</span>
+      <span class="badge" style="top:85.8%">8</span>
+      <span class="badge" style="top:93.8%">9</span>
+      <div class="frame-label"><strong>Email 1.1</strong> · Welcome Email 1 · the bespoke template (Skin)</div>
+    </div>
+
+    <div class="anatomy-list">
+      <div class="anatomy-item"><span class="num">1</span><div class="body"><h4>Hero opener: "15% off your first step toward [goal]"</h4><div class="stays">BON CHARGE wordmark, 15% off sticker, hero headline ending in the wellness goal, support copy, USE CODE / SHOP NOW CTA and a lifestyle hero image of the relevant product in use.</div><div class="swap"><strong>Same:</strong> layout, sticker, CTA, offer copy structure. <strong>Swapped:</strong> the headline's wellness word (Skin to Hair, Recovery or Sleep), the hero lifestyle image and the supporting line beneath.</div></div></div>
+      <div class="anatomy-item"><span class="num">2</span><div class="body"><h4>"Light that speaks to your [target]" education panel: stats and annotated diagram</h4><div class="stays">Section header linking light to the wellness target (your skin cells / your scalp / your muscles / your sleep), 3 supporting stats, body copy explaining the science, and a close-up annotated product diagram showing the device in use.</div><div class="swap"><strong>Same:</strong> block structure, stat treatment, annotated diagram layout. <strong>Swapped:</strong> the target word, the body copy framed for the goal, the specific stats shown (e.g. 98% / 96% / 84%) and the product image.</div></div></div>
+      <div class="anatomy-item"><span class="num">3</span><div class="body"><h4>"Best in its class" + "Our most loved [category] device(s)" intro</h4><div class="stays">Small "Best in its class" callout strip followed by the section header introducing the product showcase ("Our most loved skin devices", "Our most loved hair device", plural or singular depending on how many products follow).</div><div class="swap"><strong>Same:</strong> callout style, header pattern. <strong>Swapped:</strong> the category word and singular / plural based on product count.</div></div></div>
+      <div class="anatomy-item"><span class="num">4</span><div class="body"><h4>Product showcase 1: first featured product</h4><div class="stays">Product card: product image, product name, short description, primary SHOP CTA.</div><div class="swap"><strong>Same:</strong> card layout, image sizing, button style. <strong>Swapped:</strong> the entire product (Red Light Face Mask vs. Red Light Cap vs. Infrared Sauna Blanket vs. Full Spectrum Light Bulb) and supporting copy.</div></div></div>
+      <div class="anatomy-item"><span class="num">5</span><div class="body"><h4>Product showcase 2: second featured product</h4><div class="stays">Same product card layout, second position. Present when the wellness goal has multiple devices to surface.</div><div class="swap"><strong>Same:</strong> layout. <strong>Swapped:</strong> the product chosen, or this card is dropped entirely (Hair only has one product, for example).</div></div></div>
+      <div class="anatomy-item"><span class="num">6</span><div class="body"><h4>Product showcase 3: third featured product</h4><div class="stays">Same product card layout, third position.</div><div class="swap"><strong>Same:</strong> layout. <strong>Swapped:</strong> the third product surfaced, or dropped if the category has fewer devices.</div></div></div>
+      <div class="anatomy-item"><span class="num">7</span><div class="body"><h4>Welcome code reveal: "Your 15% off isn't only for [goal]"</h4><div class="stays">Code reveal panel reinforcing the discount applies across the broader range, with a secondary EXPLORE CTA.</div><div class="swap"><strong>Same:</strong> layout, code mechanic, button style. <strong>Swapped:</strong> the "isn't only for X" headline copy.</div></div></div>
+      <div class="anatomy-item"><span class="num">8</span><div class="body"><h4>HSA / FSA payment + "Have a question?"</h4><div class="stays">US-market HSA/FSA callout encouraging customers to use those funds, followed by the customer-service reach-out block.</div><div class="swap"><strong>Same:</strong> identical across every variant. Locked.</div></div></div>
+      <div class="anatomy-item"><span class="num">9</span><div class="body"><h4>Brand footer: payments, social, fineprint</h4><div class="stays">Payment method icons (Klarna, Afterpay), BON CHARGE wordmark, social and compliance fineprint.</div><div class="swap"><strong>Same:</strong> identical across every variant. The brand's locked footer module.</div></div></div>
+    </div>
+  </div>
+
+  <h2>The same structure carries through each wellness variant</h2>
+  <div class="variants-intro">
+    <p>Email 1.1 (Skin) is the bespoke template. Emails 1.2 (Hair), 1.3 (Recovery) and 1.6 (Sleep) are its variants. <strong>Scan vertically across any of the 9 sections above and you'll see them in every variant, in the same order.</strong> Heights vary because content length varies per wellness goal, but the underlying template is identical. Only the products and the wellness-aligned copy have changed. (Region duplicates 1.4 / 1.5 are omitted here for clarity.)</p>
+  </div>
+  <div class="thumb-strip">
+    <div class="thumb"><div class="anchor-tag">★ Bespoke template</div><a href="assets/e1-skin-cropped.png" target="_blank" rel="noopener"><img src="assets/e1-skin-cropped.png" alt="Email 1.1, Welcome Email 1 Skin"></a><div class="label">Skin</div><div class="role">The bespoke template</div><div class="id">Email 1.1</div></div>
+    <div class="thumb"><a href="assets/e1-hair-cropped.png" target="_blank" rel="noopener"><img src="assets/e1-hair-cropped.png" alt="Email 1.2, Hair variant"></a><div class="label">Hair</div><div class="role">Wellness variant</div><div class="id">Email 1.2</div></div>
+    <div class="thumb"><a href="assets/e1-recovery-cropped.png" target="_blank" rel="noopener"><img src="assets/e1-recovery-cropped.png" alt="Email 1.3, Recovery variant"></a><div class="label">Recovery</div><div class="role">Wellness variant</div><div class="id">Email 1.3</div></div>
+    <div class="thumb"><a href="assets/e1-sleep-cropped.png" target="_blank" rel="noopener"><img src="assets/e1-sleep-cropped.png" alt="Email 1.6, Sleep variant"></a><div class="label">Sleep</div><div class="role">Wellness variant</div><div class="id">Email 1.6</div></div>
+  </div>
+  <div class="caption">Same nine sections, same order, top to bottom. <strong>Products and wellness-aligned copy are the only things that move.</strong> Click any thumbnail for the full email.</div>
+
+  <h2>The wellness-variant approach exists only in Welcome 1, 2, 3</h2>
+  <p>Wellness variants are not used across the whole welcome flow. They live in the first three emails, where personalising against the customer's stated wellness goal lifts conversion. The remaining three welcome emails are a single email each, sent to every user regardless of wellness goal.</p>
+  <div class="flow-row">
+    <div class="flow-cell variants"><span class="pos">Email 1</span>Welcome 1<span class="vcount">Wellness variants</span></div>
+    <div class="flow-cell variants"><span class="pos">Email 2</span>Welcome 2<span class="vcount">Wellness variants</span></div>
+    <div class="flow-cell variants"><span class="pos">Email 3</span>Welcome 3<span class="vcount">Wellness variants</span></div>
+    <div class="flow-cell"><span class="pos">Email 4</span>Welcome 4<span class="vcount">1 email · everyone</span></div>
+    <div class="flow-cell"><span class="pos">Email 5</span>Welcome 5<span class="vcount">1 email · everyone</span></div>
+    <div class="flow-cell"><span class="pos">Email 6</span>Welcome 6<span class="vcount">1 email · everyone</span></div>
+  </div>
+
+  <h2>Abandoned cart and checkout flows: only 2 variants each</h2>
+  <p>Wellness-goal variants are welcome-flow specific. Every flow we build from here, starting with abandoned cart and checkout abandonment, uses a much simpler structure: <strong>one bespoke template per email, with just two variants. New customer vs. retaining customer.</strong></p>
+  <div class="scope-grid">
+    <div class="scope-col welcome">
+      <div class="scope-label">Welcome flow only (E1, E2, E3)</div>
+      <div class="scope-headline">Wellness variants, justified by zero-party data</div>
+      <p>Wellness variants exist here because the customer has just stated their goal at signup. Personalising the email lifts conversion.</p>
+      <ul><li>Skin · Hair · Recovery · Sleep</li><li>Region splits where compliance requires (AU / ROW)</li><li>Bounded to Welcome 1, 2 and 3 only</li></ul>
+    </div>
+    <div class="scope-col future">
+      <div class="scope-label">Every flow after that</div>
+      <div class="scope-headline">2 variants: new vs. retaining customer</div>
+      <p>Abandoned cart, checkout abandonment, post-purchase, browse abandonment, winback, replenishment. Each template uses the same two-way split.</p>
+      <ul><li>New customer (hasn't purchased)</li><li>Retaining customer (has purchased)</li><li>One copy edit updates instantly across both</li></ul>
+    </div>
+  </div>
+
+  <div class="reassurance">
+    <div class="label">On the edit-volume concern</div>
+    <div class="headline"><strong>Even with the templating proven, it's fair to still worry about volume. Here's why that volume is much smaller than it looks, and why Tethrd carries it.</strong></div>
+    <p>Showing that variants are just the same template with products swapped doesn't make the email count disappear on paper. So here is how it breaks down, and where the edit surface actually sits.</p>
+    <p><strong class="bright">Wellness variants live in Welcome 1, 2 and 3 only.</strong> Three emails, four wellness variants each. That is the entire scope of the wellness-variant approach. They exist because the customer hands us their wellness goal at signup, and that single piece of zero-party data makes personalising the first three emails worth the effort.</p>
+    <p><strong class="bright">Welcome 4, 5 and 6 are a single email each. No variants.</strong> One email goes to every customer regardless of wellness goal, the same way the rest of the welcome series lands in every inbox.</p>
+    <p><strong class="bright">Every flow after welcome (abandoned cart and abandoned checkout first) uses just two variants per template: new customer vs. retaining customer.</strong> No wellness splits, no region duplicates. One copy update lands on both variants at once.</p>
+    <p>And on the edits themselves: <strong class="bright">Tethrd's design team makes the change across the relevant variants and re-uploads to Klaviyo.</strong> That is our production model on our side, not work that lands with the BON CHARGE team. You raise the change, we apply it across every variant, every region, every flow.</p>
+  </div>
+
+  <h2>The numbers, plainly</h2>
+  <div class="numbers">
+    <div class="number"><div class="big">6</div><div class="desc">Bespoke welcome flow templates (E1–E6)</div></div>
+    <div class="number"><div class="big">3 of 6</div><div class="desc">Use wellness variants, E1, E2, E3 only</div></div>
+  </div>
+
+  <div class="bottom-line">
+    <div class="label">Bottom line</div>
+    <div class="statement">The build covers <strong>the bespoke templates, once.</strong> Variants aren't new template builds. They're the same templates with products swapped and copy tightened. The wellness-variant approach exists in Welcome 1, 2 and 3 only, where zero-party signup data justifies it. Welcome 4, 5 and 6 are single emails. Abandoned cart and checkout will use a simple new-vs-retaining two-variant split where one edit updates both sides instantly. <strong>Tethrd handles the edits. That's not work that lands with the BON CHARGE team.</strong></div>
+  </div>
+
+  <div class="footer-meta">
+    <div>TETHRD · BON CHARGE Klaviyo Production · 22 May 2026</div>
+    <div>Source: Figma · Bon Charge Email Designs</div>
+  </div>
+</div>
+
+</body>
+</html>
