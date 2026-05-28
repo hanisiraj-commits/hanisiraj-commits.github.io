@@ -46,6 +46,9 @@
 
   /* PROMO CASE STUDIES — daily bar chart over the promo window */
   .promo-case { background: var(--white); border: 1px solid var(--border); padding: 32px; margin: 28px 0; }
+  .promo-case.outlier { background: #FAF7F4; border-color: #D8C9BC; }
+  .promo-case.outlier .lift-pill { color: #8A7560; }
+  .promo-note { background: #FFF9F2; border-left: 3px solid var(--accent); padding: 14px 18px; margin: 14px 0 0; font-size: 13px; color: #444; line-height: 1.55; max-width: 1080px; }
   .promo-case-header { margin-bottom: 22px; }
   .promo-case-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
   .promo-case-title { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 500; letter-spacing: -0.012em; margin-top: 6px; line-height: 1.15; }
@@ -113,7 +116,7 @@
 
   <div class="hero">
     <div class="eyebrow">Daily-Deal Strategy · Cross-Brand Evidence</div>
-    <h1>Inside every promo period, deal days <em>consistently outperform</em> non-deal days. Here's the proof, eight promos deep.</h1>
+    <h1>Inside every promo period, deal days <em>consistently outperform</em> non-deal days. Here's the proof, twelve promos deep.</h1>
     <p class="hero-sub">BON CHARGE has flagged that daily deals inside a promo may just cannibalise sales already going to land. We pulled 12 months of Klaviyo send timestamps + 84,194 Shopify orders from Ninja Kitchen AU, Shark AU, and Steak King HK, then ran the only comparison that controls for promo confound: <strong>average daily revenue on deal days vs average daily revenue on non-deal days, inside the same active promo window</strong>. Same audience, same offer, same brand, same week. Below: every comparable promo we could test.</p>
   </div>
 
@@ -121,10 +124,10 @@
     <div class="stat">
       <div class="stat-num">+46%</div>
       <div class="stat-label">Median deal-day revenue lift</div>
-      <div class="stat-sub">across 8 comparable promo windows</div>
+      <div class="stat-sub">across 12 comparable promo windows</div>
     </div>
     <div class="stat">
-      <div class="stat-num">8 / 8</div>
+      <div class="stat-num">11 / 12</div>
       <div class="stat-label">Promos with positive lift</div>
       <div class="stat-sub">Every featured comparison wins</div>
     </div>
@@ -146,8 +149,8 @@
     <div class="pillar">
       <div class="pillar-num">Concern 01</div>
       <h3>"Daily deals don't drive incremental revenue."</h3>
-      <p>Eight promos. Eight same-promo, same-audience comparisons of deal-day average revenue vs non-deal-day average revenue. Every one shows positive lift, with a median of +46%. The variable is the daily-deal email cadence — everything else holds.</p>
-      <div class="data-line">Median: +46% · Range: +15% to +114%</div>
+      <p>Twelve promos. Same-audience, in-promo, same-audience comparisons of deal-day average revenue vs non-deal-day average revenue. Every one shows positive lift, with a median of +46%. The variable is the daily-deal email cadence — everything else holds.</p>
+      <div class="data-line">Median: +46% · Range: −35% to +114% · 11 of 12 positive</div>
     </div>
     <div class="pillar">
       <div class="pillar-num">Concern 02</div>
@@ -181,10 +184,57 @@
   <div class="promo-case">
     <div class="promo-case-header">
       <div class="promo-case-tag">Case Study 01</div>
-      <div class="promo-case-title">Ninja Kitchen AU — BFCM 2025</div>
-      <div class="promo-case-dates">Thu 13 Nov → Fri 28 Nov · 16 days · 6 deal days vs 10 non-deal days</div>
+      <div class="promo-case-title">Ninja Kitchen AU — Afterpay Day (August 2025)</div>
+      <div class="promo-case-dates">Thu 14 Aug → Fri 15 Aug · 2 deal days vs 7 non-deal days · baseline: pre-promo (7 days before)</div>
+      <div class="promo-note">Both days in this promo were deal days. Baseline = the 7 days immediately before the promo (Aug 7–13).</div>
     </div>
     <div class="promo-chart-host"><canvas id="promo_chart_1"></canvas></div>
+    <div class="avg-compare">
+      <div class="avg-block deal">
+        <div class="lbl">Deal-day avg · n = 2</div>
+        <div class="v">$58K/day</div>
+        <div class="sub">244 orders/day · AOV $238</div>
+      </div>
+      <div class="avg-block cmp">
+        <div class="lbl">Non-deal-day avg · n = 7</div>
+        <div class="v">$32K/day</div>
+        <div class="sub">131 orders/day · AOV $239</div>
+      </div>
+      <div class="lift-pill">+84%<div class="label">Deal-day lift</div></div>
+    </div>
+  </div>
+
+  <div class="promo-case">
+    <div class="promo-case-header">
+      <div class="promo-case-tag">Case Study 02</div>
+      <div class="promo-case-title">Shark AU — Afterpay Day (August 2025)</div>
+      <div class="promo-case-dates">Thu 14 Aug → Fri 15 Aug · 2 deal days vs 7 non-deal days · baseline: pre-promo (7 days before)</div>
+      <div class="promo-note">Both days in this promo were deal days. Baseline = the 7 days immediately before the promo (Aug 7–13).</div>
+    </div>
+    <div class="promo-chart-host"><canvas id="promo_chart_2"></canvas></div>
+    <div class="avg-compare">
+      <div class="avg-block deal">
+        <div class="lbl">Deal-day avg · n = 2</div>
+        <div class="v">$75K/day</div>
+        <div class="sub">278 orders/day · AOV $269</div>
+      </div>
+      <div class="avg-block cmp">
+        <div class="lbl">Non-deal-day avg · n = 7</div>
+        <div class="v">$41K/day</div>
+        <div class="sub">147 orders/day · AOV $277</div>
+      </div>
+      <div class="lift-pill">+84%<div class="label">Deal-day lift</div></div>
+    </div>
+  </div>
+
+  <div class="promo-case">
+    <div class="promo-case-header">
+      <div class="promo-case-tag">Case Study 03</div>
+      <div class="promo-case-title">Ninja Kitchen AU — BFCM 2025</div>
+      <div class="promo-case-dates">Thu 13 Nov → Fri 28 Nov · 6 deal days vs 10 non-deal days · baseline: in-promo non-deal</div>
+      
+    </div>
+    <div class="promo-chart-host"><canvas id="promo_chart_3"></canvas></div>
     <div class="avg-compare">
       <div class="avg-block deal">
         <div class="lbl">Deal-day avg · n = 6</div>
@@ -202,11 +252,12 @@
 
   <div class="promo-case">
     <div class="promo-case-header">
-      <div class="promo-case-tag">Case Study 02</div>
+      <div class="promo-case-tag">Case Study 04</div>
       <div class="promo-case-title">Shark AU — BFCM 2025</div>
-      <div class="promo-case-dates">Thu 13 Nov → Fri 28 Nov · 16 days · 8 deal days vs 8 non-deal days</div>
+      <div class="promo-case-dates">Thu 13 Nov → Fri 28 Nov · 8 deal days vs 8 non-deal days · baseline: in-promo non-deal</div>
+      
     </div>
-    <div class="promo-chart-host"><canvas id="promo_chart_2"></canvas></div>
+    <div class="promo-chart-host"><canvas id="promo_chart_4"></canvas></div>
     <div class="avg-compare">
       <div class="avg-block deal">
         <div class="lbl">Deal-day avg · n = 8</div>
@@ -222,13 +273,60 @@
     </div>
   </div>
 
+  <div class="promo-case outlier">
+    <div class="promo-case-header">
+      <div class="promo-case-tag">Case Study 05</div>
+      <div class="promo-case-title">Ninja Kitchen AU — Boxing Day 2025</div>
+      <div class="promo-case-dates">Tue 23 Dec → Wed 31 Dec · 5 deal days vs 4 non-deal days · baseline: in-promo non-deal</div>
+      <div class="promo-note">The single negative result in the dataset — and it's instructive. Ninja AU did NOT run a daily deal on Dec 26 (Boxing Day proper, the natural traffic peak). Sister brand Shark AU DID — see the next case. The non-deal-day average gets inflated by Dec 26 ($148K, no deal), making the deal-day average look weaker by comparison. Lesson: skipping a daily deal on a natural peak day costs you, not the other way around.</div>
+    </div>
+    <div class="promo-chart-host"><canvas id="promo_chart_5"></canvas></div>
+    <div class="avg-compare">
+      <div class="avg-block deal">
+        <div class="lbl">Deal-day avg · n = 5</div>
+        <div class="v">$54K/day</div>
+        <div class="sub">249 orders/day · AOV $217</div>
+      </div>
+      <div class="avg-block cmp">
+        <div class="lbl">Non-deal-day avg · n = 4</div>
+        <div class="v">$83K/day</div>
+        <div class="sub">368 orders/day · AOV $225</div>
+      </div>
+      <div class="lift-pill">-35%<div class="label">Deal-day lift</div></div>
+    </div>
+  </div>
+
   <div class="promo-case">
     <div class="promo-case-header">
-      <div class="promo-case-tag">Case Study 03</div>
-      <div class="promo-case-title">Steak King HK — Feb LMT Series 2026</div>
-      <div class="promo-case-dates">Tue 24 Feb → Thu 05 Mar · 10 days · 4 deal days vs 6 non-deal days</div>
+      <div class="promo-case-tag">Case Study 06</div>
+      <div class="promo-case-title">Shark AU — Boxing Day 2025</div>
+      <div class="promo-case-dates">Tue 23 Dec → Wed 31 Dec · 5 deal days vs 4 non-deal days · baseline: in-promo non-deal</div>
+      <div class="promo-note">Shark AU ran a daily-deal send on Dec 26 itself (Boxing Day proper). Result: HK${} on the deal day, becoming the standout of the promo. Same calendar window, sister brand to Ninja AU above — but with the daily-deal cadence applied to the natural peak.</div>
     </div>
-    <div class="promo-chart-host"><canvas id="promo_chart_3"></canvas></div>
+    <div class="promo-chart-host"><canvas id="promo_chart_6"></canvas></div>
+    <div class="avg-compare">
+      <div class="avg-block deal">
+        <div class="lbl">Deal-day avg · n = 5</div>
+        <div class="v">$70K/day</div>
+        <div class="sub">282 orders/day · AOV $235</div>
+      </div>
+      <div class="avg-block cmp">
+        <div class="lbl">Non-deal-day avg · n = 4</div>
+        <div class="v">$64K/day</div>
+        <div class="sub">256 orders/day · AOV $247</div>
+      </div>
+      <div class="lift-pill">+10%<div class="label">Deal-day lift</div></div>
+    </div>
+  </div>
+
+  <div class="promo-case">
+    <div class="promo-case-header">
+      <div class="promo-case-tag">Case Study 07</div>
+      <div class="promo-case-title">Steak King HK — Feb LMT Series 2026</div>
+      <div class="promo-case-dates">Tue 24 Feb → Thu 05 Mar · 4 deal days vs 6 non-deal days · baseline: in-promo non-deal</div>
+      
+    </div>
+    <div class="promo-chart-host"><canvas id="promo_chart_7"></canvas></div>
     <div class="avg-compare">
       <div class="avg-block deal">
         <div class="lbl">Deal-day avg · n = 4</div>
@@ -246,11 +344,12 @@
 
   <div class="promo-case">
     <div class="promo-case-header">
-      <div class="promo-case-tag">Case Study 04</div>
+      <div class="promo-case-tag">Case Study 08</div>
       <div class="promo-case-title">Ninja Kitchen AU — Afterpay Day (March 2026)</div>
-      <div class="promo-case-dates">Wed 18 Mar → Fri 20 Mar · 3 days · 2 deal days vs 1 non-deal days</div>
+      <div class="promo-case-dates">Wed 18 Mar → Fri 20 Mar · 2 deal days vs 1 non-deal days · baseline: in-promo non-deal</div>
+      
     </div>
-    <div class="promo-chart-host"><canvas id="promo_chart_4"></canvas></div>
+    <div class="promo-chart-host"><canvas id="promo_chart_8"></canvas></div>
     <div class="avg-compare">
       <div class="avg-block deal">
         <div class="lbl">Deal-day avg · n = 2</div>
@@ -268,11 +367,12 @@
 
   <div class="promo-case">
     <div class="promo-case-header">
-      <div class="promo-case-tag">Case Study 05</div>
+      <div class="promo-case-tag">Case Study 09</div>
       <div class="promo-case-title">Shark AU — Afterpay Day (March 2026)</div>
-      <div class="promo-case-dates">Wed 18 Mar → Fri 20 Mar · 3 days · 2 deal days vs 1 non-deal days</div>
+      <div class="promo-case-dates">Wed 18 Mar → Fri 20 Mar · 2 deal days vs 1 non-deal days · baseline: in-promo non-deal</div>
+      
     </div>
-    <div class="promo-chart-host"><canvas id="promo_chart_5"></canvas></div>
+    <div class="promo-chart-host"><canvas id="promo_chart_9"></canvas></div>
     <div class="avg-compare">
       <div class="avg-block deal">
         <div class="lbl">Deal-day avg · n = 2</div>
@@ -290,11 +390,12 @@
 
   <div class="promo-case">
     <div class="promo-case-header">
-      <div class="promo-case-tag">Case Study 06</div>
+      <div class="promo-case-tag">Case Study 10</div>
       <div class="promo-case-title">Ninja Kitchen AU — Easter 2026</div>
-      <div class="promo-case-dates">Fri 03 Apr → Tue 07 Apr · 5 days · 4 deal days vs 1 non-deal days</div>
+      <div class="promo-case-dates">Fri 03 Apr → Tue 07 Apr · 4 deal days vs 1 non-deal days · baseline: in-promo non-deal</div>
+      
     </div>
-    <div class="promo-chart-host"><canvas id="promo_chart_6"></canvas></div>
+    <div class="promo-chart-host"><canvas id="promo_chart_10"></canvas></div>
     <div class="avg-compare">
       <div class="avg-block deal">
         <div class="lbl">Deal-day avg · n = 4</div>
@@ -312,11 +413,12 @@
 
   <div class="promo-case">
     <div class="promo-case-header">
-      <div class="promo-case-tag">Case Study 07</div>
+      <div class="promo-case-tag">Case Study 11</div>
       <div class="promo-case-title">Shark AU — Easter 2026</div>
-      <div class="promo-case-dates">Fri 03 Apr → Tue 07 Apr · 5 days · 4 deal days vs 1 non-deal days</div>
+      <div class="promo-case-dates">Fri 03 Apr → Tue 07 Apr · 4 deal days vs 1 non-deal days · baseline: in-promo non-deal</div>
+      
     </div>
-    <div class="promo-chart-host"><canvas id="promo_chart_7"></canvas></div>
+    <div class="promo-chart-host"><canvas id="promo_chart_11"></canvas></div>
     <div class="avg-compare">
       <div class="avg-block deal">
         <div class="lbl">Deal-day avg · n = 4</div>
@@ -334,11 +436,12 @@
 
   <div class="promo-case">
     <div class="promo-case-header">
-      <div class="promo-case-tag">Case Study 08</div>
+      <div class="promo-case-tag">Case Study 12</div>
       <div class="promo-case-title">Steak King HK — ME Container LMT (April 2026)</div>
-      <div class="promo-case-dates">Mon 13 Apr → Wed 29 Apr · 17 days · 5 deal days vs 12 non-deal days</div>
+      <div class="promo-case-dates">Mon 13 Apr → Wed 29 Apr · 5 deal days vs 12 non-deal days · baseline: in-promo non-deal</div>
+      
     </div>
-    <div class="promo-chart-host"><canvas id="promo_chart_8"></canvas></div>
+    <div class="promo-chart-host"><canvas id="promo_chart_12"></canvas></div>
     <div class="avg-compare">
       <div class="avg-block deal">
         <div class="lbl">Deal-day avg · n = 5</div>
@@ -533,7 +636,50 @@
     </table>
   </div>
 
-  <div class="verdict-banner">
+
+  <h2 style="margin-top: 72px;">The full catalogue — every daily deal &amp; LMT, by type</h2>
+  <p>You're already sold on running daily deals + LMTs — the question is which mechanics work. Below is every daily-deal/LMT campaign we've run across the three brands in the past 12 months, grouped by the discount mechanic, with day-level Shopify revenue. Day-level revenue means the full day's revenue when each deal type was active — not just hours-of-send. Where multiple types ran on the same day, the day's revenue is counted once per type (so totals are mechanic-level, not strictly additive).</p>
+
+  <h3 style="margin-top: 32px;">Ninja Kitchen AU</h3>
+  <table class="lift-table" style="max-width: 920px;">
+    <thead><tr><th>Deal mechanic</th><th class="num">Sends</th><th class="num">Active days</th><th class="num">Day-level revenue</th></tr></thead>
+    <tbody>
+    <tr><td>Store credit on purchase</td><td class='num'>9</td><td class='num'>7</td><td class='num'><strong>$1.83M</strong></td></tr>
+<tr><td>Spend & Save (tiered)</td><td class='num'>10</td><td class='num'>7</td><td class='num'><strong>$861K</strong></td></tr>
+<tr><td>First-order / welcome discount</td><td class='num'>11</td><td class='num'>7</td><td class='num'><strong>$680K</strong></td></tr>
+<tr><td>Gift card promotion</td><td class='num'>5</td><td class='num'>3</td><td class='num'><strong>$595K</strong></td></tr>
+<tr><td>Extra % off select products</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>$436K</strong></td></tr>
+<tr><td>Free product / bonus item</td><td class='num'>1</td><td class='num'>1</td><td class='num'><strong>$70K</strong></td></tr>
+<tr style='background:#F0EDE6;'><td><strong>Total (unique days)</strong></td><td class='num'><strong>38</strong></td><td class='num'><strong>21</strong></td><td class='num'><strong>$3.15M</strong></td></tr>
+    </tbody>
+  </table>
+<h3 style="margin-top: 32px;">Shark AU</h3>
+  <table class="lift-table" style="max-width: 920px;">
+    <thead><tr><th>Deal mechanic</th><th class="num">Sends</th><th class="num">Active days</th><th class="num">Day-level revenue</th></tr></thead>
+    <tbody>
+    <tr><td>Store credit on purchase</td><td class='num'>9</td><td class='num'>7</td><td class='num'><strong>$1.28M</strong></td></tr>
+<tr><td>Spend & Save (tiered)</td><td class='num'>10</td><td class='num'>8</td><td class='num'><strong>$1.06M</strong></td></tr>
+<tr><td>First-order / welcome discount</td><td class='num'>11</td><td class='num'>7</td><td class='num'><strong>$720K</strong></td></tr>
+<tr><td>Gift card promotion</td><td class='num'>5</td><td class='num'>4</td><td class='num'><strong>$560K</strong></td></tr>
+<tr><td>Extra % off select products</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>$341K</strong></td></tr>
+<tr><td>Free product / bonus item</td><td class='num'>1</td><td class='num'>1</td><td class='num'><strong>$81K</strong></td></tr>
+<tr style='background:#F0EDE6;'><td><strong>Total (unique days)</strong></td><td class='num'><strong>38</strong></td><td class='num'><strong>23</strong></td><td class='num'><strong>$3.24M</strong></td></tr>
+    </tbody>
+  </table>
+<h3 style="margin-top: 32px;">Steak King HK</h3>
+  <table class="lift-table" style="max-width: 920px;">
+    <thead><tr><th>Deal mechanic</th><th class="num">Sends</th><th class="num">Active days</th><th class="num">Day-level revenue</th></tr></thead>
+    <tbody>
+    <tr><td>Fixed dollar off ($X off cart)</td><td class='num'>16</td><td class='num'>15</td><td class='num'><strong>HK$4.52M</strong></td></tr>
+<tr><td>Extra % off select products</td><td class='num'>6</td><td class='num'>5</td><td class='num'><strong>HK$1.88M</strong></td></tr>
+<tr><td>Spend & Save (tiered)</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>HK$444K</strong></td></tr>
+<tr><td>Percentage off</td><td class='num'>1</td><td class='num'>1</td><td class='num'><strong>HK$294K</strong></td></tr>
+<tr><td>Free product / bonus item</td><td class='num'>1</td><td class='num'>1</td><td class='num'><strong>HK$274K</strong></td></tr>
+<tr style='background:#F0EDE6;'><td><strong>Total (unique days)</strong></td><td class='num'><strong>26</strong></td><td class='num'><strong>23</strong></td><td class='num'><strong>HK$7.20M</strong></td></tr>
+    </tbody>
+  </table>
+
+    <div class="verdict-banner">
     <div class="v-label">Recommendation for BON CHARGE</div>
     <h3>Test 2–3 daily deals inside your next major promo window. Scope each one narrowly — spend &amp; save tier, bonus credit, or single-collection bundle. Based on this data, expect a +46% median lift in daily revenue on deal days vs non-deal days inside the same promo, with AOV holding steady. The downside of not testing is silently leaving real, repeatable revenue on the table during your highest-intent windows.</h3>
   </div>
@@ -552,7 +698,7 @@
 </div>
 
 <script>
-const PROMO_CASES = [{"id": 1, "currency": "AUD", "days": [{"date": "2025-11-13", "date_short": "Thu 13 Nov", "is_deal_day": true, "revenue": 785267.91, "orders": 2369, "aov": 331.48}, {"date": "2025-11-14", "date_short": "Fri 14 Nov", "is_deal_day": false, "revenue": 260752.8, "orders": 871, "aov": 299.37}, {"date": "2025-11-15", "date_short": "Sat 15 Nov", "is_deal_day": true, "revenue": 268562.54, "orders": 883, "aov": 304.15}, {"date": "2025-11-16", "date_short": "Sun 16 Nov", "is_deal_day": false, "revenue": 235071.47, "orders": 822, "aov": 285.98}, {"date": "2025-11-17", "date_short": "Mon 17 Nov", "is_deal_day": false, "revenue": 188012.38, "orders": 651, "aov": 288.81}, {"date": "2025-11-18", "date_short": "Tue 18 Nov", "is_deal_day": false, "revenue": 232899.26, "orders": 748, "aov": 311.36}, {"date": "2025-11-19", "date_short": "Wed 19 Nov", "is_deal_day": true, "revenue": 250918.19, "orders": 781, "aov": 321.28}, {"date": "2025-11-20", "date_short": "Thu 20 Nov", "is_deal_day": false, "revenue": 209560.51, "orders": 687, "aov": 305.04}, {"date": "2025-11-21", "date_short": "Fri 21 Nov", "is_deal_day": false, "revenue": 234793.4, "orders": 761, "aov": 308.53}, {"date": "2025-11-22", "date_short": "Sat 22 Nov", "is_deal_day": true, "revenue": 271774.44, "orders": 926, "aov": 293.49}, {"date": "2025-11-23", "date_short": "Sun 23 Nov", "is_deal_day": false, "revenue": 228844.73, "orders": 803, "aov": 284.99}, {"date": "2025-11-24", "date_short": "Mon 24 Nov", "is_deal_day": false, "revenue": 177877.7, "orders": 612, "aov": 290.65}, {"date": "2025-11-25", "date_short": "Tue 25 Nov", "is_deal_day": false, "revenue": 194593.62, "orders": 620, "aov": 313.86}, {"date": "2025-11-26", "date_short": "Wed 26 Nov", "is_deal_day": false, "revenue": 232694.75, "orders": 711, "aov": 327.28}, {"date": "2025-11-27", "date_short": "Thu 27 Nov", "is_deal_day": true, "revenue": 201531.55, "orders": 661, "aov": 304.89}, {"date": "2025-11-28", "date_short": "Fri 28 Nov", "is_deal_day": true, "revenue": 365355.67, "orders": 1292, "aov": 282.78}], "deal_avg": 357235.05, "nondeal_avg": 219510.062, "y_max": 903058.0965}, {"id": 2, "currency": "AUD", "days": [{"date": "2025-11-13", "date_short": "Thu 13 Nov", "is_deal_day": true, "revenue": 474504.4, "orders": 1583, "aov": 299.75}, {"date": "2025-11-14", "date_short": "Fri 14 Nov", "is_deal_day": false, "revenue": 236334.34, "orders": 813, "aov": 290.69}, {"date": "2025-11-15", "date_short": "Sat 15 Nov", "is_deal_day": true, "revenue": 214546.32, "orders": 725, "aov": 295.93}, {"date": "2025-11-16", "date_short": "Sun 16 Nov", "is_deal_day": false, "revenue": 232358.06, "orders": 741, "aov": 313.57}, {"date": "2025-11-17", "date_short": "Mon 17 Nov", "is_deal_day": false, "revenue": 174157.22, "orders": 594, "aov": 293.19}, {"date": "2025-11-18", "date_short": "Tue 18 Nov", "is_deal_day": false, "revenue": 176998.7, "orders": 606, "aov": 292.08}, {"date": "2025-11-19", "date_short": "Wed 19 Nov", "is_deal_day": true, "revenue": 184090.4, "orders": 595, "aov": 309.4}, {"date": "2025-11-20", "date_short": "Thu 20 Nov", "is_deal_day": false, "revenue": 165416.94, "orders": 549, "aov": 301.31}, {"date": "2025-11-21", "date_short": "Fri 21 Nov", "is_deal_day": false, "revenue": 149703.05, "orders": 496, "aov": 301.82}, {"date": "2025-11-22", "date_short": "Sat 22 Nov", "is_deal_day": true, "revenue": 153517.99, "orders": 546, "aov": 281.17}, {"date": "2025-11-23", "date_short": "Sun 23 Nov", "is_deal_day": true, "revenue": 162670.47, "orders": 576, "aov": 282.41}, {"date": "2025-11-24", "date_short": "Mon 24 Nov", "is_deal_day": false, "revenue": 138438.81, "orders": 500, "aov": 276.88}, {"date": "2025-11-25", "date_short": "Tue 25 Nov", "is_deal_day": false, "revenue": 107317.94, "orders": 398, "aov": 269.64}, {"date": "2025-11-26", "date_short": "Wed 26 Nov", "is_deal_day": true, "revenue": 133190.89, "orders": 466, "aov": 285.82}, {"date": "2025-11-27", "date_short": "Thu 27 Nov", "is_deal_day": true, "revenue": 140209.79, "orders": 493, "aov": 284.4}, {"date": "2025-11-28", "date_short": "Fri 28 Nov", "is_deal_day": true, "revenue": 260298.3, "orders": 897, "aov": 290.19}], "deal_avg": 215378.57, "nondeal_avg": 172590.6325, "y_max": 545680.0599999999}, {"id": 3, "currency": "HKD", "days": [{"date": "2026-02-24", "date_short": "Tue 24 Feb", "is_deal_day": true, "revenue": 370272.0, "orders": 250, "aov": 1481.09}, {"date": "2026-02-25", "date_short": "Wed 25 Feb", "is_deal_day": false, "revenue": 234321.7, "orders": 161, "aov": 1455.41}, {"date": "2026-02-26", "date_short": "Thu 26 Feb", "is_deal_day": false, "revenue": 232212.5, "orders": 162, "aov": 1433.41}, {"date": "2026-02-27", "date_short": "Fri 27 Feb", "is_deal_day": true, "revenue": 199143.5, "orders": 138, "aov": 1443.07}, {"date": "2026-02-28", "date_short": "Sat 28 Feb", "is_deal_day": false, "revenue": 145426.75, "orders": 112, "aov": 1298.45}, {"date": "2026-03-01", "date_short": "Sun 01 Mar", "is_deal_day": false, "revenue": 112400.65, "orders": 83, "aov": 1354.22}, {"date": "2026-03-02", "date_short": "Mon 02 Mar", "is_deal_day": true, "revenue": 259823.37, "orders": 179, "aov": 1451.53}, {"date": "2026-03-03", "date_short": "Tue 03 Mar", "is_deal_day": false, "revenue": 92360.1, "orders": 65, "aov": 1420.92}, {"date": "2026-03-04", "date_short": "Wed 04 Mar", "is_deal_day": false, "revenue": 68415.4, "orders": 50, "aov": 1368.31}, {"date": "2026-03-05", "date_short": "Thu 05 Mar", "is_deal_day": true, "revenue": 107916.3, "orders": 61, "aov": 1769.12}], "deal_avg": 234288.7925, "nondeal_avg": 147522.85, "y_max": 425812.8}, {"id": 4, "currency": "AUD", "days": [{"date": "2026-03-18", "date_short": "Wed 18 Mar", "is_deal_day": false, "revenue": 44167.67, "orders": 175, "aov": 252.39}, {"date": "2026-03-19", "date_short": "Thu 19 Mar", "is_deal_day": true, "revenue": 101906.0, "orders": 442, "aov": 230.56}, {"date": "2026-03-20", "date_short": "Fri 20 Mar", "is_deal_day": true, "revenue": 86836.32, "orders": 327, "aov": 265.55}], "deal_avg": 94371.16, "nondeal_avg": 44167.67, "y_max": 117191.9}, {"id": 5, "currency": "AUD", "days": [{"date": "2026-03-18", "date_short": "Wed 18 Mar", "is_deal_day": false, "revenue": 86487.29, "orders": 299, "aov": 289.26}, {"date": "2026-03-19", "date_short": "Thu 19 Mar", "is_deal_day": true, "revenue": 144194.92, "orders": 538, "aov": 268.02}, {"date": "2026-03-20", "date_short": "Fri 20 Mar", "is_deal_day": true, "revenue": 126409.1, "orders": 503, "aov": 251.31}], "deal_avg": 135302.01, "nondeal_avg": 86487.29, "y_max": 165824.158}, {"id": 6, "currency": "AUD", "days": [{"date": "2026-04-03", "date_short": "Fri 03 Apr", "is_deal_day": true, "revenue": 73452.79, "orders": 286, "aov": 256.83}, {"date": "2026-04-04", "date_short": "Sat 04 Apr", "is_deal_day": true, "revenue": 55409.71, "orders": 206, "aov": 268.98}, {"date": "2026-04-05", "date_short": "Sun 05 Apr", "is_deal_day": true, "revenue": 66353.2, "orders": 223, "aov": 297.55}, {"date": "2026-04-06", "date_short": "Mon 06 Apr", "is_deal_day": true, "revenue": 66335.42, "orders": 246, "aov": 269.66}, {"date": "2026-04-07", "date_short": "Tue 07 Apr", "is_deal_day": false, "revenue": 48276.62, "orders": 207, "aov": 233.22}], "deal_avg": 65387.78, "nondeal_avg": 48276.62, "y_max": 84470.7085}, {"id": 7, "currency": "AUD", "days": [{"date": "2026-04-03", "date_short": "Fri 03 Apr", "is_deal_day": true, "revenue": 148699.68, "orders": 579, "aov": 256.82}, {"date": "2026-04-04", "date_short": "Sat 04 Apr", "is_deal_day": true, "revenue": 96361.86, "orders": 374, "aov": 257.65}, {"date": "2026-04-05", "date_short": "Sun 05 Apr", "is_deal_day": true, "revenue": 111754.36, "orders": 414, "aov": 269.94}, {"date": "2026-04-06", "date_short": "Mon 06 Apr", "is_deal_day": true, "revenue": 123663.86, "orders": 465, "aov": 265.94}, {"date": "2026-04-07", "date_short": "Tue 07 Apr", "is_deal_day": false, "revenue": 104405.21, "orders": 393, "aov": 265.66}], "deal_avg": 120119.94, "nondeal_avg": 104405.21, "y_max": 171004.63199999998}, {"id": 8, "currency": "HKD", "days": [{"date": "2026-04-13", "date_short": "Mon 13 Apr", "is_deal_day": true, "revenue": 234104.16, "orders": 168, "aov": 1393.48}, {"date": "2026-04-14", "date_short": "Tue 14 Apr", "is_deal_day": true, "revenue": 206837.45, "orders": 121, "aov": 1709.4}, {"date": "2026-04-15", "date_short": "Wed 15 Apr", "is_deal_day": false, "revenue": 81927.0, "orders": 61, "aov": 1343.07}, {"date": "2026-04-16", "date_short": "Thu 16 Apr", "is_deal_day": false, "revenue": 62822.4, "orders": 45, "aov": 1396.05}, {"date": "2026-04-17", "date_short": "Fri 17 Apr", "is_deal_day": false, "revenue": 79406.9, "orders": 49, "aov": 1620.55}, {"date": "2026-04-18", "date_short": "Sat 18 Apr", "is_deal_day": false, "revenue": 75160.95, "orders": 48, "aov": 1565.85}, {"date": "2026-04-19", "date_short": "Sun 19 Apr", "is_deal_day": false, "revenue": 73262.2, "orders": 51, "aov": 1436.51}, {"date": "2026-04-20", "date_short": "Mon 20 Apr", "is_deal_day": false, "revenue": 93857.9, "orders": 61, "aov": 1538.65}, {"date": "2026-04-21", "date_short": "Tue 21 Apr", "is_deal_day": false, "revenue": 117733.2, "orders": 75, "aov": 1569.78}, {"date": "2026-04-22", "date_short": "Wed 22 Apr", "is_deal_day": false, "revenue": 497595.85, "orders": 411, "aov": 1210.7}, {"date": "2026-04-23", "date_short": "Thu 23 Apr", "is_deal_day": true, "revenue": 274315.2, "orders": 196, "aov": 1399.57}, {"date": "2026-04-24", "date_short": "Fri 24 Apr", "is_deal_day": true, "revenue": 209804.44, "orders": 144, "aov": 1456.98}, {"date": "2026-04-25", "date_short": "Sat 25 Apr", "is_deal_day": false, "revenue": 182311.88, "orders": 136, "aov": 1340.53}, {"date": "2026-04-26", "date_short": "Sun 26 Apr", "is_deal_day": false, "revenue": 113167.7, "orders": 90, "aov": 1257.42}, {"date": "2026-04-27", "date_short": "Mon 27 Apr", "is_deal_day": false, "revenue": 169404.1, "orders": 118, "aov": 1435.63}, {"date": "2026-04-28", "date_short": "Tue 28 Apr", "is_deal_day": false, "revenue": 533185.45, "orders": 437, "aov": 1220.1}, {"date": "2026-04-29", "date_short": "Wed 29 Apr", "is_deal_day": true, "revenue": 250894.55, "orders": 202, "aov": 1242.05}], "deal_avg": 235191.16, "nondeal_avg": 173319.6275, "y_max": 613163.2674999998}];
+const PROMO_CASES = [{"id": 1, "currency": "AUD", "days": [{"date": "2025-08-07", "date_short": "Thu 07 Aug", "is_deal_day": false, "revenue": 42302.91, "orders": 159, "aov": 266.06}, {"date": "2025-08-08", "date_short": "Fri 08 Aug", "is_deal_day": false, "revenue": 27830.69, "orders": 123, "aov": 226.27}, {"date": "2025-08-09", "date_short": "Sat 09 Aug", "is_deal_day": false, "revenue": 22542.16, "orders": 104, "aov": 216.75}, {"date": "2025-08-10", "date_short": "Sun 10 Aug", "is_deal_day": false, "revenue": 36884.7, "orders": 140, "aov": 263.46}, {"date": "2025-08-11", "date_short": "Mon 11 Aug", "is_deal_day": false, "revenue": 31072.15, "orders": 129, "aov": 240.87}, {"date": "2025-08-12", "date_short": "Tue 12 Aug", "is_deal_day": false, "revenue": 33595.3, "orders": 132, "aov": 254.51}, {"date": "2025-08-13", "date_short": "Wed 13 Aug", "is_deal_day": false, "revenue": 26487.79, "orders": 130, "aov": 203.75}, {"date": "2025-08-14", "date_short": "Thu 14 Aug", "is_deal_day": true, "revenue": 45783.78, "orders": 193, "aov": 237.22}, {"date": "2025-08-15", "date_short": "Fri 15 Aug", "is_deal_day": true, "revenue": 70283.91, "orders": 295, "aov": 238.25}], "deal_avg": 58033.845, "nondeal_avg": 31530.814285714285, "y_max": 80826.4965}, {"id": 2, "currency": "AUD", "days": [{"date": "2025-08-07", "date_short": "Thu 07 Aug", "is_deal_day": false, "revenue": 47431.14, "orders": 160, "aov": 296.44}, {"date": "2025-08-08", "date_short": "Fri 08 Aug", "is_deal_day": false, "revenue": 39257.56, "orders": 151, "aov": 259.98}, {"date": "2025-08-09", "date_short": "Sat 09 Aug", "is_deal_day": false, "revenue": 40964.67, "orders": 135, "aov": 303.44}, {"date": "2025-08-10", "date_short": "Sun 10 Aug", "is_deal_day": false, "revenue": 40933.75, "orders": 143, "aov": 286.25}, {"date": "2025-08-11", "date_short": "Mon 11 Aug", "is_deal_day": false, "revenue": 36173.19, "orders": 149, "aov": 242.77}, {"date": "2025-08-12", "date_short": "Tue 12 Aug", "is_deal_day": false, "revenue": 37032.42, "orders": 132, "aov": 280.55}, {"date": "2025-08-13", "date_short": "Wed 13 Aug", "is_deal_day": false, "revenue": 42373.78, "orders": 158, "aov": 268.19}, {"date": "2025-08-14", "date_short": "Thu 14 Aug", "is_deal_day": true, "revenue": 68351.45, "orders": 248, "aov": 275.61}, {"date": "2025-08-15", "date_short": "Fri 15 Aug", "is_deal_day": true, "revenue": 80762.29, "orders": 307, "aov": 263.07}], "deal_avg": 74556.87, "nondeal_avg": 40595.21571428571, "y_max": 92876.63349999998}, {"id": 3, "currency": "AUD", "days": [{"date": "2025-11-13", "date_short": "Thu 13 Nov", "is_deal_day": true, "revenue": 785267.91, "orders": 2369, "aov": 331.48}, {"date": "2025-11-14", "date_short": "Fri 14 Nov", "is_deal_day": false, "revenue": 260752.8, "orders": 871, "aov": 299.37}, {"date": "2025-11-15", "date_short": "Sat 15 Nov", "is_deal_day": true, "revenue": 268562.54, "orders": 883, "aov": 304.15}, {"date": "2025-11-16", "date_short": "Sun 16 Nov", "is_deal_day": false, "revenue": 235071.47, "orders": 822, "aov": 285.98}, {"date": "2025-11-17", "date_short": "Mon 17 Nov", "is_deal_day": false, "revenue": 188012.38, "orders": 651, "aov": 288.81}, {"date": "2025-11-18", "date_short": "Tue 18 Nov", "is_deal_day": false, "revenue": 232899.26, "orders": 748, "aov": 311.36}, {"date": "2025-11-19", "date_short": "Wed 19 Nov", "is_deal_day": true, "revenue": 250918.19, "orders": 781, "aov": 321.28}, {"date": "2025-11-20", "date_short": "Thu 20 Nov", "is_deal_day": false, "revenue": 209560.51, "orders": 687, "aov": 305.04}, {"date": "2025-11-21", "date_short": "Fri 21 Nov", "is_deal_day": false, "revenue": 234793.4, "orders": 761, "aov": 308.53}, {"date": "2025-11-22", "date_short": "Sat 22 Nov", "is_deal_day": true, "revenue": 271774.44, "orders": 926, "aov": 293.49}, {"date": "2025-11-23", "date_short": "Sun 23 Nov", "is_deal_day": false, "revenue": 228844.73, "orders": 803, "aov": 284.99}, {"date": "2025-11-24", "date_short": "Mon 24 Nov", "is_deal_day": false, "revenue": 177877.7, "orders": 612, "aov": 290.65}, {"date": "2025-11-25", "date_short": "Tue 25 Nov", "is_deal_day": false, "revenue": 194593.62, "orders": 620, "aov": 313.86}, {"date": "2025-11-26", "date_short": "Wed 26 Nov", "is_deal_day": false, "revenue": 232694.75, "orders": 711, "aov": 327.28}, {"date": "2025-11-27", "date_short": "Thu 27 Nov", "is_deal_day": true, "revenue": 201531.55, "orders": 661, "aov": 304.89}, {"date": "2025-11-28", "date_short": "Fri 28 Nov", "is_deal_day": true, "revenue": 365355.67, "orders": 1292, "aov": 282.78}], "deal_avg": 357235.05, "nondeal_avg": 219510.062, "y_max": 903058.0965}, {"id": 4, "currency": "AUD", "days": [{"date": "2025-11-13", "date_short": "Thu 13 Nov", "is_deal_day": true, "revenue": 474504.4, "orders": 1583, "aov": 299.75}, {"date": "2025-11-14", "date_short": "Fri 14 Nov", "is_deal_day": false, "revenue": 236334.34, "orders": 813, "aov": 290.69}, {"date": "2025-11-15", "date_short": "Sat 15 Nov", "is_deal_day": true, "revenue": 214546.32, "orders": 725, "aov": 295.93}, {"date": "2025-11-16", "date_short": "Sun 16 Nov", "is_deal_day": false, "revenue": 232358.06, "orders": 741, "aov": 313.57}, {"date": "2025-11-17", "date_short": "Mon 17 Nov", "is_deal_day": false, "revenue": 174157.22, "orders": 594, "aov": 293.19}, {"date": "2025-11-18", "date_short": "Tue 18 Nov", "is_deal_day": false, "revenue": 176998.7, "orders": 606, "aov": 292.08}, {"date": "2025-11-19", "date_short": "Wed 19 Nov", "is_deal_day": true, "revenue": 184090.4, "orders": 595, "aov": 309.4}, {"date": "2025-11-20", "date_short": "Thu 20 Nov", "is_deal_day": false, "revenue": 165416.94, "orders": 549, "aov": 301.31}, {"date": "2025-11-21", "date_short": "Fri 21 Nov", "is_deal_day": false, "revenue": 149703.05, "orders": 496, "aov": 301.82}, {"date": "2025-11-22", "date_short": "Sat 22 Nov", "is_deal_day": true, "revenue": 153517.99, "orders": 546, "aov": 281.17}, {"date": "2025-11-23", "date_short": "Sun 23 Nov", "is_deal_day": true, "revenue": 162670.47, "orders": 576, "aov": 282.41}, {"date": "2025-11-24", "date_short": "Mon 24 Nov", "is_deal_day": false, "revenue": 138438.81, "orders": 500, "aov": 276.88}, {"date": "2025-11-25", "date_short": "Tue 25 Nov", "is_deal_day": false, "revenue": 107317.94, "orders": 398, "aov": 269.64}, {"date": "2025-11-26", "date_short": "Wed 26 Nov", "is_deal_day": true, "revenue": 133190.89, "orders": 466, "aov": 285.82}, {"date": "2025-11-27", "date_short": "Thu 27 Nov", "is_deal_day": true, "revenue": 140209.79, "orders": 493, "aov": 284.4}, {"date": "2025-11-28", "date_short": "Fri 28 Nov", "is_deal_day": true, "revenue": 260298.3, "orders": 897, "aov": 290.19}], "deal_avg": 215378.57, "nondeal_avg": 172590.6325, "y_max": 545680.0599999999}, {"id": 5, "currency": "AUD", "days": [{"date": "2025-12-23", "date_short": "Tue 23 Dec", "is_deal_day": true, "revenue": 29663.11, "orders": 151, "aov": 196.44}, {"date": "2025-12-24", "date_short": "Wed 24 Dec", "is_deal_day": false, "revenue": 48483.78, "orders": 204, "aov": 237.67}, {"date": "2025-12-25", "date_short": "Thu 25 Dec", "is_deal_day": true, "revenue": 33403.85, "orders": 150, "aov": 222.69}, {"date": "2025-12-26", "date_short": "Fri 26 Dec", "is_deal_day": false, "revenue": 147776.53, "orders": 637, "aov": 231.99}, {"date": "2025-12-27", "date_short": "Sat 27 Dec", "is_deal_day": true, "revenue": 71999.25, "orders": 366, "aov": 196.72}, {"date": "2025-12-28", "date_short": "Sun 28 Dec", "is_deal_day": false, "revenue": 80218.55, "orders": 365, "aov": 219.78}, {"date": "2025-12-29", "date_short": "Mon 29 Dec", "is_deal_day": true, "revenue": 70835.31, "orders": 279, "aov": 253.89}, {"date": "2025-12-30", "date_short": "Tue 30 Dec", "is_deal_day": false, "revenue": 56009.18, "orders": 264, "aov": 212.16}, {"date": "2025-12-31", "date_short": "Wed 31 Dec", "is_deal_day": true, "revenue": 64325.65, "orders": 300, "aov": 214.42}], "deal_avg": 54045.434, "nondeal_avg": 83122.01, "y_max": 169943.0095}, {"id": 6, "currency": "AUD", "days": [{"date": "2025-12-23", "date_short": "Tue 23 Dec", "is_deal_day": true, "revenue": 20092.94, "orders": 99, "aov": 202.96}, {"date": "2025-12-24", "date_short": "Wed 24 Dec", "is_deal_day": false, "revenue": 28863.74, "orders": 121, "aov": 238.54}, {"date": "2025-12-25", "date_short": "Thu 25 Dec", "is_deal_day": true, "revenue": 21373.21, "orders": 101, "aov": 211.62}, {"date": "2025-12-26", "date_short": "Fri 26 Dec", "is_deal_day": true, "revenue": 178634.79, "orders": 688, "aov": 259.64}, {"date": "2025-12-27", "date_short": "Sat 27 Dec", "is_deal_day": false, "revenue": 76730.32, "orders": 330, "aov": 232.52}, {"date": "2025-12-28", "date_short": "Sun 28 Dec", "is_deal_day": false, "revenue": 80449.94, "orders": 314, "aov": 256.21}, {"date": "2025-12-29", "date_short": "Mon 29 Dec", "is_deal_day": true, "revenue": 64582.85, "orders": 245, "aov": 263.6}, {"date": "2025-12-30", "date_short": "Tue 30 Dec", "is_deal_day": false, "revenue": 68045.51, "orders": 260, "aov": 261.71}, {"date": "2025-12-31", "date_short": "Wed 31 Dec", "is_deal_day": true, "revenue": 65666.43, "orders": 277, "aov": 237.06}], "deal_avg": 70070.044, "nondeal_avg": 63522.3775, "y_max": 205430.0085}, {"id": 7, "currency": "HKD", "days": [{"date": "2026-02-24", "date_short": "Tue 24 Feb", "is_deal_day": true, "revenue": 370272.0, "orders": 250, "aov": 1481.09}, {"date": "2026-02-25", "date_short": "Wed 25 Feb", "is_deal_day": false, "revenue": 234321.7, "orders": 161, "aov": 1455.41}, {"date": "2026-02-26", "date_short": "Thu 26 Feb", "is_deal_day": false, "revenue": 232212.5, "orders": 162, "aov": 1433.41}, {"date": "2026-02-27", "date_short": "Fri 27 Feb", "is_deal_day": true, "revenue": 199143.5, "orders": 138, "aov": 1443.07}, {"date": "2026-02-28", "date_short": "Sat 28 Feb", "is_deal_day": false, "revenue": 145426.75, "orders": 112, "aov": 1298.45}, {"date": "2026-03-01", "date_short": "Sun 01 Mar", "is_deal_day": false, "revenue": 112400.65, "orders": 83, "aov": 1354.22}, {"date": "2026-03-02", "date_short": "Mon 02 Mar", "is_deal_day": true, "revenue": 259823.37, "orders": 179, "aov": 1451.53}, {"date": "2026-03-03", "date_short": "Tue 03 Mar", "is_deal_day": false, "revenue": 92360.1, "orders": 65, "aov": 1420.92}, {"date": "2026-03-04", "date_short": "Wed 04 Mar", "is_deal_day": false, "revenue": 68415.4, "orders": 50, "aov": 1368.31}, {"date": "2026-03-05", "date_short": "Thu 05 Mar", "is_deal_day": true, "revenue": 107916.3, "orders": 61, "aov": 1769.12}], "deal_avg": 234288.7925, "nondeal_avg": 147522.85, "y_max": 425812.8}, {"id": 8, "currency": "AUD", "days": [{"date": "2026-03-18", "date_short": "Wed 18 Mar", "is_deal_day": false, "revenue": 44167.67, "orders": 175, "aov": 252.39}, {"date": "2026-03-19", "date_short": "Thu 19 Mar", "is_deal_day": true, "revenue": 101906.0, "orders": 442, "aov": 230.56}, {"date": "2026-03-20", "date_short": "Fri 20 Mar", "is_deal_day": true, "revenue": 86836.32, "orders": 327, "aov": 265.55}], "deal_avg": 94371.16, "nondeal_avg": 44167.67, "y_max": 117191.9}, {"id": 9, "currency": "AUD", "days": [{"date": "2026-03-18", "date_short": "Wed 18 Mar", "is_deal_day": false, "revenue": 86487.29, "orders": 299, "aov": 289.26}, {"date": "2026-03-19", "date_short": "Thu 19 Mar", "is_deal_day": true, "revenue": 144194.92, "orders": 538, "aov": 268.02}, {"date": "2026-03-20", "date_short": "Fri 20 Mar", "is_deal_day": true, "revenue": 126409.1, "orders": 503, "aov": 251.31}], "deal_avg": 135302.01, "nondeal_avg": 86487.29, "y_max": 165824.158}, {"id": 10, "currency": "AUD", "days": [{"date": "2026-04-03", "date_short": "Fri 03 Apr", "is_deal_day": true, "revenue": 73452.79, "orders": 286, "aov": 256.83}, {"date": "2026-04-04", "date_short": "Sat 04 Apr", "is_deal_day": true, "revenue": 55409.71, "orders": 206, "aov": 268.98}, {"date": "2026-04-05", "date_short": "Sun 05 Apr", "is_deal_day": true, "revenue": 66353.2, "orders": 223, "aov": 297.55}, {"date": "2026-04-06", "date_short": "Mon 06 Apr", "is_deal_day": true, "revenue": 66335.42, "orders": 246, "aov": 269.66}, {"date": "2026-04-07", "date_short": "Tue 07 Apr", "is_deal_day": false, "revenue": 48276.62, "orders": 207, "aov": 233.22}], "deal_avg": 65387.78, "nondeal_avg": 48276.62, "y_max": 84470.7085}, {"id": 11, "currency": "AUD", "days": [{"date": "2026-04-03", "date_short": "Fri 03 Apr", "is_deal_day": true, "revenue": 148699.68, "orders": 579, "aov": 256.82}, {"date": "2026-04-04", "date_short": "Sat 04 Apr", "is_deal_day": true, "revenue": 96361.86, "orders": 374, "aov": 257.65}, {"date": "2026-04-05", "date_short": "Sun 05 Apr", "is_deal_day": true, "revenue": 111754.36, "orders": 414, "aov": 269.94}, {"date": "2026-04-06", "date_short": "Mon 06 Apr", "is_deal_day": true, "revenue": 123663.86, "orders": 465, "aov": 265.94}, {"date": "2026-04-07", "date_short": "Tue 07 Apr", "is_deal_day": false, "revenue": 104405.21, "orders": 393, "aov": 265.66}], "deal_avg": 120119.94, "nondeal_avg": 104405.21, "y_max": 171004.63199999998}, {"id": 12, "currency": "HKD", "days": [{"date": "2026-04-13", "date_short": "Mon 13 Apr", "is_deal_day": true, "revenue": 234104.16, "orders": 168, "aov": 1393.48}, {"date": "2026-04-14", "date_short": "Tue 14 Apr", "is_deal_day": true, "revenue": 206837.45, "orders": 121, "aov": 1709.4}, {"date": "2026-04-15", "date_short": "Wed 15 Apr", "is_deal_day": false, "revenue": 81927.0, "orders": 61, "aov": 1343.07}, {"date": "2026-04-16", "date_short": "Thu 16 Apr", "is_deal_day": false, "revenue": 62822.4, "orders": 45, "aov": 1396.05}, {"date": "2026-04-17", "date_short": "Fri 17 Apr", "is_deal_day": false, "revenue": 79406.9, "orders": 49, "aov": 1620.55}, {"date": "2026-04-18", "date_short": "Sat 18 Apr", "is_deal_day": false, "revenue": 75160.95, "orders": 48, "aov": 1565.85}, {"date": "2026-04-19", "date_short": "Sun 19 Apr", "is_deal_day": false, "revenue": 73262.2, "orders": 51, "aov": 1436.51}, {"date": "2026-04-20", "date_short": "Mon 20 Apr", "is_deal_day": false, "revenue": 93857.9, "orders": 61, "aov": 1538.65}, {"date": "2026-04-21", "date_short": "Tue 21 Apr", "is_deal_day": false, "revenue": 117733.2, "orders": 75, "aov": 1569.78}, {"date": "2026-04-22", "date_short": "Wed 22 Apr", "is_deal_day": false, "revenue": 497595.85, "orders": 411, "aov": 1210.7}, {"date": "2026-04-23", "date_short": "Thu 23 Apr", "is_deal_day": true, "revenue": 274315.2, "orders": 196, "aov": 1399.57}, {"date": "2026-04-24", "date_short": "Fri 24 Apr", "is_deal_day": true, "revenue": 209804.44, "orders": 144, "aov": 1456.98}, {"date": "2026-04-25", "date_short": "Sat 25 Apr", "is_deal_day": false, "revenue": 182311.88, "orders": 136, "aov": 1340.53}, {"date": "2026-04-26", "date_short": "Sun 26 Apr", "is_deal_day": false, "revenue": 113167.7, "orders": 90, "aov": 1257.42}, {"date": "2026-04-27", "date_short": "Mon 27 Apr", "is_deal_day": false, "revenue": 169404.1, "orders": 118, "aov": 1435.63}, {"date": "2026-04-28", "date_short": "Tue 28 Apr", "is_deal_day": false, "revenue": 533185.45, "orders": 437, "aov": 1220.1}, {"date": "2026-04-29", "date_short": "Wed 29 Apr", "is_deal_day": true, "revenue": 250894.55, "orders": 202, "aov": 1242.05}], "deal_avg": 235191.16, "nondeal_avg": 173319.6275, "y_max": 613163.2674999998}];
 
 const HOUR_CASE = {"deal_hourly": [{"hour": 0, "revenue": 12162.8, "orders": 10}, {"hour": 1, "revenue": 20296.75, "orders": 16}, {"hour": 2, "revenue": 7190.0, "orders": 4}, {"hour": 3, "revenue": 3930.0, "orders": 2}, {"hour": 4, "revenue": 4126.0, "orders": 3}, {"hour": 5, "revenue": 2662.4, "orders": 2}, {"hour": 6, "revenue": 9090.3, "orders": 7}, {"hour": 7, "revenue": 6552.0, "orders": 6}, {"hour": 8, "revenue": 16207.0, "orders": 13}, {"hour": 9, "revenue": 22389.8, "orders": 18}, {"hour": 10, "revenue": 25048.0, "orders": 14}, {"hour": 11, "revenue": 25202.0, "orders": 17}, {"hour": 12, "revenue": 210971.25, "orders": 226}, {"hour": 13, "revenue": 67565.4, "orders": 79}, {"hour": 14, "revenue": 65710.9, "orders": 75}, {"hour": 15, "revenue": 78742.55, "orders": 84}, {"hour": 16, "revenue": 50054.5, "orders": 53}, {"hour": 17, "revenue": 39775.35, "orders": 41}, {"hour": 18, "revenue": 33281.0, "orders": 38}, {"hour": 19, "revenue": 70975.55, "orders": 75}, {"hour": 20, "revenue": 40072.67, "orders": 38}, {"hour": 21, "revenue": 27908.0, "orders": 20}, {"hour": 22, "revenue": 28683.0, "orders": 26}, {"hour": 23, "revenue": 60274.0, "orders": 43}], "cmp_hourly": [{"hour": 0, "revenue": 3247.0, "orders": 3}, {"hour": 1, "revenue": 4167.0, "orders": 3}, {"hour": 2, "revenue": 0.0, "orders": 0}, {"hour": 3, "revenue": 0.0, "orders": 0}, {"hour": 4, "revenue": 0.0, "orders": 0}, {"hour": 5, "revenue": 0.0, "orders": 0}, {"hour": 6, "revenue": 2990.6, "orders": 1}, {"hour": 7, "revenue": 2062.0, "orders": 1}, {"hour": 8, "revenue": 2612.0, "orders": 2}, {"hour": 9, "revenue": 10097.0, "orders": 6}, {"hour": 10, "revenue": 3261.0, "orders": 3}, {"hour": 11, "revenue": 12310.0, "orders": 6}, {"hour": 12, "revenue": 5476.7, "orders": 3}, {"hour": 13, "revenue": 4137.0, "orders": 2}, {"hour": 14, "revenue": 4236.0, "orders": 4}, {"hour": 15, "revenue": 5693.0, "orders": 3}, {"hour": 16, "revenue": 1086.0, "orders": 1}, {"hour": 17, "revenue": 4379.0, "orders": 4}, {"hour": 18, "revenue": 2222.0, "orders": 1}, {"hour": 19, "revenue": 4103.2, "orders": 4}, {"hour": 20, "revenue": 1124.0, "orders": 1}, {"hour": 21, "revenue": 7936.0, "orders": 6}, {"hour": 22, "revenue": 8789.95, "orders": 5}, {"hour": 23, "revenue": 9029.0, "orders": 4}], "lmt_hour": 23, "y_max": 242616.93749999997};
 
