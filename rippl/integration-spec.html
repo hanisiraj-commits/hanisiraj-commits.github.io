@@ -143,7 +143,7 @@
     <div class="stat"><div class="n">2</div><div class="l">Deliverables</div></div>
     <div class="stat"><div class="n">17</div><div class="l">Properties</div></div>
     <div class="stat"><div class="n">1</div><div class="l">Custom Event</div></div>
-    <div class="stat"><div class="n">2 wks</div><div class="l">Target Window</div></div>
+    <div class="stat"><div class="n">3</div><div class="l">Form Pages</div></div>
   </div>
 
   <h2>What we need built</h2>
@@ -268,36 +268,6 @@
 
   <div class="callout">
     <strong>Why <code>is_reorder</code> matters:</strong> the reorder flow needs to know whether to treat an order as a first conversion or the start of a new cycle. Easiest place to set it is at the source, in the Pipedrive → Klaviyo handler, by checking if the profile already has a prior B2B Order Placed event.
-  </div>
-
-  <h2>Suggested build order</h2>
-  <p class="sub">Two weeks end to end. Field map first so the existing Corporate Can Customers list is enriched. Event second so it fires against an already-populated profile base.</p>
-
-  <div class="camp">
-    <div class="num">01</div>
-    <div class="body">
-      <div class="row1"><div class="title">Week 1: Stand up Deliverable 01 + historical backfill</div><div class="date">Wk 1</div></div>
-      <div class="tag">Field map</div>
-      <div class="desc">Wire the field-to-property map. Run the one-time backfill across existing Pipedrive deals so the Corporate Can Customers list is enriched on day one.</div>
-    </div>
-  </div>
-
-  <div class="camp">
-    <div class="num">02</div>
-    <div class="body">
-      <div class="row1"><div class="title">Week 2: Stand up Deliverable 02</div><div class="date">Wk 2</div></div>
-      <div class="tag">Event</div>
-      <div class="desc">Wire the B2B Order Placed event. Test fire from a sandbox Pipedrive deal. Confirm <code>is_reorder</code> logic against a profile with prior orders.</div>
-    </div>
-  </div>
-
-  <div class="camp">
-    <div class="num">03</div>
-    <div class="body">
-      <div class="row1"><div class="title">QA: verification checks</div><div class="date">End Wk 2</div></div>
-      <div class="tag">QA</div>
-      <div class="desc">For 5 sample Pipedrive deals, confirm every form field is on the matching Klaviyo profile and the values match. Fire the event from a closed-Won test deal and confirm it lands in Klaviyo within 60 seconds, with the full payload.</div>
-    </div>
   </div>
 
   <h2>What we need from you to start</h2>
