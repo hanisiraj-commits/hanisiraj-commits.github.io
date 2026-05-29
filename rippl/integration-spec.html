@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pipedrive → Klaviyo Integration Spec — Tethrd × Rippl</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #fafafa;
+    --dark: #0a0a0a;
+    --ink: #0a0a0a;
+    --ink-2: #3a3a3a;
+    --ink-3: #6a6a6a;
+    --ink-4: #a0a0a0;
+    --line: #e8e8e8;
+    --line-2: #d0d0d0;
+    --accent: #1f5d6e;
+    --accent-bg: #e8eff1;
+    --b2b: #4a5a6e;
+    --b2b-bg: #e6eaef;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 32px; }
+  code { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--accent); background: var(--accent-bg); padding: 2px 6px; border-radius: 2px; }
+
+  .topbar { padding: 28px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .wordmark { font-weight: 800; font-size: 15px; letter-spacing: -0.02em; color: var(--ink); }
+  .wordmark .x { color: var(--ink-4); margin: 0 8px; font-weight: 400; }
+  .wordmark .partner { font-weight: 600; }
+  .topbar .meta-right { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.12em; }
+
+  .hero { padding: 80px 0 56px; border-bottom: 1px solid var(--line); margin-bottom: 56px; }
+  .eyebrow { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 28px; }
+  h1 { font-size: 56px; line-height: 1.02; font-weight: 800; margin: 0 0 28px; letter-spacing: -0.035em; color: var(--ink); }
+  h1 .accent { color: var(--accent); }
+  .lede { font-size: 18px; line-height: 1.5; color: var(--ink-2); max-width: 680px; font-weight: 400; margin: 0; }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 56px 0; padding: 32px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stat { padding: 0 24px; border-right: 1px solid var(--line); }
+  .stat:first-child { padding-left: 0; }
+  .stat:last-child { border-right: none; padding-right: 0; }
+  .stat .n { font-size: 38px; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 10px; font-weight: 500; }
+
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin: 64px 0 16px; color: var(--ink); }
+  h2 + .sub { font-size: 14px; color: var(--ink-3); margin: 0 0 24px; max-width: 680px; }
+
+  .camp { display: grid; grid-template-columns: 64px 1fr; gap: 28px; padding: 28px 0; border-top: 1px solid var(--line); align-items: start; }
+  .camp:last-of-type { border-bottom: 1px solid var(--line); }
+  .camp .num { font-size: 28px; font-weight: 800; color: var(--ink-4); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .camp .body { min-width: 0; }
+  .camp .row1 { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 6px; }
+  .camp .title { font-size: 17px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  .camp .date { font-size: 13px; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 500; }
+  .camp .tag { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; padding-left: 12px; border-left: 2px solid var(--b2b); color: var(--b2b); }
+  .camp .desc { font-size: 14.5px; color: var(--ink-2); margin: 6px 0 0; line-height: 1.6; }
+  .camp .desc strong { color: var(--ink); font-weight: 600; }
+
+  .group-label { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.18em; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .group-label:first-of-type { margin-top: 24px; }
+
+  .spec-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+  .spec-table thead th { padding: 12px 16px 12px 0; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4); border-bottom: 1px solid var(--line); text-align: left; }
+  .spec-table thead th:last-child { padding-right: 0; }
+  .spec-table tbody td { padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink-2); vertical-align: top; line-height: 1.55; }
+  .spec-table tbody td:last-child { padding-right: 0; }
+  .spec-table tbody tr:last-child td { border-bottom: none; }
+  .spec-table tbody td.field { font-weight: 600; color: var(--ink); width: 32%; }
+  .spec-table tbody td.prop { width: 34%; }
+  .spec-table tbody td.notes { color: var(--ink-3); }
+
+  .event-block { padding: 32px 0; margin: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .event-block h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; margin: 0 0 24px; color: var(--ink); }
+  .event-row { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .event-row:last-child { border-bottom: none; }
+  .event-row .k { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4); }
+  .event-row .v { font-size: 14.5px; color: var(--ink-2); line-height: 1.55; }
+  .event-row .v strong { color: var(--ink); }
+  @media (max-width: 720px) { .event-row { grid-template-columns: 1fr; gap: 4px; } }
+
+  .payload-block { background: var(--dark); border-radius: 4px; padding: 28px; margin: 24px 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #d0d4dc; line-height: 1.7; overflow-x: auto; }
+  .payload-block .key { color: #7fb4c5; }
+  .payload-block .str { color: #9dd8a3; }
+  .payload-block .com { color: #6a6a6a; font-style: italic; }
+
+  .callout { padding: 24px 28px; background: var(--bg-soft); border-left: 3px solid var(--accent); margin: 24px 0; font-size: 14.5px; color: var(--ink-2); line-height: 1.6; }
+  .callout strong { color: var(--ink); }
+
+  .footer { background: var(--dark); color: #ffffff; margin-top: 96px; padding: 48px 32px; text-align: center; }
+  .footer .wordmark { color: #ffffff; font-size: 16px; }
+  .footer .wordmark .x { color: rgba(255,255,255,0.4); }
+  .footer .copy { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 20px; font-weight: 500; }
+  .footer .copy a { color: rgba(255,255,255,0.7); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
+
+  @media print {
+    body { background: white; }
+    .camp, .event-block { break-inside: avoid; }
+    .payload-block { background: #f5f5f5; color: #0a0a0a; }
+    .payload-block .key { color: var(--accent); }
+    .payload-block .str { color: #4a6a4a; }
+    .footer { background: white; color: black; }
+    .footer .wordmark { color: black; }
+    .footer .copy { color: black; }
+  }
+  @media (max-width: 720px) {
+    h1 { font-size: 38px; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
+    .stat { border-right: none; padding: 0 16px; }
+    .camp { grid-template-columns: 1fr; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="wordmark">tethrd<span class="x">×</span><span class="partner">Rippl</span></div>
+    <div class="meta-right">May 2026 · Integration Spec</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">For Bhuv · Pipedrive → Klaviyo</div>
+    <h1>Two things to build.<br><span class="accent">Form fields, and one event.</span></h1>
+    <p class="lede">
+      Spec sheet for Moti to wire Pipedrive into Klaviyo. Once these land, every B2B email Rippl sends can personalise off the customer's actual brief, and we can read <strong>B2B conversion rate</strong> directly inside Klaviyo.
+    </p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">2</div><div class="l">Deliverables</div></div>
+    <div class="stat"><div class="n">17</div><div class="l">Properties</div></div>
+    <div class="stat"><div class="n">1</div><div class="l">Custom Event</div></div>
+    <div class="stat"><div class="n">2 wks</div><div class="l">Target Window</div></div>
+  </div>
+
+  <h2>What we need built</h2>
+  <p class="sub">Two deliverables. Nothing else. Anything outside this scope is a follow-up brief.</p>
+
+  <div class="camp">
+    <div class="num">01</div>
+    <div class="body">
+      <div class="row1"><div class="title">Every Custom Branded form field becomes a Klaviyo profile property</div></div>
+      <div class="tag">Profile</div>
+      <div class="desc">Each input on the 3-page Custom Branded inquiry form (vessel, customisation, contact) writes to a named Klaviyo property on the customer's profile. <strong>Field map below.</strong></div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">02</div>
+    <div class="body">
+      <div class="row1"><div class="title">A B2B Order Placed event fires into Klaviyo every time a B2B order closes</div></div>
+      <div class="tag">Event</div>
+      <div class="desc">When a Pipedrive deal moves to the Won stage, a custom event lands in Klaviyo with the deal payload. Matched against the inquiry event, <strong>this gives us the B2B conversion rate inside Klaviyo</strong> so we can tune the approach from real data.</div>
+    </div>
+  </div>
+
+  <h2>Deliverable 01 — Form fields to Klaviyo properties</h2>
+  <p class="sub">One row per field. If Rippl adds, renames, or removes a form field, the map updates 1:1 with it.</p>
+
+  <div class="callout">
+    <strong>Property naming convention:</strong> snake_case, prefixed <code>b2b_</code> for B2B-specific fields so they don't collide with B2C properties on the same profile. Boolean fields use <code>true</code> / <code>false</code>. Dates ISO-8601.
+  </div>
+
+  <div class="group-label">Page 1 · Vessel selection</div>
+  <table class="spec-table">
+    <thead><tr><th>Form field</th><th>Klaviyo property</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="field">Vessel type</td><td class="prop"><code>b2b_vessel_type</code></td><td class="notes">Can / Bottle / Glass bottle</td></tr>
+    </tbody>
+  </table>
+
+  <div class="group-label">Page 2 · Customisation</div>
+  <table class="spec-table">
+    <thead><tr><th>Form field</th><th>Klaviyo property</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="field">Design type</td><td class="prop"><code>b2b_design_type</code></td><td class="notes">Upload artwork / template / consult with team</td></tr>
+      <tr><td class="field">Artwork file</td><td class="prop"><code>b2b_artwork_url</code></td><td class="notes">Pipedrive file URL if uploaded</td></tr>
+      <tr><td class="field">Packaging selection</td><td class="prop"><code>b2b_packaging</code></td><td class="notes">Standard / Custom packaging</td></tr>
+      <tr><td class="field">Quantity</td><td class="prop"><code>b2b_quantity</code></td><td class="notes">Integer. Compare against current MOQ</td></tr>
+      <tr><td class="field">Use case</td><td class="prop"><code>b2b_use_case</code></td><td class="notes">Event / Ongoing / Retail / Gifting / Other</td></tr>
+      <tr><td class="field">Event date</td><td class="prop"><code>b2b_event_date</code></td><td class="notes">ISO-8601. Only if Use case = Event</td></tr>
+      <tr><td class="field">Required-by date</td><td class="prop"><code>b2b_required_by</code></td><td class="notes">ISO-8601. Powers deadline-aware sales nudges</td></tr>
+      <tr><td class="field">Additional notes / brief</td><td class="prop"><code>b2b_brief_notes</code></td><td class="notes">Long-text. Useful for AM context, not flow logic</td></tr>
+    </tbody>
+  </table>
+
+  <div class="group-label">Page 3 · Contact</div>
+  <table class="spec-table">
+    <thead><tr><th>Form field</th><th>Klaviyo property</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="field">First name</td><td class="prop"><code>$first_name</code></td><td class="notes">Native Klaviyo identifier</td></tr>
+      <tr><td class="field">Last name</td><td class="prop"><code>$last_name</code></td><td class="notes">Native Klaviyo identifier</td></tr>
+      <tr><td class="field">Email</td><td class="prop"><code>$email</code></td><td class="notes">Profile primary key</td></tr>
+      <tr><td class="field">Phone</td><td class="prop"><code>$phone_number</code></td><td class="notes">E.164 format. Marks SMS-eligible</td></tr>
+      <tr><td class="field">Company name</td><td class="prop"><code>b2b_company_name</code></td><td class="notes">Subject + body personalisation</td></tr>
+      <tr><td class="field">Job title</td><td class="prop"><code>b2b_job_title</code></td><td class="notes">Filter for Marketing Manager cohort</td></tr>
+      <tr><td class="field">Industry</td><td class="prop"><code>b2b_industry</code></td><td class="notes">Vertical-matched case-study selection</td></tr>
+      <tr><td class="field">How heard about Rippl</td><td class="prop"><code>b2b_lead_source</code></td><td class="notes">Channel attribution</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>Backfill:</strong> Run the same field map as a one-time backfill across all existing Pipedrive deals so the Corporate Can Customers list is enriched on day one, before any new form submissions land.
+  </div>
+
+  <h2>Deliverable 02 — B2B Order Placed event</h2>
+  <p class="sub">One custom event, fired every time a B2B order is placed. This is what lets us measure whether a B2B inquiry converts.</p>
+
+  <div class="event-block">
+    <h3>Event spec</h3>
+    <div class="event-row">
+      <div class="k">Event name</div>
+      <div class="v"><code>B2B Order Placed</code></div>
+    </div>
+    <div class="event-row">
+      <div class="k">Triggers on</div>
+      <div class="v">Pipedrive deal moved to <strong>Won</strong> stage. (Post-self-customiser launch, also fires on Shopify orders tagged <code>b2b_custom</code>.)</div>
+    </div>
+    <div class="event-row">
+      <div class="k">Fires into</div>
+      <div class="v">Klaviyo custom event endpoint, against the profile keyed by email.</div>
+    </div>
+    <div class="event-row">
+      <div class="k">Frequency</div>
+      <div class="v">One event per deal Won. Reorders fire a fresh event each time.</div>
+    </div>
+    <div class="event-row">
+      <div class="k">Purpose</div>
+      <div class="v">Conversion attribution. Match B2B Order Placed against the inquiry event to compute conversion rate by cohort, vessel, lead source, and use case.</div>
+    </div>
+  </div>
+
+  <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 12px; color: var(--ink);">Event payload</h3>
+  <p style="font-size: 14.5px; color: var(--ink-2); margin: 0 0 16px;">Each event carries the deal context inline so flow logic can read it without a second lookup. Suggested payload:</p>
+
+  <div class="payload-block">
+{<br>
+&nbsp;&nbsp;<span class="key">"event"</span>: <span class="str">"B2B Order Placed"</span>,<br>
+&nbsp;&nbsp;<span class="key">"customer_properties"</span>: { <span class="key">"$email"</span>: <span class="str">"buyer@example.com"</span> },<br>
+&nbsp;&nbsp;<span class="key">"properties"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"pipedrive_deal_id"</span>: <span class="str">"12345"</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// deduplication key</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"deal_value"</span>: <span class="str">4800.00</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"currency"</span>: <span class="str">"AUD"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"vessel_type"</span>: <span class="str">"Can"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"quantity"</span>: <span class="str">240</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"custom_design"</span>: <span class="str">true</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"order_date"</span>: <span class="str">"2026-05-30"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"expected_delivery_date"</span>: <span class="str">"2026-06-13"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"company_name"</span>: <span class="str">"Example Co"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"account_manager"</span>: <span class="str">"Jay"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"is_reorder"</span>: <span class="str">false</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// true if this profile has a prior B2B Order Placed</span><br>
+&nbsp;&nbsp;}<br>
+}<br>
+  </div>
+
+  <div class="callout">
+    <strong>Why <code>is_reorder</code> matters:</strong> the reorder flow needs to know whether to treat an order as a first conversion or the start of a new cycle. Easiest place to set it is at the source, in the Pipedrive → Klaviyo handler, by checking if the profile already has a prior B2B Order Placed event.
+  </div>
+
+  <h2>Suggested build order</h2>
+  <p class="sub">Two weeks end to end. Field map first so the existing Corporate Can Customers list is enriched. Event second so it fires against an already-populated profile base.</p>
+
+  <div class="camp">
+    <div class="num">01</div>
+    <div class="body">
+      <div class="row1"><div class="title">Week 1: Stand up Deliverable 01 + historical backfill</div><div class="date">Wk 1</div></div>
+      <div class="tag">Field map</div>
+      <div class="desc">Wire the field-to-property map. Run the one-time backfill across existing Pipedrive deals so the Corporate Can Customers list is enriched on day one.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">02</div>
+    <div class="body">
+      <div class="row1"><div class="title">Week 2: Stand up Deliverable 02</div><div class="date">Wk 2</div></div>
+      <div class="tag">Event</div>
+      <div class="desc">Wire the B2B Order Placed event. Test fire from a sandbox Pipedrive deal. Confirm <code>is_reorder</code> logic against a profile with prior orders.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">03</div>
+    <div class="body">
+      <div class="row1"><div class="title">QA: verification checks</div><div class="date">End Wk 2</div></div>
+      <div class="tag">QA</div>
+      <div class="desc">For 5 sample Pipedrive deals, confirm every form field is on the matching Klaviyo profile and the values match. Fire the event from a closed-Won test deal and confirm it lands in Klaviyo within 60 seconds, with the full payload.</div>
+    </div>
+  </div>
+
+  <h2>What we need from you to start</h2>
+  <p class="sub">Three things to confirm before Week 1 kicks off.</p>
+
+  <div class="camp">
+    <div class="num">01</div>
+    <div class="body">
+      <div class="row1"><div class="title">Outfunnel scope</div></div>
+      <div class="tag">Access</div>
+      <div class="desc">Does the current Outfunnel setup have write access on Klaviyo profile properties, or do we need to authorise a new scope?</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">02</div>
+    <div class="body">
+      <div class="row1"><div class="title">Custom event delivery path</div></div>
+      <div class="tag">Plumbing</div>
+      <div class="desc">Preference for posting the B2B Order Placed event: direct from Pipedrive (webhook to Klaviyo Track API), or routed through Moti's middleware?</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">03</div>
+    <div class="body">
+      <div class="row1"><div class="title">Pipedrive field IDs</div></div>
+      <div class="tag">Mapping</div>
+      <div class="desc">Once you have access, share the field-ID list for the 3-page form. We'll confirm the property-name map matches before you start coding.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="wordmark">tethrd<span class="x">×</span>Rippl</div>
+  <div class="copy">Prepared 30 May 2026 · for Moti · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2B Lead-Gen Approach — Tethrd × Rippl</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #fafafa;
+    --dark: #0a0a0a;
+    --ink: #0a0a0a;
+    --ink-2: #3a3a3a;
+    --ink-3: #6a6a6a;
+    --ink-4: #a0a0a0;
+    --line: #e8e8e8;
+    --line-2: #d0d0d0;
+    --accent: #1f5d6e;
+    --b2b: #4a5a6e;
+    --b2b-bg: #e6eaef;
+    --brand: #4a6a4a;
+    --brand-bg: #e9efe9;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 32px; }
+
+  .topbar { padding: 28px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .wordmark { font-weight: 800; font-size: 15px; letter-spacing: -0.02em; color: var(--ink); }
+  .wordmark .x { color: var(--ink-4); margin: 0 8px; font-weight: 400; }
+  .wordmark .partner { font-weight: 600; }
+  .topbar .meta-right { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.12em; }
+
+  .hero { padding: 80px 0 56px; border-bottom: 1px solid var(--line); margin-bottom: 56px; }
+  .eyebrow { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 28px; }
+  h1 { font-size: 56px; line-height: 1.02; font-weight: 800; margin: 0 0 28px; letter-spacing: -0.035em; color: var(--ink); }
+  h1 .accent { color: var(--accent); }
+  .lede { font-size: 18px; line-height: 1.5; color: var(--ink-2); max-width: 680px; font-weight: 400; margin: 0; }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 56px 0; padding: 32px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stat { padding: 0 24px; border-right: 1px solid var(--line); }
+  .stat:first-child { padding-left: 0; }
+  .stat:last-child { border-right: none; padding-right: 0; }
+  .stat .n { font-size: 38px; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 10px; font-weight: 500; }
+
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin: 64px 0 16px; color: var(--ink); }
+  h2 + .sub { font-size: 14px; color: var(--ink-3); margin: 0 0 24px; max-width: 680px; }
+
+  .camp { display: grid; grid-template-columns: 64px 1fr; gap: 28px; padding: 28px 0; border-top: 1px solid var(--line); align-items: start; }
+  .camp:last-of-type { border-bottom: 1px solid var(--line); }
+  .camp .num { font-size: 28px; font-weight: 800; color: var(--ink-4); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .camp .body { min-width: 0; }
+  .camp .row1 { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 6px; }
+  .camp .title { font-size: 17px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  .camp .date { font-size: 13px; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 500; }
+  .camp .tag { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; padding-left: 12px; border-left: 2px solid var(--ink-4); }
+  .camp .tag.b2b { color: var(--b2b); border-color: var(--b2b); }
+  .camp .tag.brand { color: var(--brand); border-color: var(--brand); }
+  .camp .desc { font-size: 14.5px; color: var(--ink-2); margin: 6px 0 0; line-height: 1.6; }
+  .camp .desc strong { color: var(--ink); font-weight: 600; }
+
+  .quote-block { padding: 40px 0; margin: 32px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .quote-block .q { font-size: 24px; font-weight: 500; line-height: 1.35; letter-spacing: -0.015em; color: var(--ink); max-width: 760px; }
+  .quote-block .attr { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 20px; font-weight: 600; }
+
+  .handoff { padding: 28px 32px; border: 1px solid var(--line); border-left: 3px solid var(--accent); background: var(--bg-soft); margin-top: 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .handoff .text { font-size: 15px; color: var(--ink-2); max-width: 540px; }
+  .handoff .text strong { color: var(--ink); }
+  .handoff .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: var(--accent); color: #ffffff; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 2px; }
+  .handoff .btn:hover { background: var(--ink); }
+
+  .approvals { margin: 32px 0 0; }
+  .approve-item { display: grid; grid-template-columns: 64px 1fr; gap: 28px; padding: 28px 0; border-top: 1px solid var(--line); }
+  .approve-item:last-child { border-bottom: 1px solid var(--line); }
+  .approve-item .num { font-size: 28px; font-weight: 800; color: var(--accent); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .approve-item .title { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+  .approve-item .ask { font-size: 14.5px; color: var(--ink-2); line-height: 1.6; }
+  .approve-item .ask strong { color: var(--ink); }
+
+  .footer { background: var(--dark); color: #ffffff; margin-top: 96px; padding: 48px 32px; text-align: center; }
+  .footer .wordmark { color: #ffffff; font-size: 16px; }
+  .footer .wordmark .x { color: rgba(255,255,255,0.4); }
+  .footer .copy { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 20px; font-weight: 500; }
+  .footer .copy a { color: rgba(255,255,255,0.7); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
+
+  @media print {
+    body { background: white; }
+    .camp, .approve-item { break-inside: avoid; }
+    .footer { background: white; color: black; }
+    .footer .wordmark { color: black; }
+    .footer .copy { color: black; }
+    .handoff { break-inside: avoid; }
+  }
+  @media (max-width: 720px) {
+    h1 { font-size: 38px; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
+    .stat { border-right: none; padding: 0 16px; }
+    .camp, .approve-item { grid-template-columns: 1fr; gap: 12px; }
+    .handoff { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="wordmark">tethrd<span class="x">×</span><span class="partner">Rippl</span></div>
+    <div class="meta-right">May 2026 · B2B Lead-Gen</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">For Bade · B2B Lead-Gen Approach</div>
+    <h1>B2B is 20% of revenue today.<br>Lifecycle turns it into <span class="accent">40–50%.</span></h1>
+    <p class="lede">
+      Three things move the needle on B2B: catch the lower-intent traffic Custom Branded already gets, pipe Pipedrive's form data into Klaviyo so every email can personalise off the brief, and run a reorder reminder timed to each customer's cycle. <strong>The rest is sequencing.</strong>
+    </p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">~20%</div><div class="l">B2B Revenue Share</div></div>
+    <div class="stat"><div class="n">~80%</div><div class="l">Inquiry → Win</div></div>
+    <div class="stat"><div class="n">2–12mo</div><div class="l">Sales Cycle</div></div>
+    <div class="stat"><div class="n">0–2</div><div class="l">EDM Direct Attribution</div></div>
+  </div>
+
+  <h2>Where B2B sits today</h2>
+  <p class="sub">Quick read on the current state before the rest of this makes sense. Four things matter.</p>
+
+  <div class="camp">
+    <div class="num">01</div>
+    <div class="body">
+      <div class="row1"><div class="title">The buyer is a Marketing Manager</div></div>
+      <div class="tag b2b">Persona</div>
+      <div class="desc">Bade's deck names the persona. The person buying Custom Branded at L'Oréal, Mercedes, or New Balance is a marketing manager. Tone, content, and offers all have to land for that role.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">02</div>
+    <div class="body">
+      <div class="row1"><div class="title">95% visit the site first</div></div>
+      <div class="tag b2b">Funnel</div>
+      <div class="desc">The Pipedrive funnel was built laser-tight on purpose. Pricing, timelines, and social proof all upfront so only high-intent people submit. That's why inquiry-to-win sits at <strong>~80%</strong>. It also means every lower-intent visitor leaves no trace.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">03</div>
+    <div class="body">
+      <div class="row1"><div class="title">Two model shifts inside 60 days</div></div>
+      <div class="tag b2b">Roadmap</div>
+      <div class="desc">Self-customiser drops MOQ from 240 to 120 (live in ~6 weeks). End of July the business switches to on-demand. Both mean reorder cadence becomes <strong>per-account, not per-calendar</strong>, and the email program has to follow.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">04</div>
+    <div class="body">
+      <div class="row1"><div class="title">Sample pack works. Reorder leaks.</div></div>
+      <div class="tag b2b">Gap</div>
+      <div class="desc">$20 sample pack does its job. What's missing is everything after the first custom order. No post-purchase flow, no personalised reorder reminder, no recovery on dormant accounts. Customers reorder a week after an EDM the AM picks up, and <strong>Klaviyo never sees it.</strong></div>
+    </div>
+  </div>
+
+  <h2>Where the funnel breaks</h2>
+  <p class="sub">Three breaks, in priority order. Fixing them in sequence is what unlocks the rest of the program.</p>
+
+  <div class="camp">
+    <div class="num">01</div>
+    <div class="body">
+      <div class="row1"><div class="title">Lower-intent traffic walks</div></div>
+      <div class="tag b2b">Top of funnel</div>
+      <div class="desc">The Custom Branded page and vessel pages get visible traffic. None of it is captured before the high-intent form. The form was designed for high intent only, which made sense before there was a lifecycle to nurture into. <strong>There is one now.</strong></div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">02</div>
+    <div class="body">
+      <div class="row1"><div class="title">Pipedrive data stops at Pipedrive</div></div>
+      <div class="tag b2b">Data sync</div>
+      <div class="desc">Outfunnel syncs the email. The rest of the form (vessel, quantity, deadline, role, design context) never reaches Klaviyo. <strong>Every B2B email is generic because of it.</strong></div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">03</div>
+    <div class="body">
+      <div class="row1"><div class="title">Reorders happen off-platform</div></div>
+      <div class="tag b2b">Reorder</div>
+      <div class="desc">May EDM with timelines drove one direct response. The AMs picked up several more reorders 7–10 days later, untagged. People are reading and acting. <strong>Klaviyo just doesn't see it,</strong> and the next send can't learn from it.</div>
+    </div>
+  </div>
+
+  <h2>The approach</h2>
+  <p class="sub">Five pillars, sequenced over 90 days. Pillars 1 and 2 unlock the rest.</p>
+
+  <div class="camp">
+    <div class="num">01</div>
+    <div class="body">
+      <div class="row1"><div class="title">ALIA pop-up on the Custom Branded funnel</div></div>
+      <div class="tag b2b">Capture</div>
+      <div class="desc">ALIA pop-up on the Custom Branded page and each vessel page, capturing email from the cold tier the existing form is too heavy to catch. <strong>Incentive to be confirmed.</strong> We'll trial a few before locking one.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">02</div>
+    <div class="body">
+      <div class="row1"><div class="title">Pipedrive → Klaviyo data sync</div></div>
+      <div class="tag b2b">Foundation</div>
+      <div class="desc">Every form field becomes a Klaviyo property. A B2B Order Placed event fires on the Pipedrive Won stage so we can read conversion rate directly. <strong>Full spec on its own page for Moti, linked below.</strong></div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">03</div>
+    <div class="body">
+      <div class="row1"><div class="title">One B2B welcome flow</div></div>
+      <div class="tag b2b">Activation</div>
+      <div class="desc">One welcome flow for B2B subscribers. We'll work out the structure (single linear vs split by source) at implementation time, once we see how the ALIA captures, sample-pack buyers, and custom-form submitters actually distribute.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">04</div>
+    <div class="body">
+      <div class="row1"><div class="title">Personalised reorder flow</div></div>
+      <div class="tag b2b">Retention</div>
+      <div class="desc">Triggered when a Pipedrive deal moves to Won. Dynamic wait tied to each account's reorder cycle. The email pre-fills their last order with a one-click reorder link. <strong>Fixes the leakage you flagged twice on the call.</strong></div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">05</div>
+    <div class="body">
+      <div class="row1"><div class="title">Dormant recovery + objection survey</div></div>
+      <div class="tag b2b">Recovery</div>
+      <div class="desc">When a Pipedrive deal goes Lost or Dormant, Klaviyo fires a short founder-led survey ("what stopped you?") plus a 30-day soft re-engagement track. Recovers some, feeds product input back to you.</div>
+    </div>
+  </div>
+
+  <h2>The reorder loop, in more detail</h2>
+  <p class="sub">Pillar 04, expanded. This is the one with the highest revenue impact in the doc.</p>
+
+  <div class="quote-block">
+    <div class="q">"This is going to be our best chance to combat the thing I was saying before, which is that people aren't responding to the customer timeline days."</div>
+    <div class="attr">Bade · Rippl × Tethrd Kickoff · 25 May 2026</div>
+  </div>
+
+  <div class="camp">
+    <div class="num">01</div>
+    <div class="body">
+      <div class="row1"><div class="title">Trigger on Pipedrive Won</div></div>
+      <div class="tag b2b">Trigger</div>
+      <div class="desc">Flow fires when a deal closes (and, post-self-customiser, when a Shopify B2B order lands). Wait step is dynamic, based on the customer's <strong>reorder cycle in days</strong>.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">02</div>
+    <div class="body">
+      <div class="row1"><div class="title">Email 1: personalised nudge</div></div>
+      <div class="tag b2b">Day cycle − 14</div>
+      <div class="desc">Subject and body call out the company name, last vessel, and quantity. Body links to a pre-filled reorder. AM signature where there's a named AM, brand signature otherwise.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">03</div>
+    <div class="body">
+      <div class="row1"><div class="title">Email 2: one-click reorder + AM contact</div></div>
+      <div class="tag b2b">+5 days if no reorder</div>
+      <div class="desc">Shorter follow-up. Same pre-fill, plus the AM's direct line if they want to talk turnaround.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">04</div>
+    <div class="body">
+      <div class="row1"><div class="title">Email 3: lost-sale recovery</div></div>
+      <div class="tag b2b">+7 days if still nothing</div>
+      <div class="desc">One open question: <strong>"What stopped you from reordering?"</strong> Responses pipe back as a custom event and surface to the sales team in a weekly digest. Bade's ask from the call.</div>
+    </div>
+  </div>
+
+  <h2>Pipedrive → Klaviyo data sync</h2>
+  <p class="sub">Two things, no more. Field-by-field spec is on its own page so it can go straight to Moti.</p>
+
+  <div class="camp">
+    <div class="num">01</div>
+    <div class="body">
+      <div class="row1"><div class="title">Every form field maps to a Klaviyo property</div></div>
+      <div class="tag b2b">Profile</div>
+      <div class="desc">Each input on the Custom Branded form (vessel, quantity, role, company, deadline, design notes) lands as a named Klaviyo profile property. <strong>That's what makes every email personalisable.</strong></div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">02</div>
+    <div class="body">
+      <div class="row1"><div class="title">B2B Order Placed event on Pipedrive Won</div></div>
+      <div class="tag b2b">Event</div>
+      <div class="desc">A custom event fires into Klaviyo whenever a B2B deal closes (and, post-on-demand, whenever a Shopify B2B order lands). Matched against the inquiry, this gives us <strong>conversion rate directly in Klaviyo</strong> so we can tune the approach from real data.</div>
+    </div>
+  </div>
+
+  <div class="handoff">
+    <div class="text">The full field-by-field map plus the event payload spec lives on its own page so it can go straight to <strong>Bhuv at Moti</strong> without the rest of this deck.</div>
+    <a class="btn" href="2026-05-integration-spec-for-moti.html">Open integration spec →</a>
+  </div>
+
+  <h2>90-day plan</h2>
+  <p class="sub">Pillars 1 and 2 in parallel through weeks 1–4. Pillars 3, 4 build on top. Pillar 5 lands in month 3.</p>
+
+  <div class="camp">
+    <div class="num">01</div>
+    <div class="body">
+      <div class="row1"><div class="title">Weeks 1–2: brief Moti, scope ALIA</div><div class="date">2–13 June</div></div>
+      <div class="tag b2b">Foundation</div>
+      <div class="desc">Send the integration spec to Bhuv at Moti, kick off the field-map build. Configure ALIA for the Custom Branded and vessel pages. Tag historical sample-pack buyers retroactively in Pipedrive.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">02</div>
+    <div class="body">
+      <div class="row1"><div class="title">Weeks 3–4: capture live</div><div class="date">16–27 June</div></div>
+      <div class="tag b2b">Activation</div>
+      <div class="desc">ALIA live on Custom Branded + 3 vessel pages. B2B welcome flow built and live, structure picked based on the actual capture mix. B2B Order Placed event landing in Klaviyo. Conversion baseline measurable.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">03</div>
+    <div class="body">
+      <div class="row1"><div class="title">Month 2: reorder loop live</div><div class="date">Jul</div></div>
+      <div class="tag b2b">Retention</div>
+      <div class="desc">Reorder flow built, dynamic wait per account. Zero-party question added to capture reorder frequency. First reorder sends out. We measure direct attribution against the May baseline (0–2 per send).</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">04</div>
+    <div class="body">
+      <div class="row1"><div class="title">Month 3: recovery + self-customiser launch</div><div class="date">Aug</div></div>
+      <div class="tag b2b">Recovery + Scale</div>
+      <div class="desc">Pillar 5 lost / dormant recovery flow built. Self-customiser launch day push to a pre-warmed waitlist. Reorder flow retargeted to fire off Shopify B2B-tagged orders. 30-day report: reorder revenue from flow, baseline lift, where the leaks are now.</div>
+    </div>
+  </div>
+
+  <h2>What we need from you to lock the plan in</h2>
+  <p class="sub">Five things.</p>
+
+  <div class="approvals">
+    <div class="approve-item">
+      <div class="num">01</div>
+      <div>
+        <div class="title">Sign-off on the ALIA pop-up scope</div>
+        <div class="ask">Confirm ALIA goes live on the Custom Branded page + 3 vessel pages for cold capture. Incentive can stay TBD for now.</div>
+      </div>
+    </div>
+    <div class="approve-item">
+      <div class="num">02</div>
+      <div>
+        <div class="title">Reorder-flow signature</div>
+        <div class="ask">AM-signed for named-AM accounts, brand-signed for the rest. Need the named-AM list to wire it up.</div>
+      </div>
+    </div>
+    <div class="approve-item">
+      <div class="num">03</div>
+      <div>
+        <div class="title">Self-customiser discount value</div>
+        <div class="ask">Confirm the discount you're locking in for the customiser launch so the welcome and reorder flows can route subscribers there with the offer baked in.</div>
+      </div>
+    </div>
+    <div class="approve-item">
+      <div class="num">04</div>
+      <div>
+        <div class="title">Case studies and logo permissions</div>
+        <div class="ask">A 1-paragraph case study and logo permission from L'Oréal, Mercedes, New Balance, plus the Fashion Week feature. Used inside the welcome flow and reorder confidence emails.</div>
+      </div>
+    </div>
+    <div class="approve-item">
+      <div class="num">05</div>
+      <div>
+        <div class="title">The 5 customer-leakage examples</div>
+        <div class="ask">The reorder examples you mentioned on the call. We'll use them to confirm where the flow would have caught the reorder, before we ship.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="wordmark">tethrd<span class="x">×</span>Rippl</div>
+  <div class="copy">Prepared 30 May 2026 · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a></div>
+</div>
+
+</body>
+</html>
