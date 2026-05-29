@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rippl × Tethrd — June 2026 Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #fafafa;
+    --ink: #0a0a0a;
+    --ink-2: #3a3a3a;
+    --ink-3: #6a6a6a;
+    --ink-4: #a0a0a0;
+    --line: #e8e8e8;
+    --line-2: #d0d0d0;
+    --accent: #1f5d6e;
+    --eofy: #8a7240;
+    --brand: #4a6a4a;
+    --b2b: #4a5a6e;
+    --beauty: #8a5a6a;
+    --dark: #0a0a0a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 32px; }
+
+  /* === TOP BAR === */
+  .topbar {
+    padding: 28px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .wordmark {
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .wordmark .x { color: var(--ink-4); margin: 0 8px; font-weight: 400; }
+  .wordmark .partner { font-weight: 600; }
+  .topbar .meta-right { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.12em; }
+
+  /* === HERO === */
+  .hero { padding: 80px 0 56px; border-bottom: 1px solid var(--line); margin-bottom: 56px; }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.02;
+    font-weight: 800;
+    margin: 0 0 28px;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+  }
+  h1 .accent { color: var(--accent); }
+  .lede {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 680px;
+    font-weight: 400;
+    margin: 0;
+  }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  /* === STATS === */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin: 56px 0;
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat { padding: 0 24px; border-right: 1px solid var(--line); }
+  .stat:first-child { padding-left: 0; }
+  .stat:last-child { border-right: none; padding-right: 0; }
+  .stat .n {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .stat .l {
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  /* === SECTION HEADERS === */
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 64px 0 16px;
+    color: var(--ink);
+  }
+  h2 + .sub {
+    font-size: 14px;
+    color: var(--ink-3);
+    margin: 0 0 24px;
+  }
+
+  /* === CALENDAR GRID === */
+  .cal {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 32px;
+  }
+  .cal th {
+    background: transparent;
+    color: var(--ink-4);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 10px;
+    padding: 12px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .cal td {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 10px;
+    height: 84px;
+    vertical-align: top;
+  }
+  .cal td.muted { background: transparent; border-color: transparent; }
+  .cal td .d {
+    font-size: 11px;
+    color: var(--ink-4);
+    font-weight: 600;
+  }
+  .cal td .d.hi { color: var(--ink); }
+  .cal td .ev {
+    margin-top: 6px;
+    font-size: 11px;
+    line-height: 1.3;
+    padding: 4px 7px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+  .cal td .ev.eofy { background: #f5efde; color: var(--eofy); }
+  .cal td .ev.brand { background: #e9efe9; color: var(--brand); }
+  .cal td .ev.b2b { background: #e6eaef; color: var(--b2b); }
+  .cal td .ev.beauty { background: #efe6ea; color: var(--beauty); }
+
+  .legend {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 11px;
+    color: var(--ink-3);
+    margin: 0 0 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .legend i { width: 10px; height: 2px; display: inline-block; }
+
+  /* === CAMPAIGN CARDS — NUMBERED === */
+  .week-strip {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 48px 0 8px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .week-strip h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .week-strip .wmeta {
+    font-size: 11px;
+    color: var(--ink-4);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+  }
+  .week-note {
+    font-size: 13px;
+    color: var(--ink-3);
+    margin: 0 0 24px;
+    max-width: 620px;
+  }
+
+  .camp {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .camp:last-of-type { border-bottom: 1px solid var(--line); }
+  .camp .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink-4);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .camp .body { min-width: 0; }
+  .camp .row1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .camp .title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .camp .date {
+    font-size: 13px;
+    color: var(--ink-3);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+  }
+  .camp .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+    padding-left: 12px;
+    border-left: 2px solid var(--ink-4);
+  }
+  .camp .tag.eofy { color: var(--eofy); border-color: var(--eofy); }
+  .camp .tag.brand { color: var(--brand); border-color: var(--brand); }
+  .camp .tag.b2b { color: var(--b2b); border-color: var(--b2b); }
+  .camp .tag.beauty { color: var(--beauty); border-color: var(--beauty); }
+  .camp .desc {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    margin: 6px 0 0;
+    line-height: 1.6;
+  }
+  .camp .desc strong { color: var(--ink); font-weight: 600; }
+
+  /* === APPROVALS === */
+  .approvals {
+    margin: 32px 0 0;
+  }
+  .approve-item {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+  .approve-item:last-child { border-bottom: 1px solid var(--line); }
+  .approve-item .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .approve-item .title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .approve-item .ask {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    background: var(--dark);
+    color: #ffffff;
+    margin-top: 96px;
+    padding: 48px 32px;
+    text-align: center;
+  }
+  .footer .wordmark { color: #ffffff; font-size: 16px; }
+  .footer .wordmark .x { color: rgba(255,255,255,0.4); }
+  .footer .copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+  .footer .copy a { color: rgba(255,255,255,0.7); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
+
+  @media print {
+    body { background: white; }
+    .camp, .approve-item { break-inside: avoid; }
+    .footer { background: white; color: black; }
+    .footer .wordmark { color: black; }
+    .footer .copy { color: black; }
+  }
+  @media (max-width: 720px) {
+    h1 { font-size: 38px; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
+    .stat { border-right: none; padding: 0 16px; }
+    .stat:nth-child(2) { border-right: none; }
+    .camp, .approve-item { grid-template-columns: 1fr; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="wordmark">tethrd<span class="x">×</span><span class="partner">Rippl</span></div>
+    <div class="meta-right">June 2026 · Customer lifecycle</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">For Bade Hilton · Review &amp; sign-off</div>
+    <h1>12 campaigns.<br>One <span class="accent">EOFY</span>.<br>The glass bottle sells it.</h1>
+    <p class="lede">
+      Here's the plan for June. <strong>EOFY runs 15-30 June with $225 off Rippl Pure plus a free glass bottle on every order.</strong> The Beauty Chef opt-in opens the month, written as a VIP invite to the EOFY drop so we activate the list and tease the sale in the one send. World Oceans Day with CleanHub handles the re-warm in week 2. Two teasers with breathing room between them lead into the Monday launch. For the mid-sale push, the angle matters more than the volume.
+    </p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">12</div><div class="l">Campaigns</div></div>
+    <div class="stat"><div class="n">15–30</div><div class="l">EOFY window</div></div>
+    <div class="stat"><div class="n">$225</div><div class="l">Off Pure + GWP</div></div>
+    <div class="stat"><div class="n">6 Jun</div><div class="l">First send</div></div>
+  </div>
+
+  <h2>The month at a glance</h2>
+  <p class="sub">First send 6 June. Last send 30 June.</p>
+
+  <div class="legend">
+    <span><i style="background:var(--eofy);"></i>EOFY sale</span>
+    <span><i style="background:var(--brand);"></i>Brand / purpose</span>
+    <span><i style="background:var(--b2b);"></i>B2B / corporate</span>
+    <span><i style="background:var(--beauty);"></i>Beauty Chef list</span>
+  </div>
+
+  <table class="cal">
+    <thead><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="d">1</div></td><td><div class="d">2</div></td><td><div class="d">3</div></td><td><div class="d">4</div></td><td><div class="d">5</div></td>
+        <td><div class="d hi">6</div><div class="ev beauty">Beauty Chef VIP opt-in</div></td>
+        <td><div class="d">7</div></td>
+      </tr>
+      <tr>
+        <td><div class="d hi">8</div><div class="ev brand">World Oceans Day</div></td>
+        <td><div class="d hi">9</div><div class="ev b2b">B2B reorder reminder</div></td>
+        <td><div class="d">10</div></td><td><div class="d">11</div></td>
+        <td><div class="d hi">12</div><div class="ev eofy">EOFY Teaser 1</div></td>
+        <td><div class="d">13</div></td>
+        <td><div class="d hi">14</div><div class="ev eofy">EOFY Teaser 2</div></td>
+      </tr>
+      <tr>
+        <td><div class="d hi">15</div><div class="ev eofy">EOFY LAUNCH</div></td>
+        <td><div class="d">16</div></td><td><div class="d">17</div></td>
+        <td><div class="d hi">18</div><div class="ev eofy">Customer story</div></td>
+        <td><div class="d">19</div></td>
+        <td><div class="d hi">20</div><div class="ev eofy">Tax-time framing</div></td>
+        <td><div class="d">21</div></td>
+      </tr>
+      <tr>
+        <td><div class="d">22</div></td>
+        <td><div class="d hi">23</div><div class="ev eofy">Glass bottle urgency</div></td>
+        <td><div class="d hi">24</div><div class="ev b2b">B2B EOFY budget</div></td>
+        <td><div class="d">25</div></td><td><div class="d">26</div></td>
+        <td><div class="d hi">27</div><div class="ev eofy">Last weekend</div></td>
+        <td><div class="d">28</div></td>
+      </tr>
+      <tr>
+        <td><div class="d">29</div></td>
+        <td><div class="d hi">30</div><div class="ev eofy">FINAL 24hr</div></td>
+        <td class="muted"></td><td class="muted"></td><td class="muted"></td><td class="muted"></td><td class="muted"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Campaign by campaign</h2>
+  <p class="sub">12 sends. What each is, when it goes.</p>
+
+  <!-- WEEK 1 -->
+  <div class="week-strip"><h3>Week 1 — Beauty Chef VIP activation</h3><div class="wmeta">1 – 7 Jun · 1 send</div></div>
+  <p class="week-note">One send to start the month. The Beauty Chef opt-in goes early so we have nine days for confirmations to come in before EOFY launches.</p>
+
+  <div class="camp">
+    <div class="num">01</div>
+    <div class="body">
+      <div class="row1"><div class="title">Beauty Chef list — VIP opt-in for EOFY early access</div><div class="date">Sat 6 Jun</div></div>
+      <div class="tag beauty">List activation · EOFY-anchored</div>
+      <div class="desc">First email to the ~4,500 leads from February's Beauty Chef giveaway. We ask them to confirm they want to hear from Rippl, framed as joining a VIP list with early access to the EOFY drop (<strong>$225 off Pure plus the free glass bottle</strong>). Cleans the list and teases the sale in the one send.</div>
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week-strip"><h3>Week 2 — Re-warm + two-step EOFY tease</h3><div class="wmeta">8 – 14 Jun · 4 sends</div></div>
+  <p class="week-note">World Oceans Day re-introduces the brand on Monday. B2B reorder sits alongside Tuesday (different audience). Then nothing until Friday, when the first EOFY teaser goes. Second teaser Sunday. Launch Monday.</p>
+
+  <div class="camp">
+    <div class="num">02</div>
+    <div class="body">
+      <div class="row1"><div class="title">World Oceans Day — CleanHub partnership EDM</div><div class="date">Mon 8 Jun</div></div>
+      <div class="tag brand">Brand · Purpose-led</div>
+      <div class="desc">Using Charlotte's CleanHub draft plus the animated GIF she sent through. Leads with the <strong>859kg plastic-recovered stat</strong>. No discount, no sale push — purely a brand send, which is what we want for the first proper re-warm after the domain hold. 8 June is also King's Birthday, so we'll catch strong inbox attention on a usually quiet Monday.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">03</div>
+    <div class="body">
+      <div class="row1"><div class="title">B2B reorder reminder</div><div class="date">Tue 9 Jun</div></div>
+      <div class="tag b2b">B2B · Corporate accounts</div>
+      <div class="desc">A reminder to existing corporate customers to put their reorder in before the production cut-off. Leads with the deadline and what they miss if they wait. Main CTA is to their account manager, secondary is the self-serve inquiry form.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">04</div>
+    <div class="body">
+      <div class="row1"><div class="title">EOFY Teaser 1 — save the date</div><div class="date">Fri 12 Jun</div></div>
+      <div class="tag eofy">EOFY · Soft teaser</div>
+      <div class="desc">Soft save-the-date. "Monday 15 June. Something for your water." No mention of the discount or the bottle yet. Three days out, just enough to plant the seed without giving away the reveal.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">05</div>
+    <div class="body">
+      <div class="row1"><div class="title">EOFY Teaser 2 — the reveal</div><div class="date">Sun 14 Jun</div></div>
+      <div class="tag eofy">EOFY · Hard teaser</div>
+      <div class="desc">Day-before reveal. <strong>"Tomorrow: $225 off Rippl Pure plus a free glass bottle with every purchase."</strong> Full offer on the table this time. CTA goes to the landing page. Sunday evening send so it's the first thing they see Monday.</div>
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="week-strip"><h3>Week 3 — EOFY launches</h3><div class="wmeta">15 – 21 Jun · 3 sends</div></div>
+  <p class="week-note">Sale opens Monday. Launch goes out, then a three-day pause, then a two-day pause. Three sends across the week.</p>
+
+  <div class="camp">
+    <div class="num">06</div>
+    <div class="body">
+      <div class="row1"><div class="title">EOFY LAUNCH — $225 off Pure + free glass bottle</div><div class="date">Mon 15 Jun</div></div>
+      <div class="tag eofy">EOFY · Launch</div>
+      <div class="desc">The launch email. $225 off Pure with a free glass bottle on every order. Hero image is Pure and the bottle together. Subject line leads with the offer. 6pm resend to non-openers with a different subject so we don't leave first-day revenue sitting in unopened inboxes.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">07</div>
+    <div class="body">
+      <div class="row1"><div class="title">Customer story — why Rippl Pure</div><div class="date">Thu 18 Jun</div></div>
+      <div class="tag eofy">EOFY · Social proof</div>
+      <div class="desc">One real customer. Their water concern, why they picked Rippl Pure over the alternatives, what's different now. Written as a story rather than a sales email. CTA back to the offer at the end.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">08</div>
+    <div class="body">
+      <div class="row1"><div class="title">Tax-time cost framing</div><div class="date">Sat 20 Jun</div></div>
+      <div class="tag eofy">EOFY · Cost angle</div>
+      <div class="desc">For the buyers who want to justify it on numbers. Frames Pure as a one-time tax-year spend that pays itself back against a year of bottled water. Plays into the EOFY headspace where everyone's already running annual maths in their head.</div>
+    </div>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div class="week-strip"><h3>Week 4 — Mid-sale push</h3><div class="wmeta">22 – 28 Jun · 3 sends</div></div>
+  <p class="week-note">Glass bottle urgency Tuesday, B2B EOFY-budget Wednesday, weekend urgency Saturday. Spaced out so nothing lands back-to-back.</p>
+
+  <div class="camp">
+    <div class="num">09</div>
+    <div class="body">
+      <div class="row1"><div class="title">The glass bottle is going fast</div><div class="date">Tue 23 Jun</div></div>
+      <div class="tag eofy">EOFY · GWP urgency</div>
+      <div class="desc">Mid-sale send that puts the glass bottle in the centre. <strong>"The free glass bottle has [X] orders against it — it's becoming the thing people are claiming this drop for."</strong> Makes the bottle feel desirable rather than a throw-in, which gives the fence-sitters a reason to act without us touching the discount lever again.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">10</div>
+    <div class="body">
+      <div class="row1"><div class="title">B2B EOFY budget — lock orders before FY close</div><div class="date">Wed 24 Jun</div></div>
+      <div class="tag b2b">B2B · EOFY-budget play</div>
+      <div class="desc">B2B-only send. "Remaining FY25 marketing budget? Lock your custom-branded can order this week. Invoices issued by 30 June qualify for this financial year." The one time all year the use-it-or-lose-it budget conversation actually lands with corporate buyers.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">11</div>
+    <div class="body">
+      <div class="row1"><div class="title">Last weekend urgency</div><div class="date">Sat 27 Jun</div></div>
+      <div class="tag eofy">EOFY · Urgency</div>
+      <div class="desc">"Last weekend to lock the EOFY drop." Deadline-led copy, a short list of what's in (price, the bottle, delivery), one CTA. Goes to anyone who's opened an EOFY email and hasn't bought yet.</div>
+    </div>
+  </div>
+
+  <!-- WEEK 5 -->
+  <div class="week-strip"><h3>Week 5 — Close</h3><div class="wmeta">29 – 30 Jun · 1 send</div></div>
+  <p class="week-note">Single send. Final 24 hours. Maximum urgency.</p>
+
+  <div class="camp">
+    <div class="num">12</div>
+    <div class="body">
+      <div class="row1"><div class="title">Final 24 hours — close out</div><div class="date">Tue 30 Jun</div></div>
+      <div class="tag eofy">EOFY · Final</div>
+      <div class="desc">Hard close. <strong>"Last 24 hours. $225 off plus the free glass bottle. Both disappear at midnight."</strong> Subject line leads with the hours remaining. 5pm resend to non-openers with a different subject. Strip the body back to the offer, the deadline, the CTA.</div>
+    </div>
+  </div>
+
+  <h2>What we need from you to lock the plan in</h2>
+  <p class="sub">Three things.</p>
+
+  <div class="approvals">
+
+    <div class="approve-item">
+      <div class="num">01</div>
+      <div>
+        <div class="title">EOFY landing page status</div>
+        <div class="ask">Is the early sign-up landing page (the one the Beauty Chef VIP opt-in and Teaser 1 redirect to) on track for 6 June? If it's at risk, both campaigns can point at the Pure product page instead and we'll drop the early-signup mechanic for this run.</div>
+      </div>
+    </div>
+
+    <div class="approve-item">
+      <div class="num">02</div>
+      <div>
+        <div class="title">B2B reorder cut-off date</div>
+        <div class="ask">What's the usual production and fulfilment cut-off date corporate customers need to reorder by? From what we've seen it looks like mid-month, but I'm not sure if that's a continuous monthly thing we can write the campaign against or a one-off this cycle. Need your read on it before we lock the send date.</div>
+      </div>
+    </div>
+
+    <div class="approve-item">
+      <div class="num">03</div>
+      <div>
+        <div class="title">One strong piece of social proof</div>
+        <div class="ask">For the customer story on 18 June, can you share one strong piece of social proof that's been performing for you? UGC is ideal if you've got it. Otherwise a customer we can profile, or something we can pull from existing reviews.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="wordmark">tethrd<span class="x">×</span>Rippl</div>
+  <div class="copy">
+    Prepared 30 May 2026 · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a>
+  </div>
+</div>
+
+</body>
+</html>
