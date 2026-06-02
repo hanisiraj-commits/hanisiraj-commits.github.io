@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copy and Design Brief · Mid-Year Sale VIP List Building</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #0A0A0A;
+    --bg: #FAFAF7;
+    --white: #FFFFFF;
+    --accent: #C8472D;
+    --accent-deep: #9B3520;
+    --warm: #E8E2D8;
+    --linen: #F1ECE2;
+    --muted: #5A5A5A;
+    --border: #E5E5E0;
+  }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--black);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 1100px; margin: 0 auto; padding: 40px 48px; }
+
+  /* HEADER */
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 36px;
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .logo-group { display: flex; align-items: center; gap: 16px; }
+  .logo-tethrd {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    color: var(--black);
+  }
+  .logo-bc { height: 20px; display: block; }
+  .logo-alia { height: 20px; display: block; filter: brightness(0) saturate(100%); opacity: 0.85; }
+  .logo-x { font-size: 15px; color: #B5B5B5; font-weight: 300; line-height: 1; }
+
+  /* HERO */
+  .hero { margin-bottom: 40px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(200, 71, 45, 0.08);
+    padding: 7px 13px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 42px;
+    line-height: 1.1;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 760px;
+    line-height: 1.6;
+  }
+
+  /* SECTION */
+  section { margin-bottom: 48px; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+  h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+    line-height: 1.18;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 800px;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* POPUP CARDS */
+  .popup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .popup-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 28px 30px;
+  }
+  .popup-tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: var(--warm);
+    color: var(--accent-deep);
+    padding: 5px 11px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+  .popup-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .popup-card .pc-sub {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.55;
+  }
+  .pc-rows {
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+  .pc-row {
+    display: grid;
+    grid-template-columns: 85px 1fr;
+    gap: 14px;
+    padding: 8px 0;
+    align-items: baseline;
+  }
+  .pc-key {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pc-val {
+    font-size: 13.5px;
+    color: var(--black);
+    line-height: 1.5;
+  }
+  .pc-val code {
+    background: var(--linen);
+    padding: 1px 7px;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-deep);
+  }
+
+  /* STEPS */
+  .step {
+    background: var(--white);
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+    padding: 26px 32px;
+  }
+  .step-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-num {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .step-h {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.2;
+    flex: 1;
+  }
+  .step-meta {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Copy mock */
+  .copy-mock {
+    background: #FBFAF7;
+    border: 1px solid var(--border);
+    padding: 22px 26px;
+    margin-bottom: 12px;
+  }
+  .copy-mock.variant-existing { background: var(--linen); }
+  .copy-mock-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .copy-mock.variant-existing .copy-mock-label { color: var(--accent-deep); }
+  .mock-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .mock-headline {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    line-height: 1.15;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .mock-subhead {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .mock-body {
+    font-size: 13.5px;
+    color: var(--black);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .mock-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .mock-option {
+    border: 1px solid var(--black);
+    padding: 10px 18px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: white;
+  }
+  .mock-input {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 11px 14px;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .mock-cta {
+    background: var(--black);
+    color: white;
+    padding: 13px 18px;
+    text-align: center;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+  .mock-disclaimer {
+    font-size: 10.5px;
+    color: var(--muted);
+    line-height: 1.45;
+    margin-top: 10px;
+  }
+  .mock-skip {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    letter-spacing: 0.04em;
+  }
+  .step-note {
+    background: var(--linen);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    font-size: 12.5px;
+    color: var(--black);
+    line-height: 1.55;
+    margin-top: 14px;
+  }
+  .step-note strong { color: var(--accent-deep); }
+
+  /* KV ASSETS GRID */
+  .kv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .kv-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .kv-img-wrap {
+    background: var(--linen);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .kv-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .kv-meta {
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .kv-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--warm);
+    color: var(--accent-deep);
+    padding: 4px 9px;
+    border-radius: 3px;
+  }
+  .kv-tag-anim { background: var(--accent); color: white; }
+  .kv-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    margin-top: 36px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 780px) {
+    .page { padding: 28px 20px; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 24px; }
+    .popup-grid, .kv-grid { grid-template-columns: 1fr; }
+    .step { padding: 22px 22px; }
+    .pc-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+  @media print {
+    body { background: white; }
+    .page { padding: 24px; max-width: none; }
+    section { page-break-inside: avoid; margin-bottom: 28px; }
+    .step, .popup-card { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="logo-group">
+      <span class="logo-tethrd">TETHRD</span>
+      <span class="logo-x">×</span>
+      <img src="https://boncharge.com/cdn/shop/files/BonCharge_logo.png?v=1758612476&amp;width=600" alt="Bon Charge" class="logo-bc">
+      <span class="logo-x">×</span>
+      <img src="https://cdn.prod.website-files.com/67f73f7113c2a47b5e2117c1/69a82397179ba529d4112f91_Alia%201.png" alt="Alia" class="logo-alia">
+    </div>
+    <div>June 2026 · Brief for Alia</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">BON CHARGE Mid-Year Sale · VIP list-building popups</div>
+    <h1>Copy and Design Brief for Mid-Year Sale VIP List Building</h1>
+    <p class="hero-sub">Below is the brief for each popup, the copy for every step, and the KV assets Marco has prepared. Everything Alia's team needs to design and build.</p>
+  </div>
+
+  <!-- TWO POPUPS -->
+  <section>
+    <div class="section-label">The two popups</div>
+    <h2>What we need built.</h2>
+
+    <div class="popup-grid">
+      <div class="popup-card">
+        <span class="popup-tag">Popup 1 · Full-page</span>
+        <h3>Triggered on a dedicated URL</h3>
+        <p class="pc-sub">Acts like a landing page on top of the regular homepage. Used for paid traffic, email and SMS landing pages driving traffic into the campaign.</p>
+        <div class="pc-rows">
+          <div class="pc-row">
+            <div class="pc-key">URL</div>
+            <div class="pc-val"><code>boncharge.com/?mys</code> (the <code>?mys</code> query param triggers the popup directly on the homepage; no redirect or custom page needed)</div>
+          </div>
+          <div class="pc-row">
+            <div class="pc-key">Behind it</div>
+            <div class="pc-val">The regular BON CHARGE homepage. No custom landing page to build.</div>
+          </div>
+          <div class="pc-row">
+            <div class="pc-key">Audience</div>
+            <div class="pc-val">Visible to everyone landing on the URL. No suppression.</div>
+          </div>
+          <div class="pc-row">
+            <div class="pc-key">Style</div>
+            <div class="pc-val">Full-page takeover. Treat as landing-page-grade design.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup-card">
+        <span class="popup-tag">Popup 2 · BAU takeover</span>
+        <h3>Replaces the current site-wide popup</h3>
+        <p class="pc-sub">Standard BAU popup behaviour across the site. Runs for the duration of the list-build campaign, then reverts to the previous BAU popup when the sale opens.</p>
+        <div class="pc-rows">
+          <div class="pc-row">
+            <div class="pc-key">Trigger</div>
+            <div class="pc-val">Match current BAU rules (delay or exit-intent).</div>
+          </div>
+          <div class="pc-row">
+            <div class="pc-key">Audience</div>
+            <div class="pc-val">New visitors and non-subscribers only. Existing subs excluded, reached via email instead.</div>
+          </div>
+          <div class="pc-row">
+            <div class="pc-key">Suppression</div>
+            <div class="pc-val">Standard cookie suppression after submit or dismiss.</div>
+          </div>
+          <div class="pc-row">
+            <div class="pc-key">Reverts</div>
+            <div class="pc-val">On Mid-Year Sale open day, BAU popup reverts to the previous version.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE COPY -->
+  <section>
+    <div class="section-label">The copy · Same 4 steps on both popups</div>
+    <h2>Step-by-step copy.</h2>
+    <p class="section-intro">Both popups run the identical 4-step flow. Step 4 has two variants that branch on whether the email belongs to a new or existing subscriber.</p>
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">01</div>
+        <div class="step-h">Wellness goal selector</div>
+        <div class="step-meta">Zero-party data · 4 options</div>
+      </div>
+
+      <div class="copy-mock">
+        <div class="copy-mock-label">Step 1 copy</div>
+        <div class="mock-eyebrow">BON CHARGE · Mid-Year Sale</div>
+        <div class="mock-headline">What's your wellness goal right now?</div>
+        <div class="mock-subhead">Pick the one you want to feel a difference in first</div>
+        <div class="mock-options">
+          <span class="mock-option">Skin</span>
+          <span class="mock-option">Hair</span>
+          <span class="mock-option">Recovery</span>
+          <span class="mock-option">Sleep</span>
+        </div>
+      </div>
+      <div class="step-note">
+        <strong>Behaviour:</strong> selection saves to the existing BON CHARGE wellness-goal Klaviyo property (BC team will share the property name). One selection only, then advance to Step 2 automatically.
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">02</div>
+        <div class="step-h">Email capture</div>
+        <div class="step-meta">Required</div>
+      </div>
+
+      <div class="copy-mock">
+        <div class="copy-mock-label">Step 2 copy</div>
+        <div class="mock-eyebrow">BON CHARGE · Mid-Year Sale</div>
+        <div class="mock-headline">Become a Mid-Year Sale VIP</div>
+        <div class="mock-subhead">24-hour early access plus 30% off our biggest sale of the year</div>
+        <div class="mock-input">Email address</div>
+        <div class="mock-disclaimer">By submitting, you agree to receive marketing emails from BON CHARGE. Unsubscribe anytime.</div>
+        <div class="mock-cta">Become a VIP</div>
+      </div>
+      <div class="step-note">
+        <strong>Behaviour:</strong> on submit, the visitor is officially a VIP. Email goes to Klaviyo with the wellness-goal property already set from Step 1. Then advance to Step 3.
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">03</div>
+        <div class="step-h">SMS capture</div>
+        <div class="step-meta">Optional · Skippable</div>
+      </div>
+
+      <div class="copy-mock">
+        <div class="copy-mock-label">Step 3 copy</div>
+        <div class="mock-eyebrow">BON CHARGE · Mid-Year Sale</div>
+        <div class="mock-headline">Don't miss a single sale alert</div>
+        <div class="mock-subhead">We'll text you the second the sale drops so you're first in line</div>
+        <div class="mock-input">Phone number</div>
+        <div class="mock-disclaimer">By submitting, you agree to receive marketing texts from BON CHARGE. Message and data rates may apply. Unsubscribe anytime.</div>
+        <div class="mock-cta">Add my number</div>
+        <a class="mock-skip" href="#">Skip for now</a>
+      </div>
+      <div class="step-note">
+        <strong>Behaviour:</strong> this step is optional. Visitors can submit a number or click <code>Skip for now</code> to go straight to Step 4. Either way, they're already VIP from Step 2.
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">04</div>
+        <div class="step-h">Confirmation, two variants</div>
+        <div class="step-meta">Branched: new vs existing subscriber</div>
+      </div>
+
+      <div class="copy-mock">
+        <div class="copy-mock-label">Variant A · New subscriber</div>
+        <div class="mock-eyebrow">VIP status confirmed</div>
+        <div class="mock-headline">You're a Mid-Year Sale VIP</div>
+        <div class="mock-subhead">Your VIP access is locked in</div>
+        <p class="mock-body">Also enjoy 15% off your first order to use right now. We'll alert you the moment VIP early access opens, 24 hours ahead of everyone else.</p>
+        <div class="mock-cta">Shop now</div>
+      </div>
+
+      <div class="copy-mock variant-existing">
+        <div class="copy-mock-label">Variant B · Existing subscriber</div>
+        <div class="mock-eyebrow">VIP status confirmed</div>
+        <div class="mock-headline">You're in</div>
+        <div class="mock-subhead">Your VIP early access is locked</div>
+        <p class="mock-body">We'll alert you the moment the Mid-Year Sale opens for VIPs. That's 24 hours before everyone else, with 30% off our biggest sale of the year.</p>
+        <div class="mock-cta">Explore products</div>
+      </div>
+
+      <div class="step-note">
+        <strong>Branching:</strong> on email submit, check if the address already belongs to a Klaviyo profile with marketing consent. If yes, fire Variant B. If no, fire Variant A. The 15% welcome code itself is delivered by email; the confirmation screen just references the offer.
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSETS -->
+  <section>
+    <div class="section-label">Creative assets · KV from Marco</div>
+    <h2>Mid-Year Sale key visual.</h2>
+    <p class="section-intro">Two still layout variants from Marco. Use these as the visual reference for both popup designs.</p>
+
+    <div class="kv-grid">
+      <div class="kv-card">
+        <div class="kv-img-wrap"><img src="mys-assets/mys-kv-v1.png" alt="Mid-Year Sale KV layout A" class="kv-img"></div>
+        <div class="kv-meta">
+          <div class="kv-tag">Layout A</div>
+          <div class="kv-name">mys-kv-v1.png</div>
+        </div>
+      </div>
+      <div class="kv-card">
+        <div class="kv-img-wrap"><img src="mys-assets/mys-kv-v2.png" alt="Mid-Year Sale KV layout B" class="kv-img"></div>
+        <div class="kv-meta">
+          <div class="kv-tag">Layout B</div>
+          <div class="kv-name">mys-kv-v2.png</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-note" style="margin-top:18px;">
+      <strong>Note on the KV copy:</strong> the visual reads "25% off sitewide" because that's the general-audience discount during the public Mid-Year Sale. The popup positions the <strong>VIP 30% perk</strong> instead, so use the KV as visual reference (colour, typography, mood) rather than literal copy. Final popup design should foreground the VIP value, not the 25%.
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div>Tethrd × BON CHARGE · Mid-Year Sale popup brief</div>
+    <div>Prepared 02/06/2026 · For Alia</div>
+  </div>
+
+</div>
+</body>
+</html>
