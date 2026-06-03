@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Steak King UK · F_REFERRAL-REWARD-PROXIMITY · Flow Map</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif; background: #FAFAF7; color: #1a1a1a; }
+  .header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #E5E7EB; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .header h1 { font-size: 15px; margin: 0; letter-spacing: -0.01em; font-weight: 700; }
+  .header h1 code { background: #F3F4F6; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  .header .brand { color: #6B7280; font-size: 12px; margin-left: 8px; }
+  .header .meta { display: flex; gap: 16px; font-size: 12px; color: #6B7280; }
+  .header .meta strong { color: #111; font-weight: 600; }
+
+  .legend { background: #fff; border-bottom: 1px solid #E5E7EB; padding: 10px 28px; font-size: 12px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .legend-item { display: flex; gap: 8px; align-items: center; }
+  .legend-node { width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+
+  .canvas { padding: 30px 20px 60px; overflow-x: auto; background: #FAFAF7; }
+  .board { position: relative; min-width: 1480px; margin: 0 auto; }
+
+  /* NODE STYLES — FigJam aesthetic */
+  .node { position: absolute; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 12px; line-height: 1.35; box-shadow: 0 2px 5px rgba(0,0,0,0.06); transition: transform 0.15s, box-shadow 0.15s; }
+  .node:hover { transform: translateY(-1px); box-shadow: 0 5px 12px rgba(0,0,0,0.1); z-index: 50; }
+
+  .node-trigger    { background: #CFF5D1; border: 2px solid #4CAF50; color: #1B5E20; }
+  .node-compute    { background: #fff;    border: 2px solid #E5E7EB; color: #1a1a1a; }
+  .node-split      { background: #fff;    border: 2px solid #1a1a1a; color: #1a1a1a; }
+  .node-email      { background: #E9D5FF; border: 2px solid #A855F7; color: #581C87; }
+  .node-exit       { background: #F3F4F6; border: 2px dashed #9CA3AF; color: #6B7280; }
+
+  .node-icon { width: 28px; height: 28px; margin-bottom: 5px; opacity: 0.9; }
+  .node-label { font-size: 11px; font-weight: 500; margin-bottom: 2px; opacity: 0.8; }
+  .node-title { font-size: 13px; font-weight: 700; line-height: 1.25; }
+  .node-subtitle { font-size: 10px; font-weight: 500; opacity: 0.75; margin-top: 4px; font-family: Menlo, monospace; }
+
+  /* CONTENT BOX */
+  .content-box {
+    position: absolute;
+    background: #F3F4F6;
+    border: 1px solid #D1D5DB;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #111;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  }
+  .content-box .heading { font-weight: 700; margin-bottom: 8px; font-size: 11px; }
+  .content-box ul { margin: 6px 0; padding-left: 16px; }
+  .content-box li { margin: 3px 0; }
+  .content-box code { background: #E5E7EB; padding: 1px 4px; border-radius: 3px; font-size: 10px; font-family: Menlo, monospace; }
+  .content-box .subj { font-family: Menlo, monospace; font-size: 10px; background: #fff; padding: 3px 6px; border-radius: 3px; display: block; margin: 4px 0; border: 1px solid #E5E7EB; }
+  .content-box .preview { font-family: Menlo, monospace; font-size: 10px; color: #6B7280; padding: 0 6px; display: block; margin: 2px 0 6px; font-style: italic; }
+  .content-box .badge { display: inline-block; padding: 2px 7px; border-radius: 4px; background: #FEF3C7; color: #92400E; font-size: 9.5px; font-weight: 700; letter-spacing: 0.03em; margin-top: 4px; border: 1px solid #FBBF24; }
+  .content-box .section-label { font-weight: 700; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280; margin-top: 8px; }
+
+  /* BRANCH CHIP */
+  .branch-chip {
+    position: absolute;
+    padding: 6px 12px;
+    border-radius: 16px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: center;
+    font-family: Menlo, monospace;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    white-space: nowrap;
+  }
+  .chip-proximity  { background: #C2740E; }
+  .chip-exit       { background: #6B7280; }
+
+  /* Trigger props */
+  .trigger-props { margin-top: 6px; font-size: 10px; line-height: 1.45; color: #1B5E20; font-family: Menlo, monospace; opacity: 0.85; }
+
+  .dashed-line { stroke-dasharray: 6, 4; }
+
+  .footer { padding: 18px 28px; background: #fff; border-top: 1px solid #E5E7EB; font-size: 12px; color: #6B7280; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .footer code { background: #F3F4F6; padding: 2px 6px; border-radius: 3px; font-size: 11px; }
+
+  /* Implementation notes block */
+  .impl-notes { margin: 40px 40px 0; padding: 24px 28px; background: #FFFBEB; border: 2px dashed #FBBF24; border-radius: 12px; font-size: 13px; line-height: 1.6; color: #78350F; }
+  .impl-notes .heading { font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; margin-bottom: 10px; opacity: 0.8; }
+  .impl-notes ul { margin: 0; padding-left: 22px; }
+  .impl-notes li { margin: 4px 0; }
+  .impl-notes code { background: #FEF3C7; padding: 1px 5px; border-radius: 3px; font-size: 11px; font-family: Menlo, monospace; }
+
+  /* QA flag block */
+  .qa-flags { margin: 20px 40px 0; padding: 20px 28px; background: #FEF2F2; border: 2px dashed #EF4444; border-radius: 12px; font-size: 13px; line-height: 1.6; color: #7F1D1D; }
+  .qa-flags .heading { font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; margin-bottom: 10px; opacity: 0.8; }
+  .qa-flags ul { margin: 0; padding-left: 22px; }
+  .qa-flags li { margin: 4px 0; }
+  .qa-flags code { background: #FEE2E2; padding: 1px 5px; border-radius: 3px; font-size: 11px; font-family: Menlo, monospace; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Steak King UK · <code>F_REFERRAL-REWARD-PROXIMITY</code> · Flow Architecture Map</h1>
+    <span class="brand">for Klaviyo implementation · KickoffLabs integration</span>
+  </div>
+  <div class="meta">
+    <span><strong>5</strong> outcomes</span>
+    <span><strong>4</strong> emails</span>
+    <span><strong>4</strong> proximity moments</span>
+    <span><strong>Event-triggered</strong></span>
+    <span>Built 2026-06-03</span>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item">
+    <div class="legend-node" style="background: #CFF5D1; border: 2px solid #4CAF50;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B5E20" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg></div>
+    Trigger (event)
+  </div>
+  <div class="legend-item">
+    <div class="legend-node" style="background: #fff; border: 2px solid #E5E7EB;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg></div>
+    Filter / Split (Compute)
+  </div>
+  <div class="legend-item">
+    <div class="legend-node" style="background: #E9D5FF; border: 2px solid #A855F7;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div>
+    Email send
+  </div>
+  <div class="legend-item">
+    <div class="legend-node" style="background: #F3F4F6; border: 2px dashed #9CA3AF;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg></div>
+    Exit (no send)
+  </div>
+  <div class="legend-item" style="margin-left: 18px; padding-left: 18px; border-left: 1px solid #E5E7EB;">
+    <span style="display: inline-block; padding: 3px 10px; border-radius: 10px; color: #fff; background: #C2740E; font-size: 10px; font-weight: 700; letter-spacing: 0.05em;">PROXIMITY</span>
+    <span style="display: inline-block; padding: 3px 10px; border-radius: 10px; color: #fff; background: #6B7280; font-size: 10px; font-weight: 700; letter-spacing: 0.05em;">EXIT</span>
+  </div>
+</div>
+
+<div class="canvas">
+<div class="board" style="height: 1380px;">
+
+  <!-- SVG CONNECTORS -->
+  <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 1380px; pointer-events: none;" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#9CA3AF"/>
+      </marker>
+      <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#4CAF50"/>
+      </marker>
+    </defs>
+
+    <!-- Spine connectors -->
+    <line x1="740" y1="315" x2="740" y2="368" stroke="#4CAF50" stroke-width="2.5" marker-end="url(#arrg)"/>
+    <line x1="740" y1="465" x2="740" y2="488" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="740" y1="585" x2="740" y2="608" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="740" y1="725" x2="740" y2="770" stroke="#9CA3AF" stroke-width="2"/>
+
+    <!-- Horizontal bus across 5 columns at y=770 -->
+    <line x1="160" y1="770" x2="1320" y2="770" stroke="#9CA3AF" stroke-width="2"/>
+
+    <!-- 5 vertical drops from bus to each tile top -->
+    <line x1="160"  y1="770" x2="160"  y2="838" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="450"  y1="770" x2="450"  y2="838" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="740"  y1="770" x2="740"  y2="838" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="1030" y1="770" x2="1030" y2="838" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="1320" y1="770" x2="1320" y2="838" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- Dashed connectors from tiles to content boxes -->
+    <line x1="160"  y1="975" x2="160"  y2="995" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+    <line x1="450"  y1="975" x2="450"  y2="995" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+    <line x1="740"  y1="975" x2="740"  y2="995" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+    <line x1="1030" y1="975" x2="1030" y2="995" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+    <line x1="1320" y1="975" x2="1320" y2="995" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+  </svg>
+
+  <!-- TRIGGER NODE -->
+  <div class="node node-trigger" style="top: 180px; left: 630px; width: 220px; height: 135px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1B5E20" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>
+    <div class="node-label">Trigger · Metric</div>
+    <div class="node-title">Referral Made</div>
+    <div class="trigger-props">KickoffLabs → Klaviyo</div>
+  </div>
+
+  <!-- TRIGGER FILTER -->
+  <div class="node node-compute" style="top: 370px; left: 580px; width: 320px; height: 95px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" style="width: 22px; height: 22px;"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+    <div class="node-label">Trigger Filter</div>
+    <div class="node-title">campaign equals Steak King UK Pre-Launch</div>
+  </div>
+
+  <!-- FLOW FILTER -->
+  <div class="node node-compute" style="top: 490px; left: 580px; width: 320px; height: 95px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" style="width: 22px; height: 22px;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+    <div class="node-label">Flow Filter (profile)</div>
+    <div class="node-title">Subscribed to email · Not unsub last 30d</div>
+  </div>
+
+  <!-- CONDITIONAL SPLIT -->
+  <div class="node node-split" style="top: 610px; left: 550px; width: 380px; height: 115px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.8" style="width: 22px; height: 22px;"><path d="M6 3v12"/><path d="M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M15 6a9 9 0 0 0-9 9"/></svg>
+    <div class="node-title">Conditional Split</div>
+    <div class="node-subtitle" style="margin-top: 4px;">on event.referral_count → 5 outcomes</div>
+  </div>
+
+  <!-- BRANCH CHIPS -->
+  <div class="branch-chip chip-proximity" style="top: 786px; left: 95px;   width: 130px;">count == 4</div>
+  <div class="branch-chip chip-proximity" style="top: 786px; left: 385px;  width: 130px;">count == 9</div>
+  <div class="branch-chip chip-proximity" style="top: 786px; left: 675px;  width: 130px;">count == 24</div>
+  <div class="branch-chip chip-proximity" style="top: 786px; left: 965px;  width: 130px;">count == 40</div>
+  <div class="branch-chip chip-exit"      style="top: 786px; left: 1255px; width: 130px;">else</div>
+
+  <!-- 5 TILES (y=840) -->
+  <!-- E1 — 4 refs / Tier 1 close -->
+  <div class="node node-email" style="top: 840px; left: 50px; width: 220px; height: 135px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8" style="width: 22px; height: 22px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+    <div class="node-label">E1 · Proximity</div>
+    <div class="node-title">1 away from Tier 1</div>
+    <div class="node-subtitle">5 refs = 3-order discount</div>
+  </div>
+
+  <!-- E2 — 9 refs / Tier 2 close -->
+  <div class="node node-email" style="top: 840px; left: 340px; width: 220px; height: 135px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8" style="width: 22px; height: 22px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+    <div class="node-label">E2 · Proximity</div>
+    <div class="node-title">1 away from Tier 2</div>
+    <div class="node-subtitle">10 refs = chef's knife</div>
+  </div>
+
+  <!-- E3 — 24 refs / Tier 3 close -->
+  <div class="node node-email" style="top: 840px; left: 630px; width: 220px; height: 135px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8" style="width: 22px; height: 22px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+    <div class="node-label">E3 · Proximity</div>
+    <div class="node-title">1 away from Tier 3</div>
+    <div class="node-subtitle">25 refs = Powder Monkey 24-pack</div>
+  </div>
+
+  <!-- E4 — 40 refs / Tier 4 close (10 away!) -->
+  <div class="node node-email" style="top: 840px; left: 920px; width: 220px; height: 135px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8" style="width: 22px; height: 22px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+    <div class="node-label">E4 · Proximity · 10-away</div>
+    <div class="node-title">10 away from Top Tier</div>
+    <div class="node-subtitle">50 refs = year of steak</div>
+  </div>
+
+  <!-- EXIT -->
+  <div class="node node-exit" style="top: 840px; left: 1210px; width: 220px; height: 135px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" style="width: 22px; height: 22px;"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+    <div class="node-label">Exit · Silent</div>
+    <div class="node-title">No send</div>
+    <div class="node-subtitle">all other counts</div>
+  </div>
+
+  <!-- CONTENT BOXES (y=995) — pulled verbatim from Figma node 416-494 -->
+
+  <div class="content-box" style="top: 995px; left: 50px; width: 220px; height: 305px;">
+    <div class="heading">E1 · Tier 1 close</div>
+    <span class="subj">"One more. That's it."</span>
+    <span class="preview">"4 down. One mate between you and the 3-order discount."</span>
+    <div class="section-label">Hero</div>
+    "ONE MORE, MATE." · "That's all that's between you and a discount on your next 3 orders."
+    <div class="section-label">Body</div>
+    "Right. You're sitting on 4 REFERRALS." · gap explained · friend-eats prompt
+    <div class="section-label">Modules</div>
+    <ul style="margin-top: 2px;">
+      <li>Marquee strip ★ REFERRAL CLUB ★</li>
+      <li>Progress: 4 of 5 (people-icon row)</li>
+      <li>Full tier ladder (5/10/25/50)</li>
+      <li>Share-link card · code</li>
+      <li>Trustpilot + footer</li>
+    </ul>
+    <div style="margin-top: 6px; font-size: 10px; color: #6B7280;"><em>No "UNLOCKING AT" badge — E1 only</em></div>
+  </div>
+
+  <div class="content-box" style="top: 995px; left: 340px; width: 220px; height: 305px;">
+    <div class="heading">E2 · Tier 2 close</div>
+    <span class="subj">"One more. That's it."</span>
+    <span class="preview">"9 down. One mate between you and the knife."</span>
+    <div class="section-label">Hero</div>
+    "ONE MORE, MATE." · "That's all that's between you and a Steak King chef's knife."
+    <div class="section-label">Body</div>
+    "Right. You're sitting on 9 REFERRALS." · full-tang knife reveal · friend-eats prompt
+    <div class="section-label">Modules</div>
+    <ul style="margin-top: 2px;">
+      <li>Marquee strip ★ REFERRAL CLUB ★</li>
+      <li>Progress: 9 of 10</li>
+      <li>Full tier ladder (5/10/25/50)</li>
+      <li>Share-link card · code</li>
+      <li>Trustpilot + footer</li>
+    </ul>
+    <span class="badge">UNLOCKING AT 10 → the knife</span>
+  </div>
+
+  <div class="content-box" style="top: 995px; left: 630px; width: 220px; height: 305px;">
+    <div class="heading">E3 · Tier 3 close</div>
+    <span class="subj">"One more. That's it."</span>
+    <span class="preview">"24 down. One mate between you and the crate."</span>
+    <div class="section-label">Hero</div>
+    "ONE MORE, MATE." · "That's all that's between you and a Powder Monkey 24-pack, co-branded with Steak King."
+    <div class="section-label">Body</div>
+    "Right. You're sitting on 24 REFERRALS." · crate reveal · friend-eats prompt (short)
+    <div class="section-label">Modules</div>
+    <ul style="margin-top: 2px;">
+      <li>Marquee strip ★ REFERRAL CLUB ★</li>
+      <li>Progress: 24 of 25</li>
+      <li>Full tier ladder (5/10/25/50)</li>
+      <li>Share-link card · code</li>
+      <li>Trustpilot + footer</li>
+    </ul>
+    <span class="badge">UNLOCKING AT 25 → the crate</span>
+  </div>
+
+  <div class="content-box" style="top: 995px; left: 920px; width: 220px; height: 305px;">
+    <div class="heading">E4 · Top Tier (10-away)</div>
+    <span class="subj">"TEN more. That's it."</span>
+    <span class="preview">"40 down. One mate between you and a year of steak."</span>
+    <div class="section-label">Hero</div>
+    "ten MORE, MATE." · "That's all that's between you and a FREE steak every month, for a year"
+    <div class="section-label">Body</div>
+    "Right. You're sitting on 40 REFERRALS." · short body — no flatmate prompt
+    <div class="section-label">Modules</div>
+    <ul style="margin-top: 2px;">
+      <li>Marquee strip ★ REFERRAL CLUB ★</li>
+      <li>Progress: 40 of 50</li>
+      <li>Full tier ladder (5/10/25/50)</li>
+      <li>Share-link card · code</li>
+      <li>Trustpilot + footer</li>
+    </ul>
+    <span class="badge">UNLOCKING AT 50 → a year of steak</span>
+  </div>
+
+  <div class="content-box" style="top: 995px; left: 1210px; width: 220px; height: 305px;">
+    <div class="heading">Exit · no email</div>
+    <span class="subj">— no send —</span>
+    <div class="section-label">Applies to counts</div>
+    0, 1, 2, 3, 5, 6, 7, 8, 10–23, 25–39, 41–50, 51+
+    <div class="section-label">Behaviour</div>
+    <ul style="margin-top: 2px;">
+      <li>Referral is still logged on profile</li>
+      <li>Profile re-enters flow on next Referral Made event</li>
+      <li>No celebration/unlock email in this flow</li>
+      <li>(If unlock emails are desired separately, build as a parallel flow)</li>
+    </ul>
+  </div>
+
+</div>
+</div>
+
+<!-- QA FLAGS — surfaced from Figma extract -->
+<div class="qa-flags">
+  <div class="heading">🚩 Figma QA flags (action before launch)</div>
+  <ul>
+    <li><strong>E4 frame name is wrong</strong> — the 40-ref / Top-Tier email is labelled <code>E1_F_REFERRAL-PROXIMITY_TIER-3</code> in Figma (duplicate of E3's name). Rename to <code>E1_F_REFERRAL-PROXIMITY_TIER-4</code> so the setup person doesn't mis-map it to count == 24.</li>
+    <li><strong>E4 preview text contradicts the gap</strong> — preview reads <em>"40 down. One mate between you and a year of steak."</em> but the actual gap is 10 mates. Subject ("TEN more.") and body ("Get ten more…") are correct. Fix preview to "Ten mates between you and a year of steak."</li>
+  </ul>
+</div>
+
+<!-- IMPLEMENTATION NOTES -->
+<div class="impl-notes">
+  <div class="heading">📋 Klaviyo setup checklist for implementation</div>
+  <ul>
+    <li><strong>Trigger:</strong> Metric → <code>Referral Made</code> (provisioned by KickoffLabs integration)</li>
+    <li><strong>Trigger filter:</strong> <code>campaign</code> equals <code>Steak King UK Pre-Launch</code></li>
+    <li><strong>Flow filter (profile-level):</strong> Subscribed to email · AND · has not unsubscribed in last 30 days</li>
+    <li><strong>Smart sending:</strong> <code>OFF</code> — proximity moments must land regardless of recent sends</li>
+    <li><strong>Re-entry:</strong> <code>ALLOWED</code> on every Referral Made event</li>
+    <li><strong>Time delays:</strong> NONE — all sends immediate on event fire</li>
+    <li><strong>Conditional split:</strong> 5 branches. Evaluate <code>event.referral_count</code> equals N for each. The else branch ends the flow with no send.</li>
+    <li><strong>Branch order:</strong> 4 → 9 → 24 → 40 → else</li>
+    <li><strong>Personalisation tokens (every email):</strong> <code>{{ event.social_url }}</code> · <code>{{ event.social_id }}</code> · <code>{{ event.referral_count }}</code> for the "N of tier" progress label</li>
+    <li><strong>Templates:</strong> Pull all four email designs from Figma node <code>416-494</code> — E1 = frame <code>416:136</code> · E2 = <code>416:689</code> · E3 = <code>416:1238</code> · E4 = <code>416:1760</code></li>
+    <li><strong>Subject/Preview frames are separate siblings</strong> — E1 <code>416:124</code> · E2 <code>416:127</code> · E3 <code>416:130</code> · E4 <code>416:133</code> (load these into Klaviyo subject + preview fields)</li>
+    <li><strong>This flow only sends proximity nudges</strong> — there are no celebration/unlock emails when a tier is hit (count == 5, 10, 25, 50). Those exit silently from this flow. Confirm with Hani whether a separate unlock flow is needed.</li>
+    <li><strong>QA test plan:</strong> Fire mock events at counts 4, 9, 24, 40 → confirm each routes to the correct email. Fire at counts 5, 10, 25, 50, 7, 12 → confirm silent exit (no email sent).</li>
+  </ul>
+</div>
+
+<div class="footer">
+  <div>
+    <strong>Trigger source:</strong> KickoffLabs → Klaviyo · <strong>Custom metric:</strong> <code>Referral Made</code> · <strong>Figma templates:</strong> <a href="https://www.figma.com/design/Y5U20P62mTkWRvW4swpyTn/Steak-Kings-UK-Klaviyo-Emails---SMS?node-id=416-494" style="color: #6B7280;">node 416-494</a>
+  </div>
+  <div>Built 2026-06-03 · Steak King UK · F_REFERRAL-REWARD-PROXIMITY</div>
+</div>
+
+</body>
+</html>
