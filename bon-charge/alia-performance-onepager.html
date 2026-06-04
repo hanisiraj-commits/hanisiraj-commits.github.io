@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Bon Charge · Alia performance · before & after</title>
+<title>Bon Charge · Alia performance · isolated CVR uplift</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=duplet@300,500,600&display=swap" rel="stylesheet">
@@ -47,12 +47,8 @@ section{padding:var(--s9) 0;page-break-inside:avoid}
 /* Eyebrow + section shared */
 .eyebrow{font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--bc-scarlet);margin-bottom:var(--s4)}
 .section-title{font-family:var(--font-serif);font-weight:500;font-size:clamp(34px,4.2vw,52px);letter-spacing:-0.03em;line-height:1.05;color:var(--text-primary);margin-bottom:var(--s4);max-width:880px}
-.section-lede{font-size:18px;color:var(--text-secondary);max-width:760px;margin-bottom:var(--s7);line-height:1.6}
+.section-lede{font-size:18px;color:var(--text-secondary);max-width:780px;margin-bottom:var(--s7);line-height:1.6}
 .section-lede strong{color:var(--text-primary);font-weight:600}
-.section-dark{background:var(--surface-dark);color:var(--white);position:relative;overflow:hidden}
-.section-dark .section-title{color:var(--white)}
-.section-dark .section-lede{color:var(--steel)}
-.section-dark .section-lede strong{color:var(--white)}
 
 /* HERO */
 .hero{background:var(--surface-dark);color:var(--white);padding:var(--s9) 0 var(--s8);position:relative;overflow:hidden}
@@ -60,43 +56,57 @@ section{padding:var(--s9) 0;page-break-inside:avoid}
 .hero::after{content:'';position:absolute;bottom:-40%;left:-10%;width:50%;height:120%;background:radial-gradient(ellipse at bottom left,rgba(222,5,38,0.12),transparent 65%);pointer-events:none}
 .hero .container{position:relative;z-index:1}
 .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--bc-scarlet);margin-bottom:var(--s5)}
-.hero-title{font-family:var(--font-serif);font-weight:500;font-size:clamp(52px,7.5vw,92px);line-height:0.98;letter-spacing:-0.04em;color:var(--white);margin-bottom:var(--s5);max-width:1100px}
+.hero-title{font-family:var(--font-serif);font-weight:500;font-size:clamp(48px,7vw,84px);line-height:1;letter-spacing:-0.04em;color:var(--white);margin-bottom:var(--s5);max-width:1100px}
 .hero-title .accent{color:var(--bc-scarlet)}
-.hero-sub{font-size:19px;color:var(--steel);max-width:760px;line-height:1.55;font-weight:300}
+.hero-sub{font-size:19px;color:var(--steel);max-width:820px;line-height:1.55;font-weight:300}
 .hero-sub strong{color:var(--white);font-weight:600}
 
-/* Hero KPI strip */
-.hero-meta{margin-top:var(--s8);display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s5);padding-top:var(--s6);border-top:1px solid var(--surface-dark-border)}
+.hero-meta{margin-top:var(--s8);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5);padding-top:var(--s6);border-top:1px solid var(--surface-dark-border)}
 .hero-meta-item .label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--space);margin-bottom:var(--s2)}
 .hero-meta-item .value{font-family:var(--font-serif);font-size:clamp(36px,4.5vw,56px);font-weight:500;color:var(--bc-scarlet);letter-spacing:-0.025em;line-height:1}
 .hero-meta-item .value .unit{font-size:0.5em;color:var(--space);margin-left:6px;font-weight:500}
 .hero-meta-item .sub{font-size:12px;color:var(--space);margin-top:var(--s3);line-height:1.5}
+.hero-meta-item .ctx{font-size:11px;color:var(--steel);margin-top:var(--s2);line-height:1.5;font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
 
-/* Metric cards (Before/After) */
-.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
-.metric-card{padding:var(--s5);background:var(--white);border:1px solid var(--smoke);border-radius:var(--r-md);border-top:3px solid var(--bc-scarlet);display:flex;flex-direction:column;min-height:240px}
-.metric-card .name{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:var(--s4)}
-.metric-card .ba-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--s3);margin-bottom:var(--s4)}
-.metric-card .ba{display:flex;flex-direction:column;gap:4px}
-.metric-card .ba .lbl{font-size:10px;letter-spacing:0.10em;text-transform:uppercase;font-weight:600;color:var(--text-secondary)}
-.metric-card .ba .num{font-family:var(--font-serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);letter-spacing:-0.02em;color:var(--text-primary);line-height:1.05}
-.metric-card .ba.after .num{color:var(--text-primary)}
-.metric-card .arrow{color:var(--bc-scarlet);font-size:24px;font-weight:300;font-family:var(--font-serif);line-height:1}
-.metric-card .delta{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--bc-scarlet);color:var(--white);font-family:var(--font-serif);font-weight:500;font-size:18px;letter-spacing:-0.01em;border-radius:999px;align-self:flex-start;line-height:1}
-.metric-card .delta.flip{background:#0A0A0B}
-.metric-card .delta.neg{background:#3A3A3A}
-.metric-card .note{margin-top:auto;padding-top:var(--s4);font-size:13px;color:var(--text-secondary);line-height:1.55;border-top:1px solid var(--smoke)}
-.metric-card.full-width{grid-column:span 3;min-height:auto}
+/* Comparison block (sale vs sale, BAU vs BAU) */
+.compare-block{padding:var(--s7);background:var(--white);border:1px solid var(--smoke);border-radius:var(--r-lg);position:relative;margin-bottom:var(--s5)}
+.compare-block.featured{background:var(--surface-dark);color:var(--white);border-color:var(--surface-dark-elevated);overflow:hidden}
+.compare-block.featured::after{content:'';position:absolute;top:-30%;right:-10%;width:55%;height:160%;background:radial-gradient(ellipse at top right,rgba(222,5,38,0.18),transparent 65%);pointer-events:none}
+.compare-block.featured .inner{position:relative;z-index:1}
+.compare-block .top{display:grid;grid-template-columns:1fr auto;align-items:start;gap:var(--s5);margin-bottom:var(--s6)}
+.compare-block .top .label{font-size:11px;letter-spacing:0.10em;text-transform:uppercase;color:var(--bc-scarlet);font-weight:600;margin-bottom:var(--s2)}
+.compare-block .top h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(26px,3vw,36px);letter-spacing:-0.025em;line-height:1.15;margin-bottom:var(--s3);color:var(--text-primary)}
+.compare-block.featured .top h3{color:var(--white)}
+.compare-block .top p{font-size:15px;line-height:1.65;color:var(--text-secondary)}
+.compare-block.featured .top p{color:var(--steel)}
+.compare-block .top p strong{font-weight:600}
+.compare-block.featured .top p strong{color:var(--white)}
+.compare-block .top .big{font-family:var(--font-serif);font-weight:500;font-size:clamp(64px,8vw,108px);color:var(--bc-scarlet);letter-spacing:-0.04em;line-height:0.95;text-align:right;white-space:nowrap}
+.compare-block .top .big .unit{font-size:0.45em;color:var(--steel);margin-left:6px;font-weight:500}
+.compare-block .top .big-cap{font-size:11px;letter-spacing:0.10em;text-transform:uppercase;color:var(--text-secondary);text-align:right;margin-top:var(--s2);font-weight:600}
+.compare-block.featured .top .big-cap{color:var(--space)}
+
+.compare-funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3);padding-top:var(--s5);border-top:1px solid var(--smoke)}
+.compare-block.featured .compare-funnel{border-top-color:var(--surface-dark-border)}
+.cf{display:flex;flex-direction:column;gap:var(--s2)}
+.cf .name{font-size:10px;letter-spacing:0.10em;text-transform:uppercase;font-weight:600;color:var(--text-secondary)}
+.compare-block.featured .cf .name{color:var(--space)}
+.cf .row{display:flex;align-items:baseline;gap:var(--s2)}
+.cf .num{font-family:var(--font-serif);font-weight:500;font-size:14px;color:var(--text-secondary)}
+.compare-block.featured .cf .num{color:var(--steel)}
+.cf .arrow{color:var(--bc-scarlet);font-size:14px;font-family:var(--font-serif)}
+.cf .after-num{font-family:var(--font-serif);font-weight:500;font-size:14px;color:var(--text-primary)}
+.compare-block.featured .cf .after-num{color:var(--white)}
+.cf .delta{font-family:var(--font-serif);font-weight:500;font-size:14px;color:var(--bc-scarlet);margin-left:auto}
 
 /* Methodology */
 .method{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5)}
 .method-card{padding:var(--s5);background:var(--white);border:1px solid var(--smoke);border-radius:var(--r-md)}
 .method-card h3{font-family:var(--font-serif);font-weight:500;font-size:20px;margin-bottom:var(--s3);letter-spacing:-0.015em}
-.method-card p{font-size:14px;line-height:1.7}
-.method-card .row{display:flex;justify-content:space-between;padding:var(--s2) 0;border-bottom:1px solid var(--cloud);font-size:13px}
+.method-card .row{display:flex;justify-content:space-between;padding:var(--s2) 0;border-bottom:1px solid var(--cloud);font-size:13px;gap:var(--s3)}
 .method-card .row:last-child{border-bottom:none}
-.method-card .row .k{color:var(--text-secondary);letter-spacing:0.04em;text-transform:uppercase;font-size:11px;font-weight:600}
-.method-card .row .v{color:var(--text-primary);font-family:var(--font-serif);font-weight:500;font-size:14px}
+.method-card .row .k{color:var(--text-secondary);letter-spacing:0.04em;text-transform:uppercase;font-size:11px;font-weight:600;white-space:nowrap}
+.method-card .row .v{color:var(--text-primary);font-family:var(--font-serif);font-weight:500;font-size:13px;text-align:right}
 
 .note-block{margin-top:var(--s6);padding:var(--s5);background:var(--bc-scarlet-1);border-left:3px solid var(--bc-scarlet);border-radius:0 var(--r-sm) var(--r-sm) 0}
 .note-block .lbl{font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--bc-scarlet);margin-bottom:var(--s2)}
@@ -109,18 +119,19 @@ section{padding:var(--s9) 0;page-break-inside:avoid}
 .site-footer .meta{font-size:12px;color:var(--text-secondary);letter-spacing:0.04em}
 
 @media (max-width:900px){
-  .hero-meta{grid-template-columns:repeat(2,1fr)}
-  .metrics-grid{grid-template-columns:1fr}
-  .metric-card.full-width{grid-column:span 1}
+  .hero-meta{grid-template-columns:1fr}
+  .compare-block .top{grid-template-columns:1fr}
+  .compare-block .top .big,.compare-block .top .big-cap{text-align:left}
+  .compare-funnel{grid-template-columns:1fr 1fr}
   .method{grid-template-columns:1fr}
 }
 @media print{
   .site-nav{position:static}
   section{padding:var(--s6) 0;page-break-inside:avoid}
   .hero{padding:var(--s6) 0}
-  .hero::before,.hero::after{display:none}
-  .hero,.section-dark{background:var(--surface-dark) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .metric-card .delta{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .hero::before,.hero::after,.compare-block::after{display:none}
+  .hero,.compare-block.featured{background:var(--surface-dark) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .compare-block .top .big{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 </style>
 </head>
@@ -132,41 +143,39 @@ section{padding:var(--s9) 0;page-break-inside:avoid}
     <span class="nav-sep">×</span>
     <span class="nav-client">Bon Charge</span>
   </div>
-  <div class="nav-date">Alia performance · June 2026</div>
+  <div class="nav-date">Alia performance · Like-for-like CVR · June 2026</div>
 </nav>
 
 <header class="hero">
   <div class="container">
-    <div class="hero-eyebrow">22 days before · 22 days after · Klaviyo data only</div>
-    <h1 class="hero-title">Alia, <span class="accent">before</span> & after.</h1>
+    <div class="hero-eyebrow">Like-for-like comparisons · Alia is the only changed variable</div>
+    <h1 class="hero-title">Same offer. Same playbook. <span class="accent">Different result.</span></h1>
     <p class="hero-sub">
-      Alia went live on <strong>13 May 2026</strong>. In the 22 days since, it has captured
-      <strong>11,100 new email subscribers</strong>, flipped Bon Charge's list from
-      <strong>shrinking to growing</strong>, and lifted email channel revenue by
-      <strong>+165%</strong> against the matched 22 days prior. Every figure below is pulled
-      directly from the Klaviyo API — no Alia-side reporting.
+      Skepticism after the headline numbers is fair — Memorial Day was running, sessions
+      were up across the board. So we ran the comparison <em>two more ways</em> to isolate Alia.
+      <strong>Sale vs sale</strong>, matching 25% site-wide promos. <strong>BAU vs BAU</strong>, with
+      no promotion live. Both comparisons remove the discount as the explanation. Both still show
+      a clear CVR lift from Alia.
     </p>
 
     <div class="hero-meta">
       <div class="hero-meta-item">
-        <div class="label">New subscribers</div>
-        <div class="value">+152<span class="unit">%</span></div>
-        <div class="sub">6,631 → 16,738</div>
+        <div class="ctx">Sale vs Sale</div>
+        <div class="label">CVR uplift</div>
+        <div class="value">+12.6<span class="unit">%</span></div>
+        <div class="sub">Recharge Sale → Memorial Day Sale<br>1.89% → 2.12%</div>
       </div>
       <div class="hero-meta-item">
-        <div class="label">Pop-up captured subs</div>
-        <div class="value">+90<span class="unit">%</span></div>
-        <div class="sub">5,832 → 11,100</div>
+        <div class="ctx">BAU vs BAU</div>
+        <div class="label">CVR uplift</div>
+        <div class="value">+42.7<span class="unit">%</span></div>
+        <div class="sub">Regular trading, no promo<br>0.95% → 1.35%</div>
       </div>
       <div class="hero-meta-item">
-        <div class="label">Email channel revenue</div>
-        <div class="value">+165<span class="unit">%</span></div>
-        <div class="sub">$1.48M → $3.92M</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="label">Email AOV</div>
-        <div class="value">+21.5<span class="unit">%</span></div>
-        <div class="sub">$295.99 → $359.61</div>
+        <div class="ctx">Full 22-day window</div>
+        <div class="label">CVR uplift</div>
+        <div class="value">+25.4<span class="unit">%</span></div>
+        <div class="sub">22 days before vs after Alia<br>1.42% → 1.78%</div>
       </div>
     </div>
   </div>
@@ -174,91 +183,160 @@ section{padding:var(--s9) 0;page-break-inside:avoid}
 
 <section>
   <div class="container">
-    <div class="eyebrow">Before · After · Uplift</div>
-    <h2 class="section-title">Six metrics, same 22-day window, side by side.</h2>
+    <div class="eyebrow">Comparison 1 · Sale vs Sale</div>
+    <h2 class="section-title">Recharge Sale vs Memorial Day Sale.</h2>
     <p class="section-lede">
-      The <strong>before</strong> window is 22 Apr → 13 May 2026 — the last 22 days of the previous
-      pop-up. The <strong>after</strong> window is 14 May → 4 Jun 2026 — the first 22 days with Alia
-      live. Same length, same season, same account.
+      Same offer mechanic — 25% site-wide. Same promo length. Same calendar position (peak spring
+      vs early summer). <strong>Only difference: Alia was live for Memorial Day, not for
+      Recharge.</strong> Every funnel stage lifted.
     </p>
 
-    <div class="metrics-grid">
-
-      <div class="metric-card">
-        <div class="name">New email subscribers</div>
-        <div class="ba-row">
-          <div class="ba before"><span class="lbl">Before</span><span class="num">6,631</span></div>
-          <span class="arrow">→</span>
-          <div class="ba after"><span class="lbl">After</span><span class="num">16,738</span></div>
+    <div class="compare-block featured">
+      <div class="inner">
+        <div class="top">
+          <div>
+            <div class="label">Like-for-like sale comparison · 11 days each</div>
+            <h3>The discount didn't change. Alia did.</h3>
+            <p>Recharge Sale (2 Apr → 12 Apr, pre-Alia) vs Memorial Day Sale (21 May → 31 May,
+              with Alia). Both ran 25% off site-wide with identical promo machinery — VIP early
+              access, daily sends, extension, final-day. Sessions held steady (+5%); the lift
+              came from <strong>higher conversion at every step</strong>.</p>
+          </div>
+          <div>
+            <div class="big">+12.6<span class="unit">%</span></div>
+            <div class="big-cap">Store CVR · 1.89% → 2.12%</div>
+          </div>
         </div>
-        <span class="delta">+152%</span>
-        <p class="note">Total Subscribed-to-Email events across the window. Of the 16,738
-          after-state subscribers, <strong>11,100 (66%)</strong> came in tagged as
-          <code>Alia sign-up</code> in Klaviyo metadata.</p>
-      </div>
 
-      <div class="metric-card">
-        <div class="name">New subscribers per day</div>
-        <div class="ba-row">
-          <div class="ba before"><span class="lbl">Before</span><span class="num">301</span></div>
-          <span class="arrow">→</span>
-          <div class="ba after"><span class="lbl">After</span><span class="num">761</span></div>
+        <div class="compare-funnel">
+          <div class="cf">
+            <div class="name">Add to cart rate</div>
+            <div class="row"><span class="num">5.22%</span><span class="arrow">→</span><span class="after-num">5.87%</span><span class="delta">+12.5%</span></div>
+          </div>
+          <div class="cf">
+            <div class="name">Reach checkout</div>
+            <div class="row"><span class="num">3.22%</span><span class="arrow">→</span><span class="after-num">3.60%</span><span class="delta">+11.8%</span></div>
+          </div>
+          <div class="cf">
+            <div class="name">Checkout completion</div>
+            <div class="row"><span class="num">58.6%</span><span class="arrow">→</span><span class="after-num">59.0%</span><span class="delta">+0.7%</span></div>
+          </div>
+          <div class="cf">
+            <div class="name">Sessions</div>
+            <div class="row"><span class="num">250k</span><span class="arrow">→</span><span class="after-num">262k</span><span class="delta">+5.0%</span></div>
+          </div>
         </div>
-        <span class="delta">+153%</span>
-        <p class="note">Daily acquisition rate has more than doubled and held flat across all 22
-          after-state days — this is not a launch spike.</p>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="metric-card">
-        <div class="name">Pop-up captured subscribers</div>
-        <div class="ba-row">
-          <div class="ba before"><span class="lbl">Before (Klaviyo form)</span><span class="num">5,832</span></div>
-          <span class="arrow">→</span>
-          <div class="ba after"><span class="lbl">After (Alia)</span><span class="num">11,100</span></div>
+<section style="background:var(--bg-alt);padding-top:var(--s7);padding-bottom:var(--s7)">
+  <div class="container">
+    <div class="eyebrow">Comparison 2 · BAU vs BAU</div>
+    <h2 class="section-title">No promo, no Alia → No promo, with Alia.</h2>
+    <p class="section-lede">
+      Regular trading days only — no site-wide sale, no flash event, no big launch.
+      <strong>5 days before Alia, 5 days after.</strong> Sessions actually dropped 28%, yet CVR
+      lifted +42.7%. This is the closest proxy to "what Alia does to a normal day."
+    </p>
+
+    <div class="compare-block">
+      <div class="inner">
+        <div class="top">
+          <div>
+            <div class="label">Like-for-like BAU comparison · 5 days each</div>
+            <h3>The biggest lift shows up <em>when there's no sale to credit</em>.</h3>
+            <p>BAU pre-Alia (14 Apr → 18 Apr, post-Recharge content cadence) vs BAU with Alia
+              (14 May → 18 May, post-install before Memorial Day teasers). Same kind of
+              educational/content emails, no discount running. The +42.7% CVR uplift is what
+              Alia is delivering on top of regular trading — not on top of a sale.</p>
+          </div>
+          <div>
+            <div class="big">+42.7<span class="unit">%</span></div>
+            <div class="big-cap">Store CVR · 0.95% → 1.35%</div>
+          </div>
         </div>
-        <span class="delta">+90%</span>
-        <p class="note">Direct on-site capture: the Klaviyo native pop-up was Bon Charge's primary
-          capture tool before; Alia replaced it on 13 May. Like-for-like comparison.</p>
-      </div>
 
-      <div class="metric-card">
-        <div class="name">Net email list growth</div>
-        <div class="ba-row">
-          <div class="ba before"><span class="lbl">Before</span><span class="num">−9,437</span></div>
-          <span class="arrow">→</span>
-          <div class="ba after"><span class="lbl">After</span><span class="num">+5,401</span></div>
+        <div class="compare-funnel">
+          <div class="cf">
+            <div class="name">Add to cart rate</div>
+            <div class="row"><span class="num">3.67%</span><span class="arrow">→</span><span class="after-num">5.08%</span><span class="delta">+38.3%</span></div>
+          </div>
+          <div class="cf">
+            <div class="name">Reach checkout</div>
+            <div class="row"><span class="num">1.96%</span><span class="arrow">→</span><span class="after-num">2.72%</span><span class="delta">+38.5%</span></div>
+          </div>
+          <div class="cf">
+            <div class="name">Checkout completion</div>
+            <div class="row"><span class="num">48.2%</span><span class="arrow">→</span><span class="after-num">49.7%</span><span class="delta">+3.0%</span></div>
+          </div>
+          <div class="cf">
+            <div class="name">Sessions</div>
+            <div class="row"><span class="num">82k</span><span class="arrow">→</span><span class="after-num">60k</span><span class="delta" style="color:var(--graphite)">−27.7%</span></div>
+          </div>
         </div>
-        <span class="delta flip">Shrinking → Growing</span>
-        <p class="note">New subs minus unsubscribes. In the 22 days before Alia the list was
-          <strong>losing</strong> ~430 emails/day; in the 22 days after, it's <strong>gaining</strong>
-          ~245/day. Direction reversed.</p>
       </div>
+    </div>
 
-      <div class="metric-card">
-        <div class="name">Klaviyo email channel revenue</div>
-        <div class="ba-row">
-          <div class="ba before"><span class="lbl">Before</span><span class="num">$1.48M</span></div>
-          <span class="arrow">→</span>
-          <div class="ba after"><span class="lbl">After</span><span class="num">$3.92M</span></div>
+    <div class="note-block">
+      <div class="lbl">Why BAU shows a bigger lift than Sale-vs-Sale</div>
+      <p>On a sale day, traffic is already high-intent — the 25% discount itself converts a
+        large share of visitors regardless of any onsite tooling. There's less headroom for Alia
+        to add value. On a BAU day, intent is more mixed, and Alia's quizzes, full-page flows,
+        and targeted captures have far more room to redirect lower-intent visitors into the
+        funnel. Both effects are real — the BAU lift is the truer "Alia effect" on a normal
+        trading day.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Comparison 3 · 22-day blended window</div>
+    <h2 class="section-title">The original headline view, for reference.</h2>
+    <p class="section-lede">
+      The matched 22-day window comparison we started with — includes both the BAU days
+      <em>and</em> the Memorial Day Sale on the Alia side, vs a mix of post-Recharge BAU + early
+      May BAU on the pre-Alia side. Useful as the broad-strokes view; the two comparisons
+      above are the rigorous answers.
+    </p>
+
+    <div class="compare-block">
+      <div class="inner">
+        <div class="top">
+          <div>
+            <div class="label">22-day matched window · 22 Apr → 13 May vs 14 May → 4 Jun</div>
+            <h3>Same length, same season, full account view.</h3>
+            <p>This view blends sale and BAU days. Most useful for understanding the total
+              business impact across a meaningful chunk of trading. Orders nearly doubled in
+              the after window; CVR lifted +25.4%.</p>
+          </div>
+          <div>
+            <div class="big">+25.4<span class="unit">%</span></div>
+            <div class="big-cap">Store CVR · 1.42% → 1.78%</div>
+          </div>
         </div>
-        <span class="delta">+165%</span>
-        <p class="note">Placed-Order revenue attributed to the email channel
-          (<code>$attributed_channel = $email_channel</code>) over the same 22 days. Order count
-          rose from 4,997 to 10,900.</p>
-      </div>
 
-      <div class="metric-card">
-        <div class="name">Email-attributed AOV</div>
-        <div class="ba-row">
-          <div class="ba before"><span class="lbl">Before</span><span class="num">$295.99</span></div>
-          <span class="arrow">→</span>
-          <div class="ba after"><span class="lbl">After</span><span class="num">$359.61</span></div>
+        <div class="compare-funnel">
+          <div class="cf">
+            <div class="name">Add to cart rate</div>
+            <div class="row"><span class="num">4.49%</span><span class="arrow">→</span><span class="after-num">5.34%</span><span class="delta">+19.0%</span></div>
+          </div>
+          <div class="cf">
+            <div class="name">Reach checkout</div>
+            <div class="row"><span class="num">2.70%</span><span class="arrow">→</span><span class="after-num">3.18%</span><span class="delta">+17.9%</span></div>
+          </div>
+          <div class="cf">
+            <div class="name">Checkout completion</div>
+            <div class="row"><span class="num">52.6%</span><span class="arrow">→</span><span class="after-num">56.0%</span><span class="delta">+6.4%</span></div>
+          </div>
+          <div class="cf">
+            <div class="name">Orders completed</div>
+            <div class="row"><span class="num">3,736</span><span class="arrow">→</span><span class="after-num">7,327</span><span class="delta">+96.1%</span></div>
+          </div>
         </div>
-        <span class="delta">+21.5%</span>
-        <p class="note">Average value of email-attributed orders. Higher AOV alongside higher
-          volume — the new traffic isn't lower-quality.</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -266,42 +344,33 @@ section{padding:var(--s9) 0;page-break-inside:avoid}
 <section style="background:var(--bg-alt)">
   <div class="container">
     <div class="eyebrow">How we measured</div>
-    <h2 class="section-title">Pulled from Klaviyo — not Alia's dashboard.</h2>
+    <h2 class="section-title">Independent of Alia's own reporting.</h2>
     <p class="section-lede">
-      Every number above is computed from raw Klaviyo API data: event-level pulls for subscriber
-      counts and aggregated metric queries for revenue and AOV. Alia's own reporting is excluded
-      so the comparison is independent.
+      Funnel figures come from Shopify's <em>Conversion rate over time</em> export. Sale windows
+      were pinned by checking Klaviyo campaign send dates for Recharge Sale and Memorial Day Sale
+      VIP/launch/final-day campaigns.
     </p>
 
     <div class="method">
 
       <div class="method-card">
         <h3>Windows</h3>
-        <div class="row"><span class="k">Before</span><span class="v">22 Apr → 13 May 2026</span></div>
-        <div class="row"><span class="k">After</span><span class="v">14 May → 4 Jun 2026</span></div>
-        <div class="row"><span class="k">Length</span><span class="v">22 days each</span></div>
+        <div class="row"><span class="k">Recharge Sale</span><span class="v">2 Apr → 12 Apr (11d)</span></div>
+        <div class="row"><span class="k">Memorial Day Sale</span><span class="v">21 May → 31 May (11d)</span></div>
+        <div class="row"><span class="k">BAU pre-Alia</span><span class="v">14 Apr → 18 Apr (5d)</span></div>
+        <div class="row"><span class="k">BAU with Alia</span><span class="v">14 May → 18 May (5d)</span></div>
+        <div class="row"><span class="k">22-day blended</span><span class="v">22 Apr → 13 May vs 14 May → 4 Jun</span></div>
         <div class="row"><span class="k">Alia install</span><span class="v">13 May 2026, 23:00 UTC</span></div>
       </div>
 
       <div class="method-card">
         <h3>Sources</h3>
-        <div class="row"><span class="k">Subscribers</span><span class="v">Subscribed&nbsp;to&nbsp;Email events</span></div>
-        <div class="row"><span class="k">Alia attribution</span><span class="v"><code>custom_method_detail = "Alia sign-up"</code></span></div>
-        <div class="row"><span class="k">Revenue + AOV</span><span class="v">Placed Order metric aggregates</span></div>
-        <div class="row"><span class="k">Channel split</span><span class="v"><code>$attributed_channel</code></span></div>
+        <div class="row"><span class="k">Funnel data</span><span class="v">Shopify: Conversion rate over time</span></div>
+        <div class="row"><span class="k">Sale windows</span><span class="v">Klaviyo campaign sends</span></div>
+        <div class="row"><span class="k">Alia install</span><span class="v">Klaviyo <code>custom_method_detail</code></span></div>
+        <div class="row"><span class="k">CVR formula</span><span class="v">Completed checkouts ÷ Sessions</span></div>
       </div>
 
-    </div>
-
-    <div class="note-block">
-      <div class="lbl">Note on Welcome Series attribution</div>
-      <p>The 2025 Welcome Series flow (<code>Y4NHS7</code>) shows <strong>$211K</strong> attributed
-        revenue in the after window vs <strong>$327K</strong> before — most of the 11K Alia-acquired
-        subscribers are still mid-flow at the end of the reporting window. Welcome flow uplift
-        from this cohort is a lagging indicator and will land in the next 30–60 days. We've also
-        flagged a check on whether Alia subscribers are entering the existing Welcome Series
-        trigger (Added to List) or land on a different list — material to lock in before the next
-        reporting cut.</p>
     </div>
   </div>
 </section>
@@ -310,7 +379,7 @@ section{padding:var(--s9) 0;page-break-inside:avoid}
   <div class="container">
     <div class="row">
       <div class="brand">Tethrd × Bon Charge</div>
-      <div class="meta">Prepared by Hani Siraj · 4 June 2026 · Klaviyo account XHbFHq</div>
+      <div class="meta">Prepared by Hani Siraj · 4 June 2026 · Shopify Analytics + Klaviyo XHbFHq</div>
     </div>
   </div>
 </footer>
