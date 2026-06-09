@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BON CHARGE — 72hr GWP Flash Sale — Designer Skeleton</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    background: #efece5;
+    color: #202020;
+    line-height: 1.5;
+    padding: 32px 12px;
+  }
+  .skeleton-banner {
+    max-width: 640px;
+    margin: 0 auto 24px;
+    padding: 14px 20px;
+    background: #15101f;
+    color: #c4a3ff;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 6px;
+    line-height: 1.5;
+  }
+  .skeleton-banner strong { color: #fff; }
+  .email {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+  }
+
+  /* Preheader strip (browser-only, not visible in inbox) */
+  .preheader {
+    padding: 10px 24px;
+    font-size: 11px;
+    color: #999;
+    background: #fafaf7;
+    border-bottom: 1px solid #eee;
+    font-style: italic;
+  }
+  .preheader strong { color: #666; font-style: normal; text-transform: uppercase; letter-spacing: 1px; font-size: 10px; margin-right: 8px; }
+
+  /* Top wordmark */
+  .topbar {
+    padding: 26px 24px 18px;
+    text-align: center;
+    background: #ffffff;
+    border-bottom: 1px solid #f0ece2;
+  }
+  .topbar .wordmark {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #202020;
+  }
+  .topbar .nav {
+    font-size: 10px;
+    color: #888;
+    letter-spacing: 2px;
+    margin-top: 8px;
+  }
+
+  /* Module 1: WELCOME15 dynamic block */
+  .welcome-block {
+    background: #e6dfce; /* linen-deep */
+    padding: 22px 24px;
+    margin: 16px;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .welcome-block .eyebrow {
+    font-size: 10px;
+    color: #8b7355;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .welcome-block .headline {
+    font-size: 16px;
+    color: #202020;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.35;
+  }
+  .welcome-block .code-reveal {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #ffffff;
+    border: 1.5px dashed #8b7355;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #202020;
+  }
+  .welcome-block .dynamic-tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 3px 8px;
+    background: #c4a3ff20;
+    color: #7c3aed;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 3px;
+  }
+
+  /* Module 2: Hero */
+  .hero {
+    background: #fafaf7;
+    padding: 36px 24px 28px;
+    text-align: center;
+  }
+  .hero .eyebrow {
+    display: inline-block;
+    padding: 4px 12px;
+    background: #d9352b;
+    color: #ffffff;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .hero .headline {
+    font-size: 32px;
+    font-weight: 800;
+    color: #202020;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .hero .sub {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 26px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
+  .tier-ladder {
+    background: #ffffff;
+    border: 1px solid #ebe6d8;
+    border-radius: 4px;
+    margin: 0 auto 24px;
+    max-width: 540px;
+    overflow: hidden;
+  }
+  .tier-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 90px 70px;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #f5f1e6;
+    text-align: left;
+  }
+  .tier-row:last-child { border-bottom: none; }
+  .tier-row .spend {
+    font-size: 16px;
+    color: #d9352b;
+    font-weight: 800;
+  }
+  .tier-row .label {
+    font-size: 13px;
+    color: #202020;
+    font-weight: 500;
+  }
+  .tier-row .img {
+    width: 70px;
+    height: 70px;
+    background: #f0ece2;
+    border: 1px dashed #c4b89e;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: #999;
+    text-align: center;
+    padding: 4px;
+  }
+  .tier-row .val {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #fff5f3;
+    color: #d9352b;
+    border: 1px solid #d9352b;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .countdown {
+    margin: 0 auto 24px;
+    max-width: 360px;
+    padding: 14px;
+    background: #fff5f3;
+    border-top: 2px solid #d9352b;
+    border-bottom: 2px solid #d9352b;
+    text-align: center;
+  }
+  .countdown .label {
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .countdown .digits {
+    font-size: 24px;
+    font-weight: 800;
+    color: #d9352b;
+    letter-spacing: 4px;
+    font-family: 'Courier New', monospace;
+  }
+  .countdown .digit-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-size: 9px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+    max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-button {
+    display: inline-block;
+    padding: 18px 48px;
+    background: #202020;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    width: 90%;
+    max-width: 480px;
+  }
+
+  /* Module 3: Benefit cards */
+  .cards-section {
+    padding: 40px 16px 28px;
+    background: #ffffff;
+  }
+  .cards-section .section-eyebrow {
+    text-align: center;
+    font-size: 10px;
+    color: #8b7355;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .cards-section .section-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #202020;
+    margin-bottom: 24px;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .b-card {
+    background: #faf7f0; /* limestone */
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    padding: 14px;
+  }
+  .b-card .b-val {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #d9352b;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 10px;
+    z-index: 3;
+    letter-spacing: 0.5px;
+  }
+  .b-card .b-img {
+    width: 100%;
+    height: 110px;
+    background: #efeada;
+    border: 1px dashed #c4b89e;
+    border-radius: 3px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #999;
+    text-align: center;
+    padding: 6px;
+  }
+  .b-card .b-eyebrow {
+    font-size: 9px;
+    color: #8b7355;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .b-card .b-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #202020;
+    margin-bottom: 8px;
+    padding-right: 50px;
+    line-height: 1.25;
+  }
+  .b-card .b-pointer {
+    font-size: 12px;
+    color: #5a4a2e;
+    background: #fff8eb;
+    border-left: 2px solid #c9a23e;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    line-height: 1.45;
+    font-style: italic;
+    border-radius: 0 3px 3px 0;
+  }
+  .b-card .b-tag {
+    font-size: 11px;
+    color: #444;
+    background: #efeada;
+    padding: 6px 8px;
+    margin-bottom: 8px;
+    font-style: italic;
+    line-height: 1.4;
+    border-radius: 3px;
+  }
+  .b-card .b-tag .approval { color: #888; font-size: 9px; display: block; margin-top: 2px; font-style: normal; }
+  .b-card .b-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .b-card .b-bullets li {
+    font-size: 12px;
+    color: #404040;
+    padding: 3px 0 3px 14px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .b-card .b-bullets li::before {
+    content: "•";
+    color: #d9352b;
+    position: absolute;
+    left: 4px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .cards-section .cta-wrap {
+    text-align: center;
+    margin-top: 28px;
+  }
+
+  /* Module 4: UGC strip */
+  .ugc-section {
+    background: #f5f1ea;
+    padding: 32px 16px;
+    text-align: center;
+  }
+  .ugc-section .ugc-title {
+    font-size: 11px;
+    color: #8b7355;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .ugc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .ugc-tile {
+    aspect-ratio: 3/4;
+    background: #e6dfce;
+    border: 1px dashed #c4b89e;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+    padding: 12px;
+    line-height: 1.4;
+  }
+
+  /* Module 5: BNPL black card */
+  .bnpl-section {
+    padding: 28px 16px;
+    background: #ffffff;
+  }
+  .bnpl-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 26px;
+    background: #202020;
+    border-radius: 6px;
+    color: #ffffff;
+    text-align: center;
+  }
+  .bnpl-card .b-eyebrow {
+    font-size: 10px;
+    color: #f3a3b6; /* brand-pink accent */
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .bnpl-card .b-head {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .bnpl-card .b-body {
+    font-size: 13px;
+    color: #d4d4d8;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .bnpl-card .b-logos {
+    font-size: 12px;
+    color: #87b8e6; /* brand-blue accent */
+    letter-spacing: 2px;
+    font-weight: 700;
+    padding: 12px 0;
+    border-top: 1px solid #333;
+  }
+
+  /* Module 6: Footer */
+  .footer {
+    background: #efeada;
+    padding: 32px 24px 24px;
+    text-align: center;
+    color: #5a4a2e;
+  }
+  .footer .help {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  .footer .ends {
+    font-size: 11px;
+    color: #8b7355;
+    margin-bottom: 14px;
+  }
+  .footer .links {
+    font-size: 11px;
+    margin-bottom: 22px;
+  }
+  .footer .links a {
+    color: #5a4a2e;
+    text-decoration: underline;
+  }
+  .footer .wordmark {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #202020;
+    margin-bottom: 8px;
+  }
+  .footer .unsub {
+    font-size: 10px;
+    color: #888;
+    line-height: 1.5;
+  }
+  .footer .unsub a {
+    color: #888;
+    text-decoration: underline;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="skeleton-banner">
+  <strong>DESIGNER SKELETON · BON CHARGE 72hr GWP Flash Sale.</strong> Visual reference only · placeholder imagery throughout · all copy approved (v3 draft) · for layout build only.
+</div>
+
+<div class="email">
+
+  <!-- Preheader (browser only) -->
+  <div class="preheader"><strong>Preheader:</strong> 72 hour flash sale · 4 tiers · 4 gifts</div>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="wordmark">BON CHARGE</div>
+    <div class="nav">SHOP &nbsp;·&nbsp; QUIZ &nbsp;·&nbsp; SCIENCE</div>
+  </div>
+
+  <!-- Module 1: WELCOME15 dynamic block -->
+  <div class="welcome-block">
+    <div class="eyebrow">You have an unclaimed benefit</div>
+    <div class="headline">Stack 15% off on top of today's flash deal</div>
+    <div class="code-reveal">WELCOME15</div>
+    <div class="dynamic-tag">★ Dynamic · shown to new subscribers only</div>
+  </div>
+
+  <!-- Module 2: Hero -->
+  <div class="hero">
+    <div class="eyebrow">72 hour flash sale</div>
+    <h1 class="headline">Unlock up to $517<br>in free gifts</h1>
+    <p class="sub">Because the more you spend, the more you earn back in free gifts</p>
+
+    <div class="tier-ladder">
+      <div class="tier-row">
+        <div class="spend">$350+</div>
+        <div class="img">[ Harmonising<br>Sticker ]</div>
+        <div class="label">unlocks a free Harmonising Sticker</div>
+        <div class="val">$19.99</div>
+      </div>
+      <div class="tier-row">
+        <div class="spend">$750+</div>
+        <div class="img">[ Air Tube<br>Earphones ]</div>
+        <div class="label">unlocks free EMF Air Tube Earphones</div>
+        <div class="val">[live $]</div>
+      </div>
+      <div class="tier-row">
+        <div class="spend">$1,000+</div>
+        <div class="img">[ Face<br>Wand ]</div>
+        <div class="label">unlocks a free Red Light Face Wand</div>
+        <div class="val">$189</div>
+      </div>
+      <div class="tier-row">
+        <div class="spend">$1,500+</div>
+        <div class="img">[ Bullet<br>RLT ]</div>
+        <div class="label">unlocks the Bullet Red Light Therapy Device, free</div>
+        <div class="val">$249</div>
+      </div>
+    </div>
+
+    <div class="countdown">
+      <div class="label">⏱ Sale ends in</div>
+      <div class="digits">71 : 23 : 47 : 12</div>
+      <div class="digit-labels"><span>HRS</span><span>MIN</span><span>SEC</span><span>MS</span></div>
+    </div>
+
+    <a href="#" class="cta-button">CLAIM MY GIFT</a>
+  </div>
+
+  <!-- Module 3: Benefit cards -->
+  <div class="cards-section">
+    <div class="section-eyebrow">Why you'll love each gift</div>
+    <div class="section-title">Four free gifts, four wellness upgrades</div>
+
+    <div class="cards-grid">
+
+      <div class="b-card">
+        <div class="b-val">$19.99</div>
+        <div class="b-img">[ Harmonising<br>Sticker pack-shot ]</div>
+        <div class="b-eyebrow">Tier 1 · $350+</div>
+        <div class="b-name">Harmonising Sticker</div>
+        <div class="b-pointer">A small sticker designed to harmonise the EMF given off by your phone, laptop or earbuds.</div>
+        <ul class="b-bullets">
+          <li>Your daily devices give off EMF all day</li>
+          <li>Stick it on the back of any device, no setup</li>
+          <li>The easiest entry into a BON CHARGE protocol</li>
+        </ul>
+      </div>
+
+      <div class="b-card">
+        <div class="b-val">[live $]</div>
+        <div class="b-img">[ Air Tube Earphones<br>pack-shot ]</div>
+        <div class="b-eyebrow">Tier 2 · $750+</div>
+        <div class="b-name">EMF Air Tube Earphones</div>
+        <div class="b-pointer">Earphones that send sound through a hollow air tube instead of running wires up to your ears.</div>
+        <ul class="b-bullets">
+          <li>Hollow tube design keeps wires away from your head</li>
+          <li>Sound travels through air for the final stretch</li>
+          <li>Works with any device with a 3.5mm jack</li>
+        </ul>
+      </div>
+
+      <div class="b-card">
+        <div class="b-val">$189</div>
+        <div class="b-img">[ Red Light Face Wand<br>pack-shot ]</div>
+        <div class="b-eyebrow">Tier 3 · $1,000+</div>
+        <div class="b-name">Red Light Face Wand</div>
+        <div class="b-pointer">A handheld face tool that shines red and near-infrared light on your skin.</div>
+        <ul class="b-bullets">
+          <li>Red light (660nm) and near-infrared (850nm)</li>
+          <li>Designed to support the appearance of smoother, more even looking skin</li>
+          <li>Three minutes a zone, travel ready</li>
+        </ul>
+      </div>
+
+      <div class="b-card">
+        <div class="b-val">$249</div>
+        <div class="b-img">[ Bullet RLT Device<br>pack-shot ]</div>
+        <div class="b-eyebrow">Tier 4 · $1,500+</div>
+        <div class="b-name">Bullet Red Light Therapy Device</div>
+        <div class="b-pointer">A pocket-sized red light therapy torch you point at sore muscles or joints.</div>
+        <div class="b-tag">
+          Designed for post activity muscle recovery and to target muscle and joint pain.
+          <span class="approval">(Andy Approved · verbatim · do not edit)</span>
+        </div>
+        <ul class="b-bullets">
+          <li>Red light (660nm) and near-infrared (850nm)</li>
+          <li>Compact handheld for targeted areas</li>
+          <li>Most customers start here</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="cta-wrap">
+      <a href="#" class="cta-button">CLAIM MY GIFT</a>
+    </div>
+  </div>
+
+  <!-- Module 4: UGC -->
+  <div class="ugc-section">
+    <div class="ugc-title">Real customers, real protocols</div>
+    <div class="ugc-grid">
+      <div class="ugc-tile">[ UGC tile 1<br>Face Wand session ]</div>
+      <div class="ugc-tile">[ UGC tile 2<br>Bullet on shoulder ]</div>
+      <div class="ugc-tile">[ UGC tile 3<br>Air Tube Earphones ]</div>
+    </div>
+  </div>
+
+  <!-- Module 5: BNPL -->
+  <div class="bnpl-section">
+    <div class="bnpl-card">
+      <div class="b-eyebrow">Buy now, pay over time</div>
+      <div class="b-head">Pay over time, claim your gift today</div>
+      <div class="b-body">Split your order across 4 fortnightly payments. Your free gift still unlocks at your spend tier.</div>
+      <div class="b-logos">KLARNA · AFTERPAY · SEZZLE</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="help">Help · hello@boncharge.com</div>
+    <div class="ends">Sale ends 11:59PM AEST, Saturday 20 [Month]</div>
+    <div class="links">
+      <a href="#">View all products on sale</a> &nbsp;·&nbsp;
+      <a href="#">Terms and Conditions</a> &nbsp;·&nbsp;
+      <a href="#">Sale Terms and Conditions</a>
+    </div>
+    <div class="wordmark">BON CHARGE</div>
+    <div class="unsub">
+      You're receiving this because you subscribed at boncharge.com<br>
+      <a href="#">Unsubscribe</a> &nbsp;·&nbsp; <a href="#">Update preferences</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
