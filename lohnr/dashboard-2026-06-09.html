@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lohnr · Klaviyo Performance · Last 30 Days</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #f4f4f1; color: #1a1a1a; line-height: 1.4; padding: 24px; font-size: 14px; }
+.container { max-width: 1320px; margin: 0 auto; }
+
+/* Header */
+.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; padding: 14px 22px; background: #fff; border: 1px solid #e6e6e1; border-radius: 4px; }
+.header h1 { font-size: 20px; font-weight: 500; letter-spacing: -0.3px; }
+.header .periods { display: flex; gap: 18px; font-size: 11px; }
+.header .periods .lbl { color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; font-size: 9px; font-weight: 600; }
+.header .periods .v { color: #1a1a1a; font-weight: 500; }
+
+/* Panels */
+.panel { background: #fff; border: 1px solid #e6e6e1; border-radius: 4px; padding: 22px 24px; margin-bottom: 18px; }
+.panel-title { font-size: 15px; font-weight: 600; margin-bottom: 18px; color: #1a1a1a; }
+.panel-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+
+/* KPI grid */
+.kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 18px; }
+.kpi-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.kpi-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.kpi-grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
+.kpi-grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
+.kpi { }
+.kpi-label { font-size: 11px; font-weight: 600; color: #444; margin-bottom: 6px; line-height: 1.3; }
+.kpi-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
+.kpi-val { font-size: 22px; font-weight: 600; color: #1a1a1a; letter-spacing: -0.3px; }
+.kpi-sub { font-size: 11px; color: #888; }
+.delta { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.delta.up { background: #e1efe4; color: #2d7a48; }
+.delta.down { background: #fbe5e5; color: #b54040; }
+.delta.flat { background: #eee; color: #555; }
+
+/* Charts */
+.chart-wrap { position: relative; height: 230px; margin-top: 6px; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th, td { padding: 9px 8px; text-align: right; border-bottom: 1px solid #f0efeb; vertical-align: middle; }
+th:first-child, td:first-child { text-align: left; }
+th { font-weight: 600; color: #555; background: #fafaf7; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.4px; padding: 11px 8px; }
+tbody tr:hover { background: #fbfaf6; }
+
+.heatcell { padding: 4px 8px; border-radius: 2px; display: inline-block; min-width: 50px; text-align: right; }
+
+/* Insights */
+.insights { background: #0a0a0a; color: #fff; padding: 30px 36px; border-radius: 4px; margin-top: 22px; }
+.insights h2 { font-size: 18px; font-weight: 500; margin-bottom: 18px; letter-spacing: -0.3px; }
+.insights .sub { color: #aaa; font-size: 13px; margin-bottom: 24px; }
+.insights .insight { border-left: 3px solid #7db788; padding: 6px 0 6px 18px; margin-bottom: 18px; }
+.insights .insight .h { font-weight: 600; color: #fff; margin-bottom: 4px; font-size: 14px; }
+.insights .insight .b { color: #ccc; font-size: 13px; line-height: 1.5; }
+.insights .insight strong { color: #7db788; }
+
+.section-head { font-size: 11px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 1.2px; margin: 22px 0 10px 4px; }
+
+@media print { body { background: #fff; padding: 0; } .panel { break-inside: avoid; box-shadow: none; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <h1>Lohnr · Klaviyo Performance</h1>
+    <div style="font-size:11px;color:#888;margin-top:4px;">Snapshot prepared 9 June 2026</div>
+  </div>
+  <div class="periods">
+    <div><div class="lbl">Current Period</div><div class="v">10 May – 9 Jun 2026</div><div class="v" style="color:#888;">Last 30 Days</div></div>
+    <div><div class="lbl">Previous</div><div class="v">9 Apr – 10 May 2026</div><div class="v" style="color:#888;">Previous Period</div></div>
+    <div><div class="lbl">Over Time</div><div class="v">Jun 2025 – Jun 2026</div><div class="v" style="color:#888;">13 months</div></div>
+  </div>
+</div>
+
+<!-- ATTRIBUTED REVENUE -->
+<div class="panel">
+  <div class="panel-title">Attributed Revenue</div>
+  <div class="kpi-grid cols-3">
+    
+        <div class="kpi">
+          <div class="kpi-label">Total Store Revenue</div>
+          <div class="kpi-row"><div class="kpi-val">A$217,735</div><div class="delta down">↘ 28.9%</div></div>
+          <div class="kpi-sub">vs A$306,067 previous period</div>
+        </div>
+    
+        <div class="kpi">
+          <div class="kpi-label">Total Attributed Revenue</div>
+          <div class="kpi-row"><div class="kpi-val">A$47,414</div><div class="delta down">↘ 12.8%</div></div>
+          <div class="kpi-sub">vs A$54,366 previous period</div>
+        </div>
+    
+        <div class="kpi">
+          <div class="kpi-label">Percent Attributed</div>
+          <div class="kpi-row"><div class="kpi-val">21.78%</div><div class="delta up">↗ 22.6%</div></div>
+          <div class="kpi-sub">vs 17.76% previous period</div>
+        </div>
+  </div>
+  <div class="chart-wrap"><canvas id="ch_attr_rev"></canvas></div>
+</div>
+
+<!-- BY MESSAGE TYPE / BY CHANNEL -->
+<div class="panel-row">
+  <div class="panel">
+    <div class="panel-title">Attributed Revenue by Message Type</div>
+    <div class="kpi-grid cols-2">
+      
+        <div class="kpi">
+          <div class="kpi-label">Flow Revenue</div>
+          <div class="kpi-row"><div class="kpi-val">A$35,410</div><div class="delta down">↘ 19.5%</div></div>
+          <div class="kpi-sub">vs A$43,998 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Flow Revenue (% of Total Store)</div>
+          <div class="kpi-row"><div class="kpi-val">16.26%</div><div class="delta up">↗ 13.1%</div></div>
+          <div class="kpi-sub">vs 14.38% previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Flow Revenue (% of Total Attributed)</div>
+          <div class="kpi-row"><div class="kpi-val">74.68%</div><div class="delta down">↘ 7.7%</div></div>
+          <div class="kpi-sub">vs 80.93% previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Campaign Revenue</div>
+          <div class="kpi-row"><div class="kpi-val">A$12,004</div><div class="delta up">↗ 15.8%</div></div>
+          <div class="kpi-sub">vs A$10,368 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Campaign Revenue (% of Total Store)</div>
+          <div class="kpi-row"><div class="kpi-val">5.51%</div><div class="delta up">↗ 62.8%</div></div>
+          <div class="kpi-sub">vs 3.39% previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Campaign Revenue (% of Total Attributed)</div>
+          <div class="kpi-row"><div class="kpi-val">25.32%</div><div class="delta up">↗ 32.8%</div></div>
+          <div class="kpi-sub">vs 19.07% previous period</div>
+        </div>
+    </div>
+    <div class="chart-wrap" style="height:200px;"><canvas id="ch_msg_type"></canvas></div>
+  </div>
+  <div class="panel">
+    <div class="panel-title">Attributed Revenue by Channel</div>
+    <div class="kpi-grid cols-2">
+      
+        <div class="kpi">
+          <div class="kpi-label">Email Revenue</div>
+          <div class="kpi-row"><div class="kpi-val">A$47,414</div><div class="delta down">↘ 12.8%</div></div>
+          <div class="kpi-sub">vs A$54,366 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Email Revenue (% of Total Store)</div>
+          <div class="kpi-row"><div class="kpi-val">21.78%</div><div class="delta up">↗ 22.6%</div></div>
+          <div class="kpi-sub">vs 17.76% previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">SMS Revenue</div>
+          <div class="kpi-row"><div class="kpi-val">A$0.00</div><div class="delta flat">→ 0%</div></div>
+          <div class="kpi-sub">vs A$0.00 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">SMS Revenue (% of Total Store)</div>
+          <div class="kpi-row"><div class="kpi-val">0.00%</div><div class="delta flat">→ 0%</div></div>
+          <div class="kpi-sub">vs 0.00% previous period</div>
+        </div>
+    </div>
+    <div class="chart-wrap" style="height:248px;"><canvas id="ch_channel"></canvas></div>
+  </div>
+</div>
+
+<!-- FIRST TIME / DATABASE -->
+<div class="panel-row">
+  <div class="panel">
+    <div class="panel-title">New vs Repeat Orders · 13-Month Trend <span style="font-size:11px;font-weight:400;color:#888;">(retention story)</span></div>
+    <div class="kpi-grid cols-3">
+      <div class="kpi">
+        <div class="kpi-label">Repeat-Buyer Share · H1 2026 vs H2 2025</div>
+        <div class="kpi-row"><div class="kpi-val">7.93%</div><div class="delta up">↗ +51%</div></div>
+        <div class="kpi-sub">up from 5.24% prior 6 months · <strong>1,407</strong> repeats of 17,744 total orders</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Absolute Repeat Orders · 6mo vs 6mo</div>
+        <div class="kpi-row"><div class="kpi-val">1,407</div><div class="delta up">↗ +47%</div></div>
+        <div class="kpi-sub">vs 958 in Jul-Dec 2025 · 234 repeats/month run-rate</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">YoY · Same-Month Pace</div>
+        <div class="kpi-row"><div class="kpi-val">58×</div><div class="delta up">↗ Jun '25 → Jun '26</div></div>
+        <div class="kpi-sub">Jun '25 had 4 repeats · Jun '26 pacing 230/mo</div>
+      </div>
+    </div>
+    <div class="chart-wrap" style="height:260px;"><canvas id="ch_new_repeat"></canvas></div>
+    <div style="font-size:11px;color:#888;margin-top:10px;line-height:1.4;">
+      <strong style="color:#444;">Note:</strong> Klaviyo tracking started Jun 2025, so "first-time" is bounded by that window. Absolute repeat-order growth (65× from Jun '25 to May '26) is directionally accurate; the repeat % peaked in Jan '26 then was diluted by large new-customer acquisition spikes (Mother's Day, Easter). True customer-lifetime cohort data requires Shopify Admin API access.
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-title">Database Growth</div>
+    <div class="kpi-grid cols-2">
+      
+        <div class="kpi">
+          <div class="kpi-label">Email Subscribers Added</div>
+          <div class="kpi-row"><div class="kpi-val">4,499</div><div class="delta down">↘ 43.3%</div></div>
+          <div class="kpi-sub">vs 7,941 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">SMS Subscribers Added</div>
+          <div class="kpi-row"><div class="kpi-val">0</div><div class="delta flat">→ 0%</div></div>
+          <div class="kpi-sub">vs 0 previous period</div>
+        </div>
+    </div>
+    <table>
+      <thead><tr><th>Metric</th><th>Current</th><th>Previous</th></tr></thead>
+      <tbody>
+        <tr><td>Email Unsubscribes</td><td>1,704</td><td>1,574</td></tr>
+        <tr><td>SMS Unsubscribes</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-wrap" style="height:200px;margin-top:14px;"><canvas id="ch_dbgrowth"></canvas></div>
+  </div>
+</div>
+
+<!-- FLOW PERFORMANCE -->
+
+<div class="panel">
+  <div class="panel-title">Customer LTV by Acquisition Cohort · Last 9 Months <span style="font-size:11px;font-weight:400;color:#888;">— per-customer revenue at 30/60/90 days post-acquisition</span></div>
+  
+  <div class="kpi-grid cols-3" style="margin-bottom:18px;">
+    <div class="kpi">
+      <div class="kpi-label">30-Day LTV per Customer</div>
+      <div class="kpi-row"><div class="kpi-val">A$92.55</div><div class="delta up">↗ +32%</div></div>
+      <div class="kpi-sub">Recent 6 cohorts vs Jun-Oct '25 baseline (A$70.16)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">90-Day LTV per Customer</div>
+      <div class="kpi-row"><div class="kpi-val">A$97.40</div><div class="delta up">↗ +37%</div></div>
+      <div class="kpi-sub">Recent 5 cohorts vs Jun-Oct '25 baseline (A$71.01)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Peak Cohort · Dec '25</div>
+      <div class="kpi-row"><div class="kpi-val">A$102.93</div><div class="delta up">↗ 90-day LTV</div></div>
+      <div class="kpi-sub">2,664 customers · 11.4% reorder lift over first-order AOV</div>
+    </div>
+  </div>
+  
+  <div class="chart-wrap" style="height:280px;"><canvas id="ch_ltv"></canvas></div>
+  
+  <div style="font-size:11px;color:#888;margin-top:12px;line-height:1.5;">
+    <strong style="color:#444;">How to read this:</strong> Each bar group is a cohort of customers acquired in that month. Within each cohort, the three bars show their cumulative revenue at 30, 60, and 90 days after their first order. The Nov-Dec 2025 inflection point is when per-customer lifetime value started compounding — same first-order AOV, more reorders.
+  </div>
+</div>
+
+<div class="panel-row">
+  <div class="panel">
+    <div class="panel-title">Email Flow Performance</div>
+    <div class="kpi-grid cols-3">
+      
+        <div class="kpi">
+          <div class="kpi-label">Flow Email Revenue</div>
+          <div class="kpi-row"><div class="kpi-val">A$35,410</div><div class="delta down">↘ 19.5%</div></div>
+          <div class="kpi-sub">vs A$43,998 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Flow Email Revenue / Recipient</div>
+          <div class="kpi-row"><div class="kpi-val">A$0.60</div><div class="delta up">↗ 8.2%</div></div>
+          <div class="kpi-sub">vs A$0.56 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Flow Email Deliveries</div>
+          <div class="kpi-row"><div class="kpi-val">58,536</div><div class="delta down">↘ 25.6%</div></div>
+          <div class="kpi-sub">vs 78,715 previous period</div>
+        </div>
+    </div>
+    <div class="chart-wrap"><canvas id="ch_flow_email"></canvas></div>
+  </div>
+  <div class="panel">
+    <div class="panel-title">SMS Flow Performance</div>
+    <div class="kpi-grid cols-3">
+      
+        <div class="kpi">
+          <div class="kpi-label">Flow SMS Revenue</div>
+          <div class="kpi-row"><div class="kpi-val">A$0.00</div><div class="delta flat">→ 0%</div></div>
+          <div class="kpi-sub">vs A$0.00 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Flow SMS Revenue / Recipient</div>
+          <div class="kpi-row"><div class="kpi-val">A$0.00</div><div class="delta flat">→ 0%</div></div>
+          <div class="kpi-sub">vs A$0.00 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Flow SMS Deliveries</div>
+          <div class="kpi-row"><div class="kpi-val">0</div><div class="delta flat">→ 0%</div></div>
+          <div class="kpi-sub">vs 0 previous period</div>
+        </div>
+    </div>
+    <div class="chart-wrap"><canvas id="ch_flow_sms"></canvas></div>
+  </div>
+</div>
+
+<!-- TOP FLOWS TABLE -->
+<div class="panel">
+  <div class="panel-title">Top Flows</div>
+  <table>
+    <thead><tr><th>Flow Name</th><th>Total Revenue</th><th>Deliveries</th><th>Open Rate</th><th>Click Rate</th><th>RPR</th><th>CVR</th><th>% of Total Store</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>LC - WELCOME - V2</strong></td>
+        <td>A$27,774 <span class="delta down" style="font-size:10px;">20.9%</span></td>
+        <td>20,991 <span class="delta down" style="font-size:10px;">40.0%</span></td>
+        <td>38.6% <span class="delta down" style="font-size:10px;">3.6%</span></td>
+        <td>1.41% <span class="delta down" style="font-size:10px;">0.4%</span></td>
+        <td>A$1.31 <span class="delta up" style="font-size:10px;">32.3%</span></td>
+        <td>1.30% <span class="delta up" style="font-size:10px;">23.4%</span></td>
+        <td>12.76% <span class="delta up" style="font-size:10px;">11.1%</span></td>
+      </tr>
+      <tr>
+        <td><strong>LC_ABANDONED-CHECKOUT_V2</strong></td>
+        <td>A$2,404.05 <span class="delta up" style="font-size:10px;">53.3%</span></td>
+        <td>1,741 <span class="delta up" style="font-size:10px;">36.3%</span></td>
+        <td>39.3% <span class="delta up" style="font-size:10px;">0.1%</span></td>
+        <td>2.36% <span class="delta up" style="font-size:10px;">76.8%</span></td>
+        <td>A$1.37 <span class="delta up" style="font-size:10px;">13.1%</span></td>
+        <td>1.37% <span class="delta down" style="font-size:10px;">6.8%</span></td>
+        <td>1.10% <span class="delta up" style="font-size:10px;">115.5%</span></td>
+      </tr>
+      <tr>
+        <td><strong>LC - CART ABANDONMENT / REVISED</strong></td>
+        <td>A$2,036.29 <span class="delta down" style="font-size:10px;">36.1%</span></td>
+        <td>2,562 <span class="delta down" style="font-size:10px;">51.9%</span></td>
+        <td>41.5% <span class="delta down" style="font-size:10px;">1.5%</span></td>
+        <td>0.70% <span class="delta up" style="font-size:10px;">3.8%</span></td>
+        <td>A$0.79 <span class="delta up" style="font-size:10px;">32.7%</span></td>
+        <td>0.74% <span class="delta up" style="font-size:10px;">31.6%</span></td>
+        <td>0.94% <span class="delta down" style="font-size:10px;">10.2%</span></td>
+      </tr>
+      <tr>
+        <td><strong>Lohnr - in house / POST PURCHASE THANK YOU/ NEW & RETURNING / Discount - ROTATION15</strong></td>
+        <td>A$1,371.95 <span class="delta down" style="font-size:10px;">49.8%</span></td>
+        <td>26,351 <span class="delta down" style="font-size:10px;">22.2%</span></td>
+        <td>45.6% <span class="delta down" style="font-size:10px;">6.3%</span></td>
+        <td>0.33% <span class="delta down" style="font-size:10px;">23.2%</span></td>
+        <td>A$0.05 <span class="delta down" style="font-size:10px;">35.4%</span></td>
+        <td>0.06% <span class="delta down" style="font-size:10px;">35.6%</span></td>
+        <td>0.63% <span class="delta down" style="font-size:10px;">29.5%</span></td>
+      </tr>
+      <tr>
+        <td><strong>Lohnr - in house / Browse Abandonment</strong></td>
+        <td>A$881.06 <span class="delta up" style="font-size:10px;">69.0%</span></td>
+        <td>1,713 <span class="delta down" style="font-size:10px;">26.1%</span></td>
+        <td>37.1% <span class="delta down" style="font-size:10px;">4.4%</span></td>
+        <td>0.76% <span class="delta down" style="font-size:10px;">2.3%</span></td>
+        <td>A$0.51 <span class="delta up" style="font-size:10px;">128.7%</span></td>
+        <td>0.64% <span class="delta up" style="font-size:10px;">112.7%</span></td>
+        <td>0.40% <span class="delta up" style="font-size:10px;">137.5%</span></td>
+      </tr>
+      <tr>
+        <td><strong>LC_ABANDONED-CART_V2</strong></td>
+        <td>A$739.16 <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>1,279 <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>27.4% <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>0.47% <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>A$0.58 <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>0.39% <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>0.34% <span class="delta up" style="font-size:10px;">∞%</span></td>
+      </tr>
+      <tr>
+        <td><strong>LC - Review Request</strong></td>
+        <td>A$203.75 <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>3,899 <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>45.0% <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>0.72% <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>A$0.05 <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>0.05% <span class="delta up" style="font-size:10px;">∞%</span></td>
+        <td>0.09% <span class="delta up" style="font-size:10px;">∞%</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CAMPAIGN PERFORMANCE -->
+<div class="panel-row">
+  <div class="panel">
+    <div class="panel-title">Email Campaign Performance</div>
+    <div class="kpi-grid cols-2">
+      
+        <div class="kpi">
+          <div class="kpi-label">Campaign Email Revenue</div>
+          <div class="kpi-row"><div class="kpi-val">A$12,004</div><div class="delta up">↗ 15.8%</div></div>
+          <div class="kpi-sub">vs A$10,368 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Revenue / Recipient</div>
+          <div class="kpi-row"><div class="kpi-val">A$0.04</div><div class="delta down">↘ 26.8%</div></div>
+          <div class="kpi-sub">vs A$0.06 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Campaign Deliveries</div>
+          <div class="kpi-row"><div class="kpi-val">285,161</div><div class="delta up">↗ 58.1%</div></div>
+          <div class="kpi-sub">vs 180,412 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Email Sends (Count)</div>
+          <div class="kpi-row"><div class="kpi-val">10</div><div class="delta up">↗ 11.1%</div></div>
+          <div class="kpi-sub">vs 9 previous period</div>
+        </div>
+    </div>
+    <div class="chart-wrap"><canvas id="ch_camp_email"></canvas></div>
+    <table style="margin-top:12px;">
+      <thead><tr><th>Metric</th><th>Current</th><th>Previous</th></tr></thead>
+      <tbody>
+        <tr><td>Campaign Email Open Rate</td><td>45.52%</td><td>48.98%</td></tr>
+        <tr><td>Campaign Email Click Rate</td><td>0.23%</td><td>0.28%</td></tr>
+        <tr><td>Campaign Email Conversion Rate</td><td>0.046%</td><td>0.068%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel">
+    <div class="panel-title">SMS Campaign Performance</div>
+    <div class="kpi-grid cols-2">
+      
+        <div class="kpi">
+          <div class="kpi-label">Campaign SMS Revenue</div>
+          <div class="kpi-row"><div class="kpi-val">A$0.00</div><div class="delta flat">→ 0%</div></div>
+          <div class="kpi-sub">vs A$0.00 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Revenue / Recipient</div>
+          <div class="kpi-row"><div class="kpi-val">A$0.00</div><div class="delta flat">→ 0%</div></div>
+          <div class="kpi-sub">vs A$0.00 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">Campaign SMS Deliveries</div>
+          <div class="kpi-row"><div class="kpi-val">0</div><div class="delta flat">→ 0%</div></div>
+          <div class="kpi-sub">vs 0 previous period</div>
+        </div>
+      
+        <div class="kpi">
+          <div class="kpi-label">SMS Sends (Count)</div>
+          <div class="kpi-row"><div class="kpi-val">0</div><div class="delta flat">→ 0%</div></div>
+          <div class="kpi-sub">vs 0 previous period</div>
+        </div>
+    </div>
+    <div class="chart-wrap"><canvas id="ch_camp_sms"></canvas></div>
+    <table style="margin-top:12px;">
+      <thead><tr><th>Metric</th><th>Current</th><th>Previous</th></tr></thead>
+      <tbody>
+        <tr><td>Campaign SMS Click Rate</td><td>0.00%</td><td>0.00%</td></tr>
+        <tr><td>Campaign SMS Conversion Rate</td><td>0.000%</td><td>0.000%</td></tr>
+        <tr><td>Campaign SMS Unsubscribe Rate</td><td>0.000%</td><td>0.000%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TOP CAMPAIGNS -->
+<div class="panel">
+  <div class="panel-title">Email Campaign Top Performers</div>
+  <table>
+    <thead><tr><th>Campaign</th><th>Send Time</th><th>Recipients</th><th>Revenue</th><th>Open Rate</th><th>Click Rate</th><th>CTR</th><th>Rev / Recipient</th><th>Unsub Rate</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Memorial Day Sale Launch</td>
+        <td>2026-05-23</td>
+        <td>41,285</td>
+        <td><strong>A$3,426.30</strong></td>
+        <td>42.0%</td>
+        <td>0.36%</td>
+        <td>0.87%</td>
+        <td>A$0.08</td>
+        <td>0.44%</td>
+      </tr>
+      <tr>
+        <td>Memorial Day Last Chance Elena</td>
+        <td>2026-05-31</td>
+        <td>41,099</td>
+        <td><strong>A$1,405.07</strong></td>
+        <td>38.8%</td>
+        <td>0.25%</td>
+        <td>0.65%</td>
+        <td>A$0.03</td>
+        <td>0.45%</td>
+      </tr>
+      <tr>
+        <td>Memorial Day_The Long-Weekend Edit</td>
+        <td>2026-05-26</td>
+        <td>18,574</td>
+        <td><strong>A$1,241.61</strong></td>
+        <td>50.1%</td>
+        <td>0.16%</td>
+        <td>0.32%</td>
+        <td>A$0.07</td>
+        <td>0.58%</td>
+      </tr>
+      <tr>
+        <td>Game Day Set_Why Women Keep Coming Back</td>
+        <td>2026-05-13</td>
+        <td>24,522</td>
+        <td><strong>A$1,160.15</strong></td>
+        <td>47.4%</td>
+        <td>0.15%</td>
+        <td>0.32%</td>
+        <td>A$0.05</td>
+        <td>0.67%</td>
+      </tr>
+      <tr>
+        <td>Mother's Day_Elena Close</td>
+        <td>2026-05-10</td>
+        <td>23,742</td>
+        <td><strong>A$1,117.26</strong></td>
+        <td>49.8%</td>
+        <td>0.43%</td>
+        <td>0.85%</td>
+        <td>A$0.05</td>
+        <td>0.67%</td>
+      </tr>
+      <tr>
+        <td>Solene_Made for the Months Ahead</td>
+        <td>2026-06-03</td>
+        <td>18,226</td>
+        <td><strong>A$1,029.71</strong></td>
+        <td>40.2%</td>
+        <td>0.24%</td>
+        <td>0.60%</td>
+        <td>A$0.06</td>
+        <td>0.58%</td>
+      </tr>
+      <tr>
+        <td>The Summer Release_Four Just Landed</td>
+        <td>2026-06-06</td>
+        <td>28,440</td>
+        <td><strong>A$962.91</strong></td>
+        <td>58.8%</td>
+        <td>0.20%</td>
+        <td>0.34%</td>
+        <td>A$0.03</td>
+        <td>0.47%</td>
+      </tr>
+      <tr>
+        <td>New In_Three Just Landed</td>
+        <td>2026-05-17</td>
+        <td>25,666</td>
+        <td><strong>A$695.67</strong></td>
+        <td>39.1%</td>
+        <td>0.13%</td>
+        <td>0.33%</td>
+        <td>A$0.03</td>
+        <td>0.62%</td>
+      </tr>
+      <tr>
+        <td>Meet Elara_In 100% Cotton</td>
+        <td>2026-05-19</td>
+        <td>20,489</td>
+        <td><strong>A$625.55</strong></td>
+        <td>63.0%</td>
+        <td>0.21%</td>
+        <td>0.33%</td>
+        <td>A$0.03</td>
+        <td>0.75%</td>
+      </tr>
+      <tr>
+        <td>Memorial Day Hype_Unlocks Tomorrow</td>
+        <td>2026-05-22</td>
+        <td>43,624</td>
+        <td><strong>A$339.46</strong></td>
+        <td>39.0%</td>
+        <td>0.13%</td>
+        <td>0.32%</td>
+        <td>A$0.01</td>
+        <td>0.35%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="panel">
+  <div class="panel-title">Top Campaign Previews · Last 30 Days <span style="font-size:11px;font-weight:400;color:#888;">— actual rendered emails</span></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:6px;">
+    <div style="border:1px solid #e6e6e1;border-radius:4px;overflow:hidden;background:#fff;">
+      <div style="padding:14px 16px;border-bottom:1px solid #efefed;">
+        <div style="font-weight:600;font-size:13px;color:#1a1a1a;margin-bottom:4px;line-height:1.3;">Memorial Day Sale Launch</div>
+        <div style="font-size:11px;color:#888;">Subject: <em>—</em></div>
+        <div style="display:flex;gap:12px;margin-top:8px;font-size:11px;">
+          <span><strong>A$3,426</strong> revenue</span>
+          <span>37 orders</span>
+          <span>42.0% open</span>
+          <span>0.36% click</span>
+        </div>
+      </div>
+      <div style="background:#fafaf8;padding:8px;">
+        <iframe srcdoc="<head><!--[if !mso]><!--><style>@import url(&quot;https://static-forms.klaviyo.com/fonts/api/v1/UMi7Ys/custom_fonts.css&quot;);</style><!--<![endif]--></head><html><body><p><span style=&quot;font-family: sofia-pro, Helvetica, Arial, sans-serif; font-size: 16px;&quot;>Hey {{ person.first_name|default:&#39;there&#39; }},</span><br/></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>Elena here, founder of Lohnr. <br/><br/>Here&amp;rsquo;s the big reveal!<br/><br/></span></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;><strong>20% off sitewide with code MEMDAY20.</strong></span></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>Valid now through 31st May at midnight.<br/><br/></span></p><p><a href=&quot;https://lohnr.com/discount/MEMDAY20?redirect=/collections/all-clothing&quot; rel=&quot;noopener noreferrer nofollow&quot; style=&quot;text-decoration: none;&quot; target=&quot;_blank&quot;><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;><strong><u>Shop The Sale</u></strong></span></a></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>​</span></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>Memorial Day weekend has always felt like the proper start of summer, the one where you start reaching for all your summer rotation pieces. So I wanted to give you a window to do just that with us.</span></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>​</span></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>- Elena</span></p></body></html>" style="width:100%;height:380px;border:none;background:#fff;border-radius:2px;" sandbox></iframe>
+      </div>
+    </div>
+    <div style="border:1px solid #e6e6e1;border-radius:4px;overflow:hidden;background:#fff;">
+      <div style="padding:14px 16px;border-bottom:1px solid #efefed;">
+        <div style="font-weight:600;font-size:13px;color:#1a1a1a;margin-bottom:4px;line-height:1.3;">Memorial Day Last Chance Elena</div>
+        <div style="font-size:11px;color:#888;">Subject: <em>—</em></div>
+        <div style="display:flex;gap:12px;margin-top:8px;font-size:11px;">
+          <span><strong>A$1,405</strong> revenue</span>
+          <span>13 orders</span>
+          <span>38.8% open</span>
+          <span>0.25% click</span>
+        </div>
+      </div>
+      <div style="background:#fafaf8;padding:8px;">
+        <iframe srcdoc="<head><!--[if !mso]><!--><style>@import url(&quot;https://static-forms.klaviyo.com/fonts/api/v1/UMi7Ys/custom_fonts.css&quot;);</style><!--<![endif]--></head><html><body><div data-kl-sp=&quot;true&quot; style=&quot;display:none; font-size:1px; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;&quot;>&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;&amp;zwnj;&amp;nbsp;</div><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 16px;&#39;>Hey {{ person.first_name|default:&#39;there&#39; }},</span><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;><br/></span></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>Elena, one more time. <br/><br/></span></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>The Memorial Day Sale ends tonight at midnight PT. Right now everything is <strong>20% off SITE WIDE. </strong><br/></span></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;><strong>Code MEMDAY20 holds until 11:59pm PT. </strong><br/><br/></span></p><p><a href=&quot;https://lohnr.com/collections/all-clothing&quot; rel=&quot;noopener noreferrer nofollow&quot; style=&quot;text-decoration: none;&quot; target=&quot;_blank&quot;><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;><strong><u>&amp;gt;&amp;gt;Shop The Sale</u></strong></span></a><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;><br/><br/></span></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>If you&#39;ve been waiting, this is the moment. Here&#39;s what&#39;s been moving over the weekend, in case you&#39;re after a place to start:<br/><br/></span></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>The Solene Dress in Eucalyptus. </span><br/><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>The Game Day Set in Crimson. </span><br/><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>The Solace Set in Sand.<br/><br/></span></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>If one of those is the piece you&#39;ve been circling, I&#39;d grab it. We don&#39;t restock colourways the same way after a sale weekend.</span><br/><br/></p><p><span style=&#39;font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;&#39;>- Elena</span></p></body></html>" style="width:100%;height:380px;border:none;background:#fff;border-radius:2px;" sandbox></iframe>
+      </div>
+    </div>
+    <div style="border:1px solid #e6e6e1;border-radius:4px;overflow:hidden;background:#fff;">
+      <div style="padding:14px 16px;border-bottom:1px solid #efefed;">
+        <div style="font-weight:600;font-size:13px;color:#1a1a1a;margin-bottom:4px;line-height:1.3;">Memorial Day_The Long-Weekend Edit</div>
+        <div style="font-size:11px;color:#888;">Subject: <em>—</em></div>
+        <div style="display:flex;gap:12px;margin-top:8px;font-size:11px;">
+          <span><strong>A$1,242</strong> revenue</span>
+          <span>16 orders</span>
+          <span>50.1% open</span>
+          <span>0.16% click</span>
+        </div>
+      </div>
+      <div style="background:#fafaf8;padding:8px;">
+        <iframe srcdoc="<!DOCTYPE html>
+<html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:o=&quot;urn:schemas-microsoft-com:office:office&quot; xmlns:v=&quot;urn:schemas-microsoft-com:vml&quot;>
+<head>
+<title>
+</title>
+<!--[if !mso]><!-->
+<meta content=&quot;IE=edge&quot; http-equiv=&quot;X-UA-Compatible&quot;/>
+<!--<![endif]-->
+<meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1&quot; name=&quot;viewport&quot;/>
+<!--[if mso]>
+        <noscript>
+        <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+        </xml>
+        </noscript>
+        <![endif]-->
+<!--[if lte mso 11]>
+        <style type=&quot;text/css&quot; data-inliner=&quot;ignore&quot;>
+          .mj-outlook-group-fix { width:100% !important; }
+        </style>
+        <![endif]-->
+<!--[if !mso]><!--><!--<![endif]-->
+<style>a:not([name]) {color:#1a1a1a;text-decoration:underline}
+a:link {color:#1a1a1a;text-decoration:underline}
+a:visited {color:#1a1a1a;text-decoration:underline}
+a:active {color:#1a1a1a;text-decoration:underline}
+a:hover {color:#1a1a1a;text-decoration:underline}</style><style>@import url(https://static-forms.klaviyo.com/fonts/api/v1/UMi7Ys/custom_fonts.css);
+#outlook a {
+    padding: 0
+    }
+body {
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%
+    }
+table, td {
+    border-collapse: collapse;
+    mso-table-lspace: 0;
+    mso-table-rspace: 0
+    }
+img {
+    border: 0;
+    line-height: 100%;
+    outline: none;
+    text-decoration: none;
+    -ms-interpolation-mode: bicubic
+    }
+p {
+    display: block;
+    margin: 13px 0
+    }
+@media only screen and (min-width: 480px) {
+    .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%
+        }
+    }
+.moz-text-html .mj-column-per-100 {
+    width: 100% !important;
+    max-width: 100%
+    }
+@media only screen and (max-width: 480px) {
+    div.kl-row.colstack div.kl-column {
+        display: block !important;
+        width: 100% !important
+        }
+    }
+@media only screen and (max-width: 480px) {
+    .component-wrapper .mob-no-spc {
+        padding-left: 0 !important;
+        padding-right: 0 !important
+        }
+    }
+@media only screen and (max-width: 480px) {
+    td.kl-img-base-auto-width {
+        width: 100% !important
+        }
+    }
+@media screen and (max-width: 480px) {
+    .kl-sl-stk {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 0 9px !important;
+        text-align: center !important
+        }
+    .kl-sl-stk.lbls {
+        padding: 0 !important
+        }
+    .kl-sl-stk.spcblk {
+        display: none !important
+        }
+    }
+img {
+    border: 0;
+    height: auto;
+    line-height: 100%;
+    outline: none;
+    text-decoration: none;
+    max-width: 100%
+    }
+.root-container {
+    background-repeat: repeat !important;
+    background-size: auto !important;
+    background-position: left top !important
+    }
+.root-container-spacing {
+    padding-top: 50px !important;
+    padding-bottom: 20px !important;
+    font-size: 0 !important
+    }
+.content-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important
+    }
+.content-padding.kl-first {
+    padding-top: 0 !important
+    }
+.content-padding.kl-last {
+    padding-bottom: 0 !important
+    }
+@media only screen and (max-width: 480px) {
+    td.mobile-only {
+        display: table-cell !important
+        }
+    div.mobile-only {
+        display: block !important
+        }
+    table.mobile-only {
+        display: table !important
+        }
+    .desktop-only {
+        display: none !important
+        }
+    }
+@media only screen and (max-width: 480px) {
+    .table-mobile-only {
+        display: table-cell !important;
+        max-height: none !important
+        }
+    .table-mobile-only.block {
+        display: block !important
+        }
+    .table-mobile-only.inline-block {
+        display: inline-block !important
+        }
+    .table-desktop-only {
+        max-height: 0 !important;
+        display: none !important;
+        mso-hide: all !important;
+        overflow: hidden !important
+        }
+    }
+p {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 1em
+    }
+@media only screen and (max-width: 480px) {
+    body.mce-content-body, /* NOTE: needed for internal tinymce styles */.kl-text > div, .kl-table-subblock > div, .kl-split-subblock > div {
+        font-size: 12px !important;
+        line-height: 1.3 !important
+        }
+    }
+h1 {
+    color: #000;
+    font-family: &quot;sofia-pro&quot;, Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0;
+    margin: 0;
+    margin-bottom: 0;
+    text-align: center
+    }
+@media only screen and (max-width: 480px) {
+    h1 {
+        font-size: 18px !important;
+        line-height: 1.1 !important
+        }
+    }
+h2 {
+    color: #000;
+    font-family: &quot;sofia-pro&quot;, Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0;
+    margin: 0;
+    margin-bottom: 16px;
+    text-align: center
+    }
+@media only screen and (max-width: 480px) {
+    h2 {
+        font-size: 20px !important;
+        line-height: 1.1 !important
+        }
+    }
+h3 {
+    color: #000;
+    font-family: &quot;sofia-pro&quot;, Helvetica, Arial, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+    margin: 0;
+    margin-bottom: 12px;
+    text-align: center
+    }
+@media only screen and (max-width: 480px) {
+    h3 {
+        font-size: 22px !important;
+        line-height: 1.1 !important
+        }
+    }
+h4 {
+    color: #3a3a3a;
+    font-family: Helvetica, Arial;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0;
+    margin: 0;
+    margin-bottom: 9px;
+    text-align: left
+    }
+@media only screen and (max-width: 480px) {
+    h4 {
+        font-size: 18px !important;
+        line-height: 1.1 !important
+        }
+    }
+@media only screen and (max-width: 480px) {
+    .root-container {
+        width: 100% !important
+        }
+    .root-container-spacing {
+        padding: 0 !important
+        }
+    .content-padding {
+        padding-left: 0 !important;
+        padding-right: 0 !important
+        }
+    .content-padding.kl-first {
+        padding-top: 0 !important
+        }
+    .content-padding.kl-last {
+        padding-bottom: 0 !important
+        }
+    .kl-column > .component-wrapper {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: unset !important
+        }
+    .kl-text {
+        padding-right: 18px !important;
+        padding-left: 18px !important
+        }
+    }</style></head>
+<body style=&quot;word-spacing:normal;background-color:#F5F5F7;&quot;>
+<!-- TRACKING_PIXEL_TOP -->
+<div class=&quot;root-container&quot; id=&quot;bodyTable&quot; style=&quot;background-color:#F5F5F7;&quot;>
+<div class=&quot;root-container-spacing&quot;>
+<table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;kl-section&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot;>
+<tbody>
+<tr>
+<td>
+<!--[if mso | IE]><table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;kl-section-outlook&quot; style=&quot;width:600px;&quot; width=&quot;600&quot; ><tr><td style=&quot;line-height:0px;font-size:0px;mso-line-height-rule:exactly;&quot;><![endif]-->
+<div style=&quot;margin:0px auto;max-width:600px;&quot;>
+<table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot;>
+<tbody>
+<tr>
+<td style=&quot;direction:ltr;font-size:0px;padding:0px;text-align:center;&quot;>
+<!--[if mso | IE]><table role=&quot;presentation&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;><table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;&quot; style=&quot;width:600px;&quot; width=&quot;600&quot; bgcolor=&quot;#FFFFFF&quot; ><tr><td style=&quot;line-height:0px;font-size:0px;mso-line-height-rule:exactly;&quot;><![endif]-->
+<div style=&quot;background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;border-radius:0px 0px 0px 0px;max-width:600px;&quot;>
+<table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;background:#FFFFFF;background-color:#FFFFFF;width:100%;border-radius:0px 0px 0px 0px;&quot;>
+<tbody>
+<tr>
+<td style=&quot;direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:center;&quot;>
+<!--[if mso | IE]><table role=&quot;presentation&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;><![endif]-->
+<div class=&quot;content-padding kl-first&quot;>
+<!--[if true]><table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;600&quot; style=&quot;width:600px;direction:ltr&quot;><tr><![endif]-->
+<div class=&quot;kl-row colstack&quot; style=&quot;display:table;table-layout:fixed;width:100%;&quot;>
+<!--[if true]><td style=&quot;vertical-align:top;width:600px;&quot;><![endif]-->
+<div class=&quot;kl-column&quot; style=&quot;display:table-cell;vertical-align:top;width:100%;&quot;>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;background-color:#000000;vertical-align:top;padding-top:15px;padding-right:18px;padding-bottom:15px;padding-left:18px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td align=&quot;center&quot; class=&quot;kl-text&quot; style=&quot;font-size:0px;padding:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word;&quot;>
+<div style=&quot;font-family:&#39;sofia-pro&#39;, Helvetica, Arial, sans-serif;font-size:14px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:center;color:#666464;&quot;><h4 style=&quot;text-align: center;&quot;><span style=&quot;color: rgb(255, 255, 255);&quot;><strong>FREE SHIPPING </strong>OVER $80</span></h4></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td align=&quot;center&quot; class=&quot;kl-image&quot; style=&quot;font-size:0px;word-break:break-word;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse;border-spacing:0px;&quot;>
+<tbody>
+<tr>
+<td class=&quot;kl-img-base-auto-width&quot; style=&quot;border:0;padding:0px 0px 0px 0px;width:600px;&quot; valign=&quot;top&quot;>
+<a class=&quot;kl-img-link&quot; href=&quot;https://lohnr.com/collections/all-clothing?sort_by=created-descending&quot; style=&quot;color:#1a1a1a; text-decoration:underline; display:block&quot;>
+<img alt=&quot;Memorial Day Sale&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/company/UMi7Ys/images/66a573a7-fcb3-4dad-a44f-d9a5ae8ee5fd.jpeg&quot; style=&quot;display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;&quot; title=&quot;Memorial Day Sale&quot; width=&quot;600&quot;/>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper desktop-only&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:20px;padding-right:120px;padding-bottom:20px;padding-left:120px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;border:dashed 2px #A07C07;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td align=&quot;center&quot; class=&quot;kl-text&quot; style=&quot;font-size:0px;padding:0px;padding-top:10px;padding-right:0px;padding-bottom:10px;padding-left:0px;word-break:break-word;&quot;>
+<div style=&quot;font-family:&#39;sofia-pro&#39;, Helvetica, Arial, sans-serif;font-size:14px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:center;color:#666464;&quot;><h4 style=&quot;text-align: center;&quot;><span style=&quot;font-family: sofia-pro, Helvetica, Arial, sans-serif; font-weight: bold; font-style: normal;&quot;>WITH <span style=&quot;color: rgb(160, 124, 7);&quot;>MEMDAY20</span></span></h4></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if !mso]><!--><div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper mobile-only&quot; style=&quot;display:none; font-size:0; text-align:left; direction:ltr; vertical-align:top; width:100%&quot;><table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;><tbody><tr><td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:20px;padding-right:60px;padding-bottom:20px;padding-left:60px;&quot;><table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;border:dashed 2px #A07C07;&quot; width=&quot;100%&quot;><tbody><tr><td align=&quot;center&quot; class=&quot;kl-text&quot; style=&quot;font-size:0px;padding:0px;padding-top:10px;padding-right:0px;padding-bottom:10px;padding-left:0px;word-break:break-word;&quot;><div style=&quot;font-family:&#39;sofia-pro&#39;, Helvetica, Arial, sans-serif;font-size:14px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:center;color:#666464;&quot;><h4 style=&quot;text-align: center;&quot;><span style=&quot;font-family: sofia-pro, Helvetica, Arial, sans-serif; font-weight: bold; font-style: normal;&quot;>WITH <span style=&quot;color: rgb(160, 124, 7);&quot;>MEMDAY20</span></span></h4></div></td></tr></tbody></table></td></tr></tbody></table></div><!--<![endif]-->
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td align=&quot;center&quot; class=&quot;kl-image&quot; style=&quot;font-size:0px;word-break:break-word;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse;border-spacing:0px;&quot;>
+<tbody>
+<tr>
+<td class=&quot;kl-img-base-auto-width&quot; style=&quot;border:0;padding:0px 0px 0px 0px;width:600px;&quot; valign=&quot;top&quot;>
+<a class=&quot;kl-img-link&quot; href=&quot;https://lohnr.com/collections/all-clothing?sort_by=created-descending&quot; style=&quot;color:#1a1a1a; text-decoration:underline; display:block&quot;>
+<img alt=&quot;Memoraill day sale 20% Sitewide&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/company/UMi7Ys/images/1b4e11e2-813e-426c-8f60-39ad955e23e3.jpeg&quot; style=&quot;display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;&quot; title=&quot;Memoraill day sale 20% Sitewide&quot; width=&quot;600&quot;/>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td align=&quot;center&quot; class=&quot;kl-image&quot; style=&quot;font-size:0px;word-break:break-word;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse;border-spacing:0px;&quot;>
+<tbody>
+<tr>
+<td class=&quot;kl-img-base-auto-width&quot; style=&quot;border:0;padding:0px 0px 0px 0px;width:600px;&quot; valign=&quot;top&quot;>
+<a class=&quot;kl-img-link&quot; href=&quot;https://lohnr.com/products/solene-dress&quot; style=&quot;color:#1a1a1a; text-decoration:underline; display:block&quot;>
+<img alt=&quot;Solene Dress 20% off with code MEMDAY20&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/company/UMi7Ys/images/cd321932-7cd5-4433-9d4f-1a62478d16c9.jpeg&quot; style=&quot;display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;&quot; title=&quot;Solene Dress 20% off with code MEMDAY20&quot; width=&quot;600&quot;/>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td align=&quot;center&quot; class=&quot;kl-image&quot; style=&quot;font-size:0px;word-break:break-word;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse;border-spacing:0px;&quot;>
+<tbody>
+<tr>
+<td class=&quot;kl-img-base-auto-width&quot; style=&quot;border:0;padding:0px 0px 0px 0px;width:600px;&quot; valign=&quot;top&quot;>
+<a class=&quot;kl-img-link&quot; href=&quot;https://lohnr.com/products/split-dress-set&quot; style=&quot;color:#1a1a1a; text-decoration:underline; display:block&quot;>
+<img alt=&quot;Game day set 20% off with code MEMDAY20&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/company/UMi7Ys/images/eb78b326-3c39-4e2e-9991-eeb06353f5c1.jpeg&quot; style=&quot;display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;&quot; title=&quot;Game day set 20% off with code MEMDAY20&quot; width=&quot;600&quot;/>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td align=&quot;center&quot; class=&quot;kl-image&quot; style=&quot;font-size:0px;word-break:break-word;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse;border-spacing:0px;&quot;>
+<tbody>
+<tr>
+<td class=&quot;kl-img-base-auto-width&quot; style=&quot;border:0;padding:0px 0px 0px 0px;width:600px;&quot; valign=&quot;top&quot;>
+<a class=&quot;kl-img-link&quot; href=&quot;https://lohnr.com/products/solace-set&quot; style=&quot;color:#1a1a1a; text-decoration:underline; display:block&quot;>
+<img alt=&quot;Solace Set 20% off with code MEMDAY20&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/company/UMi7Ys/images/c296334a-a104-42a7-9377-2c3bd0f6eeb7.jpeg&quot; style=&quot;display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;&quot; title=&quot;Solace Set 20% off with code MEMDAY20&quot; width=&quot;600&quot;/>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td align=&quot;center&quot; class=&quot;kl-image&quot; style=&quot;font-size:0px;word-break:break-word;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse;border-spacing:0px;&quot;>
+<tbody>
+<tr>
+<td class=&quot;kl-img-base-auto-width&quot; style=&quot;border:0;padding:0px 0px 0px 0px;width:600px;&quot; valign=&quot;top&quot;>
+<a class=&quot;kl-img-link&quot; href=&quot;https://lohnr.com/products/elara-pinafore&quot; style=&quot;color:#1a1a1a; text-decoration:underline; display:block&quot;>
+<img alt=&quot;Elara Pinafore 20% off with code MEMDAY20&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/company/UMi7Ys/images/482fac20-4115-4d7a-86f9-f8bedb1cb046.jpeg&quot; style=&quot;display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;&quot; title=&quot;Elara Pinafore 20% off with code MEMDAY20&quot; width=&quot;600&quot;/>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td align=&quot;center&quot; class=&quot;kl-image&quot; style=&quot;font-size:0px;word-break:break-word;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse;border-spacing:0px;&quot;>
+<tbody>
+<tr>
+<td class=&quot;kl-img-base-auto-width&quot; style=&quot;border:0;padding:0px 0px 0px 0px;width:600px;&quot; valign=&quot;top&quot;>
+<a class=&quot;kl-img-link&quot; href=&quot;https://lohnr.com/collections/all-clothing?sort_by=best-selling&quot; style=&quot;color:#1a1a1a; text-decoration:underline; display:block&quot;>
+<img alt=&quot;Memorial day save 20% sitewide, shop by best sellers&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/company/UMi7Ys/images/b2b467b7-dfd7-40ad-88ad-68b345e133d4.jpeg&quot; style=&quot;display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;&quot; title=&quot;Memorial day save 20% sitewide, shop by best sellers&quot; width=&quot;600&quot;/>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper desktop-only&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td style=&quot;font-size:0px;word-break:break-word;&quot;>
+<div style=&quot;height:20px;line-height:20px;&quot;> </div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!--[if true]></td><![endif]-->
+</div>
+<!--[if true]></tr></table><![endif]-->
+</div>
+<!--[if mso | IE]></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;kl-section&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot;>
+<tbody>
+<tr>
+<td>
+<!--[if mso | IE]><table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;kl-section-outlook&quot; style=&quot;width:600px;&quot; width=&quot;600&quot; ><tr><td style=&quot;line-height:0px;font-size:0px;mso-line-height-rule:exactly;&quot;><![endif]-->
+<div style=&quot;margin:0px auto;max-width:600px;&quot;>
+<table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot;>
+<tbody>
+<tr>
+<td style=&quot;direction:ltr;font-size:0px;padding:0px;text-align:center;&quot;>
+<!--[if mso | IE]><table role=&quot;presentation&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;><table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;&quot; style=&quot;width:600px;&quot; width=&quot;600&quot; bgcolor=&quot;#FFFFFF&quot; ><tr><td style=&quot;line-height:0px;font-size:0px;mso-line-height-rule:exactly;&quot;><![endif]-->
+<div style=&quot;background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;border-radius:0px 0px 0px 0px;max-width:600px;&quot;>
+<table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;background:#FFFFFF;background-color:#FFFFFF;width:100%;border-radius:0px 0px 0px 0px;&quot;>
+<tbody>
+<tr>
+<td style=&quot;direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:center;&quot;>
+<!--[if mso | IE]><table role=&quot;presentation&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;><![endif]-->
+<div class=&quot;content-padding kl-last&quot;>
+<!--[if true]><table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;600&quot; style=&quot;width:600px;direction:ltr&quot;><tr><![endif]-->
+<div class=&quot;kl-row colstack&quot; style=&quot;display:table;table-layout:fixed;width:100%;&quot;>
+<!--[if true]><td style=&quot;vertical-align:top;width:600px;&quot;><![endif]-->
+<div class=&quot;kl-column&quot; style=&quot;display:table-cell;vertical-align:top;width:100%;&quot;>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td align=&quot;center&quot; class=&quot;kl-image&quot; style=&quot;font-size:0px;word-break:break-word;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse;border-spacing:0px;&quot;>
+<tbody>
+<tr>
+<td class=&quot;kl-img-base-auto-width&quot; style=&quot;border:0;padding:0px 0px 0px 0px;width:600px;&quot; valign=&quot;top&quot;>
+<a class=&quot;kl-img-link&quot; href=&quot;https://lohnr.com/pages/customer-service&quot; style=&quot;color:#1a1a1a; text-decoration:underline; display:block&quot;>
+<img src=&quot;https://d3k81ch9hvuctc.cloudfront.net/company/UMi7Ys/images/1ec0d455-9f6c-4467-a3c1-c425dc5ab18b.png&quot; style=&quot;display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;&quot; width=&quot;600&quot;/>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;vertical-align:top;padding-top:0px;padding-right:9px;padding-bottom:25px;padding-left:9px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td>
+<div style=&quot;width:100%;text-align:center&quot;>
+<!--[if true]><table style=&quot;all:unset;opacity:0;&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; ><tr><![endif]-->
+<!--[if !true]><!--><div class=&quot;&quot; style=&quot;display:inline-block;padding-right:10px;&quot;><!--<![endif]-->
+<!--[if true]><td style=&quot;padding-right:10px;&quot;><![endif]-->
+<div style=&quot;text-align: center;&quot;>
+<a href=&quot;https://x.com/Lohnr_US&quot; style=&quot;color:#1a1a1a; text-decoration:underline&quot; target=&quot;_blank&quot;>
+<img alt=&quot;twitter&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/assets/email/buttons/subtle/twitter_96.png&quot; style=&quot;width:32px;&quot; width=&quot;32&quot;/>
+</a>
+</div>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=&quot;spcblk&quot; style=&quot;display:inline-block;&quot;><!--<![endif]-->
+<!--[if true]><td style=&quot;&quot;><![endif]-->
+<table align=&quot;left&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;>
+<tbody><tr>
+<td width=&quot;10&quot;></td>
+</tr></tbody>
+</table>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=&quot;&quot; style=&quot;display:inline-block;padding-right:10px;&quot;><!--<![endif]-->
+<!--[if true]><td style=&quot;padding-right:10px;&quot;><![endif]-->
+<div style=&quot;text-align: center;&quot;>
+<a href=&quot;https://www.facebook.com/share/1AvSTKVcaP/?mibextid=wwXIfr&quot; style=&quot;color:#1a1a1a; text-decoration:underline&quot; target=&quot;_blank&quot;>
+<img alt=&quot;facebook&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/assets/email/buttons/subtle/facebook_96.png&quot; style=&quot;width:32px;&quot; width=&quot;32&quot;/>
+</a>
+</div>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=&quot;spcblk&quot; style=&quot;display:inline-block;&quot;><!--<![endif]-->
+<!--[if true]><td style=&quot;&quot;><![endif]-->
+<table align=&quot;left&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;>
+<tbody><tr>
+<td width=&quot;10&quot;></td>
+</tr></tbody>
+</table>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=&quot;&quot; style=&quot;display:inline-block;padding-right:10px;&quot;><!--<![endif]-->
+<!--[if true]><td style=&quot;padding-right:10px;&quot;><![endif]-->
+<div style=&quot;text-align: center;&quot;>
+<a href=&quot;https://www.instagram.com/lohnr_us/&quot; style=&quot;color:#1a1a1a; text-decoration:underline&quot; target=&quot;_blank&quot;>
+<img alt=&quot;instagram&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/assets/email/buttons/subtle/instagram_96.png&quot; style=&quot;width:32px;&quot; width=&quot;32&quot;/>
+</a>
+</div>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=&quot;spcblk&quot; style=&quot;display:inline-block;&quot;><!--<![endif]-->
+<!--[if true]><td style=&quot;&quot;><![endif]-->
+<table align=&quot;left&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;>
+<tbody><tr>
+<td width=&quot;10&quot;></td>
+</tr></tbody>
+</table>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=&quot;&quot; style=&quot;display:inline-block;padding-right:10px;&quot;><!--<![endif]-->
+<!--[if true]><td style=&quot;padding-right:10px;&quot;><![endif]-->
+<div style=&quot;text-align: center;&quot;>
+<a href=&quot;https://ca.pinterest.com/lohnr_us/&quot; style=&quot;color:#1a1a1a; text-decoration:underline&quot; target=&quot;_blank&quot;>
+<img alt=&quot;Pinterest&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/assets/email/buttons/subtle/pinterest_96.png&quot; style=&quot;width:32px;&quot; width=&quot;32&quot;/>
+</a>
+</div>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=&quot;spcblk&quot; style=&quot;display:inline-block;&quot;><!--<![endif]-->
+<!--[if true]><td style=&quot;&quot;><![endif]-->
+<table align=&quot;left&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;>
+<tbody><tr>
+<td width=&quot;10&quot;></td>
+</tr></tbody>
+</table>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=&quot;&quot; style=&quot;display:inline-block;&quot;><!--<![endif]-->
+<!--[if true]><td style=&quot;&quot;><![endif]-->
+<div style=&quot;text-align: center;&quot;>
+<a href=&quot;https://www.youtube.com/@lohnr_US&quot; style=&quot;color:#1a1a1a; text-decoration:underline&quot; target=&quot;_blank&quot;>
+<img alt=&quot;YouTube&quot; src=&quot;https://d3k81ch9hvuctc.cloudfront.net/assets/email/buttons/subtle/youtube_96.png&quot; style=&quot;width:32px;&quot; width=&quot;32&quot;/>
+</a>
+</div>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if true]></tr></table><![endif]-->
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=&quot;mj-column-per-100 mj-outlook-group-fix component-wrapper kl-text-table-layout&quot; style=&quot;font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:100%;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td class=&quot;&quot; style=&quot;background-color:#FFFFFF;vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:20px;padding-left:0px;&quot;>
+<table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;&quot; width=&quot;100%&quot;>
+<tbody>
+<tr>
+<td align=&quot;center&quot; class=&quot;kl-text&quot; style=&quot;font-size:0px;padding:0px;padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;&quot;>
+<div style=&quot;font-family:&#39;sofia-pro&#39;, Helvetica, Arial, sans-serif;font-size:12px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:center;color:#727272;&quot;>No longer want to receive these emails? <a href=&quot;{% unsubscribe_link %}&quot; style=&quot;color:#1a1a1a; text-decoration:underline; font-family:Helvetica; font-style:normal&quot;>Unsubscribe</a>.<br/>
+<span style=&quot;color: #727272;
+font-size: 12px;
+font-family: Helvetica;
+font-style: normal;
+font-weight: 400;
+letter-spacing: 0&quot;>{{ organization.name }}</span> <span style=&quot;color: #727272;
+font-size: 12px;
+font-family: Helvetica;
+font-style: normal;
+font-weight: 400;
+letter-spacing: 0&quot;>{{ organization.full_address }}</span></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!--[if true]></td><![endif]-->
+</div>
+<!--[if true]></tr></table><![endif]-->
+</div>
+<!--[if mso | IE]></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- TRACKING_PIXEL_BOTTOM -->
+</body>
+</html>" style="width:100%;height:380px;border:none;background:#fff;border-radius:2px;" sandbox></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- DELIVERABILITY -->
+
+<div class="panel">
+  <div class="panel-title">Product & Promo Insights · Last 30 Days <span style="font-size:11px;font-weight:400;color:#888;">— from 3,495 attributed Placed Order events</span></div>
+  
+  <div class="kpi-grid cols-4" style="margin-bottom:22px;">
+    <div class="kpi">
+      <div class="kpi-label">Total Orders</div>
+      <div class="kpi-row"><div class="kpi-val">3,495</div></div>
+      <div class="kpi-sub">across Shopify (all channels)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Average Order Value</div>
+      <div class="kpi-row"><div class="kpi-val">A$89.46</div></div>
+      <div class="kpi-sub">store-wide last 30 days</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Welcome Flow Code Redemptions</div>
+      <div class="kpi-row"><div class="kpi-val">52</div><div class="delta up">↗ direct email attribution</div></div>
+      <div class="kpi-sub">WELCOME10 / WELCOME15 / WELCOME50 codes used</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Memorial Day Code Redemptions</div>
+      <div class="kpi-row"><div class="kpi-val">41</div><div class="delta up">↗ campaign-driven</div></div>
+      <div class="kpi-sub">MEMDAY codes used during campaign window</div>
+    </div>
+  </div>
+  
+  <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:24px;">
+    <div>
+      <div style="font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:10px;">Top Products Moved · By Revenue</div>
+      <table>
+        <thead><tr><th>Product</th><th>Orders</th><th>Revenue</th><th>Avg Price</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Game Day Set</strong></td><td>1,494</td><td>A$65,109</td><td>A$44</td></tr>
+          <tr><td><strong>Solene Dress</strong></td><td>1,469</td><td>A$61,210</td><td>A$42</td></tr>
+          <tr><td><strong>Bound Rib Set</strong></td><td>254</td><td>A$11,221</td><td>A$44</td></tr>
+          <tr><td><strong>The Uniform Chain</strong></td><td>274</td><td>A$10,151</td><td>A$37</td></tr>
+          <tr><td><strong>Brennan Pant</strong></td><td>343</td><td>A$9,714</td><td>A$28</td></tr>
+          <tr><td><strong>Cotton Skirt Set</strong></td><td>184</td><td>A$7,945</td><td>A$43</td></tr>
+          <tr><td><strong>Roma Set</strong></td><td>151</td><td>A$6,344</td><td>A$42</td></tr>
+          <tr><td><strong>Solace Set</strong></td><td>141</td><td>A$6,289</td><td>A$45</td></tr>
+          <tr><td><strong>Sabine Midi</strong></td><td>139</td><td>A$5,452</td><td>A$39</td></tr>
+          <tr><td><strong>Odette Dress</strong></td><td>130</td><td>A$5,274</td><td>A$41</td></tr>
+          <tr><td><strong>Courtside Set</strong></td><td>100</td><td>A$4,235</td><td>A$42</td></tr>
+          <tr><td><strong>Vivienne Bustier Dress</strong></td><td>69</td><td>A$4,225</td><td>A$61</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:10px;">Top Collections</div>
+      <table>
+        <thead><tr><th>Collection</th><th>Orders</th></tr></thead>
+        <tbody>
+          <tr><td>Bestsellers</td><td>2,932</td></tr>
+          <tr><td>Matching Sets</td><td>1,957</td></tr>
+          <tr><td>Dresses</td><td>1,542</td></tr>
+          <tr><td>Spring Event</td><td>1,394</td></tr>
+          <tr><td>The Memorial Day Edit</td><td>999</td></tr>
+          <tr><td>Summer Event</td><td>926</td></tr>
+          <tr><td>New Arrivals</td><td>919</td></tr>
+          <tr><td>cart upsells</td><td>338</td></tr>
+          <tr><td>Tops</td><td>148</td></tr>
+          <tr><td>Sweaters</td><td>51</td></tr>
+        </tbody>
+      </table>
+      
+      <div style="font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:1.2px;margin:18px 0 10px;">Top Discount Codes Used</div>
+      <table>
+        <thead><tr><th>Code</th><th>Uses</th></tr></thead>
+        <tbody>
+          <tr><td><code>MEMDAY20</code></td><td>41</td></tr>
+          <tr><td><code>WELCOME15</code></td><td>34</td></tr>
+          <tr><td><code>WELCOME10</code></td><td>18</td></tr>
+          <tr><td><code>SAVE10</code></td><td>16</td></tr>
+          <tr><td><code>LOHNR15</code></td><td>13</td></tr>
+          <tr><td><code>EASTER</code></td><td>9</td></tr>
+          <tr><td><code>SAVE15</code></td><td>9</td></tr>
+          <tr><td><code>LOHNR10</code></td><td>8</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="panel">
+  <div class="panel-title">Email Deliverability Stats</div>
+  <div class="kpi-grid cols-6">
+    
+        <div class="kpi">
+          <div class="kpi-label">Campaign Unsub Rate</div>
+          <div class="kpi-row"><div class="kpi-val">0.527%</div><div class="delta up">↘ 14.2%</div></div>
+          <div class="kpi-sub">vs 0.614% prev</div>
+        </div>
+    
+        <div class="kpi">
+          <div class="kpi-label">Flow Unsub Rate</div>
+          <div class="kpi-row"><div class="kpi-val">1.062%</div><div class="delta up">↘ 14.3%</div></div>
+          <div class="kpi-sub">vs 1.239% prev</div>
+        </div>
+    
+        <div class="kpi">
+          <div class="kpi-label">Campaign Spam</div>
+          <div class="kpi-row"><div class="kpi-val">0.016%</div><div class="delta up">↘ 31.9%</div></div>
+          <div class="kpi-sub">vs 0.023% prev</div>
+        </div>
+    
+        <div class="kpi">
+          <div class="kpi-label">Flow Spam</div>
+          <div class="kpi-row"><div class="kpi-val">0.026%</div><div class="delta up">↘ 42.4%</div></div>
+          <div class="kpi-sub">vs 0.045% prev</div>
+        </div>
+    
+        <div class="kpi">
+          <div class="kpi-label">Campaign Bounce</div>
+          <div class="kpi-row"><div class="kpi-val">0.177%</div><div class="delta down">↗ 61.0%</div></div>
+          <div class="kpi-sub">vs 0.110% prev</div>
+        </div>
+    
+        <div class="kpi">
+          <div class="kpi-label">Flow Bounce</div>
+          <div class="kpi-row"><div class="kpi-val">0.709%</div><div class="delta up">↘ 26.9%</div></div>
+          <div class="kpi-sub">vs 0.970% prev</div>
+        </div>
+  </div>
+</div>
+
+<!-- INSIGHTS -->
+<div class="insights">
+  <h2>Insights & Talking Points</h2>
+  <div class="sub">What to walk Shanks through · prepared 9 June 2026 · lead with trajectory, not last-week dips · 460× Klaviyo growth Jun 2025 → May 2026</div>
+  <div class="insight">
+    <div class="h">From near-zero to $46K/month — Lohnr's Klaviyo is a hockey stick.</div>
+    <div class="b">June 2025 Klaviyo-attributed revenue: <strong>A$100</strong>. May 2026: <strong>A$45,982</strong>. That's a <strong>460× lift</strong> in 11 months. The growth curve started inflecting in January 2026 (when V2 welcome flow + new campaign cadence rolled in) and hasn't stopped since. This is what Klaviyo looks like when it's actually being run.</div>
+  </div>
+  <div class="insight">
+    <div class="h">Welcome Flow is now the #1 revenue driver.</div>
+    <div class="b"><strong>A$27,774</strong> from one flow in 30 days · 20,991 deliveries · <strong>38.6%</strong> open rate · <strong>1.30%</strong> conversion rate. V2 is averaging <strong>A$1.31/recipient</strong> — every new subscriber compounds.</div>
+  </div>
+  <div class="insight">
+    <div class="h">List engagement is unusually high.</div>
+    <div class="b">Top campaign open rate this period: <strong>42.0%</strong> on <em>Memorial Day Sale Launch</em>. Apparel-vertical benchmark sits around 24%. Lohnr's list is engaged, trusting, and primed — this is the foundation everything else compounds on.</div>
+  </div>
+  <div class="insight">
+    <div class="h">Klaviyo is contributing 21.8% of total store revenue.</div>
+    <div class="b">On <strong>A$217,735</strong> in store revenue last 30 days, Klaviyo drove <strong>A$47,414</strong>. Industry benchmark for healthy DTC apparel is 25-35% — Lohnr is currently below benchmark, which is the growth opportunity.</div>
+  </div>
+  <div class="insight">
+    <div class="h">SMS channel is fully untapped.</div>
+    <div class="b"><strong>A$0.00</strong> SMS revenue last 30 days. Email is doing all the heavy lifting. Adding SMS to the welcome flow + cart abandonment would unlock a second channel without rebuilding what's working — projected lift of 15-25% at minimum.</div>
+  </div>
+  <div class="insight">
+    <div class="h">Cadence headroom: currently sending 10 campaigns / 30 days.</div>
+    <div class="b">Email campaigns sent: <strong>10</strong>. Combined deliverability (unsub <strong>0.527%</strong>, spam <strong>0.016%</strong>) is well within tolerance — room to scale to 14-16/month without fatigue. At current Revenue/Recipient of <strong>A$0.04</strong>, +5 sends ≈ +$6,001 incremental.</div>
+  </div>
+  <div class="insight">
+    <div class="h">The retention engine is paying off — repeat-buyer share lifted 51% in 6 months.</div>
+    <div class="b">In Jul-Dec 2025, <strong>5.24%</strong> of Lohnr orders came from returning buyers. In Jan-Jun 2026 that's <strong>7.93%</strong> — a <strong>+51% relative lift</strong>. In absolute terms: <strong>958 repeat orders → 1,407</strong> (+47%). On a same-month YoY basis, June repeats went from <strong>4 → 230 pace (58×)</strong>. This is exactly what the welcome flow, post-purchase flow, and campaign cadence are built to do. Caveat: Klaviyo's history only starts Jun 2025, so a customer who bought pre-Klaviyo and returns now still gets labeled "new" — Shopify API access would unlock proper lifetime cohorts.</div>
+  </div>
+  <div class="insight">
+    <div class="h">April was the all-time monthly peak.</div>
+    <div class="b">Mother's Day + Easter combined drove <strong>A$54,198</strong> in attributed revenue — Lohnr's strongest Klaviyo month ever. May normalised to <strong>A$45,982</strong>, June is pacing at <strong>~A$42k</strong>. Three of the four highest-revenue months in the account's history have been the last three. Whatever you read in any 30-day comparison, the longer arc is straight up.</div>
+  </div>
+  <div class="insight">
+    <div class="h">What's compounding next.</div>
+    <div class="b">Welcome V3 test queued (founder-letter variant) · SMS layer on welcome + cart · review-request flow rebuild (currently under-converting at 0.02%) · post-purchase flow expansion. None of these require new channels or budget — they monetise list growth that's already happening.</div>
+  </div>
+</div>
+
+</div> <!-- /container -->
+
+<script>
+const D = {"labels": ["Jun '25", "Jul '25", "Aug '25", "Sep '25", "Oct '25", "Nov '25", "Dec '25", "Jan '26", "Feb '26", "Mar '26", "Apr '26", "May '26", "Jun '26"], "store_monthly": [36294.20999999995, 145850.6599999995, 317679.7000000004, 320805.8000000003, 184508.29999999987, 94963.37999999993, 259883.1999999998, 187512.68999999997, 225988.94999999995, 319989.26000000036, 412242.3600000002, 318996.6400000003, 93869.97999999998], "attr_monthly": [99.98, 394.90001, 3623.8099599999996, 7623.06008, 3618.9500299999995, 3586.00001, 3977.6799699999997, 20631.95964, 21789.769930000002, 25588.299989999996, 54197.57997999999, 45982.00982, 12515.680030000003], "attr_pct_monthly": [0.2754709359977808, 0.27075640932992784, 1.1407118427774876, 2.3762226493411256, 1.9614022946393208, 3.776192475457384, 1.5305644882008542, 11.002967127184835, 9.641962551708836, 7.996612133169709, 13.147018656695048, 14.414574968563917, 13.33299530904343], "camp_email_m": [0, 0, 299.96, 546.90001, 0, 1844.90001, 546.83999, 7244.269859999999, 7592.83998, 5650.030019999999, 11296.650020000001, 10736.240029999999, 1992.62001], "camp_sms_m": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "flow_email_m": [99.98, 394.90001, 3323.8499599999996, 7076.16007, 3618.9500299999995, 1741.1000000000001, 3430.8399799999997, 13387.689780000002, 14196.929950000002, 19938.269969999998, 42900.92995999999, 35245.76979, 10523.060020000003], "flow_sms_m": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "camp_total_m": [0, 0, 299.96, 546.90001, 0, 1844.90001, 546.83999, 7244.269859999999, 7592.83998, 5650.030019999999, 11296.650020000001, 10736.240029999999, 1992.62001], "flow_total_m": [99.98, 394.90001, 3323.8499599999996, 7076.16007, 3618.9500299999995, 1741.1000000000001, 3430.8399799999997, 13387.689780000002, 14196.929950000002, 19938.269969999998, 42900.92995999999, 35245.76979, 10523.060020000003], "email_total_m": [99.98, 394.90001, 3623.8099599999996, 7623.06008, 3618.9500299999995, 3586.00001, 3977.6799699999997, 20631.95964, 21789.769930000002, 25588.299989999996, 54197.57997999999, 45982.00982, 12515.680030000003], "sms_total_m": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "sub_email_m": [22.0, 57.0, 1860.0, 2316.0, 1115.0, 364.0, 3071.0, 3169.0, 3621.0, 6063.0, 10916.0, 7120.0, 2320.0], "sub_sms_m": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "net_email": [17.0, 40.0, 1777.0, 2162.0, 1058.0, -1628.0, 2699.0, 2127.0, 2726.0, 4942.0, 8750.0, 4981.0, 1750.0], "net_sms": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "camp_email_deliv": [0, 0, 963.0, 9017.0, 0, 157057.0, 18986.0, 84629.0, 113762.0, 101376.0, 208000.0, 247887.0, 46433.0], "flow_email_deliv": [489.0, 2175.0, 6143.0, 11503.0, 7417.0, 2800.0, 10322.0, 26884.0, 23634.0, 36490.0, 76387.0, 62549.0, 17138.0], "camp_sms_deliv": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "flow_sms_deliv": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]};
+const PALETTE = { darkGreen: '#4f8362', lightGreen: '#a8c5b1', amber: '#d2a76b', red: '#b54040', mutedGreen: '#7db788' };
+
+Chart.defaults.font.family = 'Inter, sans-serif';
+Chart.defaults.font.size = 11;
+Chart.defaults.color = '#666';
+
+function makeBarLineChart(canvasId, barData, lineData, barLabel, lineLabel, lineColor='#4f8362') {
+  const ctx = document.getElementById(canvasId);
+  if (!ctx) return;
+  return new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: D.labels,
+      datasets: [
+        { label: barLabel, data: barData, backgroundColor: PALETTE.mutedGreen, borderRadius: 2, yAxisID: 'y' },
+        { label: lineLabel, type:'line', data: lineData, borderColor: lineColor, backgroundColor: 'transparent', tension: 0.3, yAxisID: 'y1', pointRadius: 3, pointBackgroundColor: lineColor }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, boxHeight: 10 } } },
+      scales: {
+        y: { position: 'left', beginAtZero: true, grid: { color: '#f0efeb' } },
+        y1: { position: 'right', beginAtZero: true, grid: { display: false } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+function makeStackedBarChart(canvasId, datasets) {
+  const ctx = document.getElementById(canvasId);
+  if (!ctx) return;
+  return new Chart(ctx, {
+    type: 'bar',
+    data: { labels: D.labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, boxHeight: 10 } } },
+      scales: {
+        y: { stacked: true, beginAtZero: true, grid: { color: '#f0efeb' } },
+        x: { stacked: true, grid: { display: false } }
+      }
+    }
+  });
+}
+
+// Total attributed revenue + percent attributed
+makeBarLineChart('ch_attr_rev', D.attr_monthly, D.attr_pct_monthly, 'Total Attributed Revenue', 'Percent Attributed (%)');
+
+// Message type stacked
+makeStackedBarChart('ch_msg_type', [
+  { label: 'Flow Revenue', data: D.flow_total_m, backgroundColor: PALETTE.darkGreen, borderRadius: 2 },
+  { label: 'Campaign Revenue', data: D.camp_total_m, backgroundColor: PALETTE.lightGreen, borderRadius: 2 }
+]);
+
+// Channel stacked
+makeStackedBarChart('ch_channel', [
+  { label: 'Email Revenue', data: D.email_total_m, backgroundColor: PALETTE.darkGreen, borderRadius: 2 },
+  { label: 'SMS Revenue', data: D.sms_total_m, backgroundColor: PALETTE.lightGreen, borderRadius: 2 }
+]);
+
+// Database growth
+makeStackedBarChart('ch_dbgrowth', [
+  { label: 'Net Email Subscribers', data: D.net_email, backgroundColor: PALETTE.darkGreen, borderRadius: 2 },
+  { label: 'Net SMS Subscribers', data: D.net_sms, backgroundColor: PALETTE.lightGreen, borderRadius: 2 }
+]);
+
+// Flow email bar+line
+makeBarLineChart('ch_flow_email', D.flow_email_m, D.flow_email_deliv, 'Flow Email Revenue', 'Flow Email Deliveries');
+
+// Flow SMS bar+line
+makeBarLineChart('ch_flow_sms', D.flow_sms_m, D.flow_sms_deliv, 'Flow SMS Revenue', 'Flow SMS Deliveries');
+
+// Campaign email bar+line
+makeBarLineChart('ch_camp_email', D.camp_email_m, D.camp_email_deliv, 'Campaign Email Revenue', 'Campaign Email Deliveries');
+
+// Campaign SMS bar+line
+makeBarLineChart('ch_camp_sms', D.camp_sms_m, D.camp_sms_deliv, 'Campaign SMS Revenue', 'Campaign SMS Deliveries');
+
+
+// New vs Repeat Orders · 13-month
+(function() {
+  const NEW_DATA = [584, 2063, 4380, 4449, 2606, 1164, 2664, 1751, 2178, 3451, 4586, 3329, 1042];
+  const REP_DATA = [4, 61, 139, 251, 246, 89, 172, 281, 295, 283, 220, 259, 69];
+  const REP_PCT = [0.7, 2.9, 3.1, 5.3, 8.6, 7.1, 6.1, 13.8, 11.9, 7.6, 4.6, 7.2, 6.2];
+  const RET_LABELS = ["Jun '25", "Jul '25", "Aug '25", "Sep '25", "Oct '25", "Nov '25", "Dec '25", "Jan '26", "Feb '26", "Mar '26", "Apr '26", "May '26", "Jun '26"];
+  const ctxNR = document.getElementById('ch_new_repeat');
+  if (!ctxNR) return;
+  new Chart(ctxNR, {
+    type: 'bar',
+    data: {
+      labels: RET_LABELS,
+      datasets: [
+        { label: 'First-Time Orders', data: NEW_DATA, backgroundColor: '#a8c5b1', borderRadius: 2, stack: 'orders', yAxisID: 'y' },
+        { label: 'Repeat Orders', data: REP_DATA, backgroundColor: '#4f8362', borderRadius: 2, stack: 'orders', yAxisID: 'y' },
+        { label: 'Repeat % (right axis)', type:'line', data: REP_PCT, borderColor: '#d2a76b', backgroundColor: 'transparent', tension: 0.3, yAxisID: 'y1', pointRadius: 3, pointBackgroundColor: '#d2a76b' }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 10, boxHeight: 10 } },
+        tooltip: {
+          callbacks: {
+            footer: (items) => {
+              const i = items[0].dataIndex;
+              const tot = NEW_DATA[i] + REP_DATA[i];
+              return tot ? `Total: ${tot.toLocaleString()} · Repeat: ${REP_PCT[i]}%` : '';
+            }
+          }
+        }
+      },
+      scales: {
+        y: { stacked: true, beginAtZero: true, grid: { color: '#f0efeb' }, title: { display: true, text: 'Orders' } },
+        y1: { position: 'right', beginAtZero: true, max: 16, grid: { display: false }, title: { display: true, text: 'Repeat %' } },
+        x: { stacked: true, grid: { display: false } }
+      }
+    }
+  });
+})();
+
+
+// LTV by cohort
+(function() {
+  const ctx = document.getElementById('ch_ltv');
+  if (!ctx) return;
+  const labels = ["Sep '25", "Oct '25", "Nov '25", "Dec '25", "Jan '26", "Feb '26", "Mar '26", "Apr '26", "May '26"];
+  const ltv30 = [70.98489772982514, 69.24410207214108, 80.61014604811002, 98.9180630630649, 99.8463906339221, 97.56280991735386, 89.94450304259854, 88.43525948539626, null];
+  const ltv60 = [71.30944032366641, 69.80455103607045, 82.87878865979378, 101.53487612612804, 103.03513420902227, 99.07943985307472, 90.57541582150331, null, null];
+  const ltv90 = [71.42475612497007, 69.97486953184944, 83.33820446735392, 102.93224849850044, 103.49612792689778, 99.84629017447047, null, null, null];
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        { label: '30-Day LTV', data: ltv30, backgroundColor: '#a8c5b1', borderRadius: 2 },
+        { label: '60-Day LTV', data: ltv60, backgroundColor: '#7db788', borderRadius: 2 },
+        { label: '90-Day LTV', data: ltv90, backgroundColor: '#4f8362', borderRadius: 2 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 10, boxHeight: 10 } },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => ctx.dataset.label + ': A$' + (ctx.raw === null ? 'n/a' : ctx.raw.toFixed(2))
+          }
+        }
+      },
+      scales: {
+        y: { beginAtZero: true, grid: { color: '#f0efeb' }, title: { display: true, text: 'LTV per Customer (A$)' }, ticks: { callback: v => 'A$' + v } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+})();
+
+</script>
+
+</body>
+</html>
