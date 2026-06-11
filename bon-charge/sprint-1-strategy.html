@@ -6,7 +6,7 @@
 <title>Tethrd × BON CHARGE · Sprint 1 Remaining Flow Strategy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Serif:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --white: #FFFFFF;
@@ -20,78 +20,44 @@
     --soft: #F7F8FB;
     --text-primary: var(--ink);
     --text-secondary: var(--graphite);
-    --text-muted: var(--space);
-    --status-green: #0D7D3A;
-    --status-green-dark: #4ADE80;
     --warm-amber: #F59E0B;
     --warm-amber-bg: #FDE68A;
     --warm-amber-text: #78350F;
-    --bg-marketing:
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(157,162,179,0.18), transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(110,113,128,0.12), transparent 60%),
-      linear-gradient(180deg, #0B0B0C 0%, #000000 100%);
-
     --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px; --s-6: 24px;
-    --s-7: 28px; --s-8: 32px; --s-10: 40px; --s-12: 48px; --s-16: 64px; --s-20: 80px; --s-24: 96px;
-    --r-sm: 8px; --r-md: 10px; --r-lg: 12px; --r-xl: 16px;
-
+    --s-7: 28px; --s-8: 32px; --s-10: 40px; --s-12: 48px;
+    --r-sm: 8px; --r-md: 10px; --r-lg: 12px;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-serif: 'Roboto Serif', 'Source Serif Pro', Georgia, serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-size: 16px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; scroll-behavior: smooth; }
-  body {
-    font-family: var(--font-sans); font-size: 15px; font-weight: 400; line-height: 1.55;
-    color: var(--text-primary); background: var(--white);
-    font-feature-settings: "ss01","cv11";
-  }
-  h1, h2, h3, h4, h5 { font-family: var(--font-sans); font-weight: 700; letter-spacing: -.025em; color: var(--text-primary); line-height: 1.15; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { font-family: var(--font-sans); font-size: 15px; font-weight: 400; line-height: 1.55; color: var(--text-primary); background: var(--white); font-feature-settings: "ss01","cv11"; }
   strong { color: var(--text-primary); font-weight: 600; }
-  em { font-style: italic; color: var(--text-primary); }
   code { font-family: ui-monospace, 'SF Mono', monospace; font-size: 0.92em; background: var(--cloud); padding: 1px 6px; border-radius: 3px; color: var(--ink); }
-  .tabular { font-variant-numeric: tabular-nums; }
 
   /* TOP BAR — Tethrd minimal */
   .topbar { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--smoke); }
-  .topbar-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; }
-  .nav-left { display: flex; align-items: center; gap: var(--s-3); }
-  .nav-wordmark { font-family: var(--font-sans); font-weight: 700; font-size: 16px; color: var(--ink); letter-spacing: -.02em; }
+  .topbar-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; gap: var(--s-3); }
+  .nav-left { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
+  .nav-wordmark { font-family: var(--font-sans); font-weight: 700; font-size: 16px; color: var(--ink); letter-spacing: -.02em; white-space: nowrap; }
   .nav-x { color: var(--steel); font-weight: 400; margin: 0 6px; }
   .nav-client { font-weight: 700; letter-spacing: 0.06em; }
-  .nav-sep { color: var(--steel); font-size: 13px; margin: 0 var(--s-2); font-weight: 300; }
-  .nav-meta { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--text-secondary); }
-  .nav-date { font-size: 11px; font-weight: 600; color: var(--text-secondary); letter-spacing: .10em; text-transform: uppercase; }
-  @media (max-width: 700px) { .nav-meta, .nav-date { display: none; } }
+  .nav-sep { color: var(--steel); font-size: 13px; font-weight: 300; }
+  .nav-meta { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--text-secondary); white-space: nowrap; }
+  .nav-date { font-size: 11px; font-weight: 600; color: var(--text-secondary); letter-spacing: .10em; text-transform: uppercase; white-space: nowrap; }
+  @media (max-width: 900px) { .nav-meta, .nav-date { display: none; } }
+  @media (max-width: 700px) { .topbar-inner { padding: 12px 16px; } .nav-wordmark { font-size: 14px; } }
 
-  /* HERO — dark Tethrd hero */
-  .hero { background: var(--bg-marketing); color: var(--white); padding: var(--s-20) 0 var(--s-16); position: relative; overflow: hidden; }
-  .hero .container { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); }
-  .hero .eyebrow { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: var(--s-5); }
-  .hero h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.04; letter-spacing: -.035em; color: var(--white); margin-bottom: var(--s-6); max-width: 22ch; }
-  .hero h1 em { color: var(--status-green-dark); font-style: normal; font-weight: 600; }
-  .hero .hero-sub { font-size: clamp(15px, 1.4vw, 18px); line-height: 1.6; color: rgba(255,255,255,0.72); max-width: 64ch; font-weight: 400; }
-  .hero .hero-sub strong { color: var(--white); font-weight: 600; }
-
-  /* STATS */
-  .stats-section { background: var(--white); padding: var(--s-12) 0; border-bottom: 1px solid var(--smoke); }
-  .stats-section .container { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); }
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-6); }
-  @media (max-width: 720px) { .stats { grid-template-columns: repeat(2, 1fr); } }
-  .stat { display: flex; flex-direction: column; gap: var(--s-2); padding-left: var(--s-5); border-left: 2px solid var(--ink); }
-  .stat .n { font-size: 38px; font-weight: 800; letter-spacing: -.03em; color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums; }
-  .stat .l { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); }
-
-  /* SECTION HEADING above canvas */
-  .doc-heading { background: var(--white); padding: var(--s-16) 0 var(--s-7); }
-  .doc-heading .container { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); }
-  .doc-heading .eyebrow { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: .10em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: var(--s-4); }
-  .doc-heading h2 { font-size: clamp(26px, 3vw, 36px); letter-spacing: -.03em; margin-bottom: var(--s-4); }
-  .doc-heading .lede { font-size: 16px; line-height: 1.6; color: var(--text-secondary); max-width: 64ch; }
-  .doc-heading .lede strong { color: var(--text-primary); }
+  /* CONTEXT STRIP — single line under topbar */
+  .context-strip { background: var(--soft); border-bottom: 1px solid var(--smoke); padding: 10px 24px; }
+  .context-strip-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; font-size: 12px; color: var(--text-secondary); }
+  .context-strip .spine { font-style: italic; color: var(--ink); font-weight: 500; }
+  .context-strip .totals { display: flex; gap: var(--s-4); }
+  .context-strip .totals span { font-variant-numeric: tabular-nums; }
+  .context-strip .totals strong { color: var(--ink); font-weight: 600; }
 
   /* LEGEND */
-  .legend-wrap { background: var(--soft); border-top: 1px solid var(--smoke); border-bottom: 1px solid var(--smoke); padding: var(--s-4) 0; }
+  .legend-wrap { background: var(--white); border-bottom: 1px solid var(--smoke); padding: 10px 0; }
   .legend { max-width: 1320px; margin: 0 auto; padding: 0 var(--s-6); font-size: 12px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; color: var(--text-secondary); }
   .legend-item { display: flex; gap: 8px; align-items: center; }
   .legend-node { width: 24px; height: 16px; border-radius: 4px; }
@@ -161,14 +127,13 @@
 
   .arrow { position: absolute; font-size: 18px; color: var(--space); font-weight: 700; }
 
-  /* FOOTER — dark Tethrd footer */
-  .footer { background: #0a0a0a; color: var(--white); padding: var(--s-12) 0; text-align: center; }
-  .footer .footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); display: flex; flex-direction: column; gap: var(--s-3); align-items: center; }
-  .footer .footer-wordmark { font-family: var(--font-sans); font-weight: 700; font-size: 18px; letter-spacing: -.02em; }
+  /* FOOTER */
+  .footer { background: #0a0a0a; color: var(--white); padding: var(--s-10) 0; text-align: center; }
+  .footer .footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); display: flex; flex-direction: column; gap: var(--s-2); align-items: center; }
+  .footer .footer-wordmark { font-family: var(--font-sans); font-weight: 700; font-size: 16px; letter-spacing: -.02em; }
   .footer .footer-wordmark .x { color: var(--steel); font-weight: 400; margin: 0 6px; }
-  .footer .footer-meta { font-size: 12px; color: rgba(255,255,255,0.5); }
+  .footer .footer-meta { font-size: 11px; color: rgba(255,255,255,0.5); }
   .footer .footer-meta a { color: rgba(255,255,255,0.7); border-bottom: 1px solid rgba(255,255,255,0.3); text-decoration: none; }
-  .footer .footer-meta a:hover { color: var(--white); }
 </style>
 </head>
 <body>
@@ -185,35 +150,17 @@
   </div>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="container">
-    <div class="eyebrow">Sprint 1 · Strategy brief · Internal</div>
-    <h1>Build the routine,<br><em>protect the result.</em></h1>
-    <p class="hero-sub">Every BON CHARGE purchase opens a daily wellness routine and (eventually) a multi-pillar household. Each of the four remaining flows plays a distinct role — <strong>Upsell deepens</strong> the routine, <strong>Nurture teaches</strong> it, <strong>Winback reactivates</strong> it, <strong>BIS protects</strong> it. The routine narrative leads every email; discount supports it where it earns the open, never replaces it. <strong>16 of 22 emails are pillar-split variants</strong> — the build effort sits in copy variants, not flow architecture.</p>
-  </div>
-</div>
-
-<!-- STATS -->
-<section class="stats-section">
-  <div class="container">
-    <div class="stats">
-      <div class="stat"><div class="n">4</div><div class="l">Flows</div></div>
-      <div class="stat"><div class="n">22</div><div class="l">Emails to write</div></div>
-      <div class="stat"><div class="n">16</div><div class="l">Pillar variants</div></div>
-      <div class="stat"><div class="n">~21d</div><div class="l">Longest flow</div></div>
+<!-- CONTEXT STRIP -->
+<div class="context-strip">
+  <div class="context-strip-inner">
+    <div class="spine">"Build the routine, protect the result."</div>
+    <div class="totals">
+      <span><strong>4</strong> flows</span>
+      <span><strong>22</strong> emails</span>
+      <span><strong>16</strong> pillar variants</span>
     </div>
   </div>
-</section>
-
-<!-- DOC HEADING -->
-<section class="doc-heading">
-  <div class="container">
-    <div class="eyebrow">Flow architecture · Belle review</div>
-    <h2>Four flows, mapped end to end.</h2>
-    <p class="lede">Each section below shows the trigger, branch logic, email count, and the strategic essence of each email. Pillar splits are shown as stacked tiles — one slot, four variants. Discount stance is called out per email so you can see at a glance where the routine narrative stands alone versus where a promo lever supports it.</p>
-  </div>
-</section>
+</div>
 
 <!-- LEGEND -->
 <div class="legend-wrap">
@@ -445,6 +392,7 @@
     <span class="name">Winback</span>
     <span class="role">Reactivate the routine</span>
     <span class="pill count">3 EMAILS</span>
+    <span class="pill no-discount">SINGLE TRACK</span>
     <span class="pill discount">20% OFF · ALL 3 EMAILS</span>
     <span class="pill plain">E3 PLAIN TEXT · ANDY</span>
   </div>
@@ -482,7 +430,7 @@
   </div>
 
   <div class="node node-email" style="top: 1440px; left: 870px; width: 210px; height: 100px;">
-    <div class="tile-mini-badge discount">REMINDER</div>
+    <div class="tile-mini-badge discount">20% REMINDER</div>
     <div class="node-label">E2 · Day 5</div>
     <div class="node-title">FAQs + open reply lane</div>
   </div>
@@ -493,7 +441,7 @@
   </div>
 
   <div class="node node-email-plain" style="top: 1440px; left: 1210px; width: 210px; height: 100px;">
-    <div class="tile-mini-badge discount">MIDNIGHT</div>
+    <div class="tile-mini-badge discount">20% MIDNIGHT</div>
     <div class="node-label">E3 · Day 12 · plain text</div>
     <div class="node-title">Andy · final hours</div>
   </div>
@@ -519,7 +467,7 @@
     <div class="row"><span class="k">Objective</span><span class="v">Final personal lever. Plain text from Andy directly — 1:1 tone.</span></div>
     <div class="row"><span class="k">Content move</span><span class="v">No design. No images. Just Andy speaking to them like a person. Acknowledge the lapse, restate the offer, remind midnight expiry. Should feel like a personal note from the founder, not a marketing email.</span></div>
     <div class="row discount-yes"><span class="k">Discount</span><span class="v"><strong>20% off · expires midnight tonight.</strong></span></div>
-    <div class="badge-row"><span class="badge yes">20% MIDNIGHT EXPIRY</span><span class="badge plain">PLAIN TEXT · ANDY</span></div>
+    <div class="badge-row"><span class="badge yes">20% OFF · MIDNIGHT EXPIRY</span><span class="badge plain">PLAIN TEXT · ANDY</span></div>
   </div>
 
 
@@ -531,7 +479,7 @@
     <span class="name">Back In Stock</span>
     <span class="role">Protect the result</span>
     <span class="pill count">2 EMAILS</span>
-    <span class="pill no-discount">CONFIRMATION + RESTOCK</span>
+    <span class="pill no-discount">WAIT FOR RESTOCK</span>
     <span class="pill discount">15% FOR NEW CUSTOMERS ONLY (E2)</span>
   </div>
 
