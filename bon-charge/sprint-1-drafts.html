@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tethrd × BON CHARGE · Sprint 1 Drafts v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FFFFFF; --ink: #1A1A1A; --ink-2: #2A2A2A;
+    --graphite: #6E7180; --space: #9DA2B3; --steel: #BCBFCC;
+    --smoke: #D3D6E0; --cloud: #EDEFF7; --soft: #F7F8FB;
+    --warm-amber: #F59E0B; --warm-amber-bg: #FDE68A; --warm-amber-text: #78350F;
+    --bc-warm: #FBF9F4; --bc-limestone: #EFE7DA; --bc-border: #E5E1D8;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  body { font-family: var(--font-sans); font-size: 15px; line-height: 1.6; color: var(--ink); background: var(--soft); }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+  code { font-family: ui-monospace, 'SF Mono', monospace; font-size: 0.92em; background: var(--cloud); padding: 1px 6px; border-radius: 3px; color: var(--ink); }
+
+  .topbar { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--smoke); }
+  .topbar-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; gap: 12px; flex-wrap: wrap; }
+  .nav-wordmark { font-weight: 700; font-size: 16px; letter-spacing: -.02em; }
+  .nav-x { color: var(--steel); font-weight: 400; margin: 0 6px; }
+  .nav-client { font-weight: 700; letter-spacing: 0.06em; }
+  .nav-meta { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--graphite); }
+  @media (max-width: 700px) { .nav-meta { display: none; } }
+
+  .context-strip { background: var(--white); border-bottom: 1px solid var(--smoke); padding: 12px 24px; }
+  .context-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--graphite); }
+  .context-strip .label { font-style: italic; color: var(--ink); font-weight: 500; }
+  .context-strip .totals { display: flex; gap: 16px; }
+  .context-strip .totals strong { color: var(--ink); }
+
+  .nav-jump { background: var(--white); border-bottom: 1px solid var(--smoke); padding: 12px 24px; }
+  .nav-jump-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 12px; }
+  .nav-jump .lbl { font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--graphite); margin-right: 6px; }
+  .nav-jump a { padding: 4px 10px; border-radius: 12px; background: var(--cloud); color: var(--ink); font-weight: 600; text-decoration: none; font-size: 11px; }
+  .nav-jump a:hover { background: var(--ink); color: var(--white); }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  .flow-section { padding: 40px 0 24px; }
+  .flow-header { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding-bottom: 12px; border-bottom: 2px solid var(--ink); margin-bottom: 24px; }
+  .flow-header .num { font-size: 13px; font-weight: 700; background: var(--ink); color: var(--white); padding: 5px 9px; border-radius: 6px; }
+  .flow-header h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .flow-header .role { font-size: 12px; color: var(--graphite); font-style: italic; }
+  .flow-header .pill { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 12px; letter-spacing: 0.04em; }
+  .pill-count { background: var(--ink); color: var(--white); }
+  .pill-discount { background: #FED7AA; color: #7C2D12; border: 1px solid #FB923C; }
+  .pill-nodiscount { background: var(--cloud); color: var(--graphite); border: 1px solid var(--smoke); }
+  .pill-plain { background: var(--warm-amber-bg); color: var(--warm-amber-text); border: 1px solid var(--warm-amber); }
+
+  /* EMAIL CARD — BON CHARGE warm aesthetic */
+  .email-card { background: var(--white); border: 1px solid var(--smoke); border-radius: 14px; padding: 0; margin: 22px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); overflow: hidden; }
+  .email-card .head { background: var(--ink); color: var(--white); padding: 14px 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .email-card .head .name { font-weight: 700; font-size: 14px; letter-spacing: -0.01em; }
+  .email-card .head .name .pillar { display: inline-block; font-family: ui-monospace, monospace; font-size: 10px; font-weight: 700; background: rgba(255,255,255,0.15); padding: 2px 7px; border-radius: 8px; margin-left: 8px; letter-spacing: 0.06em; }
+  .email-card .head .meta { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .email-card .head .meta .tag { background: rgba(255,255,255,0.15); padding: 3px 7px; border-radius: 8px; margin-left: 4px; }
+
+  .email-body { padding: 22px 26px; }
+
+  .subj-block { background: var(--cloud); border-radius: 6px; padding: 10px 14px; margin: 0 0 18px; font-family: ui-monospace, monospace; font-size: 12px; }
+  .subj-block .lbl { font-weight: 700; font-family: var(--font-sans); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--graphite); display: inline-block; min-width: 70px; }
+  .subj-block .row { margin: 3px 0; }
+
+  .module { margin: 18px 0; padding: 16px 18px; background: var(--bc-warm); border: 1px solid var(--bc-border); border-radius: 8px; }
+  .module .mod-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--graphite); margin-bottom: 8px; display: block; }
+  .module .copy { font-size: 14px; line-height: 1.6; color: var(--ink); }
+  .module .copy p { margin: 8px 0; }
+  .module .copy p:first-child { margin-top: 0; }
+  .module .copy p:last-child { margin-bottom: 0; }
+  .module .head-line { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); margin: 4px 0; }
+  .module .sub-line { font-size: 16px; font-weight: 500; color: var(--graphite); line-height: 1.4; margin: 6px 0; }
+  .module.banner { background: var(--ink); color: var(--white); text-align: center; font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; padding: 12px 18px; border: none; }
+  .module.code { background: #FDF6E3; border: 2px dashed var(--warm-amber); text-align: center; }
+  .module.code .mod-label { color: var(--warm-amber-text); }
+  .module.code .head-line { font-family: ui-monospace, monospace; font-size: 20px; color: var(--warm-amber-text); letter-spacing: 0.08em; }
+  .module.cta { background: var(--ink); color: var(--white); text-align: center; padding: 16px; }
+  .module.cta .cta-btn { display: inline-block; padding: 14px 30px; background: var(--white); color: var(--ink); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; border-radius: 4px; }
+  .module.cta .mod-label { color: rgba(255,255,255,0.5); }
+  .module.feed { background: var(--bc-limestone); border: 1px dashed var(--bc-border); }
+  .module.trust { background: var(--cloud); text-align: center; font-size: 12px; letter-spacing: 0.04em; }
+  .module.disclaimer { background: var(--soft); font-size: 11px; color: var(--graphite); font-style: italic; }
+
+  .qa-notes { background: #FFFBEB; border: 1px solid #FBBF24; border-radius: 8px; padding: 12px 16px; margin: 18px 0 0; font-size: 12px; line-height: 1.55; color: #78350F; }
+  .qa-notes .lbl { font-weight: 700; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-right: 6px; }
+  .qa-notes code { background: #FEF3C7; }
+
+  .pending { display: inline-block; background: #FEF3C7; color: #78350F; padding: 1px 6px; border-radius: 3px; font-size: 11px; font-weight: 600; font-family: ui-monospace, monospace; }
+
+  /* PLAIN TEXT email styling */
+  .email-card.plain .email-body { background: var(--bc-warm); }
+  .email-card.plain .plain-text { font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; line-height: 1.8; white-space: pre-wrap; padding: 20px 22px; background: var(--white); border: 1px solid var(--smoke); border-radius: 6px; color: var(--ink); }
+
+  .footer { background: #0a0a0a; color: var(--white); padding: 32px 0; text-align: center; margin-top: 60px; }
+  .footer .wm { font-weight: 700; font-size: 16px; letter-spacing: -.02em; }
+  .footer .wm .x { color: var(--steel); margin: 0 6px; }
+  .footer .meta { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 6px; }
+  .footer .meta a { color: rgba(255,255,255,0.7); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="nav-wordmark">tethrd<span class="nav-x">×</span><span class="nav-client">BON CHARGE</span><span style="font-weight:300;color:var(--steel);margin:0 6px;">·</span><span class="nav-meta">Sprint 1 Drafts v1</span></div>
+    <div class="nav-meta">For Belle · 11 Jun 2026</div>
+  </div>
+</div>
+
+<div class="context-strip">
+  <div class="context-strip-inner">
+    <div class="label">Pass 2 · Full copy drafts for all 22 emails. Voice-cleared per Copy Bible. Voice-edit anything before sheet write-back.</div>
+    <div class="totals">
+      <span><strong>4</strong> flows</span>
+      <span><strong>22</strong> emails of copy</span>
+    </div>
+  </div>
+</div>
+
+<div class="nav-jump">
+  <div class="nav-jump-inner">
+    <span class="lbl">Jump to:</span>
+    <a href="#upsell">01 · Upsell</a>
+    <a href="#nurture">02 · Nurture</a>
+    <a href="#winback">03 · Winback</a>
+    <a href="#bis">04 · BIS</a>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ================================================================ -->
+<!-- FLOW 01 · UPSELL                                                 -->
+<!-- ================================================================ -->
+<section class="flow-section" id="upsell">
+  <div class="flow-header">
+    <span class="num">01</span>
+    <h2>Immediate Post-Purchase Upsell</h2>
+    <span class="role">Deepen the routine</span>
+    <span class="pill pill-count">8 EMAILS</span>
+    <span class="pill pill-discount">20% OFF BOTH</span>
+  </div>
+
+  <!-- ============ E1.SK · SKIN ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E1 · Reassurance + routine framing <span class="pillar">SKIN</span></div>
+      <div class="meta">Day 0 +2h · <span class="tag">20% OFF</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Good choice · here's what stacks with it</div>
+        <div class="row"><span class="lbl">Preview</span> Skin works as a routine. 20% to deepen yours.</div>
+      </div>
+
+      <div class="module banner">[ FREE SHIPPING · 12-MONTH WARRANTY · TRUSTED BY 400,000+ ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Good choice</div>
+        <div class="sub-line">Here's what your skin protocol is missing</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Anchor stat block</span>
+        <div class="copy">
+          <p><strong><span class="pending">[X]%</span> of customers report visible improvement in skin tone and texture with consistent use.</strong></p>
+          <p style="font-size:11px;color:var(--graphite);font-style:italic;">Based on customer reviews that mention at least one specific outcome (n=50). Experiences may vary.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Routine framing</span>
+        <div class="copy">
+          <p>Science-backed light therapy designed to support skin cell function. Most customers stack.</p>
+          <p>Cell turnover runs on a 28-day cycle. The customers who compound results stack two or three skin tools together, not one in isolation.</p>
+        </div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">Dynamic feed (pillar complements)</span>
+        <div class="copy">
+          <p><em>[ Dynamic catalog block · 3-5 skin pillar products · purchased SKU excluded via <code>last_purchased_product_id</code> filter ]</em></p>
+          <p>Seed examples: LED neck mask · Bijou wand · jaw band · serum range (if applicable)</p>
+        </div>
+      </div>
+
+      <div class="module trust">
+        TRUSTED BY 400,000+ · BACKED BY THE SAB · OFFICIAL RECOVERY PARTNER OF FULHAM FC
+      </div>
+
+      <div class="module code">
+        <span class="mod-label">Use code</span>
+        <div class="head-line">BONCHARGE20</div>
+        <div class="copy">
+          <p>20% off your next skin addition. Code valid for 48 hours.</p>
+        </div>
+      </div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA</span>
+        <div class="cta-btn">EXPLORE SKIN</div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Skin pillar anchor stat <span class="pending">[X]%</span> — Hani to pull from Ana's <code>User Reported Benefits.docx.pdf</code> (n=50). Code <code>BONCHARGE20</code> placeholder, confirm with Andy. Hero env: skin LED in-context shot.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ E1.HR · HAIR ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E1 · Reassurance + routine framing <span class="pillar">HAIR</span></div>
+      <div class="meta">Day 0 +2h · <span class="tag">20% OFF</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Your hair stack is one piece short</div>
+        <div class="row"><span class="lbl">Preview</span> Compound the result. 20% off the next layer.</div>
+      </div>
+
+      <div class="module banner">[ FREE SHIPPING · 12-MONTH WARRANTY · TRUSTED BY 400,000+ ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Good choice</div>
+        <div class="sub-line">Hair growth is compound biology. The stack matters.</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Anchor stat block</span>
+        <div class="copy">
+          <p><strong><span class="pending">[X]%</span> of customers report scalp and hair improvements with consistent use.</strong> <span class="pending">[pending Ana]</span></p>
+          <p style="font-size:11px;color:var(--graphite);font-style:italic;">Based on customer reviews that mention at least one specific outcome (n=N). Experiences may vary.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Routine framing</span>
+        <div class="copy">
+          <p>Designed to support scalp circulation and stronger hair from the root. <span class="pending">[pending Ana on HR claim language]</span></p>
+          <p>Hair growth needs three inputs working at once. Scalp circulation. Reduced systemic inflammation. Recovery sleep. The stack is where compound results show up.</p>
+        </div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">Dynamic feed (pillar complements)</span>
+        <div class="copy">
+          <p><em>[ Dynamic catalog block · 3-5 hair pillar products · purchased SKU excluded ]</em></p>
+          <p>Seed examples: Infrared Therapy Blanket · Sleep Mask · Brooklyn or Parker blueblockers</p>
+        </div>
+      </div>
+
+      <div class="module trust">TRUSTED BY 400,000+ · BACKED BY THE SAB · OFFICIAL RECOVERY PARTNER OF FULHAM FC</div>
+
+      <div class="module code">
+        <span class="mod-label">Use code</span>
+        <div class="head-line">BONCHARGE20</div>
+        <div class="copy"><p>20% off your next hair addition. Code valid for 48 hours.</p></div>
+      </div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA</span>
+        <div class="cta-btn">EXPLORE HAIR</div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Hair stat + claim language <span class="pending">[pending Ana]</span>. Hero env: Red Light Cap in-use shot. <strong>AU region:</strong> Therapy Blanket OK, confirm cap inventory.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ E1.RC · RECOVERY ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E1 · Reassurance + routine framing <span class="pillar">RECOVERY</span></div>
+      <div class="meta">Day 0 +2h · <span class="tag">20% OFF</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Recovery is a stack, not a single tool</div>
+        <div class="row"><span class="lbl">Preview</span> 20% off the next layer. Expires in 48h.</div>
+      </div>
+
+      <div class="module banner">[ FREE SHIPPING · 12-MONTH WARRANTY · TRUSTED BY 400,000+ ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Good choice</div>
+        <div class="sub-line">Recovery compounds when the stack is right</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Anchor stat block</span>
+        <div class="copy">
+          <p><strong><span class="pending">[X]%</span> of customers report faster recovery and improved sleep quality with consistent use.</strong> <span class="pending">[pending Ana]</span></p>
+          <p style="font-size:11px;color:var(--graphite);font-style:italic;">Based on customer reviews that mention at least one specific outcome (n=N). Experiences may vary.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Routine framing</span>
+        <div class="copy">
+          <p>Science-backed light technology designed to accelerate recovery and support cellular energy.</p>
+          <p>Three recovery modalities work different angles. Heat for circulation. Light for mitochondrial energy. PEMF for cellular repair. Stacked, they outperform any single tool.</p>
+        </div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">Dynamic feed (pillar complements)</span>
+        <div class="copy">
+          <p><em>[ Dynamic catalog block · 3-5 recovery pillar products · purchased SKU excluded ]</em></p>
+          <p>Seed examples (ROW): PEMF Mat · Infrared Sauna Blanket · Red Light Panel. <strong>AU:</strong> PEMF + Sauna Blanket banned — use Red Light Panel + recovery accessories.</p>
+        </div>
+      </div>
+
+      <div class="module trust">TRUSTED BY 400,000+ · BACKED BY THE SAB · OFFICIAL RECOVERY PARTNER OF FULHAM FC</div>
+
+      <div class="module code">
+        <span class="mod-label">Use code</span>
+        <div class="head-line">BONCHARGE20</div>
+        <div class="copy"><p>20% off your next recovery addition. Code valid for 48 hours.</p></div>
+      </div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA</span>
+        <div class="cta-btn">EXPLORE RECOVERY</div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Recovery stat <span class="pending">[pending Ana]</span>. <strong>AU region build:</strong> PEMF Mat + Sauna Blanket OUT (Copy Bible §22). Dynamic feed must be region-aware.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ E1.SL · SLEEP ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E1 · Reassurance + routine framing <span class="pillar">SLEEP</span></div>
+      <div class="meta">Day 0 +2h · <span class="tag">20% OFF</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Your circadian protocol just started</div>
+        <div class="row"><span class="lbl">Preview</span> Stack the next piece. 20% off, 48 hours.</div>
+      </div>
+
+      <div class="module banner">[ FREE SHIPPING · 12-MONTH WARRANTY · TRUSTED BY 400,000+ ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Good choice</div>
+        <div class="sub-line">Circadian alignment is the protocol. Stacking is how it lands.</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Anchor stat block</span>
+        <div class="copy">
+          <p><strong><span class="pending">[X]%</span> of customers report falling asleep faster and waking less often with consistent use.</strong> <span class="pending">[pending Ana]</span></p>
+          <p style="font-size:11px;color:var(--graphite);font-style:italic;">Based on customer reviews that mention at least one specific outcome (n=N). Experiences may vary.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Routine framing</span>
+        <div class="copy">
+          <p>Circadian-friendly lighting that shifts from day to night to support deeper, better-quality sleep.</p>
+          <p>Sleep is built from three inputs in sequence. Block blue light. Dim the room. Mask the rest. Stacked, your wind-down protocol does the work for you.</p>
+        </div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">Dynamic feed (pillar complements)</span>
+        <div class="copy">
+          <p><em>[ Dynamic catalog block · 3-5 sleep pillar products · purchased SKU excluded ]</em></p>
+          <p>Seed examples: Brooklyn or Parker blueblockers · Sleep Mask · Circadian-friendly lamp</p>
+        </div>
+      </div>
+
+      <div class="module trust">TRUSTED BY 400,000+ · BACKED BY THE SAB · OFFICIAL RECOVERY PARTNER OF FULHAM FC</div>
+
+      <div class="module code">
+        <span class="mod-label">Use code</span>
+        <div class="head-line">BONCHARGE20</div>
+        <div class="copy"><p>20% off your next sleep addition. Code valid for 48 hours.</p></div>
+      </div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA</span>
+        <div class="cta-btn">EXPLORE SLEEP</div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Sleep stat <span class="pending">[pending Ana]</span>. Andy-approved sleep claim language used verbatim. Hero env: blueblockers + circadian lamp evening shot.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ E2.SK · SKIN ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E2 · Combination &gt; isolation + urgency close <span class="pillar">SKIN</span></div>
+      <div class="meta">Day 2 · <span class="tag">20% MIDNIGHT</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Last call on your 20% off</div>
+        <div class="row"><span class="lbl">Preview</span> Compound results need the stack. Expires midnight.</div>
+      </div>
+
+      <div class="module banner">[ 20% OFF · EXPIRES MIDNIGHT TONIGHT ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">The stack is what compounds</div>
+        <div class="sub-line">Last call on 20% off. Code expires at midnight.</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Combination logic</span>
+        <div class="copy">
+          <p>Combine three light-active technologies in your skin protocol. Let LED therapy prime the cells. Let the Bijou wand drive actives in deeper. Let a targeted serum routine close the loop.</p>
+          <p>Stacked daily for four weeks, this is how the customers who see real shifts get them. Isolation doesn't compound. The stack does.</p>
+        </div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">Dynamic feed (refresh)</span>
+        <div class="copy">
+          <p><em>[ Same catalog block as E1 · refreshed inventory · 3-5 skin pillar cards ]</em></p>
+        </div>
+      </div>
+
+      <div class="module trust">TRUSTED BY 400,000+ · BACKED BY THE SAB · OFFICIAL RECOVERY PARTNER OF FULHAM FC</div>
+
+      <div class="module code">
+        <span class="mod-label">Use code</span>
+        <div class="head-line">BONCHARGE20</div>
+        <div class="copy"><p>Last call. 20% off expires at midnight tonight.</p></div>
+      </div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA</span>
+        <div class="cta-btn">EXPLORE SKIN</div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Urgency hardened in hero + code reveal. Andy stacked-tech proof pattern applied verbatim. No em dashes, sentence case throughout.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ E2.HR · HAIR ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E2 · Combination &gt; isolation + urgency close <span class="pillar">HAIR</span></div>
+      <div class="meta">Day 2 · <span class="tag">20% MIDNIGHT</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Hair growth is a stack · last call</div>
+        <div class="row"><span class="lbl">Preview</span> 20% off expires midnight.</div>
+      </div>
+
+      <div class="module banner">[ 20% OFF · EXPIRES MIDNIGHT TONIGHT ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Hair growth is a stack</div>
+        <div class="sub-line">Last call on 20% off. Code expires at midnight.</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Combination logic</span>
+        <div class="copy">
+          <p>Combine three recovery technologies in your hair protocol. Let the Red Light Cap support scalp circulation. Let the Infrared Therapy Blanket bring systemic inflammation down. Let a Sleep Mask deepen overnight recovery.</p>
+          <p>Hair grows from scalp health first. Length follows. Stacked inputs are how the customers who see the shifts get them. <span class="pending">[pending Ana on growth claim language]</span></p>
+        </div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">Dynamic feed (refresh)</span>
+        <div class="copy"><p><em>[ Same catalog block as E1 · refreshed · 3-5 hair pillar cards ]</em></p></div>
+      </div>
+
+      <div class="module trust">TRUSTED BY 400,000+ · BACKED BY THE SAB · OFFICIAL RECOVERY PARTNER OF FULHAM FC</div>
+
+      <div class="module code">
+        <span class="mod-label">Use code</span>
+        <div class="head-line">BONCHARGE20</div>
+        <div class="copy"><p>Last call. 20% off expires at midnight tonight.</p></div>
+      </div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA</span>
+        <div class="cta-btn">EXPLORE HAIR</div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Subject uses middle dot, not em dash. Combination logic stays factual (no growth %). <strong>AU:</strong> Therapy Blanket allowed, confirm cap inventory.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ E2.RC · RECOVERY ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E2 · Combination &gt; isolation + urgency close <span class="pillar">RECOVERY</span></div>
+      <div class="meta">Day 2 · <span class="tag">20% MIDNIGHT</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Recovery is a stack · 20% expires tonight</div>
+        <div class="row"><span class="lbl">Preview</span> Last reminder on your code.</div>
+      </div>
+
+      <div class="module banner">[ 20% OFF · EXPIRES MIDNIGHT TONIGHT ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Recovery is a stack</div>
+        <div class="sub-line">Last call on 20% off. Code expires at midnight.</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Combination logic</span>
+        <div class="copy">
+          <p>Combine three recovery technologies in one protocol. Let the Infrared Sauna Blanket drive heat shock proteins. Let the PEMF Mat support cellular repair. Let the Red Light Panel feed mitochondrial energy.</p>
+          <p>Three angles, three mechanisms, one stack. This is how the customers who track recovery week over week build the shift. <strong>AU customers:</strong> stack swaps to Red Light Panel + recovery accessories.</p>
+        </div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">Dynamic feed (refresh)</span>
+        <div class="copy"><p><em>[ Same catalog block as E1 · refreshed · region-aware ]</em></p></div>
+      </div>
+
+      <div class="module trust">TRUSTED BY 400,000+ · BACKED BY THE SAB · OFFICIAL RECOVERY PARTNER OF FULHAM FC</div>
+
+      <div class="module code">
+        <span class="mod-label">Use code</span>
+        <div class="head-line">BONCHARGE20</div>
+        <div class="copy"><p>Last call. 20% off expires at midnight tonight.</p></div>
+      </div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA</span>
+        <div class="cta-btn">EXPLORE RECOVERY</div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Andy stacked-tech proof pattern applied. <strong>AU:</strong> body copy must surface AU stack swap (see footnote). Dynamic feed region-aware.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ E2.SL · SLEEP ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E2 · Combination &gt; isolation + urgency close <span class="pillar">SLEEP</span></div>
+      <div class="meta">Day 2 · <span class="tag">20% MIDNIGHT</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Your circadian stack · 20% expires tonight</div>
+        <div class="row"><span class="lbl">Preview</span> Block · dim · mask. Last call.</div>
+      </div>
+
+      <div class="module banner">[ 20% OFF · EXPIRES MIDNIGHT TONIGHT ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Block, dim, mask</div>
+        <div class="sub-line">The circadian stack closes at midnight. So does 20% off.</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Combination logic</span>
+        <div class="copy">
+          <p>Combine three circadian inputs into one wind-down protocol. Wear blueblockers two to three hours before bed. Shift the lamp from day to night spectrum at sundown. Mask the rest with a sleep mask once you're in bed.</p>
+          <p>Block. Dim. Mask. Three steps, one stack. A healthier wind down routine you'll actually keep.</p>
+        </div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">Dynamic feed (refresh)</span>
+        <div class="copy"><p><em>[ Same catalog block as E1 · refreshed · 3-5 sleep pillar cards ]</em></p></div>
+      </div>
+
+      <div class="module trust">TRUSTED BY 400,000+ · BACKED BY THE SAB · OFFICIAL RECOVERY PARTNER OF FULHAM FC</div>
+
+      <div class="module code">
+        <span class="mod-label">Use code</span>
+        <div class="head-line">BONCHARGE20</div>
+        <div class="copy"><p>Last call. 20% off expires at midnight tonight.</p></div>
+      </div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA</span>
+        <div class="cta-btn">EXPLORE SLEEP</div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Andy-approved closer "A healthier wind down routine you'll actually keep" used verbatim. Andy-approved blueblocker timing line ("worn 2-3 hours before bedtime") referenced.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================ -->
+<!-- FLOW 02 · NURTURE                                                -->
+<!-- ================================================================ -->
+<section class="flow-section" id="nurture">
+  <div class="flow-header">
+    <span class="num">02</span>
+    <h2>Post-Purchase Nurture</h2>
+    <span class="role">Teach the routine</span>
+    <span class="pill pill-count">9 EMAILS</span>
+    <span class="pill pill-nodiscount">NO DISCOUNT</span>
+  </div>
+
+  <!-- ============ N.E1.SK · SKIN ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E1 · Usage protocol (pillar-generic) <span class="pillar">SKIN</span></div>
+      <div class="meta">Day ~4 post-delivery</div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Your skin protocol · week one</div>
+        <div class="row"><span class="lbl">Preview</span> What to do, what to expect, what to skip.</div>
+      </div>
+
+      <div class="module banner">[ YOUR ROUTINE STARTS HERE ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">How to get the most out of your skin tech</div>
+        <div class="sub-line">A simple protocol for your first week</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Usage protocol</span>
+        <div class="copy">
+          <p><strong>10 to 15 minutes per session.</strong> Hold the device about 15cm from your face. Daily for the first four weeks. Morning or evening. Not both.</p>
+          <p><em>[ Designer note: render as numbered visual 1-2-3 cards, not paragraph ]</em></p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Honest expectations</span>
+        <div class="copy">
+          <p>By Day 7 you should notice skin feels less reactive and smoother to the touch. <span class="pending">[pending Ana for stronger claim]</span></p>
+          <p>The visible shift in tone and texture lands around Day 28. That's the cell turnover cycle. The customers who quit by Day 14 miss the result by two weeks.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Two quick tips</span>
+        <div class="copy">
+          <p><strong>Stack with daylight exposure.</strong> Natural light in the morning supports skin function.</p>
+          <p><strong>Don't overdo it.</strong> 15 minutes max per session. Compound results come from consistency, not duration.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Soft cross-pillar plant</span>
+        <div class="copy"><p>Sleep customers often add skin next. That's not an accident.</p></div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> No CTA — Hani direction: nurture plants seeds without selling. Day 7 stat <span class="pending">[pending Ana]</span>. Cross-pillar plant phrasing kept soft.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ N.E1.HR · HAIR ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E1 · Usage protocol (pillar-generic) <span class="pillar">HAIR</span></div>
+      <div class="meta">Day ~4 post-delivery</div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Your hair protocol · week one</div>
+        <div class="row"><span class="lbl">Preview</span> 6 minutes a day. Here's the rest.</div>
+      </div>
+
+      <div class="module banner">[ YOUR ROUTINE STARTS HERE ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">How to get the most out of your hair tech</div>
+        <div class="sub-line">A simple protocol for your first week</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Usage protocol</span>
+        <div class="copy">
+          <p><strong>6 minutes per session.</strong> Daily for the first eight weeks. Use on a clean dry scalp post-shower. Same time each day where possible.</p>
+          <p><em>[ Designer note: render as numbered visual 1-2-3 cards ]</em></p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Honest expectations</span>
+        <div class="copy">
+          <p>By Day 7 you should notice scalp circulation increasing. You may feel warmth during sessions. <span class="pending">[pending Ana]</span></p>
+          <p>Hair grows slowly. Scalp health changes first. Length follows. The visible signal lands around week 8 for most customers.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Two quick tips</span>
+        <div class="copy">
+          <p><strong>Consistency over duration.</strong> Six minutes every day beats 30 minutes twice a week.</p>
+          <p><strong>Don't skip days.</strong> Especially when tired. The skipped sessions are the ones that break the compound.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Soft cross-pillar plant</span>
+        <div class="copy"><p>Recovery customers often add hair next. Hair growth is downstream of systemic recovery.</p></div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Day 7 expectation <span class="pending">[pending Ana]</span>. Hair growth language kept claim-safe (no time-specific guarantees).
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ N.E1.RC · RECOVERY ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E1 · Usage protocol (pillar-generic) <span class="pillar">RECOVERY</span></div>
+      <div class="meta">Day ~4 post-delivery</div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Your recovery protocol · week one</div>
+        <div class="row"><span class="lbl">Preview</span> When, how often, what to stack.</div>
+      </div>
+
+      <div class="module banner">[ YOUR ROUTINE STARTS HERE ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">How to get the most out of your recovery tech</div>
+        <div class="sub-line">A simple protocol for your first week</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Usage protocol</span>
+        <div class="copy">
+          <p><strong>20-minute sessions.</strong> Daily for the first 30 days. Post-workout or evening, whichever fits the routine. Cool down for 10 minutes after.</p>
+          <p><em>[ Designer note: render as numbered visual 1-2-3 cards ]</em></p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Honest expectations</span>
+        <div class="copy">
+          <p>By Day 7 you should notice muscle soreness dropping faster. Sleep quality often improves first. <span class="pending">[pending Ana]</span></p>
+          <p>Recovery shows up in sleep and morning soreness before workout performance. Track the upstream signals first. The PRs come later.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Two quick tips</span>
+        <div class="copy">
+          <p><strong>Stack after movement, not before.</strong> Recovery tech works on muscle that's been used.</p>
+          <p><strong>Hydrate before sessions.</strong> Especially with heat-based protocols.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Soft cross-pillar plant</span>
+        <div class="copy"><p>Sleep customers often add recovery next. The two compound.</p></div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> No claim around specific performance gains. Sleep quality framed as observable, not guaranteed.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ N.E1.SL · SLEEP ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E1 · Usage protocol (pillar-generic) <span class="pillar">SLEEP</span></div>
+      <div class="meta">Day ~4 post-delivery</div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Your sleep protocol · week one</div>
+        <div class="row"><span class="lbl">Preview</span> Block · dim · mask. In that order.</div>
+      </div>
+
+      <div class="module banner">[ YOUR ROUTINE STARTS HERE ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">How to get the most out of your sleep tech</div>
+        <div class="sub-line">A simple protocol for your first week</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Usage protocol</span>
+        <div class="copy">
+          <p><strong>Wear blueblockers two to three hours before bedtime.</strong> Sleep mask every night. Shift the lamp from day to night spectrum at sundown.</p>
+          <p><em>[ Designer note: render as numbered visual 1-2-3 cards ]</em></p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Honest expectations</span>
+        <div class="copy">
+          <p>By Day 7 you should notice falling asleep faster and fewer mid-night wake-ups. <span class="pending">[pending Ana]</span></p>
+          <p>Most circadian shifts plateau after 14 days. If you're consistent, you're past the hardest part by mid-week two.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Two quick tips</span>
+        <div class="copy">
+          <p><strong>Dim lights 90 minutes pre-bed.</strong> Your circadian system runs on light cues.</p>
+          <p><strong>Limit screens or use blueblockers.</strong> One of the two. Both is better.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Soft cross-pillar plant</span>
+        <div class="copy"><p>Sleep customers often add hair next. Overnight recovery compounds where hair grows.</p></div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Andy-approved blueblocker timing language used verbatim. No melatonin-specific claim outside Andy's approved phrasing.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ N.E2.SK · SKIN ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E2 · "Is it working?" belief reinforcement <span class="pillar">SKIN</span></div>
+      <div class="meta">Day ~12</div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Week 2 · what most people ask</div>
+        <div class="row"><span class="lbl">Preview</span> The honest answer on skin protocols.</div>
+      </div>
+
+      <div class="module banner">[ WEEK TWO CHECK-IN ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Most customers ask this around week 2</div>
+        <div class="sub-line">And here's the honest answer</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Doubt reframe</span>
+        <div class="copy">
+          <p><strong>"Why don't I see dramatic change yet?"</strong></p>
+          <p>Cell turnover is a 28-day cycle. What you're building in week 2 shows up visibly in week 4. The customers who quit by Day 14 miss the result by two weeks.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Anchor stat</span>
+        <div class="copy">
+          <p><strong><span class="pending">[X]%</span> of customers report skin texture or tone improvement by week 4 of consistent use.</strong></p>
+          <p style="font-size:11px;color:var(--graphite);font-style:italic;">Based on customer reviews that mention at least one specific outcome (n=50). Experiences may vary.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Encouragement</span>
+        <div class="copy"><p>Consistency over intensity. The data is clear.</p></div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">UGC quote block</span>
+        <div class="copy">
+          <p><em>[ 1 verified customer quote — skin pillar, focused on consistent use rather than dramatic before/after ]</em></p>
+          <p><span class="pending">[Belle to select from approved review set]</span></p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Soft cross-pillar plant</span>
+        <div class="copy"><p>This is also when most skin customers start exploring sleep. The two reinforce.</p></div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Anchor stat needs Ana's number. UGC quote slot for Belle to fill. No "guaranteed" or "you will" language.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ N.E2.HR · HAIR ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E2 · "Is it working?" belief reinforcement <span class="pillar">HAIR</span></div>
+      <div class="meta">Day ~12</div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Hair grows from scalp health first</div>
+        <div class="row"><span class="lbl">Preview</span> Why week 2 feels slow, and what's actually happening.</div>
+      </div>
+
+      <div class="module banner">[ WEEK TWO CHECK-IN ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Hair grows from scalp health first</div>
+        <div class="sub-line">Why week 2 feels slow, and what's actually happening</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Doubt reframe</span>
+        <div class="copy">
+          <p><strong>"Should my hair be growing faster?"</strong></p>
+          <p>Hair growth is slow biology. Scalp health changes first. You feel it before you see it. Length follows scalp circulation, not the other way around.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Anchor stat</span>
+        <div class="copy">
+          <p><strong><span class="pending">[X]%</span> of customers report scalp and hair improvements by week 4. <span class="pending">[pending Ana]</span></strong></p>
+          <p style="font-size:11px;color:var(--graphite);font-style:italic;">Based on customer reviews that mention at least one specific outcome (n=N). Experiences may vary.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Encouragement</span>
+        <div class="copy"><p>Consistency over intensity. The data is clear.</p></div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">UGC quote block</span>
+        <div class="copy">
+          <p><em>[ 1 verified customer quote — hair pillar, focused on scalp feel before length ]</em></p>
+          <p><span class="pending">[Belle to select from approved review set]</span></p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Soft cross-pillar plant</span>
+        <div class="copy"><p>This is also when most hair customers start exploring recovery. Systemic inflammation matters.</p></div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Anchor stat + reframe both <span class="pending">[pending Ana]</span>. UGC quote slot for Belle to fill.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ N.E2.RC · RECOVERY ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E2 · "Is it working?" belief reinforcement <span class="pillar">RECOVERY</span></div>
+      <div class="meta">Day ~12</div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Track this before workout PRs</div>
+        <div class="row"><span class="lbl">Preview</span> Sleep quality is your first recovery signal.</div>
+      </div>
+
+      <div class="module banner">[ WEEK TWO CHECK-IN ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Track this before workout PRs</div>
+        <div class="sub-line">Sleep quality is your first recovery signal</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Doubt reframe</span>
+        <div class="copy">
+          <p><strong>"Is the recovery actually compounding?"</strong></p>
+          <p>Recovery shows up in sleep quality and morning soreness before workout performance. Track the upstream signals first. The PRs come later.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Anchor stat</span>
+        <div class="copy">
+          <p><strong><span class="pending">[X]%</span> of customers report faster recovery and improved sleep quality by week 4. <span class="pending">[pending Ana]</span></strong></p>
+          <p style="font-size:11px;color:var(--graphite);font-style:italic;">Based on customer reviews that mention at least one specific outcome (n=N). Experiences may vary.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Encouragement</span>
+        <div class="copy"><p>Consistency over intensity. The data is clear.</p></div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">UGC quote block</span>
+        <div class="copy">
+          <p><em>[ 1 verified customer quote — recovery pillar, focused on sleep + morning soreness as first signal ]</em></p>
+          <p><span class="pending">[Belle to select from approved review set]</span></p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Soft cross-pillar plant</span>
+        <div class="copy"><p>This is also when most recovery customers start exploring sleep. Two pillars, one outcome.</p></div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Anchor stat <span class="pending">[pending Ana]</span>. UGC quote slot for Belle.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ N.E2.SL · SLEEP ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E2 · "Is it working?" belief reinforcement <span class="pillar">SLEEP</span></div>
+      <div class="meta">Day ~12</div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Two weeks in · the shift is starting</div>
+        <div class="row"><span class="lbl">Preview</span> Consistency over intensity. Here's why.</div>
+      </div>
+
+      <div class="module banner">[ WEEK TWO CHECK-IN ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Two weeks in · the shift is starting</div>
+        <div class="sub-line">Consistency over intensity. Here's why.</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Doubt reframe</span>
+        <div class="copy">
+          <p><strong>"Sleep feels the same as before."</strong></p>
+          <p>Most circadian shifts plateau after 14 days. If you're consistent, you're past the hardest part. The shift compounds week by week from here.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Anchor stat</span>
+        <div class="copy">
+          <p><strong><span class="pending">[X]%</span> of customers report falling asleep faster and waking less often by week 4. <span class="pending">[pending Ana]</span></strong></p>
+          <p style="font-size:11px;color:var(--graphite);font-style:italic;">Based on customer reviews that mention at least one specific outcome (n=N). Experiences may vary.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Encouragement</span>
+        <div class="copy"><p>Consistency over intensity. The data is clear.</p></div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">UGC quote block</span>
+        <div class="copy">
+          <p><em>[ 1 verified customer quote — sleep pillar, focused on fewer wake-ups rather than dramatic falling asleep ]</em></p>
+          <p><span class="pending">[Belle to select from approved review set]</span></p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Soft cross-pillar plant</span>
+        <div class="copy"><p>This is also when most sleep customers start exploring hair. Overnight recovery compounds where hair grows.</p></div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Anchor stat <span class="pending">[pending Ana]</span>. UGC quote slot for Belle.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ N.E3 · CONSOLIDATED ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E3 · Brand-level conviction <span class="pillar">CONSOLIDATED</span></div>
+      <div class="meta">Day ~21 · all customers</div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Why people stay with BON CHARGE</div>
+        <div class="row"><span class="lbl">Preview</span> Three things that don't change.</div>
+      </div>
+
+      <div class="module banner">[ BACKED BY THE SAB · 400,000+ CUSTOMERS · OFFICIAL RECOVERY PARTNER OF FULHAM FC ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Why people stay with BON CHARGE</div>
+        <div class="sub-line">Three things that don't change</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">SAB callout</span>
+        <div class="copy">
+          <p>Every protocol we ship is reviewed by our Scientific Advisory Board. Not our marketing team.</p>
+          <p>The SAB is who decides what claims we make and what we won't. That's why our copy reads differently to most wellness brands. <span class="pending">[pending Andy on named SAB inclusion]</span></p>
+        </div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">UGC strip</span>
+        <div class="copy">
+          <p><em>[ 3-4 rotating verified customer reviews from approved set · brand-wide, not pillar-specific ]</em></p>
+          <p><span class="pending">[Belle to select from approved review set]</span></p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Fulham FC partnership</span>
+        <div class="copy">
+          <p>Official Recovery Partner of Fulham FC. We don't talk about it much. The partnership speaks for itself.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Cross-pillar curiosity grid</span>
+        <div class="copy">
+          <p><em>[ 4-cell nav grid: SKIN · SLEEP · RECOVERY · HAIR. Each cell one-line Andy formula + CTA ]</em></p>
+          <p><strong>SKIN.</strong> Science-backed light therapy designed to support skin cell function.</p>
+          <p><strong>SLEEP.</strong> Circadian-friendly lighting that shifts from day to night to support deeper, better-quality sleep.</p>
+          <p><strong>RECOVERY.</strong> Science-backed light technology designed to accelerate recovery and support cellular energy.</p>
+          <p><strong>HAIR.</strong> Designed to support scalp circulation and stronger hair from the root. <span class="pending">[pending Ana on HR claim language]</span></p>
+        </div>
+      </div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA grid</span>
+        <div class="cta-btn">EXPLORE SKIN</div>
+        <div class="cta-btn" style="margin-left:8px;">EXPLORE SLEEP</div>
+        <div class="cta-btn" style="margin-left:8px;">EXPLORE RECOVERY</div>
+        <div class="cta-btn" style="margin-left:8px;">EXPLORE HAIR</div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Andy voice formulas used verbatim per pillar. SAB language only (no "in-house"). UGC slot for Belle. HAIR claim <span class="pending">[pending Ana]</span>.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================ -->
+<!-- FLOW 03 · WINBACK                                                -->
+<!-- ================================================================ -->
+<section class="flow-section" id="winback">
+  <div class="flow-header">
+    <span class="num">03</span>
+    <h2>Winback</h2>
+    <span class="role">Reactivate the routine</span>
+    <span class="pill pill-count">3 EMAILS</span>
+    <span class="pill pill-discount">20% OFF ALL 3</span>
+  </div>
+
+  <!-- ============ W.E1 ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E1 · Reopen the door</div>
+      <div class="meta">Day 0 · designed · <span class="tag">20% OFF</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> 20% off to come back to your routine</div>
+        <div class="row"><span class="lbl">Preview</span> A welcome-back code. Plus what's new since you were last here.</div>
+      </div>
+
+      <div class="module banner">[ FREE SHIPPING · 12-MONTH WARRANTY · TRUSTED BY 400,000+ ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Pick up where you left off</div>
+        <div class="sub-line">Here's what's evolved since you were last here</div>
+      </div>
+
+      <div class="module feed">
+        <span class="mod-label">Lineup evolution block</span>
+        <div class="copy">
+          <p><em>[ Designer: 3-5 product launches since their last order. Visual grid. Each card: name + Andy's voice formula + PDP link ]</em></p>
+          <p>Example cards (Hani to confirm which 3-5 launches to feature):</p>
+          <p><strong>New skin tools.</strong> Designed to support skin cell function across the routine.</p>
+          <p><strong>Updated recovery range.</strong> Science-backed light technology designed to accelerate recovery and support cellular energy.</p>
+          <p><strong>Sleep range expanded.</strong> Circadian-friendly lighting that shifts from day to night.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">SAB update</span>
+        <div class="copy">
+          <p>We've added new members to our Scientific Advisory Board since you were last here. They review every protocol before it ships. <span class="pending">[pending Andy on named members]</span></p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Andy voice anchor</span>
+        <div class="copy">
+          <p>The routine you started is still your fastest path back. Most customers who come back compound from where they left off.</p>
+        </div>
+      </div>
+
+      <div class="module code">
+        <span class="mod-label">Use code</span>
+        <div class="head-line">WELCOME20BACK</div>
+        <div class="copy"><p>20% off everything. Valid for 12 days.</p></div>
+      </div>
+
+      <div class="module trust">TRUSTED BY 400,000+ · BACKED BY THE SAB · OFFICIAL RECOVERY PARTNER OF FULHAM FC</div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA</span>
+        <div class="cta-btn">EXPLORE THE RANGE</div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Code <code>WELCOME20BACK</code> placeholder, confirm with Andy. Lineup evolution block needs Hani to confirm featured launches. SAB members <span class="pending">[pending Andy]</span>.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ W.E2 ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E2 · FAQ + reply lane</div>
+      <div class="meta">Day 5 · designed · <span class="tag">20% REMINDER</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> Hit reply if you have questions · 20% off ends in 7 days</div>
+        <div class="row"><span class="lbl">Preview</span> Real answers from Belle. Plus your code is still active.</div>
+      </div>
+
+      <div class="module banner">[ 20% OFF · 7 DAYS LEFT ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">Real questions from real customers</div>
+        <div class="sub-line">Hit reply if yours isn't here. Belle reads everything.</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">FAQ 1</span>
+        <div class="copy">
+          <p><strong>"Did it actually work for me?"</strong></p>
+          <p>Results compound. The customers who see the biggest shifts are the ones who stuck with one protocol for 30+ days. Two weeks isn't enough for most pillars. Four is where it lands.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">FAQ 2</span>
+        <div class="copy">
+          <p><strong>"Is it worth the price?"</strong></p>
+          <p>A BON CHARGE device pays back in months of routine, not single sessions. Most customers calculate cost-per-use after 90 days and stop asking.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">FAQ 3</span>
+        <div class="copy">
+          <p><strong>"I fell off the routine. Is it too late?"</strong></p>
+          <p>Nothing's lost. Routines come back faster the second time. Your body remembers, the protocols are familiar, the results compound from where you stopped. The hardest part was the first 14 days. You're past it.</p>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Open reply lane</span>
+        <div class="copy">
+          <p>Hit reply on this email. Belle reads everything and replies within 48 hours. No bots, no scripts.</p>
+        </div>
+      </div>
+
+      <div class="module code">
+        <span class="mod-label">Code reminder</span>
+        <div class="head-line">WELCOME20BACK</div>
+        <div class="copy"><p>Your 20% off code is still active for 7 more days.</p></div>
+      </div>
+
+      <div class="module trust">TRUSTED BY 400,000+ · BACKED BY THE SAB · OFFICIAL RECOVERY PARTNER OF FULHAM FC</div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA</span>
+        <div class="cta-btn">EXPLORE THE RANGE</div>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Open reply lane requires monitored from-address — confirm Belle's inbox or shared CX inbox before launch.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ W.E3 · ANDY PLAIN TEXT ============ -->
+  <div class="email-card plain">
+    <div class="head">
+      <div class="name">E3 · Andy · final personal note</div>
+      <div class="meta">Day 12 · <span class="tag">PLAIN TEXT</span> · <span class="tag">20% MIDNIGHT</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> One last note from me</div>
+        <div class="row"><span class="lbl">Preview</span> Personal. From Andy. 20% off expires tonight.</div>
+        <div class="row"><span class="lbl">From-name</span> Andy Mant</div>
+        <div class="row"><span class="lbl">Reply-to</span> <span class="pending">monitored inbox · Andy or routed</span></div>
+      </div>
+
+      <div class="plain-text">Hi {{ first_name|default:"there" }},
+
+Quick personal note before this expires tonight.
+
+I noticed you've been away a while. That happens. Life gets busy, routines fall off, science-backed wellness gets parked. No judgement.
+
+I wanted to reach out one last time because honestly, the people who stick with our protocols are the ones who see the biggest shifts. The first try is the hardest. Coming back is easier. Your body remembers, the protocols are familiar, the results compound from where you stopped.
+
+If you've been thinking about it, this is the moment. 20% off everything with code WELCOME20BACK expires at midnight tonight.
+
+If you've decided BON CHARGE isn't for you, no hard feelings. A one-line reply telling me why helps us build better.
+
+Either way, thanks for trying us.
+
+Andy Mant
+Founder, BON CHARGE</div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Plain text only — no template, no Bijou sticker, no design system, no images, no logo. From-name = Andy Mant. Reply-to monitored. Zero em dashes (verified). No marketing CTAs. Conversational 1:1 tone throughout.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================ -->
+<!-- FLOW 04 · BIS                                                    -->
+<!-- ================================================================ -->
+<section class="flow-section" id="bis">
+  <div class="flow-header">
+    <span class="num">04</span>
+    <h2>Back In Stock</h2>
+    <span class="role">Protect the result</span>
+    <span class="pill pill-count">2 EMAILS</span>
+    <span class="pill pill-discount">15% NEW CUSTOMERS (E2)</span>
+  </div>
+
+  <!-- ============ B.E1 · PLAIN ============ -->
+  <div class="email-card plain">
+    <div class="head">
+      <div class="name">E1 · Sign-up confirmation</div>
+      <div class="meta">Immediate on opt-in · <span class="tag">PLAIN TEXT</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> You're on the list</div>
+        <div class="row"><span class="lbl">Preview</span> We'll email the moment {{ event.product_name }} is back.</div>
+        <div class="row"><span class="lbl">From-name</span> BON CHARGE</div>
+      </div>
+
+      <div class="plain-text">Hi {{ first_name|default:"there" }},
+
+You're on the list for {{ event.product_name }}.
+
+We'll email you the moment it's back in stock. No spam, no marketing in between.
+
+BON CHARGE</div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Plain text. No promotion. No upsell. No bestseller feed. 3-4 lines max. Trust the signal — they signed up for a specific SKU.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ B.E2 · RESTOCK ============ -->
+  <div class="email-card">
+    <div class="head">
+      <div class="name">E2 · "It's back" notification</div>
+      <div class="meta">On restock event · <span class="tag">15% IF NEW</span></div>
+    </div>
+    <div class="email-body">
+      <div class="subj-block">
+        <div class="row"><span class="lbl">Subject</span> {{ event.product_name }} is back</div>
+        <div class="row"><span class="lbl">Preview</span> Limited stock. First-come basis.</div>
+      </div>
+
+      <div class="module banner">[ FREE SHIPPING · 12-MONTH WARRANTY · TRUSTED BY 400,000+ ]</div>
+
+      <div class="module">
+        <span class="mod-label">Hero</span>
+        <div class="head-line">It's back</div>
+        <div class="sub-line">{{ event.product_name }}</div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Hero sub-line</span>
+        <div class="copy"><p>Limited stock. First-come basis.</p></div>
+      </div>
+
+      <div class="module">
+        <span class="mod-label">Short product description</span>
+        <div class="copy">
+          <p><em>[ 1-2 line description using Andy's voice formula — confirm with Andy's product copy for the specific SKU ]</em></p>
+          <p>Example template: "Science-backed [tech] designed to [outcome]."</p>
+        </div>
+      </div>
+
+      <div class="module cta">
+        <span class="mod-label">Primary CTA</span>
+        <div class="cta-btn">SHOP NOW</div>
+      </div>
+
+      <div class="module trust">TRUSTED BY 400,000+ · BACKED BY THE SAB · OFFICIAL RECOVERY PARTNER OF FULHAM FC</div>
+
+      <div class="module" style="background:#FDF6E3; border:2px dashed var(--warm-amber);">
+        <span class="mod-label">CONDITIONAL BLOCK · Show if person.lifetime_orders == 0</span>
+        <div class="copy">
+          <p><strong>First-timer? Welcome.</strong></p>
+          <p>15% off your first order with code <strong>NEW15</strong>. Code expires in 48 hours.</p>
+        </div>
+        <div class="cta-btn" style="display:inline-block;padding:10px 22px;background:var(--ink);color:var(--white);font-weight:700;font-size:12px;letter-spacing:0.08em;border-radius:4px;margin-top:10px;">SHOP WITH 15% OFF</div>
+        <p style="font-size:11px;color:var(--graphite);font-style:italic;margin-top:10px;"><strong>If repeat customer (lifetime_orders ≥ 1):</strong> entire block hides. They see the clean restock email above with no offer.</p>
+      </div>
+
+      <div class="qa-notes">
+        <span class="lbl">QA</span> Code <code>NEW15</code> placeholder. No bestseller feed. No alternative product recs. Smart sending OFF (BIS decays fast). Test both conditional states pre-launch.
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="footer">
+  <div class="wm">tethrd<span class="x">×</span>BON CHARGE</div>
+  <div class="meta">Pass 2 Drafts v1 · Prepared 11 Jun 2026 · For Belle review · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a></div>
+</div>
+
+</body>
+</html>
