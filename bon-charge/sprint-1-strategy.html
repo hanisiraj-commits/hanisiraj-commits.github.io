@@ -35,7 +35,6 @@
   strong { color: var(--text-primary); font-weight: 600; }
   code { font-family: ui-monospace, 'SF Mono', monospace; font-size: 0.92em; background: var(--cloud); padding: 1px 6px; border-radius: 3px; color: var(--ink); }
 
-  /* TOP BAR — Tethrd minimal */
   .topbar { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--smoke); }
   .topbar-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; gap: var(--s-3); }
   .nav-left { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
@@ -48,7 +47,6 @@
   @media (max-width: 900px) { .nav-meta, .nav-date { display: none; } }
   @media (max-width: 700px) { .topbar-inner { padding: 12px 16px; } .nav-wordmark { font-size: 14px; } }
 
-  /* CONTEXT STRIP — single line under topbar */
   .context-strip { background: var(--soft); border-bottom: 1px solid var(--smoke); padding: 10px 24px; }
   .context-strip-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; font-size: 12px; color: var(--text-secondary); }
   .context-strip .spine { font-style: italic; color: var(--ink); font-weight: 500; }
@@ -56,13 +54,11 @@
   .context-strip .totals span { font-variant-numeric: tabular-nums; }
   .context-strip .totals strong { color: var(--ink); font-weight: 600; }
 
-  /* LEGEND */
   .legend-wrap { background: var(--white); border-bottom: 1px solid var(--smoke); padding: 10px 0; }
   .legend { max-width: 1320px; margin: 0 auto; padding: 0 var(--s-6); font-size: 12px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; color: var(--text-secondary); }
   .legend-item { display: flex; gap: 8px; align-items: center; }
   .legend-node { width: 24px; height: 16px; border-radius: 4px; }
 
-  /* CANVAS */
   .canvas { padding: 30px 20px 60px; overflow-x: auto; background: var(--white); }
   .board { position: relative; min-width: 1800px; margin: 0 auto; }
 
@@ -77,7 +73,7 @@
   .section-title .pill.no-discount { background: var(--cloud); color: var(--text-secondary); border: 1px solid var(--smoke); }
   .section-title .pill.plain { background: var(--warm-amber-bg); color: var(--warm-amber-text); border: 1px solid var(--warm-amber); }
 
-  .info-card { position: absolute; background: var(--white); border: 1px solid var(--smoke); border-radius: var(--r-lg); padding: 18px 20px; box-shadow: 0 1px 2px rgba(26,26,26,0.04); font-size: 12.5px; line-height: 1.55; color: var(--text-primary); }
+  .info-card { position: absolute; background: var(--white); border: 1px solid var(--smoke); border-radius: var(--r-lg); padding: 18px 20px; box-shadow: 0 1px 2px rgba(26,26,26,0.04); font-size: 12.5px; line-height: 1.55; color: var(--text-primary); overflow: hidden; }
   .info-card .label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-secondary); text-transform: uppercase; margin-top: 12px; margin-bottom: 5px; }
   .info-card .label:first-of-type { margin-top: 0; }
   .info-card .val { font-size: 12.5px; color: var(--text-primary); }
@@ -127,7 +123,6 @@
 
   .arrow { position: absolute; font-size: 18px; color: var(--space); font-weight: 700; }
 
-  /* FOOTER */
   .footer { background: #0a0a0a; color: var(--white); padding: var(--s-10) 0; text-align: center; }
   .footer .footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); display: flex; flex-direction: column; gap: var(--s-2); align-items: center; }
   .footer .footer-wordmark { font-family: var(--font-sans); font-weight: 700; font-size: 16px; letter-spacing: -.02em; }
@@ -138,7 +133,6 @@
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-inner">
     <div class="nav-left">
@@ -150,7 +144,6 @@
   </div>
 </div>
 
-<!-- CONTEXT STRIP -->
 <div class="context-strip">
   <div class="context-strip-inner">
     <div class="spine">"Build the routine, protect the result."</div>
@@ -162,7 +155,6 @@
   </div>
 </div>
 
-<!-- LEGEND -->
 <div class="legend-wrap">
   <div class="legend">
     <div class="legend-item"><div class="legend-node" style="background:#CFF5D1; border:2px solid #4CAF50;"></div>Trigger</div>
@@ -175,13 +167,10 @@
   </div>
 </div>
 
-<!-- CANVAS -->
 <div class="canvas">
-<div class="board" style="height: 2370px;">
+<div class="board" style="height: 2440px;">
 
-  <!-- ============================================================== -->
-  <!-- SECTION 1 · IMMEDIATE POST-PURCHASE UPSELL · 8 EMAILS          -->
-  <!-- ============================================================== -->
+  <!-- SECTION 1 · UPSELL -->
   <div class="section-title" style="top: 20px;">
     <span class="num">01</span>
     <span class="name">Immediate Post-Purchase Upsell</span>
@@ -191,18 +180,18 @@
     <span class="pill discount">20% OFF · BOTH EMAILS</span>
   </div>
 
-  <div class="info-card" style="top: 95px; left: 20px; width: 280px; height: 510px;">
+  <div class="info-card" style="top: 95px; left: 20px; width: 280px; height: 540px;">
     <div class="label">Role in the arc</div>
-    <div class="val">Pair the SKU they just bought with its complements within the same pillar. Reassure they made the right call, then plant the routine framing.</div>
+    <div class="val">Pair the SKU they just bought with its pillar complements. Reassure they bought right, then plant the routine framing.</div>
     <div class="label">Trigger</div>
     <div class="val"><code>Placed Order</code> · fires within 24h.</div>
     <div class="label">Branch logic</div>
-    <div class="val">Pillar split (<strong>Skin / Hair / Recovery / Sleep</strong>) at top of flow. Both E1 and E2 carry per-pillar copy variants.</div>
+    <div class="val">Pillar split (<strong>Skin / Hair / Recovery / Sleep</strong>). Both E1 and E2 carry per-pillar copy variants.</div>
     <div class="math">2 × 4 = 8 emails</div>
     <div class="label">Discount</div>
-    <div class="val"><strong>20% off code in both emails</strong> (mirrors current BON CHARGE flow logic). Code creates urgency window for E2.</div>
+    <div class="val"><strong>20% off in both emails</strong> — mirrors current flow. Code expiry creates the urgency hook for E2.</div>
     <div class="label">Dynamic feed</div>
-    <div class="val">Both emails include a dynamic catalog block pulling <strong>complementary products from the same pillar</strong>, with the just-purchased SKU excluded via feed filter (Klaviyo profile property).</div>
+    <div class="val">Dynamic catalog block pulls <strong>pillar-matched complements</strong>. Purchased SKU excluded via Klaviyo profile property.</div>
   </div>
 
   <div class="node node-trigger" style="top: 130px; left: 320px; width: 140px; height: 100px;">
@@ -266,10 +255,8 @@
   </div>
 
 
-  <!-- ============================================================== -->
-  <!-- SECTION 2 · POST-PURCHASE NURTURE · 9 EMAILS                   -->
-  <!-- ============================================================== -->
-  <div class="section-title" style="top: 650px;">
+  <!-- SECTION 2 · NURTURE -->
+  <div class="section-title" style="top: 665px;">
     <span class="num">02</span>
     <span class="name">Post-Purchase Nurture</span>
     <span class="role">Teach the routine</span>
@@ -278,40 +265,40 @@
     <span class="pill no-discount">NO DISCOUNT</span>
   </div>
 
-  <div class="info-card" style="top: 725px; left: 20px; width: 280px; height: 555px;">
+  <div class="info-card" style="top: 740px; left: 20px; width: 280px; height: 540px;">
     <div class="label">Role in the arc</div>
-    <div class="val">Teach the routine, build belief in the result, lock in brand-wide conviction.</div>
+    <div class="val">Teach the routine, build belief, lock in brand-wide conviction.</div>
     <div class="label">Trigger</div>
-    <div class="val"><code>Placed Order</code> + initial delay (~3-4 days) so it lands <strong>post-delivery, not post-purchase</strong>.</div>
+    <div class="val"><code>Placed Order</code> + ~3-4 day initial delay so it lands <strong>post-delivery, not post-purchase</strong>.</div>
     <div class="label">Branch logic</div>
-    <div class="val">Pillar split (Skin / Hair / Rec / Sleep) at top. E1 and E2 are split per pillar; <strong>E3 consolidates back to one universal email</strong> for all.</div>
+    <div class="val">Pillar split at top. E1 + E2 split per pillar; <strong>E3 consolidates to one universal email</strong>.</div>
     <div class="math">(2 × 4) + 1 = 9 emails</div>
     <div class="label">Content constraint</div>
-    <div class="val">We only know the pillar context, not the SKU. Copy stays <strong>pillar-generic</strong> — usage protocols apply to any product within that pillar.</div>
+    <div class="val">Only pillar context, not SKU. Usage protocols stay <strong>pillar-generic</strong> — applies to any product in that pillar.</div>
     <div class="label">Duration</div>
     <div class="val">~21 days end-to-end.</div>
     <div class="label">Discount</div>
-    <div class="val">None across all 9 emails. Pure belief layer.</div>
+    <div class="val">None across all 9 emails.</div>
   </div>
 
-  <div class="node node-trigger" style="top: 765px; left: 320px; width: 130px; height: 90px;">
+  <div class="node node-trigger" style="top: 780px; left: 320px; width: 130px; height: 90px;">
     <div class="node-label">Trigger</div>
     <div class="node-title">Placed Order</div>
   </div>
-  <div class="arrow" style="top: 798px; left: 456px;">→</div>
-  <div class="node node-delay" style="top: 775px; left: 475px; width: 75px; height: 80px;">
+  <div class="arrow" style="top: 813px; left: 456px;">→</div>
+  <div class="node node-delay" style="top: 790px; left: 475px; width: 75px; height: 80px;">
     <div class="node-label">Delay</div>
     <div class="node-title">~4 days</div>
     <div class="node-subtitle">post-delivery</div>
   </div>
-  <div class="arrow" style="top: 798px; left: 555px;">→</div>
-  <div class="node node-split" style="top: 765px; left: 575px; width: 130px; height: 90px;">
+  <div class="arrow" style="top: 813px; left: 555px;">→</div>
+  <div class="node node-split" style="top: 780px; left: 575px; width: 130px; height: 90px;">
     <div class="node-label">Split</div>
     <div class="node-title">Pillar</div>
   </div>
-  <div class="arrow" style="top: 798px; left: 711px;">→</div>
+  <div class="arrow" style="top: 813px; left: 711px;">→</div>
 
-  <div class="email-stack" style="top: 765px; left: 730px; width: 210px; height: 90px;">
+  <div class="email-stack" style="top: 780px; left: 730px; width: 210px; height: 90px;">
     <div class="stack-back-2"></div>
     <div class="stack-back-1"></div>
     <div class="node node-email stack-front">
@@ -321,12 +308,12 @@
     <div class="stack-count-badge">× 4</div>
   </div>
 
-  <div class="node node-delay" style="top: 775px; left: 970px; width: 75px; height: 80px;">
+  <div class="node node-delay" style="top: 790px; left: 970px; width: 75px; height: 80px;">
     <div class="node-label">Delay</div>
     <div class="node-title">~8 days</div>
   </div>
 
-  <div class="email-stack" style="top: 765px; left: 1070px; width: 210px; height: 90px;">
+  <div class="email-stack" style="top: 780px; left: 1070px; width: 210px; height: 90px;">
     <div class="stack-back-2"></div>
     <div class="stack-back-1"></div>
     <div class="node node-email stack-front">
@@ -336,30 +323,30 @@
     <div class="stack-count-badge">× 4</div>
   </div>
 
-  <div class="node node-compute" style="top: 765px; left: 1310px; width: 110px; height: 90px;">
+  <div class="node node-compute" style="top: 780px; left: 1310px; width: 110px; height: 90px;">
     <div class="node-label">Merge</div>
     <div class="node-title">Consolidate</div>
     <div class="node-subtitle">4 → 1</div>
   </div>
 
-  <div class="node node-delay" style="top: 775px; left: 1440px; width: 75px; height: 80px;">
+  <div class="node node-delay" style="top: 790px; left: 1440px; width: 75px; height: 80px;">
     <div class="node-label">Delay</div>
     <div class="node-title">~9 days</div>
   </div>
 
-  <div class="node node-email" style="top: 765px; left: 1540px; width: 210px; height: 90px;">
+  <div class="node node-email" style="top: 780px; left: 1540px; width: 210px; height: 90px;">
     <div class="node-label">E3 · Day ~21</div>
     <div class="node-title">Brand-level social proof</div>
   </div>
 
-  <div class="pillar-chips" style="top: 870px; left: 730px; width: 210px;">
+  <div class="pillar-chips" style="top: 885px; left: 730px; width: 210px;">
     <span class="pillar-chip">SKIN</span><span class="pillar-chip">HAIR</span><span class="pillar-chip">REC</span><span class="pillar-chip">SLEEP</span>
   </div>
-  <div class="pillar-chips" style="top: 870px; left: 1070px; width: 210px;">
+  <div class="pillar-chips" style="top: 885px; left: 1070px; width: 210px;">
     <span class="pillar-chip">SKIN</span><span class="pillar-chip">HAIR</span><span class="pillar-chip">REC</span><span class="pillar-chip">SLEEP</span>
   </div>
 
-  <div class="content-box" style="top: 910px; left: 730px; width: 210px; height: 370px;">
+  <div class="content-box" style="top: 925px; left: 730px; width: 210px; height: 355px;">
     <div class="heading">E1 · Usage protocol<span class="sub">Day ~4 · 4 pillar variants</span></div>
     <div class="row"><span class="k">Objective</span><span class="v">Tell them how to use it for max result, at the pillar level.</span></div>
     <div class="row"><span class="k">Content move</span><span class="v">Pillar-generic usage protocol (covers any device in that pillar) + honest week-1 expectations. No SKU-specific instructions.</span></div>
@@ -367,7 +354,7 @@
     <div class="badge-row"><span class="badge no">NO DISCOUNT</span><span class="badge split">× 4 PILLARS</span></div>
   </div>
 
-  <div class="content-box" style="top: 910px; left: 1070px; width: 210px; height: 370px;">
+  <div class="content-box" style="top: 925px; left: 1070px; width: 210px; height: 355px;">
     <div class="heading">E2 · "Is it working?"<span class="sub">Day ~12 · 4 pillar variants</span></div>
     <div class="row"><span class="k">Objective</span><span class="v">Hit the doubt window with psychological belief reinforcement.</span></div>
     <div class="row"><span class="k">Content move</span><span class="v">Placebo-leaning content — they read it and feel "yeah this is working" even before they consciously notice. Per-pillar reframes of common doubt.</span></div>
@@ -375,7 +362,7 @@
     <div class="badge-row"><span class="badge no">NO DISCOUNT</span><span class="badge split">× 4 PILLARS</span></div>
   </div>
 
-  <div class="content-box" style="top: 910px; left: 1540px; width: 210px; height: 370px;">
+  <div class="content-box" style="top: 925px; left: 1540px; width: 210px; height: 355px;">
     <div class="heading">E3 · Brand-level conviction<span class="sub">Day ~21 · consolidated</span></div>
     <div class="row"><span class="k">Objective</span><span class="v">Brand-wide conviction lock-in. One email, everyone gets it.</span></div>
     <div class="row"><span class="k">Content move</span><span class="v">Brand-wide UGC + Andy's science / SAB / Fulham FC trust signals. Not pillar-specific.</span></div>
@@ -384,10 +371,8 @@
   </div>
 
 
-  <!-- ============================================================== -->
-  <!-- SECTION 3 · WINBACK · 3 EMAILS                                  -->
-  <!-- ============================================================== -->
-  <div class="section-title" style="top: 1330px;">
+  <!-- SECTION 3 · WINBACK -->
+  <div class="section-title" style="top: 1310px;">
     <span class="num">03</span>
     <span class="name">Winback</span>
     <span class="role">Reactivate the routine</span>
@@ -397,56 +382,56 @@
     <span class="pill plain">E3 PLAIN TEXT · ANDY</span>
   </div>
 
-  <div class="info-card" style="top: 1405px; left: 20px; width: 280px; height: 410px;">
+  <div class="info-card" style="top: 1385px; left: 20px; width: 280px; height: 490px;">
     <div class="label">Role in the arc</div>
-    <div class="val">Bring the lapsed single-buyer back into the routine. 20% off carries the whole flow.</div>
+    <div class="val">Bring the lapsed single-buyer back. 20% off carries the whole flow.</div>
     <div class="label">Trigger</div>
     <div class="val"><code>Placed Order count = 1 lifetime</code> AND <code>no order in last 180 days</code>.</div>
-    <div class="label">Audience definition</div>
+    <div class="label">Audience</div>
     <div class="val">Bought once, never repeated in 6 months. That is the only filter.</div>
     <div class="label">Branch logic</div>
     <div class="val">None. Single track, same copy for everyone.</div>
     <div class="math">3 emails</div>
     <div class="label">Discount</div>
-    <div class="val"><strong>20% off code from E1</strong>, valid 12 days. E2 reminds at Day 5. E3 (plain text, Andy) reminds the final-hours window before midnight expiry.</div>
+    <div class="val"><strong>20% off from E1</strong>, valid 12 days. E2 reminds Day 5. E3 (Andy plain text) hits before midnight expiry.</div>
   </div>
 
-  <div class="node node-trigger" style="top: 1440px; left: 320px; width: 180px; height: 100px;">
+  <div class="node node-trigger" style="top: 1420px; left: 320px; width: 180px; height: 100px;">
     <div class="node-label">Trigger</div>
     <div class="node-title">1 lifetime order +</div>
     <div class="node-subtitle">no order 180d</div>
   </div>
-  <div class="arrow" style="top: 1478px; left: 506px;">→</div>
+  <div class="arrow" style="top: 1458px; left: 506px;">→</div>
 
-  <div class="node node-email" style="top: 1440px; left: 528px; width: 210px; height: 100px;">
+  <div class="node node-email" style="top: 1420px; left: 528px; width: 210px; height: 100px;">
     <div class="tile-mini-badge discount">20% OFF</div>
     <div class="node-label">E1 · Day 0</div>
     <div class="node-title">Reopen door · 20% off</div>
   </div>
 
-  <div class="node node-delay" style="top: 1450px; left: 760px; width: 80px; height: 80px;">
+  <div class="node node-delay" style="top: 1430px; left: 760px; width: 80px; height: 80px;">
     <div class="node-label">Delay</div>
     <div class="node-title">5 days</div>
   </div>
 
-  <div class="node node-email" style="top: 1440px; left: 870px; width: 210px; height: 100px;">
+  <div class="node node-email" style="top: 1420px; left: 870px; width: 210px; height: 100px;">
     <div class="tile-mini-badge discount">20% REMINDER</div>
     <div class="node-label">E2 · Day 5</div>
     <div class="node-title">FAQs + open reply lane</div>
   </div>
 
-  <div class="node node-delay" style="top: 1450px; left: 1100px; width: 80px; height: 80px;">
+  <div class="node node-delay" style="top: 1430px; left: 1100px; width: 80px; height: 80px;">
     <div class="node-label">Delay</div>
     <div class="node-title">7 days</div>
   </div>
 
-  <div class="node node-email-plain" style="top: 1440px; left: 1210px; width: 210px; height: 100px;">
+  <div class="node node-email-plain" style="top: 1420px; left: 1210px; width: 210px; height: 100px;">
     <div class="tile-mini-badge discount">20% MIDNIGHT</div>
     <div class="node-label">E3 · Day 12 · plain text</div>
     <div class="node-title">Andy · final hours</div>
   </div>
 
-  <div class="content-box" style="top: 1570px; left: 320px; width: 300px; height: 245px;">
+  <div class="content-box" style="top: 1550px; left: 320px; width: 300px; height: 245px;">
     <div class="heading">E1 · Reopen the door<span class="sub">Day 0 · designed · 20% off</span></div>
     <div class="row"><span class="k">Objective</span><span class="v">Reopen the door warmly. Push 20% off straight away.</span></div>
     <div class="row"><span class="k">Content move</span><span class="v">Remind them of the result they were chasing. Talk about how the lineup has evolved — new products, new SAB / advisory board members, science updates. Invite them back to the range.</span></div>
@@ -454,7 +439,7 @@
     <div class="badge-row"><span class="badge yes">20% OFF</span></div>
   </div>
 
-  <div class="content-box" style="top: 1570px; left: 640px; width: 300px; height: 245px;">
+  <div class="content-box" style="top: 1550px; left: 640px; width: 300px; height: 245px;">
     <div class="heading">E2 · FAQs + open reply lane<span class="sub">Day 5 · designed · 20% reminder</span></div>
     <div class="row"><span class="k">Objective</span><span class="v">Reminder + dissolve top objections + open a 1:1 communication channel.</span></div>
     <div class="row"><span class="k">Content move</span><span class="v">"Code expires in 7 days" reminder. Address the three lapse suspects (price-vs-result, results skepticism, fell off routine). <strong>Invite a reply</strong> for 1:1 wellness guidance. Reassure consistency is the lever.</span></div>
@@ -462,7 +447,7 @@
     <div class="badge-row"><span class="badge yes">20% REMINDER</span></div>
   </div>
 
-  <div class="content-box" style="top: 1570px; left: 960px; width: 460px; height: 245px;">
+  <div class="content-box" style="top: 1550px; left: 960px; width: 460px; height: 245px;">
     <div class="heading">E3 · Andy · final hours (plain text)<span class="sub">Day 12 · plain text · 20% midnight expiry</span></div>
     <div class="row"><span class="k">Objective</span><span class="v">Final personal lever. Plain text from Andy directly — 1:1 tone.</span></div>
     <div class="row"><span class="k">Content move</span><span class="v">No design. No images. Just Andy speaking to them like a person. Acknowledge the lapse, restate the offer, remind midnight expiry. Should feel like a personal note from the founder, not a marketing email.</span></div>
@@ -471,10 +456,8 @@
   </div>
 
 
-  <!-- ============================================================== -->
-  <!-- SECTION 4 · BACK IN STOCK · 2 EMAILS                            -->
-  <!-- ============================================================== -->
-  <div class="section-title" style="top: 1850px;">
+  <!-- SECTION 4 · BIS -->
+  <div class="section-title" style="top: 1900px;">
     <span class="num">04</span>
     <span class="name">Back In Stock</span>
     <span class="role">Protect the result</span>
@@ -483,47 +466,47 @@
     <span class="pill discount">15% FOR NEW CUSTOMERS ONLY (E2)</span>
   </div>
 
-  <div class="info-card" style="top: 1925px; left: 20px; width: 280px; height: 430px;">
+  <div class="info-card" style="top: 1975px; left: 20px; width: 280px; height: 480px;">
     <div class="label">Role in the arc</div>
-    <div class="val">Catch BIS-signalled intent. Confirm sign-up now, notify on restock, gate a small new-customer incentive.</div>
+    <div class="val">Catch BIS intent. Confirm sign-up, notify on restock, gate a new-customer offer.</div>
     <div class="label">Trigger</div>
     <div class="val"><code>Subscribed for back in stock</code> · fires immediately on opt-in.</div>
     <div class="label">Flow shape</div>
-    <div class="val">E1 (confirmation) sends immediately. Flow then <strong>waits for the restock event</strong>. E2 sends when SKU comes back in.</div>
+    <div class="val">E1 sends on opt-in. Flow then <strong>waits for the restock event</strong>. E2 sends when SKU comes back.</div>
     <div class="math">2 emails</div>
     <div class="label">Branch logic</div>
-    <div class="val">None at flow level. <strong>E2 contains a conditional content block</strong> showing 15% off only to new customers (zero lifetime orders). Repeat customers see no extra offer.</div>
+    <div class="val">None at flow level. <strong>E2 has a conditional block</strong> — 15% off only for new customers (zero lifetime orders).</div>
     <div class="label">Discount</div>
-    <div class="val">None on E1. <strong>15% off conditional block on E2 (new customers only).</strong></div>
+    <div class="val">None on E1. <strong>15% conditional on E2 for new customers only.</strong></div>
   </div>
 
-  <div class="node node-trigger" style="top: 1960px; left: 320px; width: 180px; height: 100px;">
+  <div class="node node-trigger" style="top: 2010px; left: 320px; width: 180px; height: 100px;">
     <div class="node-label">Trigger</div>
     <div class="node-title">BIS opt-in</div>
     <div class="node-subtitle">subscribed for SKU</div>
   </div>
-  <div class="arrow" style="top: 1998px; left: 506px;">→</div>
+  <div class="arrow" style="top: 2048px; left: 506px;">→</div>
 
-  <div class="node node-email-plain" style="top: 1960px; left: 528px; width: 200px; height: 100px;">
+  <div class="node node-email-plain" style="top: 2010px; left: 528px; width: 200px; height: 100px;">
     <div class="node-label">E1 · Immediate · plain</div>
     <div class="node-title">Sign-up confirmation</div>
   </div>
-  <div class="arrow" style="top: 1998px; left: 734px;">→</div>
+  <div class="arrow" style="top: 2048px; left: 734px;">→</div>
 
-  <div class="node node-wait" style="top: 1960px; left: 755px; width: 180px; height: 100px;">
+  <div class="node node-wait" style="top: 2010px; left: 755px; width: 180px; height: 100px;">
     <div class="node-label">Wait for event</div>
     <div class="node-title">Product restocked</div>
     <div class="node-subtitle">inventory webhook</div>
   </div>
-  <div class="arrow" style="top: 1998px; left: 941px;">→</div>
+  <div class="arrow" style="top: 2048px; left: 941px;">→</div>
 
-  <div class="node node-email" style="top: 1960px; left: 963px; width: 230px; height: 100px;">
+  <div class="node node-email" style="top: 2010px; left: 963px; width: 230px; height: 100px;">
     <div class="tile-mini-badge cond">15% IF NEW</div>
     <div class="node-label">E2 · On restock</div>
     <div class="node-title">"It's back" · conditional 15%</div>
   </div>
 
-  <div class="content-box" style="top: 2090px; left: 320px; width: 360px; height: 265px;">
+  <div class="content-box" style="top: 2140px; left: 320px; width: 360px; height: 265px;">
     <div class="heading">E1 · Sign-up confirmation (plain)<span class="sub">Immediate · plain transactional</span></div>
     <div class="row"><span class="k">Objective</span><span class="v">Confirm they're on the list. Set expectation for the restock notification.</span></div>
     <div class="row"><span class="k">Content move</span><span class="v">Plain, brief, transactional. "You're on the list — we'll email the moment it's back." No promotion, no upsell, no bestseller feed. Trust the signal.</span></div>
@@ -531,7 +514,7 @@
     <div class="badge-row"><span class="badge plain">PLAIN · TRANSACTIONAL</span></div>
   </div>
 
-  <div class="content-box" style="top: 2090px; left: 700px; width: 510px; height: 265px;">
+  <div class="content-box" style="top: 2140px; left: 700px; width: 510px; height: 265px;">
     <div class="heading">E2 · "It's back" + conditional 15%<span class="sub">On restock · designed · conditional new-customer block</span></div>
     <div class="row"><span class="k">Objective</span><span class="v">Convert qualified BIS intent. Catch new customers with a small first-purchase incentive without diluting for repeats.</span></div>
     <div class="row"><span class="k">Content move</span><span class="v">Transactional restock notice — hero shot, "It's back", one trust line, CTA. <strong>Conditional block:</strong> if <code>person.lifetime_orders == 0</code> show <strong>15% off</strong>; else hide. No bestseller feed, no broader merchandising — keep it tight to the signal.</span></div>
@@ -542,7 +525,6 @@
 </div>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
   <div class="footer-inner">
     <div class="footer-wordmark">tethrd<span class="x">×</span>BON CHARGE</div>
