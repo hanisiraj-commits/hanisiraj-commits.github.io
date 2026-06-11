@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tethrd × BON CHARGE · Sprint 1 Remaining Flow Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Serif:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FFFFFF;
+    --ink: #1A1A1A;
+    --ink-2: #2A2A2A;
+    --graphite: #6E7180;
+    --space: #9DA2B3;
+    --steel: #BCBFCC;
+    --smoke: #D3D6E0;
+    --cloud: #EDEFF7;
+    --soft: #F7F8FB;
+    --text-primary: var(--ink);
+    --text-secondary: var(--graphite);
+    --text-muted: var(--space);
+    --status-green: #0D7D3A;
+    --status-green-dark: #4ADE80;
+    --warm-amber: #F59E0B;
+    --warm-amber-bg: #FDE68A;
+    --warm-amber-text: #78350F;
+    --bg-marketing:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(157,162,179,0.18), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(110,113,128,0.12), transparent 60%),
+      linear-gradient(180deg, #0B0B0C 0%, #000000 100%);
+
+    --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px; --s-6: 24px;
+    --s-7: 28px; --s-8: 32px; --s-10: 40px; --s-12: 48px; --s-16: 64px; --s-20: 80px; --s-24: 96px;
+    --r-sm: 8px; --r-md: 10px; --r-lg: 12px; --r-xl: 16px;
+
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: 'Roboto Serif', 'Source Serif Pro', Georgia, serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-sans); font-size: 15px; font-weight: 400; line-height: 1.55;
+    color: var(--text-primary); background: var(--white);
+    font-feature-settings: "ss01","cv11";
+  }
+  h1, h2, h3, h4, h5 { font-family: var(--font-sans); font-weight: 700; letter-spacing: -.025em; color: var(--text-primary); line-height: 1.15; }
+  strong { color: var(--text-primary); font-weight: 600; }
+  em { font-style: italic; color: var(--text-primary); }
+  code { font-family: ui-monospace, 'SF Mono', monospace; font-size: 0.92em; background: var(--cloud); padding: 1px 6px; border-radius: 3px; color: var(--ink); }
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* TOP BAR — Tethrd minimal */
+  .topbar { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--smoke); }
+  .topbar-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; }
+  .nav-left { display: flex; align-items: center; gap: var(--s-3); }
+  .nav-wordmark { font-family: var(--font-sans); font-weight: 700; font-size: 16px; color: var(--ink); letter-spacing: -.02em; }
+  .nav-x { color: var(--steel); font-weight: 400; margin: 0 6px; }
+  .nav-client { font-weight: 700; letter-spacing: 0.06em; }
+  .nav-sep { color: var(--steel); font-size: 13px; margin: 0 var(--s-2); font-weight: 300; }
+  .nav-meta { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--text-secondary); }
+  .nav-date { font-size: 11px; font-weight: 600; color: var(--text-secondary); letter-spacing: .10em; text-transform: uppercase; }
+  @media (max-width: 700px) { .nav-meta, .nav-date { display: none; } }
+
+  /* HERO — dark Tethrd hero */
+  .hero { background: var(--bg-marketing); color: var(--white); padding: var(--s-20) 0 var(--s-16); position: relative; overflow: hidden; }
+  .hero .container { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); }
+  .hero .eyebrow { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: var(--s-5); }
+  .hero h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.04; letter-spacing: -.035em; color: var(--white); margin-bottom: var(--s-6); max-width: 22ch; }
+  .hero h1 em { color: var(--status-green-dark); font-style: normal; font-weight: 600; }
+  .hero .hero-sub { font-size: clamp(15px, 1.4vw, 18px); line-height: 1.6; color: rgba(255,255,255,0.72); max-width: 64ch; font-weight: 400; }
+  .hero .hero-sub strong { color: var(--white); font-weight: 600; }
+
+  /* STATS */
+  .stats-section { background: var(--white); padding: var(--s-12) 0; border-bottom: 1px solid var(--smoke); }
+  .stats-section .container { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-6); }
+  @media (max-width: 720px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat { display: flex; flex-direction: column; gap: var(--s-2); padding-left: var(--s-5); border-left: 2px solid var(--ink); }
+  .stat .n { font-size: 38px; font-weight: 800; letter-spacing: -.03em; color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); }
+
+  /* SECTION HEADING above canvas */
+  .doc-heading { background: var(--white); padding: var(--s-16) 0 var(--s-7); }
+  .doc-heading .container { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); }
+  .doc-heading .eyebrow { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: .10em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: var(--s-4); }
+  .doc-heading h2 { font-size: clamp(26px, 3vw, 36px); letter-spacing: -.03em; margin-bottom: var(--s-4); }
+  .doc-heading .lede { font-size: 16px; line-height: 1.6; color: var(--text-secondary); max-width: 64ch; }
+  .doc-heading .lede strong { color: var(--text-primary); }
+
+  /* LEGEND */
+  .legend-wrap { background: var(--soft); border-top: 1px solid var(--smoke); border-bottom: 1px solid var(--smoke); padding: var(--s-4) 0; }
+  .legend { max-width: 1320px; margin: 0 auto; padding: 0 var(--s-6); font-size: 12px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; color: var(--text-secondary); }
+  .legend-item { display: flex; gap: 8px; align-items: center; }
+  .legend-node { width: 24px; height: 16px; border-radius: 4px; }
+
+  /* CANVAS */
+  .canvas { padding: 30px 20px 60px; overflow-x: auto; background: var(--white); }
+  .board { position: relative; min-width: 1800px; margin: 0 auto; }
+
+  .section-title { position: absolute; left: 20px; width: 1750px; height: 50px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--ink); padding-bottom: 8px; flex-wrap: wrap; }
+  .section-title .num { font-size: 13px; font-weight: 700; background: var(--ink); color: var(--white); padding: 5px 9px; border-radius: 6px; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+  .section-title .name { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+  .section-title .role { font-size: 12px; color: var(--text-secondary); font-style: italic; }
+  .section-title .pill { font-size: 11px; font-weight: 600; background: var(--cloud); padding: 4px 10px; border-radius: 12px; color: var(--ink-2); letter-spacing: 0.04em; }
+  .section-title .pill.split { background: #EDE9FE; color: #5B21B6; border: 1px solid #C4B5FD; }
+  .section-title .pill.count { background: var(--ink); color: var(--white); }
+  .section-title .pill.discount { background: #FED7AA; color: #7C2D12; border: 1px solid #FB923C; }
+  .section-title .pill.no-discount { background: var(--cloud); color: var(--text-secondary); border: 1px solid var(--smoke); }
+  .section-title .pill.plain { background: var(--warm-amber-bg); color: var(--warm-amber-text); border: 1px solid var(--warm-amber); }
+
+  .info-card { position: absolute; background: var(--white); border: 1px solid var(--smoke); border-radius: var(--r-lg); padding: 18px 20px; box-shadow: 0 1px 2px rgba(26,26,26,0.04); font-size: 12.5px; line-height: 1.55; color: var(--text-primary); }
+  .info-card .label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-secondary); text-transform: uppercase; margin-top: 12px; margin-bottom: 5px; }
+  .info-card .label:first-of-type { margin-top: 0; }
+  .info-card .val { font-size: 12.5px; color: var(--text-primary); }
+  .info-card .val code { background: var(--cloud); padding: 1px 5px; border-radius: 3px; font-size: 11.5px; font-family: ui-monospace, 'SF Mono', monospace; }
+  .info-card .val strong { color: var(--ink); font-weight: 600; }
+  .info-card .math { display: inline-block; margin-top: 6px; font-family: ui-monospace, 'SF Mono', monospace; background: var(--ink); color: var(--white); padding: 4px 9px; border-radius: 6px; font-size: 11px; font-variant-numeric: tabular-nums; }
+
+  .node { position: absolute; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px; font-size: 12px; line-height: 1.25; box-shadow: 0 2px 5px rgba(0,0,0,0.06); }
+  .node-trigger    { background: #CFF5D1; border: 2px solid #4CAF50; color: #1B5E20; }
+  .node-compute    { background: var(--white); border: 2px solid var(--smoke); color: var(--ink); }
+  .node-split      { background: var(--white); border: 2px solid var(--ink); color: var(--ink); }
+  .node-delay      { background: #DBEAFE; border: 2px solid #60A5FA; color: #1E3A8A; }
+  .node-email      { background: #E9D5FF; border: 2px solid #A855F7; color: #581C87; }
+  .node-email-plain{ background: var(--warm-amber-bg); border: 2px solid var(--warm-amber); color: var(--warm-amber-text); }
+  .node-wait       { background: var(--white); border: 2px dashed var(--graphite); color: var(--text-secondary); }
+  .node-label { font-size: 10.5px; font-weight: 600; margin-bottom: 2px; opacity: 0.85; }
+  .node-title { font-size: 12.5px; font-weight: 700; line-height: 1.25; }
+  .node-subtitle { font-size: 10px; font-weight: 500; opacity: 0.8; margin-top: 3px; font-family: ui-monospace, 'SF Mono', monospace; }
+
+  .email-stack { position: absolute; }
+  .email-stack > .stack-back-2 { position: absolute; top: -10px; right: -10px; left: 10px; bottom: 10px; background: #F3E8FF; border: 2px solid #C4B5FD; border-radius: 12px; z-index: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
+  .email-stack > .stack-back-1 { position: absolute; top: -5px; right: -5px; left: 5px; bottom: 5px; background: #EDE0FF; border: 2px solid #A855F7; border-radius: 12px; z-index: 1; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+  .email-stack > .stack-front { position: relative; z-index: 2; width: 100%; height: 100%; }
+  .stack-count-badge { position: absolute; top: -14px; right: -14px; background: #6D28D9; color: var(--white); font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 12px; font-family: ui-monospace, 'SF Mono', monospace; z-index: 3; box-shadow: 0 2px 4px rgba(0,0,0,0.15); letter-spacing: 0.04em; }
+
+  .pillar-chips { position: absolute; display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; }
+  .pillar-chip { font-size: 9px; font-weight: 700; letter-spacing: 0.04em; background: #6D28D9; color: var(--white); padding: 3px 6px; border-radius: 8px; font-family: ui-monospace, 'SF Mono', monospace; }
+
+  .tile-mini-badge { position: absolute; top: 6px; right: 8px; font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 10px; font-family: ui-monospace, 'SF Mono', monospace; letter-spacing: 0.02em; }
+  .tile-mini-badge.discount { background: #FB923C; color: var(--white); }
+  .tile-mini-badge.cond { background: var(--graphite); color: var(--white); }
+
+  .content-box { position: absolute; background: var(--soft); border: 1px solid var(--smoke); border-radius: var(--r-md); padding: 14px 16px; font-size: 11.5px; line-height: 1.55; color: var(--ink); box-shadow: 0 1px 2px rgba(26,26,26,0.03); overflow: hidden; }
+  .content-box .heading { font-weight: 700; margin-bottom: 10px; font-size: 12px; color: var(--ink); line-height: 1.3; }
+  .content-box .heading .sub { font-weight: 500; color: var(--text-secondary); font-size: 10.5px; display: block; margin-top: 2px; letter-spacing: 0.02em; }
+  .content-box .row { margin: 6px 0; display: flex; gap: 8px; align-items: flex-start; }
+  .content-box .row .k { flex-shrink: 0; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); min-width: 78px; padding-top: 2px; }
+  .content-box .row .v { flex: 1; font-size: 11.5px; line-height: 1.55; color: var(--ink); }
+  .content-box .row.discount-yes .v { color: #7C2D12; font-weight: 600; }
+  .content-box .badge-row { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--smoke); display: flex; gap: 6px; flex-wrap: wrap; }
+  .content-box .badge { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 9.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  .content-box .badge.no { background: var(--white); color: var(--text-secondary); border: 1px solid var(--smoke); }
+  .content-box .badge.yes { background: #FED7AA; color: #7C2D12; border: 1px solid #FB923C; }
+  .content-box .badge.plain { background: var(--warm-amber-bg); color: var(--warm-amber-text); border: 1px solid var(--warm-amber); }
+  .content-box .badge.split { background: #EDE9FE; color: #5B21B6; border: 1px solid #C4B5FD; }
+  .content-box .badge.cond { background: var(--white); color: var(--text-secondary); border: 1px dashed var(--graphite); }
+
+  .arrow { position: absolute; font-size: 18px; color: var(--space); font-weight: 700; }
+
+  /* FOOTER — dark Tethrd footer */
+  .footer { background: #0a0a0a; color: var(--white); padding: var(--s-12) 0; text-align: center; }
+  .footer .footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-6); display: flex; flex-direction: column; gap: var(--s-3); align-items: center; }
+  .footer .footer-wordmark { font-family: var(--font-sans); font-weight: 700; font-size: 18px; letter-spacing: -.02em; }
+  .footer .footer-wordmark .x { color: var(--steel); font-weight: 400; margin: 0 6px; }
+  .footer .footer-meta { font-size: 12px; color: rgba(255,255,255,0.5); }
+  .footer .footer-meta a { color: rgba(255,255,255,0.7); border-bottom: 1px solid rgba(255,255,255,0.3); text-decoration: none; }
+  .footer .footer-meta a:hover { color: var(--white); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="nav-left">
+      <div class="nav-wordmark">tethrd<span class="nav-x">×</span><span class="nav-client">BON CHARGE</span></div>
+      <span class="nav-sep">·</span>
+      <span class="nav-meta">Sprint 1 · Remaining Flow Strategy</span>
+    </div>
+    <div class="nav-date">For Belle · 11 Jun 2026</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="eyebrow">Sprint 1 · Strategy brief · Internal</div>
+    <h1>Build the routine,<br><em>protect the result.</em></h1>
+    <p class="hero-sub">Every BON CHARGE purchase opens a daily wellness routine and (eventually) a multi-pillar household. Each of the four remaining flows plays a distinct role — <strong>Upsell deepens</strong> the routine, <strong>Nurture teaches</strong> it, <strong>Winback reactivates</strong> it, <strong>BIS protects</strong> it. The routine narrative leads every email; discount supports it where it earns the open, never replaces it. <strong>16 of 22 emails are pillar-split variants</strong> — the build effort sits in copy variants, not flow architecture.</p>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats">
+      <div class="stat"><div class="n">4</div><div class="l">Flows</div></div>
+      <div class="stat"><div class="n">22</div><div class="l">Emails to write</div></div>
+      <div class="stat"><div class="n">16</div><div class="l">Pillar variants</div></div>
+      <div class="stat"><div class="n">~21d</div><div class="l">Longest flow</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOC HEADING -->
+<section class="doc-heading">
+  <div class="container">
+    <div class="eyebrow">Flow architecture · Belle review</div>
+    <h2>Four flows, mapped end to end.</h2>
+    <p class="lede">Each section below shows the trigger, branch logic, email count, and the strategic essence of each email. Pillar splits are shown as stacked tiles — one slot, four variants. Discount stance is called out per email so you can see at a glance where the routine narrative stands alone versus where a promo lever supports it.</p>
+  </div>
+</section>
+
+<!-- LEGEND -->
+<div class="legend-wrap">
+  <div class="legend">
+    <div class="legend-item"><div class="legend-node" style="background:#CFF5D1; border:2px solid #4CAF50;"></div>Trigger</div>
+    <div class="legend-item"><div class="legend-node" style="background:#fff; border:2px solid var(--ink);"></div>Conditional split</div>
+    <div class="legend-item"><div class="legend-node" style="background:#DBEAFE; border:2px solid #60A5FA;"></div>Time delay</div>
+    <div class="legend-item"><div class="legend-node" style="background:#fff; border:2px dashed var(--graphite);"></div>Wait for event</div>
+    <div class="legend-item"><div class="legend-node" style="background:#E9D5FF; border:2px solid #A855F7;"></div>Email · designed</div>
+    <div class="legend-item"><div class="legend-node" style="background:#FDE68A; border:2px solid var(--warm-amber);"></div>Email · plain text</div>
+    <div class="legend-item" style="border-left: 1px solid var(--smoke); padding-left: 18px; margin-left: 4px;"><div class="legend-node" style="background:#EDE9FE; border:1px solid #C4B5FD; position:relative;"><div style="position:absolute; top:-3px; right:-3px; background:#6D28D9; color:#fff; font-size:7px; padding:1px 3px; border-radius:4px; font-family:ui-monospace,monospace; font-weight:700;">×4</div></div>Stacked = pillar split (4 variants)</div>
+  </div>
+</div>
+
+<!-- CANVAS -->
+<div class="canvas">
+<div class="board" style="height: 2370px;">
+
+  <!-- ============================================================== -->
+  <!-- SECTION 1 · IMMEDIATE POST-PURCHASE UPSELL · 8 EMAILS          -->
+  <!-- ============================================================== -->
+  <div class="section-title" style="top: 20px;">
+    <span class="num">01</span>
+    <span class="name">Immediate Post-Purchase Upsell</span>
+    <span class="role">Deepen the routine</span>
+    <span class="pill count">8 EMAILS</span>
+    <span class="pill split">2 SLOTS × 4 PILLARS</span>
+    <span class="pill discount">20% OFF · BOTH EMAILS</span>
+  </div>
+
+  <div class="info-card" style="top: 95px; left: 20px; width: 280px; height: 510px;">
+    <div class="label">Role in the arc</div>
+    <div class="val">Pair the SKU they just bought with its complements within the same pillar. Reassure they made the right call, then plant the routine framing.</div>
+    <div class="label">Trigger</div>
+    <div class="val"><code>Placed Order</code> · fires within 24h.</div>
+    <div class="label">Branch logic</div>
+    <div class="val">Pillar split (<strong>Skin / Hair / Recovery / Sleep</strong>) at top of flow. Both E1 and E2 carry per-pillar copy variants.</div>
+    <div class="math">2 × 4 = 8 emails</div>
+    <div class="label">Discount</div>
+    <div class="val"><strong>20% off code in both emails</strong> (mirrors current BON CHARGE flow logic). Code creates urgency window for E2.</div>
+    <div class="label">Dynamic feed</div>
+    <div class="val">Both emails include a dynamic catalog block pulling <strong>complementary products from the same pillar</strong>, with the just-purchased SKU excluded via feed filter (Klaviyo profile property).</div>
+  </div>
+
+  <div class="node node-trigger" style="top: 130px; left: 320px; width: 140px; height: 100px;">
+    <div class="node-label">Trigger</div>
+    <div class="node-title">Placed Order</div>
+    <div class="node-subtitle">any product</div>
+  </div>
+  <div class="arrow" style="top: 168px; left: 466px;">→</div>
+  <div class="node node-split" style="top: 130px; left: 488px; width: 140px; height: 100px;">
+    <div class="node-label">Split</div>
+    <div class="node-title">Pillar</div>
+    <div class="node-subtitle">Skin/Hair/Rec/Sleep</div>
+  </div>
+  <div class="arrow" style="top: 168px; left: 634px;">→</div>
+
+  <div class="email-stack" style="top: 130px; left: 655px; width: 230px; height: 100px;">
+    <div class="stack-back-2"></div>
+    <div class="stack-back-1"></div>
+    <div class="node node-email stack-front">
+      <div class="node-label">E1 · Day 0 +2h · × 4</div>
+      <div class="node-title">Reassurance + routine framing</div>
+    </div>
+    <div class="stack-count-badge">× 4 PILLARS</div>
+  </div>
+  <div class="pillar-chips" style="top: 245px; left: 655px; width: 230px;">
+    <span class="pillar-chip">SKIN</span><span class="pillar-chip">HAIR</span><span class="pillar-chip">REC</span><span class="pillar-chip">SLEEP</span>
+  </div>
+
+  <div class="node node-delay" style="top: 140px; left: 915px; width: 80px; height: 80px;">
+    <div class="node-label">Delay</div>
+    <div class="node-title">2 days</div>
+  </div>
+
+  <div class="email-stack" style="top: 130px; left: 1025px; width: 230px; height: 100px;">
+    <div class="stack-back-2"></div>
+    <div class="stack-back-1"></div>
+    <div class="node node-email stack-front">
+      <div class="node-label">E2 · Day 2 · × 4</div>
+      <div class="node-title">Combination &gt; isolation + urgency</div>
+    </div>
+    <div class="stack-count-badge">× 4 PILLARS</div>
+  </div>
+  <div class="pillar-chips" style="top: 245px; left: 1025px; width: 230px;">
+    <span class="pillar-chip">SKIN</span><span class="pillar-chip">HAIR</span><span class="pillar-chip">REC</span><span class="pillar-chip">SLEEP</span>
+  </div>
+
+  <div class="content-box" style="top: 290px; left: 655px; width: 230px; height: 315px;">
+    <div class="heading">E1 · Reassurance + routine framing<span class="sub">Day 0 +2h · 4 pillar variants</span></div>
+    <div class="row"><span class="k">Objective</span><span class="v">Reassure they made the right purchase. Plant "this works best as a stack" routine framing.</span></div>
+    <div class="row"><span class="k">Content move</span><span class="v">Lead with the anchor: <em>"reported overall improvement with consistent use"</em> stat (per pillar). Highlight their purchased product. Dynamic feed of 3–5 pillar-matched complements (excludes purchased SKU).</span></div>
+    <div class="row discount-yes"><span class="k">Discount</span><span class="v">20% off code · urgency window starts now.</span></div>
+    <div class="badge-row"><span class="badge yes">20% OFF</span><span class="badge split">× 4 PILLARS</span></div>
+  </div>
+
+  <div class="content-box" style="top: 290px; left: 1025px; width: 230px; height: 315px;">
+    <div class="heading">E2 · Combination &gt; isolation<span class="sub">Day 2 · 4 pillar variants · urgency close</span></div>
+    <div class="row"><span class="k">Objective</span><span class="v">Hesitation handler. Push combination therapy &gt; isolation narrative — code expires midnight tonight.</span></div>
+    <div class="row"><span class="k">Content move</span><span class="v">Per-pillar combination logic (e.g. <em>hair</em>: red light cap + therapy blanket + sleep mask stacked beats any single one). Lead the urgency hook.</span></div>
+    <div class="row discount-yes"><span class="k">Discount</span><span class="v">20% off · midnight expiry.</span></div>
+    <div class="badge-row"><span class="badge yes">20% OFF · MIDNIGHT EXPIRY</span><span class="badge split">× 4 PILLARS</span></div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- SECTION 2 · POST-PURCHASE NURTURE · 9 EMAILS                   -->
+  <!-- ============================================================== -->
+  <div class="section-title" style="top: 650px;">
+    <span class="num">02</span>
+    <span class="name">Post-Purchase Nurture</span>
+    <span class="role">Teach the routine</span>
+    <span class="pill count">9 EMAILS</span>
+    <span class="pill split">(2 SLOTS × 4 PILLARS) + 1 CONSOLIDATED</span>
+    <span class="pill no-discount">NO DISCOUNT</span>
+  </div>
+
+  <div class="info-card" style="top: 725px; left: 20px; width: 280px; height: 555px;">
+    <div class="label">Role in the arc</div>
+    <div class="val">Teach the routine, build belief in the result, lock in brand-wide conviction.</div>
+    <div class="label">Trigger</div>
+    <div class="val"><code>Placed Order</code> + initial delay (~3-4 days) so it lands <strong>post-delivery, not post-purchase</strong>.</div>
+    <div class="label">Branch logic</div>
+    <div class="val">Pillar split (Skin / Hair / Rec / Sleep) at top. E1 and E2 are split per pillar; <strong>E3 consolidates back to one universal email</strong> for all.</div>
+    <div class="math">(2 × 4) + 1 = 9 emails</div>
+    <div class="label">Content constraint</div>
+    <div class="val">We only know the pillar context, not the SKU. Copy stays <strong>pillar-generic</strong> — usage protocols apply to any product within that pillar.</div>
+    <div class="label">Duration</div>
+    <div class="val">~21 days end-to-end.</div>
+    <div class="label">Discount</div>
+    <div class="val">None across all 9 emails. Pure belief layer.</div>
+  </div>
+
+  <div class="node node-trigger" style="top: 765px; left: 320px; width: 130px; height: 90px;">
+    <div class="node-label">Trigger</div>
+    <div class="node-title">Placed Order</div>
+  </div>
+  <div class="arrow" style="top: 798px; left: 456px;">→</div>
+  <div class="node node-delay" style="top: 775px; left: 475px; width: 75px; height: 80px;">
+    <div class="node-label">Delay</div>
+    <div class="node-title">~4 days</div>
+    <div class="node-subtitle">post-delivery</div>
+  </div>
+  <div class="arrow" style="top: 798px; left: 555px;">→</div>
+  <div class="node node-split" style="top: 765px; left: 575px; width: 130px; height: 90px;">
+    <div class="node-label">Split</div>
+    <div class="node-title">Pillar</div>
+  </div>
+  <div class="arrow" style="top: 798px; left: 711px;">→</div>
+
+  <div class="email-stack" style="top: 765px; left: 730px; width: 210px; height: 90px;">
+    <div class="stack-back-2"></div>
+    <div class="stack-back-1"></div>
+    <div class="node node-email stack-front">
+      <div class="node-label">E1 · Day ~4 · × 4</div>
+      <div class="node-title">Usage protocol (per pillar)</div>
+    </div>
+    <div class="stack-count-badge">× 4</div>
+  </div>
+
+  <div class="node node-delay" style="top: 775px; left: 970px; width: 75px; height: 80px;">
+    <div class="node-label">Delay</div>
+    <div class="node-title">~8 days</div>
+  </div>
+
+  <div class="email-stack" style="top: 765px; left: 1070px; width: 210px; height: 90px;">
+    <div class="stack-back-2"></div>
+    <div class="stack-back-1"></div>
+    <div class="node node-email stack-front">
+      <div class="node-label">E2 · Day ~12 · × 4</div>
+      <div class="node-title">"Is it working?" belief build</div>
+    </div>
+    <div class="stack-count-badge">× 4</div>
+  </div>
+
+  <div class="node node-compute" style="top: 765px; left: 1310px; width: 110px; height: 90px;">
+    <div class="node-label">Merge</div>
+    <div class="node-title">Consolidate</div>
+    <div class="node-subtitle">4 → 1</div>
+  </div>
+
+  <div class="node node-delay" style="top: 775px; left: 1440px; width: 75px; height: 80px;">
+    <div class="node-label">Delay</div>
+    <div class="node-title">~9 days</div>
+  </div>
+
+  <div class="node node-email" style="top: 765px; left: 1540px; width: 210px; height: 90px;">
+    <div class="node-label">E3 · Day ~21</div>
+    <div class="node-title">Brand-level social proof</div>
+  </div>
+
+  <div class="pillar-chips" style="top: 870px; left: 730px; width: 210px;">
+    <span class="pillar-chip">SKIN</span><span class="pillar-chip">HAIR</span><span class="pillar-chip">REC</span><span class="pillar-chip">SLEEP</span>
+  </div>
+  <div class="pillar-chips" style="top: 870px; left: 1070px; width: 210px;">
+    <span class="pillar-chip">SKIN</span><span class="pillar-chip">HAIR</span><span class="pillar-chip">REC</span><span class="pillar-chip">SLEEP</span>
+  </div>
+
+  <div class="content-box" style="top: 910px; left: 730px; width: 210px; height: 370px;">
+    <div class="heading">E1 · Usage protocol<span class="sub">Day ~4 · 4 pillar variants</span></div>
+    <div class="row"><span class="k">Objective</span><span class="v">Tell them how to use it for max result, at the pillar level.</span></div>
+    <div class="row"><span class="k">Content move</span><span class="v">Pillar-generic usage protocol (covers any device in that pillar) + honest week-1 expectations. No SKU-specific instructions.</span></div>
+    <div class="row"><span class="k">Discount</span><span class="v">None.</span></div>
+    <div class="badge-row"><span class="badge no">NO DISCOUNT</span><span class="badge split">× 4 PILLARS</span></div>
+  </div>
+
+  <div class="content-box" style="top: 910px; left: 1070px; width: 210px; height: 370px;">
+    <div class="heading">E2 · "Is it working?"<span class="sub">Day ~12 · 4 pillar variants</span></div>
+    <div class="row"><span class="k">Objective</span><span class="v">Hit the doubt window with psychological belief reinforcement.</span></div>
+    <div class="row"><span class="k">Content move</span><span class="v">Placebo-leaning content — they read it and feel "yeah this is working" even before they consciously notice. Per-pillar reframes of common doubt.</span></div>
+    <div class="row"><span class="k">Discount</span><span class="v">None.</span></div>
+    <div class="badge-row"><span class="badge no">NO DISCOUNT</span><span class="badge split">× 4 PILLARS</span></div>
+  </div>
+
+  <div class="content-box" style="top: 910px; left: 1540px; width: 210px; height: 370px;">
+    <div class="heading">E3 · Brand-level conviction<span class="sub">Day ~21 · consolidated</span></div>
+    <div class="row"><span class="k">Objective</span><span class="v">Brand-wide conviction lock-in. One email, everyone gets it.</span></div>
+    <div class="row"><span class="k">Content move</span><span class="v">Brand-wide UGC + Andy's science / SAB / Fulham FC trust signals. Not pillar-specific.</span></div>
+    <div class="row"><span class="k">Discount</span><span class="v">None.</span></div>
+    <div class="badge-row"><span class="badge no">NO DISCOUNT</span></div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- SECTION 3 · WINBACK · 3 EMAILS                                  -->
+  <!-- ============================================================== -->
+  <div class="section-title" style="top: 1330px;">
+    <span class="num">03</span>
+    <span class="name">Winback</span>
+    <span class="role">Reactivate the routine</span>
+    <span class="pill count">3 EMAILS</span>
+    <span class="pill discount">20% OFF · ALL 3 EMAILS</span>
+    <span class="pill plain">E3 PLAIN TEXT · ANDY</span>
+  </div>
+
+  <div class="info-card" style="top: 1405px; left: 20px; width: 280px; height: 410px;">
+    <div class="label">Role in the arc</div>
+    <div class="val">Bring the lapsed single-buyer back into the routine. 20% off carries the whole flow.</div>
+    <div class="label">Trigger</div>
+    <div class="val"><code>Placed Order count = 1 lifetime</code> AND <code>no order in last 180 days</code>.</div>
+    <div class="label">Audience definition</div>
+    <div class="val">Bought once, never repeated in 6 months. That is the only filter.</div>
+    <div class="label">Branch logic</div>
+    <div class="val">None. Single track, same copy for everyone.</div>
+    <div class="math">3 emails</div>
+    <div class="label">Discount</div>
+    <div class="val"><strong>20% off code from E1</strong>, valid 12 days. E2 reminds at Day 5. E3 (plain text, Andy) reminds the final-hours window before midnight expiry.</div>
+  </div>
+
+  <div class="node node-trigger" style="top: 1440px; left: 320px; width: 180px; height: 100px;">
+    <div class="node-label">Trigger</div>
+    <div class="node-title">1 lifetime order +</div>
+    <div class="node-subtitle">no order 180d</div>
+  </div>
+  <div class="arrow" style="top: 1478px; left: 506px;">→</div>
+
+  <div class="node node-email" style="top: 1440px; left: 528px; width: 210px; height: 100px;">
+    <div class="tile-mini-badge discount">20% OFF</div>
+    <div class="node-label">E1 · Day 0</div>
+    <div class="node-title">Reopen door · 20% off</div>
+  </div>
+
+  <div class="node node-delay" style="top: 1450px; left: 760px; width: 80px; height: 80px;">
+    <div class="node-label">Delay</div>
+    <div class="node-title">5 days</div>
+  </div>
+
+  <div class="node node-email" style="top: 1440px; left: 870px; width: 210px; height: 100px;">
+    <div class="tile-mini-badge discount">REMINDER</div>
+    <div class="node-label">E2 · Day 5</div>
+    <div class="node-title">FAQs + open reply lane</div>
+  </div>
+
+  <div class="node node-delay" style="top: 1450px; left: 1100px; width: 80px; height: 80px;">
+    <div class="node-label">Delay</div>
+    <div class="node-title">7 days</div>
+  </div>
+
+  <div class="node node-email-plain" style="top: 1440px; left: 1210px; width: 210px; height: 100px;">
+    <div class="tile-mini-badge discount">MIDNIGHT</div>
+    <div class="node-label">E3 · Day 12 · plain text</div>
+    <div class="node-title">Andy · final hours</div>
+  </div>
+
+  <div class="content-box" style="top: 1570px; left: 320px; width: 300px; height: 245px;">
+    <div class="heading">E1 · Reopen the door<span class="sub">Day 0 · designed · 20% off</span></div>
+    <div class="row"><span class="k">Objective</span><span class="v">Reopen the door warmly. Push 20% off straight away.</span></div>
+    <div class="row"><span class="k">Content move</span><span class="v">Remind them of the result they were chasing. Talk about how the lineup has evolved — new products, new SAB / advisory board members, science updates. Invite them back to the range.</span></div>
+    <div class="row discount-yes"><span class="k">Discount</span><span class="v">20% off code · 12-day window.</span></div>
+    <div class="badge-row"><span class="badge yes">20% OFF</span></div>
+  </div>
+
+  <div class="content-box" style="top: 1570px; left: 640px; width: 300px; height: 245px;">
+    <div class="heading">E2 · FAQs + open reply lane<span class="sub">Day 5 · designed · 20% reminder</span></div>
+    <div class="row"><span class="k">Objective</span><span class="v">Reminder + dissolve top objections + open a 1:1 communication channel.</span></div>
+    <div class="row"><span class="k">Content move</span><span class="v">"Code expires in 7 days" reminder. Address the three lapse suspects (price-vs-result, results skepticism, fell off routine). <strong>Invite a reply</strong> for 1:1 wellness guidance. Reassure consistency is the lever.</span></div>
+    <div class="row discount-yes"><span class="k">Discount</span><span class="v">20% off (reminder).</span></div>
+    <div class="badge-row"><span class="badge yes">20% REMINDER</span></div>
+  </div>
+
+  <div class="content-box" style="top: 1570px; left: 960px; width: 460px; height: 245px;">
+    <div class="heading">E3 · Andy · final hours (plain text)<span class="sub">Day 12 · plain text · 20% midnight expiry</span></div>
+    <div class="row"><span class="k">Objective</span><span class="v">Final personal lever. Plain text from Andy directly — 1:1 tone.</span></div>
+    <div class="row"><span class="k">Content move</span><span class="v">No design. No images. Just Andy speaking to them like a person. Acknowledge the lapse, restate the offer, remind midnight expiry. Should feel like a personal note from the founder, not a marketing email.</span></div>
+    <div class="row discount-yes"><span class="k">Discount</span><span class="v"><strong>20% off · expires midnight tonight.</strong></span></div>
+    <div class="badge-row"><span class="badge yes">20% MIDNIGHT EXPIRY</span><span class="badge plain">PLAIN TEXT · ANDY</span></div>
+  </div>
+
+
+  <!-- ============================================================== -->
+  <!-- SECTION 4 · BACK IN STOCK · 2 EMAILS                            -->
+  <!-- ============================================================== -->
+  <div class="section-title" style="top: 1850px;">
+    <span class="num">04</span>
+    <span class="name">Back In Stock</span>
+    <span class="role">Protect the result</span>
+    <span class="pill count">2 EMAILS</span>
+    <span class="pill no-discount">CONFIRMATION + RESTOCK</span>
+    <span class="pill discount">15% FOR NEW CUSTOMERS ONLY (E2)</span>
+  </div>
+
+  <div class="info-card" style="top: 1925px; left: 20px; width: 280px; height: 430px;">
+    <div class="label">Role in the arc</div>
+    <div class="val">Catch BIS-signalled intent. Confirm sign-up now, notify on restock, gate a small new-customer incentive.</div>
+    <div class="label">Trigger</div>
+    <div class="val"><code>Subscribed for back in stock</code> · fires immediately on opt-in.</div>
+    <div class="label">Flow shape</div>
+    <div class="val">E1 (confirmation) sends immediately. Flow then <strong>waits for the restock event</strong>. E2 sends when SKU comes back in.</div>
+    <div class="math">2 emails</div>
+    <div class="label">Branch logic</div>
+    <div class="val">None at flow level. <strong>E2 contains a conditional content block</strong> showing 15% off only to new customers (zero lifetime orders). Repeat customers see no extra offer.</div>
+    <div class="label">Discount</div>
+    <div class="val">None on E1. <strong>15% off conditional block on E2 (new customers only).</strong></div>
+  </div>
+
+  <div class="node node-trigger" style="top: 1960px; left: 320px; width: 180px; height: 100px;">
+    <div class="node-label">Trigger</div>
+    <div class="node-title">BIS opt-in</div>
+    <div class="node-subtitle">subscribed for SKU</div>
+  </div>
+  <div class="arrow" style="top: 1998px; left: 506px;">→</div>
+
+  <div class="node node-email-plain" style="top: 1960px; left: 528px; width: 200px; height: 100px;">
+    <div class="node-label">E1 · Immediate · plain</div>
+    <div class="node-title">Sign-up confirmation</div>
+  </div>
+  <div class="arrow" style="top: 1998px; left: 734px;">→</div>
+
+  <div class="node node-wait" style="top: 1960px; left: 755px; width: 180px; height: 100px;">
+    <div class="node-label">Wait for event</div>
+    <div class="node-title">Product restocked</div>
+    <div class="node-subtitle">inventory webhook</div>
+  </div>
+  <div class="arrow" style="top: 1998px; left: 941px;">→</div>
+
+  <div class="node node-email" style="top: 1960px; left: 963px; width: 230px; height: 100px;">
+    <div class="tile-mini-badge cond">15% IF NEW</div>
+    <div class="node-label">E2 · On restock</div>
+    <div class="node-title">"It's back" · conditional 15%</div>
+  </div>
+
+  <div class="content-box" style="top: 2090px; left: 320px; width: 360px; height: 265px;">
+    <div class="heading">E1 · Sign-up confirmation (plain)<span class="sub">Immediate · plain transactional</span></div>
+    <div class="row"><span class="k">Objective</span><span class="v">Confirm they're on the list. Set expectation for the restock notification.</span></div>
+    <div class="row"><span class="k">Content move</span><span class="v">Plain, brief, transactional. "You're on the list — we'll email the moment it's back." No promotion, no upsell, no bestseller feed. Trust the signal.</span></div>
+    <div class="row"><span class="k">Discount</span><span class="v">None.</span></div>
+    <div class="badge-row"><span class="badge plain">PLAIN · TRANSACTIONAL</span></div>
+  </div>
+
+  <div class="content-box" style="top: 2090px; left: 700px; width: 510px; height: 265px;">
+    <div class="heading">E2 · "It's back" + conditional 15%<span class="sub">On restock · designed · conditional new-customer block</span></div>
+    <div class="row"><span class="k">Objective</span><span class="v">Convert qualified BIS intent. Catch new customers with a small first-purchase incentive without diluting for repeats.</span></div>
+    <div class="row"><span class="k">Content move</span><span class="v">Transactional restock notice — hero shot, "It's back", one trust line, CTA. <strong>Conditional block:</strong> if <code>person.lifetime_orders == 0</code> show <strong>15% off</strong>; else hide. No bestseller feed, no broader merchandising — keep it tight to the signal.</span></div>
+    <div class="row discount-yes"><span class="k">Discount</span><span class="v">15% off · conditional · new customers only.</span></div>
+    <div class="badge-row"><span class="badge cond">15% NEW-CUSTOMER GATE</span></div>
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-wordmark">tethrd<span class="x">×</span>BON CHARGE</div>
+    <div class="footer-meta">Prepared 11 Jun 2026 · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a></div>
+  </div>
+</div>
+
+</body>
+</html>
