@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steak King UK — Pre-Launch Audience Performance · 11 June 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #f4f1ec; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #181818; font-size: 14px; line-height: 1.55; padding: 36px 0; }
+
+  .page { max-width: 980px; margin: 0 auto; background: #fbfaf7; padding: 48px 56px 44px; border: 1px solid #e0d9cd; box-shadow: 0 1px 0 #efe9dd; }
+
+  .head { display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 22px; border-bottom: 2px solid #181818; margin-bottom: 28px; }
+  .head .brand { font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; color: #181818; }
+  .head h1 { font-family: 'Playfair Display', serif; font-size: 34px; line-height: 1.1; font-weight: 800; color: #181818; margin: 4px 0 8px; letter-spacing: -0.5px; }
+  .head .sub { font-size: 12.5px; color: #6a6a6a; letter-spacing: 0.3px; }
+  .head .sub strong { color: #181818; font-weight: 600; }
+  .head .countdown { text-align: right; }
+  .head .countdown .n { font-family: 'Playfair Display', serif; font-size: 56px; line-height: 0.95; font-weight: 800; color: #a83232; }
+  .head .countdown .l { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: #6a6a6a; margin-top: 4px; }
+
+  .lede { font-size: 15.5px; line-height: 1.6; color: #2a2a2a; margin-bottom: 28px; padding: 18px 22px; background: #181818; color: #f4f1ec; border-left: 4px solid #a83232; }
+  .lede strong { color: #fbfaf7; font-weight: 700; }
+  .lede .em { color: #d4a55a; font-weight: 600; }
+
+  .hero { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid #181818; margin-bottom: 32px; }
+  .stat { padding: 20px 18px; border-right: 1px solid #d5cdbe; background: #fbfaf7; position: relative; }
+  .stat:last-child { border-right: none; }
+  .stat .l { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #6a6a6a; font-weight: 600; margin-bottom: 6px; }
+  .stat .v { font-family: 'Playfair Display', serif; font-size: 38px; line-height: 1; font-weight: 800; color: #181818; }
+  .stat .v .small { font-size: 18px; color: #a83232; font-weight: 700; }
+  .stat .b { font-size: 11.5px; color: #4a4a4a; margin-top: 5px; line-height: 1.4; }
+  .stat .b .em { color: #1f7a3f; font-weight: 600; }
+  .stat .delta { position: absolute; top: 18px; right: 14px; font-size: 10.5px; letter-spacing: 0.4px; color: #1f7a3f; background: #ebf3ec; padding: 2px 8px; border-radius: 2px; font-weight: 700; }
+  .stat .delta.flat { color: #6a6a6a; background: #ece5d5; }
+
+  .sec-title { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; margin-top: 8px; }
+  .sec-title .n { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 800; color: #a83232; }
+  .sec-title h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #181818; letter-spacing: -0.2px; }
+
+  .chart-block { background: #fbfaf7; border: 1px solid #d5cdbe; padding: 18px 20px; margin-bottom: 28px; }
+  .chart-block .meta { font-size: 11.5px; color: #6a6a6a; margin-bottom: 10px; }
+  .chart-block .meta strong { color: #181818; }
+  .chart-svg { width: 100%; height: 200px; display: block; }
+  .x-axis-row { display: flex; justify-content: space-between; font-size: 9.5px; color: #6a6a6a; padding: 4px 0 0; letter-spacing: 0.3px; }
+  .chart-footer { display: flex; justify-content: space-between; font-size: 11px; color: #4a4a4a; margin-top: 10px; padding-top: 10px; border-top: 1px solid #ece5d5; }
+  .chart-footer strong { color: #181818; font-weight: 700; }
+  .chart-footer .good { color: #1f7a3f; font-weight: 700; }
+
+  .flow-tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-bottom: 12px; background: #fbfaf7; }
+  .flow-tbl th, .flow-tbl td { padding: 9px 10px; text-align: right; border-bottom: 1px solid #e8e0d0; }
+  .flow-tbl th { background: #181818; color: #f4f1ec; font-size: 10.5px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+  .flow-tbl td:first-child, .flow-tbl th:first-child { text-align: left; }
+  .flow-tbl td:nth-child(2) { color: #4a4a4a; }
+  .flow-tbl tr.lead-row td { background: #fff8e8; font-weight: 600; }
+  .flow-tbl tr.lead-row td:first-child { color: #a83232; }
+  .flow-tbl .em-good { color: #1f7a3f; font-weight: 700; }
+  .flow-tbl tr:last-child td { border-bottom: none; }
+  .flow-tbl tfoot td { background: #ece5d5; font-weight: 700; color: #181818; border-top: 2px solid #181818; }
+  .flow-tbl tfoot td:first-child { text-align: left; }
+
+  .pull { font-family: 'Playfair Display', serif; font-size: 19px; line-height: 1.4; color: #181818; padding: 22px 26px; background: #ece5d5; border-left: 5px solid #a83232; margin-bottom: 28px; font-style: italic; }
+  .pull strong { font-weight: 800; color: #181818; font-style: normal; }
+  .pull .em { color: #a83232; font-style: normal; font-weight: 700; }
+
+  .caveats { padding: 16px 20px; background: #fbfaf7; border: 1px dashed #b8b0a3; font-size: 11.5px; color: #4a4a4a; line-height: 1.6; }
+  .caveats h3 { font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; color: #181818; margin-bottom: 8px; font-weight: 700; }
+  .caveats ul { padding-left: 18px; }
+  .caveats li { margin-bottom: 4px; }
+  .caveats strong { color: #181818; }
+
+  .foot { display: flex; justify-content: space-between; padding-top: 18px; margin-top: 28px; border-top: 1px solid #d5cdbe; font-size: 10.5px; color: #6a6a6a; letter-spacing: 0.4px; }
+  .foot strong { color: #181818; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; padding: 24px 32px; max-width: 100%; }
+    @page { size: A4; margin: 12mm; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="head">
+    <div>
+      <div class="brand">Steak King UK · Pre-Launch Snapshot · Refresh 02</div>
+      <h1>List up 46% in six days.<br>Engagement unchanged.</h1>
+      <div class="sub"><strong>Reporting period:</strong> 13 May – 11 June 2026 &nbsp;·&nbsp; <strong>Previous snapshot:</strong> 5 June 2026 &nbsp;·&nbsp; <strong>Source:</strong> Klaviyo</div>
+    </div>
+    <div class="countdown">
+      <div class="n">7</div>
+      <div class="l">days to launch</div>
+    </div>
+  </div>
+
+  <!-- LEDE -->
+  <div class="lede">
+    Six days on from the last snapshot, Steak King UK has added <strong>+1,299 double-opt-in subscribers</strong> to reach <span class="em">4,119 confirmed</span>. The 7-day rolling growth rate has <span class="em">nearly doubled (118/day → 223/day)</span>, while first-email open rate has held at <span class="em">39.85%</span> against a 28–35% industry benchmark. Engagement has not diluted as the list has scaled.
+  </div>
+
+  <!-- HERO STATS -->
+  <div class="hero">
+    <div class="stat">
+      <div class="l">Confirmed DOI subs</div>
+      <div class="v">4,119</div>
+      <div class="delta">+1,299</div>
+      <div class="b">Up from 2,820 on 5 Jun · <span class="em">+46% in 6 days</span></div>
+    </div>
+    <div class="stat">
+      <div class="l">7-day daily avg</div>
+      <div class="v">223<span class="small">/d</span></div>
+      <div class="delta">+89%</div>
+      <div class="b">vs 118/day at last snapshot · <span class="em">trajectory steepening</span></div>
+    </div>
+    <div class="stat">
+      <div class="l">Welcome E1 open rate</div>
+      <div class="v">39.85<span class="small">%</span></div>
+      <div class="delta flat">held</div>
+      <div class="b">Industry benchmark <span class="em">28–35%</span></div>
+    </div>
+    <div class="stat">
+      <div class="l">Unsubscribe rate</div>
+      <div class="v">0.70<span class="small">%</span></div>
+      <div class="delta flat">held</div>
+      <div class="b">Across 45,846 delivered · <span class="em">321 unsubs</span></div>
+    </div>
+  </div>
+
+  <!-- GROWTH CHART -->
+  <div class="sec-title"><span class="n">01</span><h2>List growth — 30 days, two distinct peaks</h2></div>
+  <div class="chart-block">
+    <div class="meta"><strong>Daily double-opt-in subscribers</strong> · 13 May – 11 June 2026 · n = 4,289 confirmation events · 4,119 active on list</div>
+    <svg class="chart-svg" viewBox="0 0 920 200" preserveAspectRatio="none">
+      <!-- Grid lines -->
+      <line x1="0" y1="36" x2="920" y2="36" stroke="#e8e0d0" stroke-width="1"/>
+      <line x1="0" y1="72" x2="920" y2="72" stroke="#e8e0d0" stroke-width="1"/>
+      <line x1="0" y1="108" x2="920" y2="108" stroke="#e8e0d0" stroke-width="1"/>
+      <line x1="0" y1="144" x2="920" y2="144" stroke="#e8e0d0" stroke-width="1"/>
+      <line x1="0" y1="180" x2="920" y2="180" stroke="#181818" stroke-width="1.5"/>
+
+      <!-- Y axis labels -->
+      <text x="6" y="40" font-size="9" fill="#6a6a6a" font-family="Inter">500</text>
+      <text x="6" y="76" font-size="9" fill="#6a6a6a" font-family="Inter">375</text>
+      <text x="6" y="112" font-size="9" fill="#6a6a6a" font-family="Inter">250</text>
+      <text x="6" y="148" font-size="9" fill="#6a6a6a" font-family="Inter">125</text>
+
+      <!-- Last 7d shading: 4 Jun (idx 22) to 10 Jun (idx 28) -->
+      <rect x="674" y="0" width="174" height="180" fill="#d4a55a" opacity="0.10"/>
+      <text x="761" y="14" font-size="9.5" fill="#a83232" font-family="Inter" font-weight="700" text-anchor="middle">LAST 7 DAYS · 1,560 subs · 223/day</text>
+
+      <!-- 30 daily bars -->
+      <g fill="#181818">
+        <rect x="36" y="179" width="26" height="1"/>
+        <rect x="65" y="178" width="26" height="2"/>
+        <rect x="94" y="179" width="26" height="1"/>
+        <rect x="123" y="180" width="26" height="0"/>
+        <rect x="152" y="179" width="26" height="1"/>
+        <rect x="181" y="180" width="26" height="0"/>
+        <rect x="210" y="180" width="26" height="0"/>
+        <rect x="239" y="169" width="26" height="11"/>
+        <rect x="268" y="155" width="26" height="25"/>
+        <rect x="297" y="63" width="26" height="117"/>
+        <rect x="326" y="40" width="26" height="140" fill="#a83232"/>
+        <rect x="355" y="152" width="26" height="28"/>
+        <rect x="384" y="123" width="26" height="57"/>
+        <rect x="413" y="133" width="26" height="47"/>
+        <rect x="442" y="122" width="26" height="58"/>
+        <rect x="471" y="138" width="26" height="42"/>
+        <rect x="500" y="136" width="26" height="44"/>
+        <rect x="529" y="129" width="26" height="51"/>
+        <rect x="558" y="153" width="26" height="27"/>
+        <rect x="587" y="145" width="26" height="35"/>
+        <rect x="616" y="135" width="26" height="45"/>
+        <rect x="645" y="126" width="26" height="54"/>
+        <rect x="674" y="99" width="26" height="81"/>
+        <rect x="703" y="98" width="26" height="82"/>
+        <rect x="732" y="53" width="26" height="127" fill="#a83232"/>
+        <rect x="761" y="127" width="26" height="53"/>
+        <rect x="790" y="130" width="26" height="50"/>
+        <rect x="819" y="152" width="26" height="28"/>
+        <rect x="848" y="152" width="26" height="28"/>
+        <rect x="877" y="179" width="26" height="1" fill="#b8b0a3"/>
+      </g>
+
+      <!-- Peak labels -->
+      <text x="339" y="32" font-size="11" fill="#a83232" font-family="Inter" font-weight="700" text-anchor="middle">486 ← 23 May peak</text>
+      <line x1="339" y1="36" x2="339" y2="40" stroke="#a83232" stroke-width="1"/>
+
+      <text x="745" y="46" font-size="11" fill="#a83232" font-family="Inter" font-weight="700" text-anchor="middle">441 · 6 Jun</text>
+      <line x1="745" y1="49" x2="745" y2="53" stroke="#a83232" stroke-width="1"/>
+
+      <!-- Partial bucket marker -->
+      <text x="890" y="178" font-size="8.5" fill="#8a8a8a" font-family="Inter" font-weight="600" text-anchor="middle">today</text>
+      <text x="890" y="190" font-size="8" fill="#8a8a8a" font-family="Inter" text-anchor="middle">partial</text>
+    </svg>
+    <div class="x-axis-row" style="padding-left: 36px; padding-right: 24px;">
+      <span>13 May</span><span>18 May</span><span>23 May</span><span>28 May</span><span>2 Jun</span><span>7 Jun</span><span>11 Jun</span>
+    </div>
+    <div class="chart-footer">
+      <span>30-day avg: <strong>143 subs/day</strong></span>
+      <span>Original peak: <strong>23 May — 486</strong></span>
+      <span>Second peak: <strong>6 Jun — 441</strong></span>
+      <span>Last 7d: <span class="good">+223/day, +89% vs prior snapshot</span></span>
+    </div>
+  </div>
+
+  <!-- WELCOME FLOW -->
+  <div class="sec-title"><span class="n">02</span><h2>Welcome flow — Email 1 holds 39.85% open rate at 4× scale</h2></div>
+  <table class="flow-tbl">
+    <thead>
+      <tr>
+        <th>#</th><th>Flow message</th><th>Recipients</th><th>Delivered</th><th>Unique opens</th><th>Open rate</th><th>Unique clicks</th><th>Click rate</th><th>Unsubs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="lead-row">
+        <td>1</td><td>Welcome Email 1</td><td>10,368</td><td>9,058</td><td>3,610</td><td><span class="em-good">39.85%</span></td><td>524</td><td>5.79%</td><td>107</td>
+      </tr>
+      <tr>
+        <td>2</td><td>Email 2</td><td>9,784</td><td>8,637</td><td>2,326</td><td>26.93%</td><td>111</td><td>1.29%</td><td>58</td>
+      </tr>
+      <tr>
+        <td>3</td><td>Email 3</td><td>8,698</td><td>7,800</td><td>1,986</td><td>25.46%</td><td>64</td><td>0.82%</td><td>56</td>
+      </tr>
+      <tr>
+        <td>4</td><td>Email 4</td><td>6,720</td><td>6,185</td><td>1,499</td><td>24.24%</td><td>98</td><td>1.58%</td><td>32</td>
+      </tr>
+      <tr>
+        <td>5</td><td>Email 5</td><td>5,661</td><td>5,427</td><td>1,153</td><td>21.25%</td><td>69</td><td>1.27%</td><td>11</td>
+      </tr>
+      <tr>
+        <td>6</td><td>Email 6</td><td>4,653</td><td>4,609</td><td>964</td><td>20.92%</td><td>42</td><td>0.91%</td><td>20</td>
+      </tr>
+      <tr>
+        <td>7</td><td>Email 7</td><td>3,286</td><td>3,265</td><td>529</td><td>16.20%</td><td>68</td><td>2.08%</td><td>11</td>
+      </tr>
+      <tr>
+        <td>8</td><td>Email 8</td><td>864</td><td>859</td><td>179</td><td>20.84%</td><td>9</td><td>1.05%</td><td>6</td>
+      </tr>
+      <tr>
+        <td>9</td><td>Email 9</td><td>6</td><td>6</td><td>0</td><td>0.00%</td><td>0</td><td>0.00%</td><td>0</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2">Aggregate · 9 messages</td>
+        <td>50,040</td>
+        <td>45,846</td>
+        <td>12,246</td>
+        <td>26.71%</td>
+        <td>985</td>
+        <td>2.15%</td>
+        <td>301</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- PULL QUOTE -->
+  <div class="pull">
+    "Welcome Email 1 opened at <strong>39.85% across 9,058 deliveries</strong> — the exact rate it held when the list was 35% of its current size. Open quality has <span class="em">not diluted</span> as paid traffic has layered onto referral momentum. Account-wide unsubscribe rate is <span class="em">0.70%</span> across 45,846 delivered emails."
+  </div>
+
+  <!-- CAVEATS -->
+  <div class="caveats">
+    <h3>Honest footnotes</h3>
+    <ul>
+      <li><strong>Store launches Thu 18 June 2026 (00:01 BST)</strong> — no orders, no checkout data, no Shopify "Active on Site" events tracked yet. All numbers above are top-of-funnel only.</li>
+      <li><strong>No campaigns sent.</strong> Every send to date comes from the welcome flow. Launch hype campaigns begin 12 June.</li>
+      <li><strong>Today (11 Jun) is partial.</strong> Klaviyo's DOI confirmation events trail original signups by hours–days as people click their confirmation email. The 11 Jun bucket (1) will settle higher overnight. The 7-day window above (4–10 Jun) is the conservative read.</li>
+      <li><strong>11.7% bounce rate on the first welcome email</strong> reflects typo'd KickoffLabs intake addresses being filtered out by Email 4. The 4,119 DOI-confirmed list is the clean, deliverable number.</li>
+      <li><strong>Welcome flow grew from 7 to 9 messages</strong> between snapshots (additional referral nurture branch). Per-message recipient counts reflect both the new sends and the larger cohort flowing through.</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    <div><strong>Source:</strong> Klaviyo API · account <code>WSxBju</code> · flow <code>Uv6Niv</code> · list <code>WGRxFr</code></div>
+    <div><strong>Snapshot:</strong> 11 June 2026 · Steak King UK · Confidential</div>
+  </div>
+
+</div>
+
+</body>
+</html>
