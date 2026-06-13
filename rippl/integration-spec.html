@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pipedrive → Klaviyo Integration Spec — Tethrd × Rippl</title>
+<title>Pipedrive → Klaviyo · Integration Spec · Tethrd × Rippl</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -20,6 +20,8 @@
     --accent-bg: #e8eff1;
     --b2b: #4a5a6e;
     --b2b-bg: #e6eaef;
+    --warn: #8a3a18;
+    --warn-bg: #fbf0e8;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -40,68 +42,77 @@
   .wordmark .partner { font-weight: 600; }
   .topbar .meta-right { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.12em; }
 
-  .hero { padding: 80px 0 56px; border-bottom: 1px solid var(--line); margin-bottom: 56px; }
-  .eyebrow { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 28px; }
-  h1 { font-size: 56px; line-height: 1.02; font-weight: 800; margin: 0 0 28px; letter-spacing: -0.035em; color: var(--ink); }
-  h1 .accent { color: var(--accent); }
-  .lede { font-size: 18px; line-height: 1.5; color: var(--ink-2); max-width: 680px; font-weight: 400; margin: 0; }
+  .hero { padding: 48px 0 36px; border-bottom: 1px solid var(--line); margin-bottom: 40px; }
+  .eyebrow { font-size: 11px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 18px; }
+  h1 { font-size: 36px; line-height: 1.1; font-weight: 700; margin: 0 0 18px; letter-spacing: -0.025em; color: var(--ink); }
+  .lede { font-size: 16px; line-height: 1.55; color: var(--ink-2); max-width: 720px; font-weight: 400; margin: 0; }
   .lede strong { color: var(--ink); font-weight: 600; }
 
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 56px 0; padding: 32px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 40px 0 56px; padding: 28px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .stat { padding: 0 24px; border-right: 1px solid var(--line); }
   .stat:first-child { padding-left: 0; }
   .stat:last-child { border-right: none; padding-right: 0; }
-  .stat .n { font-size: 38px; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .stat .n { font-size: 32px; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
   .stat .l { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 10px; font-weight: 500; }
 
-  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin: 64px 0 16px; color: var(--ink); }
-  h2 + .sub { font-size: 14px; color: var(--ink-3); margin: 0 0 24px; max-width: 680px; }
+  h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.015em; margin: 56px 0 12px; color: var(--ink); }
+  h2 + .sub { font-size: 14px; color: var(--ink-3); margin: 0 0 24px; max-width: 720px; }
 
-  .camp { display: grid; grid-template-columns: 64px 1fr; gap: 28px; padding: 28px 0; border-top: 1px solid var(--line); align-items: start; }
+  .camp { display: grid; grid-template-columns: 64px 1fr; gap: 28px; padding: 24px 0; border-top: 1px solid var(--line); align-items: start; }
   .camp:last-of-type { border-bottom: 1px solid var(--line); }
-  .camp .num { font-size: 28px; font-weight: 800; color: var(--ink-4); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .camp .num { font-size: 26px; font-weight: 800; color: var(--ink-4); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
   .camp .body { min-width: 0; }
   .camp .row1 { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 6px; }
-  .camp .title { font-size: 17px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
-  .camp .date { font-size: 13px; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 500; }
-  .camp .tag { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; padding-left: 12px; border-left: 2px solid var(--b2b); color: var(--b2b); }
-  .camp .desc { font-size: 14.5px; color: var(--ink-2); margin: 6px 0 0; line-height: 1.6; }
+  .camp .title { font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  .camp .tag { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; padding-left: 12px; border-left: 2px solid var(--b2b); color: var(--b2b); }
+  .camp .desc { font-size: 14px; color: var(--ink-2); margin: 6px 0 0; line-height: 1.6; }
   .camp .desc strong { color: var(--ink); font-weight: 600; }
+  .camp .desc ul { margin: 8px 0 0; padding-left: 18px; }
+  .camp .desc ul li { margin: 4px 0; }
 
-  .group-label { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.18em; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
-  .group-label:first-of-type { margin-top: 24px; }
+  .group-label { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.18em; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
 
   .spec-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
   .spec-table thead th { padding: 12px 16px 12px 0; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4); border-bottom: 1px solid var(--line); text-align: left; }
   .spec-table thead th:last-child { padding-right: 0; }
-  .spec-table tbody td { padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink-2); vertical-align: top; line-height: 1.55; }
+  .spec-table tbody td { padding: 13px 16px 13px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink-2); vertical-align: top; line-height: 1.55; }
   .spec-table tbody td:last-child { padding-right: 0; }
   .spec-table tbody tr:last-child td { border-bottom: none; }
   .spec-table tbody td.field { font-weight: 600; color: var(--ink); width: 32%; }
   .spec-table tbody td.prop { width: 34%; }
   .spec-table tbody td.notes { color: var(--ink-3); }
 
-  .event-block { padding: 32px 0; margin: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .event-block h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; margin: 0 0 24px; color: var(--ink); }
-  .event-row { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .event-block { padding: 28px 0; margin: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .event-block h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 20px; color: var(--ink); }
+  .event-row { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
   .event-row:last-child { border-bottom: none; }
   .event-row .k { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4); }
-  .event-row .v { font-size: 14.5px; color: var(--ink-2); line-height: 1.55; }
+  .event-row .v { font-size: 14px; color: var(--ink-2); line-height: 1.55; }
   .event-row .v strong { color: var(--ink); }
   @media (max-width: 720px) { .event-row { grid-template-columns: 1fr; gap: 4px; } }
 
-  .payload-block { background: var(--dark); border-radius: 4px; padding: 28px; margin: 24px 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #d0d4dc; line-height: 1.7; overflow-x: auto; }
+  .payload-block { background: var(--dark); border-radius: 4px; padding: 24px; margin: 20px 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; color: #d0d4dc; line-height: 1.7; overflow-x: auto; }
   .payload-block .key { color: #7fb4c5; }
   .payload-block .str { color: #9dd8a3; }
   .payload-block .com { color: #6a6a6a; font-style: italic; }
 
-  .callout { padding: 24px 28px; background: var(--bg-soft); border-left: 3px solid var(--accent); margin: 24px 0; font-size: 14.5px; color: var(--ink-2); line-height: 1.6; }
+  .callout { padding: 20px 24px; background: var(--bg-soft); border-left: 3px solid var(--accent); margin: 20px 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
   .callout strong { color: var(--ink); }
 
-  .footer { background: var(--dark); color: #ffffff; margin-top: 96px; padding: 48px 32px; text-align: center; }
-  .footer .wordmark { color: #ffffff; font-size: 16px; }
+  .callout-warn { padding: 20px 24px; background: var(--warn-bg); border-left: 3px solid var(--warn); margin: 20px 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+  .callout-warn strong { color: var(--ink); }
+
+  .key-bullets { list-style: none; padding: 0; margin: 16px 0 0; }
+  .key-bullets li { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+  .key-bullets li:last-child { border-bottom: none; }
+  .key-bullets li strong { color: var(--ink); font-weight: 600; }
+  .key-bullets li .lbl { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-right: 10px; min-width: 84px; }
+  .key-bullets li.warn .lbl { color: var(--warn); }
+
+  .footer { background: var(--dark); color: #ffffff; margin-top: 80px; padding: 40px 32px; text-align: center; }
+  .footer .wordmark { color: #ffffff; font-size: 14px; }
   .footer .wordmark .x { color: rgba(255,255,255,0.4); }
-  .footer .copy { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 20px; font-weight: 500; }
+  .footer .copy { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 18px; font-weight: 500; }
   .footer .copy a { color: rgba(255,255,255,0.7); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
 
   @media print {
@@ -115,7 +126,7 @@
     .footer .copy { color: black; }
   }
   @media (max-width: 720px) {
-    h1 { font-size: 38px; }
+    h1 { font-size: 28px; }
     .stats { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
     .stat { border-right: none; padding: 0 16px; }
     .camp { grid-template-columns: 1fr; gap: 12px; }
@@ -128,78 +139,67 @@
 
   <div class="topbar">
     <div class="wordmark">tethrd<span class="x">×</span><span class="partner">Rippl</span></div>
-    <div class="meta-right">May 2026 · Integration Spec</div>
+    <div class="meta-right">June 2026 · Integration Spec</div>
   </div>
 
   <div class="hero">
-    <div class="eyebrow">For Bhuv · Pipedrive → Klaviyo</div>
-    <h1>Two things to build.<br><span class="accent">Form fields, and one event.</span></h1>
+    <div class="eyebrow">Pipedrive → Klaviyo</div>
+    <h1>Integration spec</h1>
     <p class="lede">
-      Spec sheet for Moti to wire Pipedrive into Klaviyo. Once these land, every B2B email Rippl sends can personalise off the customer's actual brief, and we can read <strong>B2B conversion rate</strong> directly inside Klaviyo.
+      Four deliverables. Identity properties on the Klaviyo profile. Three custom events that carry the deal payload. Five rolling lifecycle properties the middleware writes on every event. And a one-time backfill across existing Pipedrive deals. Once this is in place, any prospect, customer, open-deal contact, or lapsed account is a one or two-condition segment in Klaviyo.
     </p>
   </div>
 
   <div class="stats">
-    <div class="stat"><div class="n">2</div><div class="l">Deliverables</div></div>
-    <div class="stat"><div class="n">17</div><div class="l">Properties</div></div>
-    <div class="stat"><div class="n">1</div><div class="l">Custom Event</div></div>
-    <div class="stat"><div class="n">3</div><div class="l">Form Pages</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">Deliverables</div></div>
+    <div class="stat"><div class="n">8</div><div class="l">Identity props</div></div>
+    <div class="stat"><div class="n">3</div><div class="l">Custom events</div></div>
+    <div class="stat"><div class="n">5</div><div class="l">Rolling props</div></div>
   </div>
 
   <h2>What we need built</h2>
-  <p class="sub">Two deliverables. Nothing else. Anything outside this scope is a follow-up brief.</p>
 
   <div class="camp">
     <div class="num">01</div>
     <div class="body">
-      <div class="row1"><div class="title">Every Custom Branded form field becomes a Klaviyo profile property</div></div>
-      <div class="tag">Profile</div>
-      <div class="desc">Each input on the 3-page Custom Branded inquiry form (vessel, customisation, contact) writes to a named Klaviyo property on the customer's profile. <strong>Field map below.</strong></div>
+      <div class="row1"><div class="title">Identity properties on the Klaviyo profile</div></div>
+      <div class="tag">Profile · stable</div>
+      <div class="desc">Eight person-level fields synced from Pipedrive to the Klaviyo profile. Stable, safe to overwrite. These describe who the person is, not what they ordered.</div>
     </div>
   </div>
 
   <div class="camp">
     <div class="num">02</div>
     <div class="body">
-      <div class="row1"><div class="title">A B2B Order Placed event fires into Klaviyo every time a B2B order closes</div></div>
-      <div class="tag">Event</div>
-      <div class="desc">When a Pipedrive deal moves to the Won stage, a custom event lands in Klaviyo with the deal payload. Matched against the inquiry event, <strong>this gives us the B2B conversion rate inside Klaviyo</strong> so we can tune the approach from real data.</div>
+      <div class="row1"><div class="title">Three custom events carrying the deal payload</div></div>
+      <div class="tag">Events</div>
+      <div class="desc"><code>B2B Inquiry Submitted</code> fires on every Pipedrive Deal · added (= every form submission). <code>B2B Order Placed</code> fires when a deal moves to Won. <code>B2B Deal Lost</code> fires when a deal moves to Lost. All three carry the deal payload inline. All three dedup on <code>pipedrive_deal_id</code>.</div>
     </div>
   </div>
 
-  <h2>Deliverable 01 — Form fields to Klaviyo properties</h2>
-  <p class="sub">One row per field. If Rippl adds, renames, or removes a form field, the map updates 1:1 with it.</p>
-
-  <div class="callout">
-    <strong>Property naming convention:</strong> snake_case, prefixed <code>b2b_</code> for B2B-specific fields so they don't collide with B2C properties on the same profile. Boolean fields use <code>true</code> / <code>false</code>. Dates ISO-8601.
+  <div class="camp">
+    <div class="num">03</div>
+    <div class="body">
+      <div class="row1"><div class="title">Five rolling lifecycle properties on the Klaviyo profile</div></div>
+      <div class="tag">Profile · computed</div>
+      <div class="desc">Summary properties (<code>b2b_lifecycle_stage</code>, <code>b2b_open_deal_count</code>, <code>b2b_total_orders</code>, <code>b2b_last_order_date</code>, <code>b2b_clv</code>) written by the middleware on every event. With lifecycle held on the profile, Klaviyo segments don't need to join events at query time.</div>
+    </div>
   </div>
 
-  <div class="group-label">Page 1 · Vessel selection</div>
-  <table class="spec-table">
-    <thead><tr><th>Form field</th><th>Klaviyo property</th><th>Notes</th></tr></thead>
-    <tbody>
-      <tr><td class="field">Vessel type</td><td class="prop"><code>b2b_vessel_type</code></td><td class="notes">Can / Bottle / Glass bottle</td></tr>
-    </tbody>
-  </table>
+  <div class="camp">
+    <div class="num">04</div>
+    <div class="body">
+      <div class="row1"><div class="title">One-time backfill across existing Pipedrive deals</div></div>
+      <div class="tag">Backfill</div>
+      <div class="desc">Two passes. Pass 1: emit one event per historical deal (Inquiry for every deal, Order for every Won, Lost for every Lost). Pass 2: replay the event stream per contact and write the final rolling-property state to the profile. Same dedup key, so re-runs are safe.</div>
+    </div>
+  </div>
 
-  <div class="group-label">Page 2 · Customisation</div>
-  <table class="spec-table">
-    <thead><tr><th>Form field</th><th>Klaviyo property</th><th>Notes</th></tr></thead>
-    <tbody>
-      <tr><td class="field">Design type</td><td class="prop"><code>b2b_design_type</code></td><td class="notes">Upload artwork / template / consult with team</td></tr>
-      <tr><td class="field">Artwork file</td><td class="prop"><code>b2b_artwork_url</code></td><td class="notes">Pipedrive file URL if uploaded</td></tr>
-      <tr><td class="field">Packaging selection</td><td class="prop"><code>b2b_packaging</code></td><td class="notes">Standard / Custom packaging</td></tr>
-      <tr><td class="field">Quantity</td><td class="prop"><code>b2b_quantity</code></td><td class="notes">Integer. Compare against current MOQ</td></tr>
-      <tr><td class="field">Use case</td><td class="prop"><code>b2b_use_case</code></td><td class="notes">Event / Ongoing / Retail / Gifting / Other</td></tr>
-      <tr><td class="field">Event date</td><td class="prop"><code>b2b_event_date</code></td><td class="notes">ISO-8601. Only if Use case = Event</td></tr>
-      <tr><td class="field">Required-by date</td><td class="prop"><code>b2b_required_by</code></td><td class="notes">ISO-8601. Powers deadline-aware sales nudges</td></tr>
-      <tr><td class="field">Additional notes / brief</td><td class="prop"><code>b2b_brief_notes</code></td><td class="notes">Long-text. Useful for AM context, not flow logic</td></tr>
-    </tbody>
-  </table>
+  <h2>Deliverable 01 · Identity properties</h2>
+  <p class="sub">Sourced from the Page 3 contact step of the Custom Branded form (and the linked Pipedrive Person record). snake_case, <code>b2b_</code>-prefixed where they could collide with B2C properties. Klaviyo natives keep their <code>$</code> prefix.</p>
 
-  <div class="group-label">Page 3 · Contact</div>
   <table class="spec-table">
-    <thead><tr><th>Form field</th><th>Klaviyo property</th><th>Notes</th></tr></thead>
+    <thead><tr><th>Form / Pipedrive field</th><th>Klaviyo property</th><th>Notes</th></tr></thead>
     <tbody>
       <tr><td class="field">First name</td><td class="prop"><code>$first_name</code></td><td class="notes">Native Klaviyo identifier</td></tr>
       <tr><td class="field">Last name</td><td class="prop"><code>$last_name</code></td><td class="notes">Native Klaviyo identifier</td></tr>
@@ -208,50 +208,84 @@
       <tr><td class="field">Company name</td><td class="prop"><code>b2b_company_name</code></td><td class="notes">Subject + body personalisation</td></tr>
       <tr><td class="field">Job title</td><td class="prop"><code>b2b_job_title</code></td><td class="notes">Filter for Marketing Manager cohort</td></tr>
       <tr><td class="field">Industry</td><td class="prop"><code>b2b_industry</code></td><td class="notes">Vertical-matched case-study selection</td></tr>
-      <tr><td class="field">How heard about Rippl</td><td class="prop"><code>b2b_lead_source</code></td><td class="notes">Channel attribution</td></tr>
+      <tr><td class="field">How heard about Rippl</td><td class="prop"><code>b2b_lead_source</code></td><td class="notes">First-touch only on the profile, don't overwrite on later inquiries. Per-inquiry channel attribution lives in the event payload.</td></tr>
     </tbody>
   </table>
 
-  <div class="callout">
-    <strong>Backfill:</strong> Run the same field map as a one-time backfill across all existing Pipedrive deals so the Corporate Can Customers list is enriched on day one, before any new form submissions land.
-  </div>
-
-  <h2>Deliverable 02 — B2B Order Placed event</h2>
-  <p class="sub">One custom event, fired every time a B2B order is placed. This is what lets us measure whether a B2B inquiry converts.</p>
+  <h2>Deliverable 02 · B2B events</h2>
+  <p class="sub">Three custom events, all POSTed into Klaviyo's Events API using the private API key we'll generate. Deal-specific data lives here, not on the profile, so every inquiry, every order, and every Lost deal is preserved with its own payload and timestamp.</p>
 
   <div class="event-block">
-    <h3>Event spec</h3>
-    <div class="event-row">
-      <div class="k">Event name</div>
-      <div class="v"><code>B2B Order Placed</code></div>
-    </div>
+    <h3>Event A · <code>B2B Inquiry Submitted</code></h3>
     <div class="event-row">
       <div class="k">Triggers on</div>
-      <div class="v">Pipedrive deal moved to <strong>Won</strong> stage. (Post-self-customiser launch, also fires on Shopify orders tagged <code>b2b_custom</code>.)</div>
+      <div class="v">Pipedrive <strong>Deal · added</strong> webhook.</div>
     </div>
     <div class="event-row">
       <div class="k">Fires into</div>
-      <div class="v">Klaviyo custom event endpoint, against the profile keyed by email.</div>
+      <div class="v">Klaviyo Events API. <code>POST https://a.klaviyo.com/api/events</code>, profile keyed by email.</div>
     </div>
     <div class="event-row">
       <div class="k">Frequency</div>
-      <div class="v">One event per deal Won. Reorders fire a fresh event each time.</div>
+      <div class="v">One event per inquiry. Dedup on <code>pipedrive_deal_id</code>.</div>
     </div>
     <div class="event-row">
-      <div class="k">Purpose</div>
-      <div class="v">Conversion attribution. Match B2B Order Placed against the inquiry event to compute conversion rate by cohort, vessel, lead source, and use case.</div>
+      <div class="k">Side effect</div>
+      <div class="v">Increments <code>b2b_open_deal_count</code> and recomputes <code>b2b_lifecycle_stage</code> on the profile in the same API call (see Deliverable 03).</div>
     </div>
   </div>
 
-  <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 12px; color: var(--ink);">Event payload</h3>
-  <p style="font-size: 14.5px; color: var(--ink-2); margin: 0 0 16px;">Each event carries the deal context inline so flow logic can read it without a second lookup. Suggested payload:</p>
+  <div class="payload-block">
+{<br>
+&nbsp;&nbsp;<span class="key">"event"</span>: <span class="str">"B2B Inquiry Submitted"</span>,<br>
+&nbsp;&nbsp;<span class="key">"customer_properties"</span>: { <span class="key">"$email"</span>: <span class="str">"buyer@example.com"</span> },<br>
+&nbsp;&nbsp;<span class="key">"properties"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"pipedrive_deal_id"</span>: <span class="str">"12345"</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// dedup + match key</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"pipedrive_org_id"</span>: <span class="str">"678"</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// account-level grouping</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"submitted_at"</span>: <span class="str">"2026-06-13T04:12:00Z"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"vessel_type"</span>: <span class="str">"Can"</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// Can / Bottle / Glass bottle</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"design_type"</span>: <span class="str">"Upload artwork"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"artwork_url"</span>: <span class="str">"https://files.pipedrive.com/…"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"packaging"</span>: <span class="str">"Standard"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"quantity"</span>: <span class="str">240</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"use_case"</span>: <span class="str">"Event"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"event_date"</span>: <span class="str">"2026-09-21"</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// only if use_case = Event</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"required_by"</span>: <span class="str">"2026-09-07"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"brief_notes"</span>: <span class="str">"Free-text notes from the customer."</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"company_name"</span>: <span class="str">"Example Co"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"b2b_lead_source"</span>: <span class="str">"Paid Search"</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// this-touch channel (profile keeps first-touch)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"prior_inquiry_count"</span>: <span class="str">2</span><br>
+&nbsp;&nbsp;}<br>
+}<br>
+  </div>
+
+  <div class="event-block">
+    <h3>Event B · <code>B2B Order Placed</code></h3>
+    <div class="event-row">
+      <div class="k">Triggers on</div>
+      <div class="v">Pipedrive <strong>Deal · updated</strong> webhook, filtered to <code>status = won</code>. (Post-self-customiser launch, also fires on Shopify orders tagged <code>b2b_custom</code>.)</div>
+    </div>
+    <div class="event-row">
+      <div class="k">Fires into</div>
+      <div class="v">Same endpoint as Event A.</div>
+    </div>
+    <div class="event-row">
+      <div class="k">Frequency</div>
+      <div class="v">One event per Won deal. Dedup on <code>pipedrive_deal_id</code> to absorb webhook double-fires.</div>
+    </div>
+    <div class="event-row">
+      <div class="k">Side effect</div>
+      <div class="v">Decrements <code>b2b_open_deal_count</code>, increments <code>b2b_total_orders</code>, sets <code>b2b_last_order_date</code>, adds <code>deal_value</code> to <code>b2b_clv</code>, sets <code>b2b_lifecycle_stage = Customer</code> in the same API call.</div>
+    </div>
+  </div>
 
   <div class="payload-block">
 {<br>
 &nbsp;&nbsp;<span class="key">"event"</span>: <span class="str">"B2B Order Placed"</span>,<br>
 &nbsp;&nbsp;<span class="key">"customer_properties"</span>: { <span class="key">"$email"</span>: <span class="str">"buyer@example.com"</span> },<br>
 &nbsp;&nbsp;<span class="key">"properties"</span>: {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"pipedrive_deal_id"</span>: <span class="str">"12345"</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// deduplication key</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"pipedrive_deal_id"</span>: <span class="str">"12345"</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// matches the inquiry event</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"pipedrive_org_id"</span>: <span class="str">"678"</span>,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"deal_value"</span>: <span class="str">4800.00</span>,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"currency"</span>: <span class="str">"AUD"</span>,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"vessel_type"</span>: <span class="str">"Can"</span>,<br>
@@ -261,50 +295,228 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"expected_delivery_date"</span>: <span class="str">"2026-06-13"</span>,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"company_name"</span>: <span class="str">"Example Co"</span>,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"account_manager"</span>: <span class="str">"Jay"</span>,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"is_reorder"</span>: <span class="str">false</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// true if this profile has a prior B2B Order Placed</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"is_reorder"</span>: <span class="str">false</span><br>
 &nbsp;&nbsp;}<br>
 }<br>
   </div>
 
-  <div class="callout">
-    <strong>Why <code>is_reorder</code> matters:</strong> the reorder flow needs to know whether to treat an order as a first conversion or the start of a new cycle. Easiest place to set it is at the source, in the Pipedrive → Klaviyo handler, by checking if the profile already has a prior B2B Order Placed event.
+  <div class="event-block">
+    <h3>Event C · <code>B2B Deal Lost</code></h3>
+    <div class="event-row">
+      <div class="k">Triggers on</div>
+      <div class="v">Pipedrive <strong>Deal · updated</strong> webhook, filtered to <code>status = lost</code>.</div>
+    </div>
+    <div class="event-row">
+      <div class="k">Fires into</div>
+      <div class="v">Same endpoint as Event A.</div>
+    </div>
+    <div class="event-row">
+      <div class="k">Frequency</div>
+      <div class="v">One event per Lost deal. Dedup on <code>pipedrive_deal_id</code>.</div>
+    </div>
+    <div class="event-row">
+      <div class="k">Side effect</div>
+      <div class="v">Decrements <code>b2b_open_deal_count</code> and recomputes <code>b2b_lifecycle_stage</code> in the same API call. Required so "has an active open inquiry" can be distinguished cleanly from "had inquiries that died" in Klaviyo segments.</div>
+    </div>
   </div>
 
-  <h2>What we need from you to start</h2>
-  <p class="sub">Three things to confirm before Week 1 kicks off.</p>
+  <div class="payload-block">
+{<br>
+&nbsp;&nbsp;<span class="key">"event"</span>: <span class="str">"B2B Deal Lost"</span>,<br>
+&nbsp;&nbsp;<span class="key">"customer_properties"</span>: { <span class="key">"$email"</span>: <span class="str">"buyer@example.com"</span> },<br>
+&nbsp;&nbsp;<span class="key">"properties"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"pipedrive_deal_id"</span>: <span class="str">"12345"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"pipedrive_org_id"</span>: <span class="str">"678"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"lost_at"</span>: <span class="str">"2026-06-12T10:30:00Z"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"lost_reason"</span>: <span class="str">"Price"</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// Pipedrive Lost Reason field</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"vessel_type"</span>: <span class="str">"Can"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"quantity"</span>: <span class="str">240</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"deal_value"</span>: <span class="str">4800.00</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="com">// quoted value, for lost-pipeline reporting</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"company_name"</span>: <span class="str">"Example Co"</span><br>
+&nbsp;&nbsp;}<br>
+}<br>
+  </div>
+
+  <h2>Deliverable 03 · Rolling lifecycle properties</h2>
+  <p class="sub">Five summary properties on the Klaviyo profile. The middleware writes them on every event. Because the lifecycle state lives on the profile, Klaviyo segments read it directly without joining events at query time.</p>
+
+  <table class="spec-table">
+    <thead><tr><th>Property</th><th>Type</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="field"><code>b2b_lifecycle_stage</code></td><td class="prop">enum</td><td class="notes"><code>Lead</code> / <code>Active Inquiry</code> / <code>Customer</code>, recomputed every event (rule below)</td></tr>
+      <tr><td class="field"><code>b2b_open_deal_count</code></td><td class="prop">integer</td><td class="notes">+1 on Inquiry, −1 on Order or Lost. Never below zero</td></tr>
+      <tr><td class="field"><code>b2b_total_orders</code></td><td class="prop">integer</td><td class="notes">+1 on Order. Lifetime, not time-bounded</td></tr>
+      <tr><td class="field"><code>b2b_last_order_date</code></td><td class="prop">ISO date</td><td class="notes">Set to <code>order_date</code> on every Order. Used for win-back / lapsed segments</td></tr>
+      <tr><td class="field"><code>b2b_clv</code></td><td class="prop">number (AUD)</td><td class="notes">Cumulative sum of <code>deal_value</code> across all Orders</td></tr>
+    </tbody>
+  </table>
+
+  <div class="group-label">State machine · counter changes on each event</div>
+
+  <table class="spec-table">
+    <thead><tr><th>On event</th><th>Counter changes</th><th>Lifecycle stage</th></tr></thead>
+    <tbody>
+      <tr><td class="field">B2B Inquiry Submitted</td><td class="prop"><code>open_deal_count + 1</code></td><td class="notes">recompute (see below)</td></tr>
+      <tr><td class="field">B2B Order Placed</td><td class="prop"><code>open_deal_count − 1</code><br><code>total_orders + 1</code><br><code>last_order_date = order_date</code><br><code>clv += deal_value</code></td><td class="notes"><code>Customer</code></td></tr>
+      <tr><td class="field">B2B Deal Lost</td><td class="prop"><code>open_deal_count − 1</code></td><td class="notes">recompute (see below)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>Lifecycle recompute rule:</strong>
+    <br>· if <code>total_orders &gt; 0</code> → <code>Customer</code>
+    <br>· else if <code>open_deal_count &gt; 0</code> → <code>Active Inquiry</code>
+    <br>· else → <code>Lead</code>
+    <br><br>
+    A "Customer with an open new inquiry" stays Customer. Their open deal is captured in <code>b2b_open_deal_count &gt; 0</code> and segmentable separately. "Churned" is not a lifecycle stage; it's a segment query: <code>b2b_lifecycle_stage = Customer AND b2b_last_order_date more than 365d ago</code>.
+  </div>
+
+  <div class="callout">
+    <strong>How the side-effect update reaches Klaviyo:</strong> the rolling properties travel with the event itself. Each event POST to <code>/api/events</code> includes the recomputed profile properties in the <code>profile.attributes.properties</code> block, so one API call covers both the event write and the property update. To compute the next state, the middleware first GETs the current profile (<code>/api/profiles/?filter=equals(email,"...")</code>), reads the current counter values, applies the delta, and posts the event with the new values inline.
+  </div>
+
+  <h2>Deliverable 04 · Backfill</h2>
+  <p class="sub">Run both event handlers and the property updater over existing Pipedrive data once, so the Klaviyo account is enriched on day one. Two passes: events first, then rolling properties replayed from the event stream.</p>
+
+  <ul class="key-bullets">
+    <li><span class="lbl">Pass 1a</span>One <code>B2B Inquiry Submitted</code> event per existing Pipedrive deal, regardless of stage. Use the deal's creation date as <code>submitted_at</code>.</li>
+    <li><span class="lbl">Pass 1b</span>One <code>B2B Order Placed</code> event per existing Won deal. Use the deal's Won date as <code>order_date</code>.</li>
+    <li><span class="lbl">Pass 1c</span>One <code>B2B Deal Lost</code> event per existing Lost deal. Use the deal's Lost date as <code>lost_at</code>.</li>
+    <li><span class="lbl">Pass 1d</span>Identity properties synced for every Pipedrive Person attached to a deal in the backfill set. <code>b2b_lead_source</code> set once, not updated.</li>
+    <li><span class="lbl">Pass 2</span>For each contact, replay the event stream chronologically and write the final state of all five rolling lifecycle properties to the profile.</li>
+    <li><span class="lbl">Dedup</span>All events keyed by <code>pipedrive_deal_id</code>, so re-runs are idempotent. Re-running the backfill never creates duplicates.</li>
+  </ul>
+
+  <h2>Why this model holds when a contact has multiple deals</h2>
+  <p class="sub">The model is built so a contact can have any combination of open, won, and lost deals without anything being overwritten, and every lifecycle state sits behind a single segment query.</p>
+
+  <p style="font-size: 14.5px; color: var(--ink-2); line-height: 1.65; max-width: 720px;">
+    Klaviyo profile properties hold a single value per profile. If we synced per-deal data into them, every new inquiry or order would overwrite the last one, and Outfunnel's last-updated-wins behaviour would turn two simultaneous open deals into a race condition. The split model avoids both.
+  </p>
+
+  <ul class="key-bullets">
+    <li><span class="lbl">Identity</span>Only person-level fields live on the profile (name, email, phone, company, job title, industry, lead source). These don't change deal-to-deal, so there's nothing to overwrite incorrectly.</li>
+    <li><span class="lbl">Deal data</span>Everything specific to a deal (vessel, quantity, brief, dates, value) lives in the event payload. Each inquiry, each order, each Lost deal is a separate event keyed by <code>pipedrive_deal_id</code>.</li>
+    <li><span class="lbl">Lifecycle</span>The five rolling properties pre-compute lifecycle state. A contact with two open inquiries has <code>b2b_open_deal_count = 2</code>; a Customer with a new open deal has both <code>b2b_lifecycle_stage = Customer</code> and <code>b2b_open_deal_count &gt; 0</code>.</li>
+    <li><span class="lbl">Segments</span>"Prospects" = <code>b2b_lifecycle_stage = Lead</code>. "Active clients" = <code>= Customer</code>. "Open deals right now" = <code>b2b_open_deal_count &gt; 0</code>. "Lapsed customers" = <code>= Customer AND b2b_last_order_date more than 365d ago</code>. All one or two conditions.</li>
+  </ul>
+
+  <h2>What Moti needs to set up</h2>
+  <p class="sub">Build list, ordered. Steps 02 to 05 can be built in parallel once 01 is in place.</p>
 
   <div class="camp">
     <div class="num">01</div>
     <div class="body">
-      <div class="row1"><div class="title">Outfunnel scope</div></div>
-      <div class="tag">Access</div>
-      <div class="desc">Does the current Outfunnel setup have write access on Klaviyo profile properties, or do we need to authorise a new scope?</div>
+      <div class="row1"><div class="title">Configure four Pipedrive webhooks</div></div>
+      <div class="tag">Pipedrive · webhooks</div>
+      <div class="desc">Point each webhook at a dedicated middleware endpoint (one per scenario / workflow).
+        <ul>
+          <li><strong>Deal · added</strong> → Inquiry handler</li>
+          <li><strong>Deal · updated</strong>, filter <code>status = won</code> → Order handler</li>
+          <li><strong>Deal · updated</strong>, filter <code>status = lost</code> → Deal Lost handler</li>
+          <li><strong>Person · added</strong> and <strong>Person · updated</strong> → Identity sync handler</li>
+        </ul>
+      </div>
     </div>
   </div>
 
   <div class="camp">
     <div class="num">02</div>
     <div class="body">
-      <div class="row1"><div class="title">Custom event delivery path</div></div>
-      <div class="tag">Plumbing</div>
-      <div class="desc">Preference for posting the B2B Order Placed event: direct from Pipedrive (webhook to Klaviyo Track API), or routed through Moti's middleware?</div>
+      <div class="row1"><div class="title">Build the Inquiry handler scenario</div></div>
+      <div class="tag">Middleware · scenario 1</div>
+      <div class="desc">Receives the Deal · added payload from Pipedrive. Steps:
+        <ul>
+          <li>Look up the linked Person's email + the Org ID from Pipedrive (one or two API calls).</li>
+          <li>GET the Klaviyo profile to read current <code>b2b_open_deal_count</code> and <code>b2b_total_orders</code>.</li>
+          <li>Compute new <code>open_deal_count</code> (+1) and recompute <code>b2b_lifecycle_stage</code>.</li>
+          <li>POST <code>B2B Inquiry Submitted</code> to <code>/api/events</code> with the full event payload <em>and</em> the updated rolling properties inline.</li>
+        </ul>
+      </div>
     </div>
   </div>
 
   <div class="camp">
     <div class="num">03</div>
     <div class="body">
-      <div class="row1"><div class="title">Pipedrive field IDs</div></div>
-      <div class="tag">Mapping</div>
-      <div class="desc">Once you have access, share the field-ID list for the 3-page form. We'll confirm the property-name map matches before you start coding.</div>
+      <div class="row1"><div class="title">Build the Order handler scenario</div></div>
+      <div class="tag">Middleware · scenario 2</div>
+      <div class="desc">Receives Deal · updated where status flipped to Won. Same shape as the Inquiry handler, but the counter changes are: <code>open_deal_count − 1</code>, <code>total_orders + 1</code>, <code>last_order_date = order_date</code>, <code>clv += deal_value</code>, <code>lifecycle_stage = Customer</code>. Also compute <code>is_reorder</code> by checking whether <code>total_orders</code> was already &gt; 0 before this event.</div>
     </div>
   </div>
+
+  <div class="camp">
+    <div class="num">04</div>
+    <div class="body">
+      <div class="row1"><div class="title">Build the Deal Lost handler scenario</div></div>
+      <div class="tag">Middleware · scenario 3</div>
+      <div class="desc">Receives Deal · updated where status flipped to Lost. Counter changes: <code>open_deal_count − 1</code>; recompute lifecycle. Same POST pattern as the other two.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">05</div>
+    <div class="body">
+      <div class="row1"><div class="title">Build the Identity sync handler</div></div>
+      <div class="tag">Middleware · scenario 4</div>
+      <div class="desc">Receives Person · added or Person · updated. PATCH the Klaviyo profile with the eight identity properties. <strong>Skip <code>b2b_lead_source</code> if it's already set.</strong> That field is first-touch only.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">06</div>
+    <div class="body">
+      <div class="row1"><div class="title">Store the Klaviyo API key safely</div></div>
+      <div class="tag">Credentials</div>
+      <div class="desc">Tethrd generates and shares a private Klaviyo API key with <code>events:write</code> + <code>profiles:write</code> scopes. Store it as a Make.com Connection or n8n Header Auth credential. Never paste into Pipedrive, scenario JSON, or any plaintext location. Full handling guidance in the section below.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">07</div>
+    <div class="body">
+      <div class="row1"><div class="title">Run the backfill (two passes, idempotent)</div></div>
+      <div class="tag">Backfill</div>
+      <div class="desc">Pull all historical Pipedrive deals. Pass 1: fire one Inquiry per deal, one Order per Won, one Lost per Lost. Pass 2: replay the event stream per contact and write the final rolling-property state. Sync identity properties across all linked Persons. Dedup is on <code>pipedrive_deal_id</code>, so re-runs are safe.</div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="num">08</div>
+    <div class="body">
+      <div class="row1"><div class="title">QA before go-live</div></div>
+      <div class="tag">Validation</div>
+      <div class="desc">Three checks before we cut over:
+        <ul>
+          <li><strong>Dedup test:</strong> trigger a Won deal twice, confirm only one <code>B2B Order Placed</code> event lands.</li>
+          <li><strong>Multi-deal test:</strong> on a test contact, create one Open deal, one Won, one Lost. Verify <code>b2b_open_deal_count = 1</code>, <code>b2b_total_orders = 1</code>, <code>b2b_lifecycle_stage = Customer</code>.</li>
+          <li><strong>Lifecycle transition test:</strong> on a fresh contact, fire Inquiry → expect Lead → Active Inquiry. Fire Order → expect Customer. Fire Lost on a different deal → expect Customer (unchanged).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2>Handling the Klaviyo private API key</h2>
+  <p class="sub">We will generate a Klaviyo private API key scoped to <code>events:write</code> and <code>profiles:write</code> only, and share it with Moti directly. The key must never be exposed outside the middleware's encrypted credential store.</p>
+
+  <div class="callout">
+    <strong>Endpoint and headers.</strong> POST to <code>https://a.klaviyo.com/api/events</code>. Required headers: <code>Authorization: Klaviyo-API-Key pk_xxx</code>, <code>revision: 2026-04-15</code>, <code>Content-Type: application/json</code>, <code>Accept: application/vnd.api+json</code>. Rate limits: 350/s burst, 3500/m steady.
+  </div>
+
+  <ul class="key-bullets">
+    <li><span class="lbl">Make.com</span>Add the key to <strong>Scenarios → Connections</strong>. The built-in Klaviyo app is preferred. Make stores credentials in its encrypted Connections vault and references them by connection ID, never inlining the key into scenario JSON. Make is migrating Klaviyo to OAuth2, so use OAuth where it's offered.</li>
+    <li><span class="lbl">Make HTTP</span>If using the raw HTTP module, create a Keychain entry of type "API Key Auth" and reference it from the module's Authorization field. Never type <code>pk_xxx</code> into the Headers tab. That value gets serialised into blueprint exports.</li>
+    <li><span class="lbl">n8n</span>Create a <strong>Header Auth</strong> credential: Name = <code>Authorization</code>, Value = <code>Klaviyo-API-Key pk_xxx</code>. Attach it to the HTTP Request node via the Credential dropdown. Don't paste the key into the node's Headers parameter directly. Credentials are AES-encrypted at rest using <code>N8N_ENCRYPTION_KEY</code> and excluded from workflow exports by default.</li>
+    <li class="warn"><span class="lbl">Pipedrive</span>The key never enters Pipedrive. Not as a custom field, not as a webhook URL parameter, not in deal notes, not in Automations action bodies. Pipedrive fires the webhook; the middleware injects the credential server-side.</li>
+    <li class="warn"><span class="lbl">Never</span>No query-string secrets (<code>?api_key=</code>), no hardcoded Authorization values in node JSON, no committing scenario blueprints or workflow exports that contain credential payloads, no full-header logging in execution retention, no screenshots of the unmasked Connections panel.</li>
+    <li><span class="lbl">Rotation</span>Klaviyo keys cannot be edited, so rotation means creating a new key with identical scopes, updating the Make Connection or n8n Credential to point at it, then deleting the old key. If the key is ever exposed (committed, pasted, leaked), revoke immediately in Klaviyo and let us know so we can issue a fresh one.</li>
+  </ul>
 
 </div>
 
 <div class="footer">
   <div class="wordmark">tethrd<span class="x">×</span>Rippl</div>
-  <div class="copy">Prepared 30 May 2026 · for Moti · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a></div>
+  <div class="copy">Revised 13 June 2026 · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a></div>
 </div>
 
 </body>
