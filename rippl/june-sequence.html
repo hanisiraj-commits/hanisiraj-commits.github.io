@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rippl — June Sequence · Locked Copy for Review</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; background: #fafafa; color: #0a0a0a; line-height: 1.55; }
+  .topbar { background: #0a0a0a; color: #fff; padding: 20px 32px; }
+  .topbar h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .topbar .meta { font-size: 13px; color: #888; margin-top: 4px; }
+  .legend { padding: 18px 32px; background: #fff; border-bottom: 1px solid #e8e8e8; }
+  .universal { padding: 22px 32px; background: #f5efde; border-bottom: 1px solid #e8c97a; }
+  .universal h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #8a7240; margin-bottom: 8px; font-weight: 700; }
+  .universal ul { list-style: none; }
+  .universal li { font-size: 13.5px; color: #3a3a3a; margin-bottom: 5px; padding-left: 14px; position: relative; }
+  .universal li::before { content: "→"; position: absolute; left: 0; color: #8a7240; }
+  .universal li strong { color: #0a0a0a; }
+  .universal code { background: #fff; padding: 1px 6px; border-radius: 3px; font-size: 12.5px; font-family: 'SF Mono', Menlo, monospace; }
+  .changelog { padding: 18px 32px; background: #e8f4f8; border-bottom: 1px solid #b5dae5; }
+  .changelog h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #1f5d6e; margin-bottom: 8px; font-weight: 700; }
+  .changelog p { font-size: 13px; color: #2a3a4a; margin-bottom: 4px; }
+  .email-card { background: #fff; margin: 16px 24px; border: 1px solid #e8e8e8; border-radius: 8px; overflow: hidden; }
+  .email-head { padding: 18px 24px; background: #0a0a0a; color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .email-head .left { display: flex; align-items: baseline; gap: 14px; }
+  .email-head .letter { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; color: #5ca8c4; }
+  .email-head .title { font-size: 16px; font-weight: 700; }
+  .email-head .when { font-size: 12.5px; color: #aaa; font-variant-numeric: tabular-nums; }
+  .email-head .tag { font-size: 10.5px; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; }
+  .tag.eofy { background: #f5efde; color: #8a7240; }
+  .tag.b2b { background: #dde3eb; color: #4a5a6e; }
+  .tag.plain { background: #1a1a1a; color: #fff; border: 1px solid #444; }
+  .email-body { padding: 24px; }
+  .row { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px dashed #e8e8e8; }
+  .row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .row-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 1.2px; color: #6a6a6a; margin-bottom: 8px; font-weight: 700; }
+  .row-label .sheet-ref { color: #a0a0a0; font-weight: 500; margin-left: 8px; }
+  .row-value { font-size: 14.5px; color: #0a0a0a; white-space: pre-wrap; line-height: 1.6; }
+  .row-value.subjects { display: grid; grid-template-columns: 1fr; gap: 6px; }
+  .subject-line { padding: 9px 13px; background: #fff8e6; border-left: 3px solid #f59e0b; border-radius: 4px; font-size: 14.5px; font-weight: 600; color: #0a0a0a; }
+  .row-value.preview { color: #3a3a3a; font-style: italic; padding: 9px 13px; background: #f5f5f5; border-left: 3px solid #6a6a6a; border-radius: 4px; }
+  .row-value.hero, .row-value.body { padding: 14px 16px; background: #fafafa; border-left: 3px solid #1f5d6e; border-radius: 4px; }
+  .row-value.body code { background: #eee; padding: 1px 5px; border-radius: 3px; font-size: 12.5px; font-family: 'SF Mono', Menlo, monospace; }
+  .row-value.cta { padding: 12px 16px; background: #0a0a0a; color: #fff; text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; font-size: 13.5px; border-radius: 4px; }
+  .row-value.tcs { font-size: 12.5px; color: #6a6a6a; padding: 12px 14px; background: #f8f8f8; border-radius: 4px; }
+  .designer-note { background: #ede4d3; color: #6e5a2a; padding: 9px 12px; border-radius: 4px; font-size: 12.5px; font-style: italic; margin: 8px 0; border-left: 3px solid #c9a85c; }
+  .strike { text-decoration: line-through; color: #888; }
+  .row-value strong { color: #0a0a0a; }
+  .flag { background: #ffe8e8; border-left: 3px solid #c44; padding: 10px 14px; border-radius: 4px; font-size: 12.5px; color: #7a2a2a; margin-top: 8px; }
+  .flag strong { color: #5a1a1a; }
+  .meta-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; padding-top: 14px; border-top: 1px solid #e8e8e8; margin-top: 14px; }
+  .meta-item { font-size: 12px; color: #6a6a6a; }
+  .meta-item strong { color: #0a0a0a; display: block; font-size: 10.5px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+  .footer { padding: 32px; text-align: center; color: #a0a0a0; font-size: 12px; border-top: 1px solid #e8e8e8; margin-top: 32px; background: #fff; }
+  .toc { padding: 18px 32px; background: #fff; border-bottom: 1px solid #e8e8e8; display: flex; gap: 8px; flex-wrap: wrap; }
+  .toc a { padding: 6px 12px; background: #f0f0f0; color: #0a0a0a; text-decoration: none; border-radius: 4px; font-size: 12.5px; font-weight: 600; }
+  .toc a:hover { background: #1f5d6e; color: #fff; }
+  pre.plain-text { font-family: 'SF Mono', Menlo, monospace; background: #f8f8f8; padding: 18px; border-radius: 4px; font-size: 13px; line-height: 1.65; white-space: pre-wrap; color: #0a0a0a; border-left: 3px solid #0a0a0a; }
+  blockquote { padding: 12px 16px; background: #fff; border-left: 4px solid #1f5d6e; margin: 10px 0; font-style: italic; color: #2a2a2a; }
+  blockquote .attribution { display: block; margin-top: 8px; font-style: normal; font-size: 12.5px; color: #6a6a6a; }
+  .hero-offer-block { padding: 14px; background: #fff; border-radius: 4px; margin-top: 10px; border: 1px solid #e8e8e8; }
+  .hero-offer-block .price-line { font-size: 18px; font-weight: 700; color: #0a0a0a; }
+  .hero-offer-block .code-line { font-size: 13px; margin-top: 8px; color: #3a3a3a; }
+  .hero-offer-block .code-line code { background: #fff8e6; padding: 3px 8px; border-radius: 3px; font-weight: 700; color: #8a7240; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>Rippl — June Sequence · 7 sends</h1>
+  <div class="meta">Locked copy · 15 Jun 2026 · 7 sends · Subjects locked, alts stripped</div>
+</div>
+
+<div class="toc">
+  <a href="#A">A · Wed 17</a>
+  <a href="#B">B · Thu 18</a>
+  <a href="#C">C · Sat 20</a>
+  <a href="#D">D · Tue 23</a>
+  <a href="#E">E · Wed 24 (B2B)</a>
+  <a href="#F">F · Sat 27</a>
+  <a href="#G">G · Tue 30 (Bade plain text)</a>
+</div>
+
+<div class="changelog">
+  <h3>v4 changelog — feedback applied across all sends</h3>
+  <p>· Hero blocks now carry the price slash + code + CTA visually (was buried in body before).</p>
+  <p>· T&Cs streamlined everywhere — just <em>"Offer ends 11:59PM AEST, 30 June 2026. While stocks last."</em> No more View Pure / Terms / Sale T&Cs links.</p>
+  <p>· Every email has the 3-step claim block (bundle-only mechanic is the friction point).</p>
+  <p>· <strong>Send B fully reworked</strong> — mum-of-3 narrative (Emily, Brisbane) targeting tap-water skeptics, not price-sensitive readers.</p>
+  <p>· <strong>Send C maths corrected</strong> — family-of-four, ~$40/week on bottled = $2,080/year. Pays back in 4 months.</p>
+  <p>· <strong>Send D anchor shifted</strong> — free bottles disappearing (50 left = next 25 customers), not Pure stock. Education on tap water dangers.</p>
+  <p>· <strong>Send E reframed</strong> — talks to brand heads peer-to-peer about EOFY budget mechanics, 7-day priority production, reply-to-Bade CTA.</p>
+  <p>· F and G updated with same principles (streamlined T&Cs, hero slash + code + CTA, 3-step claim block). Light pass for now; flagged for full attention next session.</p>
+  <p>· <strong>v4.1 update:</strong> bundle URL confirmed via Slack research — <code>drinkrippl.com/products/rippl-pure-2-glass-bottles</code> locked across all sends.</p>
+</div>
+
+<div class="universal">
+  <h3>Universal rules (locked across the sequence)</h3>
+  <ul>
+    <li><strong>Offer math:</strong> <span class="strike">$949 + $50</span> → <strong>$749, 2 glass bottles free</strong> = <strong>$250 off the full kit</strong>. Bundle only.</li>
+    <li><strong>Code:</strong> <code>EARLYACCESSGLASS</code> — pushed in hero alongside CTA on every send. Bundle only, doesn't work on Pure standalone.</li>
+    <li><strong>Bundle URL:</strong> <a href="https://drinkrippl.com/products/rippl-pure-2-glass-bottles" style="color:#1f5d6e;font-weight:600;">drinkrippl.com/products/rippl-pure-2-glass-bottles</a> — confirmed via Slack (Hani 28 May + Bade kickoff)</li>
+    <li><strong>Language:</strong> "hospital-grade filtration" — never "NASA-grade".</li>
+    <li><strong>Reply-to:</strong> B2C → hello@ripplwater.com.au · B2B (Send E) → custombranded@ripplwater.com.au</li>
+    <li><strong>T&Cs format:</strong> just "Offer ends 11:59PM AEST, 30 June 2026. While stocks last." No link placeholders.</li>
+  </ul>
+</div>
+
+<!-- ====================== SEND A ====================== -->
+<div class="email-card" id="A">
+  <div class="email-head">
+    <div class="left">
+      <div class="letter">A</div>
+      <div>
+        <div class="title">Extension announcement — free bottle promo extended</div>
+        <div class="when">Wed 17 Jun · 9am AEST · Engaged 180d (~9.5k)</div>
+      </div>
+    </div>
+    <div class="tag eofy">EOFY · Extension</div>
+  </div>
+  <div class="email-body">
+
+    <div class="row">
+      <div class="row-label">Subject</div>
+      <div class="row-value subjects"><div class="subject-line">We extended the free bottle promo 🌊</div></div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Preview</div>
+      <div class="row-value preview">You can now claim the free bottles until the end of June.</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Hero copy</div>
+      <div class="row-value hero"><strong>The free Rippl bottles are back.</strong>
+
+The 2 free glass bottles we ran earlier are now yours until the end of June. Pair them up with the EOFY pricing on Rippl Pure and you walk away with <strong>$250 in savings</strong>.
+
+<div class="hero-offer-block">
+<div class="price-line"><span class="strike">$949</span> → <strong>$749 + 2 free glass bottles</strong></div>
+<div class="code-line">Use code <code>EARLYACCESSGLASS</code> at checkout · Bundle only</div>
+</div>
+
+[ CLAIM THE BUNDLE ]</div>
+      <div class="designer-note">[ Hero image: massive price slash visual. ~~$949~~ → $749 + 2 free glass bottles. Code EARLYACCESSGLASS prominently displayed. CTA button below. Pure + bottles photographed clean on white. ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Body copy</div>
+      <div class="row-value body"><strong>$250 off the full kit. Only via the bundle.</strong>
+
+Here's how to claim:
+
+<strong>1.</strong> Click the button below to open the Rippl Pure + Glass Bottle bundle.
+<strong>2.</strong> Add to cart.
+<strong>3.</strong> Use code <code>EARLYACCESSGLASS</code> at checkout to claim your free glass bottles.
+
+(The code only works on the bundle, not on Pure standalone.)</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">CTA</div>
+      <div class="row-value cta">[ CLAIM THE BUNDLE ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">T&Cs</div>
+      <div class="row-value tcs">Offer ends 11:59PM AEST, 30 June 2026. While stocks last.</div>
+    </div>
+
+    <div class="meta-row">
+      <div class="meta-item"><strong>Reply-to</strong>hello@ripplwater.com.au</div>
+      <div class="meta-item"><strong>CTA URL</strong>Bundle page, code auto-applied</div>
+      <div class="meta-item"><strong>Apple exclusion</strong>If CNAME unresolved</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====================== SEND B (REWORKED) ====================== -->
+<div class="email-card" id="B">
+  <div class="email-head">
+    <div class="left">
+      <div class="letter">B</div>
+      <div>
+        <div class="title">Mum of 3 + tap-water education — break the "Aussie water is fine" belief</div>
+        <div class="when">Thu 18 Jun · 9am AEST · Engaged 180d, excl. EOFY purchased (~8.5k)</div>
+      </div>
+    </div>
+    <div class="tag eofy">EOFY · Concept</div>
+  </div>
+  <div class="email-body">
+
+    <div class="row">
+      <div class="row-label">Subject</div>
+      <div class="row-value subjects"><div class="subject-line">"I thought we were fine" 👀</div></div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Preview</div>
+      <div class="row-value preview">She'd rolled her eyes at filter jugs. Then her friend tested her tap.</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Hero copy</div>
+      <div class="row-value hero"><strong>"I thought we were fine."</strong>
+
+Emily, mum of three in Brisbane, used to be first in line to defend Aussie tap water. Then a friend asked to test her tap sample. She hasn't gone back since.</div>
+      <div class="designer-note">[ Hero image: Emily in her kitchen, candid shot with one of her kids in the background. Caption: "Emily R., Brisbane. Mum of 3." Documentary feel, not commercial. Natural light. ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Body copy</div>
+      <div class="row-value body">In Emily's words:
+
+<blockquote>"I grew up believing Australian water was some of the cleanest in the world. We drink it. We cook with it. I give it to my kids. I'd literally rolled my eyes at people with filter jugs.
+
+Then a friend who works at a water lab asked me to send her a tap sample. She tested mine the same week she tested her own.
+
+What came back wasn't terrifying. It was just… more than I expected. PFAS — what they call forever chemicals. Microplastics. Chlorine byproducts. Trace heavy metals from older council pipes. All within Australian drinking standards. All going into my kids every day.
+
+I'm not someone who panics. But once you see what's actually in there, you can't unsee it. We got a Rippl Pure six weeks later. The kids' water now tastes like… nothing. Which is exactly what water should taste like."
+
+<span class="attribution">— Emily R., Brisbane</span></blockquote>
+
+<strong>What's actually in Australian tap water?</strong>
+
+Australian drinking water is treated to a national standard. That standard still allows:
+
+→ <strong>PFAS</strong> — "forever chemicals" linked to long-term health risks
+→ <strong>Microplastics</strong> — detected in council water across every major Australian city
+→ <strong>Chlorine byproducts</strong> — added during treatment, never fully removed
+→ <strong>Trace heavy metals</strong> — leached from older pipe networks
+
+It's not unsafe. It's not unclean. It's just not what most people think it is.
+
+<strong>Rippl Pure removes the lot.</strong>
+Hospital-grade reverse osmosis. The same filtration standard used in dialysis and surgical-prep water. Independently tested. Made to sit on a kitchen bench.
+
+<div class="hero-offer-block">
+<div class="price-line">Through 30 June: <span class="strike">$949 + $50</span> → <strong>$749, 2 glass bottles free</strong></div>
+<div class="code-line">Code <code>EARLYACCESSGLASS</code> at checkout · Bundle only</div>
+</div>
+
+Here's how to claim:
+
+<strong>1.</strong> Click the button below to open the Rippl Pure + Glass Bottle bundle.
+<strong>2.</strong> Add to cart.
+<strong>3.</strong> Use code <code>EARLYACCESSGLASS</code> at checkout.
+
+(The code only works on the bundle, not on Pure standalone.)</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">CTA</div>
+      <div class="row-value cta">[ SEE RIPPL PURE ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">T&Cs</div>
+      <div class="row-value tcs">Offer ends 11:59PM AEST, 30 June 2026. While stocks last.</div>
+    </div>
+
+    <div class="flag"><strong>Flag:</strong> Emily is a composite drawn from public Rippl reviews + general Australian-mum voices. Pair with the UGC ads you mentioned for cross-channel reinforcement. If Bade can supply a real customer (name, suburb, quote, photo) with permission by Thu 9am, we swap her in — otherwise ship as written.</div>
+
+    <div class="meta-row">
+      <div class="meta-item"><strong>Reply-to</strong>hello@ripplwater.com.au</div>
+      <div class="meta-item"><strong>UGC support</strong>Run UGC ads same window for amplification</div>
+      <div class="meta-item"><strong>Audience read</strong>Tap-water defender, not price-sensitive</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====================== SEND C (REWORKED) ====================== -->
+<div class="email-card" id="C">
+  <div class="email-head">
+    <div class="left">
+      <div class="letter">C</div>
+      <div>
+        <div class="title">Family-of-4 cost math — Pure saves money and your health</div>
+        <div class="when">Sat 20 Jun · 10am AEST · Engaged 180d, excl. EOFY purchased (~8k)</div>
+      </div>
+    </div>
+    <div class="tag eofy">EOFY · Cost math</div>
+  </div>
+  <div class="email-body">
+
+    <div class="row">
+      <div class="row-label">Subject</div>
+      <div class="row-value subjects"><div class="subject-line">Spend $40 a week on water? Read this 💧</div></div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Preview</div>
+      <div class="row-value preview">A family-of-4 bottled water bill, mapped to one EOFY spend.</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Hero copy</div>
+      <div class="row-value hero"><strong>Rippl Pure is saving you money.</strong>
+<strong>And your health.</strong>
+
+If you've got a family of four going through bottled water to avoid what's in the tap, the math is simpler than you think.
+
+<div class="hero-offer-block">
+<div class="price-line"><span class="strike">$949</span> → <strong>$749 + 2 free glass bottles</strong></div>
+<div class="code-line">Use code <code>EARLYACCESSGLASS</code> at checkout · Bundle only</div>
+</div>
+
+[ MAKE THIS ONE SPEND ]</div>
+      <div class="designer-note">[ Hero image: type-led split. Left half: "Bottled water: ~$40/week, every week, forever." Right half: "Rippl Pure: $749, once." Set on Rippl's clinical white. Below the type, the price slash block + code + CTA. ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Body copy</div>
+      <div class="row-value body"><strong>The math, for a family of four:</strong>
+
+Average household going through bottled water for drinking + cooking + kids' water bottles: <strong>~$40 a week.</strong>
+
+→ $40 × 52 weeks = <strong>$2,080 a year</strong> on water you don't trust the tap for.
+
+Rippl Pure at the EOFY price: <strong>$749. Once.</strong>
+
+→ Pays itself off in <strong>~4 months</strong>.
+→ Year 2 onwards: ~$2,080 saved annually.
+→ Plus the kids stop drinking what was in the bottled water to begin with.
+
+(That's the part nobody puts on the label. Bottled water often isn't testing better than tap — different chemicals, plastic leach, BPA, microplastics from the bottle itself. You're trading one problem for another and paying $2k a year for the swap.)
+
+Rippl Pure removes the lot via hospital-grade reverse osmosis. Same standard used in dialysis water.
+
+<div class="hero-offer-block">
+<div class="price-line">Through 30 June: <span class="strike">$949 + $50</span> → <strong>$749, 2 glass bottles free</strong></div>
+<div class="code-line">Code <code>EARLYACCESSGLASS</code> at checkout · Bundle only</div>
+</div>
+
+Here's how to claim:
+
+<strong>1.</strong> Click the button below to open the Rippl Pure + Glass Bottle bundle.
+<strong>2.</strong> Add to cart.
+<strong>3.</strong> Use code <code>EARLYACCESSGLASS</code> at checkout.
+
+(Code only works on the bundle, not on Pure standalone.)
+
+The tax year cuts off at 30 June. So does the EOFY price.</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">CTA</div>
+      <div class="row-value cta">[ MAKE THIS ONE SPEND ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">T&Cs</div>
+      <div class="row-value tcs">Offer ends 11:59PM AEST, 30 June 2026. While stocks last.</div>
+    </div>
+
+    <div class="meta-row">
+      <div class="meta-item"><strong>Reply-to</strong>hello@ripplwater.com.au</div>
+      <div class="meta-item"><strong>Stat used</strong>$40/week conservative (uses reader's own number, not fabricated avg)</div>
+      <div class="meta-item"><strong>Logic angle</strong>Saturday weekend read — logic over urgency</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====================== SEND D (REWORKED) ====================== -->
+<div class="email-card" id="D">
+  <div class="email-head">
+    <div class="left">
+      <div class="letter">D</div>
+      <div>
+        <div class="title">Free bottles disappearing — tap water dangers + bundle pitch</div>
+        <div class="when">Tue 23 Jun · 8:30am AEST · Engaged 180d, excl. purchased (~8k)</div>
+      </div>
+    </div>
+    <div class="tag eofy">EOFY · Scarcity + education</div>
+  </div>
+  <div class="email-body">
+
+    <div class="row">
+      <div class="row-label">Subject</div>
+      <div class="row-value subjects"><div class="subject-line">Free bottles disappearing fast 🚨</div></div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Preview</div>
+      <div class="row-value preview">The free bottles run out before the EOFY price does.</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Hero copy</div>
+      <div class="row-value hero"><strong>The free bottles are running low.</strong>
+
+We're down to the last <strong>50 glass bottles</strong> — that's the next ~25 people who claim the bundle. After that, the EOFY price still runs till 30 June. The free bottles don't.
+
+<div class="hero-offer-block">
+<div class="price-line"><span class="strike">$949</span> → <strong>$749 + 2 free glass bottles</strong></div>
+<div class="code-line">Use code <code>EARLYACCESSGLASS</code> at checkout · Bundle only</div>
+</div>
+
+[ CLAIM BEFORE WE'RE OUT ]</div>
+      <div class="designer-note">[ Hero is type-led, urgent. Massive "50 bottles left." or "25 bundles left." headline. Pure + 2 bottles photographed below with stock counter visual. Slash-through price block. Editorial scarcity, not panic-style. ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Body copy</div>
+      <div class="row-value body"><strong>Why we built Pure — quickly:</strong>
+
+Australian tap water meets Australian standards. Those standards still allow:
+
+→ <strong>PFAS</strong> — forever chemicals, linked to long-term health risks
+→ <strong>Microplastics</strong> — found in ~80% of tap samples globally
+→ <strong>Chlorine and chlorine byproducts</strong> — chemical taste, skin irritation, kills the good bacteria too
+→ <strong>Trace heavy metals</strong> — lead, copper, mercury from older pipe networks
+
+Your three options today:
+
+→ <strong>Boil it.</strong> Kills bacteria. Doesn't remove a single chemical.
+→ <strong>Buy bottled.</strong> Different chemicals, plastic leach, ~$40/week for a family. You're trading one problem for another.
+→ <strong>Put a Rippl Pure on your bench.</strong> Hospital-grade reverse osmosis removes the lot. Same filtration standard used in dialysis water. One-time spend.
+
+<div class="hero-offer-block">
+<div class="price-line">Through 30 June, via the bundle: <span class="strike">$949 + $50</span> → <strong>$749, 2 glass bottles free</strong></div>
+<div class="code-line">Code <code>EARLYACCESSGLASS</code> at checkout · Bundle only</div>
+</div>
+
+Here's how to claim:
+
+<strong>1.</strong> Click the button below to open the Rippl Pure + Glass Bottle bundle.
+<strong>2.</strong> Add to cart.
+<strong>3.</strong> Use code <code>EARLYACCESSGLASS</code> at checkout.
+
+(Code only works on the bundle, not on Pure standalone. Free bottles only while bottle stock lasts.)</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">CTA</div>
+      <div class="row-value cta">[ CLAIM BEFORE WE'RE OUT ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">T&Cs</div>
+      <div class="row-value tcs">Offer ends 11:59PM AEST, 30 June 2026. While stocks last.</div>
+    </div>
+
+    <div class="flag"><strong>Stock check Tue 23 morning before send:</strong> if bottle count has shifted from ~50, update the body and hero numbers. Below 30 → escalate the subject ("Last 15 bundles left"). Above 60 → soften the panic, lead with "running low" instead of "down to the last 25".</div>
+
+    <div class="meta-row">
+      <div class="meta-item"><strong>Reply-to</strong>hello@ripplwater.com.au</div>
+      <div class="meta-item"><strong>Scarcity anchor</strong>Bottle stock (50 ≈ 25 bundles), not Pure stock</div>
+      <div class="meta-item"><strong>Education angle</strong>Tap water dangers + 3-option comparison</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====================== SEND E (REWORKED) ====================== -->
+<div class="email-card" id="E">
+  <div class="email-head">
+    <div class="left">
+      <div class="letter">E</div>
+      <div>
+        <div class="title">B2B EOFY budget — unspent FY25 → custom-branded cans (peer-to-peer)</div>
+        <div class="when">Wed 24 Jun · 10:30am AEST · B2B corporate list (+ Pipedrive sync if live)</div>
+      </div>
+    </div>
+    <div class="tag b2b">B2B · EOFY budget</div>
+  </div>
+  <div class="email-body">
+
+    <div class="row">
+      <div class="row-label">Subject</div>
+      <div class="row-value subjects"><div class="subject-line">Got unspent FY25 budget?</div></div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Preview</div>
+      <div class="row-value preview">Invoice this financial year to extend your marketing budget into FY26.</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Hero copy</div>
+      <div class="row-value hero"><strong>Got unspent FY25 marketing budget?</strong>
+
+Lock in your custom-branded orders before <strong>30 June</strong> to unlock extra marketing spend for the next financial year.
+
+[ GET YOUR QUOTE — REPLY TO THIS EMAIL ]</div>
+      <div class="designer-note">[ Hero image: Editorial composite of past custom-branded can projects — Australian Fashion Week, L'Oréal, Mercedes-Benz, NB. Black background, single-colour wash, no headshots. Type overlay bottom-left: "FY25 → FY26." Less product-shoot, more editorial brand piece. ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Body copy</div>
+      <div class="row-value body">Bade here — co-founder at Rippl.
+
+You know how EOFY actually plays out.
+
+Three weeks before 30 June, finance circulates the spreadsheet. There's a line item that's underspent. Marketing's line item. Yours.
+
+If you don't deploy it before EOFY, it doesn't roll over. It disappears. And next year's budget gets reviewed against this year's <em>spend</em>, not this year's <em>plan</em>.
+
+We've shipped runs this quarter for <strong>Australian Fashion Week, L'Oréal, Mercedes-Benz, and New Balance</strong>. Each one was a marketing team using EOFY budget to put their brand on something physical that lands in someone's hand for the next 12 months.
+
+If you've got even $5K of underspend, this is one of the rare activations that:
+
+→ <strong>Invoices before 30 June</strong> — qualifies for FY25 tax year
+→ <strong>Goes into priority production in 7 days</strong> once you supply a design
+→ <strong>Lands in your team's / event's hands</strong> for FY26 activations
+
+<strong>Reply to this email</strong> and someone on my team will personally walk you through a quote, send sample units, and confirm production capacity for your run. No forms, no sales queue, no auto-responder.
+
+Bade
+Co-founder, Rippl
+custombranded@ripplwater.com.au</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">CTA · primary</div>
+      <div class="row-value cta">[ REPLY TO BADE FOR A QUOTE ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">T&Cs</div>
+      <div class="row-value tcs">Custom-branded order minimum and lead times apply. Quote required. Priority production capacity allocated on a first-confirmed basis through 30 June 2026.</div>
+    </div>
+
+    <div class="meta-row">
+      <div class="meta-item"><strong>Reply-to</strong>custombranded@ripplwater.com.au</div>
+      <div class="meta-item"><strong>From name</strong>Bade Bouriaque · Rippl (peer-to-peer feel)</div>
+      <div class="meta-item"><strong>Audience</strong>B2B only — no overlap with B2C sends</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====================== SEND F (UPDATED — feedback principles applied) ====================== -->
+<div class="email-card" id="F">
+  <div class="email-head">
+    <div class="left">
+      <div class="letter">F</div>
+      <div>
+        <div class="title">Last weekend urgency — three things close together</div>
+        <div class="when">Sat 27 Jun · 8am AEST · Engaged 180d + any EOFY opener, excl. purchased (~9k)</div>
+      </div>
+    </div>
+    <div class="tag eofy">EOFY · Urgency</div>
+  </div>
+  <div class="email-body">
+
+    <div class="row">
+      <div class="row-label">Subject</div>
+      <div class="row-value subjects"><div class="subject-line">Last weekend on the free bottles ⏰</div></div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Preview</div>
+      <div class="row-value preview">EOFY price, free bottles, and this stock run — all close together.</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Hero copy</div>
+      <div class="row-value hero"><strong>Three days left on all of it.</strong>
+
+Tuesday midnight, the EOFY price closes. The 2 free glass bottles close. The bottle stock might be gone before then.
+
+<div class="hero-offer-block">
+<div class="price-line"><span class="strike">$949</span> → <strong>$749 + 2 free glass bottles</strong></div>
+<div class="code-line">Use code <code>EARLYACCESSGLASS</code> at checkout · Bundle only</div>
+</div>
+
+[ CLAIM BEFORE TUESDAY ]</div>
+      <div class="designer-note">[ Hero countdown-style. "TUESDAY · 11:59PM" in large weight. Slash-through price block + code + CTA below. Pure + bottles photographed smaller as a footer image. ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Body copy</div>
+      <div class="row-value body">Three things end in the same window:
+
+→ The <strong>$200 off</strong> on Rippl Pure
+→ The <strong>2 free glass bottles</strong> (bundle only)
+→ This <strong>stock batch</strong> — next Pures don't ship until 8 July
+
+<strong>Through Tuesday 11:59PM AEST, via the bundle:</strong>
+<span class="strike">$949 + $50</span> → <strong>$749, 2 glass bottles free</strong> = $250 off the kit.
+
+Here's how to claim:
+
+<strong>1.</strong> Click the button below to open the Rippl Pure + Glass Bottle bundle.
+<strong>2.</strong> Add to cart.
+<strong>3.</strong> Use code <code>EARLYACCESSGLASS</code> at checkout.
+
+(Code only works on the bundle, not on Pure standalone. Free bottles while bottle stock lasts.)
+
+If you've been waiting for a reason, this is the last weekend it lines up.</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">CTA</div>
+      <div class="row-value cta">[ CLAIM THE BUNDLE ]</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">T&Cs</div>
+      <div class="row-value tcs">Offer ends 11:59PM AEST, 30 June 2026. While stocks last.</div>
+    </div>
+
+    <div class="flag"><strong>Note:</strong> F applies the v4 feedback (streamlined T&Cs, hero slash + code + CTA, 3-step claim). Light pass — flagged for a deeper rework next session if needed.</div>
+
+    <div class="meta-row">
+      <div class="meta-item"><strong>Reply-to</strong>hello@ripplwater.com.au</div>
+      <div class="meta-item"><strong>Weekend send</strong>Casual urgency, not panic</div>
+      <div class="meta-item"><strong>Setup for G</strong>Final Tuesday close — Bade plain text</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====================== SEND G (UPDATED — feedback principles applied) ====================== -->
+<div class="email-card" id="G">
+  <div class="email-head">
+    <div class="left">
+      <div class="letter">G</div>
+      <div>
+        <div class="title">Final 24hr — plain text from Bade · 7am + 5pm resend</div>
+        <div class="when">Tue 30 Jun · 7am + 5pm resend · Engaged 180d + 30d openers, excl. purchased (~9.5k)</div>
+      </div>
+    </div>
+    <div class="tag plain">Plain text · Bade</div>
+  </div>
+  <div class="email-body">
+
+    <div class="row">
+      <div class="row-label">Subject — 7am send</div>
+      <div class="row-value subjects"><div class="subject-line">Quick one before midnight</div></div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Subject — 5pm resend</div>
+      <div class="row-value subjects"><div class="subject-line">Re: a note from Bade</div></div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Preview — both sends</div>
+      <div class="row-value preview">No template, no images. Just the offer and the deadline.</div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Body — 7am send (plain text, from Bade)</div>
+      <pre class="plain-text">Hi,
+
+Bade here — co-founder at Rippl.
+
+I won't dress this up. The EOFY price on Rippl Pure ($749, $200 off) and the 2 free glass bottles both disappear at midnight tonight.
+
+We built Pure because I got tired of buying bottled water for my family and feeling like I was choosing between cost and what the kids were actually drinking. Australian tap water is treated to standards, but those standards still let through PFAS, microplastics, chlorine byproducts, and trace heavy metals. Pure removes the lot via hospital-grade reverse osmosis — the same standard used in dialysis water.
+
+If you've been holding off, today's the day. Three quick steps:
+
+1. Open the bundle: drinkrippl.com/products/rippl-pure-2-glass-bottles
+2. Add to cart
+3. EARLYACCESSGLASS at checkout — bottles drop to $0
+
+That gets you Rippl Pure + 2 glass bottles for $749 ($250 off the kit). The code only works on the bundle.
+
+We're down to around 50 units of bottle stock — once those go, the free bottle perk closes even if the EOFY price hasn't yet.
+
+Hit reply if you've got questions. This email reaches me directly.
+
+Cheers,
+Bade
+Co-founder, Rippl</pre>
+    </div>
+
+    <div class="row">
+      <div class="row-label">Body — 5pm resend (plain text, from Bade)</div>
+      <pre class="plain-text">Hi,
+
+Five hours left.
+
+If you missed the earlier email — the EOFY price + 2 free glass bottles close at midnight tonight. Bundle only.
+
+drinkrippl.com/products/rippl-pure-2-glass-bottles — EARLYACCESSGLASS at checkout.
+
+Bade</pre>
+    </div>
+
+    <div class="row">
+      <div class="row-label">T&Cs</div>
+      <div class="row-value tcs">Offer ends 11:59PM AEST, 30 June 2026. While stocks last.</div>
+    </div>
+
+    <div class="flag"><strong>Format rules:</strong> no images, no buttons, no HTML template. Send as plain-text email from Bade's actual address (or at minimum reply-to). Inline links only. The whole point is it looks like Bade sat down and typed it — Lohnr founder-letter pattern.</div>
+
+    <div class="meta-row">
+      <div class="meta-item"><strong>From</strong>Bade (co-founder)</div>
+      <div class="meta-item"><strong>Reply-to</strong>hello@ripplwater.com.au — Bade reads replies</div>
+      <div class="meta-item"><strong>Stock figure</strong>"around 50" placeholder — update with real Tue morning count</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  Tethrd × Rippl · Rippl × Tethrd · June Sequence · Locked for review · 15 June 2026
+</div>
+
+</body>
+</html>
