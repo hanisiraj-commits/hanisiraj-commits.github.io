@@ -20,22 +20,22 @@
   .legend-divider { width: 1px; height: 24px; background: #E5E7EB; margin: 0 6px; }
 
   .canvas { padding: 30px 20px 60px; overflow-x: auto; background: #FAFAF7; }
-  .board { position: relative; min-width: 1620px; margin: 0 auto; }
+  .board { position: relative; min-width: 2100px; margin: 0 auto; }
 
-  .node { position: absolute; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 12px; font-size: 12px; line-height: 1.35; box-shadow: 0 2px 5px rgba(0,0,0,0.06); transition: transform 0.15s, box-shadow 0.15s; }
+  .node { position: absolute; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px; font-size: 11.5px; line-height: 1.35; box-shadow: 0 2px 5px rgba(0,0,0,0.06); transition: transform 0.15s, box-shadow 0.15s; }
   .node:hover { transform: translateY(-1px); box-shadow: 0 5px 12px rgba(0,0,0,0.1); z-index: 50; }
 
   .node-trigger    { background: #CFF5D1; border: 2px solid #4CAF50; color: #1B5E20; }
+  .node-trigger-b  { background: #FEF3C7; border: 2px solid #F59E0B; color: #78350F; }
   .node-compute    { background: #fff;    border: 2px solid #E5E7EB; color: #1a1a1a; }
   .node-split      { background: #fff;    border: 2px solid #1a1a1a; color: #1a1a1a; }
   .node-delay      { background: #DBEAFE; border: 2px solid #60A5FA; color: #1E3A8A; }
   .node-email      { background: #E9D5FF; border: 2px solid #A855F7; color: #581C87; }
-  .node-exit       { background: #F3F4F6; border: 2px dashed #9CA3AF; color: #6B7280; }
 
-  .node-icon { width: 26px; height: 26px; margin-bottom: 4px; opacity: 0.9; }
-  .node-label { font-size: 10.5px; font-weight: 500; margin-bottom: 2px; opacity: 0.8; }
-  .node-title { font-size: 12.5px; font-weight: 700; line-height: 1.25; }
-  .node-subtitle { font-size: 10px; font-weight: 500; opacity: 0.75; margin-top: 3px; font-family: Menlo, monospace; }
+  .node-icon { width: 22px; height: 22px; margin-bottom: 3px; opacity: 0.9; }
+  .node-label { font-size: 10px; font-weight: 500; margin-bottom: 2px; opacity: 0.85; }
+  .node-title { font-size: 11.5px; font-weight: 700; line-height: 1.25; }
+  .node-subtitle { font-size: 9.5px; font-weight: 500; opacity: 0.78; margin-top: 3px; font-family: Menlo, monospace; }
 
   .content-box {
     position: absolute; background: #F3F4F6; border: 1px solid #D1D5DB;
@@ -43,6 +43,7 @@
     color: #111; box-shadow: 0 2px 4px rgba(0,0,0,0.03);
   }
   .content-box .heading { font-weight: 700; margin-bottom: 8px; font-size: 12px; }
+  .content-box .shared-note { font-size: 10px; color: #6B7280; font-style: italic; margin-bottom: 8px; padding: 4px 8px; background: #fff; border-radius: 4px; border: 1px dashed #D1D5DB; display: inline-block; }
   .content-box ul { margin: 4px 0 6px; padding-left: 16px; }
   .content-box li { margin: 3px 0; }
   .content-box code { background: #E5E7EB; padding: 1px 4px; border-radius: 3px; font-size: 10px; font-family: Menlo, monospace; }
@@ -54,19 +55,31 @@
   .content-box .branch-label.repeat { color: #1E3A8A; }
 
   .branch-chip {
-    position: absolute; padding: 6px 12px; border-radius: 16px; color: #fff;
-    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    position: absolute; padding: 5px 10px; border-radius: 16px; color: #fff;
+    font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
     text-align: center; font-family: Menlo, monospace;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08); white-space: nowrap;
   }
   .chip-new        { background: #581C87; }
   .chip-repeat     { background: #1E40AF; }
 
-  .trigger-props { margin-top: 4px; font-size: 10px; line-height: 1.45; color: #1B5E20; font-family: Menlo, monospace; opacity: 0.85; }
-  .flow-filter-list { font-size: 10.5px; line-height: 1.5; text-align: left; margin: 4px 0 0; padding-left: 14px; }
+  /* Flow column labels */
+  .flow-label {
+    position: absolute; padding: 8px 16px; border-radius: 8px; color: #fff;
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  .flow-label.a { background: #16A34A; }
+  .flow-label.b { background: #D97706; }
+  .flow-label .sub { display: block; font-size: 9.5px; opacity: 0.85; margin-top: 2px; font-weight: 500; text-transform: none; letter-spacing: 0; font-family: Menlo, monospace; }
+
+  .trigger-props { margin-top: 3px; font-size: 9.5px; line-height: 1.4; font-family: Menlo, monospace; opacity: 0.85; }
+  .flow-filter-list { font-size: 10px; line-height: 1.5; text-align: left; margin: 4px 0 0; padding-left: 14px; }
   .flow-filter-list li { margin: 1px 0; }
+  .flow-filter-list .extra { color: #78350F; font-weight: 600; }
 
   .dashed-line { stroke-dasharray: 6, 4; }
+  .divider-line { stroke-dasharray: 4, 4; stroke: #D1D5DB; }
 
   .footer { padding: 18px 28px; background: #fff; border-top: 1px solid #E5E7EB; font-size: 12px; color: #6B7280; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   .footer code { background: #F3F4F6; padding: 2px 6px; border-radius: 3px; font-size: 11px; }
@@ -78,6 +91,7 @@
   .impl-notes li { margin: 4px 0; }
   .impl-notes code { background: #FEF3C7; padding: 1px 5px; border-radius: 3px; font-size: 11px; font-family: Menlo, monospace; }
   .impl-notes .src a { color: #78350F; }
+  .impl-notes .callout { margin-top: 10px; padding: 10px 14px; background: #FEF3C7; border-left: 4px solid #D97706; border-radius: 4px; font-size: 12.5px; }
 </style>
 </head>
 <body>
@@ -85,12 +99,12 @@
 <div class="header">
   <div>
     <h1>BON CHARGE · <code>F_CART-ABANDONMENT</code> · Flow Architecture Map</h1>
-    <span class="brand">for Klaviyo implementation · Shopify Checkout Started trigger</span>
+    <span class="brand">two parallel flows · Shopify ATC + Klaviyo onsite ATC (de-duplicated)</span>
   </div>
   <div class="meta">
-    <span><strong>3</strong> emails</span>
+    <span><strong>2</strong> flows</span>
+    <span><strong>3</strong> emails each</span>
     <span><strong>2</strong> branches</span>
-    <span><strong>~2 day</strong> window</span>
     <span>Built 16/06/2026</span>
   </div>
 </div>
@@ -98,7 +112,11 @@
 <div class="legend">
   <div class="legend-item">
     <div class="legend-node" style="background: #CFF5D1; border: 2px solid #4CAF50;"></div>
-    Trigger (event)
+    Trigger · Flow A (Shopify ATC)
+  </div>
+  <div class="legend-item">
+    <div class="legend-node" style="background: #FEF3C7; border: 2px solid #F59E0B;"></div>
+    Trigger · Flow B (Klaviyo onsite ATC)
   </div>
   <div class="legend-item">
     <div class="legend-node" style="background: #fff; border: 2px solid #E5E7EB;"></div>
@@ -106,31 +124,31 @@
   </div>
   <div class="legend-item">
     <div class="legend-node" style="background: #fff; border: 2px solid #1a1a1a;"></div>
-    Conditional Split
+    Split
   </div>
   <div class="legend-item">
     <div class="legend-node" style="background: #DBEAFE; border: 2px solid #60A5FA;"></div>
-    Time delay
+    Delay
   </div>
   <div class="legend-item">
     <div class="legend-node" style="background: #E9D5FF; border: 2px solid #A855F7;"></div>
-    Email send
+    Email
   </div>
   <div class="legend-divider"></div>
   <div class="legend-item">
-    <span class="branch-chip chip-new" style="position: relative; padding: 4px 10px;">NEW</span>
+    <span class="branch-chip chip-new" style="position: relative; padding: 3px 8px;">NEW</span>
     First-time buyer
   </div>
   <div class="legend-item">
-    <span class="branch-chip chip-repeat" style="position: relative; padding: 4px 10px;">REPEAT</span>
+    <span class="branch-chip chip-repeat" style="position: relative; padding: 3px 8px;">REPEAT</span>
     Existing customer
   </div>
 </div>
 
 <div class="canvas">
-<div class="board" style="height: 1640px;">
+<div class="board" style="height: 1720px;">
 
-  <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 1640px; pointer-events: none;" xmlns="http://www.w3.org/2000/svg">
+  <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 1720px; pointer-events: none;" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
         <path d="M 0 0 L 10 5 L 0 10 z" fill="#9CA3AF"/>
@@ -138,143 +156,283 @@
       <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
         <path d="M 0 0 L 10 5 L 0 10 z" fill="#4CAF50"/>
       </marker>
+      <marker id="arro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#F59E0B"/>
+      </marker>
     </defs>
 
-    <line x1="600" y1="315" x2="600" y2="345" stroke="#4CAF50" stroke-width="2.5" marker-end="url(#arrg)"/>
-    <line x1="600" y1="437" x2="600" y2="465" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
-    <line x1="600" y1="615" x2="600" y2="645" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
-    <line x1="600" y1="725" x2="600" y2="755" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
-    <line x1="600" y1="860" x2="600" y2="890" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <!-- Divider between Flow A and Flow B -->
+    <line x1="620" y1="120" x2="620" y2="1620" stroke-width="1" class="divider-line"/>
 
-    <line x1="600" y1="1005" x2="600" y2="1035" stroke="#9CA3AF" stroke-width="2"/>
-    <line x1="380" y1="1035" x2="820" y2="1035" stroke="#9CA3AF" stroke-width="2"/>
-    <line x1="380" y1="1035" x2="380" y2="1075" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
-    <line x1="820" y1="1035" x2="820" y2="1075" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <!-- ========== FLOW A SPINE (centre x=280) ========== -->
+    <line x1="280" y1="315" x2="280" y2="345" stroke="#4CAF50" stroke-width="2.5" marker-end="url(#arrg)"/>
+    <line x1="280" y1="437" x2="280" y2="465" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="280" y1="645" x2="280" y2="680" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="280" y1="760" x2="280" y2="790" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="280" y1="890" x2="280" y2="925" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="280" y1="1040" x2="280" y2="1065" stroke="#9CA3AF" stroke-width="2"/>
+    <line x1="190" y1="1065" x2="370" y2="1065" stroke="#9CA3AF" stroke-width="2"/>
+    <line x1="190" y1="1065" x2="190" y2="1105" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="370" y1="1065" x2="370" y2="1105" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="190" y1="1185" x2="190" y2="1215" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="190" y1="1315" x2="190" y2="1350" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="190" y1="1430" x2="190" y2="1460" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="370" y1="1185" x2="370" y2="1215" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="370" y1="1315" x2="370" y2="1350" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="370" y1="1430" x2="370" y2="1460" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
 
-    <line x1="380" y1="1155" x2="380" y2="1185" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
-    <line x1="380" y1="1290" x2="380" y2="1320" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
-    <line x1="380" y1="1400" x2="380" y2="1430" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <!-- ========== FLOW B SPINE (centre x=850) ========== -->
+    <line x1="850" y1="315" x2="850" y2="345" stroke="#F59E0B" stroke-width="2.5" marker-end="url(#arro)"/>
+    <line x1="850" y1="437" x2="850" y2="465" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="850" y1="660" x2="850" y2="680" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="850" y1="760" x2="850" y2="790" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="850" y1="890" x2="850" y2="925" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="850" y1="1040" x2="850" y2="1065" stroke="#9CA3AF" stroke-width="2"/>
+    <line x1="760" y1="1065" x2="940" y2="1065" stroke="#9CA3AF" stroke-width="2"/>
+    <line x1="760" y1="1065" x2="760" y2="1105" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="940" y1="1065" x2="940" y2="1105" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="760" y1="1185" x2="760" y2="1215" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="760" y1="1315" x2="760" y2="1350" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="760" y1="1430" x2="760" y2="1460" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="940" y1="1185" x2="940" y2="1215" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="940" y1="1315" x2="940" y2="1350" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="940" y1="1430" x2="940" y2="1460" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
 
-    <line x1="820" y1="1155" x2="820" y2="1185" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
-    <line x1="820" y1="1290" x2="820" y2="1320" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
-    <line x1="820" y1="1400" x2="820" y2="1430" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
-
-    <line x1="690" y1="807" x2="1080" y2="807" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
-    <line x1="910" y1="1237" x2="1080" y2="1237" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
-    <line x1="910" y1="1482" x2="1080" y2="1482" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+    <!-- ========== DASHED POINTERS TO SHARED CONTENT BOXES (x=1280) ========== -->
+    <!-- Email 1 box -->
+    <line x1="1020" y1="840" x2="1280" y2="840" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+    <!-- Email 2 box -->
+    <line x1="1020" y1="1265" x2="1280" y2="1265" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+    <!-- Email 3 box -->
+    <line x1="1020" y1="1510" x2="1280" y2="1510" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
   </svg>
 
-  <div class="node node-trigger" style="top: 180px; left: 490px; width: 220px; height: 135px;">
+  <!-- ============== FLOW COLUMN LABELS ============== -->
+  <div class="flow-label a" style="top: 130px; left: 175px; width: 210px;">
+    FLOW A
+    <span class="sub">F_CART-ABANDONMENT_SHOPIFY</span>
+  </div>
+  <div class="flow-label b" style="top: 130px; left: 730px; width: 240px;">
+    FLOW B · CLONE
+    <span class="sub">F_CART-ABANDONMENT_KLAVIYO</span>
+  </div>
+
+  <!-- ============== FLOW A NODES (centre x=280) ============== -->
+
+  <!-- Flow A Trigger -->
+  <div class="node node-trigger" style="top: 180px; left: 180px; width: 200px; height: 135px;">
     <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1B5E20" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>
     <div class="node-label">Trigger · Metric</div>
-    <div class="node-title">Checkout Started</div>
-    <div class="trigger-props">Shopify integration<br/>fires on email capture at checkout</div>
+    <div class="node-title">Added to Cart</div>
+    <div class="trigger-props" style="color:#1B5E20;">source: Shopify integration<br/>(server-side webhook)</div>
   </div>
 
-  <div class="node node-compute" style="top: 345px; left: 440px; width: 320px; height: 92px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" style="width: 22px; height: 22px;"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
-    <div class="node-label">Trigger Filter (event-level)</div>
+  <!-- Flow A Trigger filter -->
+  <div class="node node-compute" style="top: 345px; left: 130px; width: 300px; height: 92px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+    <div class="node-label">Trigger Filter (event)</div>
     <div class="node-title">$value &gt; $0</div>
-    <div class="node-subtitle">protects against empty / test carts</div>
+    <div class="node-subtitle">empty / test carts blocked</div>
   </div>
 
-  <div class="node node-compute" style="top: 465px; left: 430px; width: 340px; height: 150px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" style="width: 22px; height: 22px;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-    <div class="node-label">Flow Filter (profile-level)</div>
+  <!-- Flow A Flow filter -->
+  <div class="node node-compute" style="top: 465px; left: 130px; width: 300px; height: 180px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+    <div class="node-label">Flow Filter (profile)</div>
     <div class="node-title" style="margin-bottom: 4px;">Suppression set</div>
     <ul class="flow-filter-list">
-      <li><code>Placed Order</code> zero times since starting this flow</li>
-      <li>Has not been in this flow in last <code>30 days</code></li>
-      <li><code>Can receive email marketing</code> = True</li>
+      <li><code>Placed Order</code> 0× since starting flow</li>
+      <li><code>Started Checkout</code> 0× since starting flow</li>
+      <li>Not in this flow last <code>14 days</code></li>
+      <li><code>Can receive email</code> = True</li>
     </ul>
   </div>
 
-  <div class="node node-delay" style="top: 645px; left: 550px; width: 100px; height: 80px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+  <!-- Flow A delay -->
+  <div class="node node-delay" style="top: 680px; left: 230px; width: 100px; height: 80px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
     <div class="node-label">Delay</div>
     <div class="node-title">2 hours</div>
   </div>
 
-  <div class="node node-email" style="top: 755px; left: 510px; width: 180px; height: 105px;">
+  <!-- Flow A E1 -->
+  <div class="node node-email" style="top: 790px; left: 195px; width: 170px; height: 100px;">
     <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
     <div class="node-label">E1 · Reminder</div>
-    <div class="node-title">"You left something"</div>
-    <div class="node-subtitle">all checkouts · no discount</div>
+    <div class="node-title">"Cart still warm"</div>
+    <div class="node-subtitle">no discount</div>
   </div>
 
-  <div class="node node-split" style="top: 890px; left: 410px; width: 380px; height: 115px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.8" style="width: 22px; height: 22px;"><path d="M6 3v12"/><path d="M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M15 6a9 9 0 0 0-9 9"/></svg>
-    <div class="node-title">Conditional Split — Customer status</div>
-    <div class="node-subtitle">Placed Order &nbsp;0 times&nbsp; over all time?</div>
+  <!-- Flow A Split -->
+  <div class="node node-split" style="top: 925px; left: 120px; width: 320px; height: 115px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.8"><path d="M6 3v12"/><path d="M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M15 6a9 9 0 0 0-9 9"/></svg>
+    <div class="node-title">Split — Customer status</div>
+    <div class="node-subtitle">Placed Order 0× over all time?</div>
   </div>
 
-  <div class="branch-chip chip-new" style="top: 1045px; left: 320px; width: 120px;">NEW · YES</div>
-  <div class="branch-chip chip-repeat" style="top: 1045px; left: 760px; width: 120px;">REPEAT · NO</div>
+  <!-- Flow A branch chips -->
+  <div class="branch-chip chip-new" style="top: 1075px; left: 142px; width: 96px;">NEW · YES</div>
+  <div class="branch-chip chip-repeat" style="top: 1075px; left: 322px; width: 96px;">REPEAT · NO</div>
 
-  <div class="node node-delay" style="top: 1075px; left: 330px; width: 100px; height: 80px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+  <!-- Flow A NEW branch -->
+  <div class="node node-delay" style="top: 1105px; left: 145px; width: 90px; height: 80px;">
     <div class="node-label">Delay</div>
     <div class="node-title">1 day</div>
   </div>
-  <div class="node node-email" style="top: 1185px; left: 290px; width: 180px; height: 105px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-    <div class="node-label">E2 · First-buyer incentive</div>
-    <div class="node-title">"Take 20% off"</div>
-    <div class="node-subtitle">code: <strong>CART20</strong></div>
+  <div class="node node-email" style="top: 1215px; left: 110px; width: 160px; height: 100px;">
+    <div class="node-label">E2 · NEW</div>
+    <div class="node-title">"20% off"</div>
+    <div class="node-subtitle">CART20</div>
   </div>
-  <div class="node node-delay" style="top: 1320px; left: 330px; width: 100px; height: 80px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+  <div class="node node-delay" style="top: 1350px; left: 145px; width: 90px; height: 80px;">
     <div class="node-label">Delay</div>
     <div class="node-title">1 day</div>
   </div>
-  <div class="node node-email" style="top: 1430px; left: 290px; width: 180px; height: 105px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-    <div class="node-label">E3 · Final call</div>
-    <div class="node-title">"Last chance — 20%"</div>
-    <div class="node-subtitle">expiring CART20 · urgency</div>
+  <div class="node node-email" style="top: 1460px; left: 110px; width: 160px; height: 100px;">
+    <div class="node-label">E3 · NEW</div>
+    <div class="node-title">"Last chance 20%"</div>
+    <div class="node-subtitle">expiring CART20</div>
   </div>
 
-  <div class="node node-delay" style="top: 1075px; left: 770px; width: 100px; height: 80px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+  <!-- Flow A REPEAT branch -->
+  <div class="node node-delay" style="top: 1105px; left: 325px; width: 90px; height: 80px;">
     <div class="node-label">Delay</div>
     <div class="node-title">1 day</div>
   </div>
-  <div class="node node-email" style="top: 1185px; left: 730px; width: 180px; height: 105px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-    <div class="node-label">E2 · Social proof</div>
-    <div class="node-title">"Why others came back"</div>
-    <div class="node-subtitle">reviews · no discount</div>
+  <div class="node node-email" style="top: 1215px; left: 290px; width: 160px; height: 100px;">
+    <div class="node-label">E2 · REPEAT</div>
+    <div class="node-title">"Why they came back"</div>
+    <div class="node-subtitle">reviews · no code</div>
   </div>
-  <div class="node node-delay" style="top: 1320px; left: 770px; width: 100px; height: 80px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+  <div class="node node-delay" style="top: 1350px; left: 325px; width: 90px; height: 80px;">
     <div class="node-label">Delay</div>
     <div class="node-title">1 day</div>
   </div>
-  <div class="node node-email" style="top: 1430px; left: 730px; width: 180px; height: 105px;">
-    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-    <div class="node-label">E3 · Benefit reinforcement</div>
+  <div class="node node-email" style="top: 1460px; left: 290px; width: 160px; height: 100px;">
+    <div class="node-label">E3 · REPEAT</div>
     <div class="node-title">"Real results"</div>
     <div class="node-subtitle">testimonial · no code</div>
   </div>
 
-  <div class="content-box" style="top: 750px; left: 1080px; width: 480px;">
-    <div class="heading">Email 1 — 2hr reminder (single send, no split)</div>
+  <!-- ============== FLOW B NODES (centre x=850) ============== -->
+
+  <!-- Flow B Trigger -->
+  <div class="node node-trigger-b" style="top: 180px; left: 750px; width: 200px; height: 135px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#78350F" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>
+    <div class="node-label">Trigger · Metric</div>
+    <div class="node-title">Added to Cart</div>
+    <div class="trigger-props" style="color:#78350F;">source: Klaviyo onsite JS<br/>(client-side cookie match)</div>
+  </div>
+
+  <!-- Flow B Trigger filter -->
+  <div class="node node-compute" style="top: 345px; left: 700px; width: 300px; height: 92px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+    <div class="node-label">Trigger Filter (event)</div>
+    <div class="node-title">$value &gt; $0</div>
+    <div class="node-subtitle">empty / test carts blocked</div>
+  </div>
+
+  <!-- Flow B Flow filter — extra suppression line -->
+  <div class="node node-compute" style="top: 465px; left: 690px; width: 320px; height: 195px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+    <div class="node-label">Flow Filter (profile)</div>
+    <div class="node-title" style="margin-bottom: 4px;">Suppression set</div>
+    <ul class="flow-filter-list">
+      <li><code>Placed Order</code> 0× since starting flow</li>
+      <li><code>Started Checkout</code> 0× since starting flow</li>
+      <li>Not in this flow last <code>14 days</code></li>
+      <li><code>Can receive email</code> = True</li>
+      <li class="extra">Has not received email from <code>Flow A</code> last <code>30 days</code></li>
+    </ul>
+  </div>
+
+  <!-- Flow B delay — LONGER -->
+  <div class="node node-delay" style="top: 680px; left: 800px; width: 100px; height: 80px;">
+    <div class="node-label">Delay</div>
+    <div class="node-title">4 hours</div>
+    <div class="node-subtitle">+2hr vs Flow A</div>
+  </div>
+
+  <!-- Flow B E1 -->
+  <div class="node node-email" style="top: 790px; left: 765px; width: 170px; height: 100px;">
+    <div class="node-label">E1 · Reminder</div>
+    <div class="node-title">"Cart still warm"</div>
+    <div class="node-subtitle">identical copy</div>
+  </div>
+
+  <!-- Flow B Split -->
+  <div class="node node-split" style="top: 925px; left: 690px; width: 320px; height: 115px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.8"><path d="M6 3v12"/><path d="M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M15 6a9 9 0 0 0-9 9"/></svg>
+    <div class="node-title">Split — Customer status</div>
+    <div class="node-subtitle">Placed Order 0× over all time?</div>
+  </div>
+
+  <!-- Flow B branch chips -->
+  <div class="branch-chip chip-new" style="top: 1075px; left: 712px; width: 96px;">NEW · YES</div>
+  <div class="branch-chip chip-repeat" style="top: 1075px; left: 892px; width: 96px;">REPEAT · NO</div>
+
+  <!-- Flow B NEW branch -->
+  <div class="node node-delay" style="top: 1105px; left: 715px; width: 90px; height: 80px;">
+    <div class="node-label">Delay</div>
+    <div class="node-title">1 day</div>
+  </div>
+  <div class="node node-email" style="top: 1215px; left: 680px; width: 160px; height: 100px;">
+    <div class="node-label">E2 · NEW</div>
+    <div class="node-title">"20% off"</div>
+    <div class="node-subtitle">CART20</div>
+  </div>
+  <div class="node node-delay" style="top: 1350px; left: 715px; width: 90px; height: 80px;">
+    <div class="node-label">Delay</div>
+    <div class="node-title">1 day</div>
+  </div>
+  <div class="node node-email" style="top: 1460px; left: 680px; width: 160px; height: 100px;">
+    <div class="node-label">E3 · NEW</div>
+    <div class="node-title">"Last chance 20%"</div>
+    <div class="node-subtitle">expiring CART20</div>
+  </div>
+
+  <!-- Flow B REPEAT branch -->
+  <div class="node node-delay" style="top: 1105px; left: 895px; width: 90px; height: 80px;">
+    <div class="node-label">Delay</div>
+    <div class="node-title">1 day</div>
+  </div>
+  <div class="node node-email" style="top: 1215px; left: 860px; width: 160px; height: 100px;">
+    <div class="node-label">E2 · REPEAT</div>
+    <div class="node-title">"Why they came back"</div>
+    <div class="node-subtitle">reviews · no code</div>
+  </div>
+  <div class="node node-delay" style="top: 1350px; left: 895px; width: 90px; height: 80px;">
+    <div class="node-label">Delay</div>
+    <div class="node-title">1 day</div>
+  </div>
+  <div class="node node-email" style="top: 1460px; left: 860px; width: 160px; height: 100px;">
+    <div class="node-label">E3 · REPEAT</div>
+    <div class="node-title">"Real results"</div>
+    <div class="node-subtitle">testimonial · no code</div>
+  </div>
+
+  <!-- ============== SHARED CONTENT BOXES (x=1280, width=720) ============== -->
+
+  <div class="content-box" style="top: 750px; left: 1280px; width: 720px;">
+    <div class="heading">Email 1 — Reminder (single send, no split)</div>
+    <span class="shared-note">SHARED · same template in Flow A &amp; Flow B</span>
     <span class="subj">SUBJECT: "Your cart's still warm"</span>
     <span class="preview">PREVIEW: "Your items are saved — finish whenever you're ready."</span>
     <div class="section-label">Angle</div>
     Gentle, brand-led nudge. No discount, no urgency. Frames the cart as held safely so the shopper feels no pressure but is reminded the items are still there.
     <div class="section-label">Modules</div>
     <ul>
-      <li>Dynamic cart product block — <code>{{ event.extra.line_items }}</code></li>
+      <li>Dynamic cart product block — <code>{{ event.extra.line_items }}</code> (works for both Shopify and onsite ATC payloads)</li>
       <li>One-line value reinforcement (Andy voice — science-led, no claims tells)</li>
-      <li>Single CTA — <code>RETURN TO CHECKOUT</code> (deep link via <code>{{ event.extra.checkout_url }}</code>)</li>
+      <li>Single CTA — <code>RETURN TO CART</code></li>
       <li>Footer per BON CHARGE design system (sans wordmark, generic SHOP NOW colour rules)</li>
     </ul>
     <span class="badge">NO DISCOUNT · NO URGENCY</span>
   </div>
 
-  <div class="content-box" style="top: 1130px; left: 1080px; width: 480px;">
+  <div class="content-box" style="top: 1180px; left: 1280px; width: 720px;">
     <div class="heading">Email 2 — Day 1 (split by customer status)</div>
+    <span class="shared-note">SHARED · same templates in Flow A &amp; Flow B</span>
 
     <div class="branch-label">NEW customer branch</div>
     <span class="subj">SUBJECT: "Here's 20% to seal it 🎁"</span>
@@ -297,8 +455,9 @@
     </ul>
   </div>
 
-  <div class="content-box" style="top: 1375px; left: 1080px; width: 480px;">
+  <div class="content-box" style="top: 1420px; left: 1280px; width: 720px;">
     <div class="heading">Email 3 — Day 2 (split by customer status)</div>
+    <span class="shared-note">SHARED · same templates in Flow A &amp; Flow B</span>
 
     <div class="branch-label">NEW customer branch</div>
     <span class="subj">SUBJECT: "Last call on your 20% 🔔"</span>
@@ -327,42 +486,66 @@
 
 <div class="impl-notes">
   <div class="heading">📋 Klaviyo setup checklist for implementation</div>
+
+  <div class="callout">
+    <strong>Why two flows?</strong> Shopify's webhook-based <code>Added to Cart</code> only fires when the shopper is identified server-side (logged in or returning Shopify customer). Klaviyo's onsite JS catches anonymous visitors who've been cookie-matched via prior email engagement — different population, partial overlap. Running both maximises coverage. The Flow B suppression filter prevents profiles who already received Flow A from getting a duplicate sequence.
+  </div>
+
+  <div class="sub-heading">Flow A — F_CART-ABANDONMENT_SHOPIFY (build first)</div>
   <ul>
-    <li><strong>Trigger:</strong> Metric → <code>Checkout Started</code> (Shopify integration). Klaviyo officially recommends Checkout Started over Added to Cart because the shopper has already submitted an email — higher intent, fewer false fires.</li>
-    <li><strong>Trigger filter (event):</strong> <code>$value greater than $0</code> — protects against empty / test carts. Optionally raise to a margin floor (e.g. <code>$value &gt; $50</code>) if Andy wants to limit incentives to higher-AOV carts.</li>
-    <li><strong>Flow filter (profile-level) — apply all three:</strong>
+    <li><strong>Trigger:</strong> Metric → <code>Added to Cart</code> · source = Shopify integration. Confirm in Klaviyo Metrics panel that the metric's integration shows "Shopify" — there will likely be two ATC metrics in the account, you want the server-side one.</li>
+    <li><strong>Trigger filter (event):</strong> <code>$value &gt; $0</code> — blocks empty / test carts.</li>
+    <li><strong>Flow filter (profile-level) — apply all four:</strong>
       <ul>
-        <li><code>What someone has done (or not done) → Placed Order zero times since starting this flow</code> — the canonical conversion-suppression filter. Removes anyone who completes purchase mid-flow.</li>
-        <li><code>Has not been in this flow in the last 30 days</code> — agency-standard window for Checkout Started (vs 14 days for Added to Cart). Protects margin and prevents discount-hunting on the NEW branch.</li>
-        <li><code>Can receive email marketing = True</code> — explicit consent check.</li>
+        <li><code>What someone has done → Placed Order zero times since starting this flow</code> — canonical conversion suppression.</li>
+        <li><code>What someone has done → Started Checkout zero times since starting this flow</code> — drops profiles who progress to checkout into the Checkout Started flow instead (assumes a separate Checkout Started flow exists; if not, this filter is optional but still recommended for future-proofing).</li>
+        <li><code>Has not been in this flow in the last 14 days</code> — agency-standard window for Added to Cart (vs 30 days for Checkout Started — ATC fires more often so the window is tighter).</li>
+        <li><code>Can receive email marketing = True</code> — consent check.</li>
       </ul>
     </li>
-    <li><strong>"Checkout still open" not natively supported.</strong> Klaviyo doesn't expose a cart-status field — the <code>Placed Order zero times since starting this flow</code> filter is the canonical proxy.</li>
-    <li><strong>Smart sending:</strong> <code>OFF</code> for this flow. Agency consensus — the 16hr quiet window blocks legitimate high-intent sends. (Klaviyo's general default is ON; we're overriding for cart abandonment specifically.)</li>
-    <li><strong>Re-entry:</strong> <code>ALLOW</code> re-entry. Checkout Started fires per session; the 30-day flow filter handles throttling.</li>
-    <li><strong>Time delays:</strong> <code>2 hours</code> → Email 1 · <code>1 day</code> → Email 2 · <code>1 day</code> → Email 3. Matches current Klaviyo + agency best practice (BS&amp;Co, SyncSpark 2026).</li>
-    <li><strong>Conditional split (post-E1):</strong> <code>What someone has done → Placed Order equals 0 over all time</code> → <strong>YES</strong> routes to NEW branch · <strong>NO</strong> routes to REPEAT branch. Critical — must be a <em>conditional split</em>, not a flow filter (a flow-level filter here would suppress repeat buyers entirely).</li>
-    <li><strong>Branch order:</strong> evaluate NEW (Placed Order = 0) first; everything else falls into REPEAT.</li>
-    <li><strong>Discount code:</strong> single static code <code>CART20</code> for NEW branch. Confirm with Andy whether this should be a unique Klaviyo-generated code per profile (preferred for tracking + abuse protection) or a static code.</li>
-    <li><strong>Personalisation tokens:</strong> <code>{{ event.extra.line_items }}</code> for cart product block · <code>{{ event.extra.checkout_url }}</code> for the resume-checkout deep link · <code>{{ person.first_name|default:'there' }}</code> in greeting (BON CHARGE voice — keep it minimal, no "Hey [name]!" energy).</li>
-    <li><strong>Templates:</strong> source from Figma file <code>fpOouAaKYOInN4Fg9WDUBs</code>. Map to BON CHARGE canonical 10-module structure (stats block replaces narrative opener, UGC mandatory, site-wide + HSA/FSA modules at footer).</li>
-    <li><strong>BON CHARGE compliance pass:</strong> all copy must clear the Permissible Claims checklist before send (TGA-aligned banned words, em-dash rule for Andy voice, humanizer pre-pass).</li>
+    <li><strong>Smart sending:</strong> <code>ON</code> for Flow A. ATC fires multiple times per shopper per day — Smart Sending's 16hr quiet period protects from over-mailing.</li>
+    <li><strong>Re-entry:</strong> <code>ALLOW</code> re-entry. The 14-day flow filter throttles repeats.</li>
+    <li><strong>Time delays:</strong> <code>2hr</code> → E1 · <code>1 day</code> → E2 · <code>1 day</code> → E3.</li>
+    <li><strong>Conditional split (post-E1):</strong> <code>Placed Order equals 0 over all time</code> → <strong>YES</strong> = NEW · <strong>NO</strong> = REPEAT. Must be a conditional split, not a flow filter.</li>
+  </ul>
+
+  <div class="sub-heading">Flow B — F_CART-ABANDONMENT_KLAVIYO (clone Flow A, then modify)</div>
+  <ul>
+    <li><strong>Clone Flow A entirely</strong> from Klaviyo's flow library (Flow → ⋯ → Clone). Rename to <code>F_CART-ABANDONMENT_KLAVIYO</code>.</li>
+    <li><strong>Change trigger:</strong> Metric → <code>Added to Cart</code> · source = <strong>Klaviyo onsite tracking</strong> (the client-side metric, NOT the Shopify integration one). Confirm via the integration column in the metrics list.</li>
+    <li><strong>Required: Active on Site tracking</strong> — Klaviyo's <code>klaviyo.js</code> snippet must be installed in the Shopify theme (Settings → Account → API Keys → Klaviyo's tracking snippet) for this metric to fire reliably. Without it, Flow B will have near-zero entries.</li>
+    <li><strong>Increase initial delay:</strong> change first time delay from <code>2 hours</code> → <code>4 hours</code>. This gives Flow A a head start, so any profile who'd qualify for both flows gets caught by Flow A first.</li>
+    <li><strong>Add suppression filter:</strong> in addition to the four filters from Flow A, add a fifth — <code>What someone has done → Received Email zero times in the last 30 days where Flow equals F_CART-ABANDONMENT_SHOPIFY</code>. This is the deduplication safeguard.</li>
+    <li><strong>Smart sending:</strong> <code>ON</code>.</li>
+    <li><strong>Re-entry:</strong> <code>ALLOW</code>.</li>
+    <li><strong>Templates:</strong> use the same 6 emails from Flow A (Klaviyo's clone copies the template assignments — confirm no orphaned templates after rename).</li>
+  </ul>
+
+  <div class="sub-heading">Shared setup details</div>
+  <ul>
+    <li><strong>Personalisation tokens:</strong> <code>{{ event.extra.line_items }}</code> for cart product block · <code>{{ person.first_name|default:'there' }}</code> in greeting. Note: Shopify ATC and Klaviyo onsite ATC have slightly different payload shapes — test the cart product block renders for both. If it doesn't, the Klaviyo onsite payload uses <code>{{ event.extra.Items }}</code> (capital I) instead.</li>
+    <li><strong>Discount code:</strong> <code>CART20</code> for NEW branch. Confirm with Andy whether static or Klaviyo-generated unique code.</li>
+    <li><strong>Templates source:</strong> Figma file <code>fpOouAaKYOInN4Fg9WDUBs</code>. Map to BON CHARGE canonical 10-module structure (stats block replaces narrative opener, UGC mandatory, site-wide + HSA/FSA modules at footer).</li>
+    <li><strong>BON CHARGE compliance pass:</strong> all copy must clear the Permissible Claims checklist (TGA-aligned banned words, em-dash rule, humanizer pre-pass).</li>
     <li><strong>QA test plan:</strong>
       <ul>
-        <li>Fire a Checkout Started event on a test profile with <code>Placed Order = 0</code> → confirms routing into NEW branch, E2 contains <code>CART20</code>.</li>
-        <li>Fire on test profile with <code>Placed Order ≥ 1</code> → confirms routing into REPEAT branch, E2 contains no code.</li>
-        <li>Mid-flow purchase test: fire Checkout Started, place order manually within 24hr, confirm profile drops from flow before E2.</li>
-        <li>Re-fire Checkout Started inside the 30-day window → profile should NOT re-enter.</li>
+        <li>Fire Shopify ATC on test profile with <code>Placed Order = 0</code> → confirms entry into Flow A NEW branch, E2 contains <code>CART20</code>.</li>
+        <li>Fire Klaviyo onsite ATC on a different test profile → confirms entry into Flow B, 4hr delay applied.</li>
+        <li>Fire BOTH events on the same test profile within 30 min → Flow A should send E1; Flow B should NOT (suppression filter blocks).</li>
+        <li>Mid-flow purchase test: enter Flow A, complete checkout before E2 → confirms profile exits both flows.</li>
         <li>Empty cart test → trigger filter should block flow entry.</li>
+        <li>Check the cart product block renders in Klaviyo's preview using both a Shopify event sample AND an onsite event sample.</li>
       </ul>
     </li>
   </ul>
+
   <div class="sub-heading">🔎 Best-practice sources consulted</div>
   <ul class="src">
     <li><a href="https://help.klaviyo.com/hc/en-us/articles/115002779411">Klaviyo Help — How to create an abandoned cart flow</a></li>
     <li><a href="https://community.klaviyo.com/marketing-30/abandoned-cart-vs-checkout-started-1790">Klaviyo Community — Abandoned Cart vs Checkout Started (Elise Gaines, Klaviyo staff)</a></li>
     <li><a href="https://community.klaviyo.com/marketing-30/when-should-i-use-the-trigger-filter-placed-order-zero-times-since-starting-this-flow-7925">Klaviyo Community — Placed Order zero times since starting this flow</a></li>
     <li><a href="https://community.klaviyo.com/marketing-30/conditional-split-in-welcome-flow-for-abandoned-cart-16481">Klaviyo Community — Conditional split for new vs returning</a></li>
+    <li><a href="https://help.klaviyo.com/hc/en-us/articles/115005082927">Klaviyo Help — Onsite tracking (klaviyo.js)</a></li>
     <li><a href="https://syncspark.ca/blog/klaviyo-abandoned-cart-flow">SyncSpark 2026 setup guide</a></li>
     <li><a href="https://www.mavlers.com/blog/klaviyo-abandoned-cart-flow-setup/">Mavlers setup guide</a></li>
     <li><a href="https://bsandco.us/blog-post/abandoned-cart-flow-klaviyo">BS&amp;Co setup guide</a></li>
@@ -371,7 +554,7 @@
 
 <div class="footer">
   <div>
-    <strong>Trigger source:</strong> Shopify (Checkout Started) · <strong>Custom metric:</strong> <code>Checkout Started</code> · <strong>Figma:</strong> <code>fpOouAaKYOInN4Fg9WDUBs</code>
+    <strong>Trigger sources:</strong> Shopify integration (Flow A) + Klaviyo onsite JS (Flow B) · <strong>Metrics:</strong> both <code>Added to Cart</code>, separated by integration column · <strong>Figma:</strong> <code>fpOouAaKYOInN4Fg9WDUBs</code>
   </div>
   <div>Built 16/06/2026 · BON CHARGE · F_CART-ABANDONMENT</div>
 </div>
