@@ -1,0 +1,587 @@
+{
+  "flows": [
+    {
+      "id": "Wfc5Vs",
+      "name": "Welcome series",
+      "trigger": {
+        "label": "Added to List",
+        "type": "list"
+      },
+      "sequence": [
+        {
+          "kind": "email",
+          "msg": "Y3BXrV"
+        },
+        {
+          "kind": "delay",
+          "seconds": 86400
+        },
+        {
+          "kind": "email",
+          "msg": "WMzScF"
+        },
+        {
+          "kind": "delay",
+          "seconds": 172800
+        },
+        {
+          "kind": "email",
+          "msg": "Un8W5z"
+        },
+        {
+          "kind": "delay",
+          "seconds": 172800
+        },
+        {
+          "kind": "email",
+          "msg": "RjEXjQ"
+        }
+      ]
+    },
+    {
+      "id": "UjUEey",
+      "name": "Abandoned Checkout",
+      "trigger": {
+        "label": "Checkout Started",
+        "type": "metric"
+      },
+      "sequence": [
+        {
+          "kind": "delay",
+          "seconds": 1800
+        },
+        {
+          "kind": "split",
+          "label": "Has placed an order before?",
+          "branches": [
+            {
+              "label": "Yes \u2014 Existing customer",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "W8kxK3"
+                },
+                {
+                  "kind": "delay",
+                  "seconds": 86400
+                },
+                {
+                  "kind": "email",
+                  "msg": "RcPr9r"
+                }
+              ]
+            },
+            {
+              "label": "No \u2014 Non-customer",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "TnnAem"
+                },
+                {
+                  "kind": "delay",
+                  "seconds": 86400
+                },
+                {
+                  "kind": "email",
+                  "msg": "TQ98ac"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TXnAp3",
+      "name": "Abandoned Collection Browse",
+      "trigger": {
+        "label": "Viewed Collection",
+        "type": "metric"
+      },
+      "sequence": [
+        {
+          "kind": "delay",
+          "seconds": 5400
+        },
+        {
+          "kind": "split",
+          "label": "Browsed Beef collection?",
+          "branches": [
+            {
+              "label": "Yes \u2014 Beef interest",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "RxVEfV"
+                }
+              ]
+            },
+            {
+              "label": "No \u2014 Other collection",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "RtipUx"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TcMQvW",
+      "name": "Abandoned Product Browse",
+      "trigger": {
+        "label": "Viewed Product",
+        "type": "metric"
+      },
+      "sequence": [
+        {
+          "kind": "delay",
+          "seconds": 6300
+        },
+        {
+          "kind": "split",
+          "label": "Product category?",
+          "branches": [
+            {
+              "label": "Beef",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "YA5v3p"
+                }
+              ]
+            },
+            {
+              "label": "Pork",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "YvseFZ"
+                }
+              ]
+            },
+            {
+              "label": "Lamb",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "UPXdjD"
+                }
+              ]
+            },
+            {
+              "label": "Seafood",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "RMvezU"
+                }
+              ]
+            },
+            {
+              "label": "Poultry",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "SffLvK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Vdt27T",
+      "name": "F_REFERRAL-PROXIMITY",
+      "trigger": {
+        "label": "Custom event \u2014 referral milestone",
+        "type": "metric"
+      },
+      "sequence": [
+        {
+          "kind": "split",
+          "label": "Referral tier?",
+          "branches": [
+            {
+              "label": "Tier 1 (1 from reward)",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "Up9Vxy"
+                }
+              ]
+            },
+            {
+              "label": "Tier 2 (1 from reward)",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "XxsExj"
+                }
+              ]
+            },
+            {
+              "label": "Tier 3 (1 from reward)",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "QWKaXv"
+                }
+              ]
+            },
+            {
+              "label": "Tier 4 (10 from reward)",
+              "nodes": [
+                {
+                  "kind": "email",
+                  "msg": "WxTAnB"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Uv6Niv",
+      "name": "Kick Of Lab Referral (Pre-launch nurture)",
+      "trigger": {
+        "label": "Joined pre-launch list",
+        "type": "metric"
+      },
+      "sequence": [
+        {
+          "kind": "email",
+          "msg": "RB4QbK"
+        },
+        {
+          "kind": "delay",
+          "seconds": 86400
+        },
+        {
+          "kind": "email",
+          "msg": "TgBdaS"
+        },
+        {
+          "kind": "delay",
+          "seconds": 172800
+        },
+        {
+          "kind": "email",
+          "msg": "XRBinU"
+        },
+        {
+          "kind": "delay",
+          "seconds": 172800
+        },
+        {
+          "kind": "email",
+          "msg": "UpZ3Ud"
+        },
+        {
+          "kind": "delay",
+          "seconds": 172800
+        },
+        {
+          "kind": "email",
+          "msg": "XJX3SZ"
+        },
+        {
+          "kind": "delay",
+          "seconds": 259200
+        },
+        {
+          "kind": "email",
+          "msg": "UcHx4U"
+        },
+        {
+          "kind": "delay",
+          "seconds": 259200
+        },
+        {
+          "kind": "email",
+          "msg": "UcgLGp"
+        },
+        {
+          "kind": "delay",
+          "seconds": 345600
+        },
+        {
+          "kind": "email",
+          "msg": "RETA7c"
+        },
+        {
+          "kind": "delay",
+          "seconds": 432000
+        },
+        {
+          "kind": "email",
+          "msg": "U8WLrb"
+        },
+        {
+          "kind": "delay",
+          "seconds": 432000
+        },
+        {
+          "kind": "email",
+          "msg": "RL86uW"
+        },
+        {
+          "kind": "delay",
+          "seconds": 345600
+        },
+        {
+          "kind": "email",
+          "msg": "VRkDCC"
+        }
+      ]
+    }
+  ],
+  "messages": {
+    "RxVEfV": {
+      "name": "Abandoned Collection Browse Email 1 Beef",
+      "subject": "So... what's the deal with marbling?",
+      "preview": "M2 vs M9 makes all the difference",
+      "from_label": "Steak King UK",
+      "file": "TXnAp3__RxVEfV__abandoned-collection-browse-email-1-beef.html",
+      "flow_name": "Abandoned Collection Browse"
+    },
+    "RtipUx": {
+      "name": "Abandoned Collection Browse Email 1 General",
+      "subject": "Why our suppliers matter",
+      "preview": "From Jack's Creek in Australia to trusted family farms across Europe",
+      "from_label": "Steak King UK",
+      "file": "TXnAp3__RtipUx__abandoned-collection-browse-email-1-general.html",
+      "flow_name": "Abandoned Collection Browse"
+    },
+    "YvseFZ": {
+      "name": "Abandoned Product Browse Email 1 Pork",
+      "subject": "Sweet & sour Iberico pork chops",
+      "preview": "Here's how to cook the Wagyu of pork",
+      "from_label": "Steak King UK",
+      "file": "TcMQvW__YvseFZ__abandoned-product-browse-email-1-pork.html",
+      "flow_name": "Abandoned Product Browse"
+    },
+    "UPXdjD": {
+      "name": "Abandoned Product Browse Email 1 Lamb",
+      "subject": "Slow braised lamb shanks in red wine",
+      "preview": "Fall-off-the-bone tender, rich red wine sauce. Perfect comfort food.",
+      "from_label": "Steak King UK",
+      "file": "TcMQvW__UPXdjD__abandoned-product-browse-email-1-lamb.html",
+      "flow_name": "Abandoned Product Browse"
+    },
+    "RMvezU": {
+      "name": "Abandoned Product Browse Email 1 Seafood",
+      "subject": "Grilled tiger prawns",
+      "preview": "Juicy, charred, bursting with flavour. Simple seafood perfection.",
+      "from_label": "Steak King UK",
+      "file": "TcMQvW__RMvezU__abandoned-product-browse-email-1-seafood.html",
+      "flow_name": "Abandoned Product Browse"
+    },
+    "SffLvK": {
+      "name": "Abandoned Product Browse Email 1 Poultry",
+      "subject": "Grilled tiger prawns",
+      "preview": "Juicy, charred, bursting with flavour. Simple seafood perfection.",
+      "from_label": "Steak King UK",
+      "file": "TcMQvW__SffLvK__abandoned-product-browse-email-1-poultry.html",
+      "flow_name": "Abandoned Product Browse"
+    },
+    "YA5v3p": {
+      "name": "Abandoned Product Browse Email 1 Beef",
+      "subject": "How to cook the perfect steak",
+      "preview": "Restaurant-quality. Here's how to do it at home.",
+      "from_label": "Steak King UK",
+      "file": "TcMQvW__YA5v3p__abandoned-product-browse-email-1-beef.html",
+      "flow_name": "Abandoned Product Browse"
+    },
+    "W8kxK3": {
+      "name": "Abandoned Checkout Email 1 (Existing Customers)",
+      "subject": "These won't cook themselves...",
+      "preview": "\u2028Your favourite. Ready to order.",
+      "from_label": "Steak King UK",
+      "file": "UjUEey__W8kxK3__abandoned-checkout-email-1-existing-customers.html",
+      "flow_name": "ABANDONED-CHECKOUT"
+    },
+    "TnnAem": {
+      "name": "Abandoned Checkout Email 1 (Non-Customers)",
+      "subject": "These won't cook themselves...",
+      "preview": "Plus, you've got \u00a320 off waiting. ",
+      "from_label": "Steak King UK",
+      "file": "UjUEey__TnnAem__abandoned-checkout-email-1-non-customers.html",
+      "flow_name": "ABANDONED-CHECKOUT"
+    },
+    "RcPr9r": {
+      "name": "Abandoned Checkout Email 2 (Existing Customers)",
+      "subject": "Your cart called. It's hungry.",
+      "preview": "you don't want to skip out on these",
+      "from_label": "Steak King UK",
+      "file": "UjUEey__RcPr9r__abandoned-checkout-email-2-existing-customers.html",
+      "flow_name": "ABANDONED-CHECKOUT"
+    },
+    "TQ98ac": {
+      "name": "Abandoned Checkout Email 2 (Non-Customers)",
+      "subject": "Your cart called. It's hungry.",
+      "preview": "(It's still \u00a320 off) ",
+      "from_label": "Steak King UK",
+      "file": "UjUEey__TQ98ac__abandoned-checkout-email-2-non-customers.html",
+      "flow_name": "ABANDONED-CHECKOUT"
+    },
+    "RB4QbK": {
+      "name": "Kick Of Referral Optin 1",
+      "subject": "You just joined the good ones \ud83d\udd25",
+      "preview": "Your referral link. And how this is going to work.",
+      "from_label": "Steak King UK",
+      "file": "Uv6Niv__RB4QbK__kick-of-referral-optin-1.html",
+      "flow_name": "Kick Of Lab Referral Flow"
+    },
+    "TgBdaS": {
+      "name": "Kick Of Referral Optin 2",
+      "subject": "Right then, who is Johnny? \ud83d\udc4b",
+      "preview": "30 years in food. One Michelin Guide listing. Finally coming home.",
+      "from_label": "Steak King UK",
+      "file": "Uv6Niv__TgBdaS__kick-of-referral-optin-2.html",
+      "flow_name": "Kick Of Lab Referral Flow"
+    },
+    "XRBinU": {
+      "name": "Kick Of Referral Optin 3",
+      "subject": "Do you know what Aussie Wagyu is? \ud83e\udd69",
+      "preview": "The world's been on it for years. UK hasn't.",
+      "from_label": "Steak King UK",
+      "file": "Uv6Niv__XRBinU__kick-of-referral-optin-3.html",
+      "flow_name": "Kick Of Lab Referral Flow"
+    },
+    "UpZ3Ud": {
+      "name": "Kick Of Referral Optin 4",
+      "subject": "Aussie Wagyu > Japanese Wagyu, no BS \ud83e\udd69",
+      "preview": "What Australian Wagyu actually is. Read on.",
+      "from_label": "Steak King UK",
+      "file": "Uv6Niv__UpZ3Ud__kick-of-referral-optin-4.html",
+      "flow_name": "Kick Of Lab Referral Flow"
+    },
+    "XJX3SZ": {
+      "name": "Kick Of Referral Optin 5",
+      "subject": "Never get rinsed at your supermarket again \ud83d\uded2",
+      "preview": "3 minutes. Hundreds of pounds saved a year.",
+      "from_label": "Steak King UK",
+      "file": "Uv6Niv__XJX3SZ__kick-of-referral-optin-5.html",
+      "flow_name": "Kick Of Lab Referral Flow"
+    },
+    "UcHx4U": {
+      "name": "Kick Of Referral Optin 6",
+      "subject": "Here's how to get free steak for a year \ud83c\udfc6",
+      "preview": "100 referrals. 52 deliveries. My pick every time.",
+      "from_label": "Steak King UK",
+      "file": "Uv6Niv__UcHx4U__kick-of-referral-optin-6.html",
+      "flow_name": "Kick Of Lab Referral Flow"
+    },
+    "UcgLGp": {
+      "name": "Kick Of Referral Optin 7",
+      "subject": "Here's what's coming to the UK \ud83e\udd69",
+      "preview": "15 to 20 popular cuts. What to try first.",
+      "from_label": "Steak King UK",
+      "file": "Uv6Niv__UcgLGp__kick-of-referral-optin-7.html",
+      "flow_name": "Kick Of Lab Referral Flow"
+    },
+    "RETA7c": {
+      "name": "Kick Of Referral Optin 8",
+      "subject": "Bollocks to subscription boxes \ud83d\udce6",
+      "preview": "Every other premium butcher ties you in. We don't.",
+      "from_label": "Steak King UK",
+      "file": "Uv6Niv__RETA7c__kick-of-referral-optin-8.html",
+      "flow_name": "Kick Of Lab Referral Flow"
+    },
+    "U8WLrb": {
+      "name": "Kick Of Referral Optin 9",
+      "subject": "40,000 Hongkongers can't be wrong \ud83c\udded\ud83c\uddf0",
+      "preview": "4.5 on Trustpilot. 269 reviews. Here's what they say.",
+      "from_label": "Steak King UK",
+      "file": "Uv6Niv__U8WLrb__kick-of-referral-optin-9.html",
+      "flow_name": "Kick Of Lab Referral Flow"
+    },
+    "RL86uW": {
+      "name": "Kick Of Referral Optin 10",
+      "subject": "Don't ruin a \u00a340 steak \ud83d\udd25",
+      "preview": "Seven rules. Screenshot this one.",
+      "from_label": "Steak King UK",
+      "file": "Uv6Niv__RL86uW__kick-of-referral-optin-10.html",
+      "flow_name": "Kick Of Lab Referral Flow"
+    },
+    "VRkDCC": {
+      "name": "Kick Of Referral Optin 11",
+      "subject": "Last one before we go live \ud83c\udfc6",
+      "preview": "100 referrals still on the table. Free steak for a year.",
+      "from_label": "Steak King UK",
+      "file": "Uv6Niv__VRkDCC__kick-of-referral-optin-11.html",
+      "flow_name": "Kick Of Lab Referral Flow"
+    },
+    "Up9Vxy": {
+      "name": "E1_F_REFERRAL-PROXIMITY_TIER-1",
+      "subject": "One more. That's it.",
+      "preview": "4 down. One mate between you and the 3-order discount.",
+      "from_label": "Steak King UK",
+      "file": "Vdt27T__Up9Vxy__e1-f-referral-proximity-tier-1.html",
+      "flow_name": "F_REFERRAL-PROXIMITY"
+    },
+    "XxsExj": {
+      "name": "E1_F_REFERRAL-PROXIMITY_TIER-2",
+      "subject": "One more. That's it.",
+      "preview": "9 down. One mate between you and the knife.",
+      "from_label": "Steak King UK",
+      "file": "Vdt27T__XxsExj__e1-f-referral-proximity-tier-2.html",
+      "flow_name": "F_REFERRAL-PROXIMITY"
+    },
+    "QWKaXv": {
+      "name": "E1_F_REFERRAL-PROXIMITY_TIER-3",
+      "subject": "One more. That's it.",
+      "preview": "24 down. One mate between you and the crate.",
+      "from_label": "Steak King UK",
+      "file": "Vdt27T__QWKaXv__e1-f-referral-proximity-tier-3.html",
+      "flow_name": "F_REFERRAL-PROXIMITY"
+    },
+    "WxTAnB": {
+      "name": "E1_F_REFERRAL-PROXIMITY_TIER-4",
+      "subject": "TEN more. That's it.",
+      "preview": "40 down. One mate between you and a year of steak.",
+      "from_label": "Steak King UK",
+      "file": "Vdt27T__WxTAnB__e1-f-referral-proximity-tier-4.html",
+      "flow_name": "F_REFERRAL-PROXIMITY"
+    },
+    "Y3BXrV": {
+      "name": "Welcome Flow Email 1",
+      "subject": "Join the Steak Revolution! \ud83e\udd69",
+      "preview": "Open for your exclusive welcome offer",
+      "from_label": "Steak King UK",
+      "file": "Wfc5Vs__Y3BXrV__welcome-flow-email-1.html",
+      "flow_name": "Welcome series"
+    },
+    "WMzScF": {
+      "name": "Welcome Flow Email 2",
+      "subject": "You're bloody welcome",
+      "preview": "",
+      "from_label": "Johhny",
+      "file": "Wfc5Vs__WMzScF__welcome-flow-email-2.html",
+      "flow_name": "Welcome series"
+    },
+    "Un8W5z": {
+      "name": "Welcome Flow Email 2",
+      "subject": "Johnny's Guide to the good stuff.",
+      "preview": "Don't forget to take \u00a320 off with WELCOME20",
+      "from_label": "Steak King UK",
+      "file": "Wfc5Vs__Un8W5z__welcome-flow-email-2.html",
+      "flow_name": "Welcome series"
+    },
+    "RjEXjQ": {
+      "name": "Welcome Flow Email 4",
+      "subject": "We price-match daily (yes, really)",
+      "preview": "Don't forget your \u00a320 off",
+      "from_label": "Steak King UK",
+      "file": "Wfc5Vs__RjEXjQ__welcome-flow-email-4.html",
+      "flow_name": "Welcome series"
+    }
+  }
+}
