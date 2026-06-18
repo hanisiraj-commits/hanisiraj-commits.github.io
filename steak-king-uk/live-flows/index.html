@@ -2,133 +2,143 @@
 <html lang="en-AU">
 <head>
 <meta charset="utf-8">
-<title>Steak King UK — Live Email Flows</title>
+<title>Steak King UK — Email Flows</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f7f5f0;--canvas:#ece9e1;--ink:#0f0f0f;--ink-soft:#3a3a3a;--muted:#8a877e;
-    --line:#d8d4ca;--card:#fff;
-    --accent:#b91c1c;--accent-soft:#fef0f0;
-    --live:#16a34a;--live-soft:#dcfce7;
-    --draft:#d97706;--draft-soft:#fef3c7;
-    --manual:#7c3aed;--manual-soft:#ede9fe;
-    --delay-bg:#fff8e0;--delay-ink:#7a5e00;--delay-border:#f0e4a8;
-    --split-bg:#eef4ff;--split-ink:#1e3a8a;--split-border:#bfd5f5;
-    --connector:#c0bcb4;
+    --ink:#0a0a0a;
+    --ink-2:#1a1a1a;
+    --ink-soft:#4a4a4a;
+    --muted:#8a8a8a;
+    --line:#e5e5e5;
+    --line-soft:#f0f0ee;
+    --bg:#ffffff;
+    --canvas:#fafaf8;
+    --accent:#d64f15;
+    --accent-soft:#fef4ef;
+    --live:#16a34a;
+    --live-soft:#dcfce7;
+    --draft:#d97706;
+    --draft-soft:#fef3c7;
+    --manual:#7c3aed;
+    --manual-soft:#ede9fe;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;height:100%;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;letter-spacing:-.005em}
-  .layout{display:grid;grid-template-columns:340px 1fr;height:100vh}
+  html,body{margin:0;padding:0;height:100%;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;letter-spacing:-.003em}
+  .layout{display:grid;grid-template-columns:320px 1fr;height:100vh}
 
   /* ============ SIDEBAR ============ */
-  .sidebar{background:#0d0d0d;color:#f5f3ee;overflow-y:auto;border-right:1px solid #000;display:flex;flex-direction:column}
-  .brand{padding:24px 24px 18px;border-bottom:1px solid #1f1f1f}
-  .brand h1{margin:0;font-size:18px;font-weight:800;letter-spacing:-.02em}
-  .brand .sub{font-size:11.5px;color:#8a8a8a;margin-top:3px;letter-spacing:.005em}
-  .meta-bar{padding:14px 24px;background:#000;border-bottom:1px solid #1f1f1f;display:flex;gap:14px;font-size:11px}
-  .meta-chip{display:flex;flex-direction:column;gap:1px}
-  .meta-chip .n{font-size:18px;font-weight:800;line-height:1}
-  .meta-chip .l{color:#8a8a8a;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-top:3px}
+  .sidebar{background:var(--ink);color:#fff;overflow-y:auto;display:flex;flex-direction:column;border-right:1px solid #000}
+  .brand{padding:24px 24px 20px;border-bottom:1px solid #2a2a2a}
+  .brand h1{margin:0;font-size:18px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .brand .sub{font-size:10.5px;color:#7a7a7a;margin-top:6px;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+  .meta-bar{padding:18px 24px;border-bottom:1px solid #2a2a2a;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .meta-bar.four{grid-template-columns:repeat(4,1fr)}
+  .meta-chip{display:flex;flex-direction:column;gap:2px}
+  .meta-chip .n{font-size:22px;font-weight:700;line-height:1;letter-spacing:-.02em}
+  .meta-chip .l{color:#7a7a7a;font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;font-weight:600;margin-top:5px}
   .meta-chip.live .n{color:#4ade80}
   .meta-chip.draft .n{color:#fbbf24}
   .meta-chip.manual .n{color:#c4b5fd}
-  .flows-list{padding:14px 12px 40px;display:flex;flex-direction:column;gap:6px;flex:1}
-  .flow-item{padding:12px 14px;border-radius:10px;cursor:pointer;transition:all .15s;border:1px solid transparent;background:#1a1a1a}
-  .flow-item:hover{background:#252525}
-  .flow-item.active{background:var(--accent);border-color:var(--accent);box-shadow:0 4px 14px rgba(185,28,28,.3)}
-  .flow-item-name{font-size:13px;font-weight:700;line-height:1.3;margin-bottom:5px}
-  .flow-item-meta{font-size:10.5px;color:#999;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-  .flow-item.active .flow-item-meta{color:#ffd0d6}
-  .flow-status-mini{display:inline-flex;align-items:center;gap:3px}
-  .flow-status-mini::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#4ade80}
+  .flows-list{padding:18px 16px 40px;display:flex;flex-direction:column;gap:2px;flex:1}
+  .section-label{font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:#7a7a7a;font-weight:600;padding:0 8px 8px}
+  .flow-item{padding:14px 14px;border-radius:0;cursor:pointer;transition:all .12s;border-left:3px solid transparent;background:transparent}
+  .flow-item:hover{background:#1a1a1a}
+  .flow-item.active{background:#1a1a1a;border-left-color:var(--accent)}
+  .flow-item-name{font-size:13px;font-weight:600;line-height:1.35;margin-bottom:6px;letter-spacing:-.005em}
+  .flow-item-meta{font-size:10.5px;color:#999;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .flow-status-mini{display:inline-flex;align-items:center;gap:4px}
+  .flow-status-mini::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#4ade80}
   .flow-status-mini.draft::before{background:#fbbf24}
   .flow-status-mini.manual::before{background:#c4b5fd}
 
-  /* ============ CANVAS ============ */
+  /* ============ MAIN ============ */
   .main{position:relative;background:var(--canvas);overflow:auto;height:100vh}
-  .main::before{content:"";position:fixed;inset:0;background-image:radial-gradient(circle at 1px 1px,#d0ccc1 1px,transparent 1px);background-size:18px 18px;opacity:.6;pointer-events:none;z-index:0}
-  .canvas-header{position:sticky;top:0;background:rgba(247,245,240,.94);backdrop-filter:blur(10px);padding:22px 36px 18px;border-bottom:1px solid var(--line);z-index:10}
-  .canvas-header h2{margin:0;font-size:22px;font-weight:800;letter-spacing:-.02em}
-  .canvas-header .sub{font-size:12px;color:var(--muted);margin-top:4px;font-weight:500}
-  .canvas-header .pills{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-  .header-pill{font-size:10.5px;font-weight:600;padding:5px 10px;border-radius:6px;background:#fff;border:1px solid var(--line);color:var(--ink-soft);display:inline-flex;align-items:center;gap:4px}
-  .header-pill.warn{background:#fef3c7;border-color:#fde68a;color:#92400e}
-  .header-pill.live{background:var(--live-soft);border-color:#bbf7d0;color:#166534}
 
-  .canvas{padding:50px 36px 100px;display:flex;flex-direction:column;align-items:center;min-width:max-content;position:relative;z-index:1}
+  /* LOCKED HEADER — solid, not translucent, clear delineation */
+  .canvas-header{position:sticky;top:0;background:var(--bg);padding:24px 36px 20px;border-bottom:1px solid var(--line);z-index:10;box-shadow:0 1px 0 var(--line)}
+  .canvas-header .breadcrumb{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:6px}
+  .canvas-header h2{margin:0;font-size:22px;font-weight:700;letter-spacing:-.015em}
+  .canvas-header .sub{font-size:12.5px;color:var(--ink-soft);margin-top:5px;font-weight:500}
+  .canvas-header .pills{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+  .header-pill{font-size:10px;font-weight:600;padding:5px 10px;border:1px solid var(--line);color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;background:#fff;text-transform:uppercase;letter-spacing:.05em}
+  .header-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--live)}
+  .header-pill.draft .dot{background:var(--draft)}
+  .header-pill.manual .dot{background:var(--manual)}
+  .header-pill.warn{background:#fffbeb;border-color:#fde68a;color:#92400e;text-transform:none;letter-spacing:0;font-weight:500}
+
+  .canvas{padding:48px 36px 100px;display:flex;flex-direction:column;align-items:center;min-width:max-content;position:relative;z-index:1}
 
   .seq{display:flex;flex-direction:column;align-items:center;gap:0}
-  .connector{width:2px;height:34px;background:var(--connector);flex:none}
+  .connector{width:1.5px;height:34px;background:#d4d2cc;flex:none}
 
   /* ============ TRIGGER ============ */
-  .trigger-card{background:linear-gradient(135deg,#0f0f0f 0%,#2a2a2a 100%);color:#fff;padding:16px 26px;border-radius:14px;min-width:320px;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.18)}
-  .trigger-label{font-size:10px;color:#a0a0a0;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:6px}
-  .trigger-name{font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .trigger-card{background:var(--ink);color:#fff;padding:18px 28px;min-width:320px;text-align:center}
+  .trigger-label{font-size:9.5px;color:#7a7a7a;text-transform:uppercase;letter-spacing:.14em;font-weight:600;margin-bottom:6px}
+  .trigger-name{font-size:14px;font-weight:700;letter-spacing:.02em;text-transform:uppercase}
 
   /* ============ EMAIL CARD ============ */
-  .email-card{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:14px 18px;width:380px;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.04);position:relative}
-  .email-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(185,28,28,.12);transform:translateY(-2px)}
-  .email-card.draft{background:#fafafa;border-style:dashed;opacity:.92}
-  .email-card.manual{background:#faf7ff}
-  .email-card-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+  .email-card{background:#fff;border:1px solid var(--line);padding:16px 20px;width:380px;cursor:pointer;transition:all .15s;position:relative}
+  .email-card:hover{border-color:var(--ink);box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-1px)}
+  .email-card.draft{background:#fafaf8;border-style:dashed}
+  .email-card.manual{background:#fafaf8}
+  .email-card-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
   .tag-group{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
-  .tag{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 7px;border-radius:4px;display:inline-flex;align-items:center;gap:3px}
-  .tag.send{background:var(--accent-soft);color:var(--accent)}
+  .tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:3px 8px;display:inline-flex;align-items:center;gap:4px;border:1px solid transparent}
+  .tag.send{background:transparent;color:var(--muted);border-color:var(--line)}
   .tag.ab{background:var(--manual-soft);color:var(--manual)}
-  .tag.status-live{background:var(--live-soft);color:#166534}
-  .tag.status-live::before{content:"●";color:var(--live)}
-  .tag.status-draft{background:var(--draft-soft);color:#92400e}
-  .tag.status-draft::before{content:"◐";color:var(--draft)}
-  .tag.status-manual{background:var(--manual-soft);color:var(--manual)}
-  .tag.status-manual::before{content:"⏸";color:var(--manual)}
-  .email-name{font-size:13.5px;font-weight:700;margin:0 0 4px;color:var(--ink);line-height:1.3}
-  .email-subject{font-size:12.5px;color:var(--ink-soft);line-height:1.4;margin-bottom:8px}
-  .email-subject b{color:var(--muted);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.06em;margin-right:5px}
-  .email-cta{font-size:11px;color:var(--accent);font-weight:600;display:inline-flex;align-items:center;gap:4px}
+  .tag.status-live{background:var(--live);color:#fff}
+  .tag.status-draft{background:var(--draft);color:#fff}
+  .tag.status-manual{background:var(--manual);color:#fff}
+  .email-name{font-size:13.5px;font-weight:700;margin:0 0 6px;color:var(--ink);line-height:1.3;letter-spacing:-.005em}
+  .email-subject{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin-bottom:10px}
+  .email-subject b{color:var(--muted);font-weight:600;font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:2px}
+  .email-cta{font-size:10.5px;color:var(--ink);font-weight:600;display:inline-flex;align-items:center;gap:5px;text-transform:uppercase;letter-spacing:.06em;padding-top:8px;border-top:1px solid var(--line-soft)}
+  .email-cta::after{content:"→";color:var(--accent)}
 
   /* ============ DELAY ============ */
-  .delay-pill{background:var(--delay-bg);color:var(--delay-ink);padding:7px 14px;border-radius:18px;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--delay-border)}
+  .delay-pill{background:#fff;color:var(--ink-soft);padding:7px 14px;font-size:10.5px;font-weight:600;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);text-transform:uppercase;letter-spacing:.08em}
 
   /* ============ SPLIT ============ */
-  .split-card{background:var(--split-bg);color:var(--split-ink);border:1.5px solid var(--split-border);padding:12px 20px;border-radius:10px;max-width:560px;text-align:center;display:flex;flex-direction:column;gap:3px}
-  .split-title{font-size:11.5px;font-weight:700;display:inline-flex;align-items:center;gap:6px;justify-content:center;text-transform:uppercase;letter-spacing:.04em}
-  .split-condition{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;opacity:.85;line-height:1.4}
+  .split-card{background:#fff;color:var(--ink);border:1px solid var(--ink);padding:12px 20px;max-width:560px;text-align:center;display:flex;flex-direction:column;gap:3px}
+  .split-title{font-size:10px;font-weight:700;display:inline-flex;align-items:center;gap:6px;justify-content:center;text-transform:uppercase;letter-spacing:.12em}
+  .split-condition{font-family:'Inter',monospace;font-size:11px;font-weight:500;color:var(--ink-soft);line-height:1.4}
 
-  /* Branches */
   .branches{display:grid;grid-auto-columns:minmax(380px,1fr);grid-auto-flow:column;gap:36px;position:relative;padding-top:38px}
-  .branches::before{content:"";position:absolute;top:0;left:50%;width:2px;height:18px;background:var(--connector);transform:translateX(-50%)}
-  /* horizontal connector across branches */
-  .branches::after{content:"";position:absolute;top:18px;height:2px;background:var(--connector);left:calc(50% / var(--n,2));right:calc(50% / var(--n,2))}
+  .branches::before{content:"";position:absolute;top:0;left:50%;width:1.5px;height:18px;background:#d4d2cc;transform:translateX(-50%)}
+  .branches::after{content:"";position:absolute;top:18px;height:1.5px;background:#d4d2cc;left:calc(50% / var(--n,2));right:calc(50% / var(--n,2))}
   .branches[data-single]::after,.branches[data-single]::before{display:none}
   .branch-col{display:flex;flex-direction:column;align-items:center;position:relative;padding-top:18px;min-width:0}
-  .branch-col::before{content:"";position:absolute;top:0;left:50%;width:2px;height:18px;background:var(--connector);transform:translateX(-50%)}
+  .branch-col::before{content:"";position:absolute;top:0;left:50%;width:1.5px;height:18px;background:#d4d2cc;transform:translateX(-50%)}
   .branches[data-single] .branch-col::before{top:-18px}
-  .branch-label{background:#fff;border:1.5px solid var(--line);color:var(--split-ink);font-size:11px;font-weight:700;padding:6px 14px;border-radius:18px;margin-bottom:18px;white-space:nowrap;max-width:300px;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.005em}
-  .branch-label.yes{background:#dcfce7;border-color:#bbf7d0;color:#166534}
-  .branch-label.no{background:#fee2e2;border-color:#fecaca;color:#991b1b}
-  .end-cap{margin-top:14px;background:transparent;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;padding:6px 12px;border:1px dashed var(--line);border-radius:18px}
+  .branch-label{background:#fff;border:1px solid var(--ink);color:var(--ink);font-size:10px;font-weight:700;padding:6px 14px;margin-bottom:18px;white-space:nowrap;max-width:300px;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;letter-spacing:.1em}
+  .branch-label.yes{background:var(--ink);color:#fff}
+  .branch-label.no{background:#fff;color:var(--ink)}
+  .end-cap{margin-top:14px;background:transparent;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.14em;font-weight:600;padding:6px 14px;border:1px dashed var(--line)}
 
   /* ============ MODAL ============ */
-  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;display:none;align-items:center;justify-content:center;padding:30px}
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:none;align-items:center;justify-content:center;padding:30px}
   .modal-overlay.open{display:flex}
-  .modal{background:var(--canvas);width:100%;max-width:780px;max-height:94vh;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+  .modal{background:var(--canvas);width:100%;max-width:780px;max-height:94vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.45)}
   .modal-header{background:#fff;padding:18px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
   .modal-meta{flex:1;min-width:0}
-  .modal-flow{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
-  .modal-name{font-size:16px;font-weight:800;margin:3px 0 6px;letter-spacing:-.01em}
+  .modal-flow{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+  .modal-name{font-size:16px;font-weight:700;margin:4px 0 8px;letter-spacing:-.01em}
   .modal-subject{font-size:12.5px;color:var(--ink-soft);line-height:1.45;display:flex;flex-direction:column;gap:3px}
-  .modal-subject .lbl{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
-  .modal-status-row{display:flex;gap:5px;margin-top:8px;align-items:center}
+  .modal-subject .lbl{color:var(--muted);font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+  .modal-status-row{display:flex;gap:5px;margin-top:10px;align-items:center}
   .modal-actions{display:flex;gap:6px;flex:none;align-items:center}
-  .btn{font-size:11.5px;font-weight:600;background:var(--ink);color:#fff;border:0;padding:7px 12px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block;letter-spacing:-.005em}
-  .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
-  .btn-ghost:hover{background:#f5f3ee}
-  .btn-close{background:transparent;color:var(--muted);font-size:24px;line-height:1;padding:0 8px;cursor:pointer;border:0;font-weight:300}
+  .btn{font-size:10.5px;font-weight:700;background:var(--ink);color:#fff;border:0;padding:9px 14px;cursor:pointer;text-decoration:none;display:inline-block;text-transform:uppercase;letter-spacing:.08em}
+  .btn:hover{background:#000}
+  .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:#fff}
+  .btn-close{background:transparent;color:var(--muted);font-size:24px;line-height:1;padding:0 6px;cursor:pointer;border:0;font-weight:300}
+  .btn-close:hover{color:var(--ink)}
   .modal-body{flex:1;overflow-y:auto;padding:22px;background:var(--canvas);display:flex;justify-content:center}
-  .device{background:#fff;width:100%;max-width:600px;box-shadow:0 6px 30px rgba(0,0,0,.10);border-radius:8px;overflow:hidden}
+  .device{background:#fff;width:100%;max-width:600px;border:1px solid var(--line)}
   iframe{width:100%;border:0;display:block;background:#fff;height:78vh}
 </style>
 </head>
@@ -137,13 +147,18 @@
   <aside class="sidebar">
     <div class="brand">
       <h1>Steak King UK</h1>
-      <div class="sub">Email flows · pulled live from Klaviyo</div>
+      <div class="sub">Email Flow Audit · June 2026</div>
     </div>
     <div class="meta-bar" id="meta-bar"></div>
-    <div class="flows-list" id="flows-list"></div>
+    <div class="flows-list">
+      <div class="section-label">Live Flows</div>
+      <div id="flows-list"></div>
+    </div>
   </aside>
+
   <main class="main">
     <div class="canvas-header">
+      <div class="breadcrumb">Flow</div>
       <h2 id="flow-title">Select a flow</h2>
       <div class="sub" id="flow-sub"></div>
       <div class="pills" id="flow-pills"></div>
@@ -165,8 +180,8 @@
         <div class="modal-status-row" id="modal-status-row"></div>
       </div>
       <div class="modal-actions">
-        <a class="btn-ghost btn" id="modal-open" target="_blank">Open in new tab ↗</a>
-        <a class="btn" id="modal-download" download>Download .html</a>
+        <a class="btn-ghost btn" id="modal-open" target="_blank">Open ↗</a>
+        <a class="btn" id="modal-download" download>Download</a>
         <button class="btn-close" onclick="closeModal()" aria-label="Close">×</button>
       </div>
     </div>
@@ -176,7 +191,6 @@
 
 <script>
 let DATA = null;
-
 fetch('flow-graph.json').then(r => r.json()).then(d => { DATA = d; renderSidebar(); });
 
 function statusToClass(s){ return s === 'live' ? 'status-live' : s === 'draft' ? 'status-draft' : s === 'manual' ? 'status-manual' : ''; }
@@ -184,23 +198,22 @@ function statusLabel(s){ return s === 'live' ? 'LIVE' : s === 'draft' ? 'DRAFT' 
 
 function countByStatus(nodes, out){
   for (const n of nodes){
-    if (n.kind === 'email' || n.kind === 'email_ab'){
-      out[n.status] = (out[n.status] || 0) + 1;
-    } else if (n.kind === 'split'){
-      for (const b of n.branches) countByStatus(b.nodes, out);
-    }
+    if (n.kind === 'email' || n.kind === 'email_ab') out[n.status] = (out[n.status] || 0) + 1;
+    else if (n.kind === 'split') for (const b of n.branches) countByStatus(b.nodes, out);
   }
 }
 
 function renderSidebar(){
   const list = document.getElementById('flows-list');
-  // meta bar
   const t = DATA.totals || {};
-  document.getElementById('meta-bar').innerHTML = `
+  const hasManual = t.manual > 0;
+  const mb = document.getElementById('meta-bar');
+  if (hasManual) mb.classList.add('four');
+  mb.innerHTML = `
     <div class="meta-chip"><div class="n">${DATA.flows.length}</div><div class="l">Flows</div></div>
     <div class="meta-chip live"><div class="n">${t.live||0}</div><div class="l">Live</div></div>
     <div class="meta-chip draft"><div class="n">${t.draft||0}</div><div class="l">Draft</div></div>
-    ${t.manual ? `<div class="meta-chip manual"><div class="n">${t.manual}</div><div class="l">Manual</div></div>` : ''}
+    ${hasManual ? `<div class="meta-chip manual"><div class="n">${t.manual}</div><div class="l">Manual</div></div>` : ''}
   `;
   list.innerHTML = '';
   DATA.flows.forEach((f, idx) => {
@@ -228,12 +241,13 @@ function selectFlow(idx){
   const total = (c.live||0) + (c.draft||0) + (c.manual||0);
   document.getElementById('flow-sub').textContent = `Trigger: ${f.trigger.label} · ${total} email${total!==1?'s':''}`;
   const pills = [];
-  if (c.live) pills.push(`<span class="header-pill live">● ${c.live} live</span>`);
-  if (c.draft) pills.push(`<span class="header-pill warn">◐ ${c.draft} draft</span>`);
-  if (c.manual) pills.push(`<span class="header-pill warn">⏸ ${c.manual} manual</span>`);
-  if (f.profile_filter_summary) pills.push(`<span class="header-pill warn">⛔ Entry filter: ${escapeHtml(f.profile_filter_summary)}</span>`);
+  if (c.live) pills.push(`<span class="header-pill"><span class="dot"></span>${c.live} Live</span>`);
+  if (c.draft) pills.push(`<span class="header-pill draft"><span class="dot"></span>${c.draft} Draft</span>`);
+  if (c.manual) pills.push(`<span class="header-pill manual"><span class="dot"></span>${c.manual} Manual</span>`);
+  if (f.profile_filter_summary) pills.push(`<span class="header-pill warn">Entry filter: ${escapeHtml(f.profile_filter_summary)}</span>`);
   document.getElementById('flow-pills').innerHTML = pills.join('');
   renderCanvas(f);
+  document.querySelector('.main').scrollTop = 0;
 }
 
 function renderCanvas(flow){
@@ -257,10 +271,7 @@ function renderSequence(parent, seq, flowName, addEndCap){
   seq.forEach((node, i) => {
     parent.appendChild(renderNode(node, flowName));
     const isLast = i === seq.length - 1;
-    if (node.kind === 'split'){
-      // Splits handle their own descent
-      return;
-    }
+    if (node.kind === 'split') return;
     if (isLast){
       if (addEndCap){
         parent.appendChild(connector());
@@ -276,22 +287,18 @@ function renderSequence(parent, seq, flowName, addEndCap){
 }
 
 function renderNode(node, flowName){
-  if (node.kind === 'email' || node.kind === 'email_ab'){
-    return emailCard(node, flowName, node.kind === 'email_ab');
-  } else if (node.kind === 'delay'){
+  if (node.kind === 'email' || node.kind === 'email_ab') return emailCard(node, flowName, node.kind === 'email_ab');
+  if (node.kind === 'delay'){
     const d = document.createElement('div');
     d.className = 'delay-pill';
     d.innerHTML = `<span>⏱</span> Wait ${escapeHtml(node.label)}`;
     return d;
-  } else if (node.kind === 'split'){
-    return splitNode(node, flowName);
-  } else {
-    const u = document.createElement('div');
-    u.className = 'delay-pill';
-    u.style.background='#fee';
-    u.textContent = 'Unknown: ' + (node.kind || node.type || '?');
-    return u;
   }
+  if (node.kind === 'split') return splitNode(node, flowName);
+  const u = document.createElement('div');
+  u.className = 'delay-pill';
+  u.textContent = 'Unknown';
+  return u;
 }
 
 function splitNode(node, flowName){
@@ -300,13 +307,11 @@ function splitNode(node, flowName){
   const card = document.createElement('div');
   card.className = 'split-card';
   const t = node.split_type === 'trigger-split' ? 'Trigger split' : 'Conditional split';
-  card.innerHTML = `<div class="split-title">⇆ ${t}</div>${node.condition ? `<div class="split-condition">${escapeHtml(node.condition)}</div>` : ''}`;
+  card.innerHTML = `<div class="split-title">${t}</div>${node.condition ? `<div class="split-condition">${escapeHtml(node.condition)}</div>` : ''}`;
   wrap.appendChild(card);
-  // Branches container
   const nonEmpty = node.branches.filter(b => b.nodes.length > 0);
   if (nonEmpty.length === 0){
-    const c = connector();
-    wrap.appendChild(c);
+    wrap.appendChild(connector());
     const end = document.createElement('div');
     end.className = 'end-cap';
     end.textContent = '— Dead-end split (both branches empty) —';
@@ -322,7 +327,6 @@ function splitNode(node, flowName){
     col.className = 'branch-col';
     const lbl = document.createElement('div');
     lbl.className = 'branch-label';
-    // Choose yes/no class for boolean labels
     if (b.value === true && b.label === 'Yes') lbl.classList.add('yes');
     else if (b.value === false && b.label === 'No') lbl.classList.add('no');
     lbl.textContent = b.label;
@@ -345,14 +349,14 @@ function emailCard(node, flowName, isAB){
   card.innerHTML = `
     <div class="email-card-head">
       <div class="tag-group">
-        <span class="tag send">Send Email</span>
+        <span class="tag send">Email</span>
         ${abTag}
       </div>
       ${statusTag}
     </div>
     <div class="email-name">${escapeHtml(node.name)}</div>
     <div class="email-subject"><b>Subject</b>${escapeHtml(node.subject || '(no subject)')}</div>
-    <div class="email-cta">Click to preview →</div>`;
+    <div class="email-cta">Preview email</div>`;
   card.addEventListener('click', () => openPreview(node, flowName));
   return card;
 }
@@ -369,6 +373,16 @@ function triggerNode(trigger){
 
 function connector(){ const c = document.createElement('div'); c.className = 'connector'; return c; }
 
+document.getElementById('modal-frame').addEventListener('load', function(){
+  try {
+    const doc = this.contentDocument || this.contentWindow.document;
+    if (doc && doc.body) {
+      doc.body.style.zoom = '0.8';
+      doc.documentElement.style.overflow = 'auto';
+    }
+  } catch(e){}
+});
+
 function openPreview(node, flowName){
   if (!node.file){ alert('Template file missing'); return; }
   document.getElementById('modal-flow').textContent = flowName;
@@ -380,20 +394,6 @@ function openPreview(node, flowName){
   document.getElementById('modal-download').href = 'templates/' + node.file;
   document.getElementById('modal').classList.add('open');
 }
-
-// Zoom out iframe content slightly so the full email is easier to scan
-document.getElementById('modal-frame').addEventListener('load', function(){
-  try {
-    const doc = this.contentDocument || this.contentWindow.document;
-    if (doc && doc.body) {
-      // CSS zoom shrinks rendered size while preserving scrollability
-      doc.body.style.zoom = '0.8';
-      // Make sure the iframe scrolls
-      doc.documentElement.style.overflow = 'auto';
-    }
-  } catch(e){}
-});
-
 function closeModal(){
   document.getElementById('modal').classList.remove('open');
   document.getElementById('modal-frame').src = 'about:blank';
