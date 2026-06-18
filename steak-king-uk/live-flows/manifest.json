@@ -1,0 +1,401 @@
+{
+  "flows": [
+    {
+      "id": "TXnAp3",
+      "name": "Abandoned Collection Browse",
+      "trigger_type": "Metric",
+      "message_count": 2,
+      "steps": [
+        {
+          "kind": "delay",
+          "seconds": 5400,
+          "label": "1h"
+        },
+        {
+          "kind": "other",
+          "label": "BOOLEAN_BRANCH"
+        },
+        {
+          "kind": "email",
+          "name": "Abandoned Collection Browse Email 1 Beef",
+          "subject": "So... what's the deal with marbling?",
+          "message_id": "RxVEfV",
+          "file": "TXnAp3__RxVEfV__abandoned-collection-browse-email-1-beef.html"
+        },
+        {
+          "kind": "email",
+          "name": "Abandoned Collection Browse Email 1 General",
+          "subject": "Why our suppliers matter",
+          "message_id": "RtipUx",
+          "file": "TXnAp3__RtipUx__abandoned-collection-browse-email-1-general.html"
+        }
+      ]
+    },
+    {
+      "id": "TcMQvW",
+      "name": "Abandoned Product Browse",
+      "trigger_type": "Metric",
+      "message_count": 5,
+      "steps": [
+        {
+          "kind": "delay",
+          "seconds": 6300,
+          "label": "1h"
+        },
+        {
+          "kind": "other",
+          "label": "BOOLEAN_BRANCH"
+        },
+        {
+          "kind": "email",
+          "name": "Abandoned Product Browse Email 1 Beef",
+          "subject": "How to cook the perfect steak",
+          "message_id": "YA5v3p",
+          "file": "TcMQvW__YA5v3p__abandoned-product-browse-email-1-beef.html"
+        },
+        {
+          "kind": "other",
+          "label": "BOOLEAN_BRANCH"
+        },
+        {
+          "kind": "email",
+          "name": "Abandoned Product Browse Email 1 Pork",
+          "subject": "Sweet & sour Iberico pork chops",
+          "message_id": "YvseFZ",
+          "file": "TcMQvW__YvseFZ__abandoned-product-browse-email-1-pork.html"
+        },
+        {
+          "kind": "other",
+          "label": "BOOLEAN_BRANCH"
+        },
+        {
+          "kind": "email",
+          "name": "Abandoned Product Browse Email 1 Lamb",
+          "subject": "Slow braised lamb shanks in red wine",
+          "message_id": "UPXdjD",
+          "file": "TcMQvW__UPXdjD__abandoned-product-browse-email-1-lamb.html"
+        },
+        {
+          "kind": "other",
+          "label": "BOOLEAN_BRANCH"
+        },
+        {
+          "kind": "email",
+          "name": "Abandoned Product Browse Email 1 Seafood",
+          "subject": "Grilled tiger prawns",
+          "message_id": "RMvezU",
+          "file": "TcMQvW__RMvezU__abandoned-product-browse-email-1-seafood.html"
+        },
+        {
+          "kind": "other",
+          "label": "BOOLEAN_BRANCH"
+        },
+        {
+          "kind": "email",
+          "name": "Abandoned Product Browse Email 1 Poultry",
+          "subject": "Grilled tiger prawns",
+          "message_id": "SffLvK",
+          "file": "TcMQvW__SffLvK__abandoned-product-browse-email-1-poultry.html"
+        }
+      ]
+    },
+    {
+      "id": "UjUEey",
+      "name": "ABANDONED-CHECKOUT",
+      "trigger_type": "Metric",
+      "message_count": 4,
+      "steps": [
+        {
+          "kind": "delay",
+          "seconds": 1800,
+          "label": "30m"
+        },
+        {
+          "kind": "other",
+          "label": "BOOLEAN_BRANCH"
+        },
+        {
+          "kind": "email",
+          "name": "Abandoned Checkout Email 1 (Existing Customers)",
+          "subject": "These won't cook themselves...",
+          "message_id": "W8kxK3",
+          "file": "UjUEey__W8kxK3__abandoned-checkout-email-1-existing-customers.html"
+        },
+        {
+          "kind": "delay",
+          "seconds": 86400,
+          "label": "1d"
+        },
+        {
+          "kind": "email",
+          "name": "Abandoned Checkout Email 2 (Existing Customers)",
+          "subject": "Your cart called. It's hungry.",
+          "message_id": "RcPr9r",
+          "file": "UjUEey__RcPr9r__abandoned-checkout-email-2-existing-customers.html"
+        },
+        {
+          "kind": "email",
+          "name": "Abandoned Checkout Email 1 (Non-Customers)",
+          "subject": "These won't cook themselves...",
+          "message_id": "TnnAem",
+          "file": "UjUEey__TnnAem__abandoned-checkout-email-1-non-customers.html"
+        },
+        {
+          "kind": "delay",
+          "seconds": 86400,
+          "label": "1d"
+        },
+        {
+          "kind": "email",
+          "name": "Abandoned Checkout Email 2 (Non-Customers)",
+          "subject": "Your cart called. It's hungry.",
+          "message_id": "TQ98ac",
+          "file": "UjUEey__TQ98ac__abandoned-checkout-email-2-non-customers.html"
+        }
+      ]
+    },
+    {
+      "id": "Uv6Niv",
+      "name": "Kick Of Lab Referral Flow",
+      "trigger_type": "Metric",
+      "message_count": 11,
+      "steps": [
+        {
+          "kind": "email",
+          "name": "Kick Of Referral Optin 1",
+          "subject": "You just joined the good ones \ud83d\udd25",
+          "message_id": "RB4QbK",
+          "file": "Uv6Niv__RB4QbK__kick-of-referral-optin-1.html"
+        },
+        {
+          "kind": "email",
+          "name": "Kick Of Referral Optin 2",
+          "subject": "Right then, who is Johnny? \ud83d\udc4b",
+          "message_id": "TgBdaS",
+          "file": "Uv6Niv__TgBdaS__kick-of-referral-optin-2.html"
+        },
+        {
+          "kind": "email",
+          "name": "Kick Of Referral Optin 3",
+          "subject": "Do you know what Aussie Wagyu is? \ud83e\udd69",
+          "message_id": "XRBinU",
+          "file": "Uv6Niv__XRBinU__kick-of-referral-optin-3.html"
+        },
+        {
+          "kind": "email",
+          "name": "Kick Of Referral Optin 4",
+          "subject": "Aussie Wagyu > Japanese Wagyu, no BS \ud83e\udd69",
+          "message_id": "UpZ3Ud",
+          "file": "Uv6Niv__UpZ3Ud__kick-of-referral-optin-4.html"
+        },
+        {
+          "kind": "email",
+          "name": "Kick Of Referral Optin 5",
+          "subject": "Never get rinsed at your supermarket again \ud83d\uded2",
+          "message_id": "XJX3SZ",
+          "file": "Uv6Niv__XJX3SZ__kick-of-referral-optin-5.html"
+        },
+        {
+          "kind": "email",
+          "name": "Kick Of Referral Optin 6",
+          "subject": "Here's how to get free steak for a year \ud83c\udfc6",
+          "message_id": "UcHx4U",
+          "file": "Uv6Niv__UcHx4U__kick-of-referral-optin-6.html"
+        },
+        {
+          "kind": "email",
+          "name": "Kick Of Referral Optin 7",
+          "subject": "Here's what's coming to the UK \ud83e\udd69",
+          "message_id": "UcgLGp",
+          "file": "Uv6Niv__UcgLGp__kick-of-referral-optin-7.html"
+        },
+        {
+          "kind": "email",
+          "name": "Kick Of Referral Optin 8",
+          "subject": "Bollocks to subscription boxes \ud83d\udce6",
+          "message_id": "RETA7c",
+          "file": "Uv6Niv__RETA7c__kick-of-referral-optin-8.html"
+        },
+        {
+          "kind": "email",
+          "name": "Kick Of Referral Optin 9",
+          "subject": "40,000 Hongkongers can't be wrong \ud83c\udded\ud83c\uddf0",
+          "message_id": "U8WLrb",
+          "file": "Uv6Niv__U8WLrb__kick-of-referral-optin-9.html"
+        },
+        {
+          "kind": "email",
+          "name": "Kick Of Referral Optin 10",
+          "subject": "Don't ruin a \u00a340 steak \ud83d\udd25",
+          "message_id": "RL86uW",
+          "file": "Uv6Niv__RL86uW__kick-of-referral-optin-10.html"
+        },
+        {
+          "kind": "email",
+          "name": "Kick Of Referral Optin 11",
+          "subject": "Last one before we go live \ud83c\udfc6",
+          "message_id": "VRkDCC",
+          "file": "Uv6Niv__VRkDCC__kick-of-referral-optin-11.html"
+        },
+        {
+          "kind": "delay",
+          "seconds": 86400,
+          "label": "1d"
+        },
+        {
+          "kind": "delay",
+          "seconds": 172800,
+          "label": "2d"
+        },
+        {
+          "kind": "delay",
+          "seconds": 172800,
+          "label": "2d"
+        },
+        {
+          "kind": "delay",
+          "seconds": 172800,
+          "label": "2d"
+        },
+        {
+          "kind": "delay",
+          "seconds": 259200,
+          "label": "3d"
+        },
+        {
+          "kind": "delay",
+          "seconds": 259200,
+          "label": "3d"
+        },
+        {
+          "kind": "delay",
+          "seconds": 345600,
+          "label": "4d"
+        },
+        {
+          "kind": "delay",
+          "seconds": 432000,
+          "label": "5d"
+        },
+        {
+          "kind": "delay",
+          "seconds": 432000,
+          "label": "5d"
+        },
+        {
+          "kind": "delay",
+          "seconds": 345600,
+          "label": "4d"
+        },
+        {
+          "kind": "other",
+          "label": "AB_TEST"
+        }
+      ]
+    },
+    {
+      "id": "Vdt27T",
+      "name": "F_REFERRAL-PROXIMITY",
+      "trigger_type": "Metric",
+      "message_count": 4,
+      "steps": [
+        {
+          "kind": "other",
+          "label": "BOOLEAN_BRANCH"
+        },
+        {
+          "kind": "other",
+          "label": "BOOLEAN_BRANCH"
+        },
+        {
+          "kind": "other",
+          "label": "BOOLEAN_BRANCH"
+        },
+        {
+          "kind": "other",
+          "label": "BOOLEAN_BRANCH"
+        },
+        {
+          "kind": "email",
+          "name": "E1_F_REFERRAL-PROXIMITY_TIER-1",
+          "subject": "One more. That's it.",
+          "message_id": "Up9Vxy",
+          "file": "Vdt27T__Up9Vxy__e1-f-referral-proximity-tier-1.html"
+        },
+        {
+          "kind": "email",
+          "name": "E1_F_REFERRAL-PROXIMITY_TIER-2",
+          "subject": "One more. That's it.",
+          "message_id": "XxsExj",
+          "file": "Vdt27T__XxsExj__e1-f-referral-proximity-tier-2.html"
+        },
+        {
+          "kind": "email",
+          "name": "E1_F_REFERRAL-PROXIMITY_TIER-3",
+          "subject": "One more. That's it.",
+          "message_id": "QWKaXv",
+          "file": "Vdt27T__QWKaXv__e1-f-referral-proximity-tier-3.html"
+        },
+        {
+          "kind": "email",
+          "name": "E1_F_REFERRAL-PROXIMITY_TIER-4",
+          "subject": "TEN more. That's it.",
+          "message_id": "WxTAnB",
+          "file": "Vdt27T__WxTAnB__e1-f-referral-proximity-tier-4.html"
+        }
+      ]
+    },
+    {
+      "id": "Wfc5Vs",
+      "name": "Welcome series",
+      "trigger_type": "Added to List",
+      "message_count": 4,
+      "steps": [
+        {
+          "kind": "email",
+          "name": "Welcome Flow Email 1",
+          "subject": "Join the Steak Revolution! \ud83e\udd69",
+          "message_id": "Y3BXrV",
+          "file": "Wfc5Vs__Y3BXrV__welcome-flow-email-1.html"
+        },
+        {
+          "kind": "delay",
+          "seconds": 86400,
+          "label": "1d"
+        },
+        {
+          "kind": "email",
+          "name": "Welcome Flow Email 2",
+          "subject": "You're bloody welcome",
+          "message_id": "WMzScF",
+          "file": "Wfc5Vs__WMzScF__welcome-flow-email-2.html"
+        },
+        {
+          "kind": "delay",
+          "seconds": 172800,
+          "label": "2d"
+        },
+        {
+          "kind": "email",
+          "name": "Welcome Flow Email 2",
+          "subject": "Johnny's Guide to the good stuff.",
+          "message_id": "Un8W5z",
+          "file": "Wfc5Vs__Un8W5z__welcome-flow-email-2.html"
+        },
+        {
+          "kind": "delay",
+          "seconds": 172800,
+          "label": "2d"
+        },
+        {
+          "kind": "email",
+          "name": "Welcome Flow Email 4",
+          "subject": "We price-match daily (yes, really)",
+          "message_id": "RjEXjQ",
+          "file": "Wfc5Vs__RjEXjQ__welcome-flow-email-4.html"
+        }
+      ]
+    }
+  ],
+  "generated": "2026-06-18T16:37:54.878723Z"
+}

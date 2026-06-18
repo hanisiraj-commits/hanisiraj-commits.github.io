@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Steak King UK — Live Flow Templates</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  *{box-sizing:border-box}
+  body,html{margin:0;padding:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;background:#f5f3ee;color:#1a1a1a}
+  .layout{display:grid;grid-template-columns:380px 1fr;height:100vh}
+  .sidebar{background:#1a1a1a;color:#f5f3ee;overflow-y:auto;border-right:1px solid #000}
+  .brand{padding:22px 24px 16px;border-bottom:1px solid #333}
+  .brand h1{margin:0;font-size:18px;font-weight:700;letter-spacing:-.01em}
+  .brand .sub{font-size:12px;color:#aaa;margin-top:4px}
+  .nav-stats{padding:14px 24px;background:#0d0d0d;border-bottom:1px solid #333;font-size:12px;color:#bdbdbd}
+  .nav-stats b{color:#f5f3ee}
+  .nav{padding:8px 0 40px}
+  details.flow{border-bottom:1px solid #2a2a2a}
+  details.flow > summary{cursor:pointer;padding:14px 24px;font-size:14px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;user-select:none}
+  details.flow > summary::-webkit-details-marker{display:none}
+  details.flow > summary::before{content:"▸";margin-right:10px;color:#888;transition:transform .15s;display:inline-block}
+  details[open].flow > summary::before{transform:rotate(90deg)}
+  .flow-name{flex:1}
+  .flow-meta{font-size:11px;color:#888;font-weight:500;padding-left:8px}
+  ol.steps{list-style:none;margin:0;padding:0 12px 12px 32px}
+  li.step{margin:0;padding:0}
+  li.email-step{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;margin:4px 0;border-radius:6px;cursor:pointer;transition:background .12s}
+  li.email-step:hover{background:#2a2a2a}
+  li.email-step.active{background:#c41e3a;color:#fff}
+  .step-num{flex:none;width:22px;height:22px;border-radius:50%;background:#444;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;margin-top:2px}
+  li.email-step.active .step-num{background:#fff;color:#c41e3a}
+  .step-body{flex:1;min-width:0}
+  .step-title{font-size:12.5px;font-weight:600;line-height:1.3}
+  .step-subject{font-size:11px;color:#999;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  li.email-step.active .step-subject{color:#ffdbe1}
+  li.delay-step{padding:4px 10px 4px 32px}
+  .delay-pill{font-size:10.5px;color:#888;font-style:italic}
+  li.meta-step{padding:4px 10px 4px 32px}
+  .meta-pill{font-size:10.5px;color:#a0784f;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+  .main{display:flex;flex-direction:column;background:#e8e4dc;height:100vh;overflow:hidden}
+  .toolbar{background:#fff;padding:14px 24px;border-bottom:1px solid #d8d4cc;display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+  .meta-left{flex:1;min-width:0}
+  .meta-flow{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+  .meta-name{font-size:16px;font-weight:700;margin:2px 0 6px;color:#1a1a1a}
+  .meta-subject{font-size:13px;color:#444;line-height:1.4}
+  .meta-subject .label{color:#999;font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-right:6px}
+  .toolbar-actions{display:flex;gap:8px;flex:none}
+  .btn{font-size:12px;font-weight:600;background:#1a1a1a;color:#fff;border:0;padding:8px 14px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block}
+  .btn:hover{background:#333}
+  .btn-ghost{background:#fff;color:#1a1a1a;border:1px solid #d8d4cc}
+  .btn-ghost:hover{background:#f5f3ee}
+  .preview-frame{flex:1;background:#e8e4dc;padding:24px;overflow-y:auto;display:flex;justify-content:center}
+  .device{background:#fff;width:100%;max-width:680px;box-shadow:0 6px 30px rgba(0,0,0,.10);border-radius:8px;overflow:hidden}
+  iframe{width:100%;border:0;display:block;background:#fff;min-height:1200px}
+  .footer{padding:10px 24px;font-size:11px;color:#888;background:#fff;border-top:1px solid #d8d4cc;text-align:center}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>Steak King UK</h1>
+      <div class="sub">Live email flows — June 2026</div>
+    </div>
+    <div class="nav-stats"><b>6 flows</b> · <b>30 live email templates</b></div>
+    <nav class="nav">
+      <details class="flow" open><summary><span class="flow-name">Abandoned Collection Browse</span><span class="flow-meta">2 emails</span></summary>
+<ol class="steps">
+<li class="step delay-step"><span class="delay-pill">↓ wait 1h</span></li>
+<li class="step meta-step"><span class="meta-pill">BOOLEAN_BRANCH</span></li>
+<li class="step email-step" data-file="TXnAp3__RxVEfV__abandoned-collection-browse-email-1-beef.html" data-name="Abandoned Collection Browse Email 1 Beef" data-subject="So... what&#x27;s the deal with marbling?" data-flow="Abandoned Collection Browse">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <div class="step-title">Abandoned Collection Browse Email 1 Beef</div>
+                  <div class="step-subject">So... what&#x27;s the deal with marbling?</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="TXnAp3__RtipUx__abandoned-collection-browse-email-1-general.html" data-name="Abandoned Collection Browse Email 1 General" data-subject="Why our suppliers matter" data-flow="Abandoned Collection Browse">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <div class="step-title">Abandoned Collection Browse Email 1 General</div>
+                  <div class="step-subject">Why our suppliers matter</div>
+                </div>
+              </li>
+</ol></details>
+<details class="flow" open><summary><span class="flow-name">Abandoned Product Browse</span><span class="flow-meta">5 emails</span></summary>
+<ol class="steps">
+<li class="step delay-step"><span class="delay-pill">↓ wait 1h</span></li>
+<li class="step meta-step"><span class="meta-pill">BOOLEAN_BRANCH</span></li>
+<li class="step email-step" data-file="TcMQvW__YA5v3p__abandoned-product-browse-email-1-beef.html" data-name="Abandoned Product Browse Email 1 Beef" data-subject="How to cook the perfect steak" data-flow="Abandoned Product Browse">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <div class="step-title">Abandoned Product Browse Email 1 Beef</div>
+                  <div class="step-subject">How to cook the perfect steak</div>
+                </div>
+              </li>
+<li class="step meta-step"><span class="meta-pill">BOOLEAN_BRANCH</span></li>
+<li class="step email-step" data-file="TcMQvW__YvseFZ__abandoned-product-browse-email-1-pork.html" data-name="Abandoned Product Browse Email 1 Pork" data-subject="Sweet &amp; sour Iberico pork chops" data-flow="Abandoned Product Browse">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <div class="step-title">Abandoned Product Browse Email 1 Pork</div>
+                  <div class="step-subject">Sweet &amp; sour Iberico pork chops</div>
+                </div>
+              </li>
+<li class="step meta-step"><span class="meta-pill">BOOLEAN_BRANCH</span></li>
+<li class="step email-step" data-file="TcMQvW__UPXdjD__abandoned-product-browse-email-1-lamb.html" data-name="Abandoned Product Browse Email 1 Lamb" data-subject="Slow braised lamb shanks in red wine" data-flow="Abandoned Product Browse">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <div class="step-title">Abandoned Product Browse Email 1 Lamb</div>
+                  <div class="step-subject">Slow braised lamb shanks in red wine</div>
+                </div>
+              </li>
+<li class="step meta-step"><span class="meta-pill">BOOLEAN_BRANCH</span></li>
+<li class="step email-step" data-file="TcMQvW__RMvezU__abandoned-product-browse-email-1-seafood.html" data-name="Abandoned Product Browse Email 1 Seafood" data-subject="Grilled tiger prawns" data-flow="Abandoned Product Browse">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                  <div class="step-title">Abandoned Product Browse Email 1 Seafood</div>
+                  <div class="step-subject">Grilled tiger prawns</div>
+                </div>
+              </li>
+<li class="step meta-step"><span class="meta-pill">BOOLEAN_BRANCH</span></li>
+<li class="step email-step" data-file="TcMQvW__SffLvK__abandoned-product-browse-email-1-poultry.html" data-name="Abandoned Product Browse Email 1 Poultry" data-subject="Grilled tiger prawns" data-flow="Abandoned Product Browse">
+                <div class="step-num">5</div>
+                <div class="step-body">
+                  <div class="step-title">Abandoned Product Browse Email 1 Poultry</div>
+                  <div class="step-subject">Grilled tiger prawns</div>
+                </div>
+              </li>
+</ol></details>
+<details class="flow" open><summary><span class="flow-name">ABANDONED-CHECKOUT</span><span class="flow-meta">4 emails</span></summary>
+<ol class="steps">
+<li class="step delay-step"><span class="delay-pill">↓ wait 30m</span></li>
+<li class="step meta-step"><span class="meta-pill">BOOLEAN_BRANCH</span></li>
+<li class="step email-step" data-file="UjUEey__W8kxK3__abandoned-checkout-email-1-existing-customers.html" data-name="Abandoned Checkout Email 1 (Existing Customers)" data-subject="These won&#x27;t cook themselves..." data-flow="ABANDONED-CHECKOUT">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <div class="step-title">Abandoned Checkout Email 1 (Existing Customers)</div>
+                  <div class="step-subject">These won&#x27;t cook themselves...</div>
+                </div>
+              </li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 1d</span></li>
+<li class="step email-step" data-file="UjUEey__RcPr9r__abandoned-checkout-email-2-existing-customers.html" data-name="Abandoned Checkout Email 2 (Existing Customers)" data-subject="Your cart called. It&#x27;s hungry." data-flow="ABANDONED-CHECKOUT">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <div class="step-title">Abandoned Checkout Email 2 (Existing Customers)</div>
+                  <div class="step-subject">Your cart called. It&#x27;s hungry.</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="UjUEey__TnnAem__abandoned-checkout-email-1-non-customers.html" data-name="Abandoned Checkout Email 1 (Non-Customers)" data-subject="These won&#x27;t cook themselves..." data-flow="ABANDONED-CHECKOUT">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <div class="step-title">Abandoned Checkout Email 1 (Non-Customers)</div>
+                  <div class="step-subject">These won&#x27;t cook themselves...</div>
+                </div>
+              </li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 1d</span></li>
+<li class="step email-step" data-file="UjUEey__TQ98ac__abandoned-checkout-email-2-non-customers.html" data-name="Abandoned Checkout Email 2 (Non-Customers)" data-subject="Your cart called. It&#x27;s hungry." data-flow="ABANDONED-CHECKOUT">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                  <div class="step-title">Abandoned Checkout Email 2 (Non-Customers)</div>
+                  <div class="step-subject">Your cart called. It&#x27;s hungry.</div>
+                </div>
+              </li>
+</ol></details>
+<details class="flow" open><summary><span class="flow-name">Kick Of Lab Referral Flow</span><span class="flow-meta">11 emails</span></summary>
+<ol class="steps">
+<li class="step email-step" data-file="Uv6Niv__RB4QbK__kick-of-referral-optin-1.html" data-name="Kick Of Referral Optin 1" data-subject="You just joined the good ones 🔥" data-flow="Kick Of Lab Referral Flow">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <div class="step-title">Kick Of Referral Optin 1</div>
+                  <div class="step-subject">You just joined the good ones 🔥</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Uv6Niv__TgBdaS__kick-of-referral-optin-2.html" data-name="Kick Of Referral Optin 2" data-subject="Right then, who is Johnny? 👋" data-flow="Kick Of Lab Referral Flow">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <div class="step-title">Kick Of Referral Optin 2</div>
+                  <div class="step-subject">Right then, who is Johnny? 👋</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Uv6Niv__XRBinU__kick-of-referral-optin-3.html" data-name="Kick Of Referral Optin 3" data-subject="Do you know what Aussie Wagyu is? 🥩" data-flow="Kick Of Lab Referral Flow">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <div class="step-title">Kick Of Referral Optin 3</div>
+                  <div class="step-subject">Do you know what Aussie Wagyu is? 🥩</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Uv6Niv__UpZ3Ud__kick-of-referral-optin-4.html" data-name="Kick Of Referral Optin 4" data-subject="Aussie Wagyu &gt; Japanese Wagyu, no BS 🥩" data-flow="Kick Of Lab Referral Flow">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                  <div class="step-title">Kick Of Referral Optin 4</div>
+                  <div class="step-subject">Aussie Wagyu &gt; Japanese Wagyu, no BS 🥩</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Uv6Niv__XJX3SZ__kick-of-referral-optin-5.html" data-name="Kick Of Referral Optin 5" data-subject="Never get rinsed at your supermarket again 🛒" data-flow="Kick Of Lab Referral Flow">
+                <div class="step-num">5</div>
+                <div class="step-body">
+                  <div class="step-title">Kick Of Referral Optin 5</div>
+                  <div class="step-subject">Never get rinsed at your supermarket again 🛒</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Uv6Niv__UcHx4U__kick-of-referral-optin-6.html" data-name="Kick Of Referral Optin 6" data-subject="Here&#x27;s how to get free steak for a year 🏆" data-flow="Kick Of Lab Referral Flow">
+                <div class="step-num">6</div>
+                <div class="step-body">
+                  <div class="step-title">Kick Of Referral Optin 6</div>
+                  <div class="step-subject">Here&#x27;s how to get free steak for a year 🏆</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Uv6Niv__UcgLGp__kick-of-referral-optin-7.html" data-name="Kick Of Referral Optin 7" data-subject="Here&#x27;s what&#x27;s coming to the UK 🥩" data-flow="Kick Of Lab Referral Flow">
+                <div class="step-num">7</div>
+                <div class="step-body">
+                  <div class="step-title">Kick Of Referral Optin 7</div>
+                  <div class="step-subject">Here&#x27;s what&#x27;s coming to the UK 🥩</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Uv6Niv__RETA7c__kick-of-referral-optin-8.html" data-name="Kick Of Referral Optin 8" data-subject="Bollocks to subscription boxes 📦" data-flow="Kick Of Lab Referral Flow">
+                <div class="step-num">8</div>
+                <div class="step-body">
+                  <div class="step-title">Kick Of Referral Optin 8</div>
+                  <div class="step-subject">Bollocks to subscription boxes 📦</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Uv6Niv__U8WLrb__kick-of-referral-optin-9.html" data-name="Kick Of Referral Optin 9" data-subject="40,000 Hongkongers can&#x27;t be wrong 🇭🇰" data-flow="Kick Of Lab Referral Flow">
+                <div class="step-num">9</div>
+                <div class="step-body">
+                  <div class="step-title">Kick Of Referral Optin 9</div>
+                  <div class="step-subject">40,000 Hongkongers can&#x27;t be wrong 🇭🇰</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Uv6Niv__RL86uW__kick-of-referral-optin-10.html" data-name="Kick Of Referral Optin 10" data-subject="Don&#x27;t ruin a £40 steak 🔥" data-flow="Kick Of Lab Referral Flow">
+                <div class="step-num">10</div>
+                <div class="step-body">
+                  <div class="step-title">Kick Of Referral Optin 10</div>
+                  <div class="step-subject">Don&#x27;t ruin a £40 steak 🔥</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Uv6Niv__VRkDCC__kick-of-referral-optin-11.html" data-name="Kick Of Referral Optin 11" data-subject="Last one before we go live 🏆" data-flow="Kick Of Lab Referral Flow">
+                <div class="step-num">11</div>
+                <div class="step-body">
+                  <div class="step-title">Kick Of Referral Optin 11</div>
+                  <div class="step-subject">Last one before we go live 🏆</div>
+                </div>
+              </li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 1d</span></li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 2d</span></li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 2d</span></li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 2d</span></li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 3d</span></li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 3d</span></li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 4d</span></li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 5d</span></li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 5d</span></li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 4d</span></li>
+<li class="step meta-step"><span class="meta-pill">AB_TEST</span></li>
+</ol></details>
+<details class="flow" open><summary><span class="flow-name">F_REFERRAL-PROXIMITY</span><span class="flow-meta">4 emails</span></summary>
+<ol class="steps">
+<li class="step meta-step"><span class="meta-pill">BOOLEAN_BRANCH</span></li>
+<li class="step meta-step"><span class="meta-pill">BOOLEAN_BRANCH</span></li>
+<li class="step meta-step"><span class="meta-pill">BOOLEAN_BRANCH</span></li>
+<li class="step meta-step"><span class="meta-pill">BOOLEAN_BRANCH</span></li>
+<li class="step email-step" data-file="Vdt27T__Up9Vxy__e1-f-referral-proximity-tier-1.html" data-name="E1_F_REFERRAL-PROXIMITY_TIER-1" data-subject="One more. That&#x27;s it." data-flow="F_REFERRAL-PROXIMITY">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <div class="step-title">E1_F_REFERRAL-PROXIMITY_TIER-1</div>
+                  <div class="step-subject">One more. That&#x27;s it.</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Vdt27T__XxsExj__e1-f-referral-proximity-tier-2.html" data-name="E1_F_REFERRAL-PROXIMITY_TIER-2" data-subject="One more. That&#x27;s it." data-flow="F_REFERRAL-PROXIMITY">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <div class="step-title">E1_F_REFERRAL-PROXIMITY_TIER-2</div>
+                  <div class="step-subject">One more. That&#x27;s it.</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Vdt27T__QWKaXv__e1-f-referral-proximity-tier-3.html" data-name="E1_F_REFERRAL-PROXIMITY_TIER-3" data-subject="One more. That&#x27;s it." data-flow="F_REFERRAL-PROXIMITY">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <div class="step-title">E1_F_REFERRAL-PROXIMITY_TIER-3</div>
+                  <div class="step-subject">One more. That&#x27;s it.</div>
+                </div>
+              </li>
+<li class="step email-step" data-file="Vdt27T__WxTAnB__e1-f-referral-proximity-tier-4.html" data-name="E1_F_REFERRAL-PROXIMITY_TIER-4" data-subject="TEN more. That&#x27;s it." data-flow="F_REFERRAL-PROXIMITY">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                  <div class="step-title">E1_F_REFERRAL-PROXIMITY_TIER-4</div>
+                  <div class="step-subject">TEN more. That&#x27;s it.</div>
+                </div>
+              </li>
+</ol></details>
+<details class="flow" open><summary><span class="flow-name">Welcome series</span><span class="flow-meta">4 emails</span></summary>
+<ol class="steps">
+<li class="step email-step" data-file="Wfc5Vs__Y3BXrV__welcome-flow-email-1.html" data-name="Welcome Flow Email 1" data-subject="Join the Steak Revolution! 🥩" data-flow="Welcome series">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <div class="step-title">Welcome Flow Email 1</div>
+                  <div class="step-subject">Join the Steak Revolution! 🥩</div>
+                </div>
+              </li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 1d</span></li>
+<li class="step email-step" data-file="Wfc5Vs__WMzScF__welcome-flow-email-2.html" data-name="Welcome Flow Email 2" data-subject="You&#x27;re bloody welcome" data-flow="Welcome series">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <div class="step-title">Welcome Flow Email 2</div>
+                  <div class="step-subject">You&#x27;re bloody welcome</div>
+                </div>
+              </li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 2d</span></li>
+<li class="step email-step" data-file="Wfc5Vs__Un8W5z__welcome-flow-email-2.html" data-name="Welcome Flow Email 2" data-subject="Johnny&#x27;s Guide to the good stuff." data-flow="Welcome series">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <div class="step-title">Welcome Flow Email 2</div>
+                  <div class="step-subject">Johnny&#x27;s Guide to the good stuff.</div>
+                </div>
+              </li>
+<li class="step delay-step"><span class="delay-pill">↓ wait 2d</span></li>
+<li class="step email-step" data-file="Wfc5Vs__RjEXjQ__welcome-flow-email-4.html" data-name="Welcome Flow Email 4" data-subject="We price-match daily (yes, really)" data-flow="Welcome series">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                  <div class="step-title">Welcome Flow Email 4</div>
+                  <div class="step-subject">We price-match daily (yes, really)</div>
+                </div>
+              </li>
+</ol></details>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="toolbar">
+      <div class="meta-left">
+        <div class="meta-flow" id="meta-flow">Abandoned Collection Browse</div>
+        <div class="meta-name" id="meta-name">Abandoned Collection Browse Email 1 Beef</div>
+        <div class="meta-subject"><span class="label">Subject</span><span id="meta-subject">So... what&#x27;s the deal with marbling?</span></div>
+      </div>
+      <div class="toolbar-actions">
+        <a class="btn-ghost btn" id="open-new" href="templates/TXnAp3__RxVEfV__abandoned-collection-browse-email-1-beef.html" target="_blank">Open in new tab</a>
+        <a class="btn" id="download" href="templates/TXnAp3__RxVEfV__abandoned-collection-browse-email-1-beef.html" download>Download .html</a>
+      </div>
+    </div>
+    <div class="preview-frame">
+      <div class="device">
+        <iframe id="preview" src="templates/TXnAp3__RxVEfV__abandoned-collection-browse-email-1-beef.html" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="footer">Pulled live from Klaviyo · Templates render with placeholder personalisation tokens (e.g. {{ first_name }})</div>
+  </main>
+</div>
+<script>
+  document.querySelectorAll('.email-step').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.email-step.active').forEach(a=>a.classList.remove('active'));
+      el.classList.add('active');
+      const file = el.dataset.file;
+      document.getElementById('preview').src = 'templates/' + file;
+      document.getElementById('open-new').href = 'templates/' + file;
+      document.getElementById('download').href = 'templates/' + file;
+      document.getElementById('meta-flow').textContent = el.dataset.flow;
+      document.getElementById('meta-name').textContent = el.dataset.name;
+      document.getElementById('meta-subject').textContent = el.dataset.subject || '(no subject)';
+    });
+  });
+  // mark first email as active
+  const first = document.querySelector('.email-step');
+  if (first) first.classList.add('active');
+</script>
+</body>
+</html>
