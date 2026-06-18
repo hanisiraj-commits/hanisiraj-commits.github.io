@@ -447,143 +447,78 @@
           "kind": "split",
           "action_id": "109392036",
           "split_type": "trigger-split",
-          "condition": null,
+          "condition": "Routes by trigger property \u2014 first match wins",
           "branches": [
             {
-              "label": "Yes",
+              "label": "Pork",
               "value": true,
-              "nodes": []
-            },
-            {
-              "label": "Continue cascade\u2026",
-              "value": false,
               "nodes": [
                 {
-                  "kind": "split",
-                  "action_id": "109392041",
-                  "split_type": "trigger-split",
-                  "condition": null,
-                  "branches": [
-                    {
-                      "label": "Pork",
-                      "value": true,
-                      "nodes": [
-                        {
-                          "kind": "email",
-                          "action_id": "109392042",
-                          "message_id": "YvseFZ",
-                          "name": "Abandoned Product Browse Email 1 Pork",
-                          "subject": "Sweet & sour Iberico pork chops",
-                          "preview": "Here's how to cook the Wagyu of pork",
-                          "template_id": "Sv9xxV",
-                          "file": "TcMQvW__YvseFZ__abandoned-product-browse-email-1-pork.html",
-                          "status": "draft"
-                        }
-                      ]
-                    },
-                    {
-                      "label": "Continue cascade\u2026",
-                      "value": false,
-                      "nodes": [
-                        {
-                          "kind": "split",
-                          "action_id": "109392044",
-                          "split_type": "trigger-split",
-                          "condition": null,
-                          "branches": [
-                            {
-                              "label": "Lamb",
-                              "value": true,
-                              "nodes": [
-                                {
-                                  "kind": "email",
-                                  "action_id": "109392046",
-                                  "message_id": "UPXdjD",
-                                  "name": "Abandoned Product Browse Email 1 Lamb",
-                                  "subject": "Slow braised lamb shanks in red wine",
-                                  "preview": "Fall-off-the-bone tender, rich red wine sauce. Perfect comfort food.",
-                                  "template_id": "WCp6Q8",
-                                  "file": "TcMQvW__UPXdjD__abandoned-product-browse-email-1-lamb.html",
-                                  "status": "draft"
-                                }
-                              ]
-                            },
-                            {
-                              "label": "Continue cascade\u2026",
-                              "value": false,
-                              "nodes": [
-                                {
-                                  "kind": "split",
-                                  "action_id": "109392047",
-                                  "split_type": "trigger-split",
-                                  "condition": null,
-                                  "branches": [
-                                    {
-                                      "label": "Seafood",
-                                      "value": true,
-                                      "nodes": [
-                                        {
-                                          "kind": "email",
-                                          "action_id": "109392048",
-                                          "message_id": "RMvezU",
-                                          "name": "Abandoned Product Browse Email 1 Seafood",
-                                          "subject": "Grilled tiger prawns",
-                                          "preview": "Juicy, charred, bursting with flavour. Simple seafood perfection.",
-                                          "template_id": "VnkZAS",
-                                          "file": "TcMQvW__RMvezU__abandoned-product-browse-email-1-seafood.html",
-                                          "status": "draft"
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "label": "Continue cascade\u2026",
-                                      "value": false,
-                                      "nodes": [
-                                        {
-                                          "kind": "split",
-                                          "action_id": "109392053",
-                                          "split_type": "trigger-split",
-                                          "condition": null,
-                                          "branches": [
-                                            {
-                                              "label": "Poultry",
-                                              "value": true,
-                                              "nodes": [
-                                                {
-                                                  "kind": "email",
-                                                  "action_id": "109392054",
-                                                  "message_id": "SffLvK",
-                                                  "name": "Abandoned Product Browse Email 1 Poultry",
-                                                  "subject": "Grilled tiger prawns",
-                                                  "preview": "Juicy, charred, bursting with flavour. Simple seafood perfection.",
-                                                  "template_id": "U3FE2e",
-                                                  "file": "TcMQvW__SffLvK__abandoned-product-browse-email-1-poultry.html",
-                                                  "status": "draft"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "label": "No",
-                                              "value": false,
-                                              "nodes": []
-                                            }
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
+                  "kind": "email",
+                  "action_id": "109392042",
+                  "message_id": "YvseFZ",
+                  "name": "Abandoned Product Browse Email 1 Pork",
+                  "subject": "Sweet & sour Iberico pork chops",
+                  "preview": "Here's how to cook the Wagyu of pork",
+                  "template_id": "Sv9xxV",
+                  "file": "TcMQvW__YvseFZ__abandoned-product-browse-email-1-pork.html",
+                  "status": "draft"
+                }
+              ]
+            },
+            {
+              "label": "Lamb",
+              "value": true,
+              "nodes": [
+                {
+                  "kind": "email",
+                  "action_id": "109392046",
+                  "message_id": "UPXdjD",
+                  "name": "Abandoned Product Browse Email 1 Lamb",
+                  "subject": "Slow braised lamb shanks in red wine",
+                  "preview": "Fall-off-the-bone tender, rich red wine sauce. Perfect comfort food.",
+                  "template_id": "WCp6Q8",
+                  "file": "TcMQvW__UPXdjD__abandoned-product-browse-email-1-lamb.html",
+                  "status": "draft"
+                }
+              ]
+            },
+            {
+              "label": "Seafood",
+              "value": true,
+              "nodes": [
+                {
+                  "kind": "email",
+                  "action_id": "109392048",
+                  "message_id": "RMvezU",
+                  "name": "Abandoned Product Browse Email 1 Seafood",
+                  "subject": "Grilled tiger prawns",
+                  "preview": "Juicy, charred, bursting with flavour. Simple seafood perfection.",
+                  "template_id": "VnkZAS",
+                  "file": "TcMQvW__RMvezU__abandoned-product-browse-email-1-seafood.html",
+                  "status": "draft"
+                }
+              ]
+            },
+            {
+              "label": "Poultry",
+              "value": true,
+              "nodes": [
+                {
+                  "kind": "email",
+                  "action_id": "109392054",
+                  "message_id": "SffLvK",
+                  "name": "Abandoned Product Browse Email 1 Poultry",
+                  "subject": "Grilled tiger prawns",
+                  "preview": "Juicy, charred, bursting with flavour. Simple seafood perfection.",
+                  "template_id": "U3FE2e",
+                  "file": "TcMQvW__SffLvK__abandoned-product-browse-email-1-poultry.html",
+                  "status": "draft"
                 }
               ]
             }
-          ]
+          ],
+          "is_cascade": true
         }
       ],
       "email_counts": {
@@ -605,7 +540,7 @@
           "kind": "split",
           "action_id": "108270374",
           "split_type": "trigger-split",
-          "condition": "Referral Made.referral_count equals 4",
+          "condition": "Routes by trigger property \u2014 first match wins",
           "branches": [
             {
               "label": "Tier 1",
@@ -625,104 +560,58 @@
               ]
             },
             {
-              "label": "Continue cascade\u2026",
-              "value": false,
+              "label": "Tier 2",
+              "value": true,
               "nodes": [
                 {
-                  "kind": "split",
-                  "action_id": "108270382",
-                  "split_type": "trigger-split",
-                  "condition": "Referral Made.referral_count equals 9",
-                  "branches": [
-                    {
-                      "label": "Tier 2",
-                      "value": true,
-                      "nodes": [
-                        {
-                          "kind": "email",
-                          "action_id": "108288304",
-                          "message_id": "XxsExj",
-                          "name": "E1_F_REFERRAL-PROXIMITY_TIER-2",
-                          "subject": "One more. That's it.",
-                          "preview": "9 down. One mate between you and the knife.",
-                          "template_id": "Rx9Xpf",
-                          "file": "Vdt27T__XxsExj__e1-f-referral-proximity-tier-2.html",
-                          "status": "live"
-                        }
-                      ]
-                    },
-                    {
-                      "label": "Continue cascade\u2026",
-                      "value": false,
-                      "nodes": [
-                        {
-                          "kind": "split",
-                          "action_id": "108270387",
-                          "split_type": "trigger-split",
-                          "condition": "Referral Made.referral_count equals 24",
-                          "branches": [
-                            {
-                              "label": "Tier 3",
-                              "value": true,
-                              "nodes": [
-                                {
-                                  "kind": "email",
-                                  "action_id": "108288322",
-                                  "message_id": "QWKaXv",
-                                  "name": "E1_F_REFERRAL-PROXIMITY_TIER-3",
-                                  "subject": "One more. That's it.",
-                                  "preview": "24 down. One mate between you and the crate.",
-                                  "template_id": "UxAVYt",
-                                  "file": "Vdt27T__QWKaXv__e1-f-referral-proximity-tier-3.html",
-                                  "status": "manual"
-                                }
-                              ]
-                            },
-                            {
-                              "label": "Continue cascade\u2026",
-                              "value": false,
-                              "nodes": [
-                                {
-                                  "kind": "split",
-                                  "action_id": "108270392",
-                                  "split_type": "trigger-split",
-                                  "condition": "Referral Made.referral_count equals 40",
-                                  "branches": [
-                                    {
-                                      "label": "Tier 4",
-                                      "value": true,
-                                      "nodes": [
-                                        {
-                                          "kind": "email",
-                                          "action_id": "108288329",
-                                          "message_id": "WxTAnB",
-                                          "name": "E1_F_REFERRAL-PROXIMITY_TIER-4",
-                                          "subject": "TEN more. That's it.",
-                                          "preview": "40 down. One mate between you and a year of steak.",
-                                          "template_id": "YkjtT6",
-                                          "file": "Vdt27T__WxTAnB__e1-f-referral-proximity-tier-4.html",
-                                          "status": "live"
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "label": "No",
-                                      "value": false,
-                                      "nodes": []
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
+                  "kind": "email",
+                  "action_id": "108288304",
+                  "message_id": "XxsExj",
+                  "name": "E1_F_REFERRAL-PROXIMITY_TIER-2",
+                  "subject": "One more. That's it.",
+                  "preview": "9 down. One mate between you and the knife.",
+                  "template_id": "Rx9Xpf",
+                  "file": "Vdt27T__XxsExj__e1-f-referral-proximity-tier-2.html",
+                  "status": "live"
+                }
+              ]
+            },
+            {
+              "label": "Tier 3",
+              "value": true,
+              "nodes": [
+                {
+                  "kind": "email",
+                  "action_id": "108288322",
+                  "message_id": "QWKaXv",
+                  "name": "E1_F_REFERRAL-PROXIMITY_TIER-3",
+                  "subject": "One more. That's it.",
+                  "preview": "24 down. One mate between you and the crate.",
+                  "template_id": "UxAVYt",
+                  "file": "Vdt27T__QWKaXv__e1-f-referral-proximity-tier-3.html",
+                  "status": "manual"
+                }
+              ]
+            },
+            {
+              "label": "Tier 4",
+              "value": true,
+              "nodes": [
+                {
+                  "kind": "email",
+                  "action_id": "108288329",
+                  "message_id": "WxTAnB",
+                  "name": "E1_F_REFERRAL-PROXIMITY_TIER-4",
+                  "subject": "TEN more. That's it.",
+                  "preview": "40 down. One mate between you and a year of steak.",
+                  "template_id": "YkjtT6",
+                  "file": "Vdt27T__WxTAnB__e1-f-referral-proximity-tier-4.html",
+                  "status": "live"
                 }
               ]
             }
-          ]
+          ],
+          "is_cascade": true
         }
       ],
       "email_counts": {
