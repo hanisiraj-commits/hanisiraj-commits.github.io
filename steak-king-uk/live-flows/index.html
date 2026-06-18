@@ -10,11 +10,11 @@
     --line:#e2dfd6;--card:#fff;--accent:#c41e3a;--accent-soft:#fef0f2;
     --trigger:#1a1a1a;--delay:#fff7d6;--delay-ink:#7a5e00;
     --branch:#eef4ff;--branch-ink:#1e40af;--branch-border:#c6d4f5;
+    --abtest:#f3e8ff;--abtest-ink:#6b21a8;--abtest-border:#d8b4fe;
   }
   *{box-sizing:border-box}
   body,html{margin:0;padding:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
-  .layout{display:grid;grid-template-columns:300px 1fr;height:100vh}
-  /* Sidebar */
+  .layout{display:grid;grid-template-columns:320px 1fr;height:100vh}
   .sidebar{background:#1a1a1a;color:#f5f3ee;overflow-y:auto;border-right:1px solid #000}
   .brand{padding:22px 22px 18px;border-bottom:1px solid #333}
   .brand h1{margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em}
@@ -28,45 +28,43 @@
   .flow-item-name{font-size:13.5px;font-weight:600;line-height:1.3}
   .flow-item-meta{font-size:11px;color:#999;margin-top:3px}
   .flow-item.active .flow-item-meta{color:#ffd0d6}
-  /* Main canvas */
   .main{position:relative;background:radial-gradient(circle at 20px 20px,#d8d4cc 1px,transparent 1px);background-size:24px 24px;overflow:auto;height:100vh}
   .canvas-header{position:sticky;top:0;background:rgba(245,243,238,.97);backdrop-filter:blur(10px);padding:18px 32px 14px;border-bottom:1px solid var(--line);z-index:10}
   .canvas-header h2{margin:0;font-size:20px;font-weight:700;letter-spacing:-.01em}
   .canvas-header .sub{font-size:12px;color:var(--muted);margin-top:3px}
+  .canvas-header .profile-filter{font-size:11px;color:#7a5e00;background:#fff7d6;padding:6px 10px;border-radius:6px;margin-top:8px;display:inline-block;border:1px solid #f0e4a8}
   .canvas{padding:36px 32px 80px;display:flex;flex-direction:column;align-items:center;min-width:max-content}
-  /* Nodes */
-  .node{display:flex;flex-direction:column;align-items:center;position:relative}
-  .connector{width:2px;height:34px;background:#aaa;margin:0 auto}
-  .connector.short{height:18px}
+  /* Generic node wrapper */
+  .seq{display:flex;flex-direction:column;align-items:center;gap:0}
+  .connector{width:2px;height:34px;background:#aaa}
   /* Trigger card */
-  .trigger{background:var(--trigger);color:#fff;padding:14px 20px;border-radius:10px;min-width:280px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+  .trigger{background:var(--trigger);color:#fff;padding:14px 22px;border-radius:10px;min-width:300px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.15)}
   .trigger-label{font-size:10.5px;color:#aaa;text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-bottom:5px}
   .trigger-name{font-size:14.5px;font-weight:700}
   /* Email card */
   .email-card{background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:14px 18px;min-width:340px;max-width:420px;cursor:pointer;transition:all .15s;box-shadow:0 2px 8px rgba(0,0,0,.04)}
   .email-card:hover{border-color:var(--accent);box-shadow:0 6px 18px rgba(196,30,58,.15);transform:translateY(-1px)}
   .email-tag{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;padding:3px 8px;border-radius:4px;margin-bottom:8px}
+  .email-tag.ab{background:var(--abtest);color:var(--abtest-ink);margin-left:5px}
   .email-name{font-size:13.5px;font-weight:700;margin:0 0 4px;color:var(--ink)}
   .email-subject{font-size:12.5px;color:var(--ink-soft);line-height:1.4;margin-bottom:8px}
   .email-cta{font-size:11px;color:var(--accent);font-weight:600;display:flex;align-items:center;gap:4px}
   /* Delay pill */
   .delay-pill{background:var(--delay);color:var(--delay-ink);padding:7px 14px;border-radius:20px;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;gap:6px;border:1px solid #f0e4a8}
-  /* Split node */
-  .split-node{background:var(--branch);color:var(--branch-ink);border:1.5px solid var(--branch-border);padding:11px 18px;border-radius:8px;font-size:12.5px;font-weight:600;display:inline-flex;align-items:center;gap:8px}
-  .split-icon{font-size:14px}
-  /* Branches */
-  .branches{display:flex;gap:28px;align-items:flex-start;padding-top:20px;position:relative}
-  .branches::before{content:"";position:absolute;top:0;left:50%;width:2px;height:20px;background:#aaa}
-  .branch{display:flex;flex-direction:column;align-items:center;position:relative;padding-top:8px}
-  .branch::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:#aaa}
-  .branch:first-child::before{left:50%}
-  .branch:last-child::before{right:50%}
-  .branch-only::before{display:none}
-  .branch-label{background:#fff;border:1px solid var(--branch-border);color:var(--branch-ink);font-size:11px;font-weight:700;padding:5px 12px;border-radius:14px;margin-bottom:14px;white-space:nowrap}
-  .branch-nodes{display:flex;flex-direction:column;align-items:center;gap:0}
+  /* Split */
+  .split-node{background:var(--branch);color:var(--branch-ink);border:1.5px solid var(--branch-border);padding:11px 18px;border-radius:8px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:8px;max-width:520px;text-align:center}
+  .split-condition{font-size:11px;font-weight:500;opacity:.85;margin-top:3px;display:block}
+  .branches{display:flex;gap:36px;align-items:flex-start;padding-top:24px;position:relative}
+  .branches::before{content:"";position:absolute;top:0;left:50%;width:2px;height:24px;background:#aaa;transform:translateX(-50%)}
+  .branch-col{display:flex;flex-direction:column;align-items:center;position:relative;padding-top:14px;min-width:340px}
+  .branch-col::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:#aaa}
+  .branches > .branch-col:first-child::before{left:50%}
+  .branches > .branch-col:last-child::before{right:50%}
+  .branches > .branch-col:only-child::before{display:none}
+  .branch-label{background:#fff;border:1px solid var(--branch-border);color:var(--branch-ink);font-size:11px;font-weight:700;padding:6px 14px;border-radius:14px;margin-bottom:18px;white-space:nowrap;max-width:340px;overflow:hidden;text-overflow:ellipsis}
+  .branch-label.yes{background:#dcfce7;border-color:#bbf7d0;color:#166534}
+  .branch-label.no{background:#fee2e2;border-color:#fecaca;color:#991b1b}
   .end-cap{margin-top:14px;background:#e8e4dc;color:#888;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;padding:6px 12px;border-radius:14px}
-  /* Empty state */
-  .empty{padding:60px;text-align:center;color:var(--muted);font-size:14px}
   /* Modal */
   .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:none;align-items:center;justify-content:center;padding:40px}
   .modal-overlay.open{display:flex}
@@ -76,11 +74,10 @@
   .modal-flow{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
   .modal-name{font-size:15px;font-weight:700;margin:2px 0 6px}
   .modal-subject{font-size:12.5px;color:var(--ink-soft);line-height:1.4}
-  .modal-subject .lbl{color:var(--muted);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;margin-right:5px}
+  .modal-subject .lbl{color:var(--muted);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;margin-right:5px;display:block;margin-bottom:2px}
   .modal-actions{display:flex;gap:6px;flex:none}
   .btn{font-size:11.5px;font-weight:600;background:var(--ink);color:#fff;border:0;padding:7px 12px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block}
   .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
-  .btn-ghost:hover{background:#f5f3ee}
   .btn-close{background:transparent;color:var(--muted);font-size:22px;line-height:1;padding:0 6px;cursor:pointer;border:0}
   .modal-body{flex:1;overflow-y:auto;padding:22px;background:#e8e4dc;display:flex;justify-content:center}
   .device{background:#fff;width:100%;max-width:640px;box-shadow:0 6px 30px rgba(0,0,0,.10);border-radius:8px;overflow:hidden}
@@ -101,10 +98,9 @@
     <div class="canvas-header">
       <h2 id="flow-title">Select a flow</h2>
       <div class="sub" id="flow-sub">Choose a flow from the sidebar to view its structure</div>
+      <div class="profile-filter" id="profile-filter" style="display:none"></div>
     </div>
-    <div class="canvas" id="canvas">
-      <div class="empty">← Click a flow on the left</div>
-    </div>
+    <div class="canvas" id="canvas"></div>
   </main>
 </div>
 
@@ -122,124 +118,163 @@
         <button class="btn-close" onclick="closeModal()" aria-label="Close">×</button>
       </div>
     </div>
-    <div class="modal-body">
-      <div class="device"><iframe id="modal-frame" loading="lazy"></iframe></div>
-    </div>
+    <div class="modal-body"><div class="device"><iframe id="modal-frame" loading="lazy"></iframe></div></div>
   </div>
 </div>
 
 <script>
 let DATA = null;
 
-fetch('flow-map-data.json').then(r => r.json()).then(d => {
-  DATA = d;
-  renderSidebar();
-});
+fetch('flow-graph.json').then(r => r.json()).then(d => { DATA = d; renderSidebar(); });
 
-function fmtDelay(s){
-  if (s < 3600) return Math.round(s/60) + 'm';
-  if (s < 86400) return Math.round(s/3600) + 'h';
-  return Math.round(s/86400) + 'd';
+function countEmails(nodes){
+  let n = 0;
+  for (const x of nodes){
+    if (x.kind === 'email' || x.kind === 'abtest_email') n++;
+    else if (x.kind === 'split') x.branches.forEach(b => n += countEmails(b.nodes));
+  }
+  return n;
 }
 
 function renderSidebar(){
   const list = document.getElementById('flows-list');
-  const totalEmails = Object.keys(DATA.messages).length;
-  document.getElementById('stats').innerHTML = `<b>${DATA.flows.length} flows</b> · <b>${totalEmails} live emails</b>`;
+  const total = DATA.flows.reduce((s,f) => s + countEmails(f.tree), 0);
+  document.getElementById('stats').innerHTML = `<b>${DATA.flows.length} live flows</b> · <b>${total} live emails</b>`;
   list.innerHTML = '';
   DATA.flows.forEach((f, idx) => {
-    const emailCount = countEmails(f.sequence);
+    const n = countEmails(f.tree);
     const el = document.createElement('div');
     el.className = 'flow-item';
     el.dataset.idx = idx;
     el.innerHTML = `<div class="flow-item-name">${escapeHtml(f.name)}</div>
-                    <div class="flow-item-meta">${emailCount} email${emailCount!==1?'s':''} · ${f.trigger.label}</div>`;
+                    <div class="flow-item-meta">${n} email${n!==1?'s':''} · ${escapeHtml(f.trigger.label)}</div>`;
     el.addEventListener('click', () => selectFlow(idx));
     list.appendChild(el);
   });
-  // Auto-select first
   selectFlow(0);
-}
-
-function countEmails(seq){
-  let n = 0;
-  seq.forEach(node => {
-    if (node.kind === 'email') n++;
-    else if (node.kind === 'split') node.branches.forEach(b => n += countEmails(b.nodes));
-  });
-  return n;
 }
 
 function selectFlow(idx){
   document.querySelectorAll('.flow-item').forEach(el => el.classList.toggle('active', +el.dataset.idx === idx));
   const f = DATA.flows[idx];
   document.getElementById('flow-title').textContent = f.name;
-  document.getElementById('flow-sub').textContent = `Trigger: ${f.trigger.label} · ${countEmails(f.sequence)} emails`;
+  document.getElementById('flow-sub').textContent = `${f.trigger.label} · ${countEmails(f.tree)} emails`;
+  const pf = document.getElementById('profile-filter');
+  if (f.profile_filter_summary){
+    pf.style.display = 'inline-block';
+    pf.textContent = '⛔ Profile filter: ' + f.profile_filter_summary;
+  } else { pf.style.display = 'none'; }
   renderCanvas(f);
 }
 
 function renderCanvas(flow){
   const c = document.getElementById('canvas');
   c.innerHTML = '';
-  // Trigger
   c.appendChild(triggerNode(flow.trigger));
   c.appendChild(connector());
-  // Sequence
-  renderSequence(c, flow.sequence);
-  // End
-  const end = document.createElement('div');
-  end.className = 'end-cap';
-  end.textContent = '— Exit —';
-  c.appendChild(end);
+  renderSequence(c, flow.tree, flow.name);
 }
 
-function renderSequence(parent, seq){
+function renderSequence(parent, seq, flowName){
   seq.forEach((node, i) => {
-    if (node.kind === 'email'){
-      parent.appendChild(emailCard(node.msg));
-    } else if (node.kind === 'delay'){
-      const d = document.createElement('div');
-      d.className = 'delay-pill';
-      d.innerHTML = `<span>⏱</span> Wait ${fmtDelay(node.seconds)}`;
-      parent.appendChild(d);
-    } else if (node.kind === 'split'){
-      const s = document.createElement('div');
-      s.className = 'split-node';
-      s.innerHTML = `<span class="split-icon">⇆</span> ${escapeHtml(node.label)}`;
-      parent.appendChild(s);
-      const br = document.createElement('div');
-      br.className = 'branches';
-      node.branches.forEach((b, bi) => {
-        const branchEl = document.createElement('div');
-        branchEl.className = 'branch' + (node.branches.length === 1 ? ' branch-only' : '');
-        const label = document.createElement('div');
-        label.className = 'branch-label';
-        label.textContent = b.label;
-        branchEl.appendChild(label);
-        const nodesEl = document.createElement('div');
-        nodesEl.className = 'branch-nodes';
-        renderSequence(nodesEl, interleave(b.nodes));
-        branchEl.appendChild(nodesEl);
-        br.appendChild(branchEl);
-      });
-      parent.appendChild(br);
-      return; // Don't add connector after split
+    parent.appendChild(renderNode(node, flowName));
+    // Connector between nodes — but not after splits (their branches handle their own flow)
+    const isLast = i === seq.length - 1;
+    if (node.kind !== 'split'){
+      parent.appendChild(connector());
     }
-    // Add connector between nodes
-    if (i < seq.length - 1){
-      parent.appendChild(connector());
-    } else {
-      parent.appendChild(connector());
+    if (isLast && node.kind !== 'split'){
+      const end = document.createElement('div');
+      end.className = 'end-cap';
+      end.textContent = '— Exit —';
+      parent.appendChild(end);
     }
   });
 }
 
-// Interleave: places connectors between sequence items
-function interleave(nodes){ return nodes; }
+function renderNode(node, flowName){
+  if (node.kind === 'email' || node.kind === 'abtest_email'){
+    return emailCard(node, flowName, node.kind === 'abtest_email');
+  } else if (node.kind === 'delay'){
+    const d = document.createElement('div');
+    d.className = 'delay-pill';
+    d.innerHTML = `<span>⏱</span> Wait ${escapeHtml(node.label)}`;
+    return d;
+  } else if (node.kind === 'split'){
+    return splitNode(node, flowName);
+  } else {
+    const u = document.createElement('div');
+    u.className = 'delay-pill';
+    u.style.background='#fee';
+    u.textContent = `Unknown: ${node.kind || ''}`;
+    return u;
+  }
+}
+
+function splitNode(node, flowName){
+  const wrap = document.createElement('div');
+  wrap.className = 'seq';
+  const lbl = document.createElement('div');
+  lbl.className = 'split-node';
+  const cond = node.condition || '';
+  const t = node.split_type === 'trigger' ? 'Trigger split' : 'Conditional split';
+  lbl.innerHTML = `<span>⇆ ${t}</span><span class="split-condition">${escapeHtml(cond)}</span>`;
+  wrap.appendChild(lbl);
+  const br = document.createElement('div');
+  br.className = 'branches';
+  // For each branch, render only non-empty
+  const nonEmpty = node.branches.filter(b => b.nodes.length > 0);
+  if (nonEmpty.length === 0){
+    const end = document.createElement('div');
+    end.className = 'end-cap';
+    end.textContent = '— Exit (both branches empty) —';
+    wrap.appendChild(end);
+    return wrap;
+  }
+  nonEmpty.forEach(b => {
+    const col = document.createElement('div');
+    col.className = 'branch-col';
+    const blbl = document.createElement('div');
+    blbl.className = 'branch-label ' + (b.value ? 'yes' : 'no');
+    // Smart label: use destination email's "category" if obvious
+    let label = b.value ? 'Yes' : 'No';
+    // Try to derive a more descriptive label
+    if (b.nodes.length === 1 && b.nodes[0].kind === 'email'){
+      const ename = b.nodes[0].name;
+      const m = ename.match(/(Beef|Pork|Lamb|Seafood|Poultry|General|Existing|Non-Customer|TIER-?\d+|Tier-?\d+)/i);
+      if (m){ label = m[1]; }
+    }
+    if (b.value === true && node.condition && node.split_type === 'conditional'){
+      label = 'Yes';
+    }
+    blbl.textContent = label;
+    col.appendChild(blbl);
+    const inner = document.createElement('div');
+    inner.className = 'seq';
+    renderSequence(inner, b.nodes, flowName);
+    col.appendChild(inner);
+    br.appendChild(col);
+  });
+  wrap.appendChild(br);
+  return wrap;
+}
+
+function emailCard(node, flowName, isAB){
+  const card = document.createElement('div');
+  card.className = 'email-card';
+  card.innerHTML = `<div>
+                      <span class="email-tag">Send Email</span>${isAB ? '<span class="email-tag ab">A/B Test</span>' : ''}
+                    </div>
+                    <div class="email-name">${escapeHtml(node.name)}</div>
+                    <div class="email-subject"><b>Subject:</b> ${escapeHtml(node.subject || '(no subject)')}</div>
+                    <div class="email-cta">Click to preview →</div>`;
+  card.addEventListener('click', () => openPreview(node, flowName));
+  return card;
+}
 
 function triggerNode(trigger){
   const wrap = document.createElement('div');
-  wrap.className = 'node';
+  wrap.className = 'seq';
   const card = document.createElement('div');
   card.className = 'trigger';
   card.innerHTML = `<div class="trigger-label">Trigger</div><div class="trigger-name">${escapeHtml(trigger.label)}</div>`;
@@ -247,55 +282,26 @@ function triggerNode(trigger){
   return wrap;
 }
 
-function emailCard(msgId){
-  const m = DATA.messages[msgId];
-  if (!m) {
-    const e = document.createElement('div');
-    e.className = 'email-card';
-    e.textContent = 'Missing: ' + msgId;
-    return e;
-  }
-  const card = document.createElement('div');
-  card.className = 'email-card';
-  card.innerHTML = `<div class="email-tag">Send Email</div>
-                    <div class="email-name">${escapeHtml(m.name)}</div>
-                    <div class="email-subject"><b>Subject:</b> ${escapeHtml(m.subject || '(no subject)')}</div>
-                    <div class="email-cta">Click to preview →</div>`;
-  card.addEventListener('click', () => openPreview(msgId));
-  return card;
-}
+function connector(){ const c = document.createElement('div'); c.className = 'connector'; return c; }
 
-function connector(){
-  const c = document.createElement('div');
-  c.className = 'connector';
-  return c;
-}
-
-function openPreview(msgId){
-  const m = DATA.messages[msgId];
-  if (!m || !m.file){ alert('Template file missing for ' + msgId); return; }
-  document.getElementById('modal-flow').textContent = m.flow_name;
-  document.getElementById('modal-name').textContent = m.name;
-  document.getElementById('modal-subject').textContent = m.subject || '(no subject)';
-  document.getElementById('modal-frame').src = 'templates/' + m.file;
-  document.getElementById('modal-open').href = 'templates/' + m.file;
-  document.getElementById('modal-download').href = 'templates/' + m.file;
+function openPreview(node, flowName){
+  if (!node.file){ alert('Template file missing for ' + node.message_id); return; }
+  document.getElementById('modal-flow').textContent = flowName;
+  document.getElementById('modal-name').textContent = node.name;
+  document.getElementById('modal-subject').textContent = node.subject || '(no subject)';
+  document.getElementById('modal-frame').src = 'templates/' + node.file;
+  document.getElementById('modal-open').href = 'templates/' + node.file;
+  document.getElementById('modal-download').href = 'templates/' + node.file;
   document.getElementById('modal').classList.add('open');
 }
 function closeModal(){
   document.getElementById('modal').classList.remove('open');
   document.getElementById('modal-frame').src = 'about:blank';
 }
-document.getElementById('modal').addEventListener('click', e => {
-  if (e.target.id === 'modal') closeModal();
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
+document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-function escapeHtml(s){
-  return String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-}
+function escapeHtml(s){ return String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 </script>
 </body>
 </html>

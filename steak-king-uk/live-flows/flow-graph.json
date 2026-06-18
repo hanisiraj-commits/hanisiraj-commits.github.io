@@ -1,0 +1,700 @@
+{
+  "flows": [
+    {
+      "id": "Wfc5Vs",
+      "name": "Welcome series",
+      "status": "live",
+      "trigger": {
+        "type": "Added to List",
+        "label": "Added to List"
+      },
+      "profile_filter_summary": "Placed Order count equals 0 since flow start",
+      "tree": [
+        {
+          "kind": "email",
+          "action_id": "109379901",
+          "message_id": "Y3BXrV",
+          "name": "Welcome Flow Email 1",
+          "subject": "Join the Steak Revolution! \ud83e\udd69",
+          "preview": "Open for your exclusive welcome offer",
+          "template_id": "S3jghR",
+          "file": "Wfc5Vs__Y3BXrV__welcome-flow-email-1.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "109379904",
+          "label": "1 day",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "109379905",
+          "message_id": "WMzScF",
+          "name": "Welcome Flow Email 2",
+          "subject": "You're bloody welcome",
+          "preview": "",
+          "template_id": "YzZKHa",
+          "file": "Wfc5Vs__WMzScF__welcome-flow-email-2.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "109379906",
+          "label": "2 days",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "109379907",
+          "message_id": "Un8W5z",
+          "name": "Welcome Flow Email 2",
+          "subject": "Johnny's Guide to the good stuff.",
+          "preview": "Don't forget to take \u00a320 off with WELCOME20",
+          "template_id": "WayPA4",
+          "file": "Wfc5Vs__Un8W5z__welcome-flow-email-2.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "109379908",
+          "label": "2 days",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "109379909",
+          "message_id": "RjEXjQ",
+          "name": "Welcome Flow Email 4",
+          "subject": "We price-match daily (yes, really)",
+          "preview": "Don't forget your \u00a320 off",
+          "template_id": "T86QQj",
+          "file": "Wfc5Vs__RjEXjQ__welcome-flow-email-4.html"
+        }
+      ]
+    },
+    {
+      "id": "Uv6Niv",
+      "name": "Kick Of Lab Referral Flow",
+      "status": "live",
+      "trigger": {
+        "type": "Metric",
+        "label": "Triggered on: XJH3Z7"
+      },
+      "profile_filter_summary": null,
+      "tree": [
+        {
+          "kind": "abtest_email",
+          "action_id": "108684955",
+          "message_id": "RB4QbK",
+          "name": "Kick Of Referral Optin 1",
+          "subject": "You just joined the good ones \ud83d\udd25",
+          "preview": "Your referral link. And how this is going to work.",
+          "template_id": "S9E3x8",
+          "file": "Uv6Niv__RB4QbK__kick-of-referral-optin-1.html",
+          "experiment_status": "completed"
+        },
+        {
+          "kind": "delay",
+          "action_id": "106637439",
+          "label": "1 day",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "106597933",
+          "message_id": "TgBdaS",
+          "name": "Kick Of Referral Optin 2",
+          "subject": "Right then, who is Johnny? \ud83d\udc4b",
+          "preview": "30 years in food. One Michelin Guide listing. Finally coming home.",
+          "template_id": "V536Fm",
+          "file": "Uv6Niv__TgBdaS__kick-of-referral-optin-2.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "106637441",
+          "label": "2 days",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "106597940",
+          "message_id": "XRBinU",
+          "name": "Kick Of Referral Optin 3",
+          "subject": "Do you know what Aussie Wagyu is? \ud83e\udd69",
+          "preview": "The world's been on it for years. UK hasn't.",
+          "template_id": "RRiBeQ",
+          "file": "Uv6Niv__XRBinU__kick-of-referral-optin-3.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "106637446",
+          "label": "2 days",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "106597946",
+          "message_id": "UpZ3Ud",
+          "name": "Kick Of Referral Optin 4",
+          "subject": "Aussie Wagyu > Japanese Wagyu, no BS \ud83e\udd69",
+          "preview": "What Australian Wagyu actually is. Read on.",
+          "template_id": "WcqVqG",
+          "file": "Uv6Niv__UpZ3Ud__kick-of-referral-optin-4.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "106637448",
+          "label": "2 days",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "106597948",
+          "message_id": "XJX3SZ",
+          "name": "Kick Of Referral Optin 5",
+          "subject": "Never get rinsed at your supermarket again \ud83d\uded2",
+          "preview": "3 minutes. Hundreds of pounds saved a year.",
+          "template_id": "RJEkJV",
+          "file": "Uv6Niv__XJX3SZ__kick-of-referral-optin-5.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "106637450",
+          "label": "3 days",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "106597952",
+          "message_id": "UcHx4U",
+          "name": "Kick Of Referral Optin 6",
+          "subject": "Here's how to get free steak for a year \ud83c\udfc6",
+          "preview": "100 referrals. 52 deliveries. My pick every time.",
+          "template_id": "VZ9qzp",
+          "file": "Uv6Niv__UcHx4U__kick-of-referral-optin-6.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "106637451",
+          "label": "3 days",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "106603188",
+          "message_id": "UcgLGp",
+          "name": "Kick Of Referral Optin 7",
+          "subject": "Here's what's coming to the UK \ud83e\udd69",
+          "preview": "15 to 20 popular cuts. What to try first.",
+          "template_id": "VYGEcS",
+          "file": "Uv6Niv__UcgLGp__kick-of-referral-optin-7.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "106638770",
+          "label": "4 days",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "106603500",
+          "message_id": "RETA7c",
+          "name": "Kick Of Referral Optin 8",
+          "subject": "Bollocks to subscription boxes \ud83d\udce6",
+          "preview": "Every other premium butcher ties you in. We don't.",
+          "template_id": "TtjtBF",
+          "file": "Uv6Niv__RETA7c__kick-of-referral-optin-8.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "106638768",
+          "label": "5 days",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "106603517",
+          "message_id": "U8WLrb",
+          "name": "Kick Of Referral Optin 9",
+          "subject": "40,000 Hongkongers can't be wrong \ud83c\udded\ud83c\uddf0",
+          "preview": "4.5 on Trustpilot. 269 reviews. Here's what they say.",
+          "template_id": "VVnDVE",
+          "file": "Uv6Niv__U8WLrb__kick-of-referral-optin-9.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "106638746",
+          "label": "5 days",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "106603541",
+          "message_id": "RL86uW",
+          "name": "Kick Of Referral Optin 10",
+          "subject": "Don't ruin a \u00a340 steak \ud83d\udd25",
+          "preview": "Seven rules. Screenshot this one.",
+          "template_id": "TyxXZr",
+          "file": "Uv6Niv__RL86uW__kick-of-referral-optin-10.html"
+        },
+        {
+          "kind": "delay",
+          "action_id": "106638740",
+          "label": "4 days",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "106603565",
+          "message_id": "VRkDCC",
+          "name": "Kick Of Referral Optin 11",
+          "subject": "Last one before we go live \ud83c\udfc6",
+          "preview": "100 referrals still on the table. Free steak for a year.",
+          "template_id": "XDLx97",
+          "file": "Uv6Niv__VRkDCC__kick-of-referral-optin-11.html"
+        }
+      ]
+    },
+    {
+      "id": "UjUEey",
+      "name": "ABANDONED-CHECKOUT",
+      "status": "live",
+      "trigger": {
+        "type": "Metric",
+        "label": "Triggered on: Checkout Started"
+      },
+      "profile_filter_summary": "Placed Order count equals 0 since flow start OR Not in this flow in last 7 days",
+      "tree": [
+        {
+          "kind": "delay",
+          "action_id": "104517187",
+          "label": "30 minutes",
+          "seconds": null
+        },
+        {
+          "kind": "split",
+          "action_id": "104517188",
+          "split_type": "conditional",
+          "condition": "Placed Order count equals 0 all-time",
+          "branches": [
+            {
+              "label": "Yes \u2014 Placed Order count equals 0 all-time",
+              "value": true,
+              "nodes": [
+                {
+                  "kind": "email",
+                  "action_id": "104517207",
+                  "message_id": "TnnAem",
+                  "name": "Abandoned Checkout Email 1 (Non-Customers)",
+                  "subject": "These won't cook themselves...",
+                  "preview": "Plus, you've got \u00a320 off waiting. ",
+                  "template_id": "VaNtJQ",
+                  "file": "UjUEey__TnnAem__abandoned-checkout-email-1-non-customers.html"
+                },
+                {
+                  "kind": "delay",
+                  "action_id": "104517211",
+                  "label": "1 day",
+                  "seconds": null
+                },
+                {
+                  "kind": "email",
+                  "action_id": "104517212",
+                  "message_id": "TQ98ac",
+                  "name": "Abandoned Checkout Email 2 (Non-Customers)",
+                  "subject": "Your cart called. It's hungry.",
+                  "preview": "(It's still \u00a320 off) ",
+                  "template_id": "VCyZEF",
+                  "file": "UjUEey__TQ98ac__abandoned-checkout-email-2-non-customers.html"
+                }
+              ]
+            },
+            {
+              "label": "No \u2014 does not match",
+              "value": false,
+              "nodes": [
+                {
+                  "kind": "email",
+                  "action_id": "104517190",
+                  "message_id": "W8kxK3",
+                  "name": "Abandoned Checkout Email 1 (Existing Customers)",
+                  "subject": "These won't cook themselves...",
+                  "preview": "\u2028Your favourite. Ready to order.",
+                  "template_id": "RUtJ7s",
+                  "file": "UjUEey__W8kxK3__abandoned-checkout-email-1-existing-customers.html"
+                },
+                {
+                  "kind": "delay",
+                  "action_id": "104517196",
+                  "label": "1 day",
+                  "seconds": null
+                },
+                {
+                  "kind": "email",
+                  "action_id": "104517197",
+                  "message_id": "RcPr9r",
+                  "name": "Abandoned Checkout Email 2 (Existing Customers)",
+                  "subject": "Your cart called. It's hungry.",
+                  "preview": "you don't want to skip out on these",
+                  "template_id": "SZfiDU",
+                  "file": "UjUEey__RcPr9r__abandoned-checkout-email-2-existing-customers.html"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TXnAp3",
+      "name": "Abandoned Collection Browse",
+      "status": "live",
+      "trigger": {
+        "type": "Metric",
+        "label": "Triggered on: VRsqyt"
+      },
+      "profile_filter_summary": "Checkout Started count equals 0 since flow start OR Placed Order count equals 0 since flow start OR Clicked Email count equals 0 since flow start",
+      "tree": [
+        {
+          "kind": "delay",
+          "action_id": "109452056",
+          "label": "1 hour 30 min",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "109452058",
+          "message_id": "RxVEfV",
+          "name": "Abandoned Collection Browse Email 1 Beef",
+          "subject": "So... what's the deal with marbling?",
+          "preview": "M2 vs M9 makes all the difference",
+          "template_id": "TkmxLq",
+          "file": "TXnAp3__RxVEfV__abandoned-collection-browse-email-1-beef.html"
+        },
+        {
+          "kind": "email",
+          "action_id": "109452061",
+          "message_id": "RtipUx",
+          "name": "Abandoned Collection Browse Email 1 General",
+          "subject": "Why our suppliers matter",
+          "preview": "From Jack's Creek in Australia to trusted family farms across Europe",
+          "template_id": "TfJhr2",
+          "file": "TXnAp3__RtipUx__abandoned-collection-browse-email-1-general.html"
+        },
+        {
+          "kind": "split",
+          "action_id": "109452057",
+          "split_type": "conditional",
+          "condition": null,
+          "branches": [
+            {
+              "label": "Yes \u2014 matches filter",
+              "value": true,
+              "nodes": []
+            },
+            {
+              "label": "No \u2014 does not match",
+              "value": false,
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TcMQvW",
+      "name": "Abandoned Product Browse",
+      "status": "live",
+      "trigger": {
+        "type": "Metric",
+        "label": "Triggered on: Viewed Product"
+      },
+      "profile_filter_summary": "Checkout Started count equals 0 since flow start OR Placed Order count equals 0 since flow start OR Dropped Email count equals 0 since flow start",
+      "tree": [
+        {
+          "kind": "delay",
+          "action_id": "109392035",
+          "label": "1 hour 45 min",
+          "seconds": null
+        },
+        {
+          "kind": "email",
+          "action_id": "109392037",
+          "message_id": "YA5v3p",
+          "name": "Abandoned Product Browse Email 1 Beef",
+          "subject": "How to cook the perfect steak",
+          "preview": "Restaurant-quality. Here's how to do it at home.",
+          "template_id": "SzLMTj",
+          "file": "TcMQvW__YA5v3p__abandoned-product-browse-email-1-beef.html"
+        },
+        {
+          "kind": "split",
+          "action_id": "109392036",
+          "split_type": "trigger",
+          "condition": "(trigger property check)",
+          "branches": [
+            {
+              "label": "Yes \u2014 (trigger property check)",
+              "value": true,
+              "nodes": []
+            },
+            {
+              "label": "No \u2014 continue",
+              "value": false,
+              "nodes": [
+                {
+                  "kind": "split",
+                  "action_id": "109392041",
+                  "split_type": "trigger",
+                  "condition": "(trigger property check)",
+                  "branches": [
+                    {
+                      "label": "Yes \u2014 (trigger property check)",
+                      "value": true,
+                      "nodes": [
+                        {
+                          "kind": "email",
+                          "action_id": "109392042",
+                          "message_id": "YvseFZ",
+                          "name": "Abandoned Product Browse Email 1 Pork",
+                          "subject": "Sweet & sour Iberico pork chops",
+                          "preview": "Here's how to cook the Wagyu of pork",
+                          "template_id": "Sv9xxV",
+                          "file": "TcMQvW__YvseFZ__abandoned-product-browse-email-1-pork.html"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "No \u2014 continue",
+                      "value": false,
+                      "nodes": [
+                        {
+                          "kind": "split",
+                          "action_id": "109392044",
+                          "split_type": "trigger",
+                          "condition": "(trigger property check)",
+                          "branches": [
+                            {
+                              "label": "Yes \u2014 (trigger property check)",
+                              "value": true,
+                              "nodes": [
+                                {
+                                  "kind": "email",
+                                  "action_id": "109392046",
+                                  "message_id": "UPXdjD",
+                                  "name": "Abandoned Product Browse Email 1 Lamb",
+                                  "subject": "Slow braised lamb shanks in red wine",
+                                  "preview": "Fall-off-the-bone tender, rich red wine sauce. Perfect comfort food.",
+                                  "template_id": "WCp6Q8",
+                                  "file": "TcMQvW__UPXdjD__abandoned-product-browse-email-1-lamb.html"
+                                }
+                              ]
+                            },
+                            {
+                              "label": "No \u2014 continue",
+                              "value": false,
+                              "nodes": [
+                                {
+                                  "kind": "split",
+                                  "action_id": "109392047",
+                                  "split_type": "trigger",
+                                  "condition": "(trigger property check)",
+                                  "branches": [
+                                    {
+                                      "label": "Yes \u2014 (trigger property check)",
+                                      "value": true,
+                                      "nodes": [
+                                        {
+                                          "kind": "email",
+                                          "action_id": "109392048",
+                                          "message_id": "RMvezU",
+                                          "name": "Abandoned Product Browse Email 1 Seafood",
+                                          "subject": "Grilled tiger prawns",
+                                          "preview": "Juicy, charred, bursting with flavour. Simple seafood perfection.",
+                                          "template_id": "VnkZAS",
+                                          "file": "TcMQvW__RMvezU__abandoned-product-browse-email-1-seafood.html"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "label": "No \u2014 continue",
+                                      "value": false,
+                                      "nodes": [
+                                        {
+                                          "kind": "split",
+                                          "action_id": "109392053",
+                                          "split_type": "trigger",
+                                          "condition": "(trigger property check)",
+                                          "branches": [
+                                            {
+                                              "label": "Yes \u2014 (trigger property check)",
+                                              "value": true,
+                                              "nodes": [
+                                                {
+                                                  "kind": "email",
+                                                  "action_id": "109392054",
+                                                  "message_id": "SffLvK",
+                                                  "name": "Abandoned Product Browse Email 1 Poultry",
+                                                  "subject": "Grilled tiger prawns",
+                                                  "preview": "Juicy, charred, bursting with flavour. Simple seafood perfection.",
+                                                  "template_id": "U3FE2e",
+                                                  "file": "TcMQvW__SffLvK__abandoned-product-browse-email-1-poultry.html"
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "label": "No \u2014 continue",
+                                              "value": false,
+                                              "nodes": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Vdt27T",
+      "name": "F_REFERRAL-PROXIMITY",
+      "status": "live",
+      "trigger": {
+        "type": "Metric",
+        "label": "Triggered on: Referral Made (when Referral Made.campaign equals Steak King UK Pre-Launch)"
+      },
+      "profile_filter_summary": null,
+      "tree": [
+        {
+          "kind": "split",
+          "action_id": "108270374",
+          "split_type": "trigger",
+          "condition": "Referral Made.referral_count equals 4",
+          "branches": [
+            {
+              "label": "Yes \u2014 Referral Made.referral_count equals 4",
+              "value": true,
+              "nodes": [
+                {
+                  "kind": "email",
+                  "action_id": "108285138",
+                  "message_id": "Up9Vxy",
+                  "name": "E1_F_REFERRAL-PROXIMITY_TIER-1",
+                  "subject": "One more. That's it.",
+                  "preview": "4 down. One mate between you and the 3-order discount.",
+                  "template_id": "TkaQYB",
+                  "file": "Vdt27T__Up9Vxy__e1-f-referral-proximity-tier-1.html"
+                }
+              ]
+            },
+            {
+              "label": "No \u2014 continue",
+              "value": false,
+              "nodes": [
+                {
+                  "kind": "split",
+                  "action_id": "108270382",
+                  "split_type": "trigger",
+                  "condition": "Referral Made.referral_count equals 9",
+                  "branches": [
+                    {
+                      "label": "Yes \u2014 Referral Made.referral_count equals 9",
+                      "value": true,
+                      "nodes": [
+                        {
+                          "kind": "email",
+                          "action_id": "108288304",
+                          "message_id": "XxsExj",
+                          "name": "E1_F_REFERRAL-PROXIMITY_TIER-2",
+                          "subject": "One more. That's it.",
+                          "preview": "9 down. One mate between you and the knife.",
+                          "template_id": "Rx9Xpf",
+                          "file": "Vdt27T__XxsExj__e1-f-referral-proximity-tier-2.html"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "No \u2014 continue",
+                      "value": false,
+                      "nodes": [
+                        {
+                          "kind": "split",
+                          "action_id": "108270387",
+                          "split_type": "trigger",
+                          "condition": "Referral Made.referral_count equals 24",
+                          "branches": [
+                            {
+                              "label": "Yes \u2014 Referral Made.referral_count equals 24",
+                              "value": true,
+                              "nodes": [
+                                {
+                                  "kind": "email",
+                                  "action_id": "108288322",
+                                  "message_id": "QWKaXv",
+                                  "name": "E1_F_REFERRAL-PROXIMITY_TIER-3",
+                                  "subject": "One more. That's it.",
+                                  "preview": "24 down. One mate between you and the crate.",
+                                  "template_id": "UxAVYt",
+                                  "file": "Vdt27T__QWKaXv__e1-f-referral-proximity-tier-3.html"
+                                }
+                              ]
+                            },
+                            {
+                              "label": "No \u2014 continue",
+                              "value": false,
+                              "nodes": [
+                                {
+                                  "kind": "split",
+                                  "action_id": "108270392",
+                                  "split_type": "trigger",
+                                  "condition": "Referral Made.referral_count equals 40",
+                                  "branches": [
+                                    {
+                                      "label": "Yes \u2014 Referral Made.referral_count equals 40",
+                                      "value": true,
+                                      "nodes": [
+                                        {
+                                          "kind": "email",
+                                          "action_id": "108288329",
+                                          "message_id": "WxTAnB",
+                                          "name": "E1_F_REFERRAL-PROXIMITY_TIER-4",
+                                          "subject": "TEN more. That's it.",
+                                          "preview": "40 down. One mate between you and a year of steak.",
+                                          "template_id": "YkjtT6",
+                                          "file": "Vdt27T__WxTAnB__e1-f-referral-proximity-tier-4.html"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "label": "No \u2014 continue",
+                                      "value": false,
+                                      "nodes": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
