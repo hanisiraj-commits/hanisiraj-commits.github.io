@@ -324,6 +324,9 @@ h4 {
         }
     }</style></head>
 <body style="word-spacing:normal;background-color:#F7F7F7;">
+<div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+      
+    </div>
 <!-- TRACKING_PIXEL_TOP -->
 <div class="root-container" id="bodyTable" style="background-color:#F7F7F7;">
 <div class="root-container-spacing">
@@ -363,7 +366,7 @@ h4 {
 <tr>
 <!--[if !true]><!--><td align="center" class="table-mobile-only hlb-logo" style="display:none; max-height:0; mso-hide:all; overflow:hidden; width:100%; padding-bottom:200px"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border-spacing:0px;"><tbody><tr><!--[if true]><td style="width:140px;" bgcolor="transparent"><![endif]-->
 <!--[if !true]><!--><td style="width:140px;"><!--<![endif]-->
-<a href="{{ organization.url }}" style="color:#15c; text-decoration:underline" target="_blank">
+<a href="" style="color:#15c; text-decoration:underline" target="_blank">
 <img alt="Steak King logo" src="https://d3k81ch9hvuctc.cloudfront.net/company/WSxBju/images/f00a7a32-49d9-4092-85ce-221bbeae9ed9.png" style="display:block;outline:none;text-decoration:none;height:auto;width:100%;background-color:transparent;" width="140"/>
 </a>
 </td>
@@ -383,7 +386,7 @@ h4 {
 <tr>
 <!--[if true]><td style="width:140px;" bgcolor="transparent"><![endif]-->
 <!--[if !true]><!--><td style="width:140px;"><!--<![endif]-->
-<a href="{{ organization.url }}" style="color:#15c; text-decoration:underline" target="_blank">
+<a href="" style="color:#15c; text-decoration:underline" target="_blank">
 <img alt="Steak King logo" src="https://d3k81ch9hvuctc.cloudfront.net/company/WSxBju/images/f00a7a32-49d9-4092-85ce-221bbeae9ed9.png" style="border-radius:5px;display:block;outline:none;text-decoration:none;height:auto;width:100%;background-color:transparent;" width="140"/>
 </a>
 </td>
@@ -463,7 +466,7 @@ h4 {
 <tbody>
 <tr>
 <td class="kl-img-base-auto-width" style="border:0;padding:0px 0px 0px 0px;width:600px;" valign="top">
-<a class="kl-img-link" href="{{ event.extra.checkout_url}}" style="color:#15c; text-decoration:underline; display:block">
+<a class="kl-img-link" href="" style="color:#15c; text-decoration:underline; display:block">
 <img alt="This could be on your plate tonight" src="https://d3k81ch9hvuctc.cloudfront.net/company/WSxBju/images/4a77bd03-7560-4228-ac48-591a31481fb0.png" style="display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;" title="This could be on your plate tonight" width="600"/>
 </a>
 </td>
@@ -492,8 +495,8 @@ h4 {
 <tbody>
 <tr>
 <td class="" style="border:0;padding:0px 0px 0px 0px;width:360px;" valign="top">
-<a class="kl-img-link" href="{{ organization.url|trim_slash }}/products/{{ event.extra.line_items.0.product.handle }}" style="color:#15c; text-decoration:underline; display:block">
-<img alt="{{ event.Items.0 }}" src="{{ event.extra.line_items.0.product.images.0.src }}" style="display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;" title="{{ event.Items.0 }}" width="360"/>
+<a class="kl-img-link" href="/products/" style="color:#15c; text-decoration:underline; display:block">
+<img alt="Rangers Station M6-7 Australian Wagyu Ribeye 1kg" src="" style="display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;" title="Rangers Station M6-7 Australian Wagyu Ribeye 1kg" width="360"/>
 </a>
 </td>
 </tr>
@@ -517,7 +520,7 @@ h4 {
 <tbody>
 <tr>
 <td align="left" class="kl-text" style="font-size:0px;padding:0px;padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;word-break:break-word;">
-<div style="font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;"><h1 style="text-align: center;">{{ event.extra.line_items.0.product.title|upper }}</h1></div>
+<div style="font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;"><h1 style="text-align: center;"></h1></div>
 </td>
 </tr>
 </tbody>
@@ -536,7 +539,7 @@ h4 {
 <tbody>
 <tr>
 <td align="left" class="kl-text" style="font-size:0px;padding:0px;padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;word-break:break-word;">
-<div style="font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;"><h2 style="text-align: center;"><span style='font-style: normal; color: rgb(236, 125, 85); font-family: "Fjalla One", Arial, "Helvetica Neue", Helvetica, sans-serif;'><span style="font-weight: 400;">£{{ event.extra.line_items.0.price|floatformat:2 }} </span></span>{% if event.extra.line_items.0.compare_at_price and event.extra.line_items.0.compare_at_price > event.extra.line_items.0.price %}<span style='font-style: normal; color: rgb(154, 154, 154); font-family: "Fjalla One", Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 24px;'><span style="font-weight: 400;"><s>£{{ event.extra.line_items.0.compare_at_price|floatformat:2 }}</s></span></span>{% endif %}</h2></div>
+<div style="font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;"><h2 style="text-align: center;"><span style='font-style: normal; color: rgb(236, 125, 85); font-family: "Fjalla One", Arial, "Helvetica Neue", Helvetica, sans-serif;'><span style="font-weight: 400;">£ </span></span></h2></div>
 </td>
 </tr>
 </tbody>
@@ -558,7 +561,7 @@ h4 {
 <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:separate;line-height:100%;">
 <tr>
 <td align="center" bgcolor="#EC7D55" role="presentation" style="border:none;border-radius:5px;cursor:auto;font-style:normal;mso-padding-alt:18px 42px 18px 42px;background:#EC7D55;" valign="middle">
-<a href="{{ event.extra.checkout_url}}" style='color:#FFF; text-decoration:none; display:inline-block; background:#EC7D55; font-family:"Fjalla One", Arial, "Helvetica Neue", Helvetica, sans-serif; font-size:24px; font-style:normal; font-weight:400; line-height:100%; letter-spacing:0; margin:0; text-transform:none; padding:18px 42px 18px 42px; mso-padding-alt:0; border-radius:5px' target="_blank">
+<a href="" style='color:#FFF; text-decoration:none; display:inline-block; background:#EC7D55; font-family:"Fjalla One", Arial, "Helvetica Neue", Helvetica, sans-serif; font-size:24px; font-style:normal; font-weight:400; line-height:100%; letter-spacing:0; margin:0; text-transform:none; padding:18px 42px 18px 42px; mso-padding-alt:0; border-radius:5px' target="_blank">
               GET BACK TO YOUR CART
             </a>
 </td>
@@ -602,32 +605,10 @@ h4 {
 <tr>
 <td align="left" class="kl-table" style="font-size:0px;padding:0px;word-break:break-word;">
 <table border="0" cellpadding="0" cellspacing="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:fixed;width:100%;border:none;" width="100%">
-        {% if event.extra.line_items|slice:":5" %}
-        <thead>
-</thead>
-<tbody>
-          {% for item in event.extra.line_items|slice:":5" %}
-            
-    
-      <tr>
-<td class="use-legacy-mobile-padding kl-table-subblock" style="width:50%;overflow:hidden;vertical-align:middle;padding-top:5px;padding-right:0px;padding-bottom:5px;padding-left:0px;">
-<div style="font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;"><div style="text-align: left;"><span style="font-size: 16px;">{% catalog item.product_id unpublished="cancel" %} <a href="{{ event.extra.responsive_checkout_url }}" style="color:#15c; text-decoration:underline"> <img alt="" src="{{ catalog_item.featured_image.thumbnail.src }}" style="width: 250px;" width="250px"/></a>{% endcatalog %}</span></div></div>
-</td>
-<td class="use-legacy-mobile-padding kl-table-subblock" style="width:50%;overflow:hidden;vertical-align:middle;padding-top:5px;padding-right:0px;padding-bottom:5px;padding-left:0px;">
-<div style="font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;"><p><span style='font-family: "Fjalla One", "Arial Narrow", "Helvetica Neue", Helvetica, sans-serif; font-style: normal; color: rgb(0, 0, 0); text-decoration: none;'><a href="{{ organization.url|trim_slash }}/products/{{ item.product.handle }}" rel="noopener noreferrer nofollow" style="color:rgb(0, 0, 0); text-decoration:none" target="_blank"><span style='font-style: normal; color: rgb(0, 0, 0); font-family: "Fjalla One", "Arial Narrow", "Helvetica Neue", Helvetica, sans-serif;'><span style="font-weight: 400;">{{ item.product.title }}</span></span></a></span><span style='font-style: normal; color: rgb(0, 0, 0); font-family: "Fjalla One", "Arial Narrow", "Helvetica Neue", Helvetica, sans-serif;'><span style="font-weight: 400;"><br/></span></span><span style='font-style: normal; color: rgb(236, 125, 85); font-family: "Fjalla One", "Arial Narrow", "Helvetica Neue", Helvetica, sans-serif; font-size: 20px;'><span style="font-weight: 400;">£{{ item.price|floatformat:2 }} </span></span><span style='font-style: normal; font-family: "Fjalla One", "Arial Narrow", "Helvetica Neue", Helvetica, sans-serif; font-size: 20px;'><span style="font-weight: 400;">{% if item.compare_at_price and item.compare_at_price > item.price and item.compare_at_price != 0.00 %}<span style='font-style: normal; color: rgb(84, 94, 94); font-family: "Fjalla One", "Arial Narrow", "Helvetica Neue", Helvetica, sans-serif; font-size: 20px;'><span style="font-weight: 400;"><s>£{{ item.compare_at_price|floatformat:2 }}</s></span></span>{% endif %}</span></span></p><p style="padding-bottom:0"><a href="{{ organization.url|trim_slash }}/products/{{ item.product.handle }}" rel="noopener noreferrer nofollow" style="color:#15c; text-decoration:none" target="_blank"><span style='font-style: normal; color: rgb(84, 94, 94); font-family: "Fjalla One", "Arial Narrow", "Helvetica Neue", Helvetica, sans-serif;'><span style="font-weight: 400;"><s><img alt="BUY NOW" src="https://d3k81ch9hvuctc.cloudfront.net/company/R89Ejr/images/d4c835cc-565c-4713-b35e-bb236bc789c6.png" width="228"/></s></span></span></a></p></div>
-</td>
-</tr>
-      
-    
-          {% endfor %}
-            
-    
-    
-        </tbody>
-      {% else %}
+        
         <tbody>
 </tbody>
-      {% endif %}
+      
       </table>
 </td>
 </tr>
@@ -719,35 +700,7 @@ h4 {
 <table cellpadding="0" cellspacing="0" height="100%" role="presentation" style="" width="100%">
 <tbody>
 <tr>
-<td style="font-size:0px;padding:10px 10px 10px 10px;word-break:break-word;vertical-align:top;">{% if feeds.CO_New|index:0 %}
-            {% with item=feeds.CO_New|index:0%}
-              {% with Title=item.title|safe Price=item.price|default:"" Compare_at=item.regular_price|default:"" %}
-                  
-      <table align="left" border="0" cellpadding="0" cellspacing="0" class="kl-product-subblock" style="table-layout:fixed;height:100%;" width="100%">
-<tbody>
-<tr>
-<td align="center">
-<a href="{{ item.url }}" style="color:#15c; text-decoration:underline">
-<img alt="Image of {{ Title }}" src="{{ item.image_full_url }}" style="display:block;max-width:100%;width:auto;max-height:280px;" width="176"/>
-</a>
-</td>
-</tr>
-<tr><td align="center"><table align="center"><tr><td align="center" style="color:#161616;font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-weight:700;font-style:normal;text-align:center;letter-spacing:0px;padding-top:5px;padding-bottom:0px;line-height:1.3;">{{ Title }}</td></tr></table></td></tr>
-<tr>
-<td align="center">
-<table align="center">
-<tr>
-<td align="center" style="color:#222222;font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-weight:400;font-style:normal;text-align:center;letter-spacing:0px;padding-top:5px;padding-bottom:0px;padding-left:1.5px;padding-right:1.5px;line-height:1.3;display:inline-block;">{{ Price }}</td>
-</tr>
-</table></td>
-</tr>
-<tr><td style="height:100%;"></td></tr>
-</tbody>
-</table>
-    
-              {% endwith %}
-            {% endwith %}
-           {% endif %}</td>
+<td style="font-size:0px;padding:10px 10px 10px 10px;word-break:break-word;vertical-align:top;"></td>
 </tr>
 </tbody>
 </table>
@@ -758,35 +711,7 @@ h4 {
 <table cellpadding="0" cellspacing="0" height="100%" role="presentation" style="" width="100%">
 <tbody>
 <tr>
-<td style="font-size:0px;padding:10px 10px 10px 10px;word-break:break-word;vertical-align:top;">{% if feeds.CO_New|index:1 %}
-            {% with item=feeds.CO_New|index:1%}
-              {% with Title=item.title|safe Price=item.price|default:"" Compare_at=item.regular_price|default:"" %}
-                  
-      <table align="left" border="0" cellpadding="0" cellspacing="0" class="kl-product-subblock" style="table-layout:fixed;height:100%;" width="100%">
-<tbody>
-<tr>
-<td align="center">
-<a href="{{ item.url }}" style="color:#15c; text-decoration:underline">
-<img alt="Image of {{ Title }}" src="{{ item.image_full_url }}" style="display:block;max-width:100%;width:auto;max-height:280px;" width="176"/>
-</a>
-</td>
-</tr>
-<tr><td align="center"><table align="center"><tr><td align="center" style="color:#161616;font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-weight:700;font-style:normal;text-align:center;letter-spacing:0px;padding-top:5px;padding-bottom:0px;line-height:1.3;">{{ Title }}</td></tr></table></td></tr>
-<tr>
-<td align="center">
-<table align="center">
-<tr>
-<td align="center" style="color:#222222;font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-weight:400;font-style:normal;text-align:center;letter-spacing:0px;padding-top:5px;padding-bottom:0px;padding-left:1.5px;padding-right:1.5px;line-height:1.3;display:inline-block;">{{ Price }}</td>
-</tr>
-</table></td>
-</tr>
-<tr><td style="height:100%;"></td></tr>
-</tbody>
-</table>
-    
-              {% endwith %}
-            {% endwith %}
-           {% endif %}</td>
+<td style="font-size:0px;padding:10px 10px 10px 10px;word-break:break-word;vertical-align:top;"></td>
 </tr>
 </tbody>
 </table>
@@ -802,35 +727,7 @@ h4 {
 <table cellpadding="0" cellspacing="0" height="100%" role="presentation" style="" width="100%">
 <tbody>
 <tr>
-<td style="font-size:0px;padding:10px 10px 10px 10px;word-break:break-word;vertical-align:top;">{% if feeds.CO_New|index:2 %}
-            {% with item=feeds.CO_New|index:2%}
-              {% with Title=item.title|safe Price=item.price|default:"" Compare_at=item.regular_price|default:"" %}
-                  
-      <table align="left" border="0" cellpadding="0" cellspacing="0" class="kl-product-subblock" style="table-layout:fixed;height:100%;" width="100%">
-<tbody>
-<tr>
-<td align="center">
-<a href="{{ item.url }}" style="color:#15c; text-decoration:underline">
-<img alt="Image of {{ Title }}" src="{{ item.image_full_url }}" style="display:block;max-width:100%;width:auto;max-height:280px;" width="176"/>
-</a>
-</td>
-</tr>
-<tr><td align="center"><table align="center"><tr><td align="center" style="color:#161616;font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-weight:700;font-style:normal;text-align:center;letter-spacing:0px;padding-top:5px;padding-bottom:0px;line-height:1.3;">{{ Title }}</td></tr></table></td></tr>
-<tr>
-<td align="center">
-<table align="center">
-<tr>
-<td align="center" style="color:#222222;font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-weight:400;font-style:normal;text-align:center;letter-spacing:0px;padding-top:5px;padding-bottom:0px;padding-left:1.5px;padding-right:1.5px;line-height:1.3;display:inline-block;">{{ Price }}</td>
-</tr>
-</table></td>
-</tr>
-<tr><td style="height:100%;"></td></tr>
-</tbody>
-</table>
-    
-              {% endwith %}
-            {% endwith %}
-           {% endif %}</td>
+<td style="font-size:0px;padding:10px 10px 10px 10px;word-break:break-word;vertical-align:top;"></td>
 </tr>
 </tbody>
 </table>
@@ -841,35 +738,7 @@ h4 {
 <table cellpadding="0" cellspacing="0" height="100%" role="presentation" style="" width="100%">
 <tbody>
 <tr>
-<td style="font-size:0px;padding:10px 10px 10px 10px;word-break:break-word;vertical-align:top;">{% if feeds.CO_New|index:3 %}
-            {% with item=feeds.CO_New|index:3%}
-              {% with Title=item.title|safe Price=item.price|default:"" Compare_at=item.regular_price|default:"" %}
-                  
-      <table align="left" border="0" cellpadding="0" cellspacing="0" class="kl-product-subblock" style="table-layout:fixed;height:100%;" width="100%">
-<tbody>
-<tr>
-<td align="center">
-<a href="{{ item.url }}" style="color:#15c; text-decoration:underline">
-<img alt="Image of {{ Title }}" src="{{ item.image_full_url }}" style="display:block;max-width:100%;width:auto;max-height:280px;" width="176"/>
-</a>
-</td>
-</tr>
-<tr><td align="center"><table align="center"><tr><td align="center" style="color:#161616;font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-weight:700;font-style:normal;text-align:center;letter-spacing:0px;padding-top:5px;padding-bottom:0px;line-height:1.3;">{{ Title }}</td></tr></table></td></tr>
-<tr>
-<td align="center">
-<table align="center">
-<tr>
-<td align="center" style="color:#222222;font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-weight:400;font-style:normal;text-align:center;letter-spacing:0px;padding-top:5px;padding-bottom:0px;padding-left:1.5px;padding-right:1.5px;line-height:1.3;display:inline-block;">{{ Price }}</td>
-</tr>
-</table></td>
-</tr>
-<tr><td style="height:100%;"></td></tr>
-</tbody>
-</table>
-    
-              {% endwith %}
-            {% endwith %}
-           {% endif %}</td>
+<td style="font-size:0px;padding:10px 10px 10px 10px;word-break:break-word;vertical-align:top;"></td>
 </tr>
 </tbody>
 </table>
@@ -899,7 +768,7 @@ h4 {
 <tbody>
 <tr>
 <td class="" style="border:0;padding:0px 0px 0px 0px;width:168px;" valign="top">
-<a class="kl-img-link" href="{{ event.extra.checkout_url}}" style="color:#15c; text-decoration:underline; display:block">
+<a class="kl-img-link" href="" style="color:#15c; text-decoration:underline; display:block">
 <img alt="Same-day delivery available if you order by 4pm (+$150)" src="https://d3k81ch9hvuctc.cloudfront.net/company/WSxBju/images/530c00c5-cb18-4dd3-a45d-54e9ea253758.png" style="display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;" title="Same-day delivery available if you order by 4pm (+$150)" width="168"/>
 </a>
 </td>
@@ -927,7 +796,7 @@ h4 {
 <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:separate;width:100%;line-height:100%;">
 <tr>
 <td align="center" bgcolor="#EC7D55" role="presentation" style="border:none;border-radius:5px;cursor:auto;font-style:normal;mso-padding-alt:18px 0px 18px 0px;background:#EC7D55;" valign="middle">
-<a href="{{ event.extra.checkout_url}}" style='color:#FFF; text-decoration:none; display:inline-block; background:#EC7D55; font-family:"Fjalla One", Arial, "Helvetica Neue", Helvetica, sans-serif; font-size:24px; font-style:normal; font-weight:400; line-height:100%; letter-spacing:0; margin:0; text-transform:none; padding:18px 0 18px 0; mso-padding-alt:0; border-radius:5px' target="_blank">
+<a href="" style='color:#FFF; text-decoration:none; display:inline-block; background:#EC7D55; font-family:"Fjalla One", Arial, "Helvetica Neue", Helvetica, sans-serif; font-size:24px; font-style:normal; font-weight:400; line-height:100%; letter-spacing:0; margin:0; text-transform:none; padding:18px 0 18px 0; mso-padding-alt:0; border-radius:5px' target="_blank">
               GET BACK TO YOUR CART
             </a>
 </td>
@@ -955,7 +824,7 @@ h4 {
 <tbody>
 <tr>
 <td class="kl-img-base-auto-width" style="border:0;padding:0px 0px 0px 0px;width:600px;" valign="top">
-<a class="kl-img-link" href="{{ event.extra.checkout_url}}" style="color:#15c; text-decoration:underline; display:block">
+<a class="kl-img-link" href="" style="color:#15c; text-decoration:underline; display:block">
 <img alt="Steak King Partners" src="https://d3k81ch9hvuctc.cloudfront.net/company/WSxBju/images/bfd2bdde-54c1-41bb-935a-f6cd47070a1c.jpeg" style="display:block;outline:none;text-decoration:none;height:auto;font-size:13px;width:100%;" title="Steak King Partners" width="600"/>
 </a>
 </td>
@@ -1243,7 +1112,7 @@ h4 {
 <tbody>
 <tr>
 <td align="left" class="kl-text" style="font-size:0px;padding:0px;padding-top:0px;padding-right:40px;padding-bottom:0px;padding-left:40px;word-break:break-word;">
-<div style="font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;"><div style="text-align: center;"><span style="color: rgb(187, 189, 192); font-size: 14px;">Copyright © Steak King {% current_year %}</span><br/><br/></div><div style="text-align: center;"><span style="color: rgb(187, 189, 192); font-size: 14px;">Steak King products are sourced directly from farmers and fishermen from around the world, we pride ourselves on working with the finest producers that care about their products the same way that we do.</span><br/><br/></div></div>
+<div style="font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:24px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;"><div style="text-align: center;"><span style="color: rgb(187, 189, 192); font-size: 14px;">Copyright © Steak King 2026</span><br/><br/></div><div style="text-align: center;"><span style="color: rgb(187, 189, 192); font-size: 14px;">Steak King products are sourced directly from farmers and fishermen from around the world, we pride ourselves on working with the finest producers that care about their products the same way that we do.</span><br/><br/></div></div>
 </td>
 </tr>
 </tbody>
@@ -1262,10 +1131,10 @@ h4 {
 <tbody>
 <tr>
 <td align="center" class="kl-text" style="font-size:0px;padding:0px;padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;">
-<div style="font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:12px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:center;color:#727272;"><div><span style="color: rgb(255, 255, 255); font-size: 14px;">{% manage_preferences 'Manage Preferences' %}</span></div>
+<div style="font-family:'Roboto', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:12px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:center;color:#727272;"><div><span style="color: rgb(255, 255, 255); font-size: 14px;"><a class="manage-preferences" href="[manage_preferences_tag]">Manage Preferences</a></span></div>
 <div><span style="color: rgb(234, 235, 236); font-size: 14px;"> </span></div>
 <div><span style="color: rgb(234, 235, 236); font-size: 14px;"> </span></div>
-<div><span style="color: rgb(234, 235, 236); font-size: 14px;">Don't want to receive these emails anymore? <a href="{% unsubscribe_link %}" style="color:rgb(234, 235, 236); text-decoration:underline"><span style="text-decoration: underline;">Unsubscribe</span></a><span style="text-decoration: underline;">.</span> </span> <br/><span style="color: rgb(234, 235, 236); font-size: 14px;"> {{ organization.name }} {{ organization.full_address }} </span></div></div>
+<div><span style="color: rgb(234, 235, 236); font-size: 14px;">Don't want to receive these emails anymore? <a href="[unsubscribe_tag]" style="color:rgb(234, 235, 236); text-decoration:underline"><span style="text-decoration: underline;">Unsubscribe</span></a><span style="text-decoration: underline;">.</span> </span> <br/><span style="color: rgb(234, 235, 236); font-size: 14px;"> Steak King UK 11-15 Homestall, Buckingham Industrial Estate, Buckingham, MK18 1XJ, United Kingdom </span></div></div>
 </td>
 </tr>
 </tbody>
@@ -1299,6 +1168,6 @@ h4 {
 </table>
 </div>
 </div>
-<!-- TRACKING_PIXEL_BOTTOM -->
+
 </body>
 </html>

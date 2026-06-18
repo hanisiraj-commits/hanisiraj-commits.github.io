@@ -114,7 +114,7 @@
   /* ============ MODAL ============ */
   .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;display:none;align-items:center;justify-content:center;padding:30px}
   .modal-overlay.open{display:flex}
-  .modal{background:var(--canvas);width:100%;max-width:760px;max-height:94vh;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+  .modal{background:var(--canvas);width:100%;max-width:1100px;max-height:96vh;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.4)}
   .modal-header{background:#fff;padding:18px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
   .modal-meta{flex:1;min-width:0}
   .modal-flow{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
@@ -128,8 +128,8 @@
   .btn-ghost:hover{background:#f5f3ee}
   .btn-close{background:transparent;color:var(--muted);font-size:24px;line-height:1;padding:0 8px;cursor:pointer;border:0;font-weight:300}
   .modal-body{flex:1;overflow-y:auto;padding:22px;background:var(--canvas);display:flex;justify-content:center}
-  .device{background:#fff;width:100%;max-width:640px;box-shadow:0 6px 30px rgba(0,0,0,.10);border-radius:8px;overflow:hidden}
-  iframe{width:100%;border:0;display:block;background:#fff;min-height:1200px}
+  .device{background:#fff;width:100%;max-width:720px;box-shadow:0 6px 30px rgba(0,0,0,.10);border-radius:8px;overflow:hidden}
+  iframe{width:100%;border:0;display:block;background:#fff;min-height:600px;transition:height .2s}
 </style>
 </head>
 <body>
@@ -380,9 +380,21 @@ function openPreview(node, flowName){
   document.getElementById('modal-download').href = 'templates/' + node.file;
   document.getElementById('modal').classList.add('open');
 }
+
+// Auto-size iframe to content after load
+document.getElementById('modal-frame').addEventListener('load', function(){
+  try {
+    const doc = this.contentDocument || this.contentWindow.document;
+    if (doc && doc.body) {
+      const h = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
+      this.style.height = h + 'px';
+    }
+  } catch(e){}
+});
+
 function closeModal(){
   document.getElementById('modal').classList.remove('open');
-  document.getElementById('modal-frame').src = 'about:blank';
+  var fr = document.getElementById('modal-frame'); fr.style.height = '600px'; fr.src = 'about:blank';
 }
 document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
