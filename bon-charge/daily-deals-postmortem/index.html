@@ -180,25 +180,28 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
     <div class="readout">
       <div class="readout-head">02 &middot; Gift With Purchase &middot; 18&ndash;19 Jun</div>
       <div class="readout-grid">
-        <div class="stat"><div class="v scarlet">68%</div><div class="l">Of orders qualified<br>for no tier at all</div></div>
+        <div class="stat"><div class="v scarlet">76%</div><div class="l">Of orders qualified<br>for no tier at all</div></div>
         <div class="stat"><div class="v scarlet">5.7%</div><div class="l">Value of the $20 gift<br>on the $350 entry</div></div>
         <div class="stat"><div class="v scarlet">43%</div><div class="l">Email open rate<br>(norm 53&ndash;71%)</div></div>
-        <div class="stat"><div class="v scarlet">&lt;50</div><div class="l">Gifts claimed across<br>both days (~320 orders)</div></div>
+        <div class="stat"><div class="v scarlet">&lt;50</div><div class="l">Gifts claimed across<br>both days (~330 orders)</div></div>
       </div>
-      <p class="readout-interp">The entry threshold sat <strong>$1 above the median order</strong>, so two-thirds of buyers unlocked nothing and the store gave away fewer than 50 gifts all weekend &mdash; mostly $20 stickers. The messaging was clear and the build was clean; the miss was the <strong>offer structure</strong>, not the comms.</p>
+      <p class="readout-interp">The median order was just <strong>~$200</strong>, well below the $350 entry &mdash; so <strong>76% of buyers unlocked nothing</strong>, and three-quarters of those who did still stacked a ~20% code on top, leaving the $20 sticker almost meaningless. Fewer than 50 gifts were claimed all weekend. The messaging was clear and the build clean; the miss was the <strong>offer structure</strong>, not the comms.</p>
     </div>
 
-    <div class="tbl-cap" style="margin-top:var(--s7);">The deals vs a normal trading period &mdash; not another sale</div>
+    <div class="tbl-cap" style="margin-top:var(--s7);">AOV uplift by region &mdash; deal windows vs normal trading (BAU)</div>
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th>Read against BAU (1 Apr&ndash;9 Jun)</th><th>BAU baseline</th><th>Spend &amp; Save</th><th>Gift With Purchase</th></tr></thead>
+        <thead><tr><th>Region (gross AOV)</th><th>Normal (BAU)</th><th>Spend &amp; Save</th><th>Gift With Purchase</th></tr></thead>
         <tbody>
-          <tr><td>Average order value</td><td>$424</td><td>$444 (+5%)</td><td>$470 (+11%)</td></tr>
-          <tr class="flag"><td>Discount given, % of gross</td><td>29%</td><td>27%</td><td>30%</td></tr>
+          <tr><td>United States</td><td>$409</td><td>$491 (+20%)</td><td>$412 (+1%)</td></tr>
+          <tr class="flag"><td>Australia</td><td>$254</td><td>$244 (&minus;4%)</td><td>$242 (&minus;5%)</td></tr>
+          <tr><td>Canada</td><td>$404</td><td>$372 (&minus;8%)</td><td>$362 (&minus;10%)</td></tr>
+          <tr><td>United Kingdom*</td><td>$586</td><td>$286*</td><td>$975*</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="section-lede" style="margin-bottom:0;">Measured against a <strong>normal week</strong> &mdash; not a peak-sale benchmark &mdash; the deals barely registered. Average order value rose only a few percent, and the discount handed out was <strong>no deeper than Bon Charge gives away on an ordinary day</strong> (~30% of gross). The Spend &amp; Save targeted audience did produce a real lift (<strong>+$74.8k incremental vs matched BAU weekdays</strong>), but roughly half was funded by extra discount; the GWP (a partial-day read) showed no comparable lift. A "sale" that looks like a normal trading day is the clearest sign the offer wasn't compelling enough.</p>
+    <p class="readout-foot" style="color:var(--text-secondary);margin-bottom:var(--s5);">*UK deal-window samples were too small (37&ndash;61 orders) to read &mdash; shown for completeness only.</p>
+    <p class="section-lede" style="margin-bottom:0;">Split by region, the story is clear: <strong>only the US targeted audience saw a real lift</strong> (AOV +20%, and net revenue ~+25% on 14&ndash;15 Jun &mdash; the <strong>+$74.8k incremental</strong>). Every other market was flat or down, and <strong>AU basket size actually fell ~5%</strong>. Two things it <em>wasn't</em>: the discount handed out was no deeper than an ordinary day (~30% of gross), and cart abandonment held at ~15% &mdash; so the shortfall was a <strong>demand problem, not checkout friction</strong>. And measured against a typical day ($80k gross), the best deal days (~$95&ndash;109k) still came nowhere near a real Bon Charge sale day ($250k+): the deals traded like a slightly-good normal day, not a sale.</p>
   </div>
 </section>
 
@@ -207,7 +210,21 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
   <div class="container">
     <div class="eyebrow">Section 2</div>
     <h2 class="section-title">Why it didn't work &mdash; the data</h2>
-    <p class="section-lede">Both deals failed in the same places. Pulling normal trading, the discount ledger and the send logs together, six reasons explain it &mdash; and the first one is the root of most.</p>
+    <p class="section-lede">Both deals failed in the same places. Pulling normal trading, the order ledger and the send logs together, six reasons explain it &mdash; and the first one is the root of most.</p>
+
+    <div class="tbl-cap">Where GWP orders actually landed &mdash; verified at order level (median order ~$200)</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Order subtotal (USD)</th><th>Tier it unlocked</th><th>Gift value</th><th>Share of orders</th></tr></thead>
+        <tbody>
+          <tr class="flag"><td>&lt; $350</td><td>nothing</td><td>&mdash;</td><td>76%</td></tr>
+          <tr><td>$350&ndash;749</td><td>$20 sticker</td><td>$20</td><td>14%</td></tr>
+          <tr><td>$750&ndash;999</td><td>+ earphones</td><td>$110</td><td>2%</td></tr>
+          <tr><td>$1,000&ndash;1,499</td><td>+ wand</td><td>$259</td><td>4%</td></tr>
+          <tr><td>$1,500+</td><td>+ Bullet</td><td>$458</td><td>4%</td></tr>
+        </tbody>
+      </table>
+    </div>
 
     <div class="causes">
       <div class="cause"><div class="cn">1</div><div>
@@ -216,11 +233,11 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
       </div></div>
       <div class="cause"><div class="cn">2</div><div>
         <div class="ch"><h4>The threshold sat above where people actually buy</h4><span class="chip both">Both</span></div>
-        <p>On the GWP send day the median order was <span class="data">~$349</span> &mdash; and the US entry tier sat at <strong>$350</strong>, a dollar above where half of buyers landed. The result: <span class="data">68% of orders unlocked no tier at all</span>, and only ~6% reach the $1,000 tier even in a sale. When the entry is set above the basket curve, most customers are locked out before the offer can work.</p>
+        <p>At order level the median GWP order was just <span class="data">~$200</span> (~$254 in the US) &mdash; the $350 US entry sat well above where most people buy. The result: <span class="data">76% of orders unlocked no tier at all</span>, and only ~8% reached the $1,000 tier. When the entry is set above the basket curve, most customers are locked out before the offer can work.</p>
       </div></div>
       <div class="cause"><div class="cn">3</div><div>
         <div class="ch"><h4>Even stacked with a code, the reward didn't beat the everyday discount</h4><span class="chip gwp">GWP</span></div>
-        <p>The entry gift &mdash; a $20 sticker on a $350 order &mdash; is just <span class="data">5.7%</span>. We did tell customers they could stack a 15% code on top, but even combined that's ~$72.50 of value (<span class="data">&asymp;20.7%</span>) &mdash; still short of the 25% (and up to 30%) that a large, price-sensitive slice of the base already gets through affiliate, cart and VIP codes. So for the customers most likely to chase a deal, the gift added nothing they couldn't already beat &mdash; and <span class="data">fewer than 50 gifts were claimed across both days</span>. Higher up the ladder it gets worse: a $149 wand or $199 Bullet given away is a sellable SKU lost.</p>
+        <p>The entry gift &mdash; a $20 sticker on a $350 order &mdash; is just <span class="data">5.7%</span>. Customers could stack a 15% code on top, and <span class="data">three-quarters of GWP orders did</span> (median ~20% off) &mdash; so the sticker simply landed on top of a discount that already beat it, still short of the 25&ndash;30% a price-sensitive slice of the base gets routinely. For the customers most likely to chase a deal, the gift added nothing they couldn't already get &mdash; and <span class="data">fewer than 50 gifts were claimed across both days</span>. Higher up the ladder it gets worse: a $149 wand or $199 Bullet given away is a sellable SKU lost.</p>
       </div></div>
       <div class="cause"><div class="cn">4</div><div>
         <div class="ch"><h4>The tiers were built around the US, not each market</h4><span class="chip both">Both</span></div>
@@ -295,7 +312,7 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
     <div class="footer-stack">
       <img src="assets/tethrd-wordmark-white.svg" alt="Tethrd." class="footer-logo">
       <div class="footer-prepared">Prepared for Andy, Marco &amp; Steffen at Bon Charge</div>
-      <div class="footer-meta">Sources: Shopify Analytics (ShopifyQL, blublox) &middot; Klaviyo campaign logs &middot; incrementality vs matched BAU &middot; all figures USD &middot; 19 Jun 2026</div>
+      <div class="footer-meta">Sources: Shopify Analytics (ShopifyQL) + Admin API order-grain (blublox) &middot; Klaviyo campaign logs &middot; incrementality vs matched BAU &middot; all figures USD &middot; 19 Jun 2026</div>
     </div>
   </div>
 </footer>
