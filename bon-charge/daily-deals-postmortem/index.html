@@ -208,20 +208,34 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
       <div class="readout">
         <div class="readout-head">GWP send performance + first-day gift uptake</div>
         <div class="readout-grid">
+          <div class="stat"><div class="v scarlet">$349</div><div class="l">Median order vs the<br>$350 entry tier</div></div>
+          <div class="stat"><div class="v scarlet">68%</div><div class="l">Of orders qualified<br>for no tier at all</div></div>
           <div class="stat"><div class="v scarlet">37%</div><div class="l">Email open rate<br>(norm 53&ndash;71%)</div></div>
-          <div class="stat"><div class="v scarlet">$0.01</div><div class="l">Email revenue per<br>recipient</div></div>
-          <div class="stat"><div class="v">$4.5k</div><div class="l">Email revenue<br>424k sent &middot; 17 orders</div></div>
-          <div class="stat"><div class="v scarlet">~0</div><div class="l">Takers on the<br>$1,500 top tier</div></div>
+          <div class="stat"><div class="v scarlet">$0.01</div><div class="l">Email revenue<br>per recipient</div></div>
         </div>
-        <p class="readout-interp">The ladder mostly handed out <strong>$6 Harmonising Stickers</strong> (the entry gift). The <strong>$1,500 "Bullet" tier drew zero takers</strong> &mdash; it doesn't appear in the day's sales at all &mdash; and the wand and earphones were given away near-free, <strong>cannibalising SKUs we otherwise sell</strong>. To a deal-trained base, a gift earned at full price is worth less than the 25&ndash;30% they could take off instantly with a code.</p>
-        <p class="readout-foot">Early read: 19 Jun was a partial day at pull (~6.8k sessions vs ~13k full-day norm). Send metrics and line-item uptake are firm; day-level revenue is preliminary.</p>
+        <p class="readout-interp">The entry threshold ($350) sat <strong>$1 above the median order ($349)</strong>, so 68% of orders unlocked nothing and <strong>85% got nothing or the $20 sticker</strong>. The gift only out-values the 25% code customers already have at <strong>$1,000+ &mdash; the 12% of orders that reach it</strong> &mdash; and there it gives away $149 wands and $199 Bullets, cannibalising sellable SKUs. Positioning was clear (the email led "the more you spend, the more you receive," showed per-currency tiers and spelled out stacking WELCOME15), so this was an <strong>offer-structure problem, not a messaging one</strong>.</p>
+        <p class="readout-foot">Gift retail values: Sticker $20 &middot; Earphones $90 &middot; Wand $149 &middot; Bullet $199. Early read &mdash; 19 Jun was partial at pull (~6.8k sessions vs ~13k norm); send metrics + tier landings are firm, day-level revenue preliminary.</p>
+      </div>
+
+      <div class="tbl-cap">Where orders landed on the send day &mdash; gift value vs the discount they could already take</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Order lands at</th><th>Orders</th><th>Free gift (retail)</th><th>Gift % of spend</th><th>A 25% code</th></tr></thead>
+          <tbody>
+            <tr class="flag"><td>&lt; $350 &mdash; no tier</td><td>79 (68%)</td><td>nothing</td><td>0%</td><td>&mdash;</td></tr>
+            <tr class="flag"><td>$350+ &mdash; Sticker</td><td>21 (18%)</td><td>$20</td><td>5.7%</td><td>$88</td></tr>
+            <tr><td>$750+ &mdash; +Earphones</td><td>3 (3%)</td><td>$110</td><td>14.7%</td><td>$188</td></tr>
+            <tr><td>$1,000+ &mdash; +Wand</td><td>8 (7%)</td><td>$259</td><td>25.9%</td><td>$250</td></tr>
+            <tr><td>$1,500+ &mdash; +Bullet</td><td>6 (5%)</td><td>$458</td><td>30.5%</td><td>$375</td></tr>
+          </tbody>
+        </table>
       </div>
       <ul class="flist">
-        <li><span><strong>The email was fatigued and crowded:</strong> 37.3% open (lowest of the window) after ~5 mass sends in ten days, launched <strong>between the BC Method launch (17 Jun) and Red Light Panel (20 Jun)</strong> sends.</span></li>
-        <li><span><strong>SMS was under-deployed:</strong> only 8,952 recipients vs 28,951 on the Spend &amp; Save &mdash; the one channel proven to convert (~8&times; email) was barely used.</span></li>
-        <li><span><strong>The gift ladder was hollow:</strong> 9 &times; $6 sticker, a handful of near-free wands/earphones, and no top-tier device sold at all.</span></li>
-        <li><span><strong>Thresholds were unreachable:</strong> the $350 entry sits above the $205 median order, so only ~a third of baskets even qualify for tier 1.</span></li>
-        <li><span><strong>The fix already landed once:</strong> the native 100%-off build removed the code-clash bug that hit Spend &amp; Save &mdash; the mechanic itself is now clean.</span></li>
+        <li><span><strong>The threshold sat above where people buy:</strong> median order $349 vs a $350 entry &mdash; 68% qualified for nothing and 85% got nothing or the $20 sticker. The AOV and the tiers were set too far apart.</span></li>
+        <li><span><strong>The gift lost to the everyday discount:</strong> at $350 a $20 sticker is 5.7% of spend vs the 15% (WELCOME15) or 25% (abandonment/affiliate) already available. Even stacking WELCOME15 ($72.50 value) trailed a standalone 25% code ($87.50).</span></li>
+        <li><span><strong>The ladder is upside-down:</strong> gifts only beat a 25% code at $1,000+ (12% of orders) &mdash; and there we give away $149 wands and $199 Bullets, cannibalising sellable SKUs.</span></li>
+        <li><span><strong>The email was fatigued and crowded:</strong> 37.3% open (lowest of the window), launched <strong>between the BC Method launch (17 Jun) and Red Light Panel (20 Jun)</strong>; SMS was also under-deployed (8,952 vs 28,951 on Spend &amp; Save).</span></li>
+        <li><span><strong>Messaging was clear &mdash; structure wasn't:</strong> the email communicated "more you spend, more you receive," per-currency tiers and stacking. The build was also clean (native 100%-off, no code-clash). The miss was the offer economics, not the comms.</span></li>
       </ul>
     </div>
   </div>
@@ -254,7 +268,7 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
       </div></div>
       <div class="cause"><div class="cn">2</div><div>
         <div class="ch"><h4>Thresholds have to match the real basket curve</h4><span class="chip both">Both</span></div>
-        <p>Median order is $205; only 6% of orders reach the $1,000 tier, and that doesn't move even in a peak sale. Tiers set above the basket lock most customers out and leave the headline reward unreachable (the $1,500 GWP tier got zero takers).</p>
+        <p>Median order is $205 (and $349 on the GWP send day) &mdash; the GWP entry was set $1 above it, so 68% qualified for nothing. Only 6% of orders reach the $1,000 tier, a figure that doesn't move even in a peak sale. Tiers set above the basket lock most customers out.</p>
       </div></div>
       <div class="cause"><div class="cn">3</div><div>
         <div class="ch"><h4>The mechanic does change behaviour &mdash; when it's reachable and targeted</h4><span class="chip ss">Spend &amp; Save</span></div>
@@ -262,7 +276,7 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
       </div></div>
       <div class="cause"><div class="cn">4</div><div>
         <div class="ch"><h4>A gift is weaker than cash &mdash; and gifting sellable SKUs costs margin twice</h4><span class="chip gwp">GWP</span></div>
-        <p>A deal-trained base prefers money off to a free product earned at full price. Worse, gifting the wand and earphones &mdash; products we sell &mdash; cannibalises that revenue. Either make gifts genuinely desirable and non-sellable, or use cash-equivalents.</p>
+        <p>At $350 the $20 sticker is worth 5.7% of spend vs the 15&ndash;25% a code already gives; the gift only beats a 25% code at $1,000+ (12% of orders). Worse, gifting the $149 wand and $199 Bullet cannibalises products we sell. Make gifts genuinely desirable and non-sellable, or use cash-equivalents.</p>
       </div></div>
       <div class="cause"><div class="cn">5</div><div>
         <div class="ch"><h4>SMS converts, email reaches &mdash; and the list needs protecting</h4><span class="chip both">Both</span></div>
