@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Bon Charge · Daily Deals · What Happened, Insights & Next Steps · June 2026</title>
+<title>Bon Charge · Daily Deals · Post-Mortem · June 2026</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-black-32x32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +46,7 @@ section{padding:var(--s8) 0;page-break-inside:avoid;}
 .hero-title{font-family:var(--font-serif);font-weight:500;font-size:clamp(34px,4.8vw,56px);line-height:1.04;letter-spacing:-0.04em;color:var(--white);margin-bottom:var(--s4);max-width:960px;}
 .hero-sub{font-size:18px;color:var(--steel);max-width:840px;line-height:1.55;}
 .hero-sub strong{color:var(--white);font-weight:600;}
-.hero-toc{margin-top:var(--s7);display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);padding-top:var(--s5);border-top:1px solid var(--surface-dark-border);}
+.hero-toc{margin-top:var(--s7);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);padding-top:var(--s5);border-top:1px solid var(--surface-dark-border);}
 .hero-toc .n{font-family:var(--font-serif);font-size:13px;color:var(--bc-scarlet);font-weight:500;letter-spacing:0.04em;}
 .hero-toc .t{font-size:15px;color:var(--white);font-weight:600;margin-top:6px;}
 .hero-toc .d{font-size:12.5px;color:var(--space);margin-top:4px;line-height:1.45;}
@@ -57,19 +57,9 @@ section{padding:var(--s8) 0;page-break-inside:avoid;}
 .section-lede strong{color:var(--text-primary);font-weight:600;}
 .section-alt{background:var(--bg-alt);}
 
-/* deal block */
-.dealblock{margin-bottom:var(--s8);}
-.dealblock:last-child{margin-bottom:0;}
-.deal-head{display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap;margin-bottom:var(--s2);}
-.deal-kicker{font-family:var(--font-serif);font-weight:500;font-size:26px;letter-spacing:-0.025em;color:var(--text-primary);}
-.deal-meta{font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-secondary);}
-.tag{font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;}
-.tag.early{background:var(--bc-scarlet-2);color:var(--bc-scarlet);}
-.deal-lede{font-size:15.5px;color:var(--text-secondary);max-width:840px;line-height:1.6;margin-bottom:var(--s5);}
-.deal-lede strong{color:var(--text-primary);}
-
 /* readout */
 .readout{background:var(--surface-dark);border-radius:var(--radius-md);padding:var(--s6);margin-bottom:var(--s5);position:relative;overflow:hidden;}
+.readout:last-child{margin-bottom:0;}
 .readout::before{content:'';position:absolute;top:-40%;right:-8%;width:50%;height:180%;background:radial-gradient(ellipse at top right,rgba(222,5,38,0.18),transparent 62%);pointer-events:none;}
 .readout-head{position:relative;z-index:1;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--bc-scarlet);margin-bottom:var(--s4);}
 .readout-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);padding-bottom:var(--s5);border-bottom:1px solid var(--surface-dark-border);}
@@ -100,6 +90,7 @@ section{padding:var(--s8) 0;page-break-inside:avoid;}
 .chip.gwp{background:var(--bc-scarlet-2);color:var(--bc-scarlet);}
 .cause p{font-size:15px;line-height:1.62;color:var(--text-secondary);}
 .cause p strong{color:var(--text-primary);}
+.cause p .data{color:var(--bc-scarlet);font-weight:600;}
 
 .tbl-wrap{border:1px solid var(--smoke);border-radius:var(--radius-md);overflow:hidden;background:var(--white);margin-bottom:var(--s6);}
 table{width:100%;border-collapse:collapse;font-size:14.5px;}
@@ -124,6 +115,11 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
 .callout p{font-family:var(--font-serif);font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.32;letter-spacing:-0.015em;color:var(--white);}
 .callout p strong{color:var(--white);font-weight:600;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.4);text-underline-offset:3px;}
 
+.tldr{background:var(--white);border:1px solid var(--smoke);border-radius:var(--radius-md);padding:var(--s6);margin-top:var(--s6);}
+.tldr .k{font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--bc-scarlet);margin-bottom:var(--s3);}
+.tldr p{font-size:16px;line-height:1.6;color:var(--text-secondary);}
+.tldr p strong{color:var(--text-primary);}
+
 .site-footer{background:var(--surface-dark);color:var(--white);padding:var(--s7) 0;text-align:center;}
 .footer-stack{display:flex;flex-direction:column;align-items:center;gap:var(--s3);}
 .footer-logo{height:22px;}
@@ -147,271 +143,150 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
     <span class="nav-sep">&times;</span>
     <span class="nav-client">Bon Charge</span>
   </div>
-  <span class="nav-date">Daily Deals &middot; Read-out &middot; 19 Jun 2026</span>
+  <span class="nav-date">Daily Deals &middot; Post-Mortem &middot; 19 Jun 2026</span>
 </nav>
 
 <header class="hero">
   <div class="container">
-    <div class="hero-eyebrow">Spend &amp; Save + Gift With Purchase &middot; BAU Test</div>
-    <h1 class="hero-title">Daily deals: what happened, what we learned, and how we run them next.</h1>
-    <p class="hero-sub">Two BAU flash tests &mdash; a tiered <strong>Spend &amp; Save</strong> (12&ndash;15 Jun) and a tiered <strong>Gift With Purchase</strong> (19 Jun). The Spend &amp; Save moved revenue but the economics were thin and US-only; the GWP came in weak on every leading indicator. Both point to the same fixes. Here's the read on each, the shared insights, and the playbook for next time.</p>
+    <div class="hero-eyebrow">Spend &amp; Save + Gift With Purchase &middot; June 2026</div>
+    <h1 class="hero-title">Daily deals: what happened, why they underperformed, and how we run them next.</h1>
+    <p class="hero-sub">Two flash tests this month &mdash; a tiered <strong>Spend &amp; Save</strong> (12&ndash;15 Jun) and a tiered <strong>Gift With Purchase</strong> (18&ndash;19 Jun). Neither moved the number the way it needed to. Reading the order, discount and send data together, they fell short for the same handful of reasons &mdash; and every one is fixable. Here's the plain read, backed by the numbers.</p>
     <div class="hero-toc">
-      <div><div class="n">01</div><div class="t">What happened</div><div class="d">Spend &amp; Save and GWP, each read against matched BAU.</div></div>
-      <div><div class="n">02</div><div class="t">Email &amp; CRM strategy</div><div class="d">The send program that carried the tests.</div></div>
-      <div><div class="n">03</div><div class="t">Insights</div><div class="d">Seven learnings the two tests share.</div></div>
-      <div><div class="n">04</div><div class="t">Going forward</div><div class="d">The daily-deals playbook for Mid-Year.</div></div>
+      <div><div class="n">01</div><div class="t">What happened</div><div class="d">Both tests, read against normal trading.</div></div>
+      <div><div class="n">02</div><div class="t">Why it didn't work</div><div class="d">Six reasons, each backed by the data.</div></div>
+      <div><div class="n">03</div><div class="t">Going forward</div><div class="d">How we run daily deals from here.</div></div>
     </div>
   </div>
 </header>
 
-<!-- SECTION 1 -->
+<!-- SECTION 1 — WHAT HAPPENED -->
 <section>
   <div class="container">
     <div class="eyebrow">Section 1</div>
     <h2 class="section-title">What happened</h2>
-    <p class="section-lede">Each deal read against matched BAU weekdays. Spend &amp; Save has a full window; the GWP is an <strong>early read</strong> &mdash; firm on its send metrics and gift-tier uptake, preliminary on day-level revenue (it launched 19 Jun 12am Perth, so only the first part of day one was complete at pull).</p>
+    <p class="section-lede">Two deals, each read against matched normal trading. One moved revenue but barely cleared its costs; the other came in weak on every leading indicator.</p>
 
-    <!-- DEAL 1 -->
-    <div class="dealblock">
-      <div class="deal-head">
-        <span class="deal-kicker">01 &middot; Spend &amp; Save</span>
-        <span class="deal-meta">12&ndash;15 Jun &middot; target $342k / 72h &middot; email + SMS + on-site</span>
+    <div class="readout">
+      <div class="readout-head">01 &middot; Spend &amp; Save &middot; 12&ndash;15 Jun</div>
+      <div class="readout-grid">
+        <div class="stat"><div class="v">+$74.8k</div><div class="l">Net incremental revenue<br>(after pull-forward)</div></div>
+        <div class="stat"><div class="v scarlet">51%</div><div class="l">Of that lift handed back<br>as extra discount</div></div>
+        <div class="stat"><div class="v scarlet">$1.77</div><div class="l">Net revenue per $1<br>of extra discount</div></div>
+        <div class="stat"><div class="v">+18%</div><div class="l">Items per order<br>(1.53 &rarr; 1.80)</div></div>
       </div>
-      <p class="deal-lede">Launched broad to 428k on 12 Jun, <strong>paused within a day</strong> after the founder flagged it was more confusing than compelling, then re-cut as a <strong>targeted US email + SMS</strong> on 14&ndash;15 Jun. The targeted version is the only part that moved the number.</p>
-      <div class="readout">
-        <div class="readout-head">Incrementality &middot; 14&ndash;15 Jun vs matched BAU (Sun&ndash;Mon)</div>
-        <div class="readout-grid">
-          <div class="stat"><div class="v">+$74.8k</div><div class="l">Net incremental revenue<br>(after pull-forward)</div></div>
-          <div class="stat"><div class="v scarlet">51%</div><div class="l">Of that lift funded by<br>extra discount</div></div>
-          <div class="stat"><div class="v scarlet">$1.77</div><div class="l">Net revenue per $1 of<br>extra discount</div></div>
-          <div class="stat"><div class="v">+18%</div><div class="l">Items per order<br>(1.53 &rarr; 1.80)</div></div>
-        </div>
-        <p class="readout-interp"><span class="pos">The mechanic works:</span> red-light units roughly <strong>doubled (217 &rarr; 456)</strong>, attach SKUs doubled, basket depth rose +18% &mdash; real basket-building, not just discounting demand that existed anyway. <strong>But the economics are thin:</strong> a +$82k gross lift minus $7.2k pull-forward nets ~$74.8k, and $42.2k of it was handed back as discount. After discount and COGS, two-day contribution lands near <strong>$22&ndash;40k</strong> &mdash; before paid, affiliate disruption and team time take it close to a wash.</p>
-        <p class="readout-foot">Confound: June paid pushed to its $287.5k ceiling and the lift skewed to new customers (146/176 vs ~95 BAU) &mdash; some uplift was paid-acquired. Contribution range illustrative at 55&ndash;70% full-price hardware margin.</p>
-      </div>
-      <ul class="flist">
-        <li><span><strong>Broad email flopped:</strong> 428k recipients &rarr; $13,703 at $0.03 per recipient &mdash; the same as a normal content email, no "sale" lift.</span></li>
-        <li><span><strong>Only the targeted US sends lifted basket:</strong> US email AOV $567, SMS AOV $601 (2.3&times; the $258 broad AOV) &mdash; the mechanic needs a high-intent audience.</span></li>
-        <li><span><strong>Codes were switched off during the promo,</strong> breaking the affiliate channel mid-weekend &mdash; influencers' codes stopped working and the base lost its usual saving.</span></li>
-        <li><span><strong>The cart broke the core motion:</strong> the Rebuy slide-cart froze, blocking the "add more to hit the next tier" behaviour the deal depends on.</span></li>
-        <li><span><strong>Demand was pulled forward,</strong> not created: 16 Jun conversion crashed to 0.74% (month's worst), erasing $7.2k of the lift.</span></li>
-      </ul>
+      <p class="readout-interp"><span class="pos">The mechanic worked</span> &mdash; baskets got deeper and high-ticket attach roughly doubled. But after ~$42k of discount, COGS and a next-day demand trough, two-day contribution lands near a <strong>wash</strong>. It was also paused within a day of the broad launch, and execution leaked value &mdash; affiliate codes were switched off mid-weekend and the cart froze, breaking the "add more to hit the next tier" motion the deal depends on.</p>
     </div>
 
-    <!-- DEAL 2 -->
-    <div class="dealblock">
-      <div class="deal-head">
-        <span class="deal-kicker">02 &middot; Gift With Purchase</span>
-        <span class="deal-meta">19 Jun &middot; reforecast to $90k/day &middot; email + SMS + banner</span>
-        <span class="tag early">Early read</span>
+    <div class="readout">
+      <div class="readout-head">02 &middot; Gift With Purchase &middot; 18&ndash;19 Jun</div>
+      <div class="readout-grid">
+        <div class="stat"><div class="v scarlet">68%</div><div class="l">Of orders qualified<br>for no tier at all</div></div>
+        <div class="stat"><div class="v scarlet">5.7%</div><div class="l">Value of the $20 gift<br>on the $350 entry</div></div>
+        <div class="stat"><div class="v scarlet">43%</div><div class="l">Email open rate<br>(norm 53&ndash;71%)</div></div>
+        <div class="stat"><div class="v scarlet">&lt;50</div><div class="l">Gifts claimed across<br>both days (~320 orders)</div></div>
       </div>
-      <p class="deal-lede">Tiered <strong>stacking gifts</strong> ($350 sticker &rarr; $1,500 device), built natively as a 100%-off line item to sidestep the code-clash bug. Email 19 Jun 12am, SMS/push 9am, banner from 18 Jun. Every leading indicator came in weak.</p>
-      <div class="readout">
-        <div class="readout-head">GWP send performance + first-day gift uptake</div>
-        <div class="readout-grid">
-          <div class="stat"><div class="v scarlet">$349</div><div class="l">Median order vs the<br>$350 entry tier</div></div>
-          <div class="stat"><div class="v scarlet">68%</div><div class="l">Of orders qualified<br>for no tier at all</div></div>
-          <div class="stat"><div class="v scarlet">43%</div><div class="l">Email open rate<br>(norm 53&ndash;71%)</div></div>
-          <div class="stat"><div class="v scarlet">$0.01</div><div class="l">Email revenue<br>per recipient</div></div>
-        </div>
-        <p class="readout-interp">The entry threshold ($350) sat <strong>$1 above the median order ($349)</strong>, so 68% of orders unlocked nothing and <strong>85% got nothing or the $20 sticker</strong>. The gift only out-values the 25% code customers already have at <strong>$1,000+ &mdash; the 12% of orders that reach it</strong> &mdash; and there it gives away $149 wands and $199 Bullets, cannibalising sellable SKUs. Positioning was clear (the email led "the more you spend, the more you receive," showed per-currency tiers and spelled out stacking WELCOME15), so this was an <strong>offer-structure problem, not a messaging one</strong>.</p>
-        <p class="readout-foot">Gift retail values: Sticker $20 &middot; Earphones $90 &middot; Wand $149 &middot; Bullet $199. Early read &mdash; 19 Jun was partial at pull (~6.8k sessions vs ~13k norm); send metrics + tier landings are firm, day-level revenue preliminary.</p>
-      </div>
-
-      <div class="tbl-cap">Where orders landed on the send day &mdash; gift value vs the discount they could already take</div>
-      <div class="tbl-wrap">
-        <table>
-          <thead><tr><th>Order lands at</th><th>Orders</th><th>Free gift (retail)</th><th>Gift % of spend</th><th>A 25% code</th></tr></thead>
-          <tbody>
-            <tr class="flag"><td>&lt; $350 &mdash; no tier</td><td>79 (68%)</td><td>nothing</td><td>0%</td><td>&mdash;</td></tr>
-            <tr class="flag"><td>$350+ &mdash; Sticker</td><td>21 (18%)</td><td>$20</td><td>5.7%</td><td>$88</td></tr>
-            <tr><td>$750+ &mdash; +Earphones</td><td>3 (3%)</td><td>$110</td><td>14.7%</td><td>$188</td></tr>
-            <tr><td>$1,000+ &mdash; +Wand</td><td>8 (7%)</td><td>$259</td><td>25.9%</td><td>$250</td></tr>
-            <tr><td>$1,500+ &mdash; +Bullet</td><td>6 (5%)</td><td>$458</td><td>30.5%</td><td>$375</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <ul class="flist">
-        <li><span><strong>The threshold sat above where people buy:</strong> median order $349 vs a $350 entry &mdash; 68% qualified for nothing and 85% got nothing or the $20 sticker. The AOV and the tiers were set too far apart.</span></li>
-        <li><span><strong>The gift lost to the everyday discount:</strong> at $350 a $20 sticker is 5.7% of spend vs the 15% (WELCOME15) or 25% (abandonment/affiliate) already available. Even stacking WELCOME15 ($72.50 value) trailed a standalone 25% code ($87.50).</span></li>
-        <li><span><strong>The ladder is upside-down:</strong> gifts only beat a 25% code at $1,000+ (12% of orders) &mdash; and there we give away $149 wands and $199 Bullets, cannibalising sellable SKUs.</span></li>
-        <li><span><strong>The email was fatigued and crowded:</strong> 42.7% open (lowest of the window), launched <strong>between the BC Method launch (17 Jun) and Red Light Panel (20 Jun)</strong>; SMS was also under-deployed (8,952 vs 28,951 on Spend &amp; Save).</span></li>
-        <li><span><strong>Messaging was clear &mdash; structure wasn't:</strong> the email communicated "more you spend, more you receive," per-currency tiers and stacking. The build was also clean (native 100%-off, no code-clash). The miss was the offer economics, not the comms.</span></li>
-      </ul>
+      <p class="readout-interp">The entry threshold sat <strong>$1 above the median order</strong>, so two-thirds of buyers unlocked nothing and the store gave away fewer than 50 gifts all weekend &mdash; mostly $20 stickers. The messaging was clear and the build was clean; the miss was the <strong>offer structure</strong>, not the comms.</p>
     </div>
   </div>
 </section>
 
-<!-- SECTION 2 — EMAIL & CRM STRATEGY -->
+<!-- SECTION 2 — WHY IT DIDN'T WORK -->
 <section class="section-alt">
   <div class="container">
     <div class="eyebrow">Section 2</div>
-    <h2 class="section-title">The email program that carried the tests</h2>
-    <p class="section-lede">The deals didn't run in isolation &mdash; they sat inside a heavy send calendar. Eleven campaigns went out in eleven days, <strong>seven of them blasts to the full 300k+ file</strong>. From a CRM lens, the cadence, the segmentation and the sequencing did as much to cap the result as the offers did.</p>
+    <h2 class="section-title">Why it didn't work &mdash; the data</h2>
+    <p class="section-lede">Both deals failed in the same places. Pulling normal trading, the discount ledger and the send logs together, six reasons explain it &mdash; and the first one is the root of most.</p>
 
-    <div class="readout">
-      <div class="readout-head">The send window &middot; 9&ndash;19 Jun</div>
-      <div class="readout-grid">
-        <div class="stat"><div class="v scarlet">7</div><div class="l">Full-file (300k+) email<br>blasts in 9 days</div></div>
-        <div class="stat"><div class="v">71% &rarr; 43%</div><div class="l">Open rate, content sends<br>down to the GWP</div></div>
-        <div class="stat"><div class="v scarlet">$0.25</div><div class="l">SMS rev/recipient<br>vs $0.03 on email</div></div>
-        <div class="stat"><div class="v">$11.9k</div><div class="l">A UGC email earned<br>vs $4.6k on the GWP</div></div>
-      </div>
-      <p class="readout-interp">Opens held at <strong>71%</strong> on content (UGC, Global Wellness) but decayed across the promo run &mdash; 57% &rarr; 53% &rarr; <strong>43% on the GWP</strong>, the last big send. The audience was mailed faster than it could recover, and the deal that needed reach most got the least of it.</p>
-    </div>
-
-    <div class="tbl-cap">Every send in the window &mdash; deal sends in red</div>
+    <div class="tbl-cap">The core problem in one table &mdash; a single $350 entry vs each region's normal basket</div>
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th>Date</th><th>Campaign</th><th>Recipients</th><th>Open%</th><th>$/recip</th><th>Unsub%</th></tr></thead>
+        <thead><tr><th>Region</th><th>Share of orders</th><th>Normal AOV</th><th>$350 entry =</th></tr></thead>
         <tbody>
-          <tr><td>09 Jun</td><td>LED Bulb Consumer Test</td><td>24,308</td><td>41.0</td><td>$0.07</td><td>0.13</td></tr>
-          <tr><td>10 Jun</td><td>BC Method Tease</td><td>430,002</td><td>57.5</td><td>$0.04</td><td>0.14</td></tr>
-          <tr><td>11 Jun</td><td>UGC / Reviews</td><td>349,788</td><td>71.3</td><td>$0.03</td><td>0.12</td></tr>
-          <tr class="flag"><td>12 Jun</td><td>Spend &amp; Save (broad)</td><td>428,653</td><td>56.8</td><td>$0.03</td><td>0.10</td></tr>
-          <tr><td>13 Jun</td><td>Global Wellness Day</td><td>346,367</td><td>71.2</td><td>$0.03</td><td>0.13</td></tr>
-          <tr class="flag"><td>13 Jun</td><td>Spend &amp; Save USA</td><td>322,948</td><td>60.9</td><td>$0.04</td><td>0.18</td></tr>
-          <tr class="flag"><td>13 Jun</td><td>Spend &amp; Save SMS</td><td>28,951</td><td>&mdash;</td><td>$0.25</td><td>0.81</td></tr>
-          <tr><td>15 Jun</td><td>Fitness First</td><td>25,000</td><td>38.9</td><td>$0.01</td><td>0.20</td></tr>
-          <tr><td>17 Jun</td><td>BC Method Launch</td><td>425,034</td><td>53.5</td><td>$0.02</td><td>0.12</td></tr>
-          <tr class="flag"><td>18 Jun</td><td>GWP 72hr</td><td>424,414</td><td>42.7</td><td>$0.01</td><td>0.08</td></tr>
-          <tr class="flag"><td>19 Jun</td><td>GWP SMS</td><td>8,982</td><td>&mdash;</td><td>&mdash;</td><td>0.93</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <ul class="flist">
-      <li><span><strong>Over-mailing eroded the open rate:</strong> seven full-file blasts in nine days (two on 13 Jun) pulled opens from 71% on content down to 43% on the GWP &mdash; the deal that needed reach most landed on the most fatigued list.</span></li>
-      <li><span><strong>No real segmentation on the deals:</strong> both went to the whole database (428k / 424k). The "USA" send was still 323k &mdash; a geo-filter, not intent &mdash; and carried the highest unsub (0.18%) and spam (0.028%, ~5&times; the others).</span></li>
-      <li><span><strong>One-shot blasts, not sequences:</strong> each 72-hour window got ~1 email + 1 SMS. No teaser, midpoint reminder or final-hours push, so the urgency-driven last-day revenue a flash sale relies on never fired.</span></li>
-      <li><span><strong>The channel mix was inverted:</strong> SMS converted at $0.25/recipient (~8&times; email) but got tiny lists (29k, then 9k) and a single send; email, at $0.03, carried the load at full-file scale.</span></li>
-      <li><span><strong>The calendar wasn't deconflicted:</strong> the BC Method launch (Tease 10th, Launch 17th, Panel 20th) straddled both deals &mdash; the GWP landed one day after the BC Method Launch, two big events back-to-back to the same file.</span></li>
-      <li><span><strong>The angle was wrong for the moment:</strong> into a just-bought, discount-fatigued list, the content emails out-earned the deals &mdash; UGC $11,926 and Global Wellness $9,597 vs the GWP's $4,552.</span></li>
-      <li><span><strong>The list-health bill is mounting:</strong> repeated full-file blasts pushed unsubs to 0.10&ndash;0.20% and SMS opt-outs to 0.8&ndash;0.9%; the GWP's depressed 43% open is partly the deliverability tax of the week before it.</span></li>
-    </ul>
-
-    <div class="callout" style="margin-top:var(--s7);">
-      <div class="k">The CRM fix, in five moves</div>
-      <p style="font-size:clamp(17px,1.9vw,21px);line-height:1.5;"><strong>Sequence</strong> every deal (teaser &rarr; launch &rarr; midpoint &rarr; final hours) &middot; <strong>segment to intent</strong> not geography, reserving the full file for one launch moment &middot; <strong>lead with SMS</strong> and cap full-file email frequency &middot; <strong>suppress</strong> recent purchasers and the unengaged &middot; <strong>deconflict the calendar</strong> so only one event owns the inbox at a time.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3 -->
-<section>
-  <div class="container">
-    <div class="eyebrow">Section 3</div>
-    <h2 class="section-title">Insights &mdash; what the two tests taught us</h2>
-    <p class="section-lede">Both deals failed in the same places, which is the useful part: the lessons generalise to any daily deal we run.</p>
-
-    <div class="tbl-cap">The shared root cause &mdash; thresholds sit above the basket customers actually buy</div>
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Order-value reach</th><th>BAU (Jun 2&ndash;9)</th><th>Peak L1 sale</th><th>Tier it unlocks</th></tr></thead>
-        <tbody>
-          <tr><td>Median order</td><td>$205</td><td>$269</td><td>&mdash; below entry &mdash;</td></tr>
-          <tr class="flag"><td>Orders &ge; $300</td><td>36.4%</td><td>28.7%</td><td>Save 20% &middot; GWP sticker</td></tr>
-          <tr><td>Orders &ge; $500</td><td>14.1%</td><td>16.5%</td><td>Save 25% &middot; GWP earphones</td></tr>
-          <tr class="flag"><td>Orders &ge; $1,000</td><td>6.0%</td><td>6.0%</td><td>Save 30% &middot; GWP wand</td></tr>
+          <tr><td>United States</td><td>68%</td><td>$409</td><td>0.9&times; basket</td></tr>
+          <tr><td>United Kingdom</td><td>10%</td><td>$586</td><td>0.6&times; basket</td></tr>
+          <tr><td>Canada</td><td>6%</td><td>$404</td><td>0.9&times; basket</td></tr>
+          <tr class="flag"><td>Australia</td><td>9%</td><td>$253</td><td>1.4&times; basket</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="causes">
       <div class="cause"><div class="cn">1</div><div>
-        <div class="ch"><h4>Perceived value is the ceiling &mdash; in BAU a deal competes with our own discounting</h4><span class="chip both">Both</span></div>
-        <p>Bon Charge runs 15% welcome + 25&ndash;38% blended affiliate/podcast discounting every day. Both deals offered the same or less, so most customers had no reason to act. A daily deal only works when it <em>beats</em> what's already available.</p>
+        <div class="ch"><h4>The offer never beat the discount customers already get</h4><span class="chip both">Both</span></div>
+        <p>Bon Charge gives away <span class="data">~30% of gross revenue in discounts every day</span>, and <span class="data">70% of orders take a discount without even entering a code</span> (automatic offers averaging ~30% off). On top of that sit standing codes at 15% (affiliate/podcast) and 25&ndash;30% (cart, VIP, win-back). A Spend &amp; Save worth ~20% or a $20 gift simply <strong>couldn't beat what was already in the customer's pocket</strong>. A deal only works when it's clearly better than the everyday price.</p>
       </div></div>
       <div class="cause"><div class="cn">2</div><div>
-        <div class="ch"><h4>Thresholds have to match the real basket curve</h4><span class="chip both">Both</span></div>
-        <p>Median order is $205 (and $349 on the GWP send day) &mdash; the GWP entry was set $1 above it, so 68% qualified for nothing. Only 6% of orders reach the $1,000 tier, a figure that doesn't move even in a peak sale. Tiers set above the basket lock most customers out.</p>
+        <div class="ch"><h4>The threshold sat above where people actually buy</h4><span class="chip both">Both</span></div>
+        <p>The median order is <span class="data">~$205</span>; the GWP entry was <strong>$350</strong> &mdash; asking the typical customer to spend <span class="data">~70% more</span> to unlock anything. The result: 68% of orders qualified for no tier at all, and only ~6% reach the $1,000 tier even in a sale. Tiers set above the basket curve lock most customers out.</p>
       </div></div>
       <div class="cause"><div class="cn">3</div><div>
-        <div class="ch"><h4>The mechanic does change behaviour &mdash; when it's reachable and targeted</h4><span class="chip ss">Spend &amp; Save</span></div>
-        <p>On the targeted US audience, units doubled, basket depth rose +18% and AOV hit $567&ndash;601. Spend-and-save genuinely drives bundling and high-ticket attach. The problem was never the idea &mdash; it was the economics and the reach.</p>
+        <div class="ch"><h4>The first-tier reward was too small to move anyone</h4><span class="chip gwp">GWP</span></div>
+        <p>A $20 sticker on a $350 order is <span class="data">5.7%</span> &mdash; less than half a standard 15% code, and far below the 25&ndash;30% available elsewhere. The data proves it landed flat: <span class="data">fewer than 50 gifts were claimed across both days</span>. And the bigger gifts cannibalise: a $149 wand or $199 Bullet given away is a sellable SKU lost. Make rewards genuinely desirable and non-sellable, or use cash-equivalent savings.</p>
       </div></div>
       <div class="cause"><div class="cn">4</div><div>
-        <div class="ch"><h4>A gift is weaker than cash &mdash; and gifting sellable SKUs costs margin twice</h4><span class="chip gwp">GWP</span></div>
-        <p>At $350 the $20 sticker is worth 5.7% of spend vs the 15&ndash;25% a code already gives; the gift only beats a 25% code at $1,000+ (12% of orders). Worse, gifting the $149 wand and $199 Bullet cannibalises products we sell. Make gifts genuinely desirable and non-sellable, or use cash-equivalents.</p>
+        <div class="ch"><h4>One US-shaped offer for a store selling in 90+ currencies</h4><span class="chip both">Both</span></div>
+        <p>The thresholds and gift values were fixed in USD and set to the US basket. But the same $350 entry is <span class="data">0.6&times; a UK basket and 1.4&times; an AU basket</span> &mdash; a giveaway in some markets, unreachable in others. It worked best in the US (where it was sized) and missed everywhere else. Every market needs its own ladder, built off its own order curve.</p>
       </div></div>
       <div class="cause"><div class="cn">5</div><div>
-        <div class="ch"><h4>SMS converts, email reaches &mdash; and the list needs protecting</h4><span class="chip both">Both</span></div>
-        <p>SMS drove ~8&times; the revenue per recipient of email. But five 350k+ blasts in ten days pushed the GWP open rate to 37%, and crowding it against a product launch split attention further. Lead with SMS, space the email, isolate the deal.</p>
+        <div class="ch"><h4>One global email, delivered at 2am for Australia</h4><span class="chip both">Both</span></div>
+        <p>Both deals went as a <strong>single worldwide blast</strong> (no AU- or US-specific send), timed to 9am US Pacific &mdash; which is <span class="data">midnight Perth = 2am on the AU east coast</span>. Australia is the #4 region (9% of orders) but only <span class="data">5% of AU orders ever happen at that hour</span>. The email landed while AU slept, then sat behind a day of other sends. Region-split, local-time sends would have fixed this for free.</p>
       </div></div>
       <div class="cause"><div class="cn">6</div><div>
-        <div class="ch"><h4>Timing and isolation decide the read</h4><span class="chip both">Both</span></div>
-        <p>Running 12 days after an L1, on a weekend, into a fatigued just-bought list, suppressed response and pulled demand forward (the 0.74% trough). Daily deals need a fresh audience reason and a clean window &mdash; and must be judged net of pull-forward against a matched baseline.</p>
-      </div></div>
-      <div class="cause"><div class="cn">7</div><div>
-        <div class="ch"><h4>Execution is a value multiplier</h4><span class="chip both">Both</span></div>
-        <p>A frozen cart, disabled codes, USD-shaped thresholds and an unbriefed weekend team each leaked value before the offer could land. The deal mechanic is only as good as the build, the QA and the team prep around it.</p>
+        <div class="ch"><h4>The lift came from new customers, not bigger baskets</h4><span class="chip both">Both</span></div>
+        <p><span class="data">66&ndash;68% of deal orders were new customers</span> (vs 64% in normal trading) &mdash; people who'd convert on a welcome code anyway &mdash; while average order value barely moved. The deal mostly re-papered demand that already existed rather than creating incremental, behaviour-changing spend.</p>
       </div></div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 4 -->
-<section class="section-alt">
+<!-- SECTION 3 — GOING FORWARD -->
+<section>
   <div class="container">
-    <div class="eyebrow">Section 4</div>
-    <h2 class="section-title">Going forward &mdash; the daily-deals playbook</h2>
-    <p class="section-lede">The tests didn't disprove daily deals &mdash; they showed the conditions a daily deal needs to earn its margin. Here's how we run them from here, built straight from the seven insights.</p>
+    <div class="eyebrow">Section 3</div>
+    <h2 class="section-title">Going forward &mdash; how we run daily deals</h2>
+    <p class="section-lede">The tests didn't disprove daily deals &mdash; they showed the conditions a deal needs to earn its margin. Five changes, built straight from the data above.</p>
 
     <div class="changes">
       <div class="change">
-        <div class="area"><span class="n">Play 01</span>Stack on a sale, don't compete in BAU</div>
+        <div class="area"><span class="n">Play 01</span>Beat the everyday price, or stack on a sale</div>
         <div class="body">
-          <h4>Daily deals belong inside the L1, layered on the sitewide offer.</h4>
-          <p>In BAU the deal fought our own codes and netted just $1.77 per $1 of discount. On top of a 25% sitewide sale, an extra tier is genuinely incremental and the customer can't get it elsewhere &mdash; which is the original thesis worth proving at Mid-Year.</p>
+          <h4>Never ship a deal smaller than what's already available.</h4>
+          <p>Either make the saving clearly larger than every live code, or run it where codes are suppressed, or layer it <strong>on top of an L1 sale</strong> so the extra tier is genuinely incremental. In normal trading the deal just fought our own ~30% discounting.</p>
         </div>
       </div>
       <div class="change">
-        <div class="area"><span class="n">Play 02</span>Offer has to beat the live code</div>
+        <div class="area"><span class="n">Play 02</span>Calibrate thresholds per currency, near the median</div>
         <div class="body">
-          <h4>If a welcome or affiliate code is worth more, the deal won't move.</h4>
-          <p>Either make the tiered saving clearly larger than every live code, or run the deal where codes are suppressed. Never ship a deal smaller than what's already in the customer's pocket.</p>
+          <h4>Set the entry close to each market's real basket (~$205), not a flat USD number.</h4>
+          <p>Build the AU/US/UK/EU ladders off each region's own order distribution before locking, so the majority can unlock something and the top tier is actually reachable.</p>
         </div>
       </div>
       <div class="change">
-        <div class="area"><span class="n">Play 03</span>Calibrate thresholds to the basket</div>
+        <div class="area"><span class="n">Play 03</span>Test simple before complex</div>
         <div class="body">
-          <h4>Entry near the median ($205), tiers set per currency.</h4>
-          <p>Build each market's ladder off its own AUD/GBP/EUR order distribution, not converted USD. Re-run the order-value percentiles before locking, so the majority can unlock something and the top tier is actually reachable.</p>
+          <h4>Try a single aggressive discount on a hero product first.</h4>
+          <p>The Red Light Face Mask alone did <strong>871 units / $230k in 19 days</strong> &mdash; ~3&times; the next product. A blunt, clear spot-deal on a bestseller is easier to grasp, build and QA than a three-tier dollar-value ladder, and gives a clean read on whether a daily deal moves the number at all.</p>
         </div>
       </div>
       <div class="change">
-        <div class="area"><span class="n">Play 04</span>Pick the right mechanic</div>
+        <div class="area"><span class="n">Play 04</span>Region-split, local-time, SMS-led</div>
         <div class="body">
-          <h4>Favour reachable, high-perceived-value mechanics.</h4>
-          <p>Category / hero-product spot sales, build-your-own-bundle, and cash-back or gift-card incentives tend to beat a low-value GWP. Reserve GWP for genuinely desirable, <strong>non-sellable</strong> gifts at thresholds most baskets can hit.</p>
+          <h4>Send AU in AEST, US in PT, UK in GMT &mdash; and lead with SMS.</h4>
+          <p>Split the audience by market and schedule each in local morning/evening instead of one global blast. Lead the high-intent push with SMS (far higher revenue per recipient), use email for reach, and keep the deal clear of product-launch windows.</p>
         </div>
       </div>
       <div class="change">
-        <div class="area"><span class="n">Play 05</span>SMS-led, email for reach, isolated</div>
+        <div class="area"><span class="n">Play 05</span>Judge on contribution, not revenue</div>
         <div class="body">
-          <h4>Lead the high-intent push with SMS; protect the email list.</h4>
-          <p>Use SMS for conversion (~8&times; efficiency) and email for reach, space the mass sends, and keep the deal clear of product-launch windows so it isn't fighting for the inbox &mdash; the mistake that hit the GWP.</p>
-        </div>
-      </div>
-      <div class="change">
-        <div class="area"><span class="n">Play 06</span>Clean window, full pre-flight</div>
-        <div class="body">
-          <h4>Weekday launch, team briefed, build QA'd, away from the L1 afterglow.</h4>
-          <p>Run the pre-flight checklist: brief CS, affiliates and influencers; confirm code behaviour; QA the cart, tier mechanic and per-currency thresholds. Don't launch a discount straight after a major sale into a just-bought list.</p>
-        </div>
-      </div>
-      <div class="change">
-        <div class="area"><span class="n">Play 07</span>Measure on contribution, not revenue</div>
-        <div class="body">
-          <h4>Judge every deal net of discount and pull-forward, against a margin floor.</h4>
-          <p>Read incrementality versus a matched baseline, subtract the next-day trough and the extra discount, and decide go/no-go on contribution &mdash; not the raw day. Set a minimum net-per-$1-discount the deal must clear to repeat.</p>
+          <h4>Read every deal net of discount and pull-forward, against a margin floor.</h4>
+          <p>Measure incrementality versus a matched baseline, subtract the extra discount and the next-day trough, and set a minimum net-per-$1-of-discount the deal must clear to repeat. Pre-flight the build, codes, cart and team brief every time.</p>
         </div>
       </div>
     </div>
 
     <div class="callout">
-      <div class="k">The Mid-Year test</div>
-      <p>The five daily-deal windows already mapped for <strong>9&ndash;26 Jul</strong> are the right place to prove incrementality &mdash; stacked on the sale, SMS-led, thresholds recalibrated per currency, and gifts or cash-back in place of stickers. Run them clean and we'll finally answer the brand's question with a number, not a hunch.</p>
+      <div class="k">The bottom line</div>
+      <p>Daily deals can work for Bon Charge &mdash; but only when the offer <strong>beats the everyday discount</strong>, the thresholds match <strong>each market's real basket</strong>, and the send reaches every region <strong>in its own local time</strong>. Fix those three and the Mid-Year windows (9&ndash;26 Jul) can finally answer the question with a number, not a hunch.</p>
     </div>
   </div>
 </section>
@@ -421,7 +296,7 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
     <div class="footer-stack">
       <img src="assets/tethrd-wordmark-white.svg" alt="Tethrd." class="footer-logo">
       <div class="footer-prepared">Prepared for Andy, Marco &amp; Steffen at Bon Charge</div>
-      <div class="footer-meta">Sources: Shopify Admin API (blublox.myshopify.com) &middot; Klaviyo Reporting API &middot; incrementality vs matched BAU &middot; 19 Jun 2026</div>
+      <div class="footer-meta">Sources: Shopify Analytics (ShopifyQL, blublox) &middot; Klaviyo campaign logs &middot; incrementality vs matched BAU &middot; all figures USD &middot; 19 Jun 2026</div>
     </div>
   </div>
 </footer>
