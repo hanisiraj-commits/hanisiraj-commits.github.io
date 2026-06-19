@@ -46,7 +46,7 @@ section{padding:var(--s8) 0;page-break-inside:avoid;}
 .hero-title{font-family:var(--font-serif);font-weight:500;font-size:clamp(34px,4.8vw,56px);line-height:1.04;letter-spacing:-0.04em;color:var(--white);margin-bottom:var(--s4);max-width:960px;}
 .hero-sub{font-size:18px;color:var(--steel);max-width:840px;line-height:1.55;}
 .hero-sub strong{color:var(--white);font-weight:600;}
-.hero-toc{margin-top:var(--s7);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);padding-top:var(--s5);border-top:1px solid var(--surface-dark-border);}
+.hero-toc{margin-top:var(--s7);display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);padding-top:var(--s5);border-top:1px solid var(--surface-dark-border);}
 .hero-toc .n{font-family:var(--font-serif);font-size:13px;color:var(--bc-scarlet);font-weight:500;letter-spacing:0.04em;}
 .hero-toc .t{font-size:15px;color:var(--white);font-weight:600;margin-top:6px;}
 .hero-toc .d{font-size:12.5px;color:var(--space);margin-top:4px;line-height:1.45;}
@@ -157,8 +157,9 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
     <p class="hero-sub">Two BAU flash tests &mdash; a tiered <strong>Spend &amp; Save</strong> (12&ndash;15 Jun) and a tiered <strong>Gift With Purchase</strong> (19 Jun). The Spend &amp; Save moved revenue but the economics were thin and US-only; the GWP came in weak on every leading indicator. Both point to the same fixes. Here's the read on each, the shared insights, and the playbook for next time.</p>
     <div class="hero-toc">
       <div><div class="n">01</div><div class="t">What happened</div><div class="d">Spend &amp; Save and GWP, each read against matched BAU.</div></div>
-      <div><div class="n">02</div><div class="t">Insights</div><div class="d">Seven learnings the two tests share.</div></div>
-      <div><div class="n">03</div><div class="t">Going forward</div><div class="d">The daily-deals playbook for Mid-Year and beyond.</div></div>
+      <div><div class="n">02</div><div class="t">Email &amp; CRM strategy</div><div class="d">The send program that carried the tests.</div></div>
+      <div><div class="n">03</div><div class="t">Insights</div><div class="d">Seven learnings the two tests share.</div></div>
+      <div><div class="n">04</div><div class="t">Going forward</div><div class="d">The daily-deals playbook for Mid-Year.</div></div>
     </div>
   </div>
 </header>
@@ -210,7 +211,7 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
         <div class="readout-grid">
           <div class="stat"><div class="v scarlet">$349</div><div class="l">Median order vs the<br>$350 entry tier</div></div>
           <div class="stat"><div class="v scarlet">68%</div><div class="l">Of orders qualified<br>for no tier at all</div></div>
-          <div class="stat"><div class="v scarlet">37%</div><div class="l">Email open rate<br>(norm 53&ndash;71%)</div></div>
+          <div class="stat"><div class="v scarlet">43%</div><div class="l">Email open rate<br>(norm 53&ndash;71%)</div></div>
           <div class="stat"><div class="v scarlet">$0.01</div><div class="l">Email revenue<br>per recipient</div></div>
         </div>
         <p class="readout-interp">The entry threshold ($350) sat <strong>$1 above the median order ($349)</strong>, so 68% of orders unlocked nothing and <strong>85% got nothing or the $20 sticker</strong>. The gift only out-values the 25% code customers already have at <strong>$1,000+ &mdash; the 12% of orders that reach it</strong> &mdash; and there it gives away $149 wands and $199 Bullets, cannibalising sellable SKUs. Positioning was clear (the email led "the more you spend, the more you receive," showed per-currency tiers and spelled out stacking WELCOME15), so this was an <strong>offer-structure problem, not a messaging one</strong>.</p>
@@ -234,17 +235,72 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
         <li><span><strong>The threshold sat above where people buy:</strong> median order $349 vs a $350 entry &mdash; 68% qualified for nothing and 85% got nothing or the $20 sticker. The AOV and the tiers were set too far apart.</span></li>
         <li><span><strong>The gift lost to the everyday discount:</strong> at $350 a $20 sticker is 5.7% of spend vs the 15% (WELCOME15) or 25% (abandonment/affiliate) already available. Even stacking WELCOME15 ($72.50 value) trailed a standalone 25% code ($87.50).</span></li>
         <li><span><strong>The ladder is upside-down:</strong> gifts only beat a 25% code at $1,000+ (12% of orders) &mdash; and there we give away $149 wands and $199 Bullets, cannibalising sellable SKUs.</span></li>
-        <li><span><strong>The email was fatigued and crowded:</strong> 37.3% open (lowest of the window), launched <strong>between the BC Method launch (17 Jun) and Red Light Panel (20 Jun)</strong>; SMS was also under-deployed (8,952 vs 28,951 on Spend &amp; Save).</span></li>
+        <li><span><strong>The email was fatigued and crowded:</strong> 42.7% open (lowest of the window), launched <strong>between the BC Method launch (17 Jun) and Red Light Panel (20 Jun)</strong>; SMS was also under-deployed (8,952 vs 28,951 on Spend &amp; Save).</span></li>
         <li><span><strong>Messaging was clear &mdash; structure wasn't:</strong> the email communicated "more you spend, more you receive," per-currency tiers and stacking. The build was also clean (native 100%-off, no code-clash). The miss was the offer economics, not the comms.</span></li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- SECTION 2 -->
+<!-- SECTION 2 — EMAIL & CRM STRATEGY -->
 <section class="section-alt">
   <div class="container">
     <div class="eyebrow">Section 2</div>
+    <h2 class="section-title">The email program that carried the tests</h2>
+    <p class="section-lede">The deals didn't run in isolation &mdash; they sat inside a heavy send calendar. Eleven campaigns went out in eleven days, <strong>seven of them blasts to the full 300k+ file</strong>. From a CRM lens, the cadence, the segmentation and the sequencing did as much to cap the result as the offers did.</p>
+
+    <div class="readout">
+      <div class="readout-head">The send window &middot; 9&ndash;19 Jun</div>
+      <div class="readout-grid">
+        <div class="stat"><div class="v scarlet">7</div><div class="l">Full-file (300k+) email<br>blasts in 9 days</div></div>
+        <div class="stat"><div class="v">71% &rarr; 43%</div><div class="l">Open rate, content sends<br>down to the GWP</div></div>
+        <div class="stat"><div class="v scarlet">$0.25</div><div class="l">SMS rev/recipient<br>vs $0.03 on email</div></div>
+        <div class="stat"><div class="v">$11.9k</div><div class="l">A UGC email earned<br>vs $4.6k on the GWP</div></div>
+      </div>
+      <p class="readout-interp">Opens held at <strong>71%</strong> on content (UGC, Global Wellness) but decayed across the promo run &mdash; 57% &rarr; 53% &rarr; <strong>43% on the GWP</strong>, the last big send. The audience was mailed faster than it could recover, and the deal that needed reach most got the least of it.</p>
+    </div>
+
+    <div class="tbl-cap">Every send in the window &mdash; deal sends in red</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Date</th><th>Campaign</th><th>Recipients</th><th>Open%</th><th>$/recip</th><th>Unsub%</th></tr></thead>
+        <tbody>
+          <tr><td>09 Jun</td><td>LED Bulb Consumer Test</td><td>24,308</td><td>41.0</td><td>$0.07</td><td>0.13</td></tr>
+          <tr><td>10 Jun</td><td>BC Method Tease</td><td>430,002</td><td>57.5</td><td>$0.04</td><td>0.14</td></tr>
+          <tr><td>11 Jun</td><td>UGC / Reviews</td><td>349,788</td><td>71.3</td><td>$0.03</td><td>0.12</td></tr>
+          <tr class="flag"><td>12 Jun</td><td>Spend &amp; Save (broad)</td><td>428,653</td><td>56.8</td><td>$0.03</td><td>0.10</td></tr>
+          <tr><td>13 Jun</td><td>Global Wellness Day</td><td>346,367</td><td>71.2</td><td>$0.03</td><td>0.13</td></tr>
+          <tr class="flag"><td>13 Jun</td><td>Spend &amp; Save USA</td><td>322,948</td><td>60.9</td><td>$0.04</td><td>0.18</td></tr>
+          <tr class="flag"><td>13 Jun</td><td>Spend &amp; Save SMS</td><td>28,951</td><td>&mdash;</td><td>$0.25</td><td>0.81</td></tr>
+          <tr><td>15 Jun</td><td>Fitness First</td><td>25,000</td><td>38.9</td><td>$0.01</td><td>0.20</td></tr>
+          <tr><td>17 Jun</td><td>BC Method Launch</td><td>425,034</td><td>53.5</td><td>$0.02</td><td>0.12</td></tr>
+          <tr class="flag"><td>18 Jun</td><td>GWP 72hr</td><td>424,414</td><td>42.7</td><td>$0.01</td><td>0.08</td></tr>
+          <tr class="flag"><td>19 Jun</td><td>GWP SMS</td><td>8,982</td><td>&mdash;</td><td>&mdash;</td><td>0.93</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="flist">
+      <li><span><strong>Over-mailing eroded the open rate:</strong> seven full-file blasts in nine days (two on 13 Jun) pulled opens from 71% on content down to 43% on the GWP &mdash; the deal that needed reach most landed on the most fatigued list.</span></li>
+      <li><span><strong>No real segmentation on the deals:</strong> both went to the whole database (428k / 424k). The "USA" send was still 323k &mdash; a geo-filter, not intent &mdash; and carried the highest unsub (0.18%) and spam (0.028%, ~5&times; the others).</span></li>
+      <li><span><strong>One-shot blasts, not sequences:</strong> each 72-hour window got ~1 email + 1 SMS. No teaser, midpoint reminder or final-hours push, so the urgency-driven last-day revenue a flash sale relies on never fired.</span></li>
+      <li><span><strong>The channel mix was inverted:</strong> SMS converted at $0.25/recipient (~8&times; email) but got tiny lists (29k, then 9k) and a single send; email, at $0.03, carried the load at full-file scale.</span></li>
+      <li><span><strong>The calendar wasn't deconflicted:</strong> the BC Method launch (Tease 10th, Launch 17th, Panel 20th) straddled both deals &mdash; the GWP landed one day after the BC Method Launch, two big events back-to-back to the same file.</span></li>
+      <li><span><strong>The angle was wrong for the moment:</strong> into a just-bought, discount-fatigued list, the content emails out-earned the deals &mdash; UGC $11,926 and Global Wellness $9,597 vs the GWP's $4,552.</span></li>
+      <li><span><strong>The list-health bill is mounting:</strong> repeated full-file blasts pushed unsubs to 0.10&ndash;0.20% and SMS opt-outs to 0.8&ndash;0.9%; the GWP's depressed 43% open is partly the deliverability tax of the week before it.</span></li>
+    </ul>
+
+    <div class="callout" style="margin-top:var(--s7);">
+      <div class="k">The CRM fix, in five moves</div>
+      <p style="font-size:clamp(17px,1.9vw,21px);line-height:1.5;"><strong>Sequence</strong> every deal (teaser &rarr; launch &rarr; midpoint &rarr; final hours) &middot; <strong>segment to intent</strong> not geography, reserving the full file for one launch moment &middot; <strong>lead with SMS</strong> and cap full-file email frequency &middot; <strong>suppress</strong> recent purchasers and the unengaged &middot; <strong>deconflict the calendar</strong> so only one event owns the inbox at a time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section>
+  <div class="container">
+    <div class="eyebrow">Section 3</div>
     <h2 class="section-title">Insights &mdash; what the two tests taught us</h2>
     <p class="section-lede">Both deals failed in the same places, which is the useful part: the lessons generalise to any daily deal we run.</p>
 
@@ -294,10 +350,10 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
   </div>
 </section>
 
-<!-- SECTION 3 -->
-<section>
+<!-- SECTION 4 -->
+<section class="section-alt">
   <div class="container">
-    <div class="eyebrow">Section 3</div>
+    <div class="eyebrow">Section 4</div>
     <h2 class="section-title">Going forward &mdash; the daily-deals playbook</h2>
     <p class="section-lede">The tests didn't disprove daily deals &mdash; they showed the conditions a daily deal needs to earn its margin. Here's how we run them from here, built straight from the seven insights.</p>
 
