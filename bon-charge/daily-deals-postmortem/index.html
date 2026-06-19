@@ -197,19 +197,6 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
     <h2 class="section-title">Why it didn't work &mdash; the data</h2>
     <p class="section-lede">Both deals failed in the same places. Pulling normal trading, the discount ledger and the send logs together, six reasons explain it &mdash; and the first one is the root of most.</p>
 
-    <div class="tbl-cap">The core problem in one table &mdash; a single $350 entry vs each region's normal basket</div>
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Region</th><th>Share of orders</th><th>Normal AOV</th><th>$350 entry =</th></tr></thead>
-        <tbody>
-          <tr><td>United States</td><td>68%</td><td>$409</td><td>0.9&times; basket</td></tr>
-          <tr><td>United Kingdom</td><td>10%</td><td>$586</td><td>0.6&times; basket</td></tr>
-          <tr><td>Canada</td><td>6%</td><td>$404</td><td>0.9&times; basket</td></tr>
-          <tr class="flag"><td>Australia</td><td>9%</td><td>$253</td><td>1.4&times; basket</td></tr>
-        </tbody>
-      </table>
-    </div>
-
     <div class="causes">
       <div class="cause"><div class="cn">1</div><div>
         <div class="ch"><h4>The offer never beat the discount customers already get</h4><span class="chip both">Both</span></div>
@@ -217,15 +204,15 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
       </div></div>
       <div class="cause"><div class="cn">2</div><div>
         <div class="ch"><h4>The threshold sat above where people actually buy</h4><span class="chip both">Both</span></div>
-        <p>The median order is <span class="data">~$205</span>; the GWP entry was <strong>$350</strong> &mdash; asking the typical customer to spend <span class="data">~70% more</span> to unlock anything. The result: 68% of orders qualified for no tier at all, and only ~6% reach the $1,000 tier even in a sale. Tiers set above the basket curve lock most customers out.</p>
+        <p>On the GWP send day the median order was <span class="data">~$349</span> &mdash; and the US entry tier sat at <strong>$350</strong>, a dollar above where half of buyers landed. The result: <span class="data">68% of orders unlocked no tier at all</span>, and only ~6% reach the $1,000 tier even in a sale. When the entry is set above the basket curve, most customers are locked out before the offer can work.</p>
       </div></div>
       <div class="cause"><div class="cn">3</div><div>
-        <div class="ch"><h4>The first-tier reward was too small to move anyone</h4><span class="chip gwp">GWP</span></div>
-        <p>A $20 sticker on a $350 order is <span class="data">5.7%</span> &mdash; less than half a standard 15% code, and far below the 25&ndash;30% available elsewhere. The data proves it landed flat: <span class="data">fewer than 50 gifts were claimed across both days</span>. And the bigger gifts cannibalise: a $149 wand or $199 Bullet given away is a sellable SKU lost. Make rewards genuinely desirable and non-sellable, or use cash-equivalent savings.</p>
+        <div class="ch"><h4>Even stacked with a code, the reward didn't beat the everyday discount</h4><span class="chip gwp">GWP</span></div>
+        <p>The entry gift &mdash; a $20 sticker on a $350 order &mdash; is just <span class="data">5.7%</span>. We did tell customers they could stack a 15% code on top, but even combined that's ~$72.50 of value (<span class="data">&asymp;20.7%</span>) &mdash; still short of the 25% (and up to 30%) that a large, price-sensitive slice of the base already gets through affiliate, cart and VIP codes. So for the customers most likely to chase a deal, the gift added nothing they couldn't already beat &mdash; and <span class="data">fewer than 50 gifts were claimed across both days</span>. Higher up the ladder it gets worse: a $149 wand or $199 Bullet given away is a sellable SKU lost.</p>
       </div></div>
       <div class="cause"><div class="cn">4</div><div>
-        <div class="ch"><h4>One US-shaped offer for a store selling in 90+ currencies</h4><span class="chip both">Both</span></div>
-        <p>The thresholds and gift values were fixed in USD and set to the US basket. But the same $350 entry is <span class="data">0.6&times; a UK basket and 1.4&times; an AU basket</span> &mdash; a giveaway in some markets, unreachable in others. It worked best in the US (where it was sized) and missed everywhere else. Every market needs its own ladder, built off its own order curve.</p>
+        <div class="ch"><h4>The tiers were built around the US, not each market</h4><span class="chip both">Both</span></div>
+        <p>The entry was set at <span class="data">$300&ndash;350 for the US</span>; other regions got higher, variable thresholds that weren't calibrated to their local baskets. So how reachable the deal was swung market to market &mdash; sized where it was designed (the US, ~two-thirds of orders) and inconsistent everywhere else. For a store selling in 90+ currencies, every market needs its own ladder, built off its own order curve.</p>
       </div></div>
       <div class="cause"><div class="cn">5</div><div>
         <div class="ch"><h4>One global email, delivered at 2am for Australia</h4><span class="chip both">Both</span></div>
@@ -257,7 +244,7 @@ tbody tr.flag td{background:var(--bc-scarlet-1);}
       <div class="change">
         <div class="area"><span class="n">Play 02</span>Calibrate thresholds per currency, near the median</div>
         <div class="body">
-          <h4>Set the entry close to each market's real basket (~$205), not a flat USD number.</h4>
+          <h4>Set the entry close to each market's own median order, not a number borrowed from the US.</h4>
           <p>Build the AU/US/UK/EU ladders off each region's own order distribution before locking, so the majority can unlock something and the top tier is actually reachable.</p>
         </div>
       </div>
