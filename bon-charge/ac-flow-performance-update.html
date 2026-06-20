@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tethrd × BON CHARGE · Abandoned Checkout — Performance Update</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white:#FFFFFF; --black:#000000; --ink:#1A1A1A; --ink-2:#2A2A2A;
+    --graphite:#6E7180; --space:#9DA2B3; --steel:#BCBFCC; --smoke:#D3D6E0;
+    --cloud:#EDEFF7; --text-primary:var(--ink); --text-secondary:var(--graphite); --text-muted:var(--space);
+    --status-green:#0D7D3A; --status-green-dark:#4ADE80;
+    --amber:#B07A1E; --amber-soft:#FBF3E2; --amber-border:#E7D2A6;
+    --red:#A93826; --red-soft:#FBEDEA; --red-border:#E9C4BC;
+    --green-soft:#EAF6EF; --green-border:#BFE3CD;
+    --bg-marketing:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(157,162,179,0.18), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(110,113,128,0.12), transparent 60%),
+      linear-gradient(180deg, #0B0B0C 0%, #000000 100%);
+    --font-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { font-size:16px; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  body { font-family:var(--font-sans); font-size:15px; font-weight:300; line-height:1.55; color:var(--text-primary); background:var(--cloud); }
+  h1,h2,h3,h4 { font-family:var(--font-sans); font-weight:600; letter-spacing:-.03em; color:var(--text-primary); line-height:1.15; }
+  p { color:var(--text-secondary); font-weight:300; line-height:1.7; }
+  strong { color:var(--text-primary); font-weight:600; }
+  em { font-style:normal; color:var(--text-primary); font-weight:500; }
+  .tabular,td,th { font-variant-numeric:tabular-nums; }
+
+  /* TOP NAV */
+  .topbar { background:rgba(255,255,255,0.96); border-bottom:1px solid var(--smoke); }
+  .topbar-inner { max-width:1080px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:16px 32px; }
+  .nav-left { display:flex; align-items:center; gap:12px; }
+  .nav-wordmark { font-weight:700; font-size:16px; color:var(--ink); letter-spacing:-.02em; }
+  .nav-sep { color:var(--steel); font-size:13px; margin:0 2px; font-weight:300; }
+  .nav-client { font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--text-secondary); }
+  .nav-date { font-size:11px; font-weight:600; color:var(--text-secondary); letter-spacing:.10em; text-transform:uppercase; }
+  @media (max-width:600px){ .nav-date{display:none;} }
+
+  .wrap { max-width:1080px; margin:0 auto; padding:32px; }
+
+  /* HERO */
+  .hero { background:var(--bg-marketing); color:var(--white); border-radius:16px; padding:42px 46px; margin-bottom:24px; position:relative; overflow:hidden; }
+  .hero .eyebrow { font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:18px; }
+  .hero h1 { font-size:clamp(25px,3.2vw,35px); line-height:1.14; letter-spacing:-.035em; color:var(--white); margin-bottom:20px; max-width:32ch; }
+  .hero h1 .green { color:var(--status-green-dark); font-weight:500; }
+  .hero p { font-size:15px; line-height:1.72; color:rgba(255,255,255,0.74); max-width:80ch; font-weight:300; }
+  .hero p strong { color:var(--white); font-weight:600; }
+  .hero p + p { margin-top:13px; }
+
+  /* WINDOW STRIP */
+  .windowbar { display:grid; grid-template-columns:1fr 1fr; gap:24px; background:var(--white); border:1px solid var(--smoke); border-radius:12px; padding:16px 24px; margin-bottom:24px; }
+  .windowbar .lbl { font-size:10px; letter-spacing:1.2px; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:6px; }
+  .windowbar .l1 { font-size:13px; color:var(--ink); font-weight:600; line-height:1.4; margin-bottom:3px; }
+  .windowbar .l2 { font-size:13px; color:var(--graphite); line-height:1.4; }
+
+  /* SECTION LABEL */
+  h2.section { font-size:12px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:var(--text-secondary); margin:30px 0 6px; }
+  .section-sub { font-size:13.5px; color:var(--graphite); line-height:1.6; margin-bottom:16px; max-width:78ch; }
+
+  /* HEAD-TO-HEAD STAT ROW */
+  .kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:8px; }
+  .kpi { background:var(--white); border:1px solid var(--smoke); border-radius:12px; padding:18px 20px; }
+  .kpi .k-lbl { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:10px; }
+  .kpi .k-val { font-size:26px; font-weight:600; letter-spacing:-.02em; color:var(--ink); line-height:1; }
+  .kpi .k-old { font-size:12px; color:var(--graphite); margin-top:6px; }
+  .kpi .k-delta { display:inline-block; font-size:11px; font-weight:600; margin-top:10px; padding:2px 8px; border-radius:999px; letter-spacing:.02em; }
+  .k-delta.down { background:var(--red-soft); color:var(--red); border:1px solid var(--red-border); }
+  .k-delta.flat { background:var(--cloud); color:var(--graphite); border:1px solid var(--smoke); }
+  .blended-note { font-size:12px; color:var(--text-muted); line-height:1.6; margin:10px 2px 0; }
+
+  /* COHORT FEATURE BLOCK */
+  .cohort { background:var(--white); border:1px solid var(--smoke); border-radius:14px; padding:26px 28px; margin-bottom:16px; display:grid; grid-template-columns:230px 1fr; gap:30px; align-items:center; }
+  .cohort.win { border-color:var(--green-border); }
+  .cohort.cost { border-color:var(--amber-border); }
+  .cohort .big { text-align:left; }
+  .cohort .c-tag { font-size:10.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:12px; }
+  .cohort .c-num { font-size:54px; font-weight:600; letter-spacing:-.04em; line-height:.9; }
+  .cohort.win .c-num { color:var(--status-green); }
+  .cohort.cost .c-num { color:var(--amber); }
+  .cohort .c-cap { font-size:12px; color:var(--graphite); margin-top:10px; line-height:1.45; font-weight:500; }
+  .cohort .body p { font-size:14px; line-height:1.7; }
+  .cohort .body p strong { color:var(--ink); }
+  .cohort .minirow { display:flex; gap:26px; margin-top:16px; flex-wrap:wrap; }
+  .cohort .mini { }
+  .cohort .mini .ml { font-size:10px; letter-spacing:.8px; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:4px; }
+  .cohort .mini .mv { font-size:17px; font-weight:600; color:var(--ink); }
+  .cohort .mini .mo { font-size:11.5px; color:var(--graphite); margin-top:1px; }
+  .cohort .mini .mv.green { color:var(--status-green); }
+  .cohort .mini .mv.amber { color:var(--amber); }
+
+  /* NET SUMMARY */
+  .net { background:var(--ink); color:var(--white); border-radius:12px; padding:24px 28px; margin:20px 0; }
+  .net .n-lbl { font-size:10px; letter-spacing:1.4px; text-transform:uppercase; color:rgba(255,255,255,0.5); font-weight:600; margin-bottom:12px; }
+  .net .n-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .net .n-cell .nv { font-size:24px; font-weight:600; letter-spacing:-.02em; line-height:1; }
+  .net .n-cell .nv.amber { color:#F1C069; }
+  .net .n-cell .nv.green { color:var(--status-green-dark); }
+  .net .n-cell .nc { font-size:12px; color:rgba(255,255,255,0.7); margin-top:8px; line-height:1.45; }
+  .net .n-foot { font-size:13px; color:rgba(255,255,255,0.78); line-height:1.7; margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.14); }
+  .net .n-foot strong { color:var(--white); }
+
+  .small { font-size:11px; color:var(--text-muted); line-height:1.5; text-align:center; margin-top:18px; }
+  @media (max-width:760px){
+    .kpi-row{grid-template-columns:repeat(2,1fr);}
+    .windowbar,.net .n-grid{grid-template-columns:1fr;}
+    .cohort{grid-template-columns:1fr; gap:18px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="nav-left">
+      <span class="nav-wordmark">Tethrd</span>
+      <span class="nav-sep">×</span>
+      <span class="nav-client">BON CHARGE</span>
+    </div>
+    <div class="nav-date">20 June 2026</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Abandoned Checkout · Performance update · USD</div>
+    <h1>We rebuilt the flow to discount only to new customers and hold off discounting repeats — to <span class="green">protect your L1 sale periods</span>.</h1>
+    <p>The previous flow handed every abandoner a flat 25% off from the second email onwards. The rebuild trades differently. New customers now move through a laddered offer — <strong>20% first, bumped to 25% only if they don't convert</strong> — while repeat customers receive <strong>no discount at all</strong>.</p>
+    <p>The reasoning is calendar discipline. Repeat customers already get 25% off during your L1 campaign sales. Building that same 25% into an always-on flow would slowly train them to abandon at checkout and wait for the email, rather than buying during the sale — quietly eroding the very campaigns the flow is meant to support. So we discount hard to win new customers, and keep repeat discounting where it earns its margin: inside your L1 calendar.</p>
+    <p>Here's how that's reading against a like-for-like window.</p>
+  </div>
+
+  <div class="windowbar">
+    <div>
+      <div class="lbl">Like-for-like comparison · both 12 days · both following a 25% sitewide sale</div>
+      <div class="l1">NEW flow · 2 &rarr; 13 Jun 2026 (post-Memorial Day)</div>
+      <div class="l2">PRIOR flow · 14 &rarr; 25 Apr 2026 (post-Recharge)</div>
+    </div>
+    <div>
+      <div class="lbl">How customers were classified</div>
+      <div class="l2">Every attributed order was tagged new vs repeat by the customer's order history <em>at the time they abandoned</em> — read directly from Klaviyo profiles, so the two flows are compared on a genuine apples-to-apples basis.</div>
+    </div>
+  </div>
+
+  <h2 class="section">Initial performance update — blended top line</h2>
+  <div class="section-sub">Across all abandoners, the headline sits below the prior flow. That's expected: it blends two cohorts now being treated very differently. The story is in the split below.</div>
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="k-lbl">Order conversion</div>
+      <div class="k-val">3.72%</div>
+      <div class="k-old">prior 4.52%</div>
+      <div class="k-delta down">&#9660; &minus;18% blended</div>
+    </div>
+    <div class="kpi">
+      <div class="k-lbl">Revenue (attr.)</div>
+      <div class="k-val">$10,146</div>
+      <div class="k-old">prior $14,835</div>
+      <div class="k-delta down">&#9660; &minus;32%</div>
+    </div>
+    <div class="kpi">
+      <div class="k-lbl">Rev / recipient</div>
+      <div class="k-val">$9.21</div>
+      <div class="k-old">prior $11.76</div>
+      <div class="k-delta down">&#9660; &minus;22%</div>
+    </div>
+    <div class="kpi">
+      <div class="k-lbl">Avg order value</div>
+      <div class="k-val">$247</div>
+      <div class="k-old">prior $260</div>
+      <div class="k-delta flat">~ &minus;5%</div>
+    </div>
+  </div>
+
+  <h2 class="section">Cohort view — new customers</h2>
+  <div class="section-sub">The cohort the strategy was built to win. This is where we want to see the new offer ladder earning its keep.</div>
+  <div class="cohort win">
+    <div class="big">
+      <div class="c-tag">Order conversion rate</div>
+      <div class="c-num">+15%</div>
+      <div class="c-cap">vs the prior flow<br>3.83% &nbsp;vs&nbsp; 3.35%</div>
+    </div>
+    <div class="body">
+      <p>New-customer conversion is up roughly <strong>15%</strong> on the prior flow — and it's doing it on a <strong>smaller maximum discount</strong>. The old flow opened at a flat 25%; the rebuild lands most of these conversions at <strong>20%</strong>, only stepping up to 25% when a customer doesn't bite. We're converting more new customers while giving away less margin per order.</p>
+      <div class="minirow">
+        <div class="mini"><div class="ml">Conversion rate</div><div class="mv green">3.83%</div><div class="mo">prior 3.35%</div></div>
+        <div class="mini"><div class="ml">Max discount</div><div class="mv">20&rarr;25%</div><div class="mo">prior flat 25%</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section">Cohort view — repeat customers</h2>
+  <div class="section-sub">The deliberate trade. With the discount removed, conversion falls — as designed — and we measure exactly what that costs.</div>
+  <div class="cohort cost">
+    <div class="big">
+      <div class="c-tag">Order conversion rate</div>
+      <div class="c-num">3.3%</div>
+      <div class="c-cap">down from 8.73%<br>on the prior flow</div>
+    </div>
+    <div class="body">
+      <p>With no discount in front of them, repeat-customer conversion drops to <strong>3.3%</strong>, from 8.73% on the prior flow. That fall is the discount doing its work — the old flat 25% was tipping a large share of repeats who, in many cases, would have bought during an L1 sale anyway. Removing it costs conversions now, but stops the always-on flow from cannibalising those campaigns.</p>
+      <div class="minirow">
+        <div class="mini"><div class="ml">Discount given</div><div class="mv green">$0</div><div class="mo">prior ~$2,080</div></div>
+        <div class="mini"><div class="ml">Gross revenue forgone</div><div class="mv amber">~$5,074</div><div class="mo">12-day window</div></div>
+        <div class="mini"><div class="ml">Net revenue impact</div><div class="mv amber">~&minus;$2,594</div><div class="mo">after saved discount</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="net">
+    <div class="n-lbl">The net position over the 12 days</div>
+    <div class="n-grid">
+      <div class="n-cell"><div class="nv green">+15%</div><div class="nc">new-customer conversion, on a lower average discount</div></div>
+      <div class="n-cell"><div class="nv amber">~$2,080</div><div class="nc">discount margin saved by not discounting repeats</div></div>
+      <div class="n-cell"><div class="nv amber">~&minus;$2,594</div><div class="nc">net attributed revenue, once the saved discount is netted off the ~$5,074 gross</div></div>
+    </div>
+    <div class="n-foot">In plain terms: we've given up around <strong>$2,594 of net flow revenue over 12 days</strong> in exchange for a better-converting new-customer engine and an L1 calendar that's no longer competing with its own automation. The gross looks larger, but roughly <strong>$2,080 of it was discount we'd have handed back regardless</strong>.</div>
+  </div>
+
+  <div class="small">
+    Source: Klaviyo flow-values, events &amp; profiles APIs · Placed Order (5-day attribution) · at-time customer classification · full methodology in the detailed in-term report.
+  </div>
+
+</div>
+</body>
+</html>
