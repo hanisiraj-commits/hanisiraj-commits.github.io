@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lohnr — Customer Success Associate: Klaviyo Plays</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color: #1a1a1a; }
+
+.sheet { max-width: 760px; margin: 0 auto; padding: 64px 60px; }
+
+.brand { font-size: 11px; letter-spacing: 6px; color: #bbb; font-weight: 400; margin-bottom: 28px; }
+.section-label { font-size: 10px; letter-spacing: 4px; color: #bbb; text-transform: uppercase; font-weight: 500; margin-bottom: 8px; }
+.title { font-size: 30px; font-weight: 600; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 10px; }
+.intro { font-size: 13px; color: #888; line-height: 1.65; max-width: 640px; margin-bottom: 32px; }
+.intro strong { color: #555; }
+
+.card { display: flex; background: #fafafa; border-radius: 6px; overflow: hidden; margin-bottom: 12px; page-break-inside: avoid; }
+.card-accent { width: 4px; flex-shrink: 0; }
+.card-body { padding: 18px 22px; flex: 1; }
+.card-num { font-size: 10px; font-weight: 600; letter-spacing: 2px; margin-bottom: 4px; }
+.card-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; margin-bottom: 4px; line-height: 1.3; }
+.card-meta { font-size: 10px; color: #999; letter-spacing: 0.5px; margin-bottom: 12px; text-transform: uppercase; }
+.card-desc { font-size: 12.5px; color: #333; line-height: 1.6; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #ededed; }
+.card-flow { font-size: 11px; color: #666; line-height: 1.5; }
+.card-flow .fstep { color: #333; font-weight: 600; }
+.card-flow .farrow { color: #bbb; font-weight: 700; padding: 0 6px; }
+
+.flow-section { margin-top: 40px; }
+.flow-row { margin-bottom: 26px; }
+.flow-row:last-child { margin-bottom: 0; }
+.flow-head { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+.flow-track { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; }
+.node { font-size: 10.5px; line-height: 1.3; padding: 8px 12px; border-radius: 6px; text-align: center; font-weight: 600; }
+.node small { display: block; font-size: 8.5px; font-weight: 400; opacity: .65; margin-top: 3px; letter-spacing: .3px; text-transform: none; }
+.node-email { background: #fff; border: 1px solid #e8e8e8; color: #666; font-weight: 500; }
+.node-alert { background: #fff5f0; border: 1px solid #c87a5a; color: #a14f30; }
+.node-alert .alert-tag { display: block; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: #c87a5a; margin-bottom: 2px; }
+.node-call { background: #0a0a0a; color: #fff; }
+.conn { font-size: 13px; color: #ccc; font-weight: 700; }
+.conn-cond { font-size: 8.5px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: #b76e00; background: #fff5e6; border-radius: 999px; padding: 4px 9px; }
+
+.footer { border-top: 1px solid #1a1a1a; margin-top: 32px; padding-top: 18px; }
+.footer-text { font-size: 9px; letter-spacing: 4px; color: #ccc; text-transform: uppercase; text-align: center; }
+
+@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+@media (max-width: 640px) { .sheet { padding: 40px 26px; } }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="brand">LOHNR</div>
+  <div class="section-label">Customer Success Associate</div>
+  <div class="title">Three Klaviyo plays for the new associate</div>
+  <div class="intro">Alongside the wider Customer Success proposal, these are the moments our Klaviyo data can flag but email can't close. <strong>Automation detects; the associate converts by phone</strong> &mdash; a personal connection, no written paper trail, far higher conversion. Each runs off the same loop: a trigger fires an internal alert, the associate calls, the outcome is logged.</div>
+
+  <div class="card">
+    <div class="card-accent" style="background:#1f6a4f"></div>
+    <div class="card-body">
+      <div class="card-num" style="color:#1f6a4f">01</div>
+      <div class="card-name">Compliance-Safe Reviews</div>
+      <div class="card-meta">Reviews &middot; #1 KPI</div>
+      <div class="card-desc">Call satisfied customers and ask for a Trustpilot review, communicating any incentive verbally. No written record, a real relationship behind the ask &mdash; this de-risks the flag and rebuilds review velocity.</div>
+      <div class="flow-track">
+        <div class="node node-email">Review email 1</div>
+        <div class="conn">&rarr;</div>
+        <div class="node node-email">Review email 2</div>
+        <div class="conn">&rarr;</div>
+        <div class="conn-cond">No review</div>
+        <div class="conn">&rarr;</div>
+        <div class="node node-alert"><span class="alert-tag">&#9873; Internal Alert</span>Email to associate<small>name &middot; phone &middot; order details</small></div>
+        <div class="conn">&rarr;</div>
+        <div class="node node-call">Call &rarr; review posted</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-accent" style="background:#a14f30"></div>
+    <div class="card-body">
+      <div class="card-num" style="color:#a14f30">02</div>
+      <div class="card-name">High-AOV Cart &amp; Checkout Rescue</div>
+      <div class="card-meta">Revenue</div>
+      <div class="card-desc">When a basket is 2&ndash;3&times; our average order value and fails the abandonment flow, the associate calls to understand the objection and close it &mdash; our highest-value baskets, the ones that justify a human touch.</div>
+      <div class="flow-track">
+        <div class="node node-email">Reminder 1</div>
+        <div class="conn">&rarr;</div>
+        <div class="node node-email">Reminder 2</div>
+        <div class="conn">&rarr;</div>
+        <div class="node node-email">Reminder 3</div>
+        <div class="conn">&rarr;</div>
+        <div class="conn-cond">No order &middot; 2&ndash;3&times; AOV</div>
+        <div class="conn">&rarr;</div>
+        <div class="node node-alert"><span class="alert-tag">&#9873; Internal Alert</span>Email to associate<small>name &middot; phone &middot; cart contents</small></div>
+        <div class="conn">&rarr;</div>
+        <div class="node node-call">Call &rarr; order closed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-accent" style="background:#606c38"></div>
+    <div class="card-body">
+      <div class="card-num" style="color:#606c38">03</div>
+      <div class="card-name">Churn &amp; Exit Intelligence</div>
+      <div class="card-meta">Retention &amp; Insight</div>
+      <div class="card-desc">Emailed exit surveys rarely get filled &mdash; these are low-intent contacts. A call gathers the real "why" behind churn: voice-of-customer data we feed straight back into a sharper post-purchase journey.</div>
+      <div class="flow-track">
+        <div class="node node-email">Winback flow<small>full email series</small></div>
+        <div class="conn">&rarr;</div>
+        <div class="conn-cond">No order at end of flow</div>
+        <div class="conn">&rarr;</div>
+        <div class="node node-alert"><span class="alert-tag">&#9873; Internal Alert</span>Email to associate<small>name &middot; phone &middot; order history</small></div>
+        <div class="conn">&rarr;</div>
+        <div class="node node-call">Call &rarr; capture the "why"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">Lohnr &nbsp;&middot;&nbsp; Customer Success Associate &middot; Klaviyo Plays</div>
+  </div>
+</div>
+
+</body>
+</html>
