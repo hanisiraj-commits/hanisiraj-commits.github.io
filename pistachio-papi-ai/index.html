@@ -46,7 +46,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
 .grouplbl:after{content:"";flex:1;height:2px;background:var(--line)}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.card img{width:100%;display:block;background:var(--cream)}
+.card img{width:100%;height:250px;object-fit:contain;display:block;background:var(--cream)}
 .card .c{padding:11px 13px}
 .card .c b{display:block;font-size:13.5px;color:var(--dark)}
 .card .c span{font-size:12px;color:#80835f}
@@ -74,7 +74,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
   <div class="wrap">
     <div class="kick">AI Illustration R&D · Round 3 · 25/06/2026</div>
     <h1 class="anton">Making Papi with AI.</h1>
-    <p>Can a machine draw a bespoke, on-brand Papi for every collab — in seconds, for cents? We trained a custom model on his illustrations and pushed it across poses, attires and colour worlds. Here's how close we got.</p>
+    <p>Could a machine draw a proper, on-brand Papi for every collab in seconds, for cents? We trained a custom model on his own illustrations and threw everything at it. Here's how close it got.</p>
     <div class="foot"><span>Prepared for Pistachio Papi</span><span>Internal R&D — not for distribution</span></div>
   </div>
 </section>
@@ -85,13 +85,13 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
   <div class="wrap">
     <span class="pill">00 — The verdict</span>
     <h2 class="anton">75 → 90.</h2>
-    <p class="lead">Round 2 landed the look but fumbled the physics. Round 3 retrained on hand-grip and anatomy cues and dropped the model's grip on the wheel — exaggerated muscle, believable mechanics. Papi now holds things like a person.</p>
+    <p class="lead">Round 2 nailed the look but fumbled the physics. Round 3 fixed the hands: we retrained on how Papi actually grips things and eased off the model's strength so real anatomy could come through. The muscles are still cartoon-huge, but now he holds a jar the way a person would.</p>
     <div class="cards3">
-      <div class="stat"><div class="n">~90%</div><h3>Character + physics</h3><p>Face, finish and now natural hand-grips — fingers that actually wrap the jar, the tub, the trophy.</p></div>
-      <div class="stat"><div class="n">5–15¢</div><h3>Per illustration</h3><p>~15 seconds each. Versus days and hundreds of dollars per commissioned piece.</p></div>
-      <div class="stat"><div class="n">∞</div><h3>Range</h3><p>Any attire, any colour world, any collab — all from one trained model + a text prompt.</p></div>
+      <div class="stat"><div class="n">~90%</div><h3>Character + physics</h3><p>The face and the finish were already there. Round 3 added the hands, so his fingers actually wrap around the jar.</p></div>
+      <div class="stat"><div class="n">5–15¢</div><h3>Per illustration</h3><p>About 15 seconds each, against days and hundreds of dollars for a commissioned piece.</p></div>
+      <div class="stat"><div class="n">∞</div><h3>Range</h3><p>Any outfit or collab you can describe, from one model and a line of prompt.</p></div>
     </div>
-    <div class="note"><b>Still a proposal, not a green light.</b> Papi's rule is "never recreate Papi — locked to approved originals." This shows what's possible; it needs founder sign-off. Brand logos/text still render garbled — we leave those zones blank for a designer.</div>
+    <div class="note"><b>Still a proposal, not a green light.</b> Papi's rule is "never recreate Papi, locked to approved originals", so this is a what-if rather than a green light. It needs founder sign-off, and logos still come out garbled, so we leave those spots blank for a designer.</div>
     <div class="foot"><span>Pistachio Papi — AI Illustration R&D</span><span>00 / Verdict</span></div>
   </div>
 </section>
@@ -102,7 +102,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
   <div class="wrap">
     <span class="pill">01 — Human vs AI</span>
     <h2 class="anton">Can you tell?</h2>
-    <p class="lead">We asked the model to recreate two of Papi's real human-made collab illustrations. Originals on the left, AI on the right — same character, same hand-inked watercolour finish.</p>
+    <p class="lead">We gave the model two of Papi's real, human-made collabs and asked it to redraw them. Originals on the left, AI on the right, same hand-inked watercolour finish.</p>
     <div class="cmp">
       <div class="pair"><div class="t">Bakers Delight juggler</div><div class="row">
         <figure><img src="img/human_juggler.png"><figcaption>Human original</figcaption></figure>
@@ -121,7 +121,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
   <div class="wrap">
     <span class="pill">02 — Drawing the real product</span>
     <h2 class="anton">We showed it the real thing.</h2>
-    <p class="lead">Left to guess, the model invents lumpy "pistachios" and fictional packaging. The fix: feed it real product photography as a reference, and it redraws the actual jar and the actual nut — accurately — in Papi's hand-drawn style. Hands grip naturally, too.</p>
+    <p class="lead">Left to guess, the model makes up lumpy "pistachios" and packaging that doesn't exist. The fix is simple: show it real product photos. Give it the actual jar and the actual nut and it redraws them properly in Papi's style. The grip sorts itself out, too.</p>
     <div class="refrow">
       <div class="cell"><img src="img/real_jar.png" alt=""><div class="lbl">Real product photo</div></div>
       <div class="arrow">&rarr;</div>
@@ -132,7 +132,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
       <div class="arrow">&rarr;</div>
       <div class="cell"><img src="img/ref_pistachio_hero.png" alt=""><div class="lbl g">Drawn in Papi style</div></div>
     </div>
-    <div class="note"><b>Why it matters:</b> for any scene using the actual Pistachio Papi jar, we reference the real product so the packaging is true to life — not an AI approximation.</div>
+    <div class="note"><b>Why it matters:</b> any scene with the real Pistachio Papi jar references the actual product, so the packaging matches real life instead of an AI guess.</div>
     <div class="foot"><span>Pistachio Papi — AI Illustration R&D</span><span>02 / Real product</span></div>
   </div>
 </section>
@@ -142,27 +142,40 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
   <img class="sig" src="img/sig_green.png" alt=""><img class="wm" src="img/papi_head_wm.png" alt="">
   <div class="wrap">
     <span class="pill">03 — The range</span>
-    <h2 class="anton">One Papi, infinite worlds.</h2>
-    <p class="lead">Every illustration below is a fresh generation — no reference image, no human drawing. Just the trained model and a prompt.</p>
+    <h2 class="anton">One Papi, every occasion.</h2>
+    <p class="lead">The full set, rerun through the reference method so the jar and the pistachios match the real thing. Some are clean and simple. Some are as daft as the brand likes to be.</p>
 
-    <div class="grouplbl">Comically jacked</div>
+    <div class="grouplbl">Hero product &mdash; true to life</div>
     <div class="grid">
-      <div class="card"><img src="img/v3_protein_a.png"><div class="c"><b>Protein hero</b><span>Tub gripped, not floating</span></div></div>
-      <div class="card"><img src="img/v3_protein_b.png"><div class="c"><b>Protein — alt</b><span>Shirtless variant</span></div></div>
-      <div class="card"><img src="img/v3_boxer.png"><div class="c"><b>Boxer</b><span>Ring-ready stance</span></div></div>
-      <div class="card"><img src="img/v3_superhero.png"><div class="c"><b>Superhero</b><span>Pistachio emblem</span></div></div>
+      <div class="card"><img src="img/ref_jar_hero.png"><div class="c"><b>The jar</b><span>Real product, drawn</span></div></div>
+      <div class="card"><img src="img/ref_pistachio_hero.png"><div class="c"><b>The pistachios</b><span>True to the real nut</span></div></div>
+      <div class="card"><img src="img/r_chef_jar.png"><div class="c"><b>Chef</b><span>Presenting the jar</span></div></div>
+      <div class="card"><img src="img/r_tuxedo_jar.png"><div class="c"><b>Black-tie</b><span>Jar as champagne</span></div></div>
+      <div class="card"><img src="img/r_winter_jar.png"><div class="c"><b>Winter</b><span>Cupping a warm jar</span></div></div>
+      <div class="card"><img src="img/r_barista_jar.png"><div class="c"><b>Barista</b><span>Jar + coffee</span></div></div>
     </div>
 
-    <div class="grouplbl">Attire & colour worlds</div>
+    <div class="grouplbl">Comically Papi</div>
     <div class="grid">
-      <div class="card"><img src="img/v3_tuxedo_gold.png"><div class="c"><b>Black-tie</b><span>Black & gold</span></div></div>
-      <div class="card"><img src="img/v3_tracksuit_blue.png"><div class="c"><b>Tracksuit</b><span>Cool blue</span></div></div>
-      <div class="card"><img src="img/v3_hawaiian_pink.png"><div class="c"><b>Hawaiian</b><span>Coral sunset</span></div></div>
-      <div class="card"><img src="img/v3_winter_knit.png"><div class="c"><b>Winter knit</b><span>Warm neutral</span></div></div>
-      <div class="card"><img src="img/v3_chef_red.png"><div class="c"><b>Chef</b><span>Red & cream</span></div></div>
-      <div class="card"><img src="img/v3_racer.png"><div class="c"><b>Champion</b><span>Trophy raised</span></div></div>
-      <div class="card"><img src="img/g04_vespa.png"><div class="c"><b>Sicilian Vespa</b><span>Scene piece</span></div></div>
+      <div class="card"><img src="img/r_worldcup_a.png"><div class="c"><b>World Cup winner</b><span>Sponsored jersey</span></div></div>
+      <div class="card"><img src="img/r_crying_joy.png"><div class="c"><b>Tears of joy</b><span>Hugging the jar</span></div></div>
+      <div class="card"><img src="img/r_proposal.png"><div class="c"><b>The proposal</b><span>On one knee</span></div></div>
+      <div class="card"><img src="img/r_jacked_giant.png"><div class="c"><b>Comically jacked</b><span>Giant jar hug</span></div></div>
+      <div class="card"><img src="img/r_strongman_lift.png"><div class="c"><b>Strongman</b><span>Jars as weights</span></div></div>
+      <div class="card"><img src="img/r_rodeo_pist.png"><div class="c"><b>Pistachio rodeo</b><span>Yeehaw</span></div></div>
+      <div class="card"><img src="img/r_spoon_dive.png"><div class="c"><b>Spoon dive</b><span>Into the spread</span></div></div>
+      <div class="card"><img src="img/r_emperor.png"><div class="c"><b>Emperor</b><span>Decadent reclining</span></div></div>
+      <div class="card"><img src="img/r_bambino.png"><div class="c"><b>Bambino</b><span>Baby Papi</span></div></div>
+    </div>
+
+    <div class="grouplbl">Simple &amp; versatile</div>
+    <div class="grid">
+      <div class="card"><img src="img/v3_boxer.png"><div class="c"><b>Boxer</b><span>Ring-ready</span></div></div>
+      <div class="card"><img src="img/v3_superhero.png"><div class="c"><b>Superhero</b><span>Pistachio emblem</span></div></div>
       <div class="card"><img src="img/g11_motorbike.png"><div class="c"><b>Motorbike</b><span>Sunset mood</span></div></div>
+      <div class="card"><img src="img/v3_tracksuit_blue.png"><div class="c"><b>Tracksuit</b><span>Court cool</span></div></div>
+      <div class="card"><img src="img/v3_hawaiian_pink.png"><div class="c"><b>Hawaiian</b><span>Holiday Papi</span></div></div>
+      <div class="card"><img src="img/v3_racer.png"><div class="c"><b>Champion</b><span>Trophy raised</span></div></div>
     </div>
     <div class="foot"><span>Pistachio Papi — AI Illustration R&D</span><span>03 / The range</span></div>
   </div>
@@ -174,7 +187,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
   <div class="wrap">
     <span class="pill">04 — How it works</span>
     <h2 class="anton">The recipe.</h2>
-    <p class="lead">A custom-trained model on fal.ai, refined over three rounds on the details that make Papi <em>Papi</em>.</p>
+    <p class="lead">One custom model on fal.ai, refined over three rounds on the small things that make Papi look like <em>Papi</em>.</p>
     <div class="method">
       <div class="mbox"><h3>Pipeline</h3><ul>
         <li><b>Train once:</b> 7 captioned Papi references → FLUX LoRA (~$2, ~6 min). Reusable trigger word.</li>
