@@ -1,131 +1,179 @@
 <!DOCTYPE html>
-<html lang="en-AU">
-<head>
+<html lang="en-AU"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pistachio Papi — AI Illustration R&D</title>
+<title>Making Papi with AI — R&D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--green:#8e9839;--dark:#3e4728;--cream:#f4f1e4;--ink:#23271a;}
+:root{--green:#8e9839;--dark:#3e4728;--cream:#f5f1dd;--cream2:#efeacf;--ink:#2c3120;--line:#ddd6b6;}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
-.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
-header{background:var(--dark);color:var(--cream);padding:54px 0 46px;text-align:center}
-header h1{font-size:40px;letter-spacing:.5px;margin-bottom:10px}
-header .tag{color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:3px;font-size:13px;margin-bottom:18px}
-header p{max-width:720px;margin:0 auto;opacity:.92;font-size:17px}
-.flag{background:#fff4d6;border-left:5px solid #d9a400;padding:14px 18px;margin:26px 0;border-radius:6px;font-size:14.5px}
-section{padding:48px 0}
-h2{font-size:27px;color:var(--dark);margin-bottom:6px}
-h2 + .sub{color:#6c7259;margin-bottom:26px;font-size:15.5px}
-.verdict{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
-.vcard{background:#fff;border:1px solid #e3decb;border-radius:12px;padding:20px}
-.vcard .n{font-size:30px;font-weight:800;color:var(--green)}
-.vcard h3{font-size:16px;margin:6px 0 6px}
-.vcard p{font-size:13.5px;color:#555}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:30px}
-.cmp .pair{background:#fff;border:1px solid #e3decb;border-radius:14px;overflow:hidden}
-.cmp .row{display:grid;grid-template-columns:1fr 1fr}
-.cmp .row figure{padding:14px}
-.cmp img{width:100%;border-radius:8px;display:block;background:#fbfaf3}
-.cmp figcaption{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:#8a8f76;margin-top:8px;text-align:center;font-weight:700}
-.cmp .ai figcaption{color:var(--green)}
-.cmp .title{padding:14px 18px;border-top:1px solid #eee5cf;font-weight:700;font-size:15px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:#fff;border:1px solid #e3decb;border-radius:14px;overflow:hidden}
-.card img{width:100%;display:block;background:#fbfaf3}
-.card .cap{padding:12px 14px;font-size:13.5px}
-.card .cap b{display:block;color:var(--dark)}
-.method{background:#fff;border:1px solid #e3decb;border-radius:14px;padding:26px}
-.method h3{color:var(--dark);margin:16px 0 6px;font-size:16px}
-.method ul{margin-left:18px;font-size:14.5px}
-.method li{margin:4px 0}
-footer{background:var(--dark);color:var(--cream);text-align:center;padding:30px;font-size:13px;opacity:.9}
-@media(max-width:780px){.verdict,.grid{grid-template-columns:1fr}.cmp{grid-template-columns:1fr}}
-</style></head>
-<body>
-<header><div class="wrap">
-<div class="tag">Pistachio Papi · R&D Proof of Concept · 25/06/2026</div>
-<h1>Can AI recreate Papi?</h1>
-<p>We trained a custom AI model on Papi's bespoke illustrations, then generated brand-new collab scenes from a text prompt alone. Below: AI recreations side-by-side with the original human-made art, plus 12 fresh Papi creations.</p>
-</div></header>
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.anton{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px;line-height:.94;text-transform:uppercase}
+.page{position:relative;overflow:hidden;padding:64px 0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 40px;position:relative;z-index:2}
+.kick{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.pill{display:inline-block;background:var(--dark);color:var(--cream);font-size:11.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:7px 16px;border-radius:30px}
+.sig{position:absolute;top:40px;right:40px;height:34px;z-index:3}
+.wm{position:absolute;right:-60px;bottom:-40px;width:520px;opacity:.07;z-index:1;pointer-events:none}
+.foot{margin-top:46px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#9a9468;display:flex;justify-content:space-between}
+/* cover */
+.cover{background:var(--green);color:#fff;min-height:88vh;display:flex;flex-direction:column;justify-content:center}
+.cover .wm{opacity:.13;filter:saturate(.5) brightness(.7)}
+.cover .kick{color:rgba(255,255,255,.85)}
+.cover h1{font-size:96px;margin:18px 0 22px;max-width:13ch}
+.cover p{font-size:20px;max-width:600px;color:rgba(255,255,255,.95)}
+.cover .foot{color:rgba(255,255,255,.7);margin-top:40px}
+/* sections */
+.sec h2{font-size:60px;color:var(--dark);margin:16px 0 8px}
+.sec .lead{font-size:18px;max-width:680px;color:#5a5d40;margin-bottom:34px}
+.alt{background:var(--cream2)}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+.stat .n{font-family:'Anton';font-size:46px;color:var(--green);line-height:1}
+.stat h3{font-size:15px;margin:10px 0 6px;color:var(--dark)}
+.stat p{font-size:13.5px;color:#666}
+.note{background:#fff6da;border-left:5px solid #d6a400;border-radius:8px;padding:14px 18px;font-size:14px;margin-top:22px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.pair{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.pair .t{padding:14px 18px;font-weight:700;color:var(--dark);border-bottom:1px solid var(--line)}
+.pair .row{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.pair figure{padding:14px}
+.pair img{width:100%;border-radius:8px;display:block;background:var(--cream)}
+.pair figcaption{font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-align:center;margin-top:8px;color:#9a9468}
+.pair .ai figcaption{color:var(--green)}
+.grouplbl{font-family:'Anton';font-size:22px;color:var(--dark);margin:34px 0 16px;display:flex;align-items:center;gap:14px}
+.grouplbl:after{content:"";flex:1;height:2px;background:var(--line)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.card img{width:100%;display:block;background:var(--cream)}
+.card .c{padding:11px 13px}
+.card .c b{display:block;font-size:13.5px;color:var(--dark)}
+.card .c span{font-size:12px;color:#80835f}
+.method{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.mbox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+.mbox h3{font-family:'Anton';font-size:20px;color:var(--dark);margin-bottom:12px}
+.mbox ul{list-style:none}
+.mbox li{font-size:14px;padding:6px 0 6px 20px;position:relative;border-bottom:1px dashed var(--line)}
+.mbox li:last-child{border:0}
+.mbox li:before{content:"";position:absolute;left:0;top:13px;width:8px;height:8px;border-radius:50%;background:var(--green)}
+@media(max-width:860px){.cover h1{font-size:56px}.sec h2{font-size:38px}.cards3,.cmp,.method{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
+</style></head><body>
 
-<div class="wrap">
-<div class="flag"><b>⚠️ Internal R&D only.</b> Papi's brand rule is "never recreate Papi — locked to approved originals." These are proposal assets to show what's possible. Nothing here ships to email without founder sign-off.</div>
-</div>
-
-<section class="wrap">
-<h2>The verdict</h2>
-<div class="sub">A custom-trained FLUX LoRA on fal.ai captures Papi's character and the hand-made watercolour finish closely enough to be production-viable.</div>
-<div class="verdict">
-<div class="vcard"><div class="n">~90%</div><h3>Character match</h3><p>Aquiline nose, handlebar moustache, heavy-lidded brow, man-bun + red tie, gold hoop earring, pistachio-shell wristband — all carried through.</p></div>
-<div class="vcard"><div class="n">5–15¢</div><h3>Per illustration</h3><p>Versus days of turnaround and hundreds of dollars per commissioned piece. New scenes generate in ~15 seconds.</p></div>
-<div class="vcard"><div class="n">1</div><h3>Known gap</h3><p>Brand logos/text render garbled — by design we leave logo zones blank for a designer to drop in the real mark.</p></div>
-</div>
+<!-- COVER -->
+<section class="page cover">
+  <img class="sig" src="img/sig_white.png" alt="Pistachio Papi">
+  <img class="wm" src="img/papi_head_wm.png" alt="">
+  <div class="wrap">
+    <div class="kick">AI Illustration R&D · Round 3 · 25/06/2026</div>
+    <h1 class="anton">Making Papi with AI.</h1>
+    <p>Can a machine draw a bespoke, on-brand Papi for every collab — in seconds, for cents? We trained a custom model on his illustrations and pushed it across poses, attires and colour worlds. Here's how close we got.</p>
+    <div class="foot"><span>Prepared for Pistachio Papi</span><span>Internal R&D — not for distribution</span></div>
+  </div>
 </section>
 
-<section class="wrap">
-<h2>Human vs AI — head to head</h2>
-<div class="sub">The AI was asked to recreate the same collab concepts as Papi's existing human-made illustrations. Left: original. Right: AI.</div>
-<div class="cmp">
-<div class="pair">
-<div class="title">Bakers Delight juggler</div>
-<div class="row">
-<figure><img src="img/human_juggler.png"><figcaption>Human original</figcaption></figure>
-<figure class="ai"><img src="img/cmp_bakers_juggler.png"><figcaption>AI recreation</figcaption></figure>
-</div></div>
-<div class="pair">
-<div class="title">Domino's scooter delivery</div>
-<div class="row">
-<figure><img src="img/human_scooter.png"><figcaption>Human original</figcaption></figure>
-<figure class="ai"><img src="img/cmp_dominos_scooter.png"><figcaption>AI recreation</figcaption></figure>
-</div></div>
-</div>
+<!-- VERDICT -->
+<section class="page sec">
+  <img class="sig" src="img/sig_green.png" alt=""><img class="wm" src="img/papi_head_wm.png" alt="">
+  <div class="wrap">
+    <span class="pill">00 — The verdict</span>
+    <h2 class="anton">75 → 90.</h2>
+    <p class="lead">Round 2 landed the look but fumbled the physics. Round 3 retrained on hand-grip and anatomy cues and dropped the model's grip on the wheel — exaggerated muscle, believable mechanics. Papi now holds things like a person.</p>
+    <div class="cards3">
+      <div class="stat"><div class="n">~90%</div><h3>Character + physics</h3><p>Face, finish and now natural hand-grips — fingers that actually wrap the jar, the tub, the trophy.</p></div>
+      <div class="stat"><div class="n">5–15¢</div><h3>Per illustration</h3><p>~15 seconds each. Versus days and hundreds of dollars per commissioned piece.</p></div>
+      <div class="stat"><div class="n">∞</div><h3>Range</h3><p>Any attire, any colour world, any collab — all from one trained model + a text prompt.</p></div>
+    </div>
+    <div class="note"><b>Still a proposal, not a green light.</b> Papi's rule is "never recreate Papi — locked to approved originals." This shows what's possible; it needs founder sign-off. Brand logos/text still render garbled — we leave those zones blank for a designer.</div>
+    <div class="foot"><span>Pistachio Papi — AI Illustration R&D</span><span>00 / Verdict</span></div>
+  </div>
 </section>
 
-<section class="wrap">
-<h2>12 fresh Papi creations</h2>
-<div class="sub">All generated from a text prompt + the trained model. No reference image, no human drawing.</div>
-<div class="grid">
-<div class="card"><img src="img/g01_kk_doughnut.png"><div class="cap"><b>Krispy Kreme doughnut</b>Hero collab pose</div></div>
-<div class="card"><img src="img/g03_chef_jar.png"><div class="cap"><b>Trattoria chef</b>Product in-scene</div></div>
-<div class="card"><img src="img/g04_vespa.png"><div class="cap"><b>Sicilian Vespa run</b>Environmental scene</div></div>
-<div class="card"><img src="img/g02_barista.png"><div class="cap"><b>Café barista</b>Pistachio latte</div></div>
-<div class="card"><img src="img/g11_motorbike.png"><div class="cap"><b>Motorbike rebel</b>Sunset mood piece</div></div>
-<div class="card"><img src="img/g05_romantic_roses.png"><div class="cap"><b>Loverman with roses</b>Persona / Valentine's</div></div>
-<div class="card"><img src="img/g06_beach.png"><div class="cap"><b>Beach lounge</b>Summer campaign</div></div>
-<div class="card"><img src="img/g07_pizza_toss.png"><div class="cap"><b>Pizzaiolo</b>Dough toss</div></div>
-<div class="card"><img src="img/g10_gym_trainer.png"><div class="cap"><b>Protein collab</b>Muscle Nation energy</div></div>
-<div class="card"><img src="img/g08_product_hero.png"><div class="cap"><b>Product hero</b>Clean pack-shot pose</div></div>
-<div class="card"><img src="img/g09_santa.png"><div class="cap"><b>Festive Papi</b>Christmas campaign</div></div>
-<div class="card"><img src="img/g12_aperitivo.png"><div class="cap"><b>Aperitivo hour</b>Lifestyle scene</div></div>
-</div>
+<!-- HUMAN VS AI -->
+<section class="page sec alt">
+  <img class="sig" src="img/sig_green.png" alt=""><img class="wm" src="img/papi_head_wm.png" alt="">
+  <div class="wrap">
+    <span class="pill">01 — Human vs AI</span>
+    <h2 class="anton">Can you tell?</h2>
+    <p class="lead">We asked the model to recreate two of Papi's real human-made collab illustrations. Originals on the left, AI on the right — same character, same hand-inked watercolour finish.</p>
+    <div class="cmp">
+      <div class="pair"><div class="t">Bakers Delight juggler</div><div class="row">
+        <figure><img src="img/human_juggler.png"><figcaption>Human original</figcaption></figure>
+        <figure class="ai"><img src="img/ai_juggler.png"><figcaption>AI recreation</figcaption></figure></div></div>
+      <div class="pair"><div class="t">Domino's scooter delivery</div><div class="row">
+        <figure><img src="img/human_scooter.png"><figcaption>Human original</figcaption></figure>
+        <figure class="ai"><img src="img/ai_scooter.png"><figcaption>AI recreation</figcaption></figure></div></div>
+    </div>
+    <div class="foot"><span>Pistachio Papi — AI Illustration R&D</span><span>01 / Human vs AI</span></div>
+  </div>
 </section>
 
-<section class="wrap">
-<h2>How it works</h2>
-<div class="method">
-<h3>The pipeline (all on fal.ai)</h3>
-<ul>
-<li><b>Training:</b> 7 captioned Papi reference crops → FLUX LoRA fast-training (1,600 steps, ~6 min, ~$2 one-time). Produces a reusable <code>PISTACHIOPAPI</code> trigger word.</li>
-<li><b>Generation:</b> FLUX-LoRA inference — any scene from a text prompt, ~15s and ~5–15¢ each.</li>
-<li><b>Hero / exact-match shots:</b> FLUX Kontext multi-reference (feed face + body) when a specific pose must match perfectly.</li>
-</ul>
-<h3>Papi character bible (locked from the source art)</h3>
-<ul>
-<li>Big long aquiline nose · heavy-lidded suave eyes · furrowed brow (3 creases)</li>
-<li>Thick glossy black handlebar moustache, curled up at the tips</li>
-<li>Jet-black hair in a high top-knot man-bun with a red hair tie · gold hoop earring</li>
-<li>Warm tan skin · lean-muscular build · green pistachio-shell wristband</li>
-<li>Bold hand-inked outlines of varying weight + watercolour cel-shading with brush texture</li>
-<li>Palette: Papi green #8e9839, dark green #3e4728, cream, black ink, gold accents</li>
-</ul>
-<h3>Next steps to production</h3>
-<ul>
-<li>Founder sign-off on using AI Papi at all.</li>
-<li>Retrain on 12–15 hi-res references for even tighter face lock.</li>
-<li>Designer drops real brand logos into the blank zones; light cleanup pass.</li>
-</ul>
-</div>
+<!-- THE RANGE -->
+<section class="page sec">
+  <img class="sig" src="img/sig_green.png" alt=""><img class="wm" src="img/papi_head_wm.png" alt="">
+  <div class="wrap">
+    <span class="pill">02 — The range</span>
+    <h2 class="anton">One Papi, infinite worlds.</h2>
+    <p class="lead">Every illustration below is a fresh generation — no reference image, no human drawing. Just the trained model and a prompt.</p>
+
+    <div class="grouplbl">Comically jacked</div>
+    <div class="grid">
+      <div class="card"><img src="img/v3_protein_a.png"><div class="c"><b>Protein hero</b><span>Tub gripped, not floating</span></div></div>
+      <div class="card"><img src="img/v3_protein_b.png"><div class="c"><b>Protein — alt</b><span>Shirtless variant</span></div></div>
+      <div class="card"><img src="img/v3_boxer.png"><div class="c"><b>Boxer</b><span>Ring-ready stance</span></div></div>
+      <div class="card"><img src="img/v3_superhero.png"><div class="c"><b>Superhero</b><span>Pistachio emblem</span></div></div>
+    </div>
+
+    <div class="grouplbl">Attire & colour worlds</div>
+    <div class="grid">
+      <div class="card"><img src="img/v3_tuxedo_gold.png"><div class="c"><b>Black-tie</b><span>Black & gold</span></div></div>
+      <div class="card"><img src="img/v3_tracksuit_blue.png"><div class="c"><b>Tracksuit</b><span>Cool blue</span></div></div>
+      <div class="card"><img src="img/v3_hawaiian_pink.png"><div class="c"><b>Hawaiian</b><span>Coral sunset</span></div></div>
+      <div class="card"><img src="img/v3_winter_knit.png"><div class="c"><b>Winter knit</b><span>Warm neutral</span></div></div>
+      <div class="card"><img src="img/v3_chef_red.png"><div class="c"><b>Chef</b><span>Red & cream</span></div></div>
+      <div class="card"><img src="img/v3_racer.png"><div class="c"><b>Champion</b><span>Trophy raised</span></div></div>
+      <div class="card"><img src="img/g04_vespa.png"><div class="c"><b>Sicilian Vespa</b><span>Scene piece</span></div></div>
+      <div class="card"><img src="img/g11_motorbike.png"><div class="c"><b>Motorbike</b><span>Sunset mood</span></div></div>
+    </div>
+    <div class="foot"><span>Pistachio Papi — AI Illustration R&D</span><span>02 / The range</span></div>
+  </div>
 </section>
 
-<footer>Pistachio Papi × Webprofits · AI illustration R&D · Generated on fal.ai (FLUX LoRA) · Internal proposal — not for distribution</footer>
+<!-- METHOD -->
+<section class="page sec alt">
+  <img class="sig" src="img/sig_green.png" alt=""><img class="wm" src="img/papi_head_wm.png" alt="">
+  <div class="wrap">
+    <span class="pill">03 — How it works</span>
+    <h2 class="anton">The recipe.</h2>
+    <p class="lead">A custom-trained model on fal.ai, refined over three rounds on the details that make Papi <em>Papi</em>.</p>
+    <div class="method">
+      <div class="mbox"><h3>Pipeline</h3><ul>
+        <li><b>Train once:</b> 7 captioned Papi references → FLUX LoRA (~$2, ~6 min). Reusable trigger word.</li>
+        <li><b>Generate:</b> any scene from a prompt — ~15s, ~5–15¢ each.</li>
+        <li><b>Select & polish:</b> roll 2–3 candidates for tricky grips, pick the believable one.</li>
+        <li><b>Hero shots:</b> reference-guided editing when a pose must match exactly.</li>
+      </ul></div>
+      <div class="mbox"><h3>The Papi bible (locked)</h3><ul>
+        <li>Big aquiline nose · heavy-lidded eyes · furrowed brow</li>
+        <li>Black handlebar moustache, curled at the tips</li>
+        <li>Top-knot man-bun + red tie · gold hoop earring</li>
+        <li>Hand-inked outlines + watercolour cel-shading</li>
+        <li>Exaggerated muscle, anatomically grounded</li>
+      </ul></div>
+      <div class="mbox"><h3>What round 3 fixed</h3><ul>
+        <li>Hands now wrap objects (grip-focused captions)</li>
+        <li>Lower model strength → FLUX's anatomy shows through</li>
+        <li>Realistic ↔ comical balance dialled in</li>
+        <li>Gold earring + suave brow recovered</li>
+      </ul></div>
+      <div class="mbox"><h3>To production</h3><ul>
+        <li>Founder sign-off on AI Papi at all</li>
+        <li>Designer drops real brand logos into blank zones</li>
+        <li>Retrain on 12–15 hi-res refs for near-exact lock</li>
+        <li>Build a prompt library per campaign type</li>
+      </ul></div>
+    </div>
+    <div class="foot"><span>Pistachio Papi × Webprofits — generated on fal.ai</span><span>03 / Method</span></div>
+  </div>
+</section>
+
 </body></html>
