@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lohnr — July 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color: #1a1a1a; }
+
+.cover { background: #0a0a0a; color: #fff; padding: 80px 60px 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; page-break-after: always; }
+.cover-brand { font-size: 11px; letter-spacing: 6px; color: #666; font-weight: 400; }
+.cover-middle { margin: auto 0; }
+.cover-title { font-size: 56px; font-weight: 300; letter-spacing: -1px; line-height: 1.1; margin-bottom: 12px; }
+.cover-subtitle { font-size: 22px; font-weight: 300; color: #777; margin-bottom: 48px; }
+.cover-stats { display: flex; gap: 48px; margin-bottom: 40px; }
+.cover-stat-num { font-size: 36px; font-weight: 600; letter-spacing: -1px; }
+.cover-stat-label { font-size: 10px; letter-spacing: 3px; color: #666; margin-top: 4px; text-transform: uppercase; }
+.cover-products { font-size: 13px; color: #888; letter-spacing: 0.5px; }
+.cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+.cover-date { font-size: 11px; color: #555; }
+.cover-approval { font-size: 11px; color: #444; letter-spacing: 2px; text-transform: uppercase; }
+
+.page { padding: 50px 60px; page-break-after: always; }
+.page:last-child { page-break-after: avoid; }
+.section-label { font-size: 10px; letter-spacing: 4px; color: #bbb; text-transform: uppercase; font-weight: 500; margin-bottom: 8px; }
+.page-title { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 6px; }
+.page-desc { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 32px; max-width: 640px; }
+
+.insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+.insight-card { background: #fafafa; border-radius: 6px; padding: 18px 22px; }
+.insight-card.win { border-left: 3px solid #2d6a4f; }
+.insight-card.note { border-left: 3px solid #8a5a1f; }
+.insight-label { font-size: 9px; letter-spacing: 3px; color: #888; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.insight-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
+.insight-body { font-size: 12px; color: #555; line-height: 1.55; }
+
+.metrics-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 11px; }
+.metrics-table th { text-align: left; padding: 8px 10px 6px; color: #999; font-weight: 500; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; border-bottom: 1px solid #eee; }
+.metrics-table td { padding: 9px 10px; border-bottom: 1px solid #f5f5f5; color: #444; }
+.metrics-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.metrics-table tr.win-row td { background: #f4faf6; }
+.metrics-table tr.flop-row td { background: #fdf0f0; }
+.metrics-table .tag { font-size: 8.5px; padding: 2px 6px; border-radius: 3px; letter-spacing: 0.5px; text-transform: uppercase; font-weight: 600; }
+.tag-win { background: #d8eee0; color: #2d6a4f; }
+.tag-flop { background: #f3d8d8; color: #9d4348; }
+
+.cal { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+.cal th { font-size: 10px; letter-spacing: 2px; color: #bbb; font-weight: 500; text-transform: uppercase; padding: 8px 0; text-align: center; border-bottom: 1px solid #eee; }
+.cal td { border: 1px solid #f0f0f0; vertical-align: top; padding: 8px 8px 12px; height: 84px; width: 14.28%; }
+.cal td.empty { background: #fafafa; }
+.cal .day-num { font-size: 11px; color: #ccc; font-weight: 500; margin-bottom: 6px; }
+.cal .cal-event { font-size: 10px; font-weight: 600; line-height: 1.3; padding: 3px 6px; border-radius: 3px; margin-bottom: 3px; display: inline-block; }
+.cal .cal-note { font-size: 9px; color: #c4972f; display: block; margin-top: 3px; font-weight: 600; letter-spacing: 0.5px; }
+.ev-feat { background: #e8edf2; color: #264653; }
+.ev-elena { background: #ecf0e6; color: #606c38; }
+.ev-promo { background: #f7e6e2; color: #a64b34; }
+.ev-content { background: #fdf3e8; color: #8a5a1f; }
+.ev-npd { background: #e6f2ee; color: #1f6a4f; }
+.ev-launch { background: #1f6a4f; color: #fff; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 14px 20px; margin-top: 8px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #999; }
+.legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+.week-group { margin-bottom: 34px; }
+.week-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+.week-num { font-size: 10px; letter-spacing: 3px; color: #ccc; text-transform: uppercase; font-weight: 500; }
+.week-title { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; }
+.card { display: flex; background: #fafafa; border-radius: 6px; overflow: hidden; margin-bottom: 12px; page-break-inside: avoid; }
+.card-accent { width: 4px; flex-shrink: 0; }
+.acc-promo { background: #a64b34; } .acc-npd { background: #1f6a4f; } .acc-feat { background: #264653; } .acc-content { background: #8a5a1f; }
+.card-body { padding: 20px 24px; flex: 1; }
+.card-num { font-size: 10px; font-weight: 600; letter-spacing: 2px; margin-bottom: 4px; color:#aaa; }
+.card-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; margin-bottom: 6px; line-height: 1.3; }
+.card-meta { font-size: 10px; color: #999; letter-spacing: 0.5px; margin-bottom: 10px; text-transform: uppercase; }
+.card-desc { font-size: 12px; color: #555; line-height: 1.6; margin-bottom: 8px; }
+.card-detail { font-size: 11px; color: #888; line-height: 1.5; }
+.card-detail strong { color: #333; font-weight: 600; }
+.card-promo { font-size: 11px; font-weight: 600; margin-top: 8px; padding: 6px 10px; border-radius: 3px; display: inline-block; background:#f7e6e2; color:#a64b34; }
+.card-rationale { font-size: 11px; color: #777; line-height: 1.55; margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee; }
+.card-rationale strong { color: #2d6a4f; font-weight: 600; }
+.opt { font-size: 11px; color:#666; line-height:1.5; margin-top:8px; padding:8px 10px; background:#fff; border:1px solid #eee; border-radius:4px; }
+.opt.rec { border-color:#bcd9c8; background:#f4faf6; }
+.opt strong { color:#2d6a4f; }
+
+.decision-list { counter-reset: d; }
+.decision-item { background:#fafafa; border-left:3px solid #c4972f; border-radius:6px; padding:14px 18px; margin-bottom:10px; font-size:12.5px; color:#555; line-height:1.55; }
+.decision-item strong { color:#1a1a1a; }
+
+.footer { padding: 20px 60px; border-top: 1px solid #1a1a1a; margin-top: 40px; }
+.footer-text { font-size: 9px; letter-spacing: 4px; color: #ccc; text-transform: uppercase; text-align: center; }
+
+@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .cover { min-height: auto; height: 100vh; } .page { padding: 40px 50px; } }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-brand">LOHNR</div>
+  <div class="cover-middle">
+    <div class="cover-title">July 2026</div>
+    <div class="cover-subtitle">Email Calendar</div>
+    <div class="cover-stats">
+      <div><div class="cover-stat-num">10</div><div class="cover-stat-label">Emails</div></div>
+      <div><div class="cover-stat-num">1</div><div class="cover-stat-label">Sale Event</div></div>
+      <div><div class="cover-stat-num">1</div><div class="cover-stat-label">Major Launch</div></div>
+    </div>
+    <div class="cover-products">Independence Day Sale &nbsp;&middot;&nbsp; Varsity Skort Set Launch &nbsp;&middot;&nbsp; Summer Drop &nbsp;&middot;&nbsp; Social Proof</div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-date">25 June 2026 &middot; v4</div>
+    <div class="cover-approval">Draft &middot; For Approval</div>
+  </div>
+</div>
+
+<!-- CALENDAR AT A GLANCE -->
+<div class="page">
+  <div class="section-label">The Month</div>
+  <div class="page-title">July at a Glance</div>
+  <div class="page-desc">Ten sends this month, built around two moments: the Independence Day sale at the start, the Varsity Skort Set launch in the middle. The back half runs lighter, with a couple of targeted features and one styling piece. Send days move around week to week, and the only discount is over the long weekend.</div>
+
+  <table class="cal">
+    <tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr>
+    <tr>
+      <td class="empty"><div class="day-num">29</div></td>
+      <td class="empty"><div class="day-num">30</div></td>
+      <td><div class="day-num">1</div></td>
+      <td><div class="day-num">2</div></td>
+      <td><div class="day-num">3</div><span class="cal-event ev-promo">Sale Is Live</span></td>
+      <td><div class="day-num">4</div><span class="cal-event ev-promo">Long Weekend Edit</span><span class="cal-note">★ July 4th</span></td>
+      <td><div class="day-num">5</div></td>
+    </tr>
+    <tr>
+      <td><div class="day-num">6</div><span class="cal-event ev-elena">Sale Last Chance</span></td>
+      <td><div class="day-num">7</div><span class="cal-event ev-npd">Varsity: coming soon</span></td>
+      <td><div class="day-num">8</div></td>
+      <td><div class="day-num">9</div><span class="cal-event ev-npd">Varsity: the reveal</span></td>
+      <td><div class="day-num">10</div></td>
+      <td><div class="day-num">11</div><span class="cal-event ev-launch">Varsity: it&rsquo;s here</span><span class="cal-note">◆ LAUNCH</span></td>
+      <td><div class="day-num">12</div></td>
+    </tr>
+    <tr>
+      <td><div class="day-num">13</div></td>
+      <td><div class="day-num">14</div><span class="cal-event ev-npd">Varsity: ICYMI</span></td>
+      <td><div class="day-num">15</div></td>
+      <td><div class="day-num">16</div></td>
+      <td><div class="day-num">17</div></td>
+      <td><div class="day-num">18</div><span class="cal-event ev-feat">Why she reaches for it</span></td>
+      <td><div class="day-num">19</div></td>
+    </tr>
+    <tr>
+      <td><div class="day-num">20</div></td>
+      <td><div class="day-num">21</div></td>
+      <td><div class="day-num">22</div></td>
+      <td><div class="day-num">23</div><span class="cal-event ev-feat">The Summer Drop</span></td>
+      <td><div class="day-num">24</div></td>
+      <td><div class="day-num">25</div></td>
+      <td><div class="day-num">26</div></td>
+    </tr>
+    <tr>
+      <td><div class="day-num">27</div></td>
+      <td><div class="day-num">28</div><span class="cal-event ev-content">Style the Skort</span></td>
+      <td><div class="day-num">29</div></td>
+      <td><div class="day-num">30</div></td>
+      <td><div class="day-num">31</div></td>
+      <td class="empty"><div class="day-num">1</div></td>
+      <td class="empty"><div class="day-num">2</div></td>
+    </tr>
+  </table>
+
+  <div class="legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#a64b34;"></span> Promo / Sale</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#606c38;"></span> Elena Letter</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#1f6a4f;"></span> Varsity Launch (NPD)</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#264653;"></span> Feature</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#8a5a1f;"></span> Content</div>
+  </div>
+</div>
+
+<!-- WEEK DETAIL -->
+<div class="page">
+  <div class="section-label">The Plan</div>
+  <div class="page-title">Campaign by Campaign</div>
+  <div class="page-desc">The month, send by send. The thing we&rsquo;re watching most this time is who each email goes to. Sale and launch days go out wide. Teasers and features go to smaller, warmer segments, where they actually land.</div>
+
+  <div class="week-group">
+    <div class="week-header"><span class="week-num">Week 1</span><span class="week-title">Independence Day Sale</span></div>
+
+    <div class="card"><div class="card-accent acc-promo"></div><div class="card-body">
+      <div class="card-num">01 &middot; FRI 3 JUL</div>
+      <div class="card-name">Independence Day Sale Is Live</div>
+      <div class="card-meta">Promo &middot; Elena founder letter &middot; Full database</div>
+      <div class="card-desc">Open the long weekend with a plain-text letter from Elena. Personal, honest, no fake urgency. She names two or three in-season sets in the body: Everyday Cotton, Novella, Roma.</div>
+      <div class="card-promo">Suggest 20% sitewide &middot; code JULY4 &middot; Fri 3 &rarr; Mon 6</div>
+      <div class="card-rationale"><strong>Why it goes out wide:</strong> the sale launch is the biggest revenue moment of the month, and it earns most when it reaches the whole list. So this one goes to everyone.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-promo"></div><div class="card-body">
+      <div class="card-num">02 &middot; SAT 4 JUL</div>
+      <div class="card-name">The Long Weekend Edit</div>
+      <div class="card-meta">Promo &middot; Image editorial, single hero &middot; Engaged 60-day</div>
+      <div class="card-desc">A visual push on the 4th itself, mid-sale. One hero set, styled for the long weekend. Not a multi-product roundup.</div>
+      <div class="card-detail"><strong>Hero:</strong> The Everyday Cotton Set ($120) or Novella Set ($68) &middot; <strong>CTA:</strong> Shop The Sale</div>
+      <div class="card-rationale"><strong>Why:</strong> a single-hero image carries a sale better than a busy grid, and keeping it to the engaged segment holds the relevance high.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-promo"></div><div class="card-body">
+      <div class="card-num">03 &middot; MON 6 JUL</div>
+      <div class="card-name">Independence Day Last Chance</div>
+      <div class="card-meta">Promo &middot; Elena founder letter &middot; Sale openers &amp; non-purchasers</div>
+      <div class="card-desc">Close the sale tonight. Another letter from Elena, soft and personal. The sale really does end here, so last chance is the truth rather than a tactic.</div>
+      <div class="card-promo">20% ends tonight</div>
+      <div class="card-rationale"><strong>Why:</strong> a personal close from the founder is one of the most dependable sends we have, and it gives the people on the fence a reason to move.</div>
+    </div></div>
+  </div>
+
+  <div class="week-group">
+    <div class="week-header"><span class="week-num">Week 2</span><span class="week-title">Varsity Skort Set Launch &middot; Sat 11 Jul</span></div>
+
+    <div class="card"><div class="card-accent acc-npd"></div><div class="card-body">
+      <div class="card-num">04 &middot; TUE 7 JUL</div>
+      <div class="card-name">Varsity Skort Set: coming soon 👀</div>
+      <div class="card-meta">NPD 1 of 4 &middot; Full-bleed tease &middot; <strong style="color:#a64b34;">Engaged / waitlist-builder only, not the full DB</strong></div>
+      <div class="card-desc">A stripped-back tease to build the waitlist. Full-bleed editorial hero, model in the set, in motion. One line of type, one CTA. The subject line carries an eye emoji, a deliberate one-off for this launch.</div>
+      <div class="card-detail"><strong>Hero:</strong> Varsity Skort Set ($75) &middot; <strong>CTA:</strong> Join The Waitlist &middot; <strong>Drop:</strong> Sat 11 Jul</div>
+      <div class="card-rationale"><strong>Why narrow:</strong> a teaser doesn&rsquo;t sell to a cold list, it just spends reach. So this one only goes to engaged openers, to build the waitlist. The selling happens on launch day.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-npd"></div><div class="card-body">
+      <div class="card-num">05 &middot; THU 9 JUL</div>
+      <div class="card-name">introducing: the varsity skort set</div>
+      <div class="card-meta">NPD 2 of 4 &middot; Image editorial reveal &middot; Engaged + waitlist</div>
+      <div class="card-desc">The full reveal. Build runs hero, then a three-up detail grid, the silhouette / fabric / details blocks, a pocket close-up, a lifestyle scene, the &ldquo;waitlist shops first on Saturday&rdquo; block, then the CTA. No countdown timer. Any scarcity stays in the copy, and stays gentle.</div>
+      <div class="card-detail"><strong>Hero:</strong> Varsity Skort Set &middot; <strong>CTA:</strong> Join The Waitlist &middot; colour/size shown visually, never as text USPs</div>
+      <div class="card-rationale"><strong>Why:</strong> the reveal does the convincing, so it widens out to the full engaged segment and builds the audience for Saturday.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-npd"></div><div class="card-body">
+      <div class="card-num">06 &middot; SAT 11 JUL &middot; LAUNCH</div>
+      <div class="card-name">it&rsquo;s here. the varsity skort set</div>
+      <div class="card-meta">NPD 3 of 4 &middot; Launch hero &middot; Waitlist AM &rarr; full list midday</div>
+      <div class="card-desc">Launch day, two sends. In the morning, the waitlist gets it first: you&rsquo;re in. At midday, the full list: it&rsquo;s live. Full price throughout. The launch creative leads on the set, with the Clubhouse Skort Set ($58) alongside it as the companion.</div>
+      <div class="card-detail"><strong>Hero:</strong> Varsity Skort Set &middot; <strong>Companion:</strong> Clubhouse Skort Set &middot; <strong>CTA:</strong> Shop The Set</div>
+      <div class="card-rationale"><strong>Why it goes out wide:</strong> a launch, like a sale, does its best numbers across the whole list. Letting the waitlist in first keeps the early-access promise without touching the price, and the companion skort lifts the basket.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-npd"></div><div class="card-body">
+      <div class="card-num">07 &middot; TUE 14 JUL</div>
+      <div class="card-name">the set everyone&rsquo;s reaching for</div>
+      <div class="card-meta">NPD 4 of 4 &middot; Targeted second touch + social proof &middot; Launch non-openers &amp; engaged non-buyers</div>
+      <div class="card-desc">Pick up everyone who missed Saturday. New subject line, same hero, with a little early social proof once the first reactions land.</div>
+      <div class="card-detail"><strong>Audience:</strong> launch non-openers + engaged non-purchasers &middot; <strong>CTA:</strong> Shop The Set</div>
+      <div class="card-rationale"><strong>Why:</strong> a second, sharper send to a warm segment, the people who already opened or showed interest, usually beats the first wide swing.</div>
+    </div></div>
+  </div>
+
+  <div class="week-group">
+    <div class="week-header"><span class="week-num">Weeks 3&ndash;5</span><span class="week-title">Momentum &amp; Feature</span></div>
+
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">08 &middot; SAT 18 JUL</div>
+      <div class="card-name">why she keeps reaching for it</div>
+      <div class="card-meta">Feature &middot; Single-product social proof &middot; Engaged 60-day</div>
+      <div class="card-desc">A single-product spotlight carried by customer quotes. One hero set, real words from the people who own it.</div>
+      <div class="card-rationale"><strong>Why:</strong> proof-led, single-product features are some of the best-converting emails we send. Targeted, one hero, and let the customers do the talking.</div>
+      <div class="opt rec"><strong>Option A (recommended):</strong> the Clubhouse Skort Set. Keeps the skort category warm for a second week off the back of the launch.</div>
+      <div class="opt"><strong>Option B:</strong> Novella or Roma Set, if you&rsquo;d rather step away from skorts to a fresh in-season favourite.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">09 &middot; THU 23 JUL</div>
+      <div class="card-name">the summer drop: just landed</div>
+      <div class="card-meta">Feature &middot; Seasonal arrivals, framed as a drop event &middot; Engaged</div>
+      <div class="card-desc">A &ldquo;just landed&rdquo; summer drop. Lead with the genuinely new pieces, and make sure the CTA matches what&rsquo;s actually shown.</div>
+      <div class="card-detail"><strong>Hero:</strong> Oasis Pant ($35, Jun 19), Everyday Cotton Set, Sylvie Halter Set &middot; <strong>CTA:</strong> See What&rsquo;s New</div>
+      <div class="card-rationale"><strong>Why:</strong> arrivals do better gathered into one drop than dripped out across separate sends. And &ldquo;See What&rsquo;s New&rdquo; only works when the heroes really are new, so we lead with this month&rsquo;s pieces.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-content"></div><div class="card-body">
+      <div class="card-num">10 &middot; TUE 28 JUL</div>
+      <div class="card-name">how to style the skort set</div>
+      <div class="card-meta">Content &middot; Gabby / educational &middot; Engaged &amp; community</div>
+      <div class="card-desc">Keep the skort selling past launch week with a styling piece. A few ways to wear it through summer, some community photos, and an invite to tag #LohnrLife.</div>
+      <div class="card-detail"><strong>Hero:</strong> Varsity + Clubhouse Skort Sets styled three ways &middot; <strong>CTA:</strong> Build Your Rotation</div>
+      <div class="card-rationale"><strong>Why:</strong> it keeps the skort family moving a couple of weeks on without another discount, and styling content is something we don&rsquo;t lean on enough.</div>
+    </div></div>
+  </div>
+</div>
+
+<!-- DECISIONS -->
+<div class="page">
+  <div class="section-label">Before We Build</div>
+  <div class="page-title">Open Decisions</div>
+  <div class="page-desc">Five quick calls from you and this is locked for production.</div>
+  <div class="decision-list">
+    <div class="decision-item"><strong>1 &middot; Independence Day discount.</strong> I&rsquo;d suggest 20% sitewide. Confirm the level, the code (JULY4?), and the window (Fri 3 to Mon 6).</div>
+    <div class="decision-item"><strong>2 &middot; Varsity launch-day mechanic.</strong> Two sends on Saturday the 11th: waitlist in the morning for first access, full list at midday. Happy with that, or send once to everyone?</div>
+    <div class="decision-item"><strong>3 &middot; Campaign 08 hero.</strong> The Clubhouse Skort Set, my pick for the skort momentum, or a fresh bestseller like Novella or Roma?</div>
+    <div class="decision-item"><strong>4 &middot; Varsity tease audience.</strong> I&rsquo;ve kept the &ldquo;coming soon&rdquo; tease to engaged 90-day openers rather than the full list. Just confirm you&rsquo;re happy holding it back from everyone.</div>
+    <div class="decision-item"><strong>5 &middot; Count.</strong> Ten is the top of your 8&ndash;10 range. Happy to trim to eight or nine sharper sends if you&rsquo;d rather keep it lean.</div>
+  </div>
+</div>
+
+<div class="footer"><div class="footer-text">LOHNR &mdash; Luxury You Can Live In</div></div>
+
+</body></html>
