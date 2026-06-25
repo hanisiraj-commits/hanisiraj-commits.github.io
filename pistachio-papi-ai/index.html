@@ -58,6 +58,13 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
 .mbox li:last-child{border:0}
 .mbox li:before{content:"";position:absolute;left:0;top:13px;width:8px;height:8px;border-radius:50%;background:var(--green)}
 @media(max-width:860px){.cover h1{font-size:56px}.sec h2{font-size:38px}.cards3,.cmp,.method{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
+
+.refrow{display:grid;grid-template-columns:1fr 56px 1fr;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px}
+.refrow .cell img{width:100%;border-radius:10px;background:var(--cream);display:block;aspect-ratio:1/1;object-fit:contain}
+.refrow .arrow{font-family:'Anton';font-size:30px;color:var(--green);text-align:center;line-height:1}
+.refrow .lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9a9468;text-align:center;margin-top:9px}
+.refrow .lbl.g{color:var(--green)}
+@media(max-width:860px){.refrow{grid-template-columns:1fr;gap:10px}.refrow .arrow{transform:rotate(90deg)}}
 </style></head><body>
 
 <!-- COVER -->
@@ -108,11 +115,33 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
   </div>
 </section>
 
+<!-- REAL PRODUCT -->
+<section class="page sec">
+  <img class="sig" src="img/sig_green.png" alt=""><img class="wm" src="img/papi_head_wm.png" alt="">
+  <div class="wrap">
+    <span class="pill">02 — Drawing the real product</span>
+    <h2 class="anton">We showed it the real thing.</h2>
+    <p class="lead">Left to guess, the model invents lumpy "pistachios" and fictional packaging. The fix: feed it real product photography as a reference, and it redraws the actual jar and the actual nut — accurately — in Papi's hand-drawn style. Hands grip naturally, too.</p>
+    <div class="refrow">
+      <div class="cell"><img src="img/real_jar.png" alt=""><div class="lbl">Real product photo</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="cell"><img src="img/ref_jar_hero.png" alt=""><div class="lbl g">Drawn in Papi style</div></div>
+    </div>
+    <div class="refrow">
+      <div class="cell"><img src="img/real_pistachios.png" alt=""><div class="lbl">Real pistachios</div></div>
+      <div class="arrow">&rarr;</div>
+      <div class="cell"><img src="img/ref_pistachio_hero.png" alt=""><div class="lbl g">Drawn in Papi style</div></div>
+    </div>
+    <div class="note"><b>Why it matters:</b> for any scene using the actual Pistachio Papi jar, we reference the real product so the packaging is true to life — not an AI approximation.</div>
+    <div class="foot"><span>Pistachio Papi — AI Illustration R&D</span><span>02 / Real product</span></div>
+  </div>
+</section>
+
 <!-- THE RANGE -->
 <section class="page sec">
   <img class="sig" src="img/sig_green.png" alt=""><img class="wm" src="img/papi_head_wm.png" alt="">
   <div class="wrap">
-    <span class="pill">02 — The range</span>
+    <span class="pill">03 — The range</span>
     <h2 class="anton">One Papi, infinite worlds.</h2>
     <p class="lead">Every illustration below is a fresh generation — no reference image, no human drawing. Just the trained model and a prompt.</p>
 
@@ -135,7 +164,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
       <div class="card"><img src="img/g04_vespa.png"><div class="c"><b>Sicilian Vespa</b><span>Scene piece</span></div></div>
       <div class="card"><img src="img/g11_motorbike.png"><div class="c"><b>Motorbike</b><span>Sunset mood</span></div></div>
     </div>
-    <div class="foot"><span>Pistachio Papi — AI Illustration R&D</span><span>02 / The range</span></div>
+    <div class="foot"><span>Pistachio Papi — AI Illustration R&D</span><span>03 / The range</span></div>
   </div>
 </section>
 
@@ -143,7 +172,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
 <section class="page sec alt">
   <img class="sig" src="img/sig_green.png" alt=""><img class="wm" src="img/papi_head_wm.png" alt="">
   <div class="wrap">
-    <span class="pill">03 — How it works</span>
+    <span class="pill">04 — How it works</span>
     <h2 class="anton">The recipe.</h2>
     <p class="lead">A custom-trained model on fal.ai, refined over three rounds on the details that make Papi <em>Papi</em>.</p>
     <div class="method">
@@ -173,7 +202,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--cream);color:
         <li>Build a prompt library per campaign type</li>
       </ul></div>
     </div>
-    <div class="foot"><span>Pistachio Papi × Webprofits — generated on fal.ai</span><span>03 / Method</span></div>
+    <div class="foot"><span>Pistachio Papi × Webprofits — generated on fal.ai</span><span>04 / Method</span></div>
   </div>
 </section>
 
