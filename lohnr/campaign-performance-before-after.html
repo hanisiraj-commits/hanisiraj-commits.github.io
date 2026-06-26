@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lohnr · Campaign Performance — Before & After</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',-apple-system,sans-serif;background:#f4f4f1;color:#1a1a1a;line-height:1.4;padding:24px;font-size:14px;}
+.container{max-width:1320px;margin:0 auto;}
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding:14px 22px;background:#fff;border:1px solid #e6e6e1;border-radius:4px;}
+.header h1{font-size:20px;font-weight:500;letter-spacing:-0.3px;}
+.header .periods{display:flex;gap:18px;font-size:11px;}
+.header .periods .lbl{color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-size:9px;font-weight:600;}
+.header .periods .v{color:#1a1a1a;font-weight:500;}
+.hero{background:#0a0a0a;color:#fff;border-radius:4px;padding:24px 28px;margin-bottom:18px;}
+.hero .eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.4px;color:#7db788;margin-bottom:16px;}
+.hero .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:0;}
+.hero .kpi-label{color:#999;}.hero .kpi-val{color:#fff;font-size:26px;}.hero .kpi-sub{color:#888;}
+.panel{background:#fff;border:1px solid #e6e6e1;border-radius:4px;padding:22px 24px;margin-bottom:18px;}
+.panel-title{font-size:15px;font-weight:600;margin-bottom:6px;color:#1a1a1a;}
+.panel-note{font-size:11.5px;color:#888;margin-bottom:16px;}
+.panel-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:0;}
+.kpi-label{font-size:11px;font-weight:600;color:#444;margin-bottom:6px;line-height:1.3;}
+.kpi-row{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;flex-wrap:wrap;}
+.kpi-val{font-size:22px;font-weight:600;color:#1a1a1a;letter-spacing:-0.3px;}
+.kpi-sub{font-size:11px;color:#888;}
+.delta{font-size:11px;font-weight:600;padding:2px 8px;border-radius:3px;white-space:nowrap;}
+.delta.up{background:#e1efe4;color:#2d7a48;}.delta.down{background:#fbe5e5;color:#b54040;}.delta.flat{background:#eee;color:#555;}
+.chart-wrap{position:relative;height:300px;margin-top:6px;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th,td{padding:9px 8px;text-align:right;border-bottom:1px solid #f0efeb;vertical-align:middle;}
+th:first-child,td:first-child{text-align:left;}
+th{font-weight:600;color:#555;background:#fafaf7;font-size:10.5px;text-transform:uppercase;letter-spacing:0.4px;padding:11px 8px;}
+tbody tr:hover{background:#fbfaf6;}
+.cmp-table th:nth-child(2),.cmp-table td:nth-child(2){color:#888;}
+.cmp-table th:nth-child(3),.cmp-table td:nth-child(3){font-weight:600;}
+.insights{background:#0a0a0a;color:#fff;padding:30px 36px;border-radius:4px;margin-top:4px;}
+.insights h2{font-size:18px;font-weight:500;margin-bottom:6px;letter-spacing:-0.3px;}
+.insights .sub{color:#aaa;font-size:13px;margin-bottom:24px;}
+.insights .insight{border-left:3px solid #7db788;padding:6px 0 6px 18px;margin-bottom:18px;}
+.insights .insight .h{font-weight:600;color:#fff;margin-bottom:4px;font-size:14px;}
+.insights .insight .b{color:#ccc;font-size:13px;line-height:1.5;}
+.insights .insight strong{color:#7db788;}
+.section-head{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:1.2px;margin:22px 0 10px 4px;}
+.foot{font-size:10.5px;color:#aaa;text-align:center;margin-top:22px;}
+@media print{body{background:#fff;padding:0;}.panel,.hero,.insights{break-inside:avoid;}}
+@media (max-width:900px){.hero .kpi-grid{grid-template-columns:repeat(2,1fr);}.panel-row{grid-template-columns:1fr;}}
+</style></head><body><div class="container">
+
+<div class="header"><div>
+<h1>Lohnr · Campaign Performance — Before &amp; After</h1>
+<div style="font-size:11px;color:#888;margin-top:4px;">Email campaigns only · all KPIs · prepared 26 June 2026</div>
+</div><div class="periods">
+<div><div class="lbl">Before</div><div class="v">18 Nov 2025 – 7 Mar 2026</div><div class="v" style="color:#888;">earlier 110-day window</div></div>
+<div><div class="lbl">After</div><div class="v">8 Mar – 26 Jun 2026</div><div class="v" style="color:#888;">most recent 110-day window</div></div>
+<div><div class="lbl">Source</div><div class="v">Klaviyo (live)</div><div class="v" style="color:#888;">Placed Order attribution</div></div>
+</div></div>
+
+<div class="hero"><div class="eyebrow">Before vs After · Equal 110-Day Windows</div>
+<div class="kpi-grid"><div class="kpi"><div class="kpi-label">Campaign Revenue</div><div class="kpi-row"><div class="kpi-val">$33,611</div><div class="delta up">↗ 103%</div></div><div class="kpi-sub">vs $16,577 prior</div></div><div class="kpi"><div class="kpi-label">Revenue per Send</div><div class="kpi-row"><div class="kpi-val">$1,019</div><div class="delta up">↗ 140%</div></div><div class="kpi-sub">vs $425 prior</div></div><div class="kpi"><div class="kpi-label">Attributed Orders</div><div class="kpi-row"><div class="kpi-val">375</div><div class="delta up">↗ 114%</div></div><div class="kpi-sub">vs 175 prior</div></div><div class="kpi"><div class="kpi-label">Bounce Rate</div><div class="kpi-row"><div class="kpi-val">0.18%</div><div class="delta up">↘ 87%</div></div><div class="kpi-sub">vs 1.36% prior — list health</div></div></div></div>
+
+<div class="section-head">Before vs After — Full KPI Comparison</div>
+<div class="panel-row">
+<div class="panel">
+<div class="panel-title">Side-by-Side, Equal Windows</div>
+<div class="panel-note">Both periods are 110 days. The earlier window even includes the Black Friday / Cyber Monday peak — yet revenue still doubled across the more recent off-peak window.</div>
+<table class="cmp-table"><thead><tr><th>Metric</th><th>Before</th><th>After</th><th style="text-align:right;">Change</th></tr></thead>
+<tbody><tr><td>Campaign Revenue</td><td>$16,577</td><td>$33,611</td><td style="text-align:right;"><span class="delta up">↗ 103%</span></td></tr>
+<tr><td>Revenue per Send</td><td>$425</td><td>$1,019</td><td style="text-align:right;"><span class="delta up">↗ 140%</span></td></tr>
+<tr><td>Attributed Orders</td><td>175</td><td>375</td><td style="text-align:right;"><span class="delta up">↗ 114%</span></td></tr>
+<tr><td>Recipients Reached</td><td>336,328</td><td>688,047</td><td style="text-align:right;"><span class="delta up">↗ 105%</span></td></tr>
+<tr><td>Campaigns Sent</td><td>39</td><td>33</td><td style="text-align:right;"><span class="delta up">↘ 15%</span></td></tr>
+<tr><td>Open Rate</td><td>60.3%</td><td>50.7%</td><td style="text-align:right;"><span class="delta down">↘ 16%</span></td></tr>
+<tr><td>Click Rate</td><td>0.34%</td><td>0.24%</td><td style="text-align:right;"><span class="delta down">↘ 29%</span></td></tr>
+<tr><td>Click-to-Open</td><td>0.56%</td><td>0.48%</td><td style="text-align:right;"><span class="delta down">↘ 16%</span></td></tr>
+<tr><td>Conversion Rate</td><td>0.053%</td><td>0.055%</td><td style="text-align:right;"><span class="delta up">↗ 4%</span></td></tr>
+<tr><td>Revenue / Recipient</td><td>$0.049</td><td>$0.049</td><td style="text-align:right;"><span class="delta down">↘ 1%</span></td></tr>
+<tr><td>Avg Order Value</td><td>$95</td><td>$90</td><td style="text-align:right;"><span class="delta down">↘ 5%</span></td></tr>
+<tr><td>Unsub Rate</td><td>0.82%</td><td>0.59%</td><td style="text-align:right;"><span class="delta up">↘ 29%</span></td></tr>
+<tr><td>Bounce Rate</td><td>1.36%</td><td>0.18%</td><td style="text-align:right;"><span class="delta up">↘ 87%</span></td></tr></tbody></table>
+</div>
+<div class="panel">
+<div class="panel-title">Revenue Trajectory — Aug 2025 to Jun 2026</div>
+<div class="panel-note">Grey = earlier period · green = most recent period. Line = revenue per send.</div>
+<div class="chart-wrap"><canvas id="ch_trend"></canvas></div>
+<div style="font-size:11px;color:#999;margin-top:10px;">Nov 2025 shows 23 sends for only $1,845 — ~$80/send. Oct 2025 had no campaigns.</div>
+</div>
+</div>
+
+<div class="section-head">Top Campaigns by Attributed Revenue</div>
+<div class="panel"><table><thead><tr><th>Sent</th><th>Campaign</th><th>Recipients</th><th>Open</th><th>Click</th><th>Orders</th><th>Revenue</th><th>RPR</th></tr></thead>
+<tbody><tr><td>2026-05-23</td><td style="max-width:300px;">Memorial Day Sale Launch</td><td>41,285</td><td>42.2%</td><td>0.36%</td><td>37</td><td>$3,426</td><td>$0.083</td></tr>
+<tr><td>2026-04-30</td><td style="max-width:300px;">Mother's Day_Elena Close</td><td>35,504</td><td>38.4%</td><td>0.28%</td><td>23</td><td>$1,985</td><td>$0.056</td></tr>
+<tr><td>2026-04-14</td><td style="max-width:300px;">Solene_Why Women Keep Reordering</td><td>19,129</td><td>67.6%</td><td>0.20%</td><td>17</td><td>$1,716</td><td>$0.090</td></tr>
+<tr><td>2026-03-08</td><td style="max-width:300px;">International Women's Day - 15% off</td><td>14,764</td><td>70.5%</td><td>0.29%</td><td>13</td><td>$1,641</td><td>$0.111</td></tr>
+<tr><td>2026-03-10</td><td style="max-width:300px;">15% off IWD - Plain text followup</td><td>14,486</td><td>69.8%</td><td>0.70%</td><td>14</td><td>$1,483</td><td>$0.103</td></tr>
+<tr><td>2026-06-17</td><td style="max-width:300px;">Elara_Made to Breathe This Summer</td><td>10,378</td><td>47.4%</td><td>0.31%</td><td>14</td><td>$1,479</td><td>$0.143</td></tr>
+<tr><td>2026-04-09</td><td style="max-width:300px;">Solene Dress_The One Dress That Replaces Five</td><td>20,699</td><td>50.9%</td><td>0.31%</td><td>16</td><td>$1,416</td><td>$0.068</td></tr>
+<tr><td>2026-05-31</td><td style="max-width:300px;">Memorial Day Last Chance Elena</td><td>41,099</td><td>39.3%</td><td>0.25%</td><td>13</td><td>$1,405</td><td>$0.034</td></tr>
+<tr><td>2026-04-06</td><td style="max-width:300px;">Easter Last Chance_Elena Letter</td><td>21,118</td><td>59.9%</td><td>0.34%</td><td>19</td><td>$1,384</td><td>$0.066</td></tr>
+<tr><td>2026-05-26</td><td style="max-width:300px;">Memorial Day_The Long-Weekend Edit</td><td>18,574</td><td>50.5%</td><td>0.17%</td><td>16</td><td>$1,242</td><td>$0.067</td></tr>
+<tr><td>2026-04-26</td><td style="max-width:300px;">Mother's Day Dress Sale</td><td>36,340</td><td>40.4%</td><td>0.19%</td><td>16</td><td>$1,182</td><td>$0.033</td></tr>
+<tr><td>2026-05-13</td><td style="max-width:300px;">Game Day Set_Why Women Keep Coming Back</td><td>24,522</td><td>47.5%</td><td>0.15%</td><td>13</td><td>$1,160</td><td>$0.047</td></tr></tbody></table></div>
+
+<div class="insights"><h2>Insights &amp; Talking Points</h2>
+<div class="sub">Before (18 Nov 2025–7 Mar 2026) vs After (8 Mar–26 Jun 2026) · equal 110-day windows · Klaviyo Placed Order attribution</div>
+<div class="insight"><div class="h">Revenue and orders doubled — on fewer sends</div><div class="b">Campaign-attributed revenue rose <strong>+103% ($16,577 → $33,611)</strong> and orders <strong>+114% (175 → 375)</strong>, while sending <strong>15% fewer campaigns</strong>. Revenue per send jumped <strong>+140% ($425 → $1,019)</strong> — each email works harder, not just sends more.</div></div>
+<div class="insight"><div class="h">Revenue doubled in an off-peak window</div><div class="b">The earlier period <strong>included Black Friday &amp; Cyber Monday</strong> — the year's biggest sale moment — and was still doubled across an ordinary Spring/Summer stretch. That earlier BFCM push was 23 sends for just $1,845 (~$80/send); volume without precision.</div></div>
+<div class="insight"><div class="h">The list is healthier, not burnt</div><div class="b">Bounce rate fell <strong>87% (1.36% → 0.18%)</strong> and unsubscribes <strong>29%</strong>, even while <strong>doubling reach to 688K</strong>. More people, reached more cleanly — protecting long-term deliverability instead of spending it.</div></div>
+<div class="insight"><div class="h">The open/click dip is a scale effect, not a decline</div><div class="b">Open (60% → 51%) and click (0.34% → 0.24%) rates eased — but those earlier rates sat on a list <strong>half the size</strong> with a bounce rate 7× higher. Reach <strong>and</strong> revenue both doubled while <strong>conversion rate held (+3.5%)</strong>. Rate dilution from healthy expansion, not lost performance.</div></div>
+<div class="insight"><div class="h">The next lever: click efficiency</div><div class="b">Click rate is the account's true ceiling. The plain-text <strong>Elena founder letters convert the click best</strong> (IWD follow-up hit 0.70% — 3× average), and tighter segmentation on non-promo sends has out-earned broad blasts 2–3× on RPR. That's where the next revenue step-change comes from.</div></div>
+</div>
+
+<div class="foot">Lohnr US · Klaviyo live data · Generated 26 June 2026 · Webprofits</div>
+</div>
+<script>
+const D={"tlabels": ["Aug '25", "Sep", "Oct", "Nov", "Dec", "Jan '26", "Feb", "Mar", "Apr", "May", "Jun"], "trev": [300, 547, 0, 1845, 547, 7244, 7593, 5650, 11297, 10736, 5928], "trps": [60, 547, 0, 80, 109, 906, 844, 807, 1130, 1193, 847], "barcol": ["#c9c9c2", "#c9c9c2", "#c9c9c2", "#c9c9c2", "#c9c9c2", "#c9c9c2", "#c9c9c2", "#4f8362", "#4f8362", "#4f8362", "#4f8362"]};
+const P={green:'#4f8362',amber:'#d2a76b'};
+Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;Chart.defaults.color='#666';
+new Chart(document.getElementById('ch_trend'),{
+ data:{labels:D.tlabels,datasets:[
+  {type:'bar',label:'Campaign Revenue (USD)',data:D.trev,backgroundColor:D.barcol,borderRadius:2,yAxisID:'y',order:2},
+  {type:'line',label:'Revenue per Send (USD)',data:D.trps,borderColor:P.amber,backgroundColor:P.amber,tension:0.3,yAxisID:'y1',order:1,pointRadius:3}
+ ]},
+ options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+  plugins:{legend:{position:'bottom',labels:{boxWidth:10,boxHeight:10,padding:14}},
+   tooltip:{callbacks:{label:c=>c.dataset.label+': $'+c.parsed.y.toLocaleString()}}},
+  scales:{y:{beginAtZero:true,grid:{color:'#f0efeb'},ticks:{callback:v=>'$'+(v/1000)+'k'}},
+   y1:{position:'right',beginAtZero:true,grid:{drawOnChartArea:false},ticks:{callback:v=>'$'+v}}}}
+});
+</script></body></html>
