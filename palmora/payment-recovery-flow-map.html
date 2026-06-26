@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Palmora · F_PAYMENT-FAILED · Flow Map</title>
+<style>
+  /* ========================================================================
+     LOCKED VISUAL GRAMMAR — Lohnr FigJam aesthetic.
+     Do not edit colours, borders, or radii without updating the skill spec.
+     ======================================================================== */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif; background: #FAFAF7; color: #1a1a1a; }
+
+  /* HEADER (sticky) */
+  .header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #E5E7EB; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .header h1 { font-size: 15px; margin: 0; letter-spacing: -0.01em; font-weight: 700; }
+  .header h1 code { background: #F3F4F6; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  .header .brand { color: #6B7280; font-size: 12px; margin-left: 8px; }
+  .header .meta { display: flex; gap: 16px; font-size: 12px; color: #6B7280; }
+  .header .meta strong { color: #111; font-weight: 600; }
+
+  /* LEGEND */
+  .legend { background: #fff; border-bottom: 1px solid #E5E7EB; padding: 10px 28px; font-size: 12px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .legend-item { display: flex; gap: 8px; align-items: center; }
+  .legend-node { width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+
+  /* CANVAS — wrap absolutely-positioned nodes */
+  .canvas { padding: 30px 20px 60px; overflow-x: auto; background: #FAFAF7; }
+  .board { position: relative; min-width: {{CANVAS_MIN_WIDTH}}px; margin: 0 auto; }
+
+  /* NODE STYLES */
+  .node { position: absolute; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 12px; line-height: 1.35; box-shadow: 0 2px 5px rgba(0,0,0,0.06); transition: transform 0.15s, box-shadow 0.15s; }
+  .node:hover { transform: translateY(-1px); box-shadow: 0 5px 12px rgba(0,0,0,0.1); z-index: 50; }
+
+  .node-trigger    { background: #CFF5D1; border: 2px solid #4CAF50; color: #1B5E20; }
+  .node-compute    { background: #fff;    border: 2px solid #E5E7EB; color: #1a1a1a; }
+  .node-split      { background: #fff;    border: 2px solid #1a1a1a; color: #1a1a1a; }
+  .node-delay      { background: #DBEAFE; border: 2px solid #60A5FA; color: #1E3A8A; }
+  .node-email      { background: #E9D5FF; border: 2px solid #A855F7; color: #581C87; }
+  .node-email-plain{ background: #FDE68A; border: 2px solid #F59E0B; color: #78350F; }
+  .node-exit       { background: #F3F4F6; border: 2px dashed #9CA3AF; color: #6B7280; }
+
+  .node-icon { width: 28px; height: 28px; margin-bottom: 5px; opacity: 0.9; }
+  .node-label { font-size: 11px; font-weight: 500; margin-bottom: 2px; opacity: 0.8; }
+  .node-title { font-size: 13px; font-weight: 700; line-height: 1.25; }
+  .node-subtitle { font-size: 10px; font-weight: 500; opacity: 0.75; margin-top: 4px; font-family: Menlo, monospace; }
+
+  /* CONTENT BOX */
+  .content-box {
+    position: absolute; background: #F3F4F6; border: 1px solid #D1D5DB;
+    border-radius: 10px; padding: 14px 16px; font-size: 11px; line-height: 1.5;
+    color: #111; box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  }
+  .content-box .heading { font-weight: 700; margin-bottom: 8px; font-size: 11px; }
+  .content-box ul { margin: 6px 0; padding-left: 16px; }
+  .content-box li { margin: 3px 0; }
+  .content-box code { background: #E5E7EB; padding: 1px 4px; border-radius: 3px; font-size: 10px; font-family: Menlo, monospace; }
+  .content-box .subj { font-family: Menlo, monospace; font-size: 10px; background: #fff; padding: 3px 6px; border-radius: 3px; display: block; margin: 4px 0; border: 1px solid #E5E7EB; }
+  .content-box .preview { font-family: Menlo, monospace; font-size: 10px; color: #6B7280; padding: 0 6px; display: block; margin: 2px 0 6px; font-style: italic; }
+  .content-box .badge { display: inline-block; padding: 2px 7px; border-radius: 4px; background: #FEF3C7; color: #92400E; font-size: 9.5px; font-weight: 700; letter-spacing: 0.03em; margin-top: 4px; border: 1px solid #FBBF24; }
+  .content-box .section-label { font-weight: 700; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280; margin-top: 8px; }
+
+  /* BRANCH CHIP */
+  .branch-chip {
+    position: absolute; padding: 6px 12px; border-radius: 16px; color: #fff;
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    text-align: center; font-family: Menlo, monospace;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08); white-space: nowrap;
+  }
+  .chip-onboard    { background: #0F766E; }
+  .chip-proximity  { background: #C2740E; }
+  .chip-unlock     { background: #1E40AF; }
+  .chip-exit       { background: #6B7280; }
+  /* Per-branch identity chips (Lohnr style) — extend as needed */
+  .chip-solace     { background: #8B5A2B; }
+  .chip-solene     { background: #5B6E8C; }
+  .chip-gameday    { background: #2E7D4F; }
+  .chip-generic    { background: #6B7280; }
+
+  /* Trigger props mini-box inside trigger node */
+  .trigger-props { margin-top: 6px; font-size: 10px; line-height: 1.45; color: #1B5E20; font-family: Menlo, monospace; opacity: 0.85; }
+
+  /* Dashed line for content-box pointers */
+  .dashed-line { stroke-dasharray: 6, 4; }
+
+  /* FOOTER */
+  .footer { padding: 18px 28px; background: #fff; border-top: 1px solid #E5E7EB; font-size: 12px; color: #6B7280; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .footer code { background: #F3F4F6; padding: 2px 6px; border-radius: 3px; font-size: 11px; }
+
+  /* IMPL NOTES (yellow dashed) */
+  .impl-notes { margin: 40px 40px 0; padding: 24px 28px; background: #FFFBEB; border: 2px dashed #FBBF24; border-radius: 12px; font-size: 13px; line-height: 1.6; color: #78350F; }
+  .impl-notes .heading { font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; margin-bottom: 10px; opacity: 0.8; }
+  .impl-notes ul { margin: 0; padding-left: 22px; }
+  .impl-notes li { margin: 4px 0; }
+  .impl-notes code { background: #FEF3C7; padding: 1px 5px; border-radius: 3px; font-size: 11px; font-family: Menlo, monospace; }
+
+  /* QA FLAGS (red dashed) — only render if there are real issues to surface */
+  .qa-flags { margin: 20px 40px 0; padding: 20px 28px; background: #FEF2F2; border: 2px dashed #EF4444; border-radius: 12px; font-size: 13px; line-height: 1.6; color: #7F1D1D; }
+  .qa-flags .heading { font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; margin-bottom: 10px; opacity: 0.8; }
+  .qa-flags ul { margin: 0; padding-left: 22px; }
+  .qa-flags li { margin: 4px 0; }
+  .qa-flags code { background: #FEE2E2; padding: 1px 5px; border-radius: 3px; font-size: 11px; font-family: Menlo, monospace; }
+</style>
+</head>
+<body>
+<div class="header"><div><h1>Palmora · <code>F_PAYMENT-FAILED</code> · Flow Architecture Map</h1>
+<span class="brand">Subscription Payment Recovery (Dunning) · for Klaviyo implementation · Seal Subscriptions</span></div>
+<div class="meta"><span><strong>1</strong> track</span><span><strong>3</strong> emails</span><span><strong>4-day</strong> window</span><span>Built 2026-06-26</span></div></div>
+<div class="legend">
+<div class="legend-item"><div class="legend-node" style="background:#CFF5D1;border:2px solid #4CAF50;"></div>Trigger (event)</div>
+<div class="legend-item"><div class="legend-node" style="background:#fff;border:2px solid #E5E7EB;"></div>Conditional gate</div>
+<div class="legend-item"><div class="legend-node" style="background:#DBEAFE;border:2px solid #60A5FA;"></div>Time delay</div>
+<div class="legend-item"><div class="legend-node" style="background:#E9D5FF;border:2px solid #A855F7;"></div>Email (designed)</div>
+<div class="legend-item"><div class="legend-node" style="background:#FDE68A;border:2px solid #F59E0B;"></div>Email (plain text)</div>
+<div class="legend-item"><div class="legend-node" style="background:#F3F4F6;border:2px dashed #9CA3AF;"></div>Exit</div>
+</div>
+<div class="canvas"><div class="board" style="height:1360px;min-width:1120px;">
+<svg style="position:absolute;top:0;left:0;width:100%;height:1360px;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9CA3AF"/></marker>
+<marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4CAF50"/></marker>
+</defs>
+<line x1="400" y1="160" x2="400" y2="210" stroke="#4CAF50" stroke-width="2.5" marker-end="url(#arrg)"/>
+
+<line x1="400" y1="330" x2="400" y2="380" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+
+<line x1="400" y1="450" x2="400" y2="490" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+
+<line x1="400" y1="560" x2="400" y2="600" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+
+<line x1="400" y1="720" x2="400" y2="770" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+
+<line x1="400" y1="840" x2="400" y2="880" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+
+<line x1="400" y1="950" x2="400" y2="990" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+
+<line x1="400" y1="1120" x2="400" y2="1180" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>
+
+<line x1="510" y1="265" x2="600" y2="265" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+
+<line x1="510" y1="655" x2="600" y2="655" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+
+<line x1="510" y1="1050" x2="600" y2="1050" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+
+</svg>
+<div class="node node-trigger" style="top:40px;left:280px;width:240px;height:120px;"><svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1B5E20" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg><div class="node-label">Trigger · Metric</div><div class="node-title">Subscription Renewal Failed</div><div class="trigger-props">RWL4Qw · API / Seal</div></div>
+<div class="node node-email" style="top:210px;left:290px;width:220px;height:120px;"><svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg><div class="node-label">E1 · Immediate · transactional alert</div><div class="node-title">Payment on hold</div><div class="node-subtitle">update card</div></div>
+<div class="content-box" style="top:200px;left:600px;width:470px;height:240px;"><div class="heading">E1 — Payment on hold (alert)</div><span class="subj">Action needed: your payment is on hold ⚠</span><span class="preview">Your box can't ship until your card's updated.</span><div class="section-label">Hero</div>"Your payment is on hold." → couldn't process {{ scent }} renewal<div class="section-label">Body / modules</div><ul><li>Minimal, transactional — not marketing</li><li>Dynamic ship date <code>{{ next_order_date }}</code></li><li>CTA → <code>{{ event.SubscriptionMagicUrl }}</code></li><li>Reassurance: pause/cancel anytime</li></ul><span class="badge">18991230_C_F_PAYMENT-FAILED_E1_ON-HOLD</span></div>
+<div class="node node-compute" style="top:380px;left:250px;width:300px;height:70px;"><svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" style="width:22px;height:22px;"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M15 6a9 9 0 0 1-9 9"/></svg><div class="node-label">Conditional gate</div><div class="node-title">Renewed since trigger? → exit</div></div>
+<div class="node node-delay" style="top:490px;left:335px;width:130px;height:70px;"><svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width:22px;height:22px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div class="node-label">Delay</div><div class="node-title">2 days</div></div>
+<div class="node node-email" style="top:600px;left:290px;width:220px;height:120px;"><svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg><div class="node-label">E2 · Day 2 · designed</div><div class="node-title">On hold — price lock</div><div class="node-subtitle">subscriber price at risk</div></div>
+<div class="content-box" style="top:590px;left:600px;width:470px;height:250px;"><div class="heading">E2 — Price-lock urgency</div><span class="subj">Update now or lose your locked price ⚠</span><span class="preview">The subscriber price only holds while you're active.</span><div class="section-label">Hero</div>"Your subscription is on hold."<div class="section-label">Body / modules</div><ul><li>Price-lock lever: <code>${{ event.$value }}</code> exists only while subscribed — lost if it lapses</li><li>Dynamic deadline <code>{{ next_order_date }}</code></li><li>Show-if discovery-set: small upsize teaser</li><li>Reassurance strip</li></ul><span class="badge">18991230_C_F_PAYMENT-FAILED_E2_PRICE-LOCK</span></div>
+<div class="node node-compute" style="top:770px;left:250px;width:300px;height:70px;"><svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" style="width:22px;height:22px;"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M15 6a9 9 0 0 1-9 9"/></svg><div class="node-label">Conditional gate</div><div class="node-title">Renewed since trigger? → exit</div></div>
+<div class="node node-delay" style="top:880px;left:335px;width:130px;height:70px;"><svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width:22px;height:22px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div class="node-label">Delay</div><div class="node-title">2 days</div></div>
+<div class="node node-email-plain" style="top:990px;left:290px;width:220px;height:130px;"><svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg><div class="node-label">E3 · Day 4 · plain text</div><div class="node-title">Last call — founder</div><div class="node-subtitle">Eliza Mercer · 1:1</div></div>
+<div class="content-box" style="top:980px;left:600px;width:470px;height:270px;"><div class="heading">E3 — Last call (plain text, founder)</div><span class="subj">The price you locked in is about to go</span><span class="preview">A quick, honest note before your box pauses.</span><div class="section-label">Body</div>Plain-text founder note (Eliza Mercer). <code>${{ event.$value }}</code> shown as an early-member rate we can't promise back. Pause/cancel reassurance woven in. Real reply-to inbox.<div class="section-label">CTA</div>Inline → <code>{{ event.SubscriptionMagicUrl }}</code><span class="badge">18991230_C_F_PAYMENT-FAILED_E3_LAST-CALL_PLAIN-TEXT</span></div>
+<div class="node node-exit" style="top:1180px;left:250px;width:300px;height:90px;"><svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" style="width:22px;height:22px;"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><div class="node-label">Exit · no further send</div><div class="node-title">Still unpaid → Seal auto-cancels</div><div class="node-subtitle">enters F_CANCEL-SAVE</div></div>
+</div></div>
+<div class="impl-notes"><div class="heading">📋 Klaviyo setup checklist for implementation</div><ul>
+<li><strong>Trigger:</strong> Metric — <code>Subscription Renewal Failed</code> (RWL4Qw, source API/Seal Subscriptions).</li>
+<li><strong>Smart sending:</strong> <code>OFF</code> — quasi-transactional, must always deliver.</li>
+<li><strong>Conditional gates:</strong> before E2 and E3, add a conditional split "what someone has done → <code>Renewed Subscription</code> (TKcJ8t) zero times since starting this flow." If they've renewed, exit (stop dunning immediately).</li>
+<li><strong>Time delays:</strong> E1 immediate · E2 +2 days · E3 +2 days (Day 4). Align E3 with Seal's final retry / auto-cancel timing so "we'll pause" is accurate.</li>
+<li><strong>Re-entry:</strong> allow re-entry (a future failed renewal should re-trigger).</li>
+<li><strong>No discount</strong> in this flow. <strong>No 30-day guarantee/refund language</strong> anywhere.</li>
+<li><strong>Personalisation tokens:</strong> <code>{{ event.ShippingFirstName }}</code> / <code>{{ first_name }}</code> · <code>{{ scent }}</code> (parse <code>event.ItemNames</code> after last " - ") · <code>{{ event.SubscriptionMagicUrl }}</code> · <code>{{ event.$value }}</code> · <code>{{ next_order_date }}</code> (Seal next charge/ship date; fallback "the 28th").</li>
+<li><strong>E3 plain text:</strong> send from founder name, real monitored reply-to.</li>
+<li><strong>Copy source:</strong> Flows Copy sheet cols H–J. <strong>QA test:</strong> fire a Renewal-Failed event → confirm E1 immediate; fire Renewed Subscription → confirm exit before E2.</li>
+</ul></div>
+<div class="footer"><div><strong>Trigger source:</strong> Seal Subscriptions (API) · <strong>Custom metric:</strong> <code>Subscription Renewal Failed / RWL4Qw</code></div><div>Built 2026-06-26 · Palmora · F_PAYMENT-FAILED</div></div>
+</body>
+</html>
