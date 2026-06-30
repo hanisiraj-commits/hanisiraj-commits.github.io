@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rippl × Tethrd — July 2026 Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#ffffff;--ink:#0a0a0a;--ink-2:#3a3a3a;--ink-3:#6a6a6a;--ink-4:#a0a0a0;--line:#e8e8e8;--line-2:#d0d0d0;--accent:#1f5d6e;--promo:#8a7240;--brand:#4a6a4a;--b2b:#4a5a6e;--dark:#0a0a0a;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 32px 64px;}
+  .topbar{padding:28px 0 0;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:24px;}
+  .wordmark{font-weight:800;font-size:15px;letter-spacing:-0.02em;color:var(--ink);}
+  .wordmark .x{color:var(--ink-4);margin:0 8px;font-weight:400;}
+  .wordmark .partner{font-weight:600;}
+  .topbar .meta-right{font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.12em;}
+  .intro{margin:36px 0 8px;font-size:15px;color:var(--ink-2);max-width:700px;}
+  .intro strong{color:var(--ink);font-weight:600;}
+  h2{font-size:20px;font-weight:700;letter-spacing:-0.015em;margin:48px 0 16px;color:var(--ink);}
+  .legend{display:flex;gap:22px;flex-wrap:wrap;font-size:11px;color:var(--ink-3);margin:0 0 18px;text-transform:uppercase;letter-spacing:0.07em;font-weight:500;}
+  .legend span{display:inline-flex;align-items:center;gap:7px;}
+  .legend i{width:10px;height:10px;border-radius:2px;display:inline-block;}
+  .cal{width:100%;border-collapse:collapse;margin:8px 0 0;}
+  .cal th{color:var(--ink-4);font-weight:600;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;padding:10px 8px;text-align:center;border-bottom:1px solid var(--line);}
+  .cal td{background:var(--bg);border:1px solid var(--line);padding:9px;height:96px;vertical-align:top;width:14.28%;}
+  .cal td.muted{background:transparent;border-color:transparent;}
+  .cal td .d{font-size:11px;color:var(--ink-4);font-weight:600;font-variant-numeric:tabular-nums;}
+  .cal td .d.hi{color:var(--ink);}
+  .cal td .ev{margin-top:5px;font-size:10.5px;line-height:1.25;padding:4px 6px;border-radius:2px;font-weight:600;}
+  .cal td .ev.promo{background:#f5efde;color:var(--promo);}
+  .cal td .ev.brand{background:#e9efe9;color:var(--brand);}
+  .cal td .ev.b2b{background:#e6eaef;color:var(--b2b);}
+  .cal td .ev.wl{background:#e2edf0;color:var(--accent);}
+  .cal td .ev.wl.bold{font-weight:800;}
+  .cal td .ev.tent{background:transparent;color:var(--b2b);border:1px dashed var(--b2b);font-weight:500;opacity:0.8;}
+  .cal td .ev.expire{background:transparent;color:var(--ink-4);padding:4px 0;border-top:1px dashed var(--line-2);border-radius:0;font-weight:500;}
+  .list{margin:8px 0 0;}
+  .grp{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-4);margin:28px 0 4px;}
+  .grpnote{font-size:12.5px;color:var(--ink-3);margin:0 0 4px;max-width:680px;}
+  .c{display:grid;grid-template-columns:54px 92px 1fr;gap:18px;padding:14px 0;border-top:1px solid var(--line);align-items:baseline;}
+  .c:last-child{border-bottom:1px solid var(--line);}
+  .c .num{font-size:13px;font-weight:800;color:var(--ink-4);font-variant-numeric:tabular-nums;}
+  .c.promo .num{color:var(--promo);} .c.brand .num{color:var(--brand);} .c.wl .num{color:var(--accent);} .c.b2b .num{color:var(--b2b);}
+  .c .date{font-size:12px;color:var(--ink-3);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .c .txt{font-size:14px;color:var(--ink-2);line-height:1.5;}
+  .c .txt b{color:var(--ink);font-weight:700;}
+  .c .pill{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--b2b);border:1px dashed var(--b2b);border-radius:3px;padding:1px 6px;margin-left:8px;vertical-align:middle;}
+  .c .pill.fresh{color:var(--brand);border-color:var(--brand);}
+  .footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:11px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.12em;display:flex;justify-content:space-between;}
+  .footer a{color:var(--ink-3);text-decoration:none;}
+  @media print{.c,.cal tr{break-inside:avoid;}}
+  @media (max-width:680px){.cal td{height:auto;min-height:64px;}.c{grid-template-columns:40px 1fr;gap:6px 12px;}.c .date{grid-column:2;}.c .txt{grid-column:1 / -1;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="wordmark">tethrd<span class="x">×</span><span class="partner">Rippl</span></div>
+    <div class="meta-right">July 2026 · Campaign calendar · v6</div>
+  </div>
+
+  <p class="intro">June already announced both the out-of-stock and the price-lock, so July doesn't re-announce the offer — it <strong>leads with objection-busting and proof</strong> and holds the urgency for the close. <strong>Pre-order ($749 + 2 free bottles) runs to 17 July; the restock of 100 units opens 20 July at $949 RRP.</strong> B2B holds the 16 July cut-off for now while the new on-demand turnaround is tested.</p>
+
+  <h2>The month at a glance</h2>
+  <div class="legend">
+    <span><i style="background:var(--brand)"></i>Educational / value</span>
+    <span><i style="background:var(--promo)"></i>Pre-order / promo</span>
+    <span><i style="background:var(--accent)"></i>Waitlist / restock</span>
+    <span><i style="background:var(--b2b)"></i>B2B</span>
+  </div>
+
+  <table class="cal">
+    <thead><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="muted"></td><td class="muted"></td>
+        <td><div class="d hi">1</div></td>
+        <td><div class="d hi">2</div></td>
+        <td><div class="d hi">3</div><div class="ev brand">Noise: honest answer</div></td>
+        <td><div class="d">4</div></td><td><div class="d">5</div></td>
+      </tr>
+      <tr>
+        <td><div class="d">6</div></td><td><div class="d">7</div></td>
+        <td><div class="d hi">8</div><div class="ev b2b">B2B · cut-off nears</div></td>
+        <td><div class="d hi">9</div><div class="ev brand">Wastewater explained</div></td>
+        <td><div class="d">10</div></td><td><div class="d">11</div></td>
+        <td><div class="d">12</div></td>
+      </tr>
+      <tr>
+        <td><div class="d">13</div></td>
+        <td><div class="d">14</div></td>
+        <td><div class="d hi">15</div><div class="ev b2b">B2B · last call</div></td>
+        <td><div class="d hi">16</div><div class="ev expire">B2B artwork cut-off</div></td>
+        <td><div class="d hi">17</div><div class="ev promo">Pre-order closes</div></td>
+        <td><div class="d hi">18</div><div class="ev wl">Waitlist opens</div></td>
+        <td><div class="d">19</div></td>
+      </tr>
+      <tr>
+        <td><div class="d hi">20</div><div class="ev wl bold">RESTOCK · $949</div></td>
+        <td><div class="d">21</div></td><td><div class="d">22</div></td>
+        <td><div class="d hi">23</div><div class="ev promo">Units low</div></td>
+        <td><div class="d">24</div></td>
+        <td><div class="d">25</div></td><td><div class="d">26</div></td>
+      </tr>
+      <tr>
+        <td><div class="d hi">27</div><div class="ev brand">Proof / authority</div></td>
+        <td><div class="d hi">28</div><div class="ev tent">B2B · new timelines (tent.)</div></td>
+        <td><div class="d">29</div></td>
+        <td><div class="d hi">30</div><div class="ev promo">Final units</div></td>
+        <td><div class="d">31</div></td>
+        <td class="muted"></td><td class="muted"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Campaigns</h2>
+  <div class="list">
+
+    <div class="grp">Consumer · 8 sends</div>
+
+    <div class="c brand"><div class="num">01</div><div class="date">Fri 3 Jul</div><div class="txt"><b>Noise — the honest answer.</b><span class="pill fresh">New angle</span> The #1 reason Pure gets returned, met head-on: what it actually sounds like, when the pump kicks in, why a filter this thorough can't be silent. Warms fence-sitters and cuts returns. Soft note that pre-order pricing holds to the 17th.</div></div>
+    <div class="c brand"><div class="num">02</div><div class="date">Thu 9 Jul</div><div class="txt"><b>Wastewater, explained.</b><span class="pill fresh">New angle</span> The other top confusion behind returns: why there's a wastewater tank and what it actually means — it's the proof it's working, not waste. Removes a real purchase blocker before the close.</div></div>
+    <div class="c promo"><div class="num">03</div><div class="date">Fri 17 Jul</div><div class="txt"><b>Pre-order closes.</b> Last call to lock $749 + 2 free bottles before Monday's $949 restock. Offer, deadline, one CTA. Evening resend to non-openers.</div></div>
+    <div class="c wl"><div class="num">04</div><div class="date">Sat 18 Jul</div><div class="txt"><b>Waitlist opens.</b> Missed the price? The restock is 100 units only — the waitlist gets first pick Monday.</div></div>
+    <div class="c wl"><div class="num">05</div><div class="date">Mon 20 Jul</div><div class="txt"><b>Restock launch.</b> Pure's back — 100 units at $949 RRP. Waitlist window first, then the full list. Evening resend with a fresh subject.</div></div>
+    <div class="c promo"><div class="num">06</div><div class="date">Thu 23 Jul</div><div class="txt"><b>Units low.</b> Real scarcity — how many of the 100 are already gone.</div></div>
+    <div class="c brand"><div class="num">07</div><div class="date">Mon 27 Jul</div><div class="txt"><b>Proof / authority.</b> Owner reviews and the doctor-vetted angle — converts the considered buyers without leaning on a countdown.</div></div>
+    <div class="c promo"><div class="num">08</div><div class="date">Thu 30 Jul</div><div class="txt"><b>Final units.</b> Last units before sold out — next is the Nano (late Aug). Flips to a Nano waitlist if we clear early. Evening resend.</div></div>
+
+    <div class="grp">B2B · 3 sends</div>
+    <p class="grpnote">The production model is mid-transition — fixed monthly cut-offs are moving to on-demand turnaround. For July we hold the current 16 July cut-off; the new-timelines launch waits on Bade's confirmation.</p>
+
+    <div class="c b2b"><div class="num">B1</div><div class="date">Wed 8 Jul</div><div class="txt"><b>Cut-off nears.</b> Holding the current standard run for July: approve artwork by 16 July for early-August dispatch.</div></div>
+    <div class="c b2b"><div class="num">B2</div><div class="date">Wed 15 Jul</div><div class="txt"><b>Last call.</b> Artwork closes tomorrow for the August run.</div></div>
+    <div class="c b2b"><div class="num">B3</div><div class="date">Tue 28 Jul</div><div class="txt"><b>New, faster timelines.</b><span class="pill">Tentative</span> Announces the move off fixed monthly cut-offs to on-demand production — roughly a 2-week standard turnaround, 1-week priority. Holds until Bade confirms the live timeline; only sends once it's locked.</div></div>
+
+  </div>
+
+  <div class="footer">
+    <span>tethrd × Rippl</span>
+    <span>Prepared 30 Jun 2026 · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a></span>
+  </div>
+
+</div>
+</body>
+</html>
