@@ -85,6 +85,38 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
 .opt.rec { border-color:#bcd9c8; background:#f4faf6; }
 .opt strong { color:#2d6a4f; }
 
+/* Image asset block (per card) */
+.assets { margin-top:10px; padding:11px 14px; background:#fff; border:1px solid #ececec; border-radius:5px; }
+.assets-head { display:flex; align-items:center; gap:10px; margin-bottom:7px; }
+.assets-count { font-size:22px; font-weight:700; color:#1a1a1a; line-height:1; }
+.assets-count-label { font-size:8.5px; letter-spacing:1.2px; text-transform:uppercase; color:#bbb; line-height:1.25; font-weight:600; }
+.assets-badge { margin-left:auto; font-size:9px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; padding:4px 9px; border-radius:3px; }
+.badge-life { background:#eaf1e6; color:#4a6b3a; }
+.badge-studio { background:#e8edf2; color:#33506a; }
+.badge-both { background:#f4efe4; color:#7a5f2a; }
+.badge-none { background:#f2f2f2; color:#999; }
+.assets ul { margin:0; padding-left:16px; }
+.assets li { font-size:11px; color:#555; line-height:1.5; margin-bottom:2px; }
+.assets-note { font-size:10.5px; color:#999; line-height:1.45; margin-top:7px; }
+.assets-note strong { color:#8a5a1f; font-weight:600; }
+
+/* Image asset brief page */
+.asset-table { width:100%; border-collapse:collapse; margin-top:10px; font-size:11px; }
+.asset-table th { text-align:left; padding:8px 10px 6px; color:#999; font-weight:600; font-size:9px; letter-spacing:1.2px; text-transform:uppercase; border-bottom:1px solid #eee; }
+.asset-table th.c, .asset-table td.c { text-align:center; }
+.asset-table td { padding:9px 10px; border-bottom:1px solid #f5f5f5; color:#555; vertical-align:top; line-height:1.45; }
+.asset-table td.em { color:#1a1a1a; font-weight:600; }
+.asset-table td.c { font-variant-numeric:tabular-nums; font-weight:600; color:#1a1a1a; }
+.asset-table tr.total td { border-top:2px solid #e6e6e6; border-bottom:none; font-weight:700; color:#1a1a1a; padding-top:11px; }
+.taxo { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
+.taxo-col { background:#fafafa; border-radius:6px; padding:16px 20px; }
+.taxo-col.studio { opacity:0.6; }
+.taxo-h { font-size:12px; font-weight:700; margin-bottom:9px; letter-spacing:-0.2px; }
+.asset-mini { font-size:8px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-left:6px; vertical-align:middle; }
+.pill-off { font-size:8px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:#aaa; background:#eee; padding:2px 7px; border-radius:3px; margin-left:6px; vertical-align:middle; }
+.taxo-col ul { margin:0; padding-left:16px; }
+.taxo-col li { font-size:11px; color:#666; line-height:1.55; margin-bottom:3px; }
+
 .decision-list { counter-reset: d; }
 .decision-item { background:#fafafa; border-left:3px solid #c4972f; border-radius:6px; padding:14px 18px; margin-bottom:10px; font-size:12.5px; color:#555; line-height:1.55; }
 .decision-item strong { color:#1a1a1a; }
@@ -111,7 +143,7 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
     <div class="cover-products">Independence Day Sale &nbsp;&middot;&nbsp; Varsity Skort Set Launch &nbsp;&middot;&nbsp; Getaway Collection Drop &nbsp;&middot;&nbsp; Social Proof</div>
   </div>
   <div class="cover-bottom">
-    <div class="cover-date">26 June 2026 &middot; v5</div>
+    <div class="cover-date">1 July 2026 &middot; v6 &mdash; image asset brief added</div>
     <div class="cover-approval">Approved &middot; Build Ready</div>
   </div>
 </div>
@@ -196,6 +228,10 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
       <div class="card-desc">Open the long weekend with a plain-text letter from Elena. Personal, honest, no fake urgency. She names two or three in-season sets in the body: Novella, Roma, Clubhouse Skort.</div>
       <div class="card-promo">Suggest 20% sitewide &middot; code JULY4 &middot; Fri 3 &rarr; Mon 6</div>
       <div class="card-rationale"><strong>Why it goes out wide:</strong> the sale launch is the biggest revenue moment of the month, and it earns most when it reaches the whole list. So this one goes to everyone.</div>
+      <div class="assets">
+        <div class="assets-head"><span class="assets-count">0</span><span class="assets-count-label">images<br>this email</span><span class="assets-badge badge-none">Plain text &mdash; no custom images</span></div>
+        <div class="assets-note">Plain-text founder letter. No lifestyle or studio shoot needed &mdash; Elena names Novella, Roma and Clubhouse Skort in the body copy; product links only.</div>
+      </div>
     </div></div>
 
     <div class="card"><div class="card-accent acc-promo"></div><div class="card-body">
@@ -205,6 +241,15 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
       <div class="card-desc">A visual push on the 4th itself, mid-sale. One hero set, styled for the long weekend. Not a multi-product roundup.</div>
       <div class="card-detail"><strong>Hero:</strong> The Novella Set ($68) &middot; <strong>CTA:</strong> Shop The Sale</div>
       <div class="card-rationale"><strong>Why:</strong> a single-hero image carries a sale better than a busy grid, and keeping it to the engaged segment holds the relevance high.</div>
+      <div class="assets">
+        <div class="assets-head"><span class="assets-count">5</span><span class="assets-count-label">assets<br>to collect</span><span class="assets-badge badge-life">Lifestyle</span></div>
+        <ul>
+          <li>2 &times; on-season lifestyle heroes &mdash; the Novella Set ($68), styled for the long weekend (shoot a couple so we can pick the strongest)</li>
+          <li>2 &times; on-model detail shots &mdash; fabric, fit and styling close-ups</li>
+          <li>1 &times; coordinated lifestyle flat lay</li>
+        </ul>
+        <div class="assets-note">We&rsquo;ll likely build around one hero, but collect the full pack so design can pick and add detail as the layout wants. Still a single-hero email &mdash; not a roundup grid.</div>
+      </div>
     </div></div>
 
     <div class="card"><div class="card-accent acc-promo"></div><div class="card-body">
@@ -214,6 +259,10 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
       <div class="card-desc">Close the sale tonight. Another letter from Elena, soft and personal. The sale really does end here, so last chance is the truth rather than a tactic.</div>
       <div class="card-promo">20% ends tonight</div>
       <div class="card-rationale"><strong>Why:</strong> a personal close from the founder is one of the most dependable sends we have, and it gives the people on the fence a reason to move.</div>
+      <div class="assets">
+        <div class="assets-head"><span class="assets-count">0</span><span class="assets-count-label">images<br>this email</span><span class="assets-badge badge-none">Plain text &mdash; no custom images</span></div>
+        <div class="assets-note">Plain-text Elena sale-close. No lifestyle or studio images required.</div>
+      </div>
     </div></div>
   </div>
 
@@ -227,6 +276,14 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
       <div class="card-desc">A stripped-back tease to build the waitlist. Full-bleed editorial hero, model in the set, in motion. One line of type, one CTA. The subject line carries an eye emoji, a deliberate one-off for this launch.</div>
       <div class="card-detail"><strong>Hero:</strong> Varsity Skort Set ($75) &middot; <strong>CTA:</strong> Join The Waitlist &middot; <strong>Drop:</strong> Sat 11 Jul</div>
       <div class="card-rationale"><strong>Why narrow:</strong> a teaser doesn&rsquo;t sell to a cold list, it just spends reach. So this one only goes to engaged openers, to build the waitlist. The selling happens on launch day.</div>
+      <div class="assets">
+        <div class="assets-head"><span class="assets-count">3</span><span class="assets-count-label">assets<br>to collect</span><span class="assets-badge badge-life">Lifestyle</span></div>
+        <ul>
+          <li>2 &times; on-season lifestyle heroes &mdash; the Varsity Skort Set ($75), model in motion, full-bleed (give us a couple of options)</li>
+          <li>1 &times; on-model detail shot &mdash; a teaser crop (fabric / hem / pocket)</li>
+        </ul>
+        <div class="assets-note">The tease itself only uses one image, but collect options &mdash; and keep the world congruent with the Email 05 reveal so the launch reads as one campaign.</div>
+      </div>
     </div></div>
 
     <div class="card"><div class="card-accent acc-npd"></div><div class="card-body">
@@ -236,6 +293,17 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
       <div class="card-desc">The full reveal. Build runs hero, then a three-up detail grid, the silhouette / fabric / details blocks, a pocket close-up, a lifestyle scene, the &ldquo;waitlist shops first on Saturday&rdquo; block, then the CTA. No countdown timer. Any scarcity stays in the copy, and stays gentle.</div>
       <div class="card-detail"><strong>Hero:</strong> Varsity Skort Set &middot; <strong>CTA:</strong> Join The Waitlist &middot; colour/size shown visually, never as text USPs</div>
       <div class="card-rationale"><strong>Why:</strong> the reveal does the convincing, so it widens out to the full engaged segment and builds the audience for Saturday.</div>
+      <div class="assets">
+        <div class="assets-head"><span class="assets-count">10</span><span class="assets-count-label">assets<br>to collect</span><span class="assets-badge badge-life">Lifestyle</span></div>
+        <ul>
+          <li>2 &times; on-season lifestyle heroes &mdash; the Varsity Skort Set</li>
+          <li>4 &times; on-model detail shots &mdash; fabric, hem, pocket, movement (feed the three-up grid + silhouette / fabric / details blocks)</li>
+          <li>2 &times; coordinated lifestyle flat lays</li>
+          <li>1 &times; coordinated flat lay detail shot</li>
+          <li>1 &times; lifestyle scene &mdash; the set in an environment / in-context</li>
+        </ul>
+        <div class="assets-note"><strong>This is the master Varsity shoot.</strong> Collect broadly here &mdash; Emails 06, 07 and 10 all pull from this pool, so more angles is always better. No studio.</div>
+      </div>
     </div></div>
 
     <div class="card"><div class="card-accent acc-npd"></div><div class="card-body">
@@ -245,6 +313,15 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
       <div class="card-desc">Launch day, two sends. In the morning, the waitlist gets it first: you&rsquo;re in. At midday, the full list: it&rsquo;s live. Full price throughout. The launch creative leads on the set, with the Clubhouse Skort Set ($58) alongside it as the companion.</div>
       <div class="card-detail"><strong>Hero:</strong> Varsity Skort Set &middot; <strong>Companion:</strong> Clubhouse Skort Set &middot; <strong>CTA:</strong> Shop The Set</div>
       <div class="card-rationale"><strong>Why it goes out wide:</strong> a launch, like a sale, does its best numbers across the whole list. Letting the waitlist in first keeps the early-access promise without touching the price, and the companion skort lifts the basket.</div>
+      <div class="assets">
+        <div class="assets-head"><span class="assets-count">5</span><span class="assets-count-label">assets<br>to collect</span><span class="assets-badge badge-life">Lifestyle</span></div>
+        <ul>
+          <li>2 &times; on-season lifestyle heroes &mdash; the Clubhouse Skort Set ($58), the companion, in the same campaign world</li>
+          <li>2 &times; on-model detail shots &mdash; Clubhouse</li>
+          <li>1 &times; coordinated lifestyle flat lay &mdash; Varsity + Clubhouse together</li>
+        </ul>
+        <div class="assets-note"><strong>The Varsity launch hero comes from the Email 05 pool.</strong> These are the net-new Clubhouse companion shots so we can pair the two skorts on launch day. No studio.</div>
+      </div>
     </div></div>
 
     <div class="card"><div class="card-accent acc-npd"></div><div class="card-body">
@@ -254,6 +331,10 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
       <div class="card-desc">Pick up everyone who missed Saturday. New subject line, same hero, with a little early social proof once the first reactions land.</div>
       <div class="card-detail"><strong>Audience:</strong> launch non-openers + engaged non-purchasers &middot; <strong>CTA:</strong> Shop The Set</div>
       <div class="card-rationale"><strong>Why:</strong> a second, sharper send to a warm segment, the people who already opened or showed interest, usually beats the first wide swing.</div>
+      <div class="assets">
+        <div class="assets-head"><span class="assets-count">0</span><span class="assets-count-label">assets<br>to collect</span><span class="assets-badge badge-none">Reuse / optional UGC</span></div>
+        <div class="assets-note"><strong>Nothing net-new.</strong> Pulls from the Varsity launch pool &mdash; new subject, same world. Fold in customer / UGC social proof if any has landed by then.</div>
+      </div>
     </div></div>
   </div>
 
@@ -267,6 +348,15 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
       <div class="card-desc">A single-product spotlight carried by customer quotes. One hero set, real words from the people who own it.</div>
       <div class="card-detail"><strong>Hero:</strong> The Roma Set &middot; <strong>CTA:</strong> Shop The Set</div>
       <div class="card-rationale"><strong>Why:</strong> proof-led, single-product features are some of the best-converting emails we send. Roma is locked as the hero &mdash; it&rsquo;s performing well in paid, so we carry that momentum into email.</div>
+      <div class="assets">
+        <div class="assets-head"><span class="assets-count">6</span><span class="assets-count-label">assets<br>to collect</span><span class="assets-badge badge-life">Lifestyle</span></div>
+        <ul>
+          <li>2 &times; on-season lifestyle heroes &mdash; the Roma Set</li>
+          <li>3 &times; on-model detail shots &mdash; fabric, fit and styling</li>
+          <li>1 &times; coordinated lifestyle flat lay</li>
+        </ul>
+        <div class="assets-note">Proof-led single-product feature. The quotes are text, but collect a full Roma pack so design has options. No studio.</div>
+      </div>
     </div></div>
 
     <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
@@ -276,6 +366,16 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
       <div class="card-desc">A &ldquo;just landed&rdquo; Getaway Collection drop. Lead with the genuinely new pieces, and make sure the CTA matches what&rsquo;s actually shown.</div>
       <div class="card-detail"><strong>Showcase &mdash; newest arrivals from the Getaway Collection:</strong> Brennan Pant, Cleo Culotte, Oasis Pant, Cabana Button-Up &middot; <strong>CTA:</strong> See What&rsquo;s New</div>
       <div class="card-rationale"><strong>Why:</strong> arrivals do better gathered into one drop than dripped out across separate sends. And &ldquo;See What&rsquo;s New&rdquo; only works when the heroes really are new, so we lead with this month&rsquo;s pieces.</div>
+      <div class="assets">
+        <div class="assets-head"><span class="assets-count">10</span><span class="assets-count-label">assets<br>to collect</span><span class="assets-badge badge-life">Lifestyle</span></div>
+        <ul>
+          <li>1 &times; coordinated lifestyle flat lay &mdash; the collection opener, all four pieces together</li>
+          <li>4 &times; on-model lifestyle heroes &mdash; one each for the Brennan Pant, Cleo Culotte, Oasis Pant and Cabana Button-Up</li>
+          <li>4 &times; on-model detail shots &mdash; one per arrival, so every piece has a hero + a detail</li>
+          <li>1 &times; coordinated flat lay detail shot</li>
+        </ul>
+        <div class="assets-note">Our biggest collection ask &mdash; four arrivals, each needs a hero and a detail so we can build proper product blocks. No studio.</div>
+      </div>
     </div></div>
 
     <div class="card"><div class="card-accent acc-content"></div><div class="card-body">
@@ -285,15 +385,68 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
       <div class="card-desc">Keep the momentum going past launch week with a styling piece. A few ways to wear the Varsity Set and the Roma Set through summer, some community photos, and an invite to tag #LohnrLife.</div>
       <div class="card-detail"><strong>Hero:</strong> Varsity Set + Roma Set styled three ways &middot; <strong>CTA:</strong> Build Your Rotation</div>
       <div class="card-rationale"><strong>Why:</strong> it keeps the new launch and our best-performing set moving a couple of weeks on without another discount, and styling content is something we don&rsquo;t lean on enough.</div>
+      <div class="assets">
+        <div class="assets-head"><span class="assets-count">6</span><span class="assets-count-label">assets<br>to collect</span><span class="assets-badge badge-life">Lifestyle</span></div>
+        <ul>
+          <li>3 &times; on-season lifestyle styling scenes &mdash; the Varsity Set worn three ways (work / weekend / travel)</li>
+          <li>3 &times; on-season lifestyle styling scenes &mdash; the Roma Set worn three ways</li>
+        </ul>
+        <div class="assets-note">Styling content wants variety. Some can lean on the Varsity and Roma pools, but collect fresh scenes where you can. Community photos are UGC (#LohnrLife).</div>
+      </div>
     </div></div>
   </div>
 </div>
 
-<!-- DECISIONS — CONFIRMED -->
+<!-- IMAGE ASSET BRIEF -->
+<div class="page">
+  <div class="section-label">For The Studio</div>
+  <div class="page-title">Image Asset Brief</div>
+  <div class="page-desc">What to collect for July, send by send. We&rsquo;re gathering an asset <strong>pool</strong> here, not locking a final layout &mdash; none of these emails are designed yet, so we&rsquo;ve asked generously on purpose. Shoot the full pack for each send and we&rsquo;ll be selective when we build. Every number below is a <strong>floor, not a ceiling</strong> &mdash; extra angles, crops and scenes are always welcome. July is fully <strong style="color:#4a6b3a;">lifestyle-led</strong>: no studio / white-background assets are needed this month.</div>
+
+  <table class="asset-table">
+    <tr><th>#</th><th>Email</th><th>Category</th><th class="c">Collect</th><th>What to collect</th></tr>
+    <tr><td class="c">01</td><td class="em">Independence Day Sale Is Live</td><td>Plain text</td><td class="c">0</td><td>No images &mdash; Elena letter, sets named in copy</td></tr>
+    <tr><td class="c">02</td><td class="em">The Long Weekend Edit</td><td>Lifestyle</td><td class="c">5</td><td>2 heroes + 2 on-model detail + 1 coordinated flat lay</td></tr>
+    <tr><td class="c">03</td><td class="em">Independence Day Last Chance</td><td>Plain text</td><td class="c">0</td><td>No images &mdash; Elena sale-close</td></tr>
+    <tr><td class="c">04</td><td class="em">Varsity: coming soon</td><td>Lifestyle</td><td class="c">3</td><td>2 heroes (in motion) + 1 on-model detail</td></tr>
+    <tr><td class="c">05</td><td class="em">Introducing: the Varsity Skort Set</td><td>Lifestyle</td><td class="c">10</td><td><strong>Master Varsity shoot:</strong> 2 heroes + 4 on-model detail + 2 flat lays + 1 flat-lay detail + 1 scene</td></tr>
+    <tr><td class="c">06</td><td class="em">It&rsquo;s here (launch)</td><td>Lifestyle</td><td class="c">5</td><td>Clubhouse companion pack: 2 heroes + 2 detail + 1 combined flat lay <em>(Varsity reused from E05)</em></td></tr>
+    <tr><td class="c">07</td><td class="em">The set everyone&rsquo;s reaching for</td><td>Lifestyle</td><td class="c">0</td><td>Draws from the Varsity pool + optional UGC / social proof</td></tr>
+    <tr><td class="c">08</td><td class="em">Why she keeps reaching for it</td><td>Lifestyle</td><td class="c">6</td><td>Roma pack: 2 heroes + 3 on-model detail + 1 flat lay</td></tr>
+    <tr><td class="c">09</td><td class="em">The Getaway Collection: just landed</td><td>Lifestyle</td><td class="c">10</td><td>1 collection flat lay + 4 on-model heroes + 4 detail + 1 flat-lay detail</td></tr>
+    <tr><td class="c">10</td><td class="em">How to style your summer sets</td><td>Lifestyle</td><td class="c">6</td><td>6 styling scenes (Varsity + Roma, three ways each)</td></tr>
+    <tr class="total"><td class="c"></td><td>Total</td><td>Lifestyle only</td><td class="c">45</td><td>Collect generously &mdash; final selection happens in design</td></tr>
+  </table>
+
+  <div class="page-desc" style="margin-top:18px;"><strong>Reuse note:</strong> Email 05 is the master Varsity shoot &mdash; Emails 06, 07 and 10 all draw from that pool, so the counts above are net-new per send to avoid double-asking. The Varsity launch world is where to be most generous: the more we collect there, the more options we have across the whole arc.</div>
+
+  <div class="taxo">
+    <div class="taxo-col">
+      <div class="taxo-h">Lifestyle <span class="asset-mini badge-life">Used in July</span></div>
+      <ul>
+        <li>On-season lifestyle hero images</li>
+        <li>On-model detail shots that match the lifestyle hero</li>
+        <li>Coordinated lifestyle flat lay images</li>
+        <li>Coordinated flat lay detail shots</li>
+      </ul>
+    </div>
+    <div class="taxo-col studio">
+      <div class="taxo-h">Studio &mdash; white background <span class="pill-off">Not used this month</span></div>
+      <ul>
+        <li>Studio hero product images</li>
+        <li>On-model studio detail shots</li>
+        <li>Studio flat lay images</li>
+        <li>Studio flat lay detail shots</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DECISIONS &mdash; CONFIRMED -->
 <div class="page">
   <div class="section-label">Locked</div>
   <div class="page-title">Confirmed &amp; Ready to Build</div>
-  <div class="page-desc">All five calls are in from Shanks. Nothing outstanding &mdash; this is locked for production and ready to hand to Jay for image assets.</div>
+  <div class="page-desc">All five calls are in from Shanks. Nothing outstanding &mdash; this is locked for production. Every send now carries a clear asset ask (see the Image Asset Brief) &mdash; deliberately generous, so Jay can shoot a full pool and we stay selective in design.</div>
   <div class="decision-list">
     <div class="decision-item"><strong>1 &middot; Independence Day discount &mdash; confirmed.</strong> 20% sitewide, Fri 3 to Mon 6. Code: JULY4 &mdash; Shanks is creating it.</div>
     <div class="decision-item"><strong>2 &middot; Varsity launch-day mechanic &mdash; confirmed.</strong> Double send on Saturday the 11th: waitlist first access in the morning, full list at midday.</div>
