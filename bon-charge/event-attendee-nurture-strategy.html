@@ -138,7 +138,7 @@
     <div class="totals">
       <span><strong>8</strong> emails</span>
       <span><strong>4</strong> branches</span>
-      <span><strong>17</strong> copy columns</span>
+      <span><strong>20</strong> copy columns</span>
       <span><strong>~18-21</strong> days</span>
     </div>
   </div>
@@ -183,9 +183,9 @@
         <span class="farrow">→</span>
         <div class="fnode delay"><div class="fl">DELAY</div><div class="ft">2 days</div></div>
         <span class="farrow">→</span>
-        <div class="fnode email"><div class="fl">E2 · DAY 2</div><div class="ft">The science</div></div>
-        <span class="farrow">→</span>
         <div class="fnode split"><div class="fl">SPLIT</div><div class="ft">event_goal</div></div>
+        <span class="farrow">→</span>
+        <div class="fnode email stacked"><span class="badge4">×4</span><div class="fl">E2 · DAY 2</div><div class="ft">The science</div></div>
         <span class="farrow">→</span>
         <div class="fnode email stacked"><span class="badge4">×4</span><div class="fl">E3 · DAY 4</div><div class="ft">Hero products</div></div>
         <span class="farrow">→</span>
@@ -204,7 +204,7 @@
       <span class="chip">SKIN</span><span class="chip">SLEEP</span><span class="chip">RECOVERY</span><span class="chip default">WELLNESS / DEFAULT</span>
     </div>
     <div class="branch-note">
-      <strong>The split fires on <code>event_goal</code> after E2</strong>, into 4 branches. Only the 3 belief emails (E3, E4, E7) genuinely diverge by pillar → <span class="pill split">split ×4</span>. E1, E2, E5, E6, E8 stay <span class="pill generic">generic</span> with a dynamic pillar hero. <strong>Entry filter:</strong> consent = true AND Placed Order (all time) = 0. <strong>Exit</strong> on any Placed Order. <strong>Build (Stefan):</strong> recommend a single linear timeline with conditional content blocks on the 3 belief emails rather than a hard 4-branch split — lighter to maintain, no branch-merge problem.
+      <strong>The split fires on <code>event_goal</code> right after E1</strong>, into 4 branches. E2, E3, E4 and E7 carry pillar-specific copy → <span class="pill split">split ×4</span> (WELLNESS is the no-data fallback for un-tagged profiles). E1, E5, E6 and E8 stay <span class="pill generic">generic</span>. <strong>Entry:</strong> added to the "Event Attendee" list, consent = true AND Placed Order (all time) = 0. <strong>Exit</strong> on any Placed Order. <strong>Build (Stefan):</strong> recommend a single linear timeline with conditional content blocks rather than a hard 4-branch split — lighter to maintain, no branch-merge problem.
     </div>
   </section>
 
@@ -232,21 +232,21 @@
       <div class="card">
         <div class="card-top"><span class="card-e">E1 · Thank you</span><span class="card-day">DAY 0 · ~3-4H</span></div>
         <div class="card-title">Reconnect the memory</div>
-        <div class="card-row"><span class="k">Objective</span><span class="v">Emotional reconnection to the event. Zero selling.</span></div>
-        <div class="card-row"><span class="k">Move</span><span class="v">Environment shot from the event type. Recap what they felt, generically. Tease the science coming next.</span></div>
-        <div class="card-row"><span class="k">CTA</span><span class="v">EXPLORE WHAT YOU TRIED</span></div>
-        <div class="card-subject"><span class="sl">Thanks for joining us today</span> — <span class="pv">Here's what your body actually experienced.</span></div>
+        <div class="card-row"><span class="k">Objective</span><span class="v">Emotional reconnection. No hard pitch, no next-email tease (low-intent audience). Ends on a soft category push.</span></div>
+        <div class="card-row"><span class="k">Move</span><span class="v">Event-type hero (Akshay sources from the two event links). Recap the felt experience. "Bring it home" 4-vertical category push. Dedicated trust section (not a sticker).</span></div>
+        <div class="card-row"><span class="k">CTA</span><span class="v">4-tile category push → EXPLORE [PILLAR]</span></div>
+        <div class="card-subject"><span class="sl">Thank you for joining us</span> — <span class="pv">Here's what your body actually experienced.</span></div>
         <div class="card-badges"><span class="pill generic">GENERIC</span></div>
       </div>
 
       <div class="card">
         <div class="card-top"><span class="card-e">E2 · The science</span><span class="card-day">DAY 2</span></div>
-        <div class="card-title">The science of what you felt</div>
-        <div class="card-row"><span class="k">Objective</span><span class="v">Explain the mechanism behind the felt sensation. TGA-safe.</span></div>
-        <div class="card-row"><span class="k">Move</span><span class="v">Red light + near-infrared (660nm / 850nm) support cellular energy. SAB credibility line. One dynamic pillar stat.</span></div>
-        <div class="card-row"><span class="k">CTA</span><span class="v">SEE THE MOST POPULAR PRODUCTS</span></div>
-        <div class="card-subject"><span class="sl">Why that session actually felt good</span> — <span class="pv">The science behind red light and recovery.</span></div>
-        <div class="card-badges"><span class="pill generic">GENERIC + DYNAMIC STAT</span></div>
+        <div class="card-title">The science of red light therapy</div>
+        <div class="card-row"><span class="k">Objective</span><span class="v">Close the learning curve for a novice. Build real awareness, then earn trust.</span></div>
+        <div class="card-row"><span class="k">Move</span><span class="v">Three expanded science blocks (3-4 lines each). Ties red light to their goal + an our-customer stat. SAB module: backed by the board not marketing, and why cheap knockoffs fall short. Sleep variant swaps to circadian science.</span></div>
+        <div class="card-row"><span class="k">CTA</span><span class="v">SEE OUR MOST POPULAR PRODUCTS (per pillar)</span></div>
+        <div class="card-subject"><span class="sl">The science behind what you felt in that session</span> — <span class="pv">Red light therapy and recovery, in simple terms.</span></div>
+        <div class="card-badges"><span class="pill split">SPLIT ×4</span></div>
       </div>
 
       <div class="card">
@@ -270,20 +270,20 @@
       </div>
 
       <div class="card">
-        <div class="card-top"><span class="card-e">E5 · Attendee offer</span><span class="card-day">DAY 9</span></div>
-        <div class="card-title">Your event attendee offer</div>
-        <div class="card-row"><span class="k">Objective</span><span class="v">Introduce first-purchase pressure with a time-boxed offer.</span></div>
-        <div class="card-row"><span class="k">Move</span><span class="v">Dynamic pillar hero. Dynamic code on a solid block. 20% off, one code. Payment options + trust strip.</span></div>
-        <div class="card-row"><span class="k">CTA</span><span class="v">UNLOCK YOUR EVENT OFFER</span></div>
-        <div class="card-subject"><span class="sl">Your event offer is here</span> — <span class="pv">A thank-you for coming. Your attendee rate inside.</span></div>
-        <div class="card-badges"><span class="pill generic">GENERIC · DYNAMIC HERO</span><span class="pill discount">20% OFF</span></div>
+        <div class="card-top"><span class="card-e">E5 · Exclusive offer</span><span class="card-day">DAY 9</span></div>
+        <div class="card-title">You tried it in person, now bring it home</div>
+        <div class="card-row"><span class="k">Objective</span><span class="v">First purchase. Frame as exclusive-to-you, never say "event attendee" in the copy.</span></div>
+        <div class="card-row"><span class="k">Move</span><span class="v">Dynamic pillar hero + code block. 20% off the entire website, code EVENT20. Full-width Buy Now Pay Later strip. Category push above footer. Kept short.</span></div>
+        <div class="card-row"><span class="k">CTA</span><span class="v">CLAIM YOUR EXCLUSIVE OFFER</span></div>
+        <div class="card-subject"><span class="sl">You tried it in person. Now here's 20% off</span> — <span class="pv">20% off the entire site, to bring it home.</span></div>
+        <div class="card-badges"><span class="pill generic">GENERIC · DYNAMIC HERO</span><span class="pill discount">20% OFF SITE-WIDE</span></div>
       </div>
 
       <div class="card">
         <div class="card-top"><span class="card-e">E6 · Shop by goal</span><span class="card-day">DAY 12</span></div>
         <div class="card-title">Build your routine</div>
         <div class="card-row"><span class="k">Objective</span><span class="v">Let them self-select by goal.</span></div>
-        <div class="card-row"><span class="k">Move</span><span class="v">4-cell goal nav (Skin · Sleep · Recovery · Hair) with EXPLORE [PILLAR] CTAs. Hair enters here as the cross-pillar plant. Soft offer reminder.</span></div>
+        <div class="card-row"><span class="k">Move</span><span class="v">Offer reminder block pinned on top. Then a stylised 4-cell goal nav (Skin · Sleep · Recovery · Hair) with EXPLORE [PILLAR] CTAs. Hair enters here.</span></div>
         <div class="card-row"><span class="k">CTA</span><span class="v">EXPLORE SKIN / SLEEP / RECOVERY / HAIR</span></div>
         <div class="card-subject"><span class="sl">Where should you start</span> — <span class="pv">Skin, sleep or recovery. Pick your lane.</span></div>
         <div class="card-badges"><span class="pill generic">GENERIC NAV</span></div>
@@ -292,10 +292,10 @@
       <div class="card">
         <div class="card-top"><span class="card-e">E7 · Start here</span><span class="card-day">DAY 15</span></div>
         <div class="card-title">Still thinking? Start here</div>
-        <div class="card-row"><span class="k">Objective</span><span class="v">Remove the high-AOV barrier with an accessible first step.</span></div>
-        <div class="card-row"><span class="k">Move</span><span class="v">Per-pillar entry product + starter bundle + flagship, so all price points are covered. Offer still live.</span></div>
+        <div class="card-row"><span class="k">Objective</span><span class="v">Low-friction entry. Offer reminder pinned on top.</span></div>
+        <div class="card-row"><span class="k">Move</span><span class="v">Lead with the curated bundle paired to their goal, then push the bestseller single for anyone who wants to start with one.</span></div>
         <div class="card-row"><span class="k">CTA</span><span class="v">START YOUR BON CHARGE ROUTINE</span></div>
-        <div class="card-subject"><span class="sl">Still thinking? Start here</span> — <span class="pv">The easiest first step into the range.</span></div>
+        <div class="card-subject"><span class="sl">The easiest way in</span> — <span class="pv">A curated bundle, or one product to start.</span></div>
         <div class="card-badges"><span class="pill split">SPLIT ×4</span></div>
       </div>
 
@@ -303,7 +303,7 @@
         <div class="card-top"><span class="card-e">E8 · Last chance, from Andy</span><span class="card-day">DAY 18-21</span></div>
         <div class="card-title">A plain-text note from Andy</div>
         <div class="card-row"><span class="k">Objective</span><span class="v">Close the funnel with the founder's personal 1:1 voice. One personal note lands harder than another designed close.</span></div>
-        <div class="card-row"><span class="k">Move</span><span class="v">Plain text, no design, no images. Andy acknowledges they came in person, restates the 20% attendee offer, invites a reply. Reply-To is the monitored hello@ inbox.</span></div>
+        <div class="card-row"><span class="k">Move</span><span class="v">Plain text, no design. Why Andy & Katie started BON CHARGE, his own nightly routine (Blue Light Blocking Glasses), EVENT20 expires midnight tonight, thank-you. Reply-To the monitored hello@ inbox.</span></div>
         <div class="card-row"><span class="k">CTA</span><span class="v">Plain text link, Claim your 20% offer</span></div>
         <div class="card-subject"><span class="sl">Before your attendee offer closes</span> — <span class="pv">A quick note from me, Andy. Your 20% code closes soon.</span></div>
         <div class="card-badges"><span class="pill" style="background:var(--warm-amber-bg);color:var(--warm-amber-text);border:1px solid var(--warm-amber);">PLAIN TEXT · ANDY</span><span class="pill discount">20% OFF</span></div>

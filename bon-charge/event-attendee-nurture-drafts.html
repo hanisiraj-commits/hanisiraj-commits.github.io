@@ -54,139 +54,183 @@
 </div></div>
 <div class="wrap"><div class="doc">
 <h1>Event Attendee Nurture · Pass 2 Drafts (BON CHARGE)</h1>
-<p><strong>Status:</strong> Draft for Hani to finalize · 2026-07-01 · v1 · ROW primary (AU swaps noted inline)
-<strong>Flow:</strong> <code>F_EVENT-ATTENDEE-NURTURE</code> · 8 emails · 17 copy columns (E3/E4/E7 pillar-split ×4 + E1/E2/E5/E6/E8 generic)
-<strong>Trigger:</strong> Added to list <strong>"Event Attendee"</strong>. Entry filter: consent = true AND Placed Order (all time) = 0. Exit on any Placed Order.
-<strong>Split:</strong> conditional on <code>event_goal</code> after E2 → SKIN · SLEEP · RECOVERY · WELLNESS/DEFAULT (Stress + Longevity + no-goal).
+<p><strong>Status:</strong> Draft for Hani to finalize · v2 (Hani feedback 02/07) · ROW primary (AU swaps inline)
+<strong>Flow:</strong> <code>F_EVENT-ATTENDEE-NURTURE</code> · 8 emails · <strong>20 copy columns</strong> (E2/E3/E4/E7 pillar-split ×4 + E1/E5/E6/E8 generic)
+<strong>Trigger:</strong> Added to list <strong>"Event Attendee"</strong> (membership yes/no). Entry filter: consent = true AND Placed Order (all time) = 0. Exit on any Placed Order.
+<strong>Split moved to after E1</strong> (v2): E1 generic → conditional split on <code>event_goal</code> → SKIN · SLEEP · RECOVERY · WELLNESS/DEFAULT (fallback: Stress + Longevity + no-goal). E2 is now a pillar clone set with the DEFAULT as the no-data fallback.
 <strong>Sender:</strong> From-name <code>BON CHARGE</code> · <code>no-reply@boncharge.com</code>. <strong>E8 exception:</strong> plain text from Andy, Reply-To <code>hello@boncharge.com</code> (monitored).
-<strong>Offer:</strong> 20% attendee offer opens E5, closes E8. One code <code>EVENT20</code> (placeholder, confirm with Andy). No stacking, no 25% messaging, no timezone-specific days in body (expiry in T&amp;Cs only).</p>
-<p><strong>Voice + punctuation locks:</strong> Calm authority, premium, science-led, warm. Zero em/en dashes. No Oxford commas. No full stops on headers/subs/eyebrows; body sentences end with full stops. Full official product names. Pillar CTAs verbatim (<code>EXPLORE SKIN/SLEEP/RECOVERY/HAIR</code>). "Protocol" not "ritual". Stats as "X% reported [benefit]" with verbatim n= disclaimer directly under the stat. No refund/guarantee/trial language. No TGA banned words (treats/cures/heals/clinically proven/guaranteed/"you will"). Green verified ticks <code>#55B705</code>, flat solid stars, black CTAs <code>#202020</code>, Linen Light base, no emojis, no borders.</p>
-<p><strong>Reviews:</strong> all pulled live from boncharge.com PDPs (01/07). Real, named, multi-sentence. Render each with a flat 5-star graphic + green verified-customer tick + first name. Hani/Belle can swap any.</p>
-<p><strong>Compliance routing:</strong> E2 (science) + E4 stat lines are the highest claim-risk. New science copy routes Belle → Stefan → Ana unless verbatim Andy-approved. Andy-formula pillar lines in E6 are blueprint-locked/approved.</p>
+<strong>Offer:</strong> 20% off the entire website, opens E5, closes E8. One code <code>EVENT20</code> (placeholder, confirm with Andy). No stacking, no 25% messaging.</p>
+<p><strong>Voice + punctuation locks:</strong> Calm authority, premium, science-led, warm. Zero em/en dashes. No Oxford commas. No full stops on headers/subs/eyebrows; body sentences end with full stops. Full official product names. Pillar CTAs verbatim (<code>EXPLORE SKIN/SLEEP/RECOVERY/HAIR</code>). "Protocol" not "ritual". Stats as "X% reported [benefit]" with verbatim n= disclaimer directly under the stat, explicitly framed as from customers who used the product. No refund/guarantee/trial language. No TGA banned words (treats/cures/heals/clinically proven/guaranteed/"you will"). Appearance-based skin claims only. Green verified ticks <code>#55B705</code>, flat solid stars, black CTAs <code>#202020</code>, Linen Light base, no emojis, no borders.</p>
+<p><strong>Assets:</strong> We hold almost no first-party event imagery. For E1's hero (and any event-type shot), Akshay to source from the client's event pages:
+- https://au.boncharge.com/blogs/pd-test-event-listing-page/karve-club-x-bon-charge
+- https://luma.com/boncharge?period=past</p>
+<p><strong>Reviews:</strong> all pulled live from boncharge.com PDPs (01/07). Real, named, multi-sentence. Render each with a flat 5-star graphic + green verified-customer tick + first name.</p>
+<p><strong>Compliance routing:</strong> E2 (science + SAB/knockoffs) + all stat lines are the highest claim-risk. New science copy routes Belle → Stefan → Ana unless verbatim Andy-approved. Andy-formula pillar lines in E6 are blueprint-locked.</p>
 <hr />
 <h1>E1 · Thank you / reconnect the memory  [GENERIC · Day 0, ~3-4h after sign-up]</h1>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E1_THANK-YOU</code>
-<strong>Awareness:</strong> Memory. Emotional reconnection, zero selling.</p>
+<strong>Awareness:</strong> Memory. Emotional reconnection. No hard pitch, no next-email tease (low-intent audience, keep them onside). Ends on a soft, relevant category push.</p>
 <p><strong>Subject options:</strong>
-- A: <code>Thanks for joining us today</code>
-- B: <code>That feeling after your session? Here's why</code>
-- C: <code>Great to have you with us today</code></p>
+- A: <code>Thank you for joining us</code>
+- B: <code>Great to have you with us</code>
+- C: <code>Thanks for spending time with us</code></p>
 <p><strong>Preview:</strong> <code>Here's what your body actually experienced.</code></p>
 <h3>Module 1 · Eyebrow</h3>
 <pre><code>[ EYEBROW · small all-caps · muted ]
 THANK YOU FOR JOINING US
 </code></pre>
 <h3>Module 2 · Hero</h3>
-<pre><code>[ HERO IMAGE · warm environment shot from the event type (recovery lounge / red light session / activation floor), a person mid-experience · calm natural lighting · Linen Light base · no product pack shot, no glow, no border ]
+<pre><code>[ HERO IMAGE · an event-type shot (recovery lounge / red light session / activation floor) · Akshay to source from the two event links at the top of this doc, since we have no first-party event assets · calm natural lighting · Linen Light base · no glow, no border ]
 
-Thanks for spending time with us today
+Thank you for joining us
 </code></pre>
 <h3>Module 3 · Hero sub-headline</h3>
 <pre><code>Here's what your body actually experienced
 </code></pre>
 <h3>Module 4 · Primary content · the experience recap</h3>
-<pre><code>You gave your body a proper moment to slow down. Red light, gentle warmth, a pause in the middle of a normal day.
+<pre><code>You gave your body a proper moment to slow down. Red light, gentle warmth, and a pause in the middle of a normal day.
 
-Whatever brought you in, your body noticed the difference. That calm, loosened feeling afterwards was real.
+Your body would have noticed the real difference. That calm, loosened feeling afterwards was the real impact of it.
 </code></pre>
-<h3>Module 5 · Soft science teaser</h3>
-<pre><code>There is genuine science behind why that felt so good. We will get into it in a couple of days.
+<h3>Module 5 · Category push · bring it home</h3>
+<pre><code>[ DESIGN · headline + one supporting line, then a 4-tile category grid, each tile linking to its vertical. Keep it soft and generic, not a hard product pitch. This is a category push, not a product sell. ]
+
+Bring the same experience home
+The red light, the warmth, the reset. It all started with the products you saw in person. Here's where to explore.
+
+[ CATEGORY TILES · 4-up ]
+SKIN   → EXPLORE SKIN
+SLEEP  → EXPLORE SLEEP
+RECOVERY → EXPLORE RECOVERY
+HAIR   → EXPLORE HAIR
 </code></pre>
-<h3>Module 6 · CTA</h3>
-<pre><code>[ CTA · black, all caps, full width ]
-EXPLORE WHAT YOU TRIED
-[ LINK · product range (default). Swap to a dedicated events landing page if Belle confirms one. ]
+<h3>Module 6 · Trust section (dedicated, not a sticker)</h3>
+<pre><code>[ DESIGN · a proper dedicated trust section, not a small graphic ticker · 4 trust points, evenly weighted, with a flat 5-star graphic ]
+
+400,000+ happy customers
+5,700+ five-star reviews
+Backed by our Scientific Advisory Board
+Official Recovery Partner of Fulham FC
+
+[ NOTE · confirm exact live review count (Hani mentioned 5,500+; baseline has 5,700+) before build. ]
 </code></pre>
-<h3>Module 7 · Trust ticker</h3>
-<pre><code>[ Flat 5-star graphic ]
-Trusted by 400,000+ customers . 5,700+ five-star reviews . Scientific Advisory Board
-</code></pre>
-<h3>Module 8 · Footer</h3>
+<h3>Module 7 · Footer</h3>
 <pre><code>[ Standard reusable footer. No EU withdrawal block (pre-purchase flow). ]
 </code></pre>
 <hr />
-<h1>E2 · The science of what you felt  [GENERIC · dynamic pillar stat · Day 2]</h1>
-<p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E2_THE-SCIENCE</code>
-<strong>Awareness:</strong> Education / Solution Aware. Lead with the felt sensation, explain the mechanism, TGA-safe.</p>
-<p><strong>Subject options:</strong>
-- A: <code>Why that session actually felt good</code>
-- B: <code>It wasn't a mood. It was a mechanism</code>
-- C: <code>The science behind how you felt</code></p>
-<p><strong>Preview:</strong> <code>Red light and recovery, explained simply.</code></p>
-<h3>Module 1 · Eyebrow</h3>
-<pre><code>THE SCIENCE
-</code></pre>
-<h3>Module 2 · Hero</h3>
-<pre><code>[ HERO IMAGE · calm science-forward lifestyle shot, a person using red light or recovery tech at home · Linen Light base ]
+<h1>E2 · The science of red light therapy  [PILLAR-SPLIT ×4 · Day 2]</h1>
+<p><strong>Awareness:</strong> Education / Solution Aware. A couple of days on, be more direct. Red light therapy is where health and recovery are heading, and there's a learning curve. This email closes that gap for someone with little prior context. Split per pillar (clones), with WELLNESS as the no-data fallback.</p>
+<p><strong>Shared shell (all 4 variants):</strong> Eyebrow <code>THE SCIENCE</code> · Hero <em>"The science behind red light therapy"</em> · sub <em>"Why people feel different after a red light and recovery session"</em> · support line <em>"It's all in the science"</em> · 3 expanded science blocks · pillar goal + stat module · SAB + knockoffs module · per-pillar popular products · footer.</p>
+<h3>Shared Module · Hero</h3>
+<pre><code>[ EYEBROW ] THE SCIENCE
+[ HERO IMAGE · calm science-forward lifestyle shot, a person using red light or recovery tech at home · Linen Light base ]
 
-Why people feel different after a red light and recovery session
+The science behind red light therapy
 </code></pre>
-<h3>Module 3 · Hero sub-headline</h3>
-<pre><code>It's not a mood. It's a mechanism
+<h3>Shared Module · Hero sub + support</h3>
+<pre><code>Why people feel different after a red light and recovery session
+
+It's all in the science
 </code></pre>
-<h3>Module 4 · Primary content · how it works</h3>
-<pre><code>[ DESIGN · three short blocks, each with a simple line icon, stacked ]
+<h3>Shared Module · Primary content · three blocks (expanded, novice-friendly)</h3>
+<pre><code>[ DESIGN · three stacked blocks, each with a simple line icon · 3 to 4 lines of plain-language explanation each, written for someone new to red light therapy ]
 
 The light
-Red Light (660nm) and Near-Infrared (850nm) are absorbed by your cells. Science-backed light designed to support your cells' natural energy production.
+Red Light (660nm) and Near-Infrared (850nm) are specific wavelengths of light your body responds to. When your skin and cells absorb them, they are designed to support the way your cells make their own energy. More cellular energy is the groundwork for how your body repairs, recovers and renews itself. It is light doing real work, not warmth you simply feel.
 
 The warmth
-Gentle infrared heat and recovery work help your body settle into its natural rest and recovery response. That is the loosened, calm feeling you left with.
+Alongside the light, gentle infrared heat helps your body ease into its natural rest and recovery response. This is the part you feel most in the moment, the loosening, the calm, the sense of your system settling. It is the same response your body reaches for after good movement or deep rest.
 
 The result
-Put together, that is why a good session leaves most people feeling restored rather than wired.
-</code></pre>
-<h3>Module 5 · Dynamic pillar stat</h3>
-<pre><code>[ DYNAMIC STAT BLOCK · switches on event_goal · oversized pull-number on Linen Deep · disclaimer directly under the number ]
+Put the two together and you get why a proper session tends to leave people feeling restored rather than wired. It is not a quick hit of energy. It is your body being supported to do what it already knows how to do, a little better, the more consistently you use it.
 
-Default (WELLNESS / no goal):
-90% reported improved relaxation and sleep quality*
-*Based on customer reviews of the Infrared PEMF range that mention at least one specific outcome (n=56). Experiences may vary.
+[ SLEEP VARIANT · swap this block set to circadian science: how evening blue and green light suppresses melatonin, why blocking it 2 to 3 hours before bed lets your body wind down naturally, and why darkness is the signal your sleep depends on. Keep the same 3-block, 3-to-4-line, novice-friendly structure. ]
+</code></pre>
+<h3>Per-pillar Module · your goal + our-customer stat</h3>
+<pre><code>[ DESIGN · headline ties red light therapy directly to the goal they told us at sign-up · oversized stat pull-number on Linen Deep · disclaimer directly under the number, explicitly from customers who used the product ]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Goal tie-in headline</th>
+<th>Stat + disclaimer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SKIN</strong></td>
+<td>Here's how red light can support your skin</td>
+<td>98% reported more even-looking skin tone<em>  ·  </em>From customers who used the Red Light Face Mask and mentioned a specific outcome (n=50). Experiences may vary.</td>
+</tr>
+<tr>
+<td><strong>SLEEP</strong></td>
+<td>Here's how blocking evening light can support your sleep</td>
+<td>75% reported better sleep quality<em>  ·  </em>From customers who used the Blue Light Blocking Glasses and mentioned a specific outcome (n=1519). Experiences may vary.</td>
+</tr>
+<tr>
+<td><strong>RECOVERY</strong></td>
+<td>Here's how red light can support your recovery</td>
+<td>63% reported noticeable benefits within weeks<em>  ·  </em>From customers who used the Infrared Sauna Blanket and mentioned a specific outcome (n=214). Experiences may vary.  [ AU · swap to a region-available device stat ]</td>
+</tr>
+<tr>
+<td><strong>WELLNESS / DEFAULT</strong></td>
+<td>Here's how the technology can support how you feel</td>
+<td>90% reported improved relaxation and sleep quality<em>  ·  </em>From customers who used the Infrared PEMF range and mentioned a specific outcome (n=56). Experiences may vary.  [ AU · swap stat ]</td>
+</tr>
+</tbody>
+</table>
+<h3>Shared Module · SAB credibility + why cheap versions fall short</h3>
+<pre><code>[ DESIGN · one connected block, calm authority tone ]
 
-SKIN: 98% reported more even-looking skin tone*  (Red Light Face Mask, n=50)
-SLEEP: 75% reported better sleep quality*  (Blue Light Blocking Glasses, n=1519)
-RECOVERY: 63% reported noticeable benefits within weeks*  (Infrared Sauna Blanket, n=214)
-[ AU RECOVERY/WELLNESS · swap to a region-available device stat (Red Light Therapy Blanket / Panels) ]
+Remember the science we just walked through? This is exactly why every BON CHARGE product is signed off by our Scientific Advisory Board, not our marketing team.
+
+It matters more than it sounds. Red light therapy is having a real moment, and the market has filled up with cheap imitations. If you have looked around online, you have probably seen them. The difference is not the marketing. It is whether a device is actually built on the science, the correct wavelengths, enough power to do anything, and proper testing behind it.
+
+Our advisory board are experts in their own fields, and they help develop each product so it is built on the same principles the science actually relies on. That is the part a bargain version tends to skip.
 </code></pre>
-<h3>Module 6 · SAB credibility</h3>
-<pre><code>Every protocol we recommend is reviewed by our Scientific Advisory Board, not our marketing team.
+<h3>Per-pillar Module · see our most popular products</h3>
+<pre><code>[ Per-pillar 2 to 3 product mini-cards, relevant to THIS pillar. Full product names, one short line each. CTA EXPLORE [PILLAR] (DEFAULT → EXPLORE THE RANGE). ]
+
+SKIN: Red Light Face Mask · Red Light Face Wand
+SLEEP: Brooklyn Blue Light Blocking Glasses · Classic Blackout Sleep Mask
+RECOVERY: Red Light Therapy Blanket · Infrared Sauna Blanket [AU swap]
+WELLNESS/DEFAULT: Infrared PEMF Mat Max [AU swap] · Red Light Face Mask
 </code></pre>
-<h3>Module 7 · CTA</h3>
-<pre><code>SEE THE MOST POPULAR PRODUCTS
-[ LINK · best-sellers / range ]
-</code></pre>
-<h3>Module 8 · Footer</h3>
-<pre><code>[ Standard footer ]
-</code></pre>
+<h3>Footer</h3>
+<p><strong>Per-pillar subjects + previews + message names:</strong>
+- <strong>E2.SK</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E2.SK_THE-SCIENCE_SKIN</code> · Subject: <code>The science behind what you felt in that session</code> · Preview: <code>Red light therapy and recovery, explained in simple terms.</code>
+- <strong>E2.SL</strong> <code>..._E2.SL_THE-SCIENCE_SLEEP</code> · Subject: <code>The science behind a better night's sleep</code> · Preview: <code>Light, melatonin and your body clock, explained simply.</code>
+- <strong>E2.RC</strong> <code>..._E2.RC_THE-SCIENCE_RECOVERY</code> · Subject: <code>The science behind what you felt in that session</code> · Preview: <code>Red light therapy and recovery, explained in simple terms.</code>
+- <strong>E2.WL</strong> <code>..._E2.WL_THE-SCIENCE_WELLNESS</code> · Subject: <code>The science behind why you felt so good</code> · Preview: <code>Red light therapy and recovery, explained in simple terms.</code></p>
 <hr />
 <h1>E3 · The products people ask about most  [PILLAR-SPLIT ×4 · Day 4]</h1>
-<p><strong>Awareness:</strong> Product Aware. Reduce overwhelm. 3 hero products, one clear reason each. Lead card carries "Most customers start here".
-<strong>Shared shell:</strong> Eyebrow <code>THE ONES PEOPLE ASK ABOUT</code> · Hero headline <em>"The products people ask about most after our events"</em> · 3 product cards (full name + one Andy-formula line + best-for) · one UGC line · CTA · footer.</p>
+<p><strong>Awareness:</strong> Product Aware. Hero calls out the goal explicitly, then straight into product cards. Each card gets a strong 1 to 2 line description drawn from the real PDP copy + supporting iconography that earns the click. One detailed UGC review per pillar.
+<strong>Shared shell:</strong> Eyebrow <code>THE ONES PEOPLE ASK ABOUT</code> · goal-explicit hero · 3 product cards (full name + strong description + icon + "Most customers start here" on lead) · one detailed UGC review · CTA · footer.</p>
 <hr />
 <h2>E3.SK · SKIN</h2>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E3.SK_HERO-PRODUCTS_SKIN</code>
-<strong>Subjects:</strong> A: <code>The 3 skin products people ask about most</code> · B: <code>Where most people start with skin</code> · C: <code>Your skin, three easy places to begin</code>
+<strong>Subjects:</strong> A: <code>The skin products people ask about most</code> · B: <code>Looking for clearer skin? Start here</code> · C: <code>Three ways into your skin routine</code>
 <strong>Preview:</strong> <code>The ones people ask about after our events.</code></p>
 <pre><code>[ EYEBROW ] THE ONES PEOPLE ASK ABOUT
-[ HERO ] The skin products people ask about most after our events
+[ HERO ] If clearer, more even-looking skin is the goal, these are where most people start
 
-[ PRODUCT CARD 1 · lead ]
+[ CARD 1 · lead · icon: face mask ]
 Red Light Face Mask
-Science-backed red light designed to support brighter, more even-looking skin.
-Best for: a hands-free daily habit.
+Hands-free Red Light (660nm) and Near-Infrared (850nm) you wear for ten minutes a day. Designed to support brighter, more even-looking skin and a smoother overall look, with nothing to hold.
 Most customers start here
 
-[ PRODUCT CARD 2 ]
+[ CARD 2 · icon: wand ]
 Red Light Face Wand
-Targeted red light designed to support the look of firmer skin around the eyes, mouth and jaw.
-Best for: precision areas.
+A handheld wand that pairs red light with gentle heat, microcurrent and sonic vibration. Glide it on for five to ten minutes to support firmer, more lifted-looking skin and soften the appearance of fine lines.
 
-[ PRODUCT CARD 3 ]
+[ CARD 3 · icon: neck/chest ]
 Red Light Neck and Chest Mask
-The same red light designed for the neck and chest, the areas most people forget.
-Best for: extending your routine below the face.
+The area most people forget. Ten minutes a day of red and near-infrared light, designed to support smoother-looking skin and a brighter, more even tone across the neck and chest.
 
-[ UGC LINE ] &quot;I can see results already, my skin is starting to glow.&quot; Ruta, verified customer
+[ UGC · detailed review · flat stars · green verified tick ]
+&quot;This mask is incredible. Even though it's only been a month I've already noticed my skin is tighter and brighter. I just love it.&quot;
+Michelle, verified customer
 
 [ CTA ] EXPLORE SKIN
 [ Footer ]
@@ -194,28 +238,27 @@ Best for: extending your routine below the face.
 <hr />
 <h2>E3.SL · SLEEP</h2>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E3.SL_HERO-PRODUCTS_SLEEP</code>
-<strong>Subjects:</strong> A: <code>The 3 sleep products people ask about most</code> · B: <code>Where better sleep usually starts</code> · C: <code>Three easy steps to better nights</code>
+<strong>Subjects:</strong> A: <code>The sleep products people ask about most</code> · B: <code>Want better sleep? Start here</code> · C: <code>Three ways into better nights</code>
 <strong>Preview:</strong> <code>The ones people ask about after our events.</code></p>
 <pre><code>[ EYEBROW ] THE ONES PEOPLE ASK ABOUT
-[ HERO ] The sleep products people ask about most after our events
+[ HERO ] If better sleep is the goal, these are where most people start
 
-[ PRODUCT CARD 1 · lead ]
+[ CARD 1 · lead · icon: glasses ]
 Brooklyn Blue Light Blocking Glasses
-Designed to block the blue and green light that suppresses melatonin, worn 2 to 3 hours before bed.
-Best for: your evening wind-down.
+Our flagship since 2017. They block 100% of the blue and green light (400 to 550nm) that suppresses melatonin, so your body can wind down naturally when you wear them two to three hours before bed.
 Most customers start here
 
-[ PRODUCT CARD 2 ]
+[ CARD 2 · icon: sleep mask ]
 Classic Blackout Sleep Mask
-True blackout designed to support deeper, less interrupted sleep.
-Best for: total darkness, anywhere.
+True, total blackout. A contoured mask that blocks every last bit of light, designed to support deeper, less interrupted sleep, at home or travelling.
 
-[ PRODUCT CARD 3 ]
+[ CARD 3 · icon: bulb ]
 Blue Light Blocking Bulbs
-Circadian-friendly lighting designed to keep your home sleep-friendly after sundown.
-Best for: the whole room, automatically.
+Swap your evening bulbs for low-blue-light lighting. Circadian-friendly bulbs designed to keep your home sleep-friendly from sundown, without you thinking about it.
 
-[ UGC LINE ] &quot;It makes me go to sleep so easily and wake up fresh.&quot; Inzky, verified customer
+[ UGC · detailed review ]
+&quot;I put them on as the sun goes down until I go to bed. It makes me go to sleep so easily, and I wake up as fresh as the morning air. My melatonin starts working by 9pm and I finally get to sleep easily.&quot;
+Inzky, verified customer
 
 [ CTA ] EXPLORE SLEEP
 [ Footer ]
@@ -223,68 +266,66 @@ Best for: the whole room, automatically.
 <hr />
 <h2>E3.RC · RECOVERY</h2>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E3.RC_HERO-PRODUCTS_RECOVERY</code>
-<strong>Subjects:</strong> A: <code>The 3 recovery products people ask about most</code> · B: <code>Where recovery usually starts</code> · C: <code>Three ways to recover at home</code>
+<strong>Subjects:</strong> A: <code>The recovery products people ask about most</code> · B: <code>Recovering better starts here</code> · C: <code>Three ways to recover at home</code>
 <strong>Preview:</strong> <code>The ones people ask about after our events.</code></p>
 <pre><code>[ EYEBROW ] THE ONES PEOPLE ASK ABOUT
-[ HERO ] The recovery products people ask about most after our events
+[ HERO ] If recovery and performance are the goal, these are where most people start
 
-[ PRODUCT CARD 1 · lead ]
+[ CARD 1 · lead · icon: blanket ]
 Red Light Therapy Blanket
-Full-body Red Light and Near-Infrared designed to support recovery and relaxation, lying down.
-Best for: post-workout or an evening reset.
+Full-body Red Light (660nm) and Near-Infrared (850nm) you lie into. The 850nm reaches deep into muscle to support your body's natural recovery, while the 660nm won't disrupt melatonin, so you can use it before bed. Around twenty minutes a day.
 Most customers start here
 
-[ PRODUCT CARD 2 ]
+[ CARD 2 · icon: sauna blanket ]
 Infrared Sauna Blanket
-Deep infrared warmth designed to support relaxation and post-session recovery.
-Best for: a sweat and a reset at home.
+Deep, even infrared warmth for a proper sweat at home. Designed to support relaxation and post-session recovery, and a genuinely calming way to unwind.
 [ AU · region-restricted, hide in AU ]
 
-[ PRODUCT CARD 3 ]
+[ CARD 3 · icon: panel ]
 Red Light Therapy Devices
-Science-backed red light designed to support recovery and cellular energy, targeted or full-body.
-Best for: building a home setup.
+Panel-style red and near-infrared light for targeted or full-body sessions. The flexible way to build a recovery setup that grows with you.
 
-[ UGC LINE ] &quot;A great addition to my routine for recovery from workouts, and how well I feel when I use it consistently.&quot; David, verified customer
+[ UGC · detailed review ]
+&quot;A great addition to my routine, not only for recovery from workouts and sports, but for how well I feel when I use it consistently. I've had it about two years now.&quot;
+David, verified customer
 
 [ CTA ] EXPLORE RECOVERY
 [ Footer ]
-[ AU SWAP · replace card 2 (Infrared Sauna Blanket) with a Red Light Therapy Panel · region-available only ]
+[ AU SWAP · replace card 2 with a Red Light Therapy Panel · region-available only ]
 </code></pre>
 <hr />
 <h2>E3.WL · WELLNESS / DEFAULT</h2>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E3.WL_HERO-PRODUCTS_WELLNESS</code>
-<strong>Subjects:</strong> A: <code>The 3 products people ask about most</code> · B: <code>Where most people start with us</code> · C: <code>Three easy places to begin</code>
+<strong>Subjects:</strong> A: <code>The products people ask about most</code> · B: <code>Not sure where to start? Here's how</code> · C: <code>Three easy places to begin</code>
 <strong>Preview:</strong> <code>The ones people ask about after our events.</code></p>
 <pre><code>[ EYEBROW ] THE ONES PEOPLE ASK ABOUT
-[ HERO ] The products people ask about most after our events
+[ HERO ] If feeling calmer and more recovered is the goal, these are where most people start
 
-[ PRODUCT CARD 1 · lead ]
+[ CARD 1 · lead · icon: PEMF mat ]
 Infrared PEMF Mat Max
-PEMF, Red Light and Infrared in one mat, designed to support relaxation, recovery and calm.
-Best for: winding down, stretching or meditation.
+Three technologies in one mat: PEMF, Red Light and Infrared, laid over 19lb of semi-precious gemstones. Lie down to stretch, meditate or simply relax, designed to support deep relaxation, recovery and calm.
 Most customers start here
 [ AU · region-restricted → swap lead to Red Light Therapy Blanket ]
 
-[ PRODUCT CARD 2 ]
+[ CARD 2 · icon: face mask ]
 Red Light Face Mask
-Science-backed red light designed to support brighter, more even-looking skin.
-Best for: an easy daily habit.
+Hands-free red light you wear for ten minutes a day, designed to support brighter, more even-looking skin. An easy daily habit anyone can start with.
 
-[ PRODUCT CARD 3 ]
+[ CARD 3 · icon: glasses ]
 Brooklyn Blue Light Blocking Glasses
-Designed to protect your sleep from evening blue light.
-Best for: better nights, straight away.
+Block the evening blue light that disrupts sleep, worn two to three hours before bed. A small change with an outsized effect on your nights.
 
-[ UGC LINE ] &quot;I've felt such an enormous difference since starting to use this. Really, the uses are endless.&quot; Alexa, verified customer
+[ UGC · detailed review ]
+&quot;I've felt such an enormous difference since starting to use this. It's great for winding down, for stretching, or to start the day right. Really, the uses are endless.&quot;
+Alexa, verified customer
 
 [ CTA ] EXPLORE THE RANGE
 [ Footer ]
 </code></pre>
 <hr />
 <h1>E4 · What customers notice first  [PILLAR-SPLIT ×4 · Day 6]</h1>
-<p><strong>Awareness:</strong> Identity / social proof. Anchor stat + 3 verified reviews per pillar. Skin uses appearance-based claims (no before/after image asset available).
-<strong>Shared shell:</strong> Eyebrow <code>WHAT CUSTOMERS NOTICE FIRST</code> · Hero headline <em>"What most people notice first"</em> · anchor stat (n= under number) · 3-up verified UGC (flat stars, green tick) · CTA · footer.</p>
+<p><strong>Awareness:</strong> Identity / social proof. Anchor stat + 3 verified reviews per pillar. Skin uses appearance-based claims (no before/after image assets, claims only).
+<strong>Shared shell:</strong> Eyebrow <code>WHAT CUSTOMERS NOTICE FIRST</code> · Hero <em>"What most people notice first"</em> · anchor stat (n= under number, from customers who used the product) · 3-up verified UGC (flat stars, green tick) · CTA · footer.</p>
 <hr />
 <h2>E4.SK · SKIN</h2>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E4.SK_SOCIAL-PROOF_SKIN</code>
@@ -295,12 +336,12 @@ Best for: better nights, straight away.
 
 [ STAT ]
 98% reported more even-looking skin tone*
-*Based on customer reviews of the Red Light Face Mask that mention at least one specific outcome (n=50). Experiences may vary.
+*From customers who used the Red Light Face Mask and mentioned a specific outcome (n=50). Experiences may vary.
 
-[ APPEARANCE CLAIM LINE · compliant, no before/after image ]
+[ CLAIM LINE · compliant, no before/after image ]
 Most people notice a little more brightness and a smoother look first. The even tone builds over the weeks.
 
-[ UGC · 3-up · flat stars · green verified tick ]
+[ UGC · 3-up ]
 1. &quot;This mask is incredible. Even though it's only been a month I've already noticed my skin is tighter and brighter.&quot; Michelle, verified customer
 2. &quot;I can see results already, my skin is starting to glow.&quot; Ruta, verified customer
 3. &quot;I use it straight out of the shower before any lotion. There's a timer in the remote so you know exactly when you're done.&quot; Verified customer
@@ -318,7 +359,7 @@ Most people notice a little more brightness and a smoother look first. The even 
 
 [ STAT ]
 75% reported better sleep quality*
-*Based on customer reviews of the Blue Light Blocking Glasses that mention at least one specific outcome (n=1519). Experiences may vary.
+*From customers who used the Blue Light Blocking Glasses and mentioned a specific outcome (n=1519). Experiences may vary.
 
 [ LINE ] Most people notice they fall asleep more easily and wake up feeling clearer. Often within the first week.
 
@@ -340,8 +381,8 @@ Most people notice a little more brightness and a smoother look first. The even 
 
 [ STAT ]
 63% reported noticeable benefits within weeks*
-*Based on customer reviews of the Infrared Sauna Blanket that mention at least one specific outcome (n=214). Experiences may vary.
-[ AU · swap to a region-available device stat (Red Light Therapy Blanket / Panels) ]
+*From customers who used the Infrared Sauna Blanket and mentioned a specific outcome (n=214). Experiences may vary.
+[ AU · swap to a region-available device stat ]
 
 [ LINE ] Most people notice their sleep and morning soreness shift first. The recovery compounds from there.
 
@@ -363,7 +404,7 @@ Most people notice a little more brightness and a smoother look first. The even 
 
 [ STAT ]
 90% reported improved relaxation and sleep quality*
-*Based on customer reviews of the Infrared PEMF range that mention at least one specific outcome (n=56). Experiences may vary.
+*From customers who used the Infrared PEMF range and mentioned a specific outcome (n=56). Experiences may vary.
 [ AU · swap to a region-available device stat ]
 
 [ LINE ] Most people notice they feel calmer and sleep better first. The energy and recovery build with regular use.
@@ -377,59 +418,68 @@ Most people notice a little more brightness and a smoother look first. The even 
 [ Footer ]
 </code></pre>
 <hr />
-<h1>E5 · Your event attendee offer  [GENERIC · dynamic pillar hero · Day 9]</h1>
-<p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E5_ATTENDEE-OFFER</code>
-<strong>Awareness:</strong> Consideration + first purchase pressure.</p>
+<h1>E5 · Your exclusive offer  [GENERIC · dynamic pillar hero · Day 9]</h1>
+<p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E5_EXCLUSIVE-OFFER</code>
+<strong>Awareness:</strong> Consideration + first purchase. Do NOT say "event attendee" in the copy. Frame: you tried it in person, now bring it home. Short. Category push above the footer.</p>
 <p><strong>Subject options:</strong>
-- A: <code>Your event offer is here</code>
-- B: <code>A thank-you for coming, 20% inside</code>
-- C: <code>Your attendee rate is ready</code></p>
-<p><strong>Preview:</strong> <code>A thank-you for coming in person. Your rate inside.</code></p>
+- A: <code>You tried it in person. Now here's 20% off</code>
+- B: <code>Your exclusive 20% is ready</code>
+- C: <code>Bring it home, with 20% off</code></p>
+<p><strong>Preview:</strong> <code>20% off the entire site, to bring it home.</code></p>
 <h3>Module 1 · Eyebrow</h3>
-<pre><code>YOUR EVENT ATTENDEE OFFER
+<pre><code>YOUR EXCLUSIVE OFFER
 </code></pre>
-<h3>Module 2 · Hero</h3>
+<h3>Module 2 · Hero + code block</h3>
 <pre><code>[ HERO IMAGE · dynamic pillar hero product, swaps on event_goal · Linen Light base ]
 
-A thank-you offer, just for people who came
-</code></pre>
-<h3>Module 3 · Hero sub-headline + code block</h3>
-<pre><code>Your first BON CHARGE device, at your attendee rate
+You tried it in person. Now try it at home
 
 [ CODE BLOCK · dynamic code on a solid-colour block, never over a photo · live HTML text, dark-mode safe ]
-20% off with code EVENT20
-[ DEV NOTE · build as live text/button in Klaviyo, code is a static/dynamic merge tag. Confirm code + whether unique-per-profile with Andy/Stefan. ]
+20% off the entire website with code EVENT20
+[ DEV NOTE · build as live text/button, code is a merge tag. Confirm code + static vs unique-per-profile with Andy/Stefan. ]
+</code></pre>
+<h3>Module 3 · Primary content (elaborate the "why you")</h3>
+<pre><code>This one is exclusive to you. You got to experience the technology in person, most people meet BON CHARGE through a screen, so we want to make it easy to bring that same experience into your routine at home.
+
+Your 20% works across the entire website, whichever goal you came in for.
 </code></pre>
 <h3>Module 4 · CTA</h3>
-<pre><code>UNLOCK YOUR EVENT OFFER
+<pre><code>CLAIM YOUR EXCLUSIVE OFFER
 [ LINK · range with code applied ]
 </code></pre>
-<h3>Module 5 · Reassurance strip</h3>
-<pre><code>[ Payment options · Klarna . Afterpay . Sezzle ]
-[ Flat 5-star graphic ] Trusted by 400,000+ customers . Scientific Advisory Board
+<h3>Module 5 · Full-width Buy Now Pay Later strip</h3>
+<pre><code>[ FULL-WIDTH STRIP ]
+Spread the cost, interest-free
+Pay in instalments with Klarna, Afterpay or Sezzle at checkout.
 </code></pre>
-<h3>Module 6 · Footer + T&amp;Cs</h3>
-<pre><code>[ Footer ] + [ T&amp;Cs link · offer timing and terms live here, not in body copy. No timezone-specific days in the email. ]
+<h3>Module 6 · Category push (above footer)</h3>
+<pre><code>[ 4-tile category grid, same as E1 ]
+SKIN · SLEEP · RECOVERY · HAIR  → EXPLORE [PILLAR]
+</code></pre>
+<h3>Module 7 · Footer + T&amp;Cs</h3>
+<pre><code>[ Footer ] + [ T&amp;Cs link · offer terms live here, not in body copy ]
 </code></pre>
 <hr />
 <h1>E6 · Build your routine (shop by goal)  [GENERIC nav · Day 12]</h1>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E6_SHOP-BY-GOAL</code>
-<strong>Awareness:</strong> Self-select.</p>
+<strong>Awareness:</strong> Self-select. Offer reminder pinned on top, then a stylised category push by goal.</p>
 <p><strong>Subject options:</strong>
 - A: <code>Where should you start</code>
-- B: <code>Skin, sleep or recovery? Pick your lane</code>
-- C: <code>Build a routine around your goal</code></p>
+- B: <code>Build a routine around your goal</code>
+- C: <code>Skin, sleep, recovery or hair? Pick your lane</code></p>
 <p><strong>Preview:</strong> <code>Four goals, one place to begin.</code></p>
-<h3>Module 1 · Eyebrow</h3>
-<pre><code>BUILD YOUR ROUTINE
+<h3>Module 1 · Offer reminder block (on top)</h3>
+<pre><code>[ COUPON REMINDER STRIP · pinned above the hero · calls out their exclusive offer ]
+A reminder: your exclusive 20% is still on. Code EVENT20, across the entire website.
 </code></pre>
-<h3>Module 2 · Hero</h3>
-<pre><code>[ HERO IMAGE · calm multi-pillar lifestyle shot ]
+<h3>Module 2 · Eyebrow + Hero</h3>
+<pre><code>[ EYEBROW ] BUILD YOUR ROUTINE
+[ HERO IMAGE · calm multi-pillar lifestyle shot ]
 
-Build your own skin, sleep or recovery routine
+Looking to build out your skin, sleep, recovery or hair routine? Here's where to start
 </code></pre>
-<h3>Module 3 · Goal nav grid (4-cell · Andy-formula lines, blueprint-locked)</h3>
-<pre><code>[ 4-CELL GRID · each cell: pillar name + one line + CTA ]
+<h3>Module 3 · Goal nav grid (stylised category push · Andy-formula lines, blueprint-locked)</h3>
+<pre><code>[ 4-CELL GRID · each cell: pillar name + one line + CTA · stylised, premium ]
 
 SKIN
 Science-backed light therapy designed to support skin cell function
@@ -447,37 +497,33 @@ HAIR
 Designed to support scalp circulation and fuller-looking hair from the root
 [ CTA ] EXPLORE HAIR
 </code></pre>
-<h3>Module 4 · Soft offer reminder</h3>
-<pre><code>Your attendee offer is still available when you're ready.
-</code></pre>
-<h3>Module 5 · Footer</h3>
+<h3>Module 4 · Footer</h3>
 <pre><code>[ Footer ]
 </code></pre>
 <hr />
 <h1>E7 · Still thinking? Start here  [PILLAR-SPLIT ×4 · Day 15]</h1>
-<p><strong>Awareness:</strong> Low-friction entry. Entry product + starter bundle + flagship, so all price points are covered. Offer still live.
-<strong>Shared shell:</strong> Eyebrow <code>AN EASY PLACE TO START</code> · Hero <em>"Still thinking about BON CHARGE? Start here"</em> · entry rec + step-up + flagship · offer reminder · CTA <code>START YOUR BON CHARGE ROUTINE</code> · footer.</p>
+<p><strong>Awareness:</strong> Low-friction entry. Offer block pinned on top. Lead with the curated BUNDLE paired to their goal, then push the bestseller single (one or two single options) for anyone who just wants to start with one.
+<strong>Shared shell:</strong> Offer reminder strip on top · Eyebrow <code>AN EASY PLACE TO START</code> · Hero <em>"An easy place to start. Check out our curated bundles paired to your wellness goal"</em> · bundle first (lead) · bestseller single(s) second · CTA <code>START YOUR BON CHARGE ROUTINE</code> · footer.</p>
+<h3>Shared Module · Offer reminder (on top)</h3>
+<pre><code>[ COUPON REMINDER STRIP · pinned above the hero ]
+Your exclusive 20% is still on. Code EVENT20, across the entire website.
+</code></pre>
+<h3>Shared Module · Hero</h3>
+<pre><code>[ EYEBROW ] AN EASY PLACE TO START
+[ HERO ] An easy place to start. Check out our curated bundles paired to your wellness goal
+</code></pre>
 <hr />
 <h2>E7.SK · SKIN</h2>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E7.SK_START-HERE_SKIN</code>
-<strong>Subjects:</strong> A: <code>Still thinking? Start with skin here</code> · B: <code>The easiest way into your skin routine</code> · C: <code>One small step for your skin</code>
-<strong>Preview:</strong> <code>The easiest first step into the range.</code></p>
-<pre><code>[ EYEBROW ] AN EASY PLACE TO START
-[ HERO ] Still thinking about BON CHARGE? Start here
-
-[ ENTRY ]
-Red Light Face Wand
-The easy first step. Handheld, targeted red light designed to support firmer, brighter-looking skin.
-
-[ STEP-UP ]
+<strong>Subjects:</strong> A: <code>The easiest way into your skin routine</code> · B: <code>Start with a bundle, or just one</code> · C: <code>Your skin routine, made simple</code>
+<strong>Preview:</strong> <code>A curated bundle, or one product to start.</code></p>
+<pre><code>[ BUNDLE · lead ]
 Face, Neck and Chest Bundle
-Ready for the full routine? The mask and wand together, for the face, neck and chest.
+The full routine in one. The Red Light Face Mask paired with the Red Light Neck and Chest Mask, so the light reaches the face, neck and chest most people forget.
 
-[ FLAGSHIP ]
+[ BESTSELLER SINGLE ]
 Red Light Face Mask
-Our best-selling skin device. Hands-free, once a day.
-
-Your attendee offer still applies. 20% off with code EVENT20.
+Rather start with one? This is our best-selling skin device. Hands-free, ten minutes a day, and where most people begin.
 
 [ CTA ] START YOUR BON CHARGE ROUTINE
 [ Footer ]
@@ -485,24 +531,15 @@ Your attendee offer still applies. 20% off with code EVENT20.
 <hr />
 <h2>E7.SL · SLEEP</h2>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E7.SL_START-HERE_SLEEP</code>
-<strong>Subjects:</strong> A: <code>Still thinking? Start with sleep here</code> · B: <code>The easiest way into better nights</code> · C: <code>One small step for better sleep</code>
-<strong>Preview:</strong> <code>The easiest first step into the range.</code></p>
-<pre><code>[ EYEBROW ] AN EASY PLACE TO START
-[ HERO ] Still thinking about BON CHARGE? Start here
+<strong>Subjects:</strong> A: <code>The easiest way into better nights</code> · B: <code>Start with a bundle, or just one</code> · C: <code>Better sleep, made simple</code>
+<strong>Preview:</strong> <code>A curated bundle, or one product to start.</code></p>
+<pre><code>[ BUNDLE · lead ]
+Sleep Bundle
+Block the light before bed, then black it out completely. The Brooklyn Blue Light Blocking Glasses paired with a Classic Blackout Sleep Mask, for your whole evening wind-down.
 
-[ ENTRY ]
+[ BESTSELLER SINGLE ]
 Brooklyn Blue Light Blocking Glasses
-The easy first step. Worn 2 to 3 hours before bed, designed to protect your melatonin from evening light.
-
-[ STEP-UP ]
-Glasses + Classic Blackout Sleep Mask
-Block the light before bed, then black it out completely once you're in.
-
-[ FLAGSHIP ]
-Brooklyn Blue Light Blocking Glasses
-Our best-selling sleep product since 2017.
-
-Your attendee offer still applies. 20% off with code EVENT20.
+Rather start with one? Our best-selling sleep product since 2017, and where most people begin.
 
 [ CTA ] START YOUR BON CHARGE ROUTINE
 [ Footer ]
@@ -510,95 +547,77 @@ Your attendee offer still applies. 20% off with code EVENT20.
 <hr />
 <h2>E7.RC · RECOVERY</h2>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E7.RC_START-HERE_RECOVERY</code>
-<strong>Subjects:</strong> A: <code>Still thinking? Start recovery here</code> · B: <code>The easiest way into recovery at home</code> · C: <code>One step toward better recovery</code>
-<strong>Preview:</strong> <code>The easiest first step into the range.</code></p>
-<pre><code>[ EYEBROW ] AN EASY PLACE TO START
-[ HERO ] Still thinking about BON CHARGE? Start here
-
-[ START ]
-Red Light Therapy Blanket
-The easiest way to bring recovery home. Full-body Red Light and Near-Infrared, lying down.
-Spread the cost with Klarna, Afterpay or Sezzle at checkout.
-
-[ STEP-UP ]
+<strong>Subjects:</strong> A: <code>The easiest way into recovery at home</code> · B: <code>Start with a bundle, or just one</code> · C: <code>Recovery at home, made simple</code>
+<strong>Preview:</strong> <code>A curated bundle, or one product to start.</code></p>
+<pre><code>[ BUNDLE · lead ]
 Recovery Bundle
-Pair the blanket with a red light device for a complete home setup.
+A complete home setup. Pair the Red Light Therapy Blanket with a red light device for full-body and targeted recovery in one.
 
-[ FLAGSHIP ]
-Infrared Sauna Blanket
-Deep infrared warmth for a proper sweat and reset.
-[ AU · region-restricted, swap flagship to a Red Light Therapy Panel ]
-
-Your attendee offer still applies. 20% off with code EVENT20.
+[ BESTSELLER SINGLE ]
+Red Light Therapy Blanket
+Rather start with one? Full-body Red Light and Near-Infrared you lie into, and where most people begin. Spread the cost with Klarna, Afterpay or Sezzle at checkout.
 
 [ CTA ] START YOUR BON CHARGE ROUTINE
 [ Footer ]
+[ AU · region check on any Sauna Blanket / PEMF in the bundle, swap to available SKUs ]
 </code></pre>
 <hr />
 <h2>E7.WL · WELLNESS / DEFAULT</h2>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E7.WL_START-HERE_WELLNESS</code>
-<strong>Subjects:</strong> A: <code>Still thinking? Start here</code> · B: <code>The easiest way into the range</code> · C: <code>One small step to begin</code>
-<strong>Preview:</strong> <code>The easiest first step into the range.</code></p>
-<pre><code>[ EYEBROW ] AN EASY PLACE TO START
-[ HERO ] Still thinking about BON CHARGE? Start here
+<strong>Subjects:</strong> A: <code>The easiest way into the range</code> · B: <code>Start with a bundle, or just one</code> · C: <code>Made simple, wherever you start</code>
+<strong>Preview:</strong> <code>A curated bundle, or one product to start.</code></p>
+<pre><code>[ BUNDLE · lead ]
+Wellness Starter Bundle
+A little of everything. Our most-loved starter pairing, so you can bring the calm, the recovery and the better sleep home together.
 
-[ ENTRY ]
-Brooklyn Blue Light Blocking Glasses
-The easy first step. A small change to your evenings, designed to protect your sleep.
-
-[ STEP-UP ]
+[ BESTSELLER SINGLE ]
 Red Light Face Mask
-Our most-loved daily device. Science-backed red light designed to support brighter, more even-looking skin.
-
-[ FLAGSHIP ]
-Infrared PEMF Mat Max
-The full experience. PEMF, Red Light and Infrared in one, designed to support relaxation and recovery.
-[ AU · region-restricted, swap flagship to Red Light Therapy Blanket ]
-
-Your attendee offer still applies. 20% off with code EVENT20.
+Rather start with one? Our most-loved daily device, hands-free and easy to keep up, and where a lot of people begin.
 
 [ CTA ] START YOUR BON CHARGE ROUTINE
 [ Footer ]
+[ NOTE · confirm the exact Wellness/starter bundle SKU with Belle. ]
 </code></pre>
 <hr />
 <h1>E8 · Last chance, from Andy  [GENERIC · PLAIN TEXT · Day 18-21]</h1>
 <p><strong>Klaviyo Message Name:</strong> <code>18991230_C_F_EVENT-ATTENDEE-NURTURE_E8_LAST-CHANCE_PLAIN-TEXT-ANDY</code>
-<strong>Awareness:</strong> Most Aware. Plain text, founder 1:1 voice. No design, no images, no template. Sender <code>no-reply@boncharge.com</code> with <strong>Reply-To <code>hello@boncharge.com</code></strong> (monitored inbox). Closes the funnel.</p>
+<strong>Awareness:</strong> Most Aware. Plain text, founder 1:1 voice. No design, no images. Sender <code>no-reply@boncharge.com</code>, <strong>Reply-To <code>hello@boncharge.com</code></strong> (monitored). Origin story + Andy's own routine + midnight expiry + thank you. Hyperlink text CTA.</p>
 <p><strong>Subject options:</strong>
-- A: <code>Before your attendee offer closes</code>
-- B: <code>A quick note from me, Andy</code>
-- C: <code>Last chance for your attendee rate</code></p>
-<p><strong>Preview:</strong> <code>Your 20% code closes soon.</code></p>
+- A: <code>A quick note from me, Andy</code>
+- B: <code>Before your code expires tonight</code>
+- C: <code>Why we started BON CHARGE</code></p>
+<p><strong>Preview:</strong> <code>Your 20% code expires at midnight tonight.</code></p>
 <h3>Body (plain text)</h3>
 <pre><code>Hi {{ first_name|default:&quot;there&quot; }},
 
 Andy here. I co-founded BON CHARGE with my wife Katie.
 
-A little while ago you came to one of our events and tried the tech in person. That means a lot to us, most people meet BON CHARGE through a screen, and you actually felt what it does.
+We started BON CHARGE because red light and light therapy were full of big claims and cheap devices that didn't do much. We wanted to build products that were actually founded on the science, and then stand behind them. That is still the whole point of what we do.
 
-I wanted to reach out myself before your attendee offer closes. Your 20% code, EVENT20, is still active, but not for much longer.
+You came to one of our events and tried the technology in person, which means a lot to us. Most people meet BON CHARGE through a screen. You actually felt what it does.
 
-If you felt something good at the event, that wasn't a one-off. It's what the tech is designed to do, day after day, once it's part of your routine at home.
+Quick heads up before I go: your 20% site-wide code, EVENT20, expires at midnight tonight.
 
-If you're not sure where to start, just reply to this email. It comes straight to our team and we read every one.
+If you enjoyed the experience in person, I think you'll enjoy it even more once it's part of your routine at home. I wear my Blue Light Blocking Glasses every evening before bed, and it's one of the simplest changes I've made for my sleep and my energy the next day. Small habit, real difference.
 
-Either way, thank you for spending time with us in person.
+Thank you for spending time with us in person, and for helping spread the word about BON CHARGE. It genuinely means a lot.
 
 Andy Mant
 Co-founder, BON CHARGE
 
-[ LINK · one plain text link · Claim your 20% offer → range with EVENT20 ]
-[ T&amp;Cs · offer terms link, plain ]
+Claim your 20% before midnight  [ LINK · plain text hyperlink → website with EVENT20 ]
 </code></pre>
 <hr />
 <h2>Open items carried into finalization</h2>
 <ol>
-<li><strong>Discount code</strong> <code>EVENT20</code> is a placeholder, and 20% is recommended (not the brief's 25%). Confirm code + rate with Andy, plus static vs unique-per-profile with Stefan.</li>
-<li><strong>E1 CTA destination</strong> defaults to the range. Point to a dedicated events page if Belle confirms one exists.</li>
-<li><strong>AU region variants</strong> — E3.RC/E3.WL, E4.RC/E4.WL, E7.RC/E7.WL reference PEMF / Infrared Sauna Blanket (banned AU). AU swaps noted inline; confirm the AU hero + stat substitutes.</li>
-<li><strong>Reviews</strong> — all real from PDPs (01/07). Skin set is a little thin on long-form named reviews (Michelle is the anchor). Swap any from Belle's approved set if preferred. Confirm the disclaimer link target (Judge.me PDP reviews vs claims page).</li>
-<li><strong>Sign-up incentive</strong> — if the events team confirms one, add a reference in E1.</li>
-<li><strong>Andy plain-text E8</strong> — confirm Andy is happy to send under his name + that hello@ stays monitored as the Reply-To.</li>
+<li><strong>Discount code</strong> <code>EVENT20</code> is a placeholder, 20% off the entire website. Confirm code + static vs unique-per-profile (Andy/Stefan).</li>
+<li><strong>Trust count</strong> in E1 — confirm the live five-star review number (Hani mentioned 5,500+; baseline has 5,700+).</li>
+<li><strong>Split now sits after E1</strong>, so E2 is a 4-way clone set with WELLNESS as the no-data fallback. Confirm the Klaviyo <code>event_goal</code> property key + that the "Event Attendee" list membership fires the flow.</li>
+<li><strong>AU region variants</strong> — E2.RC/E2.WL stats, E3.RC/E3.WL, E4.RC/E4.WL, E7.RC/E7.WL reference PEMF / Infrared Sauna Blanket (AU-banned). AU swaps noted inline; confirm AU hero + stat + bundle substitutes.</li>
+<li><strong>Bundles</strong> — confirm the exact live bundle SKUs for E7 (Face/Neck/Chest, Sleep, Recovery, Wellness starter) with Belle.</li>
+<li><strong>Reviews</strong> — all real from PDPs (01/07). Skin set is thinner on long-form named reviews (Michelle is the anchor). Swap from Belle's set if preferred. Confirm disclaimer link target (Judge.me PDP reviews vs claims page).</li>
+<li><strong>E2 SAB / knockoffs module</strong> is the highest claim-risk copy — route Belle → Stefan → Ana. Phrased around wavelengths/power/testing, not "cheap products don't work".</li>
+<li><strong>Andy plain-text E8</strong> — confirm Andy is happy to send under his name, that hello@ stays the monitored Reply-To, and that the personal-routine product (Blue Light Blocking Glasses) is accurate to him. Midnight-tonight expiry per Hani (note: timezone-ambiguous for a global list; acceptable in a founder plain-text, exact terms in T&amp;Cs).</li>
 </ol>
 </div></div>
 <div class="footer"><div class="footer-inner">
