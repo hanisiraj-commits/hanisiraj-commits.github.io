@@ -113,7 +113,7 @@
   <div class="hero">
     <div class="eyebrow">For David · Hero stock-out analysis</div>
     <h1>A single hero out of stock<br>barely moves store CVR.<br><span class="accent">Two or more</span> is where it bites.</h1>
-    <p class="lede">We had a hypothesis that today's soft numbers are partly down to the top wagyu cuts being out of stock. I pulled 35 days of real Shopify session and conversion data to test it. One hero out barely dents blended conversion because the catalogue substitutes, but the money metric, <strong>revenue per session, drops 21% on out-of-stock days</strong>, and right now two of our three demand drivers are starved. Full read below, including the one caveat I want to flag honestly.</p>
+    <p class="lede">We had a hypothesis that today's soft numbers are partly down to the top wagyu cuts being out of stock. I pulled 35 days of real Shopify session and conversion data to test it. One hero out barely dents blended conversion because the catalogue substitutes, but the money metric, <strong>revenue per session, drops 21% on out-of-stock days</strong>, and right now two of our three demand drivers are starved. Full read below, including the one caveat I want to flag honestly, and a 12-month check that backs it up.</p>
   </div>
 
   <div class="stats">
@@ -167,6 +167,28 @@
     </table>
   </div>
   <p class="caption">The cleanest, least-confounded signal is that revenue per session and AOV move with hero stock even inside June, before any post-sale effect. Raw CVR is the more forgiving metric; revenue per session is the honest one.</p>
+
+  <h2>Zooming out &mdash; the full 12 months</h2>
+  <p class="sub">I ran the identical test across 365 days (Jul 2025 &ndash; Jul 2026) to pressure-test it. Sale periods were separated out first, since a sale lifts conversion on its own (sale days averaged 2.2&ndash;5.3% CVR against 1.6&ndash;2.6% on normal days). The year adds one important guardrail, below.</p>
+  <p class="body">The M9+ cuts only became genuine daily heroes in <strong>April 2026</strong>, when their combined volume jumped from around 5 units a day to 35&ndash;60. Before that they sold a couple of units a day, so a zero-sales day meant low demand, not a stock-out. That's why the proxy only reads cleanly from April on, and why the day-by-day view above sits in exactly the right window.</p>
+  <div class="chartcard">
+    <div class="legend">
+      <span><i style="background:var(--accent)"></i>Hero daily volume (3 cuts, units/day)</span>
+      <span><i style="background:var(--good)"></i>Stock-out proxy valid from here</span>
+    </div>
+    <div class="scroll"><svg id="chart2" width="856" height="220" role="img"
+      aria-label="Monthly hero daily sales volume, showing a step-change up in April 2026"></svg></div>
+  </div>
+  <div class="scroll">
+    <table class="data">
+      <thead><tr><th>Window (normal days only)</th><th>Stock state</th><th>Store CVR</th><th>Rev / session</th></tr></thead>
+      <tbody>
+        <tr class="base"><td rowspan="2">Valid regime · Apr&ndash;Jul 2026</td><td>Heroes in stock</td><td class="big">1.83%</td><td class="big">$29.5</td></tr>
+        <tr class="hl"><td>1+ hero out</td><td class="big">&minus;5.2%</td><td class="big">&minus;15.7%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caption">Same direction and same signature as the 35-day view: conversion softens a little, revenue per session drops a lot. The full year doesn't add a bigger number, it confirms the mechanism is real and pins down when we can actually measure it.</p>
 
   <h2>How we know a hero was out</h2>
   <p class="body">Shopify can't recall historical stock levels, so I reconstructed out-of-stock days with a <strong>zero-sales proxy</strong>: a hero that normally sells every day but records zero units was almost certainly out. It lines up with what we already knew. The M9+ Ribeye and Striploin sold their last units on 29&ndash;30/06 and hit zero from 01/07, which matches what the team saw. The proxy also surfaced an earlier stock-out on 08&ndash;11 June that wasn't logged, when both M9+ cuts were out together.</p>
@@ -254,6 +276,27 @@ const DATA = [{"d":"2026-06-03","typ":"BAU","cvr":1.901,"oos":0},{"d":"2026-06-0
   DATA.forEach((d,i)=>{s+=`<circle cx="${x(i)}" cy="${y(d.cvr)}" r="2.6" fill="${COL.accent}"/>`;});
   DATA.forEach((d,i)=>{if(i%3===0||i===n-1){const lab=d.d.slice(8)+'/'+d.d.slice(5,7);
     s+=`<text x="${x(i)}" y="${H-mB+18}" text-anchor="middle" font-size="10.5" fill="${COL.ink3}" font-family="Inter,sans-serif">${lab}</text>`;}});
+  svg.innerHTML=s;
+})();
+</script>
+<script>
+const MV=[["Jul 25", 6.3], ["Aug", 4.7], ["Sep", 7.5], ["Oct", 3.4], ["Nov", 5.7], ["Dec", 5.3], ["Jan 26", 5.0], ["Feb", 2.5], ["Mar", 5.8], ["Apr", 38.3], ["May", 60.1], ["Jun", 34.0], ["Jul", 13.0]];
+(function(){
+  const C={bar:'#EC7D55',barDim:'#f1c3ad',grid:'#e8e8e8',muted:'#a0a0a0',ink3:'#6a6a6a',good:'#4a6a4a'};
+  const svg=document.getElementById('chart2'); if(!svg)return;
+  const W=856,H=220,mL=42,mR=12,mT=14,mB=40,iw=W-mL-mR,ih=H-mT-mB;
+  const n=MV.length,maxY=60,bw=iw/n;
+  const y=v=>mT+ih-(v/maxY)*ih;
+  let s='';
+  for(let g=0;g<=60;g+=20){const gy=y(g);s+=`<line x1="${mL}" y1="${gy}" x2="${W-mR}" y2="${gy}" stroke="${C.grid}" stroke-width="1"/>`;
+    s+=`<text x="${mL-8}" y="${gy+4}" text-anchor="end" font-size="11" fill="${C.muted}" font-family="Inter,sans-serif">${g}</text>`;}
+  // valid-from-April marker (index 9)
+  const vx=mL+bw*9;
+  s+=`<line x1="${vx}" y1="${mT}" x2="${vx}" y2="${mT+ih}" stroke="${C.good}" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  s+=`<text x="${vx+6}" y="${mT+13}" font-size="10.5" fill="${C.good}" font-family="Inter,sans-serif" font-weight="600">proxy valid →</text>`;
+  MV.forEach((m,i)=>{const bx=mL+bw*i+bw*0.18,w=bw*0.64,h=(m[1]/maxY)*ih,by=mT+ih-h;
+    s+=`<rect x="${bx}" y="${by}" width="${w}" height="${h}" rx="2" fill="${i>=9?C.bar:C.barDim}"/>`;
+    s+=`<text x="${bx+w/2}" y="${H-mB+16}" text-anchor="middle" font-size="10" fill="${C.ink3}" font-family="Inter,sans-serif">${m[0]}</text>`;});
   svg.innerHTML=s;
 })();
 </script>
