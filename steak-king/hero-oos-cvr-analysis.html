@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero stock-outs vs store conversion — Tethrd × Steak King</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --bg-soft:#fafafa; --dark:#0a0a0a;
+    --ink:#0a0a0a; --ink-2:#3a3a3a; --ink-3:#6a6a6a; --ink-4:#a0a0a0;
+    --line:#e8e8e8; --line-2:#d0d0d0;
+    --accent:#EC7D55;                 /* Steak King coral */
+    --accent-bg:#fbeee7;
+    --good:#4a6a4a; --good-bg:#e9efe9;
+    --bad:#a8443a; --bad-bg:#f6e7e5;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;font-weight:400}
+  .wrap{max-width:920px;margin:0 auto;padding:0 32px}
+  /* top bar */
+  .topbar{padding:28px 0 0;display:flex;justify-content:space-between;align-items:center}
+  .wordmark{font-weight:800;font-size:15px;letter-spacing:-0.02em;color:var(--ink)}
+  .wordmark .x{color:var(--ink-4);margin:0 8px;font-weight:400}
+  .wordmark .partner{font-weight:600}
+  .topbar .meta-right{font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.12em}
+  /* hero */
+  .hero{padding:80px 0 56px;border-bottom:1px solid var(--line);margin-bottom:8px}
+  .eyebrow{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.18em;margin-bottom:28px}
+  h1{font-size:52px;line-height:1.04;font-weight:800;margin:0 0 28px;letter-spacing:-0.035em;color:var(--ink)}
+  h1 .accent{color:var(--accent)}
+  .lede{font-size:18px;line-height:1.55;color:var(--ink-2);max-width:700px;font-weight:400;margin:0}
+  .lede strong{color:var(--ink);font-weight:600}
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:56px 0;padding:32px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stat{padding:0 24px;border-right:1px solid var(--line)}
+  .stat:first-child{padding-left:0}
+  .stat:last-child{border-right:none;padding-right:0}
+  .stat .n{font-size:36px;font-weight:800;color:var(--ink);line-height:1;letter-spacing:-0.03em;font-variant-numeric:tabular-nums}
+  .stat .n.bad{color:var(--accent)}
+  .stat .l{font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.12em;margin-top:10px;font-weight:500}
+  /* headings */
+  h2{font-size:28px;font-weight:700;letter-spacing:-0.02em;margin:64px 0 16px;color:var(--ink)}
+  h2+.sub{font-size:14px;color:var(--ink-3);margin:0 0 24px;max-width:680px;line-height:1.6}
+  p.body{font-size:15px;color:var(--ink-2);max-width:700px;line-height:1.65}
+  p.body strong{color:var(--ink);font-weight:600}
+  /* verdict panel */
+  .verdict{border-left:2px solid var(--accent);padding:6px 0 6px 24px;margin:36px 0 8px}
+  .verdict .tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);display:block;margin-bottom:12px}
+  .verdict p{font-size:16px;color:var(--ink-2);margin:0;line-height:1.6;max-width:720px}
+  .verdict p strong{color:var(--ink);font-weight:600}
+  /* data table */
+  table.data{width:100%;border-collapse:collapse;margin:8px 0 8px;font-size:14px}
+  table.data th{color:var(--ink-4);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;font-size:10.5px;padding:12px 10px;text-align:right;border-bottom:1px solid var(--line-2)}
+  table.data th:first-child{text-align:left}
+  table.data td{padding:13px 10px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;color:var(--ink-2)}
+  table.data td:first-child{text-align:left;color:var(--ink);font-weight:500}
+  table.data td.big{font-weight:700;color:var(--ink)}
+  table.data tr.hl td{background:var(--bad-bg)}
+  table.data tr.base td{background:var(--good-bg)}
+  .delta{color:var(--bad);font-weight:600}
+  .flat{color:var(--ink-4);font-weight:600}
+  /* chart */
+  .chartcard{margin:24px 0 8px}
+  .legend{display:flex;gap:22px;flex-wrap:wrap;font-size:11px;color:var(--ink-3);margin:0 0 18px;text-transform:uppercase;letter-spacing:0.08em;font-weight:500}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .legend i{width:16px;height:8px;display:inline-block;border-radius:2px}
+  .scroll{overflow-x:auto}
+  .caption{font-size:12.5px;color:var(--ink-3);margin:10px 2px 0;max-width:720px;line-height:1.6}
+  /* numbered cards */
+  .camp{display:grid;grid-template-columns:52px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--line);align-items:start}
+  .camp:last-of-type{border-bottom:1px solid var(--line)}
+  .camp .num{font-size:26px;font-weight:800;color:var(--accent);line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+  .camp .title{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:7px;letter-spacing:-0.01em}
+  .camp .desc{font-size:14.5px;color:var(--ink-2);line-height:1.6;margin:0}
+  .camp .desc strong{color:var(--ink);font-weight:600}
+  /* stock list */
+  .stock{display:grid;grid-template-columns:1fr;gap:0;margin:16px 0 0}
+  .stock .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+  .stock .row:last-child{border-bottom:1px solid var(--line)}
+  .stock .nm{font-weight:600;color:var(--ink);font-size:15px}
+  .stock .nm small{display:block;color:var(--ink-3);font-weight:400;font-size:12.5px;margin-top:3px;max-width:520px}
+  .stock .pill{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:5px 11px;border-radius:2px;white-space:nowrap}
+  .pill.ok{background:var(--good-bg);color:var(--good)}
+  .pill.warn{background:var(--accent-bg);color:var(--accent)}
+  .pill.out{background:var(--bad-bg);color:var(--bad)}
+  /* footer */
+  .footer{background:var(--dark);color:#fff;margin-top:80px;padding:48px 32px;text-align:center}
+  .footer .wordmark{color:#fff;font-size:16px}
+  .footer .wordmark .x{color:rgba(255,255,255,0.4)}
+  .footer .copy{font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.15em;margin-top:20px;font-weight:500}
+  .footer .copy a{color:rgba(255,255,255,0.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3)}
+  @media print{body{background:#fff}.camp{break-inside:avoid}.footer{background:#fff;color:#000}.footer .wordmark{color:#000}.footer .copy{color:#000}}
+  @media (max-width:720px){
+    h1{font-size:34px}
+    .stats{grid-template-columns:repeat(2,1fr);gap:28px 0}
+    .stat{border-right:none;padding:0 16px}
+    .camp{grid-template-columns:1fr;gap:10px}
+    .stock .row{flex-direction:column;gap:8px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="wordmark">tethrd<span class="x">×</span><span class="partner">Steak King</span></div>
+    <div class="meta-right">July 2026 · Inventory × Conversion</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">For David · Hero stock-out analysis</div>
+    <h1>A single hero out of stock<br>barely moves store CVR.<br><span class="accent">Two or more</span> is where it bites.</h1>
+    <p class="lede">We had a hypothesis that today's soft numbers are partly down to the top wagyu cuts being out of stock. I pulled 35 days of real Shopify session and conversion data to test it. One hero out barely dents blended conversion because the catalogue substitutes, but the money metric, <strong>revenue per session, drops 21% on out-of-stock days</strong>, and right now two of our three demand drivers are starved. Full read below, including the one caveat I want to flag honestly.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">1.70%</div><div class="l">Baseline store CVR</div></div>
+    <div class="stat"><div class="n bad">&minus;8.8%</div><div class="l">CVR on OOS days</div></div>
+    <div class="stat"><div class="n bad">&minus;21%</div><div class="l">Revenue / session</div></div>
+    <div class="stat"><div class="n">$12&ndash;27k</div><div class="l">At risk / OOS day</div></div>
+  </div>
+
+  <div class="verdict">
+    <span class="tag">The verdict</span>
+    <p>Directionally the hypothesis holds, with nuance. When only one hero is out and the rest of the range is stocked, blended conversion holds up (June ran only about 3% down). The dip turns real when <strong>two or more top heroes are out together</strong>, and it shows up harder in revenue per session and AOV than in the raw conversion rate. That is exactly where we sit now: the M9+ Ribeye was out for seven straight days, and the M9+ Striploin's two best cuts are still at zero.</p>
+  </div>
+
+  <h2>What the data says</h2>
+  <p class="sub">Normal trading days only. I've excluded the Meat Emporium window (22/06&ndash;01/07) because a sale lifts conversion no matter what stock looks like, and mixing those days in would flatter the result.</p>
+  <div class="scroll">
+    <table class="data">
+      <thead><tr><th>Stock state (BAU days)</th><th>Days</th><th>Store CVR</th><th>Rev / session</th><th>AOV</th></tr></thead>
+      <tbody>
+        <tr class="base"><td>All heroes in stock</td><td>13</td><td class="big">1.70%</td><td class="big">$27.5</td><td>$1,366</td></tr>
+        <tr><td>1+ hero out of stock</td><td>12</td><td class="big">1.55% <span class="delta">&minus;8.8%</span></td><td class="big">$21.8 <span class="delta">&minus;21%</span></td><td>$1,245 <span class="delta">&minus;9%</span></td></tr>
+        <tr class="hl"><td>2+ heroes out of stock</td><td>7</td><td class="big">1.54% <span class="delta">&minus;9.8%</span></td><td class="big">$20.6 <span class="delta">&minus;25%</span></td><td>$1,213 <span class="delta">&minus;11%</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caption">Read the revenue column, not just the conversion one. When the premium M9+ cuts are gone, shoppers either leave or trade down to cheaper items, so revenue per session moves about 2.5&times; more than blended CVR. That's the number that shows the actual lost money.</p>
+
+  <h2>Store conversion, day by day</h2>
+  <div class="chartcard">
+    <div class="legend">
+      <span><i style="background:var(--accent)"></i>Daily store CVR</span>
+      <span><i style="background:var(--bad-bg);border:1px solid var(--bad)"></i>Hero(es) out of stock</span>
+      <span><i style="background:#eeeeee;border:1px solid var(--ink-4)"></i>Meat Emporium sale</span>
+    </div>
+    <div class="scroll"><svg id="chart" width="856" height="300" role="img"
+      aria-label="Daily store conversion rate, 3 June to 7 July 2026, with out-of-stock days and the sale window shaded"></svg></div>
+    <p class="caption">CVR holds around 1.6&ndash;2.0% through mid-June even on single-hero out-of-stock days, spikes during the sale, then settles into a lower 1.3&ndash;1.5% band across early July while the M9+ Ribeye stays fully out. That flat, depressed tail is the pattern behind today's numbers.</p>
+  </div>
+
+  <h2>The one caveat</h2>
+  <p class="sub">Early July is also the week straight after Meat Emporium, when the deal-seekers have already bought and traffic is lower-intent. So July's drop isn't 100% down to stock. Splitting the window keeps us honest about what's stock and what's timing.</p>
+  <div class="scroll">
+    <table class="data">
+      <thead><tr><th>Segment</th><th>Days</th><th>Store CVR</th><th>Rev / session</th><th>vs baseline</th></tr></thead>
+      <tbody>
+        <tr class="base"><td>June BAU · all heroes in stock</td><td>13</td><td class="big">1.70%</td><td>$27.5</td><td class="flat">baseline</td></tr>
+        <tr><td>June BAU · 1+ hero out</td><td>6</td><td class="big">1.65%</td><td>$24.1</td><td class="delta">&minus;3% CVR · &minus;12% rev/sess</td></tr>
+        <tr class="hl"><td>July BAU · M9+ Ribeye out all week</td><td>6</td><td class="big">1.46%</td><td>$19.5</td><td class="delta">&minus;14.5% CVR · &minus;29% rev/sess</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caption">The cleanest, least-confounded signal is that revenue per session and AOV move with hero stock even inside June, before any post-sale effect. Raw CVR is the more forgiving metric; revenue per session is the honest one.</p>
+
+  <h2>How we know a hero was out</h2>
+  <p class="body">Shopify can't recall historical stock levels, so I reconstructed out-of-stock days with a <strong>zero-sales proxy</strong>: a hero that normally sells every day but records zero units was almost certainly out. It lines up with what we already knew. The M9+ Ribeye and Striploin sold their last units on 29&ndash;30/06 and hit zero from 01/07, which matches what the team saw. The proxy also surfaced an earlier stock-out on 08&ndash;11 June that wasn't logged, when both M9+ cuts were out together.</p>
+
+  <h2>Where stock sits today</h2>
+  <p class="sub">Live inventory as of 08/07. This is the "today" picture behind the hypothesis.</p>
+  <div class="stock">
+    <div class="row">
+      <div class="nm">Chilled Wagyu M9+ Ribeye 1kg <small>#2 product store-wide. Just restocked, but thin, after seven days at zero. Will sell through fast.</small></div>
+      <div class="pill warn">22 units · thin</div>
+    </div>
+    <div class="row">
+      <div class="nm">Chilled Wagyu M9+ Striploin 1kg <small>17 units on hand, but the two most-wanted cuts (Thin ~250g and Thick ~330g) are both at zero. Effectively half-out.</small></div>
+      <div class="pill out">Top cuts out</div>
+    </div>
+    <div class="row">
+      <div class="nm">Chilled Wagyu M4-5 Fillet Steaks <small>Never went out across the whole 35 days. This is exactly why single-hero out-of-stock days held their conversion.</small></div>
+      <div class="pill ok">182 units · healthy</div>
+    </div>
+  </div>
+
+  <h2>Revenue at risk</h2>
+  <p class="body">Revenue per session on out-of-stock days runs <strong>$6&ndash;8 below</strong> the in-stock baseline. At around 3,400 sessions a day that's roughly <strong>$20&ndash;27k/day</strong> of exposure on a two-hero-out day, and a conservative floor that strips the post-sale effect is about <strong>$12k/day</strong>. Across the current seven-day Ribeye stock-out that's an estimated $85k&ndash;$190k of foregone revenue. Even the floor comfortably funds holding more safety stock on two SKUs.</p>
+
+  <h2>What I'd do</h2>
+  <div class="camp">
+    <div class="num">01</div>
+    <div class="body">
+      <div class="title">Protect the two demand drivers first</div>
+      <p class="desc">The <strong>M9+ Ribeye and M9+ Striploin</strong> are the SKUs whose absence bends the numbers. Set a safety-stock floor so neither hits zero. The M4-5 Fillet proves a well-stocked hero holds conversion on its own.</p>
+    </div>
+  </div>
+  <div class="camp">
+    <div class="num">02</div>
+    <div class="body">
+      <div class="title">Allocate at the cut level, not the product level</div>
+      <p class="desc">Stock-outs start with the popular cuts (Thin and Thick) while Half and Uncut linger, so a product can read "in stock" while its best sellers are gone. <strong>Weight replenishment toward Thin and Thick.</strong></p>
+    </div>
+  </div>
+  <div class="camp">
+    <div class="num">03</div>
+    <div class="body">
+      <div class="title">Set a low-stock trigger</div>
+      <p class="desc">Alert when a top-5 hero drops below about one to two days of cover, so purchasing can reorder <strong>before the zero-day, not after it</strong>.</p>
+    </div>
+  </div>
+  <div class="camp">
+    <div class="num">04</div>
+    <div class="body">
+      <div class="title">Track revenue per session, not just CVR</div>
+      <p class="desc">Revenue per session is about 2.5&times; more sensitive to stock-outs than blended conversion, and it's what actually shows the lost money. <strong>Use it as the stock-out damage metric.</strong></p>
+    </div>
+  </div>
+  <div class="camp">
+    <div class="num">05</div>
+    <div class="body">
+      <div class="title">Re-run this on a clean in-stock fortnight</div>
+      <p class="desc">Once we get two weeks with all heroes stocked and no sale, I'll re-run it to strip the post-sale effect and lock a <strong>precise per-day dollar cost</strong> of a hero stock-out.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="wordmark">tethrd<span class="x">×</span>Steak King</div>
+  <div class="copy">Prepared 08 Jul 2026 · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a></div>
+</div>
+
+<script>
+const DATA = [{"d":"2026-06-03","typ":"BAU","cvr":1.901,"oos":0},{"d":"2026-06-04","typ":"BAU","cvr":1.525,"oos":0},{"d":"2026-06-05","typ":"BAU","cvr":1.143,"oos":0},{"d":"2026-06-06","typ":"BAU","cvr":1.328,"oos":1},{"d":"2026-06-07","typ":"BAU","cvr":1.912,"oos":1},{"d":"2026-06-08","typ":"BAU","cvr":1.593,"oos":2},{"d":"2026-06-09","typ":"BAU","cvr":1.6,"oos":2},{"d":"2026-06-10","typ":"BAU","cvr":1.639,"oos":2},{"d":"2026-06-11","typ":"BAU","cvr":1.82,"oos":2},{"d":"2026-06-12","typ":"BAU","cvr":1.928,"oos":0},{"d":"2026-06-13","typ":"BAU","cvr":1.597,"oos":0},{"d":"2026-06-14","typ":"BAU","cvr":2.002,"oos":0},{"d":"2026-06-15","typ":"BAU","cvr":2.252,"oos":0},{"d":"2026-06-16","typ":"BAU","cvr":2.037,"oos":0},{"d":"2026-06-17","typ":"BAU","cvr":1.982,"oos":0},{"d":"2026-06-18","typ":"BAU","cvr":1.935,"oos":0},{"d":"2026-06-19","typ":"BAU","cvr":1.527,"oos":0},{"d":"2026-06-20","typ":"BAU","cvr":1.203,"oos":0},{"d":"2026-06-21","typ":"BAU","cvr":1.104,"oos":0},{"d":"2026-06-22","typ":"SALE","cvr":2.369,"oos":0},{"d":"2026-06-23","typ":"SALE","cvr":2.089,"oos":0},{"d":"2026-06-24","typ":"SALE","cvr":2.414,"oos":0},{"d":"2026-06-25","typ":"SALE","cvr":2.203,"oos":0},{"d":"2026-06-26","typ":"SALE","cvr":2.296,"oos":0},{"d":"2026-06-27","typ":"SALE","cvr":1.73,"oos":0},{"d":"2026-06-28","typ":"SALE","cvr":2.494,"oos":0},{"d":"2026-06-29","typ":"SALE","cvr":2.974,"oos":0},{"d":"2026-06-30","typ":"SALE","cvr":3.194,"oos":0},{"d":"2026-07-01","typ":"SALE","cvr":2.843,"oos":2},{"d":"2026-07-02","typ":"BAU","cvr":1.492,"oos":2},{"d":"2026-07-03","typ":"BAU","cvr":1.275,"oos":2},{"d":"2026-07-04","typ":"BAU","cvr":1.331,"oos":2},{"d":"2026-07-05","typ":"BAU","cvr":1.323,"oos":1},{"d":"2026-07-06","typ":"BAU","cvr":1.777,"oos":1},{"d":"2026-07-07","typ":"BAU","cvr":1.541,"oos":1}];
+(function(){
+  const COL={accent:'#EC7D55',grid:'#e8e8e8',muted:'#a0a0a0',ink3:'#6a6a6a',oos:'rgba(168,68,58,.10)',sale:'rgba(10,10,10,.05)'};
+  const svg=document.getElementById('chart');
+  const W=856,H=300,mL=42,mR=12,mT=14,mB=46;
+  const iw=W-mL-mR,ih=H-mT-mB,n=DATA.length,maxY=3.4;
+  const x=i=>mL+iw*(i/(n-1)), bw=iw/(n-1), y=v=>mT+ih-(v/maxY)*ih;
+  let s='';
+  for(let g=0;g<=3;g++){const gy=y(g);s+=`<line x1="${mL}" y1="${gy}" x2="${W-mR}" y2="${gy}" stroke="${COL.grid}" stroke-width="1"/>`;
+    s+=`<text x="${mL-8}" y="${gy+4}" text-anchor="end" font-size="11" fill="${COL.muted}" font-family="Inter,sans-serif">${g}%</text>`;}
+  DATA.forEach((d,i)=>{const x0=x(i)-bw/2;
+    if(d.typ==='SALE')s+=`<rect x="${x0}" y="${mT}" width="${bw}" height="${ih}" fill="${COL.sale}"/>`;
+    if(d.typ==='BAU'&&d.oos>0)s+=`<rect x="${x0}" y="${mT}" width="${bw}" height="${ih}" fill="${COL.oos}"/>`;});
+  let p='';DATA.forEach((d,i)=>{p+=(i?'L':'M')+x(i).toFixed(1)+' '+y(d.cvr).toFixed(1)+' ';});
+  s+=`<path d="${p}" fill="none" stroke="${COL.accent}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  DATA.forEach((d,i)=>{s+=`<circle cx="${x(i)}" cy="${y(d.cvr)}" r="2.6" fill="${COL.accent}"/>`;});
+  DATA.forEach((d,i)=>{if(i%3===0||i===n-1){const lab=d.d.slice(8)+'/'+d.d.slice(5,7);
+    s+=`<text x="${x(i)}" y="${H-mB+18}" text-anchor="middle" font-size="10.5" fill="${COL.ink3}" font-family="Inter,sans-serif">${lab}</text>`;}});
+  svg.innerHTML=s;
+})();
+</script>
+</body>
+</html>
