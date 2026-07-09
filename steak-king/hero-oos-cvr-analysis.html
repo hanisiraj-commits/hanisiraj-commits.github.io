@@ -45,7 +45,7 @@
   /* bar charts */
   .chart{display:flex;gap:14px;justify-content:space-around;padding:6px 0 0}
   .pgroup{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0}
-  .bars{display:flex;gap:9px;align-items:flex-end;height:180px}
+  .bars{display:flex;gap:9px;align-items:flex-end;height:172px}
   .bcol{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:50px}
   .bar{width:42px;border-radius:4px 4px 0 0;min-height:3px;background:var(--c)}
   .bar.oos{opacity:.42}
@@ -138,12 +138,12 @@ function chart(elId,metric,max,isMoney){
     var P=D.periods[k],lbl=META[k][0],color=META[k][1];
     var iv=P.instock[metric],ov=P.oos[metric];
     function fmt(v){return isMoney?('$'+v.toFixed(0)):(v.toFixed(2)+'%');}
-    function ht(v){return (v/max*100).toFixed(1);}
-    var inBar='<div class="bcol"><div class="bval">'+fmt(iv)+'</div><div class="bar" style="height:'+ht(iv)+'%;--c:'+color+'"></div><div class="bn">in stock<br>'+P.instock.n+' days</div></div>';
+    function ht(v){return (v/max*150).toFixed(0);}
+    var inBar='<div class="bcol"><div class="bval">'+fmt(iv)+'</div><div class="bar" style="height:'+ht(iv)+'px;--c:'+color+'"></div><div class="bn">in stock<br>'+P.instock.n+' days</div></div>';
     var oosBar='';
     if(P.oos.n>0){
       var faint=P.reliable?'':' faint';
-      oosBar='<div class="bcol"><div class="bval'+(P.reliable?'':' faint')+'">'+fmt(ov)+'</div><div class="bar oos'+faint+'" style="height:'+ht(ov)+'%;--c:'+color+'"></div><div class="bn">out of stock<br>'+P.oos.n+' day'+(P.oos.n>1?'s':'')+'</div></div>';
+      oosBar='<div class="bcol"><div class="bval'+(P.reliable?'':' faint')+'">'+fmt(ov)+'</div><div class="bar oos'+faint+'" style="height:'+ht(ov)+'px;--c:'+color+'"></div><div class="bn">out of stock<br>'+P.oos.n+' day'+(P.oos.n>1?'s':'')+'</div></div>';
     }
     var dkey=metric+'_delta';
     var delta;
