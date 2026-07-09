@@ -8,11 +8,11 @@
 <style>
   :root{--bg:#fff;--dark:#0a0a0a;--ink:#0a0a0a;--ink-2:#3a3a3a;--ink-3:#6a6a6a;--ink-4:#a0a0a0;
     --line:#e8e8e8;--line-2:#d0d0d0;--accent:#EC7D55;--bad:#a8443a;
-    --bau:#EC7D55;--mes:#b8862f;--flash:#3f7a8c;
-    --in:#eef3ee;--o1:#f8ddcf;--o2:#ec9871;--o3:#d0552f;}
+    --in:#eef3ee;--o1:#f8ddcf;--o2:#ec9871;--o3:#d0552f;--saleday:#ededed;
+    --instock-bar:#7ba889;--oos-bar:#e08a5f;}
   *{box-sizing:border-box}html,body{margin:0;padding:0}
   body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:800px;margin:0 auto;padding:0 32px}
+  .wrap{max-width:780px;margin:0 auto;padding:0 32px}
   .topbar{padding:28px 0 0;display:flex;justify-content:space-between;align-items:center}
   .wordmark{font-weight:800;font-size:15px;letter-spacing:-0.02em}
   .wordmark .x{color:var(--ink-4);margin:0 8px;font-weight:400}.wordmark .partner{font-weight:600}
@@ -29,7 +29,6 @@
   .legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:11.5px;color:var(--ink-3);margin:0 0 18px;align-items:center}
   .legend span{display:inline-flex;align-items:center;gap:7px}
   .legend i{width:15px;height:15px;border-radius:3px;display:inline-block;border:1px solid rgba(0,0,0,.06)}
-  .legend i.dot{width:9px;height:9px;border-radius:50%}
   .keys{font-size:11.5px;color:var(--ink-3);margin:12px 0 0}.keys b{color:var(--ink-2);font-weight:700}
   .cals{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 26px}
   @media(max-width:640px){.cals{grid-template-columns:1fr}}
@@ -41,28 +40,25 @@
   .cell .dn{font-size:10px;color:var(--ink-3);font-weight:600;line-height:1}
   .cell .cd{font-size:8.5px;font-weight:800;letter-spacing:.5px;margin-top:2px;line-height:1;color:#5a2a12}
   .cell.o2 .cd,.cell.o3 .cd{color:#fff}.cell.o2 .dn,.cell.o3 .dn{color:rgba(255,255,255,.9)}
-  .cell .mk{position:absolute;top:3px;right:3px;width:6px;height:6px;border-radius:50%}
+  .cell.saleday .dn{color:var(--ink-4)}
   /* bar charts */
-  .chart{display:flex;gap:14px;justify-content:space-around;padding:6px 0 0}
-  .pgroup{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0}
-  .bars{display:flex;gap:9px;align-items:flex-end;height:172px}
-  .bcol{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:50px}
-  .bar{width:42px;border-radius:4px 4px 0 0;min-height:3px;background:var(--c)}
-  .bar.oos{opacity:.42}
-  .bar.faint{opacity:.16;border:1px dashed var(--c)}
-  .bval{font-size:12px;font-weight:800;margin-bottom:5px;font-variant-numeric:tabular-nums}
-  .bval.faint{color:var(--ink-4);font-weight:600}
-  .bn{font-size:9.5px;color:var(--ink-4);margin-top:6px;text-align:center;line-height:1.25}
-  .plabel{font-weight:700;font-size:12.5px;margin-top:12px;text-align:center}
-  .pdelta{font-size:12.5px;font-weight:800;margin-top:3px}
-  .pdelta.dn{color:var(--bad)}.pdelta.na{color:var(--ink-4);font-weight:600;font-size:11px}
-  .note{font-size:12px;color:var(--ink-3);margin:26px 0 0;line-height:1.55;max-width:640px}
+  .chart{display:flex;align-items:flex-end;justify-content:center;gap:36px;height:210px;margin:8px 0 0;position:relative}
+  .bcol{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:120px}
+  .bar{width:96px;border-radius:5px 5px 0 0;min-height:4px}
+  .bval{font-size:20px;font-weight:800;margin-bottom:8px;font-variant-numeric:tabular-nums}
+  .bn{font-size:12px;color:var(--ink-3);margin-top:10px;text-align:center;line-height:1.35;font-weight:600}
+  .bn small{display:block;color:var(--ink-4);font-weight:400;font-size:11px}
+  .dip{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 4px 30px}
+  .dip .arw{font-size:22px;color:var(--bad);line-height:1}
+  .dip .pct{font-size:30px;font-weight:800;color:var(--bad);letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+  .dip .cap{font-size:10.5px;color:var(--ink-4);text-transform:uppercase;letter-spacing:0.1em;margin-top:2px}
+  .note{font-size:12px;color:var(--ink-3);margin:30px 0 0;line-height:1.55;max-width:640px}
   .note b{color:var(--ink-2)}
   .footer{background:var(--dark);color:#fff;margin-top:52px;padding:44px 32px;text-align:center}
   .footer .wordmark{color:#fff;font-size:16px}.footer .wordmark .x{color:rgba(255,255,255,.4)}
   .footer .copy{font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:0.15em;margin-top:18px}
   .footer .copy a{color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
-  @media(max-width:560px){h1{font-size:26px}.bcol{width:40px}.bar{width:32px}}
+  @media(max-width:560px){h1{font-size:26px}.chart{gap:16px}.bcol{width:84px}.bar{width:70px}}
 </style>
 </head>
 <body>
@@ -74,31 +70,30 @@
   <div class="hero">
     <div class="eyebrow">For David · Stock-out impact</div>
     <h1>When our core cuts sell out,<br><span class="accent">store conversion follows.</span></h1>
-    <p class="blurb">We backfilled the last 90 days, flagged every day a core wagyu cut was out of stock, and split it three ways: normal days, Meat Emporium, and flash sales (dated from the actual campaign sends). <strong>On normal trading days, a stock-out cuts store-wide CVR ~7% and revenue per session ~19%.</strong> During sales it doesn't show, because the heroes are kept in stock for the sale and the discount traffic masks it.</p>
+    <p class="blurb">We backfilled the last 90 days of normal trading and split them into days our core wagyu cuts were in stock vs out of stock. When a core cut is out, <strong>store-wide conversion dips ~7% and revenue per session drops ~19%.</strong> Sale periods are set aside, since a sale lifts conversion on its own.</p>
   </div>
 
   <h2><span class="h2num">1</span>The last 90 days, day by day</h2>
-  <p class="sub-h">Each day shaded by how many core cuts were out of stock, with which ones. Sale days are dotted.</p>
+  <p class="sub-h">Each normal day shaded by how many core cuts were out of stock, with which ones.</p>
   <div class="legend">
     <span><i style="background:var(--in)"></i>All in stock</span>
     <span><i style="background:var(--o1)"></i>1 cut out</span>
     <span><i style="background:var(--o2)"></i>2 cuts out</span>
     <span><i style="background:var(--o3)"></i>3 cuts out</span>
-    <span><i class="dot" style="background:var(--mes)"></i>Meat Emporium day</span>
-    <span><i class="dot" style="background:var(--flash)"></i>Flash sale day</span>
+    <span><i style="background:var(--saleday)"></i>Sale day (excluded)</span>
   </div>
   <div class="cals" id="cals"></div>
   <div class="keys"><b>R</b> = M9+ Ribeye &nbsp;·&nbsp; <b>S</b> = M9+ Striploin &nbsp;·&nbsp; <b>F</b> = M4-5 Fillet</div>
 
   <h2><span class="h2num">2</span>Store CVR &mdash; in stock vs out of stock</h2>
-  <p class="sub-h">Average store-wide conversion, split by period. Each period has its own baseline (sales convert higher), so they're compared within, not across.</p>
+  <p class="sub-h">Average store-wide conversion rate on normal trading days.</p>
   <div class="chart" id="cvrChart"></div>
 
   <h2><span class="h2num">3</span>Revenue per session &mdash; in stock vs out of stock</h2>
-  <p class="sub-h">Store revenue &divide; site sessions, same split. Sale days earn far more per visitor, which is exactly why they can't share a baseline with normal days.</p>
+  <p class="sub-h">Store revenue &divide; site sessions on normal trading days. This is where the stock-out bites hardest.</p>
   <div class="chart" id="rpsChart"></div>
 
-  <p class="note"><b>How to read it.</b> A core cut recording zero sales on a day is our signal it was out of stock. The clean read is <b>Normal days</b>: 12 stock-out days vs 26 fully-stocked, a real dip in both CVR and revenue per session. <b>Meat Emporium</b> heroes were kept in stock throughout (only 1 out-of-stock day in the whole sale window, so there's nothing to compare). During <b>flash sales</b> the discount lift swamps any stock-out effect. Sale windows are dated from the campaign sends. Core cuts: M9+ Ribeye, M9+ Striploin, M4-5 Fillet.</p>
+  <p class="note"><b>How to read it.</b> A core cut recording zero sales on a normal day is our signal it was out of stock. Across the last 90 days there were <b>26 fully-stocked days and 12 stock-out days</b>. On the stock-out days the whole store converted lower and earned less per visitor, because shoppers either leave or trade down when the premium cuts are gone. Sale days are excluded. Core cuts: M9+ Ribeye, M9+ Striploin, M4-5 Fillet.</p>
 </div>
 <div class="footer">
   <div class="wordmark">tethrd<span class="x">×</span>Steak King</div>
@@ -110,7 +105,6 @@ const byDate={};D.cal.forEach(c=>byDate[c.d]=c);
 const MONTHS=[[2026,3,'April'],[2026,4,'May'],[2026,5,'June'],[2026,6,'July']];
 const DOW=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const FILL={0:'var(--in)',1:'var(--o1)',2:'var(--o2)',3:'var(--o3)'};
-const MK={MES:'var(--mes)',FLASH:'var(--flash)'};
 let calHtml='';
 MONTHS.forEach(function(M){
   var y=M[0],m=M[1],label=M[2];
@@ -122,42 +116,27 @@ MONTHS.forEach(function(M){
     var ds=y+'-'+String(m+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
     var c=byDate[ds];
     if(!c){cells+='<div class="cell empty"></div>';continue;}
+    var sale=(c.period!=='BAU');
+    if(sale){cells+='<div class="cell saleday" style="background:var(--saleday)"><span class="dn">'+day+'</span></div>';continue;}
     var cls=c.cnt>0?('o'+c.cnt):'';
     var codes=c.cnt>0?('<span class="cd">'+c.codes.join(' ')+'</span>'):'';
-    var mk=MK[c.period]?('<span class="mk" style="background:'+MK[c.period]+'"></span>'):'';
-    cells+='<div class="cell '+cls+'" style="background:'+FILL[c.cnt]+'">'+mk+'<span class="dn">'+day+'</span>'+codes+'</div>';
+    cells+='<div class="cell '+cls+'" style="background:'+FILL[c.cnt]+'"><span class="dn">'+day+'</span>'+codes+'</div>';
   }
   calHtml+='<div class="cal"><div class="mname">'+label+'</div><div class="cgrid">'+DOW.map(function(d){return '<div class="dow">'+d+'</div>';}).join('')+cells+'</div></div>';
 });
 document.getElementById('cals').innerHTML=calHtml;
 
-var META={BAU:['Normal days','var(--bau)'],MES:['Meat Emporium','var(--mes)'],FLASH:['Flash sales','var(--flash)']};
 function chart(elId,metric,max,isMoney){
-  var html='';
-  ['BAU','MES','FLASH'].forEach(function(k){
-    var P=D.periods[k],lbl=META[k][0],color=META[k][1];
-    var iv=P.instock[metric],ov=P.oos[metric];
-    function fmt(v){return isMoney?('$'+v.toFixed(0)):(v.toFixed(2)+'%');}
-    function ht(v){return (v/max*150).toFixed(0);}
-    var inBar='<div class="bcol"><div class="bval">'+fmt(iv)+'</div><div class="bar" style="height:'+ht(iv)+'px;--c:'+color+'"></div><div class="bn">in stock<br>'+P.instock.n+' days</div></div>';
-    var oosBar='';
-    if(P.oos.n>0){
-      var faint=P.reliable?'':' faint';
-      oosBar='<div class="bcol"><div class="bval'+(P.reliable?'':' faint')+'">'+fmt(ov)+'</div><div class="bar oos'+faint+'" style="height:'+ht(ov)+'px;--c:'+color+'"></div><div class="bn">out of stock<br>'+P.oos.n+' day'+(P.oos.n>1?'s':'')+'</div></div>';
-    }
-    var dkey=metric+'_delta';
-    var delta;
-    if(P.reliable && P[dkey]!=null){
-      delta='<div class="pdelta '+(P[dkey]<0?'dn':'na')+'">'+(P[dkey]<0?'▼ ':'')+Math.abs(P[dkey])+'%</div>';
-    } else {
-      delta='<div class="pdelta na">'+(P.oos.n<=1?'heroes kept in stock':'no measurable dip')+'</div>';
-    }
-    html+='<div class="pgroup"><div class="bars">'+inBar+oosBar+'</div><div class="plabel">'+lbl+'</div>'+delta+'</div>';
-  });
-  document.getElementById(elId).innerHTML=html;
+  var B=D.periods.BAU, iv=B.instock[metric], ov=B.oos[metric], dip=B[metric+'_delta'];
+  function fmt(v){return isMoney?('$'+v.toFixed(0)):(v.toFixed(2)+'%');}
+  function ht(v){return (v/max*150).toFixed(0);}
+  var inCol='<div class="bcol"><div class="bval" style="color:var(--instock-bar)">'+fmt(iv)+'</div><div class="bar" style="height:'+ht(iv)+'px;background:var(--instock-bar)"></div><div class="bn">In stock<small>'+B.instock.n+' days</small></div></div>';
+  var oosCol='<div class="bcol"><div class="bval" style="color:var(--oos-bar)">'+fmt(ov)+'</div><div class="bar" style="height:'+ht(ov)+'px;background:var(--oos-bar)"></div><div class="bn">Out of stock<small>'+B.oos.n+' days</small></div></div>';
+  var dipBox='<div class="dip"><div class="arw">▼</div><div class="pct">'+Math.abs(dip)+'%</div><div class="cap">dip</div></div>';
+  document.getElementById(elId).innerHTML=inCol+oosCol+dipBox;
 }
-chart('cvrChart','cvr',3.0,false);
-chart('rpsChart','rps',42,true);
+chart('cvrChart','cvr',2.0,false);
+chart('rpsChart','rps',34,true);
 </script>
 </body>
 </html>
