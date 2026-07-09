@@ -83,7 +83,7 @@ document.getElementById('tiles').innerHTML=
    <div class="tile"><div class="n bad">${t90.cvr_d}%</div><div class="l">store CVR on those days (${t90.cvr_o}% vs ${t90.cvr_b}%)</div></div>
    <div class="tile"><div class="n bad">~$${(t90.perday/1000).toFixed(0)}k</div><div class="l">revenue lost per out-of-stock day</div></div>`;
 function money(v){return (v<0?'-':'')+'$'+Math.abs(Math.round(v)).toLocaleString();}
-const rowspec=[['Last 30 days',E.d30,''],['Last 90 days',E.d90,''],['Last 365 days',E.d365,'row365']];
+const rowspec=[['Last 30 days',E.d30,''],['Last 90 days',E.d90,'']];
 document.getElementById('rows').innerHTML=rowspec.map(([lbl,t,cls])=>
   `<tr class="${cls}"><td>${lbl}</td><td>${t.n_oos}</td><td class="d">${t.cvr_d>0?'+':''}${t.cvr_d}%</td><td class="d">${t.rps_d>0?'+':''}${t.rps_d}%</td><td class="d">${t.perday>0?'~'+money(t.perday):'—'}</td></tr>`
 ).join('');
