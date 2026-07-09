@@ -3,103 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hero stock-outs vs store CVR — Tethrd × Steak King</title>
+<title>Out-of-stock heroes vs store CVR & revenue — Tethrd × Steak King</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#fff;--dark:#0a0a0a;--ink:#0a0a0a;--ink-2:#3a3a3a;--ink-3:#6a6a6a;--ink-4:#a0a0a0;
-    --line:#e8e8e8;--line-2:#d0d0d0;--accent:#EC7D55;--good:#4a6a4a;--good-bg:#eef3ee;--bad:#a8443a;--bad-bg:#f8ece9;}
+    --line:#e8e8e8;--line-2:#d0d0d0;--accent:#EC7D55;--good:#4a6a4a;--bad:#a8443a;--bad-bg:#f8ece9;}
   *{box-sizing:border-box}html,body{margin:0;padding:0}
   body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:760px;margin:0 auto;padding:0 32px}
+  .wrap{max-width:720px;margin:0 auto;padding:0 32px}
   .topbar{padding:28px 0 0;display:flex;justify-content:space-between;align-items:center}
   .wordmark{font-weight:800;font-size:15px;letter-spacing:-0.02em}
   .wordmark .x{color:var(--ink-4);margin:0 8px;font-weight:400}.wordmark .partner{font-weight:600}
   .topbar .meta-right{font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.12em}
-  .hero{padding:56px 0 36px;border-bottom:1px solid var(--line);margin-bottom:8px}
+  .hero{padding:56px 0 34px}
   .eyebrow{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.18em;margin-bottom:22px}
-  h1{font-size:38px;line-height:1.1;font-weight:800;margin:0 0 18px;letter-spacing:-0.03em}
+  h1{font-size:36px;line-height:1.12;font-weight:800;margin:0 0 18px;letter-spacing:-0.03em}
   h1 .accent{color:var(--accent)}
-  .lede{font-size:16px;line-height:1.55;color:var(--ink-2);max-width:620px;margin:0}
+  .lede{font-size:16px;line-height:1.55;color:var(--ink-2);max-width:600px;margin:0}
   .lede strong{color:var(--ink);font-weight:600}
-  /* summary strip */
-  .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:36px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .sc{padding:22px 20px;border-right:1px solid var(--line)}
-  .sc:last-child{border-right:none}
-  .sc .w{font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.12em;font-weight:600}
-  .sc .d{font-size:32px;font-weight:800;letter-spacing:-0.03em;color:var(--bad);margin:8px 0 4px;font-variant-numeric:tabular-nums}
-  .sc .m{font-size:12px;color:var(--ink-4)}
-  .strip-note{font-size:12.5px;color:var(--ink-3);margin:12px 0 0;max-width:640px}
-  h2{font-size:20px;font-weight:700;letter-spacing:-0.02em;margin:44px 0 4px}
-  .cmp{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-3);margin:0 0 14px}
-  .cmp b{font-size:15px;font-variant-numeric:tabular-nums}
-  .cmp .b1{color:var(--good)}.cmp .b2{color:var(--bad)}
-  .cmp .delta{background:var(--bad-bg);color:var(--bad);font-weight:700;font-size:12px;padding:3px 9px;border-radius:3px}
-  .caveat{font-size:12.5px;color:var(--bad);background:var(--bad-bg);padding:10px 14px;border-radius:4px;margin:0 0 14px;max-width:640px;line-height:1.5}
-  .tbox{max-height:none}
-  .tbox.cap{max-height:360px;overflow-y:auto;border:1px solid var(--line);border-radius:4px}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:12px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tile{padding:26px 22px;border-right:1px solid var(--line)}
+  .tile:last-child{border-right:none}
+  .tile .n{font-size:40px;font-weight:800;letter-spacing:-0.035em;line-height:1;font-variant-numeric:tabular-nums}
+  .tile .n.bad{color:var(--bad)}
+  .tile .l{font-size:12px;color:var(--ink-3);margin-top:10px;line-height:1.4}
+  h2{font-size:19px;font-weight:700;letter-spacing:-0.02em;margin:44px 0 4px}
+  .sub-h{font-size:13px;color:var(--ink-3);margin:0 0 18px}
   table{width:100%;border-collapse:collapse;font-size:14px}
-  th{color:var(--ink-4);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;font-size:10.5px;padding:10px 12px;text-align:right;border-bottom:1px solid var(--line-2);background:#fff;position:sticky;top:0}
+  th{color:var(--ink-4);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;font-size:10.5px;padding:11px 12px;text-align:right;border-bottom:1px solid var(--line-2)}
   th:first-child{text-align:left}
-  td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;color:var(--ink-2)}
-  td:first-child{text-align:left;color:var(--ink);font-weight:600;white-space:nowrap}
-  td.prod{text-align:left;color:var(--ink-2);font-weight:400}
-  td.cvr{font-weight:700}
+  td{padding:13px 12px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;color:var(--ink-2)}
+  td:first-child{text-align:left;color:var(--ink);font-weight:700;white-space:nowrap}
+  td.d{color:var(--bad);font-weight:700}
+  .row365 td{color:var(--ink-4)}
+  .row365 td:first-child{color:var(--ink-3)}
+  .row365 td.d{color:var(--ink-4)}
   .scroll{overflow-x:auto}
-  .note{font-size:12.5px;color:var(--ink-3);margin:32px 0 0;line-height:1.6;max-width:620px}
-  .footer{background:var(--dark);color:#fff;margin-top:56px;padding:44px 32px;text-align:center}
+  .note{font-size:12.5px;color:var(--ink-3);margin:18px 0 0;line-height:1.6;max-width:600px}
+  .note b{color:var(--ink-2)}
+  .footer{background:var(--dark);color:#fff;margin-top:52px;padding:44px 32px;text-align:center}
   .footer .wordmark{color:#fff;font-size:16px}.footer .wordmark .x{color:rgba(255,255,255,.4)}
   .footer .copy{font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:0.15em;margin-top:18px}
   .footer .copy a{color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
-  @media(max-width:560px){h1{font-size:30px}.sc .d{font-size:26px}}
+  @media(max-width:560px){h1{font-size:29px}.tile .n{font-size:30px}.tiles{grid-template-columns:1fr;border:none}.tile{border-right:none;border-bottom:1px solid var(--line)}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="topbar">
     <div class="wordmark">tethrd<span class="x">×</span><span class="partner">Steak King</span></div>
-    <div class="meta-right">July 2026 · Hero stock-outs vs CVR</div>
+    <div class="meta-right">July 2026 · Stock-outs vs CVR & revenue</div>
   </div>
   <div class="hero">
-    <div class="eyebrow">For David · Hero stock-out check</div>
-    <h1>On the days a hero cut is out of stock,<br>store conversion runs <span class="accent">lower</span>.</h1>
-    <p class="lede">I marked every normal trading day where a top wagyu hero recorded zero sales (our read that it was out of stock), and compared store CVR on those days to the days everything was stocked. Sale days are excluded, since a sale lifts CVR on its own.</p>
-    <div class="summary" id="summary"></div>
-    <p class="strip-note">The dip is sharpest over the recent window and fades as you look further back. That's expected: these three cuts only became reliable daily sellers in early April, so before then a zero-sales day often just meant low demand, not a stock-out, which waters the signal down.</p>
+    <div class="eyebrow">For David · The evidence</div>
+    <h1>When our top wagyu cuts go out of stock,<br>store conversion and revenue <span class="accent">both drop</span>.</h1>
+    <p class="lede">On the days a top hero cut (M9+ Ribeye, M9+ Striploin or M4-5 Fillet) recorded zero sales &mdash; our read that it was out of stock &mdash; store-wide CVR and revenue per session fell against the days everything was in stock. Sale days excluded. Last 90 days:</p>
   </div>
 
-  <h2>Last 30 days</h2>
-  <div class="cmp" id="cmp30"></div>
-  <div class="scroll"><table><thead><tr><th>Date</th><th>Products out of stock</th><th>Store CVR</th></tr></thead><tbody id="rows30"></tbody></table></div>
+  <div class="tiles" id="tiles"></div>
 
-  <h2>Last 90 days</h2>
-  <div class="cmp" id="cmp90"></div>
-  <div class="scroll"><table><thead><tr><th>Date</th><th>Products out of stock</th><th>Store CVR</th></tr></thead><tbody id="rows90"></tbody></table></div>
+  <h2>The comparison</h2>
+  <p class="sub-h">Normal trading days only. Stock-out day = a top hero cut sold zero units.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Window</th><th>Stock-out days</th><th>Store CVR</th><th>Rev / session</th><th>Lost / day</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
 
-  <h2>Last 165 days</h2>
-  <div class="cmp" id="cmp165"></div>
-  <div class="caveat">Reads weaker because roughly half these flagged days fall before April, when the heroes sold only a few units a day, so many aren't genuine stock-outs. Included for completeness; the 30 and 90-day windows are the trustworthy read.</div>
-  <div class="scroll tbox cap"><table><thead><tr><th>Date</th><th>Products out of stock</th><th>Store CVR</th></tr></thead><tbody id="rows165"></tbody></table></div>
-
-  <p class="note">A hero that normally sells every day but records zero units was almost certainly out of stock (Shopify doesn't keep historical stock levels). Heroes tracked: M9+ Ribeye, M9+ Striploin, M4-5 Fillet. Sale windows (Meat Emporium and flashes) are excluded from both the benchmark and the stock-out days.</p>
+  <p class="note"><b>Why 90 days, not 365.</b> These three cuts only became reliable daily sellers in early April. Before that they sold a few units a day, so a zero-sales day meant low demand, not a stock-out &mdash; and a full-year version wrongly flags ~70% of days as out of stock, which buries the real effect. The 90-day window is the honest read: it covers every genuine stock-out since these became daily heroes. The signal is sharpest in the last 30 days, where the M9+ Ribeye and Striploin were both out for long stretches.</p>
 </div>
 <div class="footer">
   <div class="wordmark">tethrd<span class="x">×</span>Steak King</div>
-  <div class="copy">Prepared 08 Jul 2026 · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a></div>
+  <div class="copy">Prepared 09 Jul 2026 · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a></div>
 </div>
 <script>
-const T={"m30": {"start": "2026-06-08", "n_bench": 10, "n_oos": 10, "bench": 1.76, "oos": 1.54, "delta": -12.4, "rows": [{"d": "2026-06-08", "cvr": 1.59, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-06-09", "cvr": 1.6, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-06-10", "cvr": 1.64, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-06-11", "cvr": 1.82, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-02", "cvr": 1.49, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-03", "cvr": 1.27, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-04", "cvr": 1.33, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-05", "cvr": 1.32, "outs": ["M9+ Ribeye"]}, {"d": "2026-07-06", "cvr": 1.78, "outs": ["M9+ Ribeye"]}, {"d": "2026-07-07", "cvr": 1.54, "outs": ["M9+ Ribeye"]}]}, "m90": {"start": "2026-04-09", "n_bench": 41, "n_oos": 15, "bench": 1.68, "oos": 1.59, "delta": -5.5, "rows": [{"d": "2026-04-18", "cvr": 1.26, "outs": ["M4-5 Fillet"]}, {"d": "2026-05-18", "cvr": 2.11, "outs": ["M9+ Striploin"]}, {"d": "2026-05-19", "cvr": 1.86, "outs": ["M9+ Striploin"]}, {"d": "2026-06-06", "cvr": 1.33, "outs": ["M9+ Ribeye"]}, {"d": "2026-06-07", "cvr": 1.91, "outs": ["M9+ Ribeye"]}, {"d": "2026-06-08", "cvr": 1.59, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-06-09", "cvr": 1.6, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-06-10", "cvr": 1.64, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-06-11", "cvr": 1.82, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-02", "cvr": 1.49, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-03", "cvr": 1.27, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-04", "cvr": 1.33, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-05", "cvr": 1.32, "outs": ["M9+ Ribeye"]}, {"d": "2026-07-06", "cvr": 1.78, "outs": ["M9+ Ribeye"]}, {"d": "2026-07-07", "cvr": 1.54, "outs": ["M9+ Ribeye"]}]}, "m165": {"start": "2026-01-24", "n_bench": 53, "n_oos": 51, "bench": 1.69, "oos": 1.64, "delta": -2.9, "rows": [{"d": "2026-01-24", "cvr": 1.23, "outs": ["M9+ Ribeye", "M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-01-25", "cvr": 0.96, "outs": ["M9+ Ribeye", "M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-02-02", "cvr": 2.39, "outs": ["M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-02-03", "cvr": 2.68, "outs": ["M4-5 Fillet"]}, {"d": "2026-02-04", "cvr": 3.0, "outs": ["M4-5 Fillet"]}, {"d": "2026-02-05", "cvr": 3.02, "outs": ["M4-5 Fillet"]}, {"d": "2026-02-06", "cvr": 1.94, "outs": ["M9+ Ribeye", "M4-5 Fillet"]}, {"d": "2026-02-07", "cvr": 2.21, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-02-08", "cvr": 2.66, "outs": ["M9+ Ribeye", "M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-02-13", "cvr": 1.77, "outs": ["M9+ Ribeye", "M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-02-14", "cvr": 1.42, "outs": ["M9+ Ribeye", "M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-02-15", "cvr": 1.05, "outs": ["M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-02-16", "cvr": 1.52, "outs": ["M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-02-17", "cvr": 1.04, "outs": ["M9+ Ribeye", "M4-5 Fillet"]}, {"d": "2026-02-18", "cvr": 0.7, "outs": ["M9+ Ribeye", "M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-02-19", "cvr": 1.03, "outs": ["M9+ Ribeye", "M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-02-20", "cvr": 2.07, "outs": ["M4-5 Fillet"]}, {"d": "2026-02-21", "cvr": 1.73, "outs": ["M4-5 Fillet"]}, {"d": "2026-02-22", "cvr": 1.03, "outs": ["M9+ Ribeye", "M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-02-23", "cvr": 1.96, "outs": ["M4-5 Fillet"]}, {"d": "2026-03-01", "cvr": 1.54, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-03-03", "cvr": 1.84, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-03-04", "cvr": 1.57, "outs": ["M9+ Ribeye"]}, {"d": "2026-03-07", "cvr": 1.9, "outs": ["M9+ Ribeye"]}, {"d": "2026-03-10", "cvr": 1.91, "outs": ["M9+ Striploin"]}, {"d": "2026-03-19", "cvr": 1.46, "outs": ["M9+ Striploin"]}, {"d": "2026-03-22", "cvr": 1.02, "outs": ["M9+ Striploin"]}, {"d": "2026-03-26", "cvr": 1.94, "outs": ["M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-03-27", "cvr": 1.97, "outs": ["M9+ Striploin"]}, {"d": "2026-03-28", "cvr": 1.97, "outs": ["M9+ Striploin"]}, {"d": "2026-03-29", "cvr": 1.96, "outs": ["M9+ Ribeye", "M9+ Striploin", "M4-5 Fillet"]}, {"d": "2026-04-01", "cvr": 1.18, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-04-02", "cvr": 1.01, "outs": ["M9+ Ribeye"]}, {"d": "2026-04-04", "cvr": 1.27, "outs": ["M9+ Striploin"]}, {"d": "2026-04-05", "cvr": 0.87, "outs": ["M9+ Striploin"]}, {"d": "2026-04-07", "cvr": 1.18, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-04-18", "cvr": 1.26, "outs": ["M4-5 Fillet"]}, {"d": "2026-05-18", "cvr": 2.11, "outs": ["M9+ Striploin"]}, {"d": "2026-05-19", "cvr": 1.86, "outs": ["M9+ Striploin"]}, {"d": "2026-06-06", "cvr": 1.33, "outs": ["M9+ Ribeye"]}, {"d": "2026-06-07", "cvr": 1.91, "outs": ["M9+ Ribeye"]}, {"d": "2026-06-08", "cvr": 1.59, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-06-09", "cvr": 1.6, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-06-10", "cvr": 1.64, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-06-11", "cvr": 1.82, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-02", "cvr": 1.49, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-03", "cvr": 1.27, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-04", "cvr": 1.33, "outs": ["M9+ Ribeye", "M9+ Striploin"]}, {"d": "2026-07-05", "cvr": 1.32, "outs": ["M9+ Ribeye"]}, {"d": "2026-07-06", "cvr": 1.78, "outs": ["M9+ Ribeye"]}, {"d": "2026-07-07", "cvr": 1.54, "outs": ["M9+ Ribeye"]}]}};
-function fmtd(s){return s.slice(8)+'/'+s.slice(5,7)}
-function cmp(el,t){el.innerHTML=
-  `Benchmark, in stock: <b class="b1">${t.bench}%</b> <span>(${t.n_bench} days)</span> &nbsp;·&nbsp; Out of stock: <b class="b2">${t.oos}%</b> <span>(${t.n_oos} days)</span> <span class="delta">${t.delta}%</span>`;}
-function rows(el,t){el.innerHTML=t.rows.map(r=>{
-  const below=r.cvr<t.bench;
-  return `<tr><td>${fmtd(r.d)}</td><td class="prod">${r.outs.join(' · ')}</td><td class="cvr" style="color:${below?'var(--bad)':'var(--good)'}">${r.cvr.toFixed(2)}%</td></tr>`;
-}).join('');}
-const wins=[['m30','Last 30 days'],['m90','Last 90 days'],['m165','Last 165 days']];
-document.getElementById('summary').innerHTML=wins.map(([k,lbl])=>
-  `<div class="sc"><div class="w">${lbl}</div><div class="d">${T[k].delta}%</div><div class="m">${T[k].n_oos} stock-out days</div></div>`).join('');
-[['cmp30','rows30','m30'],['cmp90','rows90','m90'],['cmp165','rows165','m165']].forEach(([c,r,k])=>{
-  cmp(document.getElementById(c),T[k]);rows(document.getElementById(r),T[k]);});
+const E={"d30": {"start": "2026-06-08", "n_bench": 10, "n_oos": 10, "cvr_b": 1.76, "cvr_o": 1.54, "cvr_d": -12.4, "rps_b": 28.2, "rps_o": 20.9, "rps_d": -26.0, "perday": 25003.0, "total": 250032.0}, "d90": {"start": "2026-04-09", "n_bench": 41, "n_oos": 15, "cvr_b": 1.68, "cvr_o": 1.59, "cvr_d": -5.5, "rps_b": 28.3, "rps_o": 23.4, "rps_d": -17.4, "perday": 15632.0, "total": 234486.0}, "d365": {"start": "2025-07-08", "n_bench": 78, "n_oos": 173, "cvr_b": 1.99, "cvr_o": 2.06, "cvr_d": 3.6, "rps_b": 33.0, "rps_o": 34.8, "rps_d": 5.4, "perday": -5491.0, "total": -949858.0}};
+const t90=E.d90;
+document.getElementById('tiles').innerHTML=
+  `<div class="tile"><div class="n">${t90.n_oos}</div><div class="l">days a hero was out of stock (last 90 days)</div></div>
+   <div class="tile"><div class="n bad">${t90.cvr_d}%</div><div class="l">store CVR on those days (${t90.cvr_o}% vs ${t90.cvr_b}%)</div></div>
+   <div class="tile"><div class="n bad">~$${(t90.perday/1000).toFixed(0)}k</div><div class="l">revenue lost per out-of-stock day</div></div>`;
+function money(v){return (v<0?'-':'')+'$'+Math.abs(Math.round(v)).toLocaleString();}
+const rowspec=[['Last 30 days',E.d30,''],['Last 90 days',E.d90,''],['Last 365 days',E.d365,'row365']];
+document.getElementById('rows').innerHTML=rowspec.map(([lbl,t,cls])=>
+  `<tr class="${cls}"><td>${lbl}</td><td>${t.n_oos}</td><td class="d">${t.cvr_d>0?'+':''}${t.cvr_d}%</td><td class="d">${t.rps_d>0?'+':''}${t.rps_d}%</td><td class="d">${t.perday>0?'~'+money(t.perday):'—'}</td></tr>`
+).join('');
 </script>
 </body>
 </html>
