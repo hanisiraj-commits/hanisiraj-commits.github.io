@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Johnny's Deal of the Day — Series Key Visual</title>
+<style>
+  :root { --coral:#EC7D55; --cream:#F8F0E1; --crimson:#BC0905; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#0b0b0b; color:var(--cream); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; line-height:1.6; }
+  .wrap { max-width:960px; margin:0 auto; padding:48px 24px 80px; }
+  .eyebrow { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--coral); margin-bottom:8px; }
+  h1 { font-size:34px; line-height:1.15; margin:0 0 8px; }
+  .sub { color:#9a9a9a; font-size:15px; margin-bottom:40px; }
+  .kv { width:100%; display:block; border:1px solid #222; border-radius:10px; background:#000; }
+  .cap { font-size:13px; color:#8a8a8a; margin-top:10px; }
+  h2 { font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color:var(--coral); margin:48px 0 14px; }
+  ul { margin:0; padding-left:20px; }
+  li { margin-bottom:10px; font-size:15px; color:#ddd; }
+  li strong { color:var(--cream); }
+  .swatches { display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
+  .sw { border:1px solid #222; border-radius:8px; padding:12px 14px; font-size:12px; color:#bbb; background:#141414; }
+  .sw i { display:block; width:100%; height:26px; border-radius:4px; margin-bottom:8px; }
+  .dl { display:inline-block; margin-top:18px; padding:11px 18px; background:var(--coral); color:#000; font-weight:700; font-size:13px; letter-spacing:1px; text-transform:uppercase; text-decoration:none; border-radius:6px; }
+  .note { margin-top:40px; padding:16px 18px; border-left:3px solid var(--crimson); background:#141414; font-size:14px; color:#bbb; border-radius:0 8px 8px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Steak King HK &middot; Series asset</div>
+  <h1>Johnny's Deal of the Day &mdash; series key visual</h1>
+  <p class="sub">The locked lockup for every Deal of the Day send, the Deals page and the nav entry. Same mark every time. Only the deal beneath it changes.</p>
+
+  <img class="kv" src="kv-lockup.png" alt="Johnny's Deal of the Day lockup">
+  <p class="cap">Full-width lockup band on solid black. Placement: directly beneath the Steak King header logo, above the deal hero.</p>
+  <a class="dl" href="kv-lockup.png" download>Download PNG</a>
+
+  <h2>What is fixed (never changes)</h2>
+  <ul>
+    <li><strong>The clock is the letter O</strong> in "OF". It is not a sticker and never sits outside the wordmark.</li>
+    <li><strong>"24 HOURS ONLY" lives inside the clock face.</strong> The urgency is built into the mark, so no separate urgency badge is needed anywhere else in the email.</li>
+    <li><strong>The clock is ringing</strong> &mdash; bells on top, motion lines both sides.</li>
+    <li><strong>"JOHNNY'S"</strong> in handwritten script above, <strong>"DEAL OF THE DAY"</strong> in the heavy cream slab beneath, coral rule under the wordmark.</li>
+    <li><strong>Johnny is the face</strong> &mdash; cut out on black with a coral rim light, tomahawk in hand, overlapping the type so he reads as part of the mark.</li>
+    <li><strong>Solid black background</strong> so the band drops into the existing email system and can overlay a hero image.</li>
+  </ul>
+
+  <h2>Colour</h2>
+  <div class="swatches">
+    <div class="sw"><i style="background:#EC7D55"></i>Coral #EC7D55</div>
+    <div class="sw"><i style="background:#F8F0E1"></i>Cream #F8F0E1</div>
+    <div class="sw"><i style="background:#BC0905"></i>Crimson #BC0905</div>
+    <div class="sw"><i style="background:#000000;border:1px solid #333"></i>Black #000000</div>
+  </div>
+
+  <h2>Where it goes</h2>
+  <ul>
+    <li><strong>Email:</strong> full-width band under the header logo, above the deal hero. Every Deal of the Day send.</li>
+    <li><strong>Deals page:</strong> page banner at the top.</li>
+    <li><strong>Nav:</strong> the "Johnny's Deal of the Day" entry.</li>
+    <li><strong>PDP:</strong> the 24-hour deal product pages.</li>
+  </ul>
+
+  <div class="note">
+    This render is a layout lock, not the production file. Rebuild it as vector type in Figma and mask in a real photograph of Johnny before it ships.
+  </div>
+</div>
+</body>
+</html>
