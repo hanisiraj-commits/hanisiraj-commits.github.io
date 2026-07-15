@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lohnr · Welcome Flow</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; font-family:-apple-system,BlinkMacSystemFont,"Inter",Arial,sans-serif; background:#FAFAF7; color:#1a1a1a; }
+  .header { position:sticky; top:0; z-index:100; background:#fff; border-bottom:1px solid #E5E7EB; padding:16px 28px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 1px 3px rgba(0,0,0,0.04); }
+  .header h1 { font-size:16px; margin:0; font-weight:700; letter-spacing:-0.01em; }
+  .header .brand { color:#6B7280; font-size:12px; margin-left:8px; }
+  .header .meta { display:flex; gap:16px; font-size:12px; color:#6B7280; }
+  .header .meta strong { color:#111; font-weight:600; }
+  .legend { background:#fff; border-bottom:1px solid #E5E7EB; padding:10px 28px; font-size:12px; display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  .legend-item { display:flex; gap:7px; align-items:center; }
+  .legend-node { width:22px; height:22px; border-radius:6px; }
+  .canvas { padding:30px 20px 50px; overflow-x:auto; background:#FAFAF7; }
+  .board { position:relative; min-width:1030px; margin:0 auto; }
+  .node { position:absolute; border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:12px; font-size:12px; line-height:1.35; box-shadow:0 2px 5px rgba(0,0,0,0.06); transition:transform .15s, box-shadow .15s; }
+  .node:hover { transform:translateY(-1px); box-shadow:0 5px 12px rgba(0,0,0,0.1); z-index:50; }
+  .node-trigger { background:#CFF5D1; border:2px solid #4CAF50; color:#1B5E20; }
+  .node-compute { background:#fff; border:2px solid #E5E7EB; color:#1a1a1a; }
+  .node-delay { background:#DBEAFE; border:2px solid #60A5FA; color:#1E3A8A; }
+  .node-email { background:#E9D5FF; border:2px solid #A855F7; color:#581C87; }
+  .node-email-plain { background:#FDE68A; border:2px solid #F59E0B; color:#78350F; }
+  .node-exit { background:#F3F4F6; border:2px dashed #9CA3AF; color:#6B7280; }
+  .node-icon { width:26px; height:26px; margin-bottom:5px; opacity:0.9; }
+  .node-label { font-size:10.5px; font-weight:500; margin-bottom:2px; opacity:0.8; }
+  .node-title { font-size:13px; font-weight:700; line-height:1.2; }
+  .node-subtitle { font-size:10px; font-weight:500; opacity:0.75; margin-top:4px; }
+  .trigger-props { margin-top:5px; font-size:10px; color:#1B5E20; font-family:Menlo,monospace; opacity:0.85; }
+  .content-box { position:absolute; background:#fff; border:1px solid #E5E7EB; border-radius:10px; padding:14px 16px; font-size:12px; line-height:1.5; color:#111; box-shadow:0 2px 4px rgba(0,0,0,0.03); }
+  .content-box .heading { font-weight:700; margin-bottom:8px; font-size:12.5px; }
+  .content-box ul { margin:6px 0; padding-left:16px; }
+  .content-box li { margin:4px 0; }
+  .content-box .subj { font-family:Menlo,monospace; font-size:10.5px; background:#FAFAF7; padding:4px 7px; border-radius:4px; display:block; margin:2px 0 8px; border:1px solid #E5E7EB; }
+  .content-box .section-label { font-weight:700; font-size:9.5px; text-transform:uppercase; letter-spacing:0.05em; color:#6B7280; margin:8px 0 3px; }
+  .content-box .badge { display:inline-block; padding:3px 9px; border-radius:4px; background:#FEF3C7; color:#92400E; font-size:10px; font-weight:700; letter-spacing:0.03em; margin-top:9px; border:1px solid #FBBF24; }
+  .dashed-line { stroke-dasharray:6,4; }
+  .footer { padding:16px 28px; background:#fff; border-top:1px solid #E5E7EB; font-size:12px; color:#6B7280; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Lohnr — Welcome Flow<span class="brand">subscriber nurture · pre-purchase</span></h1>
+  </div>
+  <div class="meta">
+    <span><strong>6</strong> emails</span>
+    <span><strong>~10</strong> day window</span>
+    <span>Draft v1</span>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-node" style="background:#CFF5D1;border:2px solid #4CAF50;"></div>Trigger</div>
+  <div class="legend-item"><div class="legend-node" style="background:#fff;border:2px solid #E5E7EB;"></div>Filter</div>
+  <div class="legend-item"><div class="legend-node" style="background:#DBEAFE;border:2px solid #60A5FA;"></div>Delay</div>
+  <div class="legend-item"><div class="legend-node" style="background:#E9D5FF;border:2px solid #A855F7;"></div>Designed email</div>
+  <div class="legend-item"><div class="legend-node" style="background:#FDE68A;border:2px solid #F59E0B;"></div>Plain-text email</div>
+  <div class="legend-item"><div class="legend-node" style="background:#F3F4F6;border:2px dashed #9CA3AF;"></div>Exit</div>
+</div>
+
+<div class="canvas">
+<div class="board" style="height:1920px;">
+  <svg style="position:absolute; top:0; left:0; width:100%; height:1920px; pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9CA3AF"/></marker>
+      <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4CAF50"/></marker>
+    </defs>
+    
+<line x1="290" y1="160" x2="290" y2="210" stroke="#4CAF50" stroke-width="2.5" marker-end="url(#arrg)"/>    <line x1="290" y1="290" x2="290" y2="350" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="290" y1="462" x2="290" y2="500" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="290" y1="566" x2="290" y2="604" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="400" y1="390" x2="545" y2="390" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>    <line x1="290" y1="716" x2="290" y2="754" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="290" y1="820" x2="290" y2="858" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="400" y1="644" x2="545" y2="644" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>    <line x1="290" y1="970" x2="290" y2="1008" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="290" y1="1074" x2="290" y2="1112" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="400" y1="898" x2="545" y2="898" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>    <line x1="290" y1="1224" x2="290" y2="1262" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="290" y1="1328" x2="290" y2="1366" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="400" y1="1152" x2="545" y2="1152" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>    <line x1="290" y1="1478" x2="290" y2="1516" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="290" y1="1582" x2="290" y2="1620" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="400" y1="1406" x2="545" y2="1406" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>    <line x1="290" y1="1732" x2="290" y2="1770" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arr)"/>    <line x1="400" y1="1660" x2="545" y2="1660" stroke="#9CA3AF" stroke-width="1.5" class="dashed-line"/>
+  </svg>
+
+  <div class="node node-trigger" style="top:40px; left:175px; width:230px; height:120px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1B5E20" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>
+    <div class="node-label">Trigger · List</div>
+    <div class="node-title">Joined the list</div>
+    <div class="trigger-props">pop-up sign-up</div>
+  </div>
+  <div class="node node-compute" style="top:210px; left:140px; width:300px; height:80px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" style="width:22px;height:22px;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+    <div class="node-label">Flow Filter</div>
+    <div class="node-title">Not yet purchased</div>
+  </div>
+  <div class="node node-email" style="top:350px; left:180px; width:220px; height:112px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+    <div class="node-label">E1 · Day 0 · immediate</div>
+    <div class="node-title">welcome in</div>
+    <div class="node-subtitle">Designed · Elena</div>
+  </div>
+  <div class="node node-delay" style="top:500px; left:225px; width:130px; height:66px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width:20px;height:20px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <div class="node-title">Same day · +5–6h</div>
+  </div>
+  <div class="node node-email" style="top:604px; left:180px; width:220px; height:112px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+    <div class="node-label">E2 · Day 0 · +5–6h (same day)</div>
+    <div class="node-title">a little welcome, from me</div>
+    <div class="node-subtitle">Designed · Elena</div>
+  </div>
+  <div class="node node-delay" style="top:754px; left:225px; width:130px; height:66px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width:20px;height:20px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <div class="node-title">2 days</div>
+  </div>
+  <div class="node node-email-plain" style="top:858px; left:180px; width:220px; height:112px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#78350F" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+    <div class="node-label">E3 · Day 2 · if no purchase</div>
+    <div class="node-title">why we made lohnr</div>
+    <div class="node-subtitle">Plain text · Elena</div>
+  </div>
+  <div class="node node-delay" style="top:1008px; left:225px; width:130px; height:66px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width:20px;height:20px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <div class="node-title">2 days</div>
+  </div>
+  <div class="node node-email" style="top:1112px; left:180px; width:220px; height:112px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+    <div class="node-label">E4 · Day 4 · if no purchase</div>
+    <div class="node-title">made to live in</div>
+    <div class="node-subtitle">Designed · Team</div>
+  </div>
+  <div class="node node-delay" style="top:1262px; left:225px; width:130px; height:66px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width:20px;height:20px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <div class="node-title">2–3 days</div>
+  </div>
+  <div class="node node-email" style="top:1366px; left:180px; width:220px; height:112px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#581C87" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+    <div class="node-label">E5 · Day 6–7 · if no purchase</div>
+    <div class="node-title">where to start</div>
+    <div class="node-subtitle">Designed · Elena</div>
+  </div>
+  <div class="node node-delay" style="top:1516px; left:225px; width:130px; height:66px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="1.8" style="width:20px;height:20px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <div class="node-title">2–3 days</div>
+  </div>
+  <div class="node node-email-plain" style="top:1620px; left:180px; width:220px; height:112px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#78350F" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+    <div class="node-label">E6 · Day 9–10 · optional</div>
+    <div class="node-title">still thinking it over?</div>
+    <div class="node-subtitle">Plain text · Gabby</div>
+  </div>
+  <div class="node node-exit" style="top:1770px; left:180px; width:220px; height:90px;">
+    <svg class="node-icon" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" style="width:22px;height:22px;"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+    <div class="node-label">Exit</div>
+    <div class="node-title">Flow ends</div>
+    <div class="node-subtitle">also exits on purchase, any time</div>
+  </div>
+
+  <div class="content-box" style="top:350px; left:545px; width:440px;">
+    <div class="heading">E1 · welcome in</div>
+    <span class="subj">subject: welcome to lohnr</span>
+    <ul><li>editorial hero, lowercase — a welcome, not a sell</li><li>one line on what “luxury you can live in” means</li><li>what to expect: first access to drops, the edit, founder notes</li><li>soft link into the current edit — no code</li></ul>
+    <div class="section-label">CTA</div>Explore The Edit
+    
+  </div>
+  <div class="content-box" style="top:604px; left:545px; width:440px;">
+    <div class="heading">E2 · a little welcome, from me</div>
+    <span class="subj">subject: a welcome, from me</span>
+    <ul><li>personal open — “you joined us today, so here’s something”</li><li>15% off first order, framed as a gift not a promo</li><li>open for 48 hours — an invitation with a deadline, not “hurry”</li><li>1–2 named hero pieces · code inline · min-spend protected</li></ul>
+    <div class="section-label">CTA</div>Shop With Your Welcome
+    <span class="badge">15% · 48H WINDOW</span>
+  </div>
+  <div class="content-box" style="top:858px; left:545px; width:440px;">
+    <div class="heading">E3 · why we made lohnr</div>
+    <span class="subj">subject: why i made lohnr</span>
+    <ul><li>the founder’s why — the gap she saw, what she couldn’t find</li><li>what the promise means in practice: comfort without losing polish</li><li>who it’s for, so she recognises herself</li><li>one quiet line back to the offer if still live</li></ul>
+    <div class="section-label">CTA</div>text link — Read The Story
+    
+  </div>
+  <div class="content-box" style="top:1112px; left:545px; width:440px;">
+    <div class="heading">E4 · made to live in</div>
+    <span class="subj">subject: the difference is in the fabric</span>
+    <ul><li>editorial hero on a signature piece</li><li>the fabric as craft — 230gsm rib, 100% cotton, why it feels that way</li><li>how it’s made to move, hold shape, last</li><li>one anchor piece to click into</li></ul>
+    <div class="section-label">CTA</div>Discover The Craft
+    
+  </div>
+  <div class="content-box" style="top:1366px; left:545px; width:440px;">
+    <div class="heading">E5 · where to start</div>
+    <span class="subj">subject: where our women start</span>
+    <ul><li>“where to start” — 3–4 curated hero pieces (freshest in-season)</li><li>community anchor — one customer voice / 3,800+ women</li><li>final soft call on the welcome offer</li><li>an invitation to begin, not a push</li></ul>
+    <div class="section-label">CTA</div>Shop The Edit
+    
+  </div>
+  <div class="content-box" style="top:1620px; left:545px; width:440px;">
+    <div class="heading">E6 · still thinking it over?</div>
+    <span class="subj">subject: anything caught your eye?</span>
+    <ul><li>casual open — “it’s Gabby from Lohnr”</li><li>soft ask — anything caught her eye? anything she’s unsure on?</li><li>reply invitation — “hit reply, I read everything”</li><li>final offer expiry only if held this long</li></ul>
+    <div class="section-label">CTA</div>text link — Reply / Browse
+    
+  </div>
+</div>
+</div>
+
+<div class="footer">
+  <div>Lohnr · Welcome Flow · subscriber nurture</div>
+  <div>Draft v1 · 15/07/2026</div>
+</div>
+
+</body>
+</html>
