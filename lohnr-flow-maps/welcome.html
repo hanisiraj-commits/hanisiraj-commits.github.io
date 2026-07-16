@@ -40,6 +40,25 @@
   .dashed-line { stroke-dasharray:6,4; }
   .footer { padding:16px 28px; background:#fff; border-top:1px solid #E5E7EB; font-size:12px; color:#6B7280; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
 </style>
+
+<style>
+  .assets-wrap{max-width:1000px;margin:10px auto 0;padding:26px 28px 60px;font-family:-apple-system,"Inter",Arial,sans-serif;}
+  .assets-h{font-size:20px;font-weight:700;color:#1a1a1a;margin:0 0 6px;letter-spacing:-.01em;}
+  .assets-sub{font-size:13.5px;color:#6B7280;margin:0 0 16px;line-height:1.55;}
+  .alegend{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:#4a443d;margin-bottom:22px;}
+  .alegend span{display:flex;align-items:center;gap:7px;}
+  .alegend b{width:14px;height:14px;border-radius:4px;display:inline-block;}
+  .acard{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+  .ahead{display:flex;align-items:center;gap:11px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #eee;}
+  .aeid{background:#1a1a1a;color:#fff;font-weight:800;font-size:12px;border-radius:6px;padding:3px 9px;}
+  .atitle{font-weight:600;font-size:15px;color:#1a1a1a;}
+  .arow{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:9px 0;align-items:start;}
+  .arow+.arow{border-top:1px solid #f2f2f2;}
+  .asrc{color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.05em;text-align:center;padding:5px 6px;border-radius:5px;white-space:nowrap;}
+  .alabel{font-weight:600;font-size:13.5px;color:#1a1a1a;margin-bottom:2px;}
+  .aspec{font-size:12.5px;color:#4a443d;line-height:1.5;}
+  @media(max-width:640px){.arow{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
 
@@ -191,6 +210,83 @@
     
   </div>
 </div>
+</div>
+
+
+<div class="assets-wrap">
+  <h2 class="assets-h">Creative asset brief — what to shoot for each email</h2>
+  <p class="assets-sub">Shot list for the client's creators. Product grids pull dynamically from the store feed (no shoot). Everything else is a shoot, a client-supplied asset, or sourced UGC. Heroes = full-bleed 600px, static (no GIF), warm natural light, minimal / editorial / elevated.</p>
+  <div class="alegend">
+    <span><b style="background:#8a6d3b"></b>Shoot — creators</span>
+    <span><b style="background:#3f6f4a"></b>Dynamic feed — no shoot</span>
+    <span><b style="background:#a5432f"></b>Client-supplied</span>
+    <span><b style="background:#5b6e8c"></b>Source / UGC</span>
+    <span><b style="background:#6b7280"></b>Design in-build</span>
+  </div>
+  <div class="acard">
+      <div class="ahead"><span class="aeid">E1</span><span class="atitle">welcome / brand world</span></div>
+      <div class="arow">
+          <div class="asrc" style="background:#8a6d3b">SHOOT</div>
+          <div class="ainfo"><div class="alabel">Hero — brand-world lifestyle (static)</div><div class="aspec">Full-bleed 600px. A woman living in a Lohnr piece, warm natural light, an ordinary everyday moment (at home or out). Editorial, covetable. NOT a product or offer shot.</div></div>
+        </div><div class="arow">
+          <div class="asrc" style="background:#8a6d3b">SHOOT</div>
+          <div class="ainfo"><div class="alabel">Lifestyle detail</div><div class="aspec">1 static image — fabric + fit, someone moving through their day.</div></div>
+        </div><div class="arow">
+          <div class="asrc" style="background:#3f6f4a">DYNAMIC FEED</div>
+          <div class="ainfo"><div class="alabel">New-arrivals 2×2 product block</div><div class="aspec">Pulls the latest collection from the store feed. No shoot needed.</div></div>
+        </div><div class="arow">
+          <div class="asrc" style="background:#6b7280">DESIGN</div>
+          <div class="ainfo"><div class="alabel">Trust / USP strip</div><div class="aspec">Text band: free shipping over $75 · easy returns · 10,000+ happy customers.</div></div>
+        </div>
+    </div><div class="acard">
+      <div class="ahead"><span class="aeid">E2</span><span class="atitle">welcome offer — 15%</span></div>
+      <div class="arow">
+          <div class="asrc" style="background:#8a6d3b">SHOOT</div>
+          <div class="ainfo"><div class="alabel">Hero — best-seller, styled simply</div><div class="aspec">Full-bleed 600px, warm light. Can reuse a strong best-seller frame from the library.</div></div>
+        </div><div class="arow">
+          <div class="asrc" style="background:#3f6f4a">DYNAMIC FEED</div>
+          <div class="ainfo"><div class="alabel">Best-seller 2×2 product block</div><div class="aspec">Pulls current best-sellers from the store feed. No shoot needed.</div></div>
+        </div><div class="arow">
+          <div class="asrc" style="background:#6b7280">DESIGN</div>
+          <div class="ainfo"><div class="alabel">Optional slim countdown + code reveal</div><div class="aspec">Minimal, elegant countdown to the 24h expiry; WELCOME15 reveal block.</div></div>
+        </div>
+    </div><div class="acard">
+      <div class="ahead"><span class="aeid">E3</span><span class="atitle">why i made lohnr — founder</span></div>
+      <div class="arow">
+          <div class="asrc" style="background:#a5432f">CLIENT-SUPPLIED</div>
+          <div class="ainfo"><div class="alabel">Elena founder portrait — REAL photo</div><div class="aspec">Required, client-supplied. A genuine, warm portrait of Elena. Editorial but personal, not a glossy campaign shot. This is the hero — do NOT substitute a model/stock image; authenticity is the whole point.</div></div>
+        </div>
+    </div><div class="acard">
+      <div class="ahead"><span class="aeid">E4</span><span class="atitle">the difference is in the fabric</span></div>
+      <div class="arow">
+          <div class="asrc" style="background:#8a6d3b">SHOOT</div>
+          <div class="ainfo"><div class="alabel">4× MACRO fabric close-ups</div><div class="aspec">Extreme close-ups, texture / weave / weight clearly visible, high-res for tight crop. One each: Novella Set (linen weave), Varsity Skort Set (cotton blend + interior-shorts detail), Ruched Set (200gsm drape), Calla Halter Dress (smooth poly/spandex).</div></div>
+        </div><div class="arow">
+          <div class="asrc" style="background:#8a6d3b">SHOOT</div>
+          <div class="ainfo"><div class="alabel">Hero — macro fabric texture</div><div class="aspec">Full-bleed 600px macro fabric close-up (can be one of the four above).</div></div>
+        </div><div class="arow">
+          <div class="asrc" style="background:#8a6d3b">SHOOT</div>
+          <div class="ainfo"><div class="alabel">Optional on-model per product</div><div class="aspec">One motion / on-body frame per piece, to sit under each fabric close-up.</div></div>
+        </div>
+    </div><div class="acard">
+      <div class="ahead"><span class="aeid">E5</span><span class="atitle">community / the inner circle</span></div>
+      <div class="arow">
+          <div class="asrc" style="background:#8a6d3b">SHOOT</div>
+          <div class="ainfo"><div class="alabel">Community hero</div><div class="aspec">Full-bleed 600px — women together / candid moment, multiple Lohnr pieces in frame.</div></div>
+        </div><div class="arow">
+          <div class="asrc" style="background:#5b6e8c">SOURCE / UGC</div>
+          <div class="ainfo"><div class="alabel">4–6 UGC customer photos</div><div class="aspec">Real, candid customer photos of women wearing Lohnr. Source from the UGC library / customers — not studio.</div></div>
+        </div><div class="arow">
+          <div class="asrc" style="background:#5b6e8c">SOURCE / UGC</div>
+          <div class="ainfo"><div class="alabel">2–3 real reviews (text)</div><div class="aspec">Verbatim from Shopify / Loox, first name + initial. Text, not an image. Do NOT fabricate.</div></div>
+        </div>
+    </div><div class="acard">
+      <div class="ahead"><span class="aeid">E6</span><span class="atitle">gabby&#x27;s check-in</span></div>
+      <div class="arow">
+          <div class="asrc" style="background:#9ca3af">NONE</div>
+          <div class="ainfo"><div class="alabel">No imagery</div><div class="aspec">Plain-text email — no assets to shoot.</div></div>
+        </div>
+    </div>
 </div>
 
 <div class="footer">
