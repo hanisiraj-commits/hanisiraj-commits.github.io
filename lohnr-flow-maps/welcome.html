@@ -41,21 +41,29 @@
   .footer { padding:16px 28px; background:#fff; border-top:1px solid #E5E7EB; font-size:12px; color:#6B7280; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
 </style>
 <style>
-  .assets-wrap{max-width:1000px;margin:10px auto 0;padding:26px 28px 60px;font-family:-apple-system,"Inter",Arial,sans-serif;}
-  .assets-h{font-size:20px;font-weight:700;color:#1a1a1a;margin:0 0 6px;letter-spacing:-.01em;}
-  .assets-sub{font-size:13.5px;color:#6B7280;margin:0 0 16px;line-height:1.55;}
-  .alegend{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:#4a443d;margin-bottom:22px;}
-  .alegend span{display:flex;align-items:center;gap:7px;} .alegend b{width:14px;height:14px;border-radius:4px;display:inline-block;}
-  .acard{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
-  .ahead{display:flex;align-items:center;gap:11px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #eee;}
-  .aeid{background:#1a1a1a;color:#fff;font-weight:800;font-size:12px;border-radius:6px;padding:3px 9px;}
-  .atitle{font-weight:600;font-size:15px;color:#1a1a1a;}
-  .ablock{padding:10px 0;border-top:1px solid #f4f4f4;} .ablock:first-of-type{border-top:none;}
-  .arole{font-weight:600;font-size:13px;color:#1a1a1a;margin-bottom:5px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
-  .apill{color:#fff;font-size:9px;font-weight:700;letter-spacing:.05em;padding:3px 7px;border-radius:5px;}
-  .abrief{font-size:13px;color:#4a443d;line-height:1.6;}
-  .aro{margin-top:12px;padding:11px 13px;background:#FFFBEB;border:1px solid #FBBF24;border-radius:8px;font-size:12.5px;color:#78350F;line-height:1.55;}
-  .arolab{display:block;font-weight:700;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;opacity:.8;}
+  .assets-wrap{max-width:1000px;margin:10px auto 0;padding:26px 28px 60px;font-family:-apple-system,"Inter",Arial,sans-serif;color:#1a1a1a;}
+  .assets-h{font-size:20px;font-weight:700;margin:0 0 8px;letter-spacing:-.01em;}
+  .assets-h2{font-size:14px;font-weight:700;margin:26px 0 6px;letter-spacing:.02em;}
+  .page-desc{font-size:12.5px;color:#666;line-height:1.6;margin:0 0 16px;}
+  .acard{background:#fff;border:1px solid #ececec;border-radius:8px;padding:16px 18px;margin-bottom:12px;box-shadow:0 1px 2px rgba(0,0,0,.02);}
+  .ahead{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .aeid{background:#1a1a1a;color:#fff;font-weight:800;font-size:11px;border-radius:5px;padding:2px 8px;}
+  .atitle{font-weight:600;font-size:14px;}
+  .assets{margin-top:4px;}
+  .assets-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .assets-count{font-size:22px;font-weight:700;line-height:1;}
+  .assets-count-label{font-size:8.5px;letter-spacing:1.2px;text-transform:uppercase;color:#bbb;line-height:1.25;font-weight:600;}
+  .assets-badge{margin-left:auto;font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;padding:4px 9px;border-radius:3px;}
+  .badge-life{background:#eaf1e6;color:#4a6b3a;} .badge-studio{background:#e8edf2;color:#33506a;}
+  .badge-both{background:#f4efe4;color:#7a5f2a;} .badge-none{background:#f2f2f2;color:#999;}
+  .assets ul{margin:0;padding-left:16px;} .assets li{font-size:11.5px;color:#555;line-height:1.55;margin-bottom:3px;}
+  .assets-note{font-size:10.5px;color:#999;line-height:1.5;margin-top:8px;} .assets-note strong{color:#8a5a1f;font-weight:600;}
+  .asset-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px;}
+  .asset-table th{text-align:left;padding:8px 10px 6px;color:#999;font-weight:600;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;border-bottom:1px solid #eee;}
+  .asset-table th.c,.asset-table td.c{text-align:center;}
+  .asset-table td{padding:9px 10px;border-bottom:1px solid #f5f5f5;color:#555;vertical-align:top;line-height:1.45;}
+  .asset-table td.em{color:#1a1a1a;font-weight:600;} .asset-table td.c{font-variant-numeric:tabular-nums;font-weight:600;color:#1a1a1a;}
+  .asset-table tr.total td{border-top:2px solid #e6e6e6;border-bottom:none;font-weight:700;color:#1a1a1a;padding-top:11px;}
 </style></head>
 <body>
 
@@ -211,82 +219,27 @@
 
 
 <div class="assets-wrap">
-  <h2 class="assets-h">Creative asset brief</h2>
-  <p class="assets-sub">Per-image creative briefs for the client's creators, written the way we brief campaigns: each one reads as a full alt-text brief a photographer can shoot straight from. Product grids pull dynamically from the store feed. Heroes are full-bleed 600px, static, warm natural light, minimal and editorial.</p>
-  <div class="alegend">
-    <span><b style="background:#8a6d3b"></b>Shoot &middot; creators</span>
-    <span><b style="background:#3f6f4a"></b>Dynamic feed &middot; no shoot</span>
-    <span><b style="background:#a5432f"></b>Client-supplied</span>
-    <span><b style="background:#5b6e8c"></b>Source / UGC</span>
-    <span><b style="background:#6b7280"></b>Design in-build</span>
-  </div>
-  <div class="acard">
-      <div class="ahead"><span class="aeid">E1</span><span class="atitle">welcome / brand world</span></div>
-      <div class="ablock">
-          <div class="arole"><span class="apill" style="background:#8a6d3b">SHOOT</span>Hero: brand-world lifestyle (static)</div>
-          <div class="abrief">A woman at home in a Lohnr set, caught mid-morning in soft natural light. She&#x27;s doing something ordinary, coffee in hand, no rush. Full-bleed and static, warm and editorial. This is the world, not the product. Nothing in the frame is for sale yet, just a life worth getting dressed for.</div>
-        </div><div class="ablock">
-          <div class="arole"><span class="apill" style="background:#8a6d3b">SHOOT</span>Lifestyle detail</div>
-          <div class="abrief">A close, unposed frame of the fabric as she moves, the drape of a sleeve or the way a hem falls when she shifts. It should let you feel the quality without a single spec written down.</div>
-        </div><div class="ablock">
-          <div class="arole"><span class="apill" style="background:#3f6f4a">DYNAMIC FEED</span>New-arrivals 2x2 product block</div>
-          <div class="abrief">Pulled live from the new-arrivals collection. Four current pieces, image and name, no prices. It updates itself as the collection changes, so the email never goes stale.</div>
-        </div><div class="ablock">
-          <div class="arole"><span class="apill" style="background:#6b7280">DESIGN</span>Trust / USP strip</div>
-          <div class="abrief">A quiet band under the fold: free shipping over $75, easy returns, trusted by 10,000+ happy customers. Small type with room to breathe, reassurance rather than a sales banner.</div>
-        </div><div class="aro"><span class="arolab">Brief for designer &middot; Row 6</span>RO team: Hero must read as brand-world, not a product or offer shot. No code anywhere in this email. Confirm the returns-window wording before it ships.</div>
-    </div><div class="acard">
-      <div class="ahead"><span class="aeid">E2</span><span class="atitle">welcome offer, 15%</span></div>
-      <div class="ablock">
-          <div class="arole"><span class="apill" style="background:#8a6d3b">SHOOT</span>Hero: best-seller, styled simply</div>
-          <div class="abrief">A single best-seller styled simply on-model, warm light, clean setting. Covetable and calm, the kind of frame that sells the piece before a word is read. If a slim countdown is used, it sits quietly at the edge and never shouts. A strong library frame can be reused here.</div>
-        </div><div class="ablock">
-          <div class="arole"><span class="apill" style="background:#3f6f4a">DYNAMIC FEED</span>Best-seller 2x2 product block</div>
-          <div class="abrief">Pulled live from best-sellers. Four pieces, image and name, no prices.</div>
-        </div><div class="aro"><span class="arolab">Brief for designer &middot; Row 6</span>RO team: Brand-voiced push, not a founder letter, so no Elena portrait. Keep it premium, not a busy sale layout. Countdown timer is optional and should stay elegant.</div>
-    </div><div class="acard">
-      <div class="ahead"><span class="aeid">E3</span><span class="atitle">why i made lohnr</span></div>
-      <div class="ablock">
-          <div class="arole"><span class="apill" style="background:#a5432f">CLIENT-SUPPLIED</span>Elena founder portrait</div>
-          <div class="abrief">A real, warm portrait of Elena, the founder. Natural light, relaxed, looking at or just past the camera. Personal rather than a polished campaign shot. This is what puts a face to the brand, so it has to genuinely be her. A model or a stock image would undo the whole point of the email.</div>
-        </div><div class="aro"><span class="arolab">Brief for designer &middot; Row 6</span>RO team: Client to supply the real photo. Editorial treatment, but keep the founder&#x27;s personal register. The email ends on a single CTA to new arrivals.</div>
-    </div><div class="acard">
-      <div class="ahead"><span class="aeid">E4</span><span class="atitle">the difference is in the fabric</span></div>
-      <div class="ablock">
-          <div class="arole"><span class="apill" style="background:#8a6d3b">SHOOT</span>Fabric close-up: Novella Set</div>
-          <div class="abrief">An extreme close-up of the Novella Set&#x27;s linen weave, shot so you can almost feel the slub of the linen and the small give of the stretch. Rake the light across the surface to catch the texture. High resolution, made to crop in tight.</div>
-        </div><div class="ablock">
-          <div class="arole"><span class="apill" style="background:#8a6d3b">SHOOT</span>Fabric close-up: Varsity Skort Set</div>
-          <div class="abrief">A macro of the Varsity Skort&#x27;s cotton blend, with a second frame revealing the built-in shorts under the skort. Show the detail most brands hide. Texture and construction both readable.</div>
-        </div><div class="ablock">
-          <div class="arole"><span class="apill" style="background:#8a6d3b">SHOOT</span>Fabric close-up: Ruched Set</div>
-          <div class="abrief">A close shot of the Ruched Set&#x27;s mid-weight fabric held or draped, so the weight and the clean fall come through. It should never look thin or sheer.</div>
-        </div><div class="ablock">
-          <div class="arole"><span class="apill" style="background:#8a6d3b">SHOOT</span>Fabric close-up: Calla Halter Dress</div>
-          <div class="abrief">A macro of the Calla&#x27;s smooth fabric catching light as it moves, showing the stretch and the way it holds its line.</div>
-        </div><div class="ablock">
-          <div class="arole"><span class="apill" style="background:#8a6d3b">SHOOT</span>Optional on-model per piece</div>
-          <div class="abrief">One motion frame per piece, worn and moving, to sit beneath each fabric close-up.</div>
-        </div><div class="aro"><span class="arolab">Brief for designer &middot; Row 6</span>RO team: Four summer best-sellers. Every fabric line is tied to the real product spec, so shoot the actual fabric, not a stand-in. Confirm the best-seller mix and keep it summer-relevant.</div>
-    </div><div class="acard">
-      <div class="ahead"><span class="aeid">E5</span><span class="atitle">community / the inner circle</span></div>
-      <div class="ablock">
-          <div class="arole"><span class="apill" style="background:#8a6d3b">SHOOT</span>Community hero</div>
-          <div class="abrief">A candid, community-feel image. A few women together in a relaxed moment, more than one of them in Lohnr. It should feel caught, not cast. Warm and real.</div>
-        </div><div class="ablock">
-          <div class="arole"><span class="apill" style="background:#5b6e8c">SOURCE / UGC</span>UGC grid: 4 to 6 photos</div>
-          <div class="abrief">Four to six real customer photos from the UGC library. Women in their own homes and lives wearing Lohnr, phone-shot energy rather than studio. This is the proof that real people wear it.</div>
-        </div><div class="ablock">
-          <div class="arole"><span class="apill" style="background:#5b6e8c">SOURCE / UGC</span>Customer reviews (text)</div>
-          <div class="abrief">Two or three real reviews pulled word-for-word from Shopify or Loox, first name and initial. Text, not an image. Nothing written by us.</div>
-        </div><div class="aro"><span class="arolab">Brief for designer &middot; Row 6</span>RO team: The Inner Circle CTA links to the Facebook page, where members apply and are approved, so supply that URL. No welcome-offer block here, the code has expired by this send.</div>
-    </div><div class="acard">
-      <div class="ahead"><span class="aeid">E6</span><span class="atitle">gabby&#x27;s check-in</span></div>
-      <div class="ablock">
-          <div class="arole"><span class="apill" style="background:#9ca3af">NONE</span>No imagery</div>
-          <div class="abrief">Plain-text email. Nothing to shoot.</div>
-        </div>
-    </div>
+  <h2 class="assets-h">Image asset brief</h2>
+  <p class="page-desc">What to collect for the Welcome flow, email by email. We&rsquo;re gathering an asset <strong>pool</strong> here, not locking a final layout, since none of these emails are designed yet, so we&rsquo;ve asked generously. Every number is a <strong>floor, not a ceiling</strong>. Product grids pull dynamically from the store, so no product shots are needed there. E3&rsquo;s founder portrait is client-supplied, and E5 leans on real UGC we source rather than shoot.</p>
+  <div class="acard"><div class="ahead"><span class="aeid">E1</span><span class="atitle">welcome / brand world</span></div>
+      <div class="assets"><div class="assets-head"><span class="assets-count">4</span><span class="assets-count-label">assets<br>to collect</span><span class="assets-badge badge-life">Lifestyle</span></div>
+      <ul><li>2 &times; on-season lifestyle heroes: a brand-world moment, a woman living in a Lohnr piece, warm natural light, full-bleed (give us a couple to pick from)</li><li>2 &times; on-model detail shots: fabric and fit close-ups, caught mid-movement</li></ul><div class="assets-note">The 2&times;2 new-arrivals block pulls live from the store, so no product shots are needed there. The hero must read as brand-world, not a product or offer shot.</div></div></div><div class="acard"><div class="ahead"><span class="aeid">E2</span><span class="atitle">welcome offer, 15%</span></div>
+      <div class="assets"><div class="assets-head"><span class="assets-count">1</span><span class="assets-count-label">asset<br>to collect</span><span class="assets-badge badge-both">Lifestyle / reuse</span></div>
+      <ul><li>1 &times; on-season lifestyle hero: a best-seller styled simply, warm light</li></ul><div class="assets-note">The best-seller 2&times;2 pulls from the store feed, and the countdown and code are built in design. A strong library frame can stand in here, so this can be zero net-new if we reuse.</div></div></div><div class="acard"><div class="ahead"><span class="aeid">E3</span><span class="atitle">why i made lohnr</span></div>
+      <div class="assets"><div class="assets-head"><span class="assets-count">1</span><span class="assets-count-label">asset<br>from client</span><span class="assets-badge badge-none">Client-supplied</span></div>
+      <ul><li>1 &times; founder portrait: a real, warm photo of Elena, natural light, personal not campaign</li></ul><div class="assets-note"><strong>Client to supply.</strong> It has to genuinely be Elena, no model or stock, since the whole email is about putting a real face to the brand.</div></div></div><div class="acard"><div class="ahead"><span class="aeid">E4</span><span class="atitle">the difference is in the fabric</span></div>
+      <div class="assets"><div class="assets-head"><span class="assets-count">8</span><span class="assets-count-label">assets<br>to collect</span><span class="assets-badge badge-studio">Studio / macro</span></div>
+      <ul><li>4 &times; macro fabric close-ups: extreme texture shots, one each for the Novella Set (linen), Varsity Skort Set (cotton blend, plus the built-in shorts), Ruched Set (mid-weight 200gsm) and Calla Halter Dress (smooth stretch). High-res for a tight crop.</li><li>4 &times; on-model detail shots: one motion frame per piece, to sit under each fabric close-up</li></ul><div class="assets-note"><strong>This is the one dedicated shoot in the flow.</strong> Shoot the actual fabric of each piece, not a stand-in, since every fabric line in the copy is tied to the real product spec. One of the four macros doubles as the hero.</div></div></div><div class="acard"><div class="ahead"><span class="aeid">E5</span><span class="atitle">community / the inner circle</span></div>
+      <div class="assets"><div class="assets-head"><span class="assets-count">1</span><span class="assets-count-label">hero + sourced<br>UGC</span><span class="assets-badge badge-both">Lifestyle + UGC</span></div>
+      <ul><li>1 &times; community hero: a candid moment, a few women together, more than one in Lohnr, warm and real</li><li>4&ndash;6 &times; real UGC customer photos: sourced from the UGC library, not shot</li><li>2&ndash;3 &times; real customer reviews: pulled word-for-word from Shopify or Loox, text not image</li></ul><div class="assets-note">Only the community hero is a net-new shoot, and even that can be composited from UGC. The Inner Circle CTA links to the Facebook page. No welcome-offer block here, the code has expired by this send.</div></div></div><div class="acard"><div class="ahead"><span class="aeid">E6</span><span class="atitle">gabby&#x27;s check-in</span></div>
+      <div class="assets"><div class="assets-head"><span class="assets-count">0</span><span class="assets-count-label">images<br>this email</span><span class="assets-badge badge-none">Plain text</span></div>
+      <div class="assets-note">Plain-text email from Gabby. No lifestyle or studio images required.</div></div></div>
+  <h3 class="assets-h2">At a glance</h3>
+  <table class="asset-table">
+    <tr><th>#</th><th>Email</th><th>Category</th><th class="c">Collect</th><th>What to collect</th></tr>
+    <tr><td class="c">01</td><td class="em">Welcome / brand world</td><td>Lifestyle</td><td class="c">4</td><td>2 heroes + 2 on-model detail</td></tr><tr><td class="c">02</td><td class="em">Welcome offer, 15%</td><td>Lifestyle / reuse</td><td class="c">1</td><td>1 best-seller hero (reuse ok)</td></tr><tr><td class="c">03</td><td class="em">Why I made Lohnr</td><td>Client-supplied</td><td class="c">1</td><td>Elena founder portrait (client supplies)</td></tr><tr><td class="c">04</td><td class="em">The difference is in the fabric</td><td>Studio / macro</td><td class="c">8</td><td>4 macro fabric close-ups + 4 on-model detail</td></tr><tr><td class="c">05</td><td class="em">Community / Inner Circle</td><td>Lifestyle + UGC</td><td class="c">1</td><td>Community hero + 4&ndash;6 sourced UGC + 2&ndash;3 reviews</td></tr><tr><td class="c">06</td><td class="em">Gabby&#x27;s check-in</td><td>Plain text</td><td class="c">0</td><td>No custom images</td></tr><tr class="total"><td class="c"></td><td>Total to shoot</td><td>Lifestyle + one macro shoot</td><td class="c">14</td><td>plus the client portrait (E3) and sourced UGC (E5)</td></tr>
+  </table>
+  <p class="page-desc" style="margin-top:16px;"><strong>Reuse note:</strong> E4&rsquo;s four macro close-ups are the one dedicated shoot in the flow. E2 can lean on a strong best-seller frame from the library, and the founder portrait (E3) and the UGC (E5) come from the client and the community, not a booking. This is fully <strong style="color:#4a6b3a;">lifestyle-led</strong> apart from the E4 macro fabric detail.</p>
 </div>
 <div class="footer">
   <div>Lohnr &middot; Welcome Flow &middot; subscriber nurture</div>
