@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steak King — Johnny's Deal of the Day: the first read</title>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#373E3E;--coral:#EC7D55;--paper:#FBF9F7;--line:#E6E0DA;--muted:#7A8383;--good:#2F7D5D;--warn:#C0492B;--soft:#F6F3F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.58;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px 80px}
+  h1,h2,h3,.fj{font-family:'Fjalla One',Impact,sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+  header{background:var(--ink);color:#fff;padding:34px 0 52px;background-image:radial-gradient(ellipse at 78% 0%, rgba(236,125,85,.16), transparent 58%)}
+  .brandbar{display:flex;align-items:center;gap:16px;margin-bottom:34px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.13)}
+  .sk-logo{height:46px;width:auto;display:block}
+  .tethrd-logo{height:17px;width:auto;display:block;opacity:.82}
+  .brand-x{color:#6E7878;font-size:15px;font-weight:300}
+  header .wrap{padding-bottom:0}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(32px,5vw,50px);line-height:1.03;margin-bottom:18px}
+  .sub{font-size:18px;color:#C9CFCF;max-width:760px;line-height:1.5}
+  .meta{margin-top:26px;font-size:12px;color:#8B9494;letter-spacing:.04em;line-height:1.6}
+  .chapter{border-top:1px solid var(--line);padding-top:14px;margin-bottom:24px;display:flex;align-items:baseline;gap:14px}
+  .chapter .cn{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--coral);letter-spacing:.12em}
+  .chapter .ct{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  section{margin-bottom:54px;padding-top:8px}
+  h2{font-size:26px;margin-bottom:10px;line-height:1.15}
+  .h2sub{font-size:15.5px;color:var(--muted);margin-bottom:24px;max-width:770px}
+  h3{font-size:15px;margin-bottom:8px}
+  p{margin-bottom:14px;font-size:15.5px}
+  strong{font-weight:600}
+  em{font-style:italic}
+  .accent{color:var(--coral);font-weight:600}
+  /* KPI strip — matches the De-risking playbook exactly */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:40px 0 0}
+  .stat{background:#fff;padding:20px 18px}
+  .stat b{display:block;font-family:'Fjalla One',sans-serif;font-size:32px;line-height:1.05;color:var(--ink)}
+  .stat span{display:block;font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.4}
+  .card{background:#fff;border:1px solid var(--line);padding:22px 24px;margin-bottom:16px}
+  .card.hl{border-left:3px solid var(--coral)}
+  .card p:last-child{margin-bottom:0}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  ul{margin:0 0 14px 19px}
+  li{font-size:15px;margin-bottom:8px;color:#54595A}
+  li strong{color:var(--ink)}
+  /* deal cards */
+  .deal{background:#fff;border:1px solid var(--line);margin-bottom:16px}
+  .deal-head{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .deal-head .day{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--coral);letter-spacing:.06em;flex:none}
+  .deal-head h3{font-size:16px;margin:0;flex:1;min-width:200px}
+  .deal-body{padding:16px 20px}
+  .deal-def{font-size:14.5px;color:#54595A;margin-bottom:0}
+  .daygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:16px 0 0}
+  .daygrid .m{background:#fff;padding:13px 14px}
+  .daygrid .ml{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px}
+  .daygrid .m b{font-family:'Fjalla One',sans-serif;font-size:23px;color:var(--ink);display:block;line-height:1}
+  .daygrid .d{display:inline-block;margin-top:7px;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}
+  .d.up{color:var(--good)}
+  .d.dn{color:#B06A4F}
+  .dvs{display:block;font-size:9.5px;color:#AAB0B0;margin-top:2px;letter-spacing:.03em}
+  .prod{font-size:13.5px;color:#54595A;margin:14px 0 0;padding-top:13px;border-top:1px solid var(--line)}
+  .prod strong{color:var(--ink)}
+  .prod .up{color:var(--good);font-weight:600}
+  footer{border-top:1px solid var(--line);padding-top:22px;font-size:12px;color:var(--muted);line-height:1.6}
+  @media (max-width:780px){.wrap{padding:0 18px 56px}.cols{grid-template-columns:1fr}}
+  @media (max-width:600px){.daygrid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brandbar">
+      <img class="sk-logo" src="assets/brand/steakking-logo-white.png" alt="Steak King">
+      <span class="brand-x">&times;</span>
+      <img class="tethrd-logo" src="assets/brand/tethrd-wordmark-white.svg" alt="Tethrd">
+    </div>
+    <div class="eyebrow">Steak King HK &middot; Johnny's Deal of the Day &mdash; Performance Read &middot; 16&ndash;18 July 2026</div>
+    <h1>Johnny's Deal of the Day: the first read</h1>
+    <p class="sub">Three daily deals across Thursday, Friday and Saturday, each on a cut that is <em>not</em> an M9 hero. Here's how every day traded against the same weekday with no deal on, and how each featured cut sold against its own 30-day norm.</p>
+    <div class="meta">Source: Shopify Total sales, Steak King HK &middot; each day measured against the average clean (non-promo) same weekday from the prior weeks &middot; all figures HKD</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="stats">
+    <div class="stat"><b>+$655k</b><span>projected additional BAU revenue a month, if run on every BAU day (~25/mo)</span></div>
+    <div class="stat"><b>+39%</b><span>average revenue lift on a deal day vs the same weekday, no deal</span></div>
+    <div class="stat"><b>+$26.6k</b><span>average extra revenue per deal day</span></div>
+    <div class="stat"><b>+$79.7k</b><span>extra revenue across the three days, on non-hero cuts</span></div>
+    <div class="stat"><b>~5&times;</b><span>featured-cut sales on deal day vs a normal in-stock day</span></div>
+  </div>
+
+  <!-- 01 -->
+  <section style="margin-top:52px">
+    <div class="chapter"><span class="cn">01</span><span class="ct">Why we ran it</span></div>
+    <h2>The store bets the month on ten days and two SKUs</h2>
+    <p class="h2sub">This test was the cheapest way to find out whether a daily, non-hero deal can carry more of the ordinary days, without leaning harder on a tired list.</p>
+
+    <div class="card hl">
+      <p><strong>57% of a month lands on ten trading days.</strong> Our repeat buyers &mdash; three quarters of the revenue &mdash; order roughly once every five weeks, and they have been trained to hold that one purchase for Meat Emporium. So BAU days sag, and when the M9 Ribeye and Striploin sold out mid-sale in June, there was no second engine to catch the day. This test points a deal at the <em>other</em> twenty days, on cuts below the heroes, to see if it moves the number.</p>
+    </div>
+
+    <div class="cols">
+      <div class="card">
+        <h3>What we wanted it to prove</h3>
+        <ul style="margin-bottom:0">
+          <li><strong>De-risk the top five.</strong> Sell the day without touching the M9 heroes.</li>
+          <li><strong>Push product mix.</strong> Put secondary cuts in front of the whole list.</li>
+          <li><strong>Front-load revenue</strong> onto BAU days to de-risk this month's Meat Emporium.</li>
+          <li><strong>Pull frequency up</strong>: a daily reason to check the site (directional; three days can't prove this yet).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>The honest caveat</h3>
+        <p>This does lean us more promotional. Worth saying out loud. But with ~57% of revenue already coming from one monthly sale, we're promo-led today regardless. This spreads the promotion into a daily <em>habit</em> rather than one cliff a month, and keeps the deepest mechanics reserved for the sale.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section>
+    <div class="chapter"><span class="cn">02</span><span class="ct">What ran, and how each day did</span></div>
+    <h2>One deal, 24 hours, never a hero cut</h2>
+    <p class="h2sub">Every deal followed the same rule: one product, live for 24 hours, never an M9 hero. We rotate the cut around the catalogue and build each offer past ~$700, so the customer adds the deal plus maybe one more item to clear the $1,000 free-shipping line. Under each deal: how the day traded against the average clean same-weekday BAU day, and how the featured cut itself sold against its 30-day norm.</p>
+
+    <!-- THURSDAY -->
+    <div class="deal">
+      <div class="deal-head"><span class="day">THU 16</span><h3>Buy 2 Get 1 Free &mdash; Wagyu M3-4 Hanger</h3></div>
+      <div class="deal-body">
+        <p class="deal-def">A unit play: more meat, not a lower price, so the cut keeps its value. The two paid kilos sit near the free-shipping line on their own.</p>
+        <div class="daygrid">
+          <div class="m"><span class="ml">Total revenue</span><b>$106.9k</b><span class="d up">+71%</span><span class="dvs">vs $62.7k BAU</span></div>
+          <div class="m"><span class="ml">Orders</span><b>107</b><span class="d up">+95%</span><span class="dvs">vs 55 BAU</span></div>
+          <div class="m"><span class="ml">Avg AOV</span><b>$997</b><span class="d dn">&minus;13%</span><span class="dvs">vs $1,142 BAU</span></div>
+          <div class="m"><span class="ml">Hanger sold</span><b>$5.9k</b><span class="d up">2.5&times;</span><span class="dvs">vs 30-day avg</span></div>
+        </div>
+        <p class="prod"><strong>The cut on the day:</strong> Wagyu M3-4 Hanger sold <strong>8 units / $5,926</strong>, against a 30-day average of ~5.8 units / $2,342 a day. <span class="up">Revenue +153% (2.5&times;)</span> for the SKU as the deal pushed the 2kg+ tiers.</p>
+      </div>
+    </div>
+
+    <!-- FRIDAY -->
+    <div class="deal">
+      <div class="deal-head"><span class="day">FRI 17</span><h3>Price Drop &mdash; 3kg Black Angus T-Bone / Porterhouse, $799</h3></div>
+      <div class="deal-body">
+        <p class="deal-def">A straight 3kg price drop, built past $700 so a single gap-closer clears free shipping. The clearest deal-SKU winner of the three.</p>
+        <div class="daygrid">
+          <div class="m"><span class="ml">Total revenue</span><b>$88.5k</b><span class="d up">+22%</span><span class="dvs">vs $72.5k BAU</span></div>
+          <div class="m"><span class="ml">Orders</span><b>94</b><span class="d up">+63%</span><span class="dvs">vs 58 BAU</span></div>
+          <div class="m"><span class="ml">Avg AOV</span><b>$941</b><span class="d dn">&minus;24%</span><span class="dvs">vs $1,234 BAU</span></div>
+          <div class="m"><span class="ml">T-Bone sold</span><b>$15.6k</b><span class="d up">5.2&times;</span><span class="dvs">vs 30-day avg</span></div>
+        </div>
+        <p class="prod"><strong>The cut on the day:</strong> Black Angus T-Bone / Porterhouse sold <strong>21 units / $15,593</strong>, against a 30-day average of ~10 units / $3,012 a day. <span class="up">Revenue +418% (5.2&times;)</span>, the flash driving 3kg baskets.</p>
+      </div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="deal">
+      <div class="deal-head"><span class="day">SAT 18</span><h3>Buy 1, Get 2nd 50% Off &mdash; Black Angus M2-3 Rump Cap</h3></div>
+      <div class="deal-body">
+        <p class="deal-def">Half-price-second on a quiet cut (+ free chimichurri). Two caps land the basket over $700; one more item clears free shipping.</p>
+        <div class="daygrid">
+          <div class="m"><span class="ml">Total revenue</span><b>$90.6k</b><span class="d up">+27%</span><span class="dvs">vs $71.1k BAU</span></div>
+          <div class="m"><span class="ml">Orders</span><b>89</b><span class="d up">+52%</span><span class="dvs">vs 59 BAU</span></div>
+          <div class="m"><span class="ml">Avg AOV</span><b>$1,007</b><span class="d dn">&minus;17%</span><span class="dvs">vs $1,209 BAU</span></div>
+          <div class="m"><span class="ml">Rump Cap sold</span><b>$10.1k</b><span class="d up">~5&times;</span><span class="dvs">vs in-stock rate</span></div>
+        </div>
+        <p class="prod"><strong>The cut on the day:</strong> Black Angus M2-3 Rump Cap sold <strong>14 units / $10,087</strong>. This cut was out of stock through most of June and only relisted on 13 July, so a 30-day average understates it. Benchmarked against its in-stock rate in the days just before the deal (~2&ndash;3 units a day), the deal day is roughly a <span class="up">5&times; lift</span>.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <p><strong>The pattern, read across the three days:</strong> orders up 52&ndash;95% every day, revenue up 22&ndash;71%, and average basket easing only slightly. That's the expected trade on a deal day, and it tells us the lift is real order volume, not a discount inflating a few baskets. Every deal ran on a cut below the M9 heroes, so the heroes were never discounted and stayed reserved for the sale.</p>
+    </div>
+  </section>
+
+  <footer>
+    Steak King HK &middot; Johnny's Deal of the Day &mdash; first read &middot; July 2026 &middot; Tethrd<br>
+    Source: Shopify Total sales, Steak King HK. Deals as sent: Thu &mdash; B2G1F Wagyu M3-4 Hanger; Fri &mdash; 3kg Black Angus T-Bone/Porterhouse $799; Sat &mdash; buy 1 get 2nd 50% off Black Angus M2-3 Rump Cap. Each deal day is compared to the average clean, non-promo instance of the same weekday from the prior weeks (Thu: 2 Jul &amp; 11 Jun; Fri: 3 Jul &amp; 19 Jun; Sat: 4 Jul &amp; 20 Jun) &mdash; excluding Meat Emporium and any flash-sale days. Featured-cut figures cover all variants of that cut (deal SKU plus parent) on the day, benchmarked to the cut's rolling 30-day average daily sales (which does include promo days). The exception is the M2-3 Rump Cap, which was out of stock for most of June and relisted on 13 July, so it is benchmarked to its in-stock rate in the days before the deal rather than a 30-day average. Monthly projection applies the average measured uplift per deal day across ~25 BAU (non-sale) days a month &mdash; the Jan&ndash;Jun 2026 average. All figures HKD.
+  </footer>
+
+</div>
+</body>
+</html>
