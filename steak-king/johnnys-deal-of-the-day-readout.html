@@ -186,36 +186,38 @@
 
   <!-- 03 -->
   <section>
-    <div class="chapter"><span class="cn">03</span><span class="ct">Traffic &amp; the habit</span></div>
-    <h2>The push came from email. The habit is starting on its own</h2>
-    <p class="h2sub">We announced the section with one send a day, and those drove the spike. The number worth watching is how many people come back to the deals page with no email in front of them.</p>
+    <div class="chapter"><span class="cn">03</span><span class="ct">The deals section page</span></div>
+    <h2>Are people coming back to the page on their own?</h2>
+    <p class="h2sub">One page, tracked on its own: <span style="font-family:ui-monospace,Menlo,monospace;font-size:.88em;background:#F6F3F0;padding:1px 6px;border-radius:3px">/collections/johnnys-deal-of-the-day</span>. Every visit since launch, split by how they got there.</p>
 
     <div class="stats" style="margin-bottom:24px">
-      <div class="stat"><b>1,480</b><span>clicks to the deals from the three sends (100,938 recipients, tightening 53k&rarr;14k)</span></div>
-      <div class="stat"><b>~10,100</b><span>sitewide pageviews on launch day, up from ~8,300; conversion 2.6% vs 2.0%</span></div>
-      <div class="stat"><b>21</b><span>landed straight on the deals section on Sunday, with no deal email sent</span></div>
+      <div class="stat"><b>400</b><span>visits to the deals section in its first four days</span></div>
+      <div class="stat"><b>94%</b><span>arrived without clicking an email &mdash; direct or returning</span></div>
+      <div class="stat"><b>1</b><span>organic search visit so far &mdash; a new page, not yet ranked</span></div>
     </div>
 
     <div class="tblwrap">
       <table>
-        <thead><tr><th>Day</th><th class="num">Deals-section landings</th><th class="num">Direct / returning</th><th class="num">Tagged email</th></tr></thead>
+        <thead><tr><th>Day</th><th class="num">Total visits</th><th class="num">Direct / non-email</th><th class="num">Organic search</th><th class="num">Email</th></tr></thead>
         <tbody>
-          <tr><td>Thu 16 &middot; deal + send</td><td class="num">165</td><td class="num">153</td><td class="num">12</td></tr>
-          <tr><td>Fri 17 &middot; deal + send</td><td class="num">87</td><td class="num">80</td><td class="num">7</td></tr>
-          <tr><td>Sat 18 &middot; deal + send</td><td class="num">127</td><td class="num">122</td><td class="num">4</td></tr>
-          <tr class="habit"><td>Sun 19 &middot; no deal send</td><td class="num">21</td><td class="num">19</td><td class="num">1</td></tr>
+          <tr><td>Thu 16 &middot; launch</td><td class="num">165</td><td class="num">153</td><td class="num">0</td><td class="num">12</td></tr>
+          <tr><td>Fri 17</td><td class="num">87</td><td class="num">80</td><td class="num">0</td><td class="num">7</td></tr>
+          <tr><td>Sat 18</td><td class="num">127</td><td class="num">123</td><td class="num">0</td><td class="num">4</td></tr>
+          <tr class="habit"><td>Sun 19 &middot; no deal, no send</td><td class="num">21</td><td class="num">19</td><td class="num">1</td><td class="num">1</td></tr>
         </tbody>
       </table>
     </div>
+    <p style="font-size:12.5px;color:var(--muted);margin:0 0 18px">Visits = sessions that started on this page. Shopify tags most email-app clicks as "direct," so a precise organic-versus-email split would need GA4.</p>
 
     <div class="card">
-      <p><strong>Read this carefully.</strong> The sends mostly pointed at the featured product, so most of those 1,480 clicks landed on the deal's own page, not the section, which is why tagged-email landings here look small. And Shopify files most email-app clicks as "direct," so that column blends real returning visitors with email traffic that lost its referrer. It isn't a clean split. What is not ambiguous: on Sunday, with no deal email out, about 20 people still went straight to the section on their own. That is the habit we want, in its first week. A proper organic-versus-email breakdown needs GA4, which we can wire in next.</p>
+      <p><strong>Almost everything is non-email.</strong> 376 of the 400 visits came without an email click: direct, typed, bookmarked, or returning. Even allowing for Shopify tagging some email-app clicks as "direct," the direct volume dwarfs tagged email, 375 against 24. People are reaching the page with no send in front of them, which is exactly the habit we want.</p>
+      <p style="margin-bottom:0"><strong>Organic search is still zero.</strong> The page is four days old, so Google has not indexed or ranked it yet. This is the line to watch: organic search is the un-paid, compounding traffic that shows a section has become a place people look for, not just one we point them to.</p>
     </div>
   </section>
 
   <footer>
     Steak King HK &middot; Johnny's Deal of the Day &mdash; first read &middot; July 2026 &middot; Tethrd<br>
-    Source: Shopify Total sales, Steak King HK. Deals as sent: Thu &mdash; B2G1F Wagyu M3-4 Hanger; Fri &mdash; 3kg Black Angus T-Bone/Porterhouse $799; Sat &mdash; buy 1 get 2nd 50% off Black Angus M2-3 Rump Cap. Each deal day is compared to the average clean, non-promo instance of the same weekday from the prior weeks (Thu: 2 Jul &amp; 11 Jun; Fri: 3 Jul &amp; 19 Jun; Sat: 4 Jul &amp; 20 Jun) &mdash; excluding Meat Emporium and any flash-sale days. Featured-cut figures cover all variants of that cut (deal SKU plus parent) on the day, benchmarked to the cut's rolling 30-day average daily sales (which does include promo days). The exception is the M2-3 Rump Cap, which was out of stock for most of June and relisted on 13 July, so it is benchmarked to its in-stock rate in the days before the deal rather than a 30-day average. Monthly projection applies the average measured uplift per deal day across ~25 BAU (non-sale) days a month &mdash; the Jan&ndash;Jun 2026 average. Deals-section traffic is Shopify web sessions by landing page and referrer source; email clicks are from Klaviyo campaign reporting. All figures HKD.
+    Source: Shopify Total sales, Steak King HK. Deals as sent: Thu &mdash; B2G1F Wagyu M3-4 Hanger; Fri &mdash; 3kg Black Angus T-Bone/Porterhouse $799; Sat &mdash; buy 1 get 2nd 50% off Black Angus M2-3 Rump Cap. Each deal day is compared to the average clean, non-promo instance of the same weekday from the prior weeks (Thu: 2 Jul &amp; 11 Jun; Fri: 3 Jul &amp; 19 Jun; Sat: 4 Jul &amp; 20 Jun) &mdash; excluding Meat Emporium and any flash-sale days. Featured-cut figures cover all variants of that cut (deal SKU plus parent) on the day, benchmarked to the cut's rolling 30-day average daily sales (which does include promo days). The exception is the M2-3 Rump Cap, which was out of stock for most of June and relisted on 13 July, so it is benchmarked to its in-stock rate in the days before the deal rather than a 30-day average. Monthly projection applies the average measured uplift per deal day across ~25 BAU (non-sale) days a month &mdash; the Jan&ndash;Jun 2026 average. Deals-section visits are Shopify web sessions by landing page and referrer source. All figures HKD.
   </footer>
 
 </div>
