@@ -45,19 +45,21 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
 .metrics-table tr.flop-row td { background: #fdf0f0; }
 .metrics-table .tag { font-size: 8.5px; padding: 2px 6px; border-radius: 3px; letter-spacing: 0.5px; text-transform: uppercase; font-weight: 600; }
 .tag-win { background: #d8eee0; color: #2d6a4f; }
-.tag-flop { background: #f3d8d8; color: #9d4348; }
 .tag-push { background: #d8eee0; color: #2d6a4f; }
+.tag-new { background: #dce7f2; color: #33506a; }
 .tag-hold { background: #eee; color: #999; }
-.table-note { font-size: 10.5px; color: #aaa; line-height: 1.5; margin-top: 12px; max-width: 660px; }
+.tag-flop { background: #f3d8d8; color: #9d4348; }
+.table-note { font-size: 10.5px; color: #aaa; line-height: 1.5; margin-top: 12px; max-width: 680px; }
 
 .cal { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
 .cal th { font-size: 10px; letter-spacing: 2px; color: #bbb; font-weight: 500; text-transform: uppercase; padding: 8px 0; text-align: center; border-bottom: 1px solid #eee; }
-.cal td { border: 1px solid #f0f0f0; vertical-align: top; padding: 8px 8px 12px; height: 88px; width: 14.28%; }
+.cal td { border: 1px solid #f0f0f0; vertical-align: top; padding: 7px 7px 10px; height: 82px; width: 14.28%; }
 .cal td.empty { background: #fafafa; }
-.cal .day-num { font-size: 11px; color: #ccc; font-weight: 500; margin-bottom: 6px; }
-.cal .cal-event { font-size: 10px; font-weight: 600; line-height: 1.3; padding: 3px 6px; border-radius: 3px; margin-bottom: 3px; display: inline-block; }
-.cal .cal-note { font-size: 9px; color: #c4972f; display: block; margin-top: 3px; font-weight: 600; letter-spacing: 0.5px; }
+.cal .day-num { font-size: 11px; color: #ccc; font-weight: 500; margin-bottom: 5px; }
+.cal .cal-event { font-size: 9.5px; font-weight: 600; line-height: 1.25; padding: 2px 5px; border-radius: 3px; margin-bottom: 3px; display: inline-block; }
+.cal .cal-note { font-size: 8.5px; color: #c4972f; display: block; margin-top: 2px; font-weight: 600; letter-spacing: 0.3px; }
 .ev-feat { background: #e8edf2; color: #264653; }
+.ev-new { background: #dce7f2; color: #274b6b; }
 .ev-elena { background: #ecf0e6; color: #606c38; }
 .ev-promo { background: #f7e6e2; color: #a64b34; }
 .ev-content { background: #fdf3e8; color: #8a5a1f; }
@@ -67,38 +69,37 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
 .legend-item { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #999; }
 .legend-dot { width: 8px; height: 8px; border-radius: 2px; }
 
-.week-group { margin-bottom: 34px; }
-.week-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+.week-group { margin-bottom: 30px; }
+.week-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
 .week-num { font-size: 10px; letter-spacing: 3px; color: #ccc; text-transform: uppercase; font-weight: 500; }
-.week-title { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; }
-.card { display: flex; background: #fafafa; border-radius: 6px; overflow: hidden; margin-bottom: 12px; page-break-inside: avoid; }
+.week-title { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+.card { display: flex; background: #fafafa; border-radius: 6px; overflow: hidden; margin-bottom: 10px; page-break-inside: avoid; }
 .card-accent { width: 4px; flex-shrink: 0; }
-.acc-promo { background: #a64b34; } .acc-feat { background: #264653; } .acc-content { background: #8a5a1f; }
-.card-body { padding: 20px 24px; flex: 1; }
+.acc-promo { background: #a64b34; } .acc-feat { background: #264653; } .acc-new { background: #3d6690; } .acc-content { background: #8a5a1f; }
+.card-body { padding: 16px 22px; flex: 1; }
 .card-num { font-size: 10px; font-weight: 600; letter-spacing: 2px; margin-bottom: 4px; color:#aaa; }
-.card-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; margin-bottom: 6px; line-height: 1.3; }
-.card-meta { font-size: 10px; color: #999; letter-spacing: 0.5px; margin-bottom: 10px; text-transform: uppercase; }
-.card-desc { font-size: 12px; color: #555; line-height: 1.6; margin-bottom: 8px; }
+.card-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; margin-bottom: 5px; line-height: 1.3; }
+.card-meta { font-size: 10px; color: #999; letter-spacing: 0.5px; margin-bottom: 9px; text-transform: uppercase; }
+.card-desc { font-size: 12px; color: #555; line-height: 1.55; margin-bottom: 7px; }
 .card-detail { font-size: 11px; color: #888; line-height: 1.5; }
 .card-detail strong { color: #333; font-weight: 600; }
-.card-promo { font-size: 11px; font-weight: 600; margin-top: 8px; padding: 6px 10px; border-radius: 3px; display: inline-block; background:#f7e6e2; color:#a64b34; }
-.card-rationale { font-size: 11px; color: #777; line-height: 1.55; margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee; }
+.card-promo { font-size: 11px; font-weight: 600; margin-top: 7px; padding: 6px 10px; border-radius: 3px; display: inline-block; background:#f7e6e2; color:#a64b34; }
+.card-rationale { font-size: 11px; color: #777; line-height: 1.5; margin-top: 7px; padding-top: 7px; border-top: 1px solid #eee; }
 .card-rationale strong { color: #2d6a4f; font-weight: 600; }
-.opt { font-size: 11px; color:#666; line-height:1.5; margin-top:8px; padding:8px 10px; background:#fff; border:1px solid #eee; border-radius:4px; }
+.opt { font-size: 11px; color:#666; line-height:1.5; margin-top:7px; padding:8px 10px; background:#fff; border:1px solid #eee; border-radius:4px; }
 .opt.rec { border-color:#bcd9c8; background:#f4faf6; }
 .opt strong { color:#2d6a4f; }
 
-.assets { margin-top:10px; padding:11px 14px; background:#fff; border:1px solid #ececec; border-radius:5px; }
-.assets-head { display:flex; align-items:center; gap:10px; margin-bottom:7px; }
-.assets-count { font-size:22px; font-weight:700; color:#1a1a1a; line-height:1; }
-.assets-count-label { font-size:8.5px; letter-spacing:1.2px; text-transform:uppercase; color:#bbb; line-height:1.25; font-weight:600; }
-.assets-badge { margin-left:auto; font-size:9px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; padding:4px 9px; border-radius:3px; }
-.badge-life { background:#eaf1e6; color:#4a6b3a; }
-.badge-none { background:#f2f2f2; color:#999; }
-.assets ul { margin:0; padding-left:16px; }
-.assets li { font-size:11px; color:#555; line-height:1.5; margin-bottom:2px; }
-.assets-note { font-size:10.5px; color:#999; line-height:1.45; margin-top:7px; }
-.assets-note strong { color:#8a5a1f; font-weight:600; }
+.img-intro { background:#fafafa; border-left:3px solid #3d6690; border-radius:6px; padding:16px 20px; margin-bottom:22px; font-size:12.5px; color:#555; line-height:1.6; }
+.img-intro strong { color:#1a1a1a; }
+.img-table { width:100%; border-collapse:collapse; font-size:11.5px; }
+.img-table th { text-align:left; padding:9px 12px 7px; color:#999; font-weight:600; font-size:9px; letter-spacing:1.2px; text-transform:uppercase; border-bottom:1px solid #eee; }
+.img-table th.c { text-align:center; }
+.img-table td { padding:10px 12px; border-bottom:1px solid #f5f5f5; color:#444; vertical-align:top; line-height:1.45; }
+.img-table td.em { color:#1a1a1a; font-weight:600; }
+.img-table td.c { text-align:center; font-variant-numeric:tabular-nums; color:#888; }
+.img-table td.price { text-align:right; font-variant-numeric:tabular-nums; color:#888; }
+.img-note { font-size:10.5px; color:#aaa; line-height:1.5; margin-top:14px; max-width:680px; }
 
 .footer { padding: 20px 60px; border-top: 1px solid #1a1a1a; margin-top: 40px; }
 .footer-text { font-size: 9px; letter-spacing: 4px; color: #ccc; text-transform: uppercase; text-align: center; }
@@ -115,15 +116,15 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
     <div class="cover-title">August 2026</div>
     <div class="cover-subtitle">Email Calendar</div>
     <div class="cover-stats">
-      <div><div class="cover-stat-num">10</div><div class="cover-stat-label">Emails</div></div>
+      <div><div class="cover-stat-num">20</div><div class="cover-stat-label">Emails</div></div>
       <div><div class="cover-stat-num">1</div><div class="cover-stat-label">Sale Event</div></div>
       <div><div class="cover-stat-num">25%</div><div class="cover-stat-label">Sitewide</div></div>
-      <div><div class="cover-stat-num">32</div><div class="cover-stat-label">Assets</div></div>
+      <div><div class="cover-stat-num">13</div><div class="cover-stat-label">Products For Images</div></div>
     </div>
-    <div class="cover-products">End of Summer Sale &nbsp;·&nbsp; Solene &amp; Roma &nbsp;·&nbsp; Game Day Saturdays &nbsp;·&nbsp; The Turn Into Autumn</div>
+    <div class="cover-products">End of Summer Sale &nbsp;·&nbsp; Game Day, before kickoff &nbsp;·&nbsp; New in: Capri &amp; Sojourn &nbsp;·&nbsp; The turn into autumn</div>
   </div>
   <div class="cover-bottom">
-    <div class="cover-date">23 July 2026 · v1</div>
+    <div class="cover-date">23 July 2026 · v2</div>
     <div class="cover-approval">For Review</div>
   </div>
 </div>
@@ -145,41 +146,41 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
     <tr><td>17 Jul</td><td>Varsity: Waitlist Early Access</td><td class="num">105</td><td class="num">42.3%</td><td class="num">3.85%</td><td class="num">1</td><td class="num">$68</td><td class="num">$0.653</td></tr>
   </table>
 
-  <div class="table-note">Revenue is Klaviyo-attributed against the Shopify Placed Order metric. Open rates on the two largest sends sit lower because those went to the full database rather than an engaged segment.</div>
+  <div class="table-note">Revenue is Klaviyo-attributed against the Shopify Placed Order metric. Open rates on the two largest sends sit lower because those went to the full database rather than an engaged segment. August steps the volume up to 20 sends, most of them single-product features to warm segments rather than blasts.</div>
 </div>
 
 <!-- PAGE: PRODUCTS -->
 <div class="page">
   <div class="section-label">The Merchandise</div>
   <div class="page-title">What we're pushing, and why</div>
-  <div class="page-desc">Order share is measured across the 5,000 most recent orders, 1 to 23 July. It reads as the percentage of orders that contained the item, so the column sums past 100%. People buy more than one thing.</div>
+  <div class="page-desc">Order share is measured across the 5,000 most recent orders, 1 to 23 July. It reads as the percentage of orders that contained the item, so the column sums past 100%. The four proven sellers anchor the month. The new tops and pants get real airtime rather than a mention at the end.</div>
 
   <table class="metrics-table">
-    <tr><th>Product</th><th class="num">Price</th><th class="num">July order share</th><th>Why it earns a slot in August</th><th>Call</th></tr>
-    <tr class="win-row"><td><strong>Solene Dress</strong></td><td class="num">$58</td><td class="num">40%</td><td>Number one, and still climbing. A hot-weather dress with nothing in the range to compete with it. Last emailed on 3 June.</td><td><span class="tag tag-push">Hero</span></td></tr>
-    <tr class="win-row"><td><strong>Roma Set</strong></td><td class="num">$58</td><td class="num">37%</td><td>Number two. A set gives a hero email more to look at than a single piece does, and it lifts the basket.</td><td><span class="tag tag-push">Hero</span></td></tr>
-    <tr class="win-row"><td><strong>Brennan Pant</strong></td><td class="num">$45</td><td class="num">16%</td><td>The only piece in the top four that still makes sense in September. This is the way out of summer.</td><td><span class="tag tag-push">Feature</span></td></tr>
-    <tr class="win-row"><td><strong>Game Day Set</strong></td><td class="num">$58</td><td class="num">15%</td><td>College football starts on Thursday 27 August. The set is named for it and already sells well with nothing behind it.</td><td><span class="tag tag-push">Feature</span></td></tr>
-    <tr><td>Cotton Skirt Set</td><td class="num">$58</td><td class="num">5%</td><td>Sells steadily without help. Gets named inside the sale letter, no send of its own.</td><td><span class="tag tag-hold">Support</span></td></tr>
-    <tr><td>Cabana Button-Up</td><td class="num">$45</td><td class="num">5%</td><td>The layering piece. Rides along with Brennan on the 21st and again at the end of the month.</td><td><span class="tag tag-hold">Support</span></td></tr>
-    <tr><td><strong>Emery Maxi Dress</strong></td><td class="num">$58</td><td class="num">2%</td><td>Far and away the best of the newer dresses. A maxi is the right shape for the last hot fortnight. Worth one send.</td><td><span class="tag tag-push">Feature</span></td></tr>
-    <tr class="flop-row"><td>Varsity Skort Set</td><td class="num">$75</td><td class="num">0.04%</td><td>Two orders in 5,000 following a three-email launch. Give it a month off.</td><td><span class="tag tag-flop">Rest</span></td></tr>
-    <tr class="flop-row"><td>Ruched Set · Sojourn Pant · Provence Gingham</td><td class="num">$50–68</td><td class="num">&lt;0.1%</td><td>All landed in the last fortnight and all sit under five orders. Let them find their feet inside the sale rather than on a send of their own.</td><td><span class="tag tag-flop">Rest</span></td></tr>
-    <tr class="flop-row"><td>Aspen Jacket · Mercer Coat · sweaters</td><td class="num">$45–180</td><td class="num">0–1 order</td><td>Out of season, and above the $100 tax-free cap. Nothing this month.</td><td><span class="tag tag-flop">Rest</span></td></tr>
+    <tr><th>Product</th><th class="num">Price</th><th class="num">July order share</th><th>Role in August</th><th>Call</th></tr>
+    <tr class="win-row"><td><strong>Solene Dress</strong></td><td class="num">$58</td><td class="num">40%</td><td>Number one, still climbing. Anchors three sends including the mid-sale hero. Last emailed 3 June.</td><td><span class="tag tag-push">Hero</span></td></tr>
+    <tr class="win-row"><td><strong>Roma Set</strong></td><td class="num">$58</td><td class="num">37%</td><td>Number two. Full-price feature early, then the second sale hero.</td><td><span class="tag tag-push">Hero</span></td></tr>
+    <tr class="win-row"><td><strong>Game Day Set</strong></td><td class="num">$58</td><td class="num">15%</td><td>Moved to week 1 so it's in hand before football starts. Light kickoff reminder in week 4.</td><td><span class="tag tag-push">Wk 1</span></td></tr>
+    <tr class="win-row"><td><strong>Emery Maxi Dress</strong></td><td class="num">$58</td><td class="num">2%</td><td>Best of the newer dresses by a distance. A maxi is the right shape for the last hot fortnight.</td><td><span class="tag tag-push">Feature</span></td></tr>
+    <tr><td><strong>Capri Button-Up</strong></td><td class="num">$45</td><td class="num">new</td><td>Landed 16 July, never featured. Gets a "new in" send early and an autumn-layering send late.</td><td><span class="tag tag-new">New push</span></td></tr>
+    <tr><td><strong>Sojourn Pant</strong></td><td class="num">$50</td><td class="num">new</td><td>Landed 20 July, never featured. "New in" early, then the pant that carries into September.</td><td><span class="tag tag-new">New push</span></td></tr>
+    <tr><td>Novella Set · Calla Halter · Gallery Tiered · Rowan Midi · Clubhouse Skort</td><td class="num">$54–68</td><td class="num">1–3%</td><td>Newer pieces that have never had a send. One feature each fills the non-sale days.</td><td><span class="tag tag-new">New push</span></td></tr>
+    <tr><td>Provence Gingham · Ruched Set</td><td class="num">$50–68</td><td class="num">&lt;0.1%</td><td>Freshest arrivals. Introduced together in the autumn first-look at month end.</td><td><span class="tag tag-hold">First look</span></td></tr>
+    <tr class="flop-row"><td>Brennan Pant · Cabana Button-Up · Cleo · Oasis</td><td class="num">$45</td><td class="num">n/a</td><td>All went out in July's Getaway drop. Rested this month so we're not repeating a recent email.</td><td><span class="tag tag-flop">Rested</span></td></tr>
+    <tr class="flop-row"><td>Varsity Skort Set</td><td class="num">$75</td><td class="num">0.04%</td><td>Two orders in 5,000 after a three-email launch. Off this month.</td><td><span class="tag tag-flop">Rested</span></td></tr>
   </table>
 
-  <div class="table-note">The Uniform Chain is left out of this table. It's the free gift auto-added at $150 and over, so its 6% order share measures basket size rather than demand for the product.</div>
+  <div class="table-note">The Uniform Chain is left out of this table. It's the free gift auto-added at $150 and over, so its order share measures basket size rather than demand for the product.</div>
 
   <div class="insights-grid" style="margin-top:26px;">
     <div class="insight-card note">
       <div class="insight-label">Seasonal read</div>
       <div class="insight-title">August is peak heat, then a hinge</div>
-      <div class="insight-body">The first three weeks are the hottest of the American year. Dresses, sets, bare legs. Then the last week turns. College football starts, school goes back, evenings cool off. The calendar follows that shape: dresses and sets until the 21st, pants and layers after it.</div>
+      <div class="insight-body">The first three weeks are the hottest of the American year. Dresses, sets, bare legs. Then the last week turns. College football starts Thursday the 27th, main slate the 29th, school goes back, evenings cool. The calendar follows that shape.</div>
     </div>
     <div class="insight-card win">
-      <div class="insight-label">A free lever</div>
-      <div class="insight-title">Tax-free weekends cover the whole catalogue</div>
-      <div class="insight-body">Texas and Virginia waive sales tax on clothing from the 7th to the 9th. Maryland runs the 9th to the 15th, Florida through the 20th, Connecticut the 16th to the 22nd. The exemption caps at $100 an item, which covers everything Lohnr sells apart from the Mercer Coat and the Aspen Jacket. A saving we don't have to fund.</div>
+      <div class="insight-label">New over repeats</div>
+      <div class="insight-title">Fresh tops and pants, not last month's email</div>
+      <div class="insight-body">The Getaway pieces went out in late July, so August leads with Capri Button-Up and Sojourn Pant instead. Both landed after that send and neither has had airtime. Same logic across the newer sets and dresses that have never had a feature of their own.</div>
     </div>
   </div>
 </div>
@@ -188,7 +189,7 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
 <div class="page">
   <div class="section-label">The Month</div>
   <div class="page-title">August at a glance</div>
-  <div class="page-desc">Ten sends, built around one weekend. The sale runs Friday the 14th to Monday the 17th and it's the only discount all month. Weeks one and two warm the list with product rather than countdowns. Week four turns towards autumn.</div>
+  <div class="page-desc">Twenty sends, built around one weekend. The End of Summer Sale runs Friday the 14th to Monday the 17th and it's the only discount all month. Everything else is a clean single-product feature. Game Day moves up front so it's in hand before kickoff. Send days shift week to week.</div>
 
   <table class="cal">
     <tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr>
@@ -199,42 +200,42 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
     </tr>
     <tr>
       <td><div class="day-num">3</div></td>
-      <td><div class="day-num">4</div><span class="cal-event ev-feat">Why she reorders</span></td>
-      <td><div class="day-num">5</div></td>
-      <td><div class="day-num">6</div></td>
-      <td><div class="day-num">7</div><span class="cal-event ev-content">The tax-free bit</span><span class="cal-note">★ TX / VA tax-free</span></td>
-      <td><div class="day-num">8</div></td>
-      <td><div class="day-num">9</div></td>
+      <td><div class="day-num">4</div><span class="cal-event ev-feat">Solene, why she reorders</span></td>
+      <td><div class="day-num">5</div><span class="cal-event ev-feat">Game Day, before kickoff</span></td>
+      <td><div class="day-num">6</div><span class="cal-event ev-feat">Roma Set</span></td>
+      <td><div class="day-num">7</div></td>
+      <td><div class="day-num">8</div><span class="cal-event ev-new">New in: Capri</span></td>
+      <td><div class="day-num">9</div><span class="cal-event ev-feat">Emery, for the last of it</span></td>
     </tr>
     <tr>
-      <td><div class="day-num">10</div><span class="cal-event ev-feat">The set she reaches for</span></td>
-      <td><div class="day-num">11</div></td>
-      <td><div class="day-num">12</div><span class="cal-event ev-feat">Emery, for the last of it</span></td>
-      <td><div class="day-num">13</div></td>
+      <td><div class="day-num">10</div><span class="cal-event ev-new">New in: Sojourn</span></td>
+      <td><div class="day-num">11</div><span class="cal-event ev-feat">Novella Set</span></td>
+      <td><div class="day-num">12</div></td>
+      <td><div class="day-num">13</div><span class="cal-event ev-feat">Calla Halter</span></td>
       <td><div class="day-num">14</div><span class="cal-event ev-sale">Sale is live</span><span class="cal-note">◆ 25% SITEWIDE</span></td>
-      <td><div class="day-num">15</div></td>
-      <td><div class="day-num">16</div><span class="cal-event ev-promo">The long summer weekend</span></td>
+      <td><div class="day-num">15</div><span class="cal-event ev-promo">Sale: Solene</span></td>
+      <td><div class="day-num">16</div><span class="cal-event ev-promo">Sale: Roma</span></td>
     </tr>
     <tr>
       <td><div class="day-num">17</div><span class="cal-event ev-elena">It ends tonight</span></td>
       <td><div class="day-num">18</div></td>
-      <td><div class="day-num">19</div></td>
+      <td><div class="day-num">19</div><span class="cal-event ev-feat">Gallery Tiered Dress</span></td>
       <td><div class="day-num">20</div></td>
-      <td><div class="day-num">21</div><span class="cal-event ev-feat">Doesn't stop in September</span></td>
+      <td><div class="day-num">21</div><span class="cal-event ev-new">Sojourn into September</span></td>
       <td><div class="day-num">22</div></td>
-      <td><div class="day-num">23</div></td>
+      <td><div class="day-num">23</div><span class="cal-event ev-feat">Rowan Midi</span></td>
     </tr>
     <tr>
       <td><div class="day-num">24</div></td>
-      <td><div class="day-num">25</div></td>
-      <td><div class="day-num">26</div><span class="cal-event ev-feat">Saturdays start again</span></td>
+      <td><div class="day-num">25</div><span class="cal-event ev-feat">Clubhouse Skort</span></td>
+      <td><div class="day-num">26</div><span class="cal-event ev-feat">Game Day, this weekend</span></td>
       <td><div class="day-num">27</div><span class="cal-note">★ CFB Week 0</span></td>
-      <td><div class="day-num">28</div></td>
+      <td><div class="day-num">28</div><span class="cal-event ev-new">Capri, for autumn</span></td>
       <td><div class="day-num">29</div><span class="cal-note">★ CFB main slate</span></td>
       <td><div class="day-num">30</div><span class="cal-event ev-content">What comes next</span></td>
     </tr>
     <tr>
-      <td><div class="day-num">31</div></td>
+      <td><div class="day-num">31</div><span class="cal-event ev-feat">Solene, month close</span></td>
       <td class="empty"><div class="day-num">1</div></td>
       <td class="empty"><div class="day-num">2</div></td>
       <td class="empty"><div class="day-num">3</div></td>
@@ -249,236 +250,242 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color:
     <div class="legend-item"><span class="legend-dot" style="background:#f7e6e2;"></span> Promo / in-sale</div>
     <div class="legend-item"><span class="legend-dot" style="background:#ecf0e6;"></span> Elena letter</div>
     <div class="legend-item"><span class="legend-dot" style="background:#e8edf2;"></span> Feature</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#dce7f2;"></span> New product</div>
     <div class="legend-item"><span class="legend-dot" style="background:#fdf3e8;"></span> Content</div>
     <div class="legend-item"><span class="legend-dot" style="background:#fff;border:1px solid #ddd;"></span> ★ external date</div>
   </div>
 </div>
 
-<!-- PAGE: THE PLAN — WEEK 1 & 2 -->
+<!-- PAGE: THE PLAN — WEEK 1 -->
 <div class="page">
   <div class="section-label">The Plan</div>
   <div class="page-title">Campaign by campaign</div>
-  <div class="page-desc">The month, send by send. The thing to watch this time is what warms the sale. We're doing it with product rather than a countdown.</div>
+  <div class="page-desc">Twenty sends, kept simple. Most are one product, one hero, one CTA, to a warm segment. The four sale days are the exception.</div>
 
   <div class="week-group">
-    <div class="week-header"><span class="week-num">Week 1</span><span class="week-title">The two best things we sell</span></div>
+    <div class="week-header"><span class="week-num">Week 1</span><span class="week-title">Best-sellers and Game Day early</span></div>
 
-    <div class="card">
-      <div class="card-accent acc-feat"></div>
-      <div class="card-body">
-        <div class="card-num">01 · TUE 4 AUG</div>
-        <div class="card-name">Solene: why women keep reordering</div>
-        <div class="card-meta">Feature · Live-text editorial with social proof · Engaged 90-day (~28k)</div>
-        <div class="card-desc">The best-performing non-sale format this account has, on the product that sells the most. Live text with real customer quotes rather than an image stack. Solene on its own, no companion pieces, no grid.</div>
-        <div class="card-detail"><strong>Hero:</strong> Solene Dress ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Solene</div>
-        <div class="card-rationale"><strong>Why:</strong> this format on this product returned $1,716 in April, the strongest non-sale send of that month. Solene now turns up in 40% of orders and hasn't been emailed since 3 June. Nothing clever here, just the thing that worked.</div>
-        <div class="assets">
-          <div class="assets-head"><div class="assets-count">3</div><div class="assets-count-label">assets<br>to collect</div><div class="assets-badge badge-life">Lifestyle</div></div>
-          <ul>
-            <li>1 × on-model hero, Solene Dress, warm-weather setting, natural light</li>
-            <li>2 × detail and fit shots: drape, neckline, how it moves</li>
-          </ul>
-          <div class="assets-note">Quotes come from reviews rather than new photography. <strong>Three or four real ones, first name and last initial, pulled before copy starts.</strong></div>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">01 · TUE 4 AUG</div>
+      <div class="card-name">Solene: why women keep reordering</div>
+      <div class="card-meta">Feature · Live-text editorial with social proof · Engaged 90-day</div>
+      <div class="card-desc">The best-performing non-sale format this account has, on the product that sells the most. Real customer quotes, Solene on its own.</div>
+      <div class="card-detail"><strong>Hero:</strong> Solene Dress ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Solene</div>
+      <div class="card-rationale"><strong>Why:</strong> this format on this product returned $1,716 in April, the strongest non-sale send of the month. Needs three or four real quotes, first name and last initial, pulled before copy.</div>
+    </div></div>
 
-    <div class="card">
-      <div class="card-accent acc-content"></div>
-      <div class="card-body">
-        <div class="card-num">02 · FRI 7 AUG</div>
-        <div class="card-name">The tax-free bit</div>
-        <div class="card-meta">Content · Plain and useful, Gabby voice · Geo segment: TX, VA, FL, MD (~4–7k)</div>
-        <div class="card-desc">Texas and Virginia waive state sales tax on clothing over the weekend of the 7th. Florida runs through the 20th, Maryland the 9th to the 15th. The cap is $100 an item, which covers everything Lohnr sells apart from two coats. Say so plainly. No discount from us.</div>
-        <div class="card-promo">No offer. State sales tax waived, $100 per-item cap</div>
-        <div class="card-rationale"><strong>Why:</strong> a saving we don't pay for, sent to a small warm audience, which is where the revenue per recipient has sat all year. It also gives week one a second send that isn't another product push.</div>
-        <div class="opt rec"><strong>Option A (recommended):</strong> the geo-targeted note as briefed. Depends on <code>$region</code> being populated on profiles from Shopify, worth checking before we commit.</div>
-        <div class="opt"><strong>Option B:</strong> if the geo segment won't build, swap to a Cabana Button-Up layering feature to Engaged 60-day. Weaker hook, no dependency.</div>
-        <div class="assets">
-          <div class="assets-head"><div class="assets-count">2</div><div class="assets-count-label">assets<br>to collect</div><div class="assets-badge badge-life">Lifestyle</div></div>
-          <ul>
-            <li>1 × simple lifestyle hero. No hard sell, this email is a favour rather than a pitch</li>
-            <li>1 × three-up of sub-$100 pieces (Solene, Roma, Brennan) for the footer</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">02 · WED 5 AUG</div>
+      <div class="card-name">Game Day Set: ready before kickoff</div>
+      <div class="card-meta">Feature · Single hero · Engaged 90-day + past Game Day / Courtside buyers</div>
+      <div class="card-desc">Football starts at the end of the month. Put the set in front of people now so it arrives in time for the first weekend of the season.</div>
+      <div class="card-detail"><strong>Hero:</strong> Game Day Set ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Game Day</div>
+      <div class="card-rationale"><strong>Why (Shanks):</strong> pushed to week 1 so customers have it in hand when the season opens. It's already in 15% of orders with nothing behind it. No team names or league marks in the creative.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">03 · THU 6 AUG</div>
+      <div class="card-name">The Roma Set</div>
+      <div class="card-meta">Feature · Single hero · Engaged 60-day</div>
+      <div class="card-desc">Roma on its own, styled for a hot day. It's only ever appeared inside sale emails, so it earns a full-price feature.</div>
+      <div class="card-detail"><strong>Hero:</strong> Roma Set ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Roma</div>
+      <div class="card-rationale"><strong>Why:</strong> number two seller at 37% of orders, and it's still full price before the sale.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-new"></div><div class="card-body">
+      <div class="card-num">04 · SAT 8 AUG</div>
+      <div class="card-name">New in: the Capri Button-Up</div>
+      <div class="card-meta">New product · Single hero · Engaged 60-day</div>
+      <div class="card-desc">First outing for the Capri Button-Up. Styled open over a tank now, and hinting at layering later. A clean introduction, no discount.</div>
+      <div class="card-detail"><strong>Hero:</strong> Capri Button-Up ($45) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Capri</div>
+      <div class="card-rationale"><strong>Why (Shanks):</strong> a genuinely new piece to push rather than re-running July. Landed 16 July, never featured.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">05 · SUN 9 AUG</div>
+      <div class="card-name">Emery, for the last of it</div>
+      <div class="card-meta">Feature · Single hero · Dress buyers + Engaged 60-day</div>
+      <div class="card-desc">Emery Maxi Dress alone. A maxi is the right shape for the last hot fortnight, and Emery outsells every other new dress.</div>
+      <div class="card-detail"><strong>Hero:</strong> Emery Maxi Dress ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Emery</div>
+      <div class="card-rationale"><strong>Why:</strong> the strongest of the newer dresses, in season for a couple more weeks.</div>
+    </div></div>
   </div>
 
   <div class="week-group">
-    <div class="week-header"><span class="week-num">Week 2</span><span class="week-title">End of Summer Sale</span></div>
+    <div class="week-header"><span class="week-num">Week 2</span><span class="week-title">Warm the list, then the sale</span></div>
 
-    <div class="card">
-      <div class="card-accent acc-feat"></div>
-      <div class="card-body">
-        <div class="card-num">03 · MON 10 AUG</div>
-        <div class="card-name">The set she reaches for</div>
-        <div class="card-meta">Feature · Image editorial, single hero · Engaged 60-day (~18k)</div>
-        <div class="card-desc">Roma Set on its own. One hero, styled for a hot Monday, four days out from the sale so it's still full price. No grid.</div>
-        <div class="card-detail"><strong>Hero:</strong> Roma Set ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Roma</div>
-        <div class="card-rationale"><strong>Why:</strong> Roma is in 37% of orders and has only ever appeared inside sale emails. It's earned a send of its own. Putting it out at full price first also means the sale isn't the only time anyone sees it.</div>
-        <div class="assets">
-          <div class="assets-head"><div class="assets-count">4</div><div class="assets-count-label">assets<br>to collect</div><div class="assets-badge badge-life">Lifestyle</div></div>
-          <ul>
-            <li>2 × on-model lifestyle heroes, Roma Set, daylight (shoot a pair so we can pick)</li>
-            <li>1 × detail shot: fabric, how the set sits</li>
-            <li>1 × coordinated flat lay</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="card-accent acc-new"></div><div class="card-body">
+      <div class="card-num">06 · MON 10 AUG</div>
+      <div class="card-name">New in: the Sojourn Pant</div>
+      <div class="card-meta">New product · Single hero · Engaged 60-day</div>
+      <div class="card-desc">First outing for the Sojourn Pant, styled for the everyday. Clean introduction, full price.</div>
+      <div class="card-detail"><strong>Hero:</strong> Sojourn Pant ($50) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Sojourn</div>
+      <div class="card-rationale"><strong>Why (Shanks):</strong> the other new pant to push over the Getaway pieces. Landed 20 July, never featured.</div>
+    </div></div>
 
-    <div class="card">
-      <div class="card-accent acc-feat"></div>
-      <div class="card-body">
-        <div class="card-num">04 · WED 12 AUG</div>
-        <div class="card-name">Emery, for the last of it</div>
-        <div class="card-meta">Feature · Image editorial, single hero · Dress buyers + Engaged 60-day (~18k)</div>
-        <div class="card-desc">Emery Maxi Dress alone. A maxi is the right shape for the last hot fortnight, and Emery outsells every other new dress by a distance. Lifestyle-led: where you'd wear it, not what it's made of.</div>
-        <div class="card-detail"><strong>Hero:</strong> Emery Maxi Dress ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Emery</div>
-        <div class="card-rationale"><strong>Why this instead of a sale tease:</strong> Memorial Day's hype email returned $339, the weakest send of the year. Independence Day ran with no warning at all and became the best sale of the year. So we put a product in front of people two days out and let the sale arrive on its own.</div>
-        <div class="assets">
-          <div class="assets-head"><div class="assets-count">4</div><div class="assets-count-label">assets<br>to collect</div><div class="assets-badge badge-life">Lifestyle</div></div>
-          <ul>
-            <li>2 × on-model lifestyle heroes, Emery in motion, late-afternoon light</li>
-            <li>1 × detail shot: hem, fabric fall</li>
-            <li>1 × full-length shot for the closing section</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">07 · TUE 11 AUG</div>
+      <div class="card-name">The Novella Set</div>
+      <div class="card-meta">Feature · Single hero · Engaged 90-day</div>
+      <div class="card-desc">A newer set that's sold steadily without a single email behind it. One hero, styled simply.</div>
+      <div class="card-detail"><strong>Hero:</strong> Novella Set ($68) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Novella</div>
+      <div class="card-rationale"><strong>Why:</strong> proven quiet demand, never featured. A low-risk feature slot before the sale.</div>
+    </div></div>
 
-    <div class="card">
-      <div class="card-accent acc-promo"></div>
-      <div class="card-body">
-        <div class="card-num">05 · FRI 14 AUG</div>
-        <div class="card-name">The End of Summer Sale is live</div>
-        <div class="card-meta">Promo · Elena founder letter, plain text · Full database (~52k)</div>
-        <div class="card-desc">Elena opens the sale. Personal, honest, no invented urgency. She names three in-season pieces in the body as text links, Solene, Roma and Brennan, rather than a product grid.</div>
-        <div class="card-promo">25% sitewide · code SUMMER25 (to confirm) · Fri 14 → Mon 17</div>
-        <div class="card-rationale"><strong>Why it goes wide:</strong> the launch is the only send all month that earns the full database. And 25% sits deeper than anything run this year, which is what August needs, since there's no holiday carrying it.</div>
-        <div class="assets">
-          <div class="assets-head"><div class="assets-count">0</div><div class="assets-count-label">images<br>this email</div><div class="assets-badge badge-none">Plain text</div></div>
-          <div class="assets-note">Plain-text founder letter. No shoot required, product links only.</div>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">08 · THU 13 AUG</div>
+      <div class="card-name">The Calla Halter Dress</div>
+      <div class="card-meta">Feature · Single hero · Dress buyers + Engaged 60-day</div>
+      <div class="card-desc">A warm-weather halter, styled for a summer evening. Last full-price feature before the sale opens.</div>
+      <div class="card-detail"><strong>Hero:</strong> Calla Halter Dress ($54) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Calla</div>
+      <div class="card-rationale"><strong>Why:</strong> fills the dress rotation with something new, and keeps the day before the sale a product day rather than a countdown.</div>
+    </div></div>
 
-    <div class="card">
-      <div class="card-accent acc-promo"></div>
-      <div class="card-body">
-        <div class="card-num">06 · SUN 16 AUG</div>
-        <div class="card-name">The long summer weekend</div>
-        <div class="card-meta">Promo · Image editorial, single hero · Engaged 60-day (~18k)</div>
-        <div class="card-desc">A visual push halfway through the sale. One hero, the Solene Dress, styled for a hot Sunday.</div>
-        <div class="card-detail"><strong>Hero:</strong> Solene Dress ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop The Sale</div>
-        <div class="card-rationale"><strong>Why:</strong> this is the shape of the 4 July send that returned $0.208 per recipient, the best of the year. Roundups have failed twice now, the Spring Outfit Builder at $547 and New In at $696. One hero, every time. And if the biggest seller in the range gets one slot at 25% off, this is the one.</div>
-        <div class="assets">
-          <div class="assets-head"><div class="assets-count">5</div><div class="assets-count-label">assets<br>to collect</div><div class="assets-badge badge-life">Lifestyle</div></div>
-          <ul>
-            <li>2 × on-season lifestyle heroes, Solene styled for a hot weekend (shoot a pair, pick the strongest)</li>
-            <li>2 × on-model detail shots: fit, fabric, movement</li>
-            <li>1 × coordinated flat lay</li>
-          </ul>
-          <div class="assets-note">Collect the full pack so design can add detail as the layout wants. It stays a single-hero email either way.</div>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="card-accent acc-promo"></div><div class="card-body">
+      <div class="card-num">09 · FRI 14 AUG</div>
+      <div class="card-name">The End of Summer Sale is live</div>
+      <div class="card-meta">Promo · Elena founder letter, plain text · Full database</div>
+      <div class="card-desc">Elena opens the sale. Personal, honest, no invented urgency. She names Solene, Roma and Game Day in the body as text links.</div>
+      <div class="card-promo">25% sitewide · code SUMMER25 (to confirm) · Fri 14 → Mon 17</div>
+      <div class="card-rationale"><strong>Why it goes wide:</strong> the launch is the only full-database send all month. 25% is deeper than anything run this year, which is what an August with no holiday needs.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-promo"></div><div class="card-body">
+      <div class="card-num">10 · SAT 15 AUG</div>
+      <div class="card-name">Sale: the Solene edit</div>
+      <div class="card-meta">Promo · Image editorial, single hero · Engaged 60-day</div>
+      <div class="card-desc">A visual push mid-sale. One hero, the Solene Dress, styled for a hot Saturday.</div>
+      <div class="card-detail"><strong>Hero:</strong> Solene Dress ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop The Sale</div>
+      <div class="card-rationale"><strong>Why:</strong> this is the shape of the 4 July send that returned $0.208 per recipient. If the biggest seller gets one slot at 25% off, this is it.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-promo"></div><div class="card-body">
+      <div class="card-num">11 · SUN 16 AUG</div>
+      <div class="card-name">Sale: the Roma edit</div>
+      <div class="card-meta">Promo · Image editorial, single hero · Engaged 60-day</div>
+      <div class="card-desc">Second visual push of the weekend. Roma Set as the hero, styled for an easy Sunday.</div>
+      <div class="card-detail"><strong>Hero:</strong> Roma Set ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop The Sale</div>
+      <div class="card-rationale"><strong>Why:</strong> rotating the two top sellers across the two sale days keeps each send single-hero and gives Roma its turn at the discount.</div>
+    </div></div>
   </div>
 </div>
 
 <!-- PAGE: THE PLAN — WEEK 3 & 4 -->
 <div class="page">
   <div class="week-group">
-    <div class="week-header"><span class="week-num">Week 3</span><span class="week-title">Close it, then go quiet</span></div>
+    <div class="week-header"><span class="week-num">Week 3</span><span class="week-title">Close it, then back to full price</span></div>
 
-    <div class="card">
-      <div class="card-accent acc-promo"></div>
-      <div class="card-body">
-        <div class="card-num">07 · MON 17 AUG</div>
-        <div class="card-name">It ends tonight</div>
-        <div class="card-meta">Promo · Elena founder letter, plain text · Sale openers + non-purchasers (~28k)</div>
-        <div class="card-desc">Elena closes. Soft, personal, one link. The sale really does end tonight, so the deadline is true rather than a tactic.</div>
-        <div class="card-promo">25% ends tonight</div>
-        <div class="card-rationale"><strong>Why:</strong> the close has beaten the launch on a smaller list at Easter, at Mother's Day and at Independence Day, where it did $3,195 against $2,614 off 21,000 fewer recipients. If one send in this calendar is safe, it's this one.</div>
-        <div class="assets">
-          <div class="assets-head"><div class="assets-count">0</div><div class="assets-count-label">images<br>this email</div><div class="assets-badge badge-none">Plain text</div></div>
-          <div class="assets-note">Plain-text Elena close. No shoot required.</div>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="card-accent acc-promo"></div><div class="card-body">
+      <div class="card-num">12 · MON 17 AUG</div>
+      <div class="card-name">It ends tonight</div>
+      <div class="card-meta">Promo · Elena founder letter, plain text · Sale openers + non-purchasers</div>
+      <div class="card-desc">Elena closes. Soft, personal, one link. The sale really does end tonight, so the deadline is true.</div>
+      <div class="card-promo">25% ends tonight</div>
+      <div class="card-rationale"><strong>Why:</strong> the close has beaten the launch on a smaller list at Easter, Mother's Day and Independence Day, where it did $3,195 against $2,614 off 21,000 fewer recipients. The safest send in the month.</div>
+    </div></div>
 
-    <div class="card">
-      <div class="card-accent acc-feat"></div>
-      <div class="card-body">
-        <div class="card-num">08 · FRI 21 AUG</div>
-        <div class="card-name">The pant that doesn't stop in September</div>
-        <div class="card-meta">Feature · Image editorial, one hero styled two ways · Engaged 90-day (~28k)</div>
-        <div class="card-desc">Brennan Pant, styled twice. Bare in the last of the heat, then layered under the Cabana Button-Up for a cooler evening. The first email of the month to admit summer is ending.</div>
-        <div class="card-detail"><strong>Hero:</strong> Brennan Pant ($45) &nbsp;·&nbsp; <strong>Layer:</strong> Cabana Button-Up ($45) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Brennan</div>
-        <div class="card-rationale"><strong>Why:</strong> Brennan is in 16% of orders and it's the only piece in the top four that carries into autumn. The week after a sale should be quiet and full price, and this is the natural bridge.</div>
-        <div class="assets">
-          <div class="assets-head"><div class="assets-count">5</div><div class="assets-count-label">assets<br>to collect</div><div class="assets-badge badge-life">Lifestyle</div></div>
-          <ul>
-            <li>2 × on-model heroes, Brennan worn bare, daytime heat</li>
-            <li>2 × on-model heroes, Brennan layered under the Cabana Button-Up, evening light</li>
-            <li>1 × detail shot: waistband, fall, fabric</li>
-          </ul>
-          <div class="assets-note">The contrast between the two light conditions <strong>is</strong> the message. Shoot day and dusk in the same location if we can.</div>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">13 · WED 19 AUG</div>
+      <div class="card-name">The Gallery Tiered Dress</div>
+      <div class="card-meta">Feature · Single hero · Engaged 90-day</div>
+      <div class="card-desc">Back to full price with a newer dress that's never had a send. One hero, styled for late summer.</div>
+      <div class="card-detail"><strong>Hero:</strong> Gallery Tiered Dress ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Gallery</div>
+      <div class="card-rationale"><strong>Why:</strong> the week after a sale should be quiet and full price, and this works a newer piece that hasn't been seen.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-new"></div><div class="card-body">
+      <div class="card-num">14 · FRI 21 AUG</div>
+      <div class="card-name">The pant that doesn't stop in September</div>
+      <div class="card-meta">New product · One hero, styled two ways · Engaged 90-day</div>
+      <div class="card-desc">Sojourn Pant again, this time as the bridge into autumn. Bare in the last of the heat, then with a layer for a cooler evening. The first email to admit summer is ending.</div>
+      <div class="card-detail"><strong>Hero:</strong> Sojourn Pant ($50) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Sojourn</div>
+      <div class="card-rationale"><strong>Why (Shanks):</strong> the transitional-pant slot, now on a new product rather than Brennan, which went out in July. Sojourn is the piece that carries the wardrobe forward.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">15 · SUN 23 AUG</div>
+      <div class="card-name">The Rowan Midi</div>
+      <div class="card-meta">Feature · Single hero · Dress buyers + Engaged 60-day</div>
+      <div class="card-desc">A midi silhouette for the turn in the weather. One hero, never featured before.</div>
+      <div class="card-detail"><strong>Hero:</strong> Rowan Midi ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Rowan</div>
+      <div class="card-rationale"><strong>Why:</strong> keeps a dress in the rotation as the month cools, and works another newer piece.</div>
+    </div></div>
   </div>
 
   <div class="week-group">
-    <div class="week-header"><span class="week-num">Week 4</span><span class="week-title">Saturdays, and what's next</span></div>
+    <div class="week-header"><span class="week-num">Week 4</span><span class="week-title">Football weekend, and what's next</span></div>
 
-    <div class="card">
-      <div class="card-accent acc-feat"></div>
-      <div class="card-body">
-        <div class="card-num">09 · WED 26 AUG</div>
-        <div class="card-name">Saturdays start again</div>
-        <div class="card-meta">Feature · Sporty capsule, one hero and two supports · Engaged 90-day + past Game Day / Courtside buyers (~30k)</div>
-        <div class="card-desc">College football opens the following night. Game Day Set is the hero, with the Courtside Set and Clubhouse Skort Set sitting underneath it. Three pieces at most. This is a capsule, not a category page.</div>
-        <div class="card-detail"><strong>Hero:</strong> Game Day Set ($58) &nbsp;·&nbsp; <strong>Support:</strong> Courtside Set ($58), Clubhouse Skort Set ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Game Day</div>
-        <div class="card-rationale"><strong>Why:</strong> the only real seasonal hook August gives this brand, and it happens to sit on a top-four seller. Game Day is already in 15% of orders with nothing pushing it. Week 0 kicks off Thursday the 27th, main slate Saturday the 29th, so Wednesday is when people buy.</div>
-        <div class="opt rec"><strong>Option A (recommended):</strong> the sporty capsule as briefed, hero plus two.</div>
-        <div class="opt"><strong>Option B:</strong> Game Day Set alone, single hero. Tighter, but it leaves the other two sporty pieces unworked for another month.</div>
-        <div class="assets">
-          <div class="assets-head"><div class="assets-count">5</div><div class="assets-count-label">assets<br>to collect</div><div class="assets-badge badge-life">Lifestyle</div></div>
-          <ul>
-            <li>2 × on-model heroes, Game Day Set, outdoors, movement</li>
-            <li>1 × Courtside Set on-model</li>
-            <li>1 × Clubhouse Skort Set on-model</li>
-            <li>1 × detail or group shot to close the section</li>
-          </ul>
-          <div class="assets-note"><strong>No team names, no college marks, no league logos anywhere in the creative or the copy.</strong> The moment is the hook. The trademarks aren't ours.</div>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">16 · TUE 25 AUG</div>
+      <div class="card-name">The Clubhouse Skort Set</div>
+      <div class="card-meta">Feature · Single hero · Engaged 60-day + past sporty buyers</div>
+      <div class="card-desc">A sporty set that fits the football weeks. One hero, easy and active.</div>
+      <div class="card-detail"><strong>Hero:</strong> Clubhouse Skort Set ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Clubhouse</div>
+      <div class="card-rationale"><strong>Why:</strong> rides the same sporting energy as Game Day, on a newer piece that's never had a send.</div>
+    </div></div>
 
-    <div class="card">
-      <div class="card-accent acc-content"></div>
-      <div class="card-body">
-        <div class="card-num">10 · SUN 30 AUG</div>
-        <div class="card-name">What comes next</div>
-        <div class="card-meta">Content · Editorial, first look at autumn · Engaged 90-day (~28k)</div>
-        <div class="card-desc">Newness without a discount. The transitional pieces, Brennan, Cabana, Sojourn and Capri, framed as the wardrobe shifting rather than a launch. Closes the month and gives September somewhere to start.</div>
-        <div class="card-detail"><strong>Featured:</strong> Brennan Pant, Cabana Button-Up, Sojourn Pant, Capri Button-Up &nbsp;·&nbsp; <strong>CTA:</strong> See What's Next</div>
-        <div class="card-rationale"><strong>Why:</strong> Sojourn and Capri have barely sold, and a soft editorial slot is a cheaper way to test them than another three-email launch. It doesn't tease Labor Day. That falls on Monday 7 September, and pre-announcing it here would stall a week of full-price buying.</div>
-        <div class="opt rec"><strong>Option A (recommended):</strong> the autumn first look as briefed.</div>
-        <div class="opt"><strong>Option B:</strong> a second Solene angle to close the month on the strongest seller. Safer revenue, but nothing carries into September.</div>
-        <div class="opt"><strong>Option C:</strong> a Gabby community or UGC email. Good for the list, weakest of the three on revenue.</div>
-        <div class="assets">
-          <div class="assets-head"><div class="assets-count">4</div><div class="assets-count-label">assets<br>to collect</div><div class="assets-badge badge-life">Lifestyle</div></div>
-          <ul>
-            <li>1 × mood hero, cooler light, the season turning</li>
-            <li>3 × on-model shots, one each for Sojourn Pant, Capri Button-Up and Cabana Button-Up</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">17 · WED 26 AUG</div>
+      <div class="card-name">Game Day: football's here this weekend</div>
+      <div class="card-meta">Feature · Single hero · Engaged 90-day + past Game Day buyers</div>
+      <div class="card-desc">The kickoff reminder. Week 0 opens Thursday, main slate Saturday, so Wednesday is the last easy buy window. Same set, timed to the moment.</div>
+      <div class="card-detail"><strong>Hero:</strong> Game Day Set ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Game Day</div>
+      <div class="card-rationale"><strong>Why:</strong> the week-1 send seeds it early, this one catches everyone who waited until the season actually started. No team names or league marks.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-new"></div><div class="card-body">
+      <div class="card-num">18 · FRI 28 AUG</div>
+      <div class="card-name">The Capri, for cooler evenings</div>
+      <div class="card-meta">New product · Single hero, layered · Engaged 60-day</div>
+      <div class="card-desc">Capri Button-Up again, now as a layer as the evenings turn. Second outing, a different job from its week-1 introduction.</div>
+      <div class="card-detail"><strong>Hero:</strong> Capri Button-Up ($45) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Capri</div>
+      <div class="card-rationale"><strong>Why:</strong> gives the new shirt a second angle now that the weather backs it up, and adds a layering note to the end of the month.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-content"></div><div class="card-body">
+      <div class="card-num">19 · SUN 30 AUG</div>
+      <div class="card-name">What comes next</div>
+      <div class="card-meta">Content · Editorial, first look at autumn · Engaged 90-day</div>
+      <div class="card-desc">Newness without a discount. The freshest arrivals, Provence Gingham Set and Ruched Set, framed as the wardrobe shifting rather than a launch.</div>
+      <div class="card-detail"><strong>Featured:</strong> Provence Gingham Set, Ruched Set, Gallery Tiered Dress &nbsp;·&nbsp; <strong>CTA:</strong> See What's Next</div>
+      <div class="card-rationale"><strong>Why:</strong> a soft slot is a cheaper way to test the newest SKUs than a launch. It does not tease Labor Day, which falls 7 September, so a week of full-price buying isn't stalled.</div>
+    </div></div>
+
+    <div class="card"><div class="card-accent acc-feat"></div><div class="card-body">
+      <div class="card-num">20 · MON 31 AUG</div>
+      <div class="card-name">Solene, to close the month</div>
+      <div class="card-meta">Feature · Single hero · Engaged 90-day</div>
+      <div class="card-desc">End on the strongest seller. One hero, a clean full-price feature to carry momentum into September.</div>
+      <div class="card-detail"><strong>Hero:</strong> Solene Dress ($58) &nbsp;·&nbsp; <strong>CTA:</strong> Shop Solene</div>
+      <div class="card-rationale"><strong>Why:</strong> Solene converts in every context, and closing on it hands September a warm start rather than a cold one.</div>
+    </div></div>
   </div>
+</div>
+
+<!-- PAGE: IMAGES -->
+<div class="page">
+  <div class="section-label">Creative</div>
+  <div class="page-title">Products we need images for</div>
+  <div class="img-intro">Per your note: instead of a shot-by-shot brief for each email, here's the single list of products in the August calendar. <strong>Send a lifestyle campaign for each one, an assortment of high-quality images we can pick from per email.</strong> Thirteen products in all. The two Elena letters (sends 09 and 12) are plain text and need no images.</div>
+
+  <table class="img-table">
+    <tr><th>Product</th><th class="price">Price</th><th class="c">Emails using it</th><th>Note for the shoot</th></tr>
+    <tr><td class="em">Solene Dress</td><td class="price">$58</td><td class="c">3 (01, 10, 20)</td><td>Hero seller. Warm-weather and one social-proof set-up. The most-used product this month.</td></tr>
+    <tr><td class="em">Game Day Set</td><td class="price">$58</td><td class="c">2 (02, 17)</td><td>Sporty, outdoors, movement. No team names, college marks or league logos anywhere.</td></tr>
+    <tr><td class="em">Roma Set</td><td class="price">$58</td><td class="c">2 (03, 11)</td><td>Hot-day styling, easy and coordinated.</td></tr>
+    <tr><td class="em">Capri Button-Up</td><td class="price">$45</td><td class="c">2 (04, 18)</td><td>Two moods: open over a tank in the heat, and layered for a cooler evening.</td></tr>
+    <tr><td class="em">Sojourn Pant</td><td class="price">$50</td><td class="c">2 (06, 14)</td><td>Everyday styling, plus a day-to-dusk pair for the autumn-bridge email.</td></tr>
+    <tr><td class="em">Emery Maxi Dress</td><td class="price">$58</td><td class="c">1 (05)</td><td>Late-afternoon light, in motion.</td></tr>
+    <tr><td class="em">Novella Set</td><td class="price">$68</td><td class="c">1 (07)</td><td>Clean, simple styling.</td></tr>
+    <tr><td class="em">Calla Halter Dress</td><td class="price">$54</td><td class="c">1 (08)</td><td>Summer evening.</td></tr>
+    <tr><td class="em">Gallery Tiered Dress</td><td class="price">$58</td><td class="c">1 (13)</td><td>Late summer, natural light.</td></tr>
+    <tr><td class="em">Rowan Midi</td><td class="price">$58</td><td class="c">1 (15)</td><td>Midi silhouette, the weather starting to turn.</td></tr>
+    <tr><td class="em">Clubhouse Skort Set</td><td class="price">$58</td><td class="c">1 (16)</td><td>Sporty, active.</td></tr>
+    <tr><td class="em">Provence Gingham Set</td><td class="price">$50</td><td class="c">1 (19)</td><td>Part of the autumn first-look. Cooler mood.</td></tr>
+    <tr><td class="em">Ruched Set</td><td class="price">$68</td><td class="c">1 (19)</td><td>Part of the autumn first-look. Cooler mood.</td></tr>
+  </table>
+
+  <div class="img-note">Two things to confirm on the account before copy starts: the discount code SUMMER25 needs creating in Shopify, and we should check whether it stacks with the existing $75 free-shipping threshold. Social-proof quotes for send 01 come from reviews, three or four with first name and last initial.</div>
 </div>
 
 <div class="footer"><div class="footer-text">LOHNR® — Luxury you can live in™</div></div>
