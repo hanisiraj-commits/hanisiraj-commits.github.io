@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Johnny's Deal of the Day — Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#373E3E; --ink-2:#4A5252; --coral:#EC7D55; --coral-dk:#C85F3A;
+    --paper:#FBF9F7; --card:#FFFFFF; --line:#E6E0DA; --line-2:#D6CEC5;
+    --muted:#7A8383; --good:#2F7D5D; --good-bg:#EAF3EE; --good-line:#B7D6C6;
+    --warn:#C0492B; --warn-bg:#FBEFEA; --soft:#F6F3F0;
+    --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
+    --r:2px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--paper);line-height:1.5;-webkit-font-smoothing:antialiased;font-size:15px}
+  .fj,h1,h2,h3,h4{font-family:'Fjalla One',Impact,sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+  a{color:inherit}
+  button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+  :focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 var(--s5)}
+
+  /* ---- top bar ---- */
+  .top{background:var(--ink);color:#fff;position:sticky;top:0;z-index:40;border-bottom:1px solid rgba(255,255,255,.1)}
+  .top-in{display:flex;align-items:center;gap:var(--s4);padding:var(--s3) 0;flex-wrap:wrap}
+  .sk-logo{height:30px;width:auto;display:block;flex:none}
+  .brand-x{color:#6E7878;font-size:13px;flex:none}
+  .tethrd-logo{height:12px;width:auto;display:block;opacity:.8;flex:none}
+  .top-title{font-family:'Fjalla One',sans-serif;font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:#fff;margin-left:var(--s2)}
+  .top-title small{display:block;font-family:Inter,sans-serif;font-size:11px;letter-spacing:.02em;text-transform:none;color:#9AA3A3;font-weight:400}
+  .top-tools{margin-left:auto;display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;min-height:38px;border:1px solid rgba(255,255,255,.22);color:#fff;font-size:13px;font-weight:500;transition:background .18s ease,border-color .18s ease}
+  .btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.4)}
+  .btn.solid{background:var(--coral);border-color:var(--coral)}
+  .btn.solid:hover{background:var(--coral-dk);border-color:var(--coral-dk)}
+  .btn svg{width:15px;height:15px;flex:none}
+  select.mth{appearance:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff;padding:8px 30px 8px 13px;min-height:38px;font-size:13px;font-weight:500;cursor:pointer;
+    background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center;background-size:14px}
+  select.mth option{color:#111;background:#fff}
+  input[type=date].dp{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff;padding:8px 11px;min-height:38px;font-size:13px;font-family:inherit;cursor:pointer;color-scheme:dark}
+
+  /* ---- layout ---- */
+  main{padding:var(--s5) 0 var(--s6)}
+  .grid{display:grid;grid-template-columns:1fr 340px;gap:var(--s5);align-items:start}
+  .sec-h{display:flex;align-items:baseline;gap:var(--s3);margin-bottom:var(--s3);flex-wrap:wrap}
+  .sec-h h2{font-size:15px;letter-spacing:.06em}
+  .sec-h span{font-size:12.5px;color:var(--muted)}
+
+  /* ---- focus card ---- */
+  .focus{background:var(--card);border:1px solid var(--line);margin-bottom:var(--s5)}
+  .focus.is-today{border:2px solid var(--coral)}
+  .focus.is-blackout{border-color:var(--warn);background:var(--warn-bg)}
+  .fc-top{display:grid;grid-template-columns:200px 1fr;gap:0}
+  .fc-shot{position:relative;background:var(--soft);border-right:1px solid var(--line)}
+  .fc-shot img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1/1}
+  .chip{position:absolute;top:0;left:0;font-family:'Fjalla One',sans-serif;font-size:11px;letter-spacing:.08em;padding:5px 10px;background:var(--ink);color:#fff}
+  .chip.today{background:var(--coral)}
+  .chip.past{background:#9AA3A3}
+  .fc-main{padding:var(--s4) var(--s5);min-width:0}
+  .fc-date{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+  .fc-main h3{font-size:24px;line-height:1.08;margin-bottom:var(--s3)}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:var(--s3)}
+  .tag{font-size:10px;letter-spacing:.07em;text-transform:uppercase;font-weight:700;padding:4px 9px;background:var(--soft);color:var(--ink-2);border:1px solid var(--line)}
+  .tag.proven{background:var(--coral);color:#fff;border-color:var(--coral)}
+  .tag.new{background:var(--good-bg);color:var(--good);border-color:var(--good-line)}
+  .offer{display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap;background:var(--soft);border-left:2px solid var(--coral);padding:var(--s3) var(--s4);margin-bottom:var(--s3)}
+  .offer b{font-family:'Fjalla One',sans-serif;font-size:26px;line-height:1}
+  .offer .vs{font-size:13px;color:var(--muted)}
+  .marg{margin-left:auto;font-family:'Fjalla One',sans-serif;font-size:13px;background:var(--good-bg);color:var(--good);border:1px solid var(--good-line);padding:4px 10px;white-space:nowrap}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:var(--s3)}
+  .tier{background:var(--card);padding:var(--s3);text-align:center}
+  .tier b{display:block;font-family:'Fjalla One',sans-serif;font-size:20px}
+  .tier span{font-size:11px;color:var(--muted);display:block;margin-top:3px}
+  .tier.hot{background:var(--warn-bg)}.tier.hot b{color:var(--warn)}
+  .ln{font-size:14px;color:var(--ink-2);margin-bottom:var(--s2)}
+  .ln:last-child{margin-bottom:0}
+  .ln strong{color:var(--ink);font-weight:600}
+  .ln.why strong{color:var(--coral)}
+  .ln.flag{color:#8A3A22}.ln.flag strong{color:var(--warn)}
+
+  /* ---- build spec ---- */
+  .build{border-top:1px solid var(--line);background:var(--soft)}
+  .build-h{display:flex;align-items:center;gap:var(--s3);padding:var(--s3) var(--s5);flex-wrap:wrap}
+  .build-h h4{font-size:13px;letter-spacing:.07em}
+  .build-h .who{font-size:12px;color:var(--muted)}
+  .build-body{padding:0 var(--s5) var(--s4)}
+  .spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:var(--s3)}
+  .spec div{background:var(--card);padding:10px 13px}
+  .spec b{display:block;font-family:'Fjalla One',sans-serif;font-size:10px;letter-spacing:.07em;color:var(--coral);margin-bottom:3px}
+  .spec span{font-size:13px;color:var(--ink);word-break:break-word}
+  .steps{margin:0 0 var(--s3) 18px}
+  .steps li{font-size:13.5px;color:var(--ink-2);margin-bottom:5px}
+  .copied{font-size:12.5px;color:var(--good);font-weight:600;display:none}
+  .copied.on{display:inline}
+
+  /* ---- lookahead ---- */
+  .ahead{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s2);margin-bottom:var(--s5)}
+  .mini{background:var(--card);border:1px solid var(--line);text-align:left;padding:0;overflow:hidden;transition:border-color .18s ease,transform .18s ease}
+  .mini:hover{border-color:var(--coral);transform:translateY(-2px)}
+  .mini.black{background:var(--warn-bg);border-color:#E9CFC5}
+  .mini-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--soft)}
+  .mini-b{padding:9px 11px}
+  .mini-d{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:3px}
+  .mini-t{font-family:'Fjalla One',sans-serif;font-size:13.5px;line-height:1.2;text-transform:uppercase;margin-bottom:4px}
+  .mini-p{font-size:12px;color:var(--ink-2)}
+  .mini.black .mini-t{color:var(--warn)}
+
+  /* ---- calendar ---- */
+  .cal{background:var(--card);border:1px solid var(--line);position:sticky;top:70px}
+  .cal-h{display:flex;align-items:center;justify-content:space-between;padding:var(--s3) var(--s4);border-bottom:1px solid var(--line);background:var(--ink);color:#fff}
+  .cal-h b{font-family:'Fjalla One',sans-serif;font-size:14px;letter-spacing:.04em}
+  .nav{display:flex;gap:4px}
+  .nav button{width:30px;height:30px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.24);transition:background .18s ease}
+  .nav button:hover:not(:disabled){background:rgba(255,255,255,.14)}
+  .nav button:disabled{opacity:.28;cursor:not-allowed}
+  .nav svg{width:14px;height:14px;stroke:#fff}
+  .dow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-bottom:1px solid var(--line)}
+  .dow span{text-align:center;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:7px 0}
+  .days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+  .day{background:var(--card);min-width:0;max-width:100%;overflow:hidden;min-height:56px;padding:5px 5px 4px;text-align:left;position:relative;transition:background .15s ease}
+  .day.empty{background:var(--soft);cursor:default}
+  .day:not(.empty):hover{background:var(--soft)}
+  .day .n{font-size:11.5px;font-weight:600;color:var(--ink-2);display:block;line-height:1}
+  .day .dot{display:block;width:100%;height:3px;margin-top:5px;background:var(--line-2)}
+  .day.has .dot{background:var(--coral)}
+  .day.ladder .dot{background:var(--good)}
+  .day.blackout{background:var(--warn-bg)}
+  .day.blackout .n{color:var(--warn)}
+  .day.blackout .dot{background:#E3A48E}
+  .day.sel{background:var(--ink)}
+  .day.sel .n{color:#fff}
+  .day.sel .dot{background:var(--coral)}
+  .day.today .n::after{content:'';display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--coral);margin-left:3px;vertical-align:middle}
+  .day .px{display:block;max-width:100%;font-size:9.5px;color:var(--muted);margin-top:3px;line-height:1.15;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  .day .st{position:absolute;top:5px;right:4px;width:7px;height:7px;border-radius:50%}
+  .day .st.ok{background:var(--good)}.day .st.ch{background:var(--warn)}
+  .day.sel .px{color:#B9C0C0}
+  .legend{padding:var(--s3) var(--s4);font-size:11.5px;color:var(--muted);display:grid;gap:5px}
+  .legend i{display:inline-block;width:16px;height:3px;margin-right:6px;vertical-align:middle}
+
+  /* ---- month meta ---- */
+  .meta{background:var(--card);border:1px solid var(--line);margin-top:var(--s4)}
+  .meta h4{font-size:12px;letter-spacing:.07em;padding:var(--s3) var(--s4);border-bottom:1px solid var(--line);background:var(--soft)}
+  .meta table{width:100%;border-collapse:collapse;font-size:12.5px}
+  .meta td{padding:8px 13px;border-top:1px solid var(--line);color:var(--ink-2)}
+  .meta tr:first-child td{border-top:none}
+  .meta td:last-child{text-align:right;white-space:nowrap;font-weight:600;color:var(--ink)}
+  .meta tr.promo td{background:var(--warn-bg);color:#8A3A22}
+  .meta tr.promo td:last-child{color:var(--warn)}
+
+  .empty-state{background:var(--card);border:1px dashed var(--line-2);padding:var(--s6) var(--s5);text-align:center}
+  .empty-state h3{font-size:18px;margin-bottom:var(--s2)}
+  .empty-state p{font-size:14px;color:var(--muted);max-width:440px;margin:0 auto}
+
+  footer{border-top:1px solid var(--line);margin-top:var(--s6);padding:var(--s5) 0;font-size:11.5px;color:var(--muted);line-height:1.6}
+  .kbd{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;background:var(--soft);border:1px solid var(--line);padding:1px 5px;color:var(--ink-2)}
+
+  /* view toggle */
+  .seg{display:inline-flex;border:1px solid rgba(255,255,255,.22)}
+  .seg button{padding:8px 14px;min-height:38px;font-size:13px;font-weight:500;color:#B9C0C0;transition:background .18s ease,color .18s ease}
+  .seg button+button{border-left:1px solid rgba(255,255,255,.22)}
+  .seg button[aria-pressed=true]{background:var(--coral);color:#fff}
+  .seg button:hover:not([aria-pressed=true]){background:rgba(255,255,255,.1);color:#fff}
+
+  /* review view */
+  .rv-bar{display:flex;align-items:center;gap:var(--s4);flex-wrap:wrap;background:var(--ink);color:#fff;padding:var(--s3) var(--s4);margin-bottom:var(--s3)}
+  .rv-bar h2{font-size:14px;letter-spacing:.05em;margin-right:auto}
+  .prog{display:flex;align-items:center;gap:var(--s3);font-size:12.5px;color:#C9CFCF;flex-wrap:wrap}
+  .prog b{font-family:'Fjalla One',sans-serif;font-size:15px;color:#fff}
+  .pdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle}
+  .pbar{width:120px;height:5px;background:rgba(255,255,255,.2);position:relative;overflow:hidden}
+  .pbar i{position:absolute;inset:0 auto 0 0;background:var(--good);transition:width .3s ease}
+  .rtable{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px}
+  .rtable th{background:var(--soft);color:var(--ink);border-bottom:1px solid var(--line);text-align:left;padding:9px 12px;font-family:'Fjalla One',sans-serif;font-weight:400;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;position:sticky;top:57px;z-index:5}
+  .rtable td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+  .rtable tr.ok td{background:#F4FAF6}
+  .rtable tr.ch td{background:var(--warn-bg)}
+  .rtable tr.blk td{background:var(--soft);color:#8A3A22}
+  .rt-date{white-space:nowrap;font-weight:600;color:var(--ink);width:74px}
+  .rt-date small{display:block;font-weight:400;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+  .rt-th{width:52px}
+  .rt-th img{width:44px;height:44px;object-fit:cover;display:block;background:var(--soft)}
+  .rt-deal b{display:block;font-family:'Fjalla One',sans-serif;font-size:14px;text-transform:uppercase;color:var(--ink);line-height:1.2}
+  .rt-deal span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+  .rt-offer{font-weight:600;color:var(--ink);white-space:nowrap}
+  .rt-offer small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;white-space:normal;max-width:230px}
+  .rt-m{white-space:nowrap;font-family:'Fjalla One',sans-serif;font-size:13px;color:var(--good)}
+  .rt-cap{white-space:nowrap;font-size:12.5px}
+  .rt-act{white-space:nowrap;width:1%}
+  .abtn{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;min-height:34px;border:1px solid var(--line-2);font-size:12px;font-weight:600;color:var(--ink-2);transition:all .18s ease}
+  .abtn+.abtn{margin-left:5px}
+  .abtn:hover{border-color:var(--ink);color:var(--ink)}
+  .abtn svg{width:13px;height:13px}
+  .abtn.on-ok{background:var(--good);border-color:var(--good);color:#fff}
+  .abtn.on-ch{background:var(--warn);border-color:var(--warn);color:#fff}
+  .note{display:none;width:100%;margin-top:7px;padding:7px 9px;border:1px solid var(--line-2);font:inherit;font-size:12.5px;background:#fff;color:var(--ink);resize:vertical;min-height:40px}
+  .note.on{display:block}
+  .sbadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:4px 9px;border:1px solid var(--line);background:var(--soft);color:var(--muted)}
+  .sbadge.ok{background:var(--good-bg);color:var(--good);border-color:var(--good-line)}
+  .sbadge.ch{background:var(--warn-bg);color:var(--warn);border-color:#E9CFC5}
+  .rv-foot{display:flex;gap:var(--s2);flex-wrap:wrap;align-items:center;padding:var(--s3) 0 0}
+  .btn.ghost{border-color:var(--line-2);color:var(--ink)}
+  .btn.ghost:hover{background:var(--soft);border-color:var(--ink)}
+  .hide{display:none!important}
+  @media (max-width:900px){.rtable th{position:static}}
+  @media (max-width:1100px){.ahead{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:620px){.ahead{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:960px){
+    .grid{grid-template-columns:1fr}
+    .cal{position:static;order:-1}
+  }
+  @media (max-width:680px){
+    .wrap{padding:0 var(--s4)}
+    .fc-top{grid-template-columns:1fr}
+    .fc-shot{border-right:none;border-bottom:1px solid var(--line)}
+    .fc-shot img{aspect-ratio:16/7}
+    .fc-main{padding:var(--s4)}
+    .fc-main h3{font-size:20px}
+    .tiers{grid-template-columns:1fr}
+    .build-h,.build-body{padding-left:var(--s4);padding-right:var(--s4)}
+    .top-title{margin-left:0;width:100%}
+    .top-tools{margin-left:0;width:100%}
+    .marg{margin-left:0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap top-in">
+    <img class="sk-logo" src="assets/brand/steakking-logo-white.png" alt="Steak King">
+    <span class="brand-x">&times;</span>
+    <img class="tethrd-logo" src="assets/brand/tethrd-wordmark-white.svg" alt="Tethrd">
+    <div class="top-title">Johnny's Deal of the Day<small>Planner &middot; internal</small></div>
+    <div class="top-tools">
+      <div class="seg" role="group" aria-label="View">
+        <button id="vReview" aria-pressed="true">Review</button>
+        <button id="vDay" aria-pressed="false">Day</button>
+      </div>
+      <select class="mth" id="monthSel" aria-label="Choose month"></select>
+      <input type="date" class="dp" id="datePick" aria-label="Jump to a date">
+      <button class="btn solid" id="todayBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="1"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Today
+      </button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap" id="reviewView">
+    <div class="rv-bar">
+      <h2 id="rvTitle">Review &amp; approve</h2>
+      <div class="prog">
+        <span><span class="pdot" style="background:var(--good)"></span>Approved <b id="cOk">0</b></span>
+        <span><span class="pdot" style="background:var(--coral)"></span>Changes <b id="cCh">0</b></span>
+        <span><span class="pdot" style="background:#9AA3A3"></span>Pending <b id="cPd">0</b></span>
+        <span class="pbar"><i id="pFill" style="width:0%"></i></span>
+      </div>
+    </div>
+    <div class="scroll"><table class="rtable" id="rtable"></table></div>
+    <div class="rv-foot">
+      <button class="btn ghost" id="sumBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="1"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></svg>
+        Copy sign-off summary
+      </button>
+      <button class="btn ghost" id="okAll">Approve all remaining</button>
+      <button class="btn ghost" id="clrAll">Reset</button>
+      <span class="copied" id="sumCopied">Copied &mdash; paste it to Hani</span>
+      <span style="font-size:12px;color:var(--muted);margin-left:auto">Sign-off is saved in this browser. Use <strong>Copy sign-off summary</strong> to send it back.</span>
+    </div>
+  </div>
+
+  <div class="wrap grid hide" id="dayView">
+    <div>
+      <div id="focus"></div>
+      <div id="aheadWrap">
+        <div class="sec-h"><h2>Coming up</h2><span>the next five days &mdash; click any to open it</span></div>
+        <div class="ahead" id="ahead"></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="cal">
+        <div class="cal-h">
+          <b id="calLabel"></b>
+          <div class="nav">
+            <button id="prevM" aria-label="Previous month"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button id="nextM" aria-label="Next month"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+          </div>
+        </div>
+        <div class="dow"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+        <div class="days" id="days"></div>
+        <div class="legend">
+          <span><i style="background:var(--coral)"></i>Deal day</span>
+          <span><i style="background:var(--good)"></i>Beat the Deal &mdash; price ladder</span>
+          <span><i style="background:#E3A48E"></i>Promo blackout &mdash; no daily deal</span>
+        </div>
+      </div>
+      <div class="meta" id="meta"></div>
+    </aside>
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <strong>How to add a month:</strong> open this file and append one entry to the <span class="kbd">PLAN</span> object at the top of the script &mdash; a label, the block rows, and one entry per day. Nothing else needs touching; the calendar, lookahead and build specs all read from it.<br><br>
+      <strong>Keyboard:</strong> <span class="kbd">&larr;</span> <span class="kbd">&rarr;</span> move a day &middot; <span class="kbd">T</span> jump to today. Every date is linkable &mdash; the URL updates as you click, so you can paste someone straight onto a specific day.<br><br>
+      Steak King HK &times; Tethrd &middot; Promo blackouts and block targets from the Steak King HK August 2026 forecast (Scenario A, HK$4.6M) circulated 24 July 2026. Prices, unit costs, gross margins, stock levels and product images pulled live from the Steak King Shopify Admin API on 27 July 2026 &mdash; all move, so confirm in the admin on the day before building. Gross margin is deal price against unit cost, before shipping and payment fees. Performance multiples are from the Deal of the Day first read, 16&ndash;18 July 2026 (n=3 days) &mdash; directional, not conclusive. All figures HKD.
+    </footer>
+  </div>
+</main>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════
+   THE PLAN — this is the only block you edit.
+   Add a month by appending a new "YYYY-MM" key with the same shape.
+   ══════════════════════════════════════════════════════════════════ */
+const CDN = 'https://cdn.shopify.com/s/files/1/0525/7638/7266/';
+const IMG = p => CDN + p + '?width=520';
+
+const PLAN = {
+  '2026-08': {
+    label: 'August 2026',
+    target: 'HK$4,600,000',
+    blocks: [
+      {name:'BAU',                        from:'2026-08-01', to:'2026-08-10', target:'$791,550',   deals:true},
+      {name:'Back to School Flash Sale',  from:'2026-08-11', to:'2026-08-13', target:'$920,000',   deals:false},
+      {name:'BAU',                        from:'2026-08-14', to:'2026-08-24', target:'$888,450',   deals:true},
+      {name:'Meat Emporium Sale',         from:'2026-08-25', to:'2026-08-31', target:'$2,000,000', deals:false}
+    ],
+    days: {
+      '2026-08-01': {
+        title:'The Ribeye Drop', mech:'Quantity Flash', tag:'proven',
+        img:IMG('files/USDAChoiceRibeye2.jpg'),
+        price:'3kg for $899', vs:'USDA Choice Ribeye · $300/kg vs $448/kg everyday', margin:'31% margin',
+        lines:[['Stock','1,240 units · cap 60 · <strong>Full-list send</strong> + site hero + WhatsApp.']],
+        why:'The programme has been dark for two weeks, so the opener has to be the highest-confidence thing in the library — the exact mechanic that produced the best deal-SKU day of the launch, on a value ribeye everyone recognises, with enough depth that it cannot sell out and embarrass us. Saturday is a grill day.',
+        build:{source:'Chilled USDA Choice Ribeye 1kg', clone:'Quantity Flash: USDA Choice Ribeye 3 × 1kg', price:'$899', compare:'$1,344', cap:'60 units', extras:'—', send:'Full list 09:00 + site hero + WhatsApp'}
+      },
+      '2026-08-02': {
+        title:"The Fishmonger's Box", mech:'Bundle Box',
+        img:IMG('files/Tasmanian-Salmon-Fillets.jpg'),
+        price:'$749', vs:'Salmon fillet + MSC cod + yellowfin tuna + barramundi · $1,172 apart · 36% off', margin:'39% margin',
+        lines:[['Stock','4,684 salmon fillets alone — the deepest single overhang on the account.']],
+        why:'The weakest day of the month at $57.7k — the cheapest day to be wrong about something new. A fixed box removes the decision and skews new customers, and this is the mix push: a database that has only ever bought beef, buying fish.',
+        build:{source:'Norwegian Salmon Fillet + MSC Cod 1kg + Yellowfin Tuna Steaks + Barramundi Steaks', clone:"Bundle: The Fishmonger's Box", price:'$749', compare:'$1,172', cap:'no cap needed', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-03': {
+        title:'The Wagyu Double', mech:'Buy 1, Get 2nd 50%', tag:'proven',
+        img:IMG('products/Wagyu-Striploin-4-5-paper-wpp1616472807688_45cbe001-bf0c-44a2-a774-299839385837.jpg'),
+        price:'2kg for $747', vs:'Rangers Station Wagyu M4-5 Striploin · $374/kg vs $498/kg · + free steak knives', margin:'43% margin',
+        lines:[['Stock','128 units · hard cap 60 pairs.']],
+        why:'Mondays carry the biggest BAU base of the month at $100k, so they get the cuts with the most want behind them. M4-5 striploin is genuine wagyu without being a hero, and buy-one-get-second-half-off keeps the per-kilo value intact while still doubling the basket.',
+        build:{source:'Chilled Rangers Station Wagyu M4-5 Striploin 1kg', clone:'B1G2nd-50%: Wagyu M4-5 Striploin', price:'$747', compare:'$996', cap:'60 pairs', extras:'Free steak knives', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-04': {
+        title:'The Duck Box', mech:'New Category', tag:'new',
+        img:IMG('files/Duck_breast.png'),
+        price:'$749', vs:'Whole duck + breasts + legs + duck fat · $1,040 apart · 28% off', margin:'73% margin',
+        lines:[['Stock','201 / 124 / 123 / 291 · cap 120 boxes.']],
+        why:'The fattest margin available anywhere in the catalogue — duck breasts cost $34 and sell at $298 — sitting in a category the list has almost certainly never been shown. High margin is what buys the room to experiment; if it lands, duck becomes a permanent rotation slot.',
+        build:{source:'Whole Duck + Duck Breasts 1kg + Duck Legs 1kg + Duck Fat 2×500g', clone:'Bundle: The Duck Box', price:'$749', compare:'$1,040', cap:'120 boxes', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-05': {
+        title:'Three Kilos of Wagyu', mech:'Quantity Flash', tag:'proven',
+        img:IMG('files/RSM3-4Ribeye_beecdb4f-4ca6-433f-a4fb-9fb360a8e1be.jpg'),
+        price:'3kg for $899', vs:'Chilled Wagyu M3-4 Ribeye · $300/kg vs $398/kg everyday', margin:'30% margin',
+        lines:[['Stock','4,579 units — the biggest beef overhang on the account. Cap 80.']],
+        why:'This is the SKU the programme exists for. Four and a half thousand units will not clear on browse traffic, and one deal day will not touch it — so it runs three times this month. Mid-week is the right slot: enough base to matter, not so much that we are spending a peak day on inventory work.',
+        build:{source:'Chilled Wagyu M3-4 Ribeye 1kg', clone:'Quantity Flash: Wagyu M3-4 Ribeye 3 × 1kg', price:'$899', compare:'$1,194', cap:'80 units', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-06': {
+        title:'The Organic Double', mech:'Buy 1, Get 2nd 50%', tag:'proven',
+        img:IMG('files/acresstriploin.png'),
+        price:'2kg for $735', vs:'Organic Grass Fed Angus Striploin · $368/kg vs $490/kg · + free steak knives', margin:'60% margin',
+        lines:[['Stock','824 units · cap 100 pairs.']],
+        why:'70% gross margin at list with 824 units behind it — the most repeatable deal on the account, which is why it comes back on the 20th and anchors the second ladder. Organic pulls a different buyer than the wagyu grades, so it widens the mix rather than cannibalising it.',
+        build:{source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'B1G2nd-50%: Organic Angus Striploin', price:'$735', compare:'$980', cap:'100 pairs', extras:'Free steak knives', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-07': {
+        title:'Picanhas, On Your Table', mech:'Price Drop · Story',
+        img:IMG('files/RumpCapChimichurri1_1.png'),
+        price:'$899', vs:'Whole M6-7 Wagyu Rump Cap 2.1kg w/ chimichurri · vs $1,099 everyday', margin:'61% margin',
+        lines:[['Stock','77 units · hard cap 40 · <strong>Beat the Clock LMT at 7pm.</strong>']],
+        why:'Nobody else in Hong Kong can run it — "the cut they grill at Picanha\'s, on your table tonight." A deal with a story earns a share and a forward in a way a price never does, and 61% margin means the LMT can push hard without costing anything. Friday is where the weekend cook gets decided.',
+        build:{source:"Picanha's Chilled Whole M6-7 Wagyu Rump Cap 2.1kg", clone:'Price Drop: Whole M6-7 Picanha', price:'$899', compare:'$1,099', cap:'40 units', extras:'Chimichurri included', send:'Engaged segment 09:00 + site + WhatsApp + LMT 19:00'}
+      },
+      '2026-08-08': {
+        title:'The Lamb Rack Flash', mech:'New Category', tag:'new',
+        img:IMG('files/image_11.png'),
+        price:'3 racks (2.4kg) for $799', vs:'Mount Schanck Frenched Lamb Rack 800g · $333/kg vs $435/kg', margin:'46% margin',
+        lines:[['Stock','321 units · cap 90 sets.']],
+        why:'Eight lamb SKUs carrying 60–68% margin and over 1,500 units between them, and lamb has never been featured. Frenched racks photograph as well as anything in the catalogue and read as a Saturday-night dinner-party buy, which is the right occasion for the day.',
+        build:{source:'Chilled Mount Schanck Bone-In Frenched Lamb Rack Cap Off 800g', clone:'Quantity Flash: Frenched Lamb Rack × 3', price:'$799', compare:'$1,044', cap:'90 sets', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-09': {
+        title:'The Sunday Roast', mech:'Price Drop',
+        img:IMG('files/image_7_e4e01f75-a361-4ae6-bd4c-0ab45b81b877.png'),
+        price:'$749', vs:'Mount Schanck Boneless Lamb Leg 2.5kg · vs $868 everyday · $300/kg', margin:'63% margin',
+        lines:[['Stock','69 units · hard cap 50 · sits $251 short of free shipping — push the add-on rail.']],
+        why:'Occasion and product finally agree. A 2.5kg boneless leg is a roast you plan the day around, and Sunday\'s low base means we are not spending a strong trading day on a 69-unit SKU. Second lamb day in two — deliberate, to find out whether the category has legs before we build more of it.',
+        build:{source:'Chilled Mount Schanck Boneless Lamb Leg 2.5kg', clone:'Price Drop: Boneless Lamb Leg 2.5kg', price:'$749', compare:'$868', cap:'50 units', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-10': {
+        title:'The Four-Kilo Rib Roast', mech:'Price Drop · Big Ticket',
+        img:IMG('products/OPRibRaw.jpg'),
+        price:'$1,188', vs:'Black Angus Bone-in Ribeye OP Rib Roast 3.7–4.0kg · vs $1,888 · 37% off', margin:'45% margin',
+        lines:[['Stock','548 units · cap 60 · <strong>Full-list send</strong> + <strong>LMT at 7pm</strong> + Back to School pre-announce in the same email.']],
+        why:'548 units of a $1,888 bone-in roast sitting untouched, and the only way that moves is a day with real traffic behind it. It clears free shipping on its own, so it lifts AOV rather than diluting it, and it hands us the bridge into the flash sale: "last big one before Back to School."',
+        build:{source:'Chilled Black Angus Bone-in Ribeye OP Rib Roast 3.7-4.0kg', clone:'Price Drop: OP Rib Roast', price:'$1,188', compare:'$1,888', cap:'60 units', extras:'—', send:'Full list 09:00 + site + WhatsApp + LMT 19:00 + BTS pre-announce'}
+      },
+      '2026-08-14': {
+        title:'The Rump Cap, Again', mech:'Buy 1, Get 2nd 50% · Recycle', tag:'proven',
+        img:IMG('files/RumpCapTrim.webp'),
+        price:'2 caps for $837', vs:'Black Angus M2-3 Rump Cap + free chimichurri · the 18 July deal, verbatim', margin:'33% margin',
+        lines:[['Stock','737 units · cap 80 pairs · <strong>Site + WhatsApp only. No email.</strong>']],
+        why:'This did roughly 5× its in-stock rate on 18 July, so it is the safest thing to restart on — and coming off three days of full-list flash-sale sends, the list is the tired asset, not the offer. Run it silently and let the deals page do the work; it already proves it can.',
+        build:{source:'Chilled Black Angus M2-3 Rump Cap', clone:'B1G2nd-50%: Black Angus M2-3 Rump Cap', price:'$837', compare:'$1,116', cap:'80 pairs', extras:'Free chimichurri', send:'Site + WhatsApp only — no email'}
+      },
+      '2026-08-15': {
+        title:'Two Kilos, Have a Third', mech:'Buy 2, Get 1 Free',
+        img:IMG('files/USDAChoiceRibeye2.jpg'),
+        price:'3kg for $896', vs:'USDA Choice Ribeye · buy 2kg, get 1kg free · $299/kg vs $448/kg', margin:'31% margin',
+        lines:[['Stock','1,240 units · cap 60.']],
+        why:'Buy-two-get-one-free was the weakest of the three July tests at 2.5×, but it ran on the hanger — a cut with a fraction of this one\'s demand. Same price and margin as the 1 Aug flash, so whatever differs on the day is the mechanic, not the product. Worth knowing before we commit the rest of the year to one framing.',
+        build:{source:'Chilled USDA Choice Ribeye 1kg', clone:'B2G1F: USDA Choice Ribeye', price:'$896', compare:'$1,344', cap:'60 units', extras:'3rd kg free', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-16': {
+        title:'The Weeknight Box', mech:'Bundle Box',
+        img:IMG('files/WhatsAppImage2026-07-23at13.28.00.jpg'),
+        price:'$749', vs:'Premium Trio + wagyu mince 1kg + whole salmon fillet · $1,074 apart · 30% off', margin:'38% margin',
+        lines:[['Stock','572 / 959 / 4,684 — effectively uncapped.']],
+        why:'School goes back and the job changes from "what shall we cook this weekend" to "what\'s for dinner on Wednesday." Burgers, mince and salmon is a week of weeknights in one click, it skews new customers the way the King\'s Box does, and it moves three of the five deepest stock positions at once.',
+        build:{source:'Steak King Premium Trio + Wagyu Full Blood Mince 1kg + Whole Norwegian Salmon Fillet', clone:'Bundle: The Weeknight Box', price:'$749', compare:'$1,074', cap:'no cap needed', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-17': {
+        title:'Twenty Only: M6-7 Striploin', mech:'Buy 1, Get 2nd 50% · Capped', tag:'proven',
+        img:IMG('files/M6-7Striploin1_8689d3c3-54af-4991-a110-3ccd373186b7.jpg'),
+        price:'2kg for $897', vs:'Chilled Wagyu M6-7 Striploin · $449/kg vs $598/kg', margin:'32% margin',
+        lines:[['Stock','49 units · <strong>hard cap 20 pairs, published on the PDP.</strong>']],
+        why:'July\'s scarcity was fiction — we topped stock up mid-day and left the page live overnight. This one is genuinely limited, so we say the number out loud: "20 available." A real cap on a Monday base is the cleanest read on whether stated scarcity moves anything, and M6-7 is a grade up from anything we have dealt so far.',
+        build:{source:'Chilled Wagyu M6-7 Striploin 1kg', clone:'B1G2nd-50%: Wagyu M6-7 Striploin — 20 only', price:'$897', compare:'$1,196', cap:'20 pairs — state it on the PDP', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-18': {
+        title:'Three Kilos of Wagyu', mech:'Quantity Flash · Recycle', tag:'proven',
+        img:IMG('files/RSM3-4Ribeye_beecdb4f-4ca6-433f-a4fb-9fb360a8e1be.jpg'),
+        price:'3kg for $899', vs:'Chilled Wagyu M3-4 Ribeye · $300/kg · second run, 13 days on', margin:'30% margin',
+        lines:[['Stock','4,579 units · cap 80.']],
+        why:'The interval is the experiment. Thirteen days is long enough that it does not read as the same deal and short enough to tell us whether a recycled offer decays. If the second run holds most of the first, a 25-day-a-month programme only needs about eight strong offers on rotation instead of twenty-one new ones — the difference between sustainable and a treadmill.',
+        build:{source:'Chilled Wagyu M3-4 Ribeye 1kg', clone:'Quantity Flash: Wagyu M3-4 Ribeye 3 × 1kg', price:'$899', compare:'$1,194', cap:'80 units', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-19': {
+        title:'The Low & Slow Box', mech:'Bundle Box · Capped',
+        img:IMG('files/RawM9_BeefCheeks2.webp'),
+        price:'$849', vs:'Wagyu diced beef + M9+ beef cheeks + lamb shanks 2.2kg · $1,321 apart · 36% off', margin:'45% margin',
+        lines:[['Stock','capped at <strong>28 boxes</strong> by the beef cheeks.']],
+        why:'Three braising cuts that will never sell themselves in August heat, bundled so the box does the persuading. The 28-unit ceiling is real, which makes it the second honest scarcity read of the month.',
+        build:{source:'Frozen Wagyu Diced Beef 1kg + Chilled Wagyu M9+ Beef Cheeks 1kg + Lamb Shanks 2.2kg', clone:'Bundle: The Low & Slow Box — 28 only', price:'$849', compare:'$1,321', cap:'28 boxes — hard ceiling', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-20': {
+        title:'The Organic Double, Again', mech:'Buy 1, Get 2nd 50% · Recycle', tag:'proven',
+        img:IMG('files/acresstriploin.png'),
+        price:'2kg for $735', vs:'Organic Grass Fed Angus Striploin · $368/kg · + free steak knives', margin:'60% margin',
+        lines:[['Stock','824 units · cap 100 pairs · email carries the first <strong>"tomorrow works differently"</strong> tease.']],
+        why:'The day before a new mechanic should be a known quantity, not another variable. This is the highest-margin repeatable deal we have, so it holds the floor while the copy does the setting-up: tomorrow the price moves, and it only moves one way.',
+        build:{source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'B1G2nd-50%: Organic Angus Striploin', price:'$735', compare:'$980', cap:'100 pairs', extras:'Free steak knives', send:'Engaged segment 09:00 + site + WhatsApp — include ladder tease'}
+      },
+      '2026-08-21': {
+        title:'Beat the Clock, or Pay the Next Tier', mech:'Beat the Deal · NEW MECHANIC', tag:'new', ladder:true,
+        img:IMG('files/image_8.png'),
+        tiers:[['$799','09:00–12:00 · first 20 only',true],['$899','12:00–17:00',false],['$999','17:00–close',false]],
+        lines:[
+          ['Cut','3kg Black Angus T-Bone / Porterhouse — the 17 July flash at the identical opening price. Margin runs <strong>36% → 43% → 49%</strong> up the ladder. Stock ~1,580.'],
+          ['Run','<strong>Full-list send</strong> at 09:00 + <strong>LMT at 16:30</strong> ("last hour at $899") + a second WhatsApp at the 12:00 step.']
+        ],
+        flag:'Both the T-Bone parent listing and the July deal clone are currently DRAFT in Shopify. One of them needs publishing before this can run.',
+        why:'The T-Bone at $799 did 5.2× its SKU norm — the best deal-SKU day on record. Running the ladder on that exact SKU at that exact opening price means anything different on the day is the mechanic and nothing else. It also fixes the one real behavioural problem in the July data: three of four bundles sold within 100 minutes of the send and demand died by 13:00. A rising price gives the afternoon and evening a reason to exist — and every hour of hesitation makes the day more profitable, not less.',
+        build:{source:'Chilled Black Angus T-Bone / Porterhouse 1kg (currently DRAFT)', clone:'Beat the Deal: T-Bone 3kg — price rises through the day', price:'$799 → $899 → $999', compare:'$1,908', cap:'Tier 1 capped at 20 units, then auto-advance', extras:'—', send:'Full list 09:00 + WhatsApp at 12:00 step + LMT 16:30'}
+      },
+      '2026-08-22': {
+        title:'Picanhas, On Your Table', mech:'Price Drop · Recycle',
+        img:IMG('files/RumpCapChimichurri1_1.png'),
+        price:'$899', vs:'Whole M6-7 Wagyu Rump Cap 2.1kg · second run, 15 days on', margin:'61% margin',
+        lines:[['Stock','77 less whatever the 7 Aug run took — <strong>confirm before committing</strong>; under 30, swap in the Lamb Rack Flash.']],
+        why:'The strongest story in the catalogue on the best story-telling day of the week. It also gives the picanha its second read at the same interval as the wagyu ribeye, so by month end we have two independent tests of how fast a recycled deal decays rather than one.',
+        build:{source:"Picanha's Chilled Whole M6-7 Wagyu Rump Cap 2.1kg", clone:'Price Drop: Whole M6-7 Picanha', price:'$899', compare:'$1,099', cap:'confirm remaining stock first', extras:'Chimichurri included', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-23': {
+        title:'The Taster Box', mech:'Bundle Box · Acquisition',
+        img:IMG('files/Duck_breast.png'),
+        price:'~$749', vs:'The new mixed-grade taster box — or recycle The Duck Box at $749', margin:'73% on the fallback',
+        lines:[['Dependency','the mixed-grade taster box is on David and Jay\'s board from the 14 July internal. <strong>Confirm by Fri 15 Aug</strong> or default to the duck.']],
+        why:'The Steak Box pattern runs 70% new customers at 3.06–3.43 ROAS, the best acquisition lever on the account. Putting the new taster box in the daily slot two days before the Emporium means the sale lands on a slightly bigger, slightly fresher list.',
+        build:{source:'New mixed-grade taster box (TBC) — fallback: The Duck Box', clone:'Bundle: The Taster Box', price:'~$749', compare:'TBC', cap:'TBC', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+      },
+      '2026-08-24': {
+        title:'The Last Deal Before the Emporium', mech:'Beat the Deal · Run 2', tag:'new', ladder:true,
+        img:IMG('files/acresstriploin.png'),
+        tiers:[['$699','09:00–12:00 · first 25 only',true],['$799','12:00–17:00',false],['$899','17:00–close',false]],
+        lines:[
+          ['Cut','Organic Grass Fed Angus Striploin, 2kg. Margin runs <strong>58% → 63% → 67%</strong>. Stock 824 — no ceiling risk.'],
+          ['Run','<strong>Full-list send</strong> + <strong>LMT at 7pm</strong>, framed as the last deal before Johnny goes quiet for the Emporium week.']
+        ],
+        why:'Friday tells us whether the ladder works on a proven SKU; this tells us whether it transfers, which is the only version of the answer worth having. It lands on the biggest BAU day of the month at 58–67% margin, so there is no downside to the opening tier — and a day of manufactured urgency two days out leaves the list warm going into the sale, not spent.',
+        build:{source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'Beat the Deal: Organic Angus Striploin 2kg', price:'$699 → $799 → $899', compare:'$980', cap:'Tier 1 capped at 25 units, then auto-advance', extras:'—', send:'Full list 09:00 + WhatsApp at 12:00 step + LMT 19:00'}
+      }
+    }
+  },
+
+  /* Next month goes here — same shape. Left empty so the pattern is obvious. */
+  '2026-09': {
+    label: 'September 2026',
+    target: 'TBC',
+    blocks: [],
+    days: {}
+  }
+};
+
+/* ══════════════════════════════════════════════════════════════════
+   Everything below reads from PLAN. No need to touch it.
+   ══════════════════════════════════════════════════════════════════ */
+const MONTHS=Object.keys(PLAN).sort();
+const DOWN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const parse=s=>{const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c)};
+const todayISO=iso(new Date());
+
+let curMonth=null, curDate=null, view='review';
+
+/* ---------- sign-off store (this browser) ---------- */
+const SKEY='jdotd-signoff-v1';
+let SO = (()=>{ try{return JSON.parse(localStorage.getItem(SKEY))||{}}catch(e){return {}} })();
+const saveSO=()=>{try{localStorage.setItem(SKEY,JSON.stringify(SO))}catch(e){}};
+const stat=ds=>(SO[ds]&&SO[ds].s)||'pending';
+const noteOf=ds=>(SO[ds]&&SO[ds].n)||'';
+function setStat(ds,v){
+  const cur=stat(ds);
+  SO[ds]=SO[ds]||{};
+  SO[ds].s = (cur===v) ? 'pending' : v;
+  if(SO[ds].s!=='changes') SO[ds].n='';
+  saveSO(); renderReview(); renderCal(); if(view==='day') renderFocus();
+}
+function setNote(ds,t){ SO[ds]=SO[ds]||{s:'changes'}; SO[ds].n=t; saveSO(); }
+const dealDays=k=>Object.keys((PLAN[k]&&PLAN[k].days)||{}).sort();
+
+function blockFor(k,ds){const m=PLAN[k];if(!m)return null;return (m.blocks||[]).find(b=>ds>=b.from&&ds<=b.to)||null}
+function monthOf(ds){return ds.slice(0,7)}
+function dealFor(ds){const m=PLAN[monthOf(ds)];return m?(m.days[ds]||null):null}
+function isBlackout(ds){const b=blockFor(monthOf(ds),ds);return !!b&&b.deals===false}
+function inPlan(ds){return !!PLAN[monthOf(ds)]}
+function shortLabel(d){return d.tiers?('from '+d.tiers[0][0]):(d.price||d.mech)}
+function calLabel(d){
+  if(d.tiers) return d.tiers[0][0]+'+';
+  const m=(d.price||'').match(/~?\$[\d,]+/g);
+  return m?m[m.length-1]:d.mech;
+}
+function prettyDate(ds){const d=parse(ds);return DOWN[d.getDay()]+' '+d.getDate()+' '+MON[d.getMonth()]+' '+d.getFullYear()}
+
+function firstPlanned(){
+  for(const k of MONTHS){const ks=Object.keys(PLAN[k].days).sort();if(ks.length)return ks[0]}
+  return MONTHS[0]+'-01';
+}
+
+/* ---------- focus card ---------- */
+function renderFocus(){
+  const el=document.getElementById('focus');
+  const ds=curDate, deal=dealFor(ds), black=isBlackout(ds), blk=blockFor(monthOf(ds),ds);
+  const state = ds===todayISO?'today' : ds<todayISO?'past' : 'upcoming';
+  const chip = state==='today'?'Today' : state==='past'?'Ran' : 'Upcoming';
+
+  if(black){
+    el.innerHTML=`<div class="focus is-blackout"><div class="fc-main" style="padding:24px">
+      <div class="fc-date">${prettyDate(ds)}</div>
+      <h3 style="color:var(--warn)">Blackout — ${blk.name}</h3>
+      <p class="ln"><strong>No daily deal.</strong> ${blk.name} runs ${prettyDate(blk.from).replace(/^\w+ /,'')} to ${prettyDate(blk.to).replace(/^\w+ /,'')} against a ${blk.target} target. Johnny stands down so the promo has the floor to itself.</p>
+      <p class="ln">Deals page stays up — swap the daily slot for a single card pointing at the sale collection: "Johnny's back soon. Right now, everything's on the ${blk.name}."</p>
+    </div></div>`;
+    return;
+  }
+  if(!deal){
+    el.innerHTML=`<div class="focus"><div class="fc-main" style="padding:24px">
+      <div class="fc-date">${prettyDate(ds)}</div>
+      <h3>Nothing planned for this day yet</h3>
+      <p class="ln">${inPlan(ds)?'This month is in the planner but this date has no deal against it.':'This month has not been planned yet.'} Add it to the <span class="kbd">PLAN</span> object and it will appear here.</p>
+    </div></div>`;
+    return;
+  }
+
+  const tiers = deal.tiers ? `<div class="tiers">${deal.tiers.map(t=>`<div class="tier${t[2]?' hot':''}"><b>${t[0]}</b><span>${t[1]}</span></div>`).join('')}</div>` : '';
+  const offer = deal.price ? `<div class="offer"><b>${deal.price}</b><span class="vs">${deal.vs||''}</span>${deal.margin?`<span class="marg">${deal.margin}</span>`:''}</div>` : '';
+  const lines = (deal.lines||[]).map(l=>`<p class="ln"><strong>${l[0]}:</strong> ${l[1]}</p>`).join('');
+  const flag  = deal.flag ? `<p class="ln flag"><strong>Flag:</strong> ${deal.flag}</p>` : '';
+  const b=deal.build||{};
+
+  el.innerHTML=`<div class="focus${state==='today'?' is-today':''}${deal.ladder?' is-ladder':''}">
+    <div class="fc-top">
+      <div class="fc-shot"><img src="${deal.img}" alt="${deal.title}" loading="lazy"><span class="chip ${state}">${chip}</span></div>
+      <div class="fc-main">
+        <div class="fc-date">${prettyDate(ds)}</div>
+        <h3>${deal.title}</h3>
+        <div class="tags"><span class="tag ${deal.tag||''}">${deal.mech}</span>${sBadge(ds)}</div>
+        ${tiers}${offer}${lines}${flag}
+        <p class="ln why"><strong>Why this one:</strong> ${deal.why}</p>
+      </div>
+    </div>
+    <div class="build">
+      <div class="build-h">
+        <h4>Build spec</h4><span class="who">for David's team</span>
+        <button class="btn" id="copyBtn" style="margin-left:auto;border-color:var(--line-2);color:var(--ink)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="1"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></svg>
+          Copy brief
+        </button>
+        <span class="copied" id="copied">Copied</span>
+      </div>
+      <div class="build-body">
+        <div class="spec">
+          <div><b>Source SKU</b><span>${b.source||'—'}</span></div>
+          <div><b>Deal PDP to create</b><span>${b.clone||'—'}</span></div>
+          <div><b>Price</b><span>${b.price||'—'}</span></div>
+          <div><b>Compare at</b><span>${b.compare||'—'}</span></div>
+          <div><b>Allocation</b><span>${b.cap||'—'}</span></div>
+          <div><b>Free gift</b><span>${b.extras||'—'}</span></div>
+        </div>
+        <ol class="steps">
+          <li>Clone the source SKU, rename to the deal title, set price and compare-at above.</li>
+          <li>Set the allocation and <strong>do not top it up</strong> during the day.</li>
+          <li>Add to the <em>Johnny's Daily Deals</em> collection, set the 24h countdown, publish at 09:00 HKT.</li>
+          <li>Check every link — site hero, nav, email, WhatsApp — routes to the deal PDP, not the parent listing.</li>
+          <li>Surface the add-on rail (duck breasts / duck legs / salmon fillet / wagyu mince) so one item clears $1,000.</li>
+          <li>Unpublish at midnight. Do not leave it live the next morning.</li>
+        </ol>
+        <p class="ln"><strong>Send plan:</strong> ${b.send||'—'}</p>
+      </div>
+    </div>
+  </div>`;
+
+  const btn=document.getElementById('copyBtn');
+  if(btn) btn.addEventListener('click',()=>{
+    const txt=[
+      `JOHNNY'S DEAL OF THE DAY — ${prettyDate(ds)}`,
+      `${deal.title} (${deal.mech})`,'',
+      `Source SKU:   ${b.source||'-'}`,
+      `Create PDP:   ${b.clone||'-'}`,
+      `Price:        ${b.price||'-'}`,
+      `Compare at:   ${b.compare||'-'}`,
+      `Allocation:   ${b.cap||'-'}`,
+      `Free gift:    ${b.extras||'-'}`,
+      `Send plan:    ${b.send||'-'}`,'',
+      'Build steps:',
+      '1. Clone source SKU, rename, set price + compare-at.',
+      '2. Set allocation. Do not top up during the day.',
+      "3. Add to Johnny's Daily Deals, 24h countdown, publish 09:00 HKT.",
+      '4. Check every link routes to the deal PDP, not the parent listing.',
+      '5. Surface the add-on rail so one item clears $1,000.',
+      '6. Unpublish at midnight.'
+    ].join('\n');
+    navigator.clipboard.writeText(txt).then(()=>{
+      const c=document.getElementById('copied');c.classList.add('on');setTimeout(()=>c.classList.remove('on'),1800);
+    });
+  });
+}
+
+/* ---------- lookahead ---------- */
+function renderAhead(){
+  const box=document.getElementById('ahead');
+  let d=parse(curDate), out='';
+  for(let i=0;i<5;i++){
+    d.setDate(d.getDate()+1);
+    const ds=iso(d), deal=dealFor(ds), black=isBlackout(ds), blk=blockFor(monthOf(ds),ds);
+    const dow=DOWN[d.getDay()].slice(0,3).toUpperCase()+' '+d.getDate();
+    if(black){
+      out+=`<button class="mini black" data-d="${ds}"><div class="mini-b"><div class="mini-d">${dow}</div><div class="mini-t">Blackout</div><div class="mini-p">${blk.name}</div></div></button>`;
+    }else if(deal){
+      out+=`<button class="mini" data-d="${ds}"><img class="mini-img" src="${deal.img}" alt="" loading="lazy"><div class="mini-b"><div class="mini-d">${dow}</div><div class="mini-t">${deal.title}</div><div class="mini-p">${shortLabel(deal)}</div></div></button>`;
+    }else{
+      out+=`<button class="mini" data-d="${ds}"><div class="mini-b"><div class="mini-d">${dow}</div><div class="mini-t" style="color:var(--muted)">Not planned</div><div class="mini-p">&mdash;</div></div></button>`;
+    }
+  }
+  box.innerHTML=out;
+  box.querySelectorAll('.mini').forEach(b=>b.addEventListener('click',()=>select(b.dataset.d)));
+}
+
+/* ---------- calendar ---------- */
+function renderCal(){
+  const [y,m]=curMonth.split('-').map(Number);
+  document.getElementById('calLabel').textContent=(PLAN[curMonth]&&PLAN[curMonth].label)||MON[m-1]+' '+y;
+  const first=new Date(y,m-1,1), last=new Date(y,m,0).getDate();
+  let lead=(first.getDay()+6)%7, out='';
+  for(let i=0;i<lead;i++) out+='<div class="day empty"></div>';
+  for(let n=1;n<=last;n++){
+    const ds=`${y}-${String(m).padStart(2,'0')}-${String(n).padStart(2,'0')}`;
+    const deal=dealFor(ds), black=isBlackout(ds);
+    const cls=['day', deal?'has':'', deal&&deal.ladder?'ladder':'', black?'blackout':'', ds===curDate?'sel':'', ds===todayISO?'today':''].filter(Boolean).join(' ');
+    const lbl=black?'Promo':(deal?calLabel(deal):'');
+    const st=deal?stat(ds):'pending';
+    const stEl=deal&&st!=='pending'?`<span class="st ${st==='approved'?'ok':'ch'}"></span>`:'';
+    out+=`<button class="${cls}" data-d="${ds}" aria-label="${prettyDate(ds)}${deal?' — '+deal.title:''}"><span class="n">${n}</span>${stEl}<span class="dot"></span><span class="px">${lbl}</span></button>`;
+  }
+  const dl=document.getElementById('days');
+  dl.innerHTML=out;
+  dl.querySelectorAll('.day:not(.empty)').forEach(b=>b.addEventListener('click',()=>select(b.dataset.d)));
+  const i=MONTHS.indexOf(curMonth);
+  document.getElementById('prevM').disabled=i<=0;
+  document.getElementById('nextM').disabled=i>=MONTHS.length-1;
+}
+
+/* ---------- month meta ---------- */
+function renderMeta(){
+  const m=PLAN[curMonth], box=document.getElementById('meta');
+  if(!m||!m.blocks.length){
+    box.innerHTML=`<h4>${m?m.label:''} — not planned</h4><div style="padding:16px"><p class="ln" style="margin:0">No blocks or deals against this month yet. Add them to the <span class="kbd">PLAN</span> object and this fills in automatically.</p></div>`;
+    return;
+  }
+  const n=Object.keys(m.days).length;
+  box.innerHTML=`<h4>${m.label} — ${n} deal days</h4><table>${
+    m.blocks.map(b=>{
+      const d1=parse(b.from), d2=parse(b.to);
+      const span=`${d1.getDate()}–${d2.getDate()} ${MON[d2.getMonth()].slice(0,3)}`;
+      return `<tr class="${b.deals?'':'promo'}"><td><strong>${b.name}</strong><br>${span}${b.deals?'':' · no deal'}</td><td>${b.target}</td></tr>`;
+    }).join('')
+  }<tr><td><strong>Month target</strong></td><td>${m.target}</td></tr></table>`;
+}
+
+/* ---------- review + sign-off ---------- */
+function sBadge(ds){
+  const st=stat(ds);
+  if(st==='approved') return '<span class="sbadge ok">Approved</span>';
+  if(st==='changes')  return '<span class="sbadge ch">Changes requested</span>';
+  return '<span class="sbadge">Awaiting sign-off</span>';
+}
+function renderReview(){
+  const k=curMonth, m=PLAN[k], t=document.getElementById('rtable');
+  document.getElementById('rvTitle').textContent = (m?m.label:'') + ' — review & approve';
+  const ks=dealDays(k);
+  if(!ks.length){
+    t.innerHTML=`<tr><td style="padding:32px;text-align:center;color:var(--muted)">No deals planned for this month yet. Add them to the PLAN object and they will appear here for sign-off.</td></tr>`;
+    ['cOk','cCh','cPd'].forEach(i=>document.getElementById(i).textContent='0');
+    document.getElementById('pFill').style.width='0%'; return;
+  }
+  let ok=0,ch=0;
+  ks.forEach(d=>{const v=stat(d); if(v==='approved')ok++; else if(v==='changes')ch++;});
+  document.getElementById('cOk').textContent=ok;
+  document.getElementById('cCh').textContent=ch;
+  document.getElementById('cPd').textContent=ks.length-ok-ch;
+  document.getElementById('pFill').style.width=Math.round(ok/ks.length*100)+'%';
+
+  let rows=`<tr><th class="rt-date">Date</th><th class="rt-th"></th><th>Deal</th><th>Offer</th><th>GM</th><th>Allocation</th><th class="rt-act">Sign-off</th></tr>`;
+  const [yy,mm]=k.split('-').map(Number), last=new Date(yy,mm,0).getDate();
+  const seen=new Set();
+  for(let i=1;i<=last;i++){
+    const ds=`${yy}-${String(mm).padStart(2,'0')}-${String(i).padStart(2,'0')}`;
+    const blk=blockFor(k,ds);
+    if(blk&&blk.deals===false){
+      if(seen.has(blk.name+blk.from))continue;
+      seen.add(blk.name+blk.from);
+      const a=parse(blk.from),b=parse(blk.to);
+      rows+=`<tr class="blk"><td class="rt-date">${a.getDate()}–${b.getDate()}<small>${MON[b.getMonth()].slice(0,3)}</small></td><td class="rt-th"></td><td colspan="4"><b style="font-family:'Fjalla One',sans-serif;text-transform:uppercase;font-size:14px">${blk.name}</b><span style="display:block;font-size:12px;margin-top:2px">Blackout — no daily deal. ${blk.target} target.</span></td><td class="rt-act">—</td></tr>`;
+      continue;
+    }
+    const deal=dealFor(ds); if(!deal)continue;
+    const d=parse(ds), st=stat(ds), b=deal.build||{};
+    const offer = deal.tiers ? deal.tiers.map(x=>x[0]).join(' → ') : (deal.price||'—');
+    const sub   = deal.tiers ? 'price rises through the day' : (deal.vs||'');
+    rows+=`<tr class="${st==='approved'?'ok':st==='changes'?'ch':''}">
+      <td class="rt-date">${d.getDate()}<small>${DOWN[d.getDay()].slice(0,3)}</small></td>
+      <td class="rt-th"><img src="${deal.img}" alt="" loading="lazy"></td>
+      <td class="rt-deal"><b>${deal.title}</b><span>${deal.mech} · ${b.source||''}</span>
+        <textarea class="note ${st==='changes'?'on':''}" data-n="${ds}" placeholder="What needs to change?">${noteOf(ds)}</textarea></td>
+      <td class="rt-offer">${offer}<small>${sub}</small></td>
+      <td class="rt-m">${(deal.margin||'').replace(' margin','')}</td>
+      <td class="rt-cap">${b.cap||'—'}</td>
+      <td class="rt-act">
+        <button class="abtn ${st==='approved'?'on-ok':''}" data-a="approved" data-d="${ds}" title="Approve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Approve</button>
+        <button class="abtn ${st==='changes'?'on-ch':''}" data-a="changes" data-d="${ds}" title="Request changes">Changes</button>
+      </td></tr>`;
+  }
+  t.innerHTML=rows;
+  t.querySelectorAll('.abtn').forEach(b=>b.addEventListener('click',()=>setStat(b.dataset.d,b.dataset.a)));
+  t.querySelectorAll('.note').forEach(x=>x.addEventListener('input',()=>setNote(x.dataset.n,x.value)));
+  t.querySelectorAll('.rt-deal b').forEach(b=>{
+    b.style.cursor='pointer';
+    b.addEventListener('click',()=>{const r=b.closest('tr').querySelector('.abtn');select(r.dataset.d);setView('day')});
+  });
+}
+function setView(v){
+  view=v;
+  document.getElementById('reviewView').classList.toggle('hide',v!=='review');
+  document.getElementById('dayView').classList.toggle('hide',v!=='day');
+  document.getElementById('aheadWrap').classList.toggle('hide',v!=='day');
+  document.getElementById('vReview').setAttribute('aria-pressed',v==='review');
+  document.getElementById('vDay').setAttribute('aria-pressed',v==='day');
+  if(v==='day'){renderFocus();renderAhead();renderCal()} else renderReview();
+}
+
+/* ---------- state ---------- */
+function select(ds,push=true){
+  curDate=ds; curMonth=monthOf(ds);
+  document.getElementById('monthSel').value=curMonth;
+  document.getElementById('datePick').value=ds;
+  renderFocus(); renderAhead(); renderCal(); renderMeta(); renderReview();
+  if(push&&location.hash.slice(1)!==ds) history.pushState({d:ds},'','#'+ds);
+}
+function showMonth(k){
+  curMonth=k;
+  const ks=Object.keys(PLAN[k].days).sort();
+  select(ks.length?ks[0]:k+'-01');
+}
+
+document.getElementById('vReview').addEventListener('click',()=>setView('review'));
+document.getElementById('vDay').addEventListener('click',()=>setView('day'));
+document.getElementById('okAll').addEventListener('click',()=>{
+  dealDays(curMonth).forEach(d=>{if(stat(d)==='pending'){SO[d]=SO[d]||{};SO[d].s='approved'}});
+  saveSO(); renderReview(); renderCal();
+});
+document.getElementById('clrAll').addEventListener('click',()=>{
+  dealDays(curMonth).forEach(d=>{delete SO[d]});
+  saveSO(); renderReview(); renderCal();
+});
+document.getElementById('sumBtn').addEventListener('click',()=>{
+  const k=curMonth,m=PLAN[k],ks=dealDays(k);
+  const L=[`JOHNNY'S DEAL OF THE DAY — ${m.label} SIGN-OFF`,''];
+  const ok=ks.filter(d=>stat(d)==='approved'), ch=ks.filter(d=>stat(d)==='changes'), pd=ks.filter(d=>stat(d)==='pending');
+  L.push(`Approved ${ok.length}/${ks.length} · Changes ${ch.length} · Not yet reviewed ${pd.length}`,'');
+  if(ch.length){L.push('CHANGES REQUESTED');ch.forEach(d=>{const x=PLAN[k].days[d];L.push(`• ${prettyDate(d)} — ${x.title}`);L.push(`  ${noteOf(d)||'(no note)'}`)});L.push('')}
+  if(pd.length){L.push('NOT YET REVIEWED');pd.forEach(d=>L.push(`• ${prettyDate(d)} — ${PLAN[k].days[d].title}`));L.push('')}
+  if(ok.length){L.push('APPROVED');ok.forEach(d=>L.push(`• ${prettyDate(d)} — ${PLAN[k].days[d].title}`))}
+  navigator.clipboard.writeText(L.join('\n')).then(()=>{
+    const c=document.getElementById('sumCopied');c.classList.add('on');setTimeout(()=>c.classList.remove('on'),2200);
+  });
+});
+
+const sel=document.getElementById('monthSel');
+sel.innerHTML=MONTHS.map(k=>`<option value="${k}">${PLAN[k].label}</option>`).join('');
+sel.addEventListener('change',e=>showMonth(e.target.value));
+document.getElementById('datePick').addEventListener('change',e=>{if(e.target.value)select(e.target.value)});
+document.getElementById('todayBtn').addEventListener('click',()=>select(inPlan(todayISO)?todayISO:firstPlanned()));
+document.getElementById('prevM').addEventListener('click',()=>{const i=MONTHS.indexOf(curMonth);if(i>0)showMonth(MONTHS[i-1])});
+document.getElementById('nextM').addEventListener('click',()=>{const i=MONTHS.indexOf(curMonth);if(i<MONTHS.length-1)showMonth(MONTHS[i+1])});
+window.addEventListener('popstate',()=>{const h=location.hash.slice(1);if(/^\d{4}-\d{2}-\d{2}$/.test(h))select(h,false)});
+document.addEventListener('keydown',e=>{
+  if(/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName))return;
+  if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+    const d=parse(curDate); d.setDate(d.getDate()+(e.key==='ArrowRight'?1:-1)); select(iso(d)); e.preventDefault();
+  } else if(e.key==='t'||e.key==='T'){ select(inPlan(todayISO)?todayISO:firstPlanned()); }
+});
+
+/* boot: deep link → today → first planned day */
+(function(){
+  const h=location.hash.slice(1);
+  if(/^\d{4}-\d{2}-\d{2}$/.test(h)&&inPlan(h)) select(h,false);
+  else if(dealFor(todayISO)||isBlackout(todayISO)) select(todayISO,false);
+  else select(firstPlanned(),false);
+  setView(/^\d{4}-\d{2}-\d{2}$/.test(h)?'day':'review');
+})();
+</script>
+</body>
+</html>
