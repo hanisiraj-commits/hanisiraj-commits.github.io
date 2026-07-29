@@ -158,6 +158,31 @@
   footer{border-top:1px solid var(--line);margin-top:var(--s6);padding:var(--s5) 0;font-size:11.5px;color:var(--muted);line-height:1.6}
   .kbd{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;background:var(--soft);border:1px solid var(--line);padding:1px 5px;color:var(--ink-2)}
 
+  /* connection + identity */
+  .conn{display:flex;align-items:center;gap:8px;font-size:12px;color:#9AA3A3}
+  .conn .led{width:8px;height:8px;border-radius:50%;background:#9AA3A3;flex:none}
+  .conn.live .led{background:#5FBE8C}
+  .conn.off .led{background:var(--coral)}
+  .whobox{display:flex;align-items:center;gap:6px}
+  .whobox input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff;padding:7px 10px;min-height:38px;font:inherit;font-size:13px;width:130px}
+  .whobox input::placeholder{color:#8E9797}
+  .banner{background:var(--warn-bg);border:1px solid #E9CFC5;border-left:3px solid var(--warn);padding:var(--s3) var(--s4);margin-bottom:var(--s3);font-size:13.5px;color:#8A3A22}
+  .banner b{color:var(--warn)}
+  .banner code{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:#fff;border:1px solid var(--line);padding:1px 5px}
+
+  /* comment thread */
+  .thread{margin-top:8px}
+  .cmt{border-left:2px solid var(--line-2);padding:5px 0 5px 9px;margin-bottom:6px}
+  .cmt .cmeta{font-size:11px;color:var(--muted);letter-spacing:.03em;background:none;border:none;padding:0;margin:0;display:block}
+  .cmt .cmeta b{display:inline;font-family:Inter,system-ui,sans-serif;font-size:11.5px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink)}
+  .cmt p{font-size:13px;margin:2px 0 0;color:var(--ink-2)}
+  .cmt.mine{border-left-color:var(--coral)}
+  .cbox{display:flex;gap:6px;margin-top:7px}
+  .cbox input{flex:1;min-width:0;padding:7px 9px;border:1px solid var(--line-2);font:inherit;font-size:12.5px;background:#fff;color:var(--ink)}
+  .cbox button{padding:7px 12px;border:1px solid var(--ink);background:var(--ink);color:#fff;font-size:12px;font-weight:600;transition:opacity .18s ease}
+  .cbox button:hover{opacity:.85}
+  .cbadge{display:inline-block;margin-left:6px;font-size:10.5px;font-weight:700;background:var(--coral);color:#fff;padding:1px 6px;border-radius:8px;vertical-align:middle}
+
   /* view toggle */
   .seg{display:inline-flex;border:1px solid rgba(255,255,255,.22)}
   .seg button{padding:8px 14px;min-height:38px;font-size:13px;font-weight:500;color:#B9C0C0;transition:background .18s ease,color .18s ease}
@@ -246,6 +271,8 @@
       </div>
       <select class="mth" id="monthSel" aria-label="Choose month"></select>
       <input type="date" class="dp" id="datePick" aria-label="Jump to a date">
+      <span class="whobox"><input id="whoIn" placeholder="Your name" aria-label="Your name" autocomplete="off"></span>
+      <span class="conn" id="conn"><span class="led"></span><span id="connTxt">connecting…</span></span>
       <button class="btn solid" id="todayBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="1"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
         Today
@@ -256,6 +283,7 @@
 
 <main>
   <div class="wrap" id="reviewView">
+    <div id="banner"></div>
     <div class="rv-bar">
       <h2 id="rvTitle">Review &amp; approve</h2>
       <div class="prog">
@@ -274,7 +302,7 @@
       <button class="btn ghost" id="okAll">Approve all remaining</button>
       <button class="btn ghost" id="clrAll">Reset</button>
       <span class="copied" id="sumCopied">Copied &mdash; paste it to Hani</span>
-      <span style="font-size:12px;color:var(--muted);margin-left:auto">Sign-off is saved in this browser. Use <strong>Copy sign-off summary</strong> to send it back.</span>
+      <span style="font-size:12px;color:var(--muted);margin-left:auto" id="syncNote">&nbsp;</span>
     </div>
   </div>
 
@@ -535,21 +563,97 @@ const todayISO=iso(new Date());
 
 let curMonth=null, curDate=null, view='review';
 
-/* ---------- sign-off store (this browser) ---------- */
-const SKEY='jdotd-signoff-v1';
-let SO = (()=>{ try{return JSON.parse(localStorage.getItem(SKEY))||{}}catch(e){return {}} })();
-const saveSO=()=>{try{localStorage.setItem(SKEY,JSON.stringify(SO))}catch(e){}};
-const stat=ds=>(SO[ds]&&SO[ds].s)||'pending';
-const noteOf=ds=>(SO[ds]&&SO[ds].n)||'';
-function setStat(ds,v){
-  const cur=stat(ds);
-  SO[ds]=SO[ds]||{};
-  SO[ds].s = (cur===v) ? 'pending' : v;
-  if(SO[ds].s!=='changes') SO[ds].n='';
-  saveSO(); renderReview(); renderCal(); if(view==='day') renderFocus();
-}
-function setNote(ds,t){ SO[ds]=SO[ds]||{s:'changes'}; SO[ds].n=t; saveSO(); }
+/* ══════════════════════════════════════════════════════════════════
+   SHARED SIGN-OFF — paste the Apps Script /exec URL here and everyone
+   on this page sees the same statuses and comments. Setup steps are in
+   planner-backend/Code.gs. Leave blank and the page runs read-only.
+   ══════════════════════════════════════════════════════════════════ */
+const SHEET_API = '';
+
+const STATE={status:{},comments:{}};
+let conn='connecting', lastSync=null, inflight=false;
+let WHO = localStorage.getItem('jdotd-who') || '';
+
+const stat=ds=>(STATE.status[ds]&&STATE.status[ds].status)||'pending';
+const statBy=ds=>(STATE.status[ds]&&STATE.status[ds].by)||'';
+const cmts=ds=>STATE.comments[ds]||[];
 const dealDays=k=>Object.keys((PLAN[k]&&PLAN[k].days)||{}).sort();
+
+function setConn(c,msg){
+  conn=c;
+  const el=document.getElementById('conn');
+  el.className='conn'+(c==='live'?' live':c==='off'?' off':'');
+  document.getElementById('connTxt').textContent=msg;
+}
+function fmtAgo(iso){
+  if(!iso) return '';
+  const s=Math.round((Date.now()-new Date(iso))/1000);
+  if(s<60) return 'just now';
+  if(s<3600) return Math.floor(s/60)+'m ago';
+  if(s<86400) return Math.floor(s/3600)+'h ago';
+  return new Date(iso).toLocaleDateString();
+}
+function paintAll(){ renderReview(); renderCal(); if(view==='day') renderFocus(); }
+
+async function pull(){
+  if(!SHEET_API||inflight) return;
+  inflight=true;
+  try{
+    const r=await fetch(SHEET_API,{method:'GET'});
+    const d=await r.json();
+    if(!d.ok) throw new Error(d.error||'bad payload');
+    STATE.status=d.status||{}; STATE.comments=d.comments||{};
+    lastSync=new Date().toISOString();
+    setConn('live','live · synced '+fmtAgo(lastSync));
+    paintAll();
+  }catch(e){
+    setConn('off','offline — retrying');
+  }finally{ inflight=false; }
+}
+async function push(payload){
+  if(!SHEET_API){ banner(); return; }
+  try{
+    setConn('connecting','saving…');
+    const r=await fetch(SHEET_API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+    const d=await r.json();
+    if(!d.ok) throw new Error(d.error||'rejected');
+    STATE.status=d.status||{}; STATE.comments=d.comments||{};
+    lastSync=new Date().toISOString();
+    setConn('live','live · synced just now');
+    paintAll();
+  }catch(e){
+    setConn('off','could not save — check your connection');
+  }
+}
+
+function needWho(){
+  if(WHO) return true;
+  const el=document.getElementById('whoIn');
+  el.focus();
+  el.style.borderColor='var(--coral)';
+  setTimeout(()=>{el.style.borderColor=''},1600);
+  return false;
+}
+function setStat(ds,v){
+  if(!needWho()) return;
+  const next = stat(ds)===v ? 'pending' : v;
+  STATE.status[ds]={status:next,by:WHO,at:new Date().toISOString()};  // optimistic
+  paintAll();
+  push({action:'status',day:ds,status:next,who:WHO});
+}
+function addComment(ds,body){
+  if(!needWho()) return;
+  body=(body||'').trim(); if(!body) return;
+  (STATE.comments[ds]=STATE.comments[ds]||[]).push({author:WHO,body:body,at:new Date().toISOString()});
+  paintAll();
+  push({action:'comment',day:ds,author:WHO,body:body});
+}
+function banner(){
+  const b=document.getElementById('banner');
+  if(!b) return;
+  b.innerHTML = SHEET_API ? '' :
+    '<div class="banner"><b>Not connected yet.</b> Sign-off and comments are switched off until the Google Sheet backend is linked. Deploy <code>planner-backend/Code.gs</code> as a web app and paste its <code>/exec</code> URL into <code>SHEET_API</code> at the top of this page\'s script.</div>';
+}
 
 function blockFor(k,ds){const m=PLAN[k];if(!m)return null;return (m.blocks||[]).find(b=>ds>=b.from&&ds<=b.to)||null}
 function monthOf(ds){return ds.slice(0,7)}
@@ -731,10 +835,18 @@ function renderMeta(){
 
 /* ---------- review + sign-off ---------- */
 function sBadge(ds){
-  const st=stat(ds);
-  if(st==='approved') return '<span class="sbadge ok">Approved</span>';
-  if(st==='changes')  return '<span class="sbadge ch">Changes requested</span>';
+  const st=stat(ds), by=statBy(ds), suffix=by?' · '+esc(by):'';
+  if(st==='approved') return '<span class="sbadge ok">Approved'+suffix+'</span>';
+  if(st==='changes')  return '<span class="sbadge ch">Changes requested'+suffix+'</span>';
   return '<span class="sbadge">Awaiting sign-off</span>';
+}
+function esc(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function thread(ds){
+  const list=cmts(ds);
+  const items=list.map(c=>`<div class="cmt${c.author===WHO?' mine':''}"><div class="cmeta"><b>${esc(c.author)}</b> &middot; ${fmtAgo(c.at)}</div><p>${esc(c.body)}</p></div>`).join('');
+  return `<div class="thread">${items}
+    <div class="cbox"><input data-c="${ds}" placeholder="${list.length?'Reply…':'Add a comment…'}" aria-label="Comment on ${ds}"><button data-cs="${ds}">Send</button></div>
+  </div>`;
 }
 function renderReview(){
   const k=curMonth, m=PLAN[k], t=document.getElementById('rtable');
@@ -773,7 +885,7 @@ function renderReview(){
       <td class="rt-date">${d.getDate()}<small>${DOWN[d.getDay()].slice(0,3)}</small></td>
       <td class="rt-th"><img src="${deal.img}" alt="" loading="lazy"></td>
       <td class="rt-deal"><b>${deal.title}</b><span>${deal.mech} · ${b.source||''}</span>
-        <textarea class="note ${st==='changes'?'on':''}" data-n="${ds}" placeholder="What needs to change?">${noteOf(ds)}</textarea></td>
+        ${thread(ds)}</td>
       <td class="rt-offer">${offer}<small>${sub}</small></td>
       <td class="rt-m">${(deal.margin||'').replace(' margin','')}</td>
       <td class="rt-cap">${b.cap||'—'}</td>
@@ -784,7 +896,9 @@ function renderReview(){
   }
   t.innerHTML=rows;
   t.querySelectorAll('.abtn').forEach(b=>b.addEventListener('click',()=>setStat(b.dataset.d,b.dataset.a)));
-  t.querySelectorAll('.note').forEach(x=>x.addEventListener('input',()=>setNote(x.dataset.n,x.value)));
+  const send=ds=>{const i=t.querySelector(`input[data-c="${ds}"]`); if(i){addComment(ds,i.value); i.value=''}};
+  t.querySelectorAll('button[data-cs]').forEach(b=>b.addEventListener('click',()=>send(b.dataset.cs)));
+  t.querySelectorAll('input[data-c]').forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();send(i.dataset.c)}}));
   t.querySelectorAll('.rt-deal b').forEach(b=>{
     b.style.cursor='pointer';
     b.addEventListener('click',()=>{const r=b.closest('tr').querySelector('.abtn');select(r.dataset.d);setView('day')});
@@ -816,26 +930,44 @@ function showMonth(k){
 
 document.getElementById('vReview').addEventListener('click',()=>setView('review'));
 document.getElementById('vDay').addEventListener('click',()=>setView('day'));
-document.getElementById('okAll').addEventListener('click',()=>{
-  dealDays(curMonth).forEach(d=>{if(stat(d)==='pending'){SO[d]=SO[d]||{};SO[d].s='approved'}});
-  saveSO(); renderReview(); renderCal();
+document.getElementById('okAll').addEventListener('click',async()=>{
+  if(!needWho()) return;
+  const pend=dealDays(curMonth).filter(d=>stat(d)==='pending');
+  if(!pend.length||!confirm(`Approve ${pend.length} remaining deal${pend.length>1?'s':''} as ${WHO}?`)) return;
+  for(const d of pend){ await push({action:'status',day:d,status:'approved',who:WHO}); }
 });
-document.getElementById('clrAll').addEventListener('click',()=>{
-  dealDays(curMonth).forEach(d=>{delete SO[d]});
-  saveSO(); renderReview(); renderCal();
+document.getElementById('clrAll').addEventListener('click',async()=>{
+  if(!needWho()) return;
+  const set=dealDays(curMonth).filter(d=>stat(d)!=='pending');
+  if(!set.length||!confirm(`Reset ${set.length} sign-off${set.length>1?'s':''} back to pending? Comments are kept.`)) return;
+  for(const d of set){ await push({action:'status',day:d,status:'pending',who:WHO}); }
 });
 document.getElementById('sumBtn').addEventListener('click',()=>{
   const k=curMonth,m=PLAN[k],ks=dealDays(k);
   const L=[`JOHNNY'S DEAL OF THE DAY — ${m.label} SIGN-OFF`,''];
   const ok=ks.filter(d=>stat(d)==='approved'), ch=ks.filter(d=>stat(d)==='changes'), pd=ks.filter(d=>stat(d)==='pending');
   L.push(`Approved ${ok.length}/${ks.length} · Changes ${ch.length} · Not yet reviewed ${pd.length}`,'');
-  if(ch.length){L.push('CHANGES REQUESTED');ch.forEach(d=>{const x=PLAN[k].days[d];L.push(`• ${prettyDate(d)} — ${x.title}`);L.push(`  ${noteOf(d)||'(no note)'}`)});L.push('')}
+  if(ch.length){L.push('CHANGES REQUESTED');ch.forEach(d=>{const x=PLAN[k].days[d];L.push(`• ${prettyDate(d)} — ${x.title}`);const cs=cmts(d);if(cs.length)cs.forEach(c=>L.push(`  ${c.author}: ${c.body}`));else L.push('  (no comment)')});L.push('')}
   if(pd.length){L.push('NOT YET REVIEWED');pd.forEach(d=>L.push(`• ${prettyDate(d)} — ${PLAN[k].days[d].title}`));L.push('')}
   if(ok.length){L.push('APPROVED');ok.forEach(d=>L.push(`• ${prettyDate(d)} — ${PLAN[k].days[d].title}`))}
   navigator.clipboard.writeText(L.join('\n')).then(()=>{
     const c=document.getElementById('sumCopied');c.classList.add('on');setTimeout(()=>c.classList.remove('on'),2200);
   });
 });
+
+const whoIn=document.getElementById('whoIn');
+whoIn.value=WHO;
+whoIn.addEventListener('input',()=>{WHO=whoIn.value.trim();localStorage.setItem('jdotd-who',WHO)});
+
+banner();
+if(SHEET_API){
+  pull();
+  setInterval(pull,15000);
+  window.addEventListener('focus',pull);
+  setInterval(()=>{if(conn==='live'&&lastSync)setConn('live','live · synced '+fmtAgo(lastSync))},20000);
+}else{
+  setConn('off','not connected — read only');
+}
 
 const sel=document.getElementById('monthSel');
 sel.innerHTML=MONTHS.map(k=>`<option value="${k}">${PLAN[k].label}</option>`).join('');
