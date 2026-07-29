@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steak King UK — No Fee Day: did free delivery unlock new buyers?</title>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#373E3E;--coral:#EC7D55;--paper:#FBF9F7;--line:#E6E0DA;--muted:#7A8383;--good:#2F7D5D;--warn:#C0492B;--soft:#F6F3F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.58;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px 80px}
+  h1,h2,h3,.fj{font-family:'Fjalla One',Impact,sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+  header{background:var(--ink);color:#fff;padding:34px 0 52px;background-image:radial-gradient(ellipse at 78% 0%, rgba(236,125,85,.16), transparent 58%)}
+  .brandbar{display:flex;align-items:center;gap:16px;margin-bottom:34px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.13)}
+  .sk-logo{height:46px;width:auto;display:block}
+  .tethrd-logo{height:17px;width:auto;display:block;opacity:.82}
+  .brand-x{color:#6E7878;font-size:15px;font-weight:300}
+  header .wrap{padding-bottom:0}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(32px,5vw,50px);line-height:1.03;margin-bottom:18px}
+  .sub{font-size:18px;color:#C9CFCF;max-width:760px;line-height:1.5}
+  .meta{margin-top:26px;font-size:12px;color:#8B9494;letter-spacing:.04em;line-height:1.6}
+  .chapter{border-top:1px solid var(--line);padding-top:14px;margin-bottom:24px;display:flex;align-items:baseline;gap:14px}
+  .chapter .cn{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--coral);letter-spacing:.12em}
+  .chapter .ct{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  section{margin-bottom:54px;padding-top:8px}
+  h2{font-size:26px;margin-bottom:10px;line-height:1.15}
+  .h2sub{font-size:15.5px;color:var(--muted);margin-bottom:24px;max-width:770px}
+  h3{font-size:15px;margin-bottom:8px}
+  p{margin-bottom:14px;font-size:15.5px}
+  strong{font-weight:600}
+  em{font-style:italic}
+  .accent{color:var(--coral);font-weight:600}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:40px 0 0}
+  .stat{background:#fff;padding:20px 18px}
+  .stat b{display:block;font-family:'Fjalla One',sans-serif;font-size:32px;line-height:1.05;color:var(--ink)}
+  .stat span{display:block;font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.4}
+  .card{background:#fff;border:1px solid var(--line);padding:22px 24px;margin-bottom:16px}
+  .card.hl{border-left:3px solid var(--coral)}
+  .card p:last-child{margin-bottom:0}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  ul{margin:0 0 14px 19px}
+  li{font-size:15px;margin-bottom:8px;color:#54595A}
+  li strong{color:var(--ink)}
+  .daygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:16px 0 0}
+  .daygrid .m{background:#fff;padding:13px 14px}
+  .daygrid .ml{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px}
+  .daygrid .m b{font-family:'Fjalla One',sans-serif;font-size:23px;color:var(--ink);display:block;line-height:1}
+  .daygrid .d{display:inline-block;margin-top:7px;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}
+  .d.up{color:var(--good)}
+  .d.dn{color:#B06A4F}
+  .d.mid{color:var(--muted)}
+  .dvs{display:block;font-size:9.5px;color:#AAB0B0;margin-top:2px;letter-spacing:.03em}
+  .chain{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+  .step{border:1px solid var(--line);background:var(--soft);padding:7px 12px;font-size:13.5px}
+  .step.bad{border-color:var(--coral);background:#FEF6F2;color:var(--warn);font-weight:600}
+  .arw{color:var(--muted);font-size:14px}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:13.5px}
+  th{background:var(--ink);color:#fff;font-family:'Fjalla One',sans-serif;font-weight:400;text-transform:uppercase;font-size:11px;letter-spacing:.05em;padding:11px 12px;text-align:left}
+  th.num,td.num{text-align:right}
+  td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  tr:nth-child(even) td{background:#FCFAF9}
+  tr.habit td{border-top:2px solid var(--coral);font-weight:600;background:#FEF6F2}
+  .dlt{display:block;font-size:11px;font-weight:600;margin-top:3px;font-variant-numeric:tabular-nums}
+  .dlt.up{color:var(--good)} .dlt.dn{color:#B06A4F} .dlt.mid{color:var(--muted)}
+  td.num b{font-weight:600}
+  .tag{display:inline-block;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--good);color:var(--good);padding:1px 5px;margin-left:5px;font-weight:700}
+  .tag.ns{border-color:var(--line);color:var(--muted)}
+  .tblwrap{overflow-x:auto;margin-bottom:16px}
+  .note{font-size:12.5px;color:var(--muted);line-height:1.6}
+  footer{border-top:1px solid var(--line);padding-top:22px;font-size:12px;color:var(--muted);line-height:1.6}
+  @media (max-width:820px){
+    header{padding:28px 0 40px}
+    h1{font-size:clamp(27px,6.4vw,44px)}
+    .sub{font-size:16px}
+    section{margin-bottom:44px}
+  }
+  @media (max-width:780px){
+    .wrap{padding:0 18px 56px}
+    .cols{grid-template-columns:1fr}
+  }
+  @media (max-width:600px){
+    .daygrid{grid-template-columns:1fr}
+    .stat{padding:17px 15px}
+    .stat b{font-size:28px}
+    h2{font-size:22px}
+    .h2sub{font-size:15px}
+  }
+  @media (max-width:460px){
+    .wrap{padding:0 14px 44px}
+    header{padding:24px 0 36px}
+    .brandbar{margin-bottom:22px;padding-bottom:16px;gap:12px}
+    .sk-logo{height:38px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brandbar">
+      <img class="sk-logo" src="assets/brand/steakking-uk-logo-white.png" alt="Steak King UK">
+      <span class="brand-x">&times;</span>
+      <img class="tethrd-logo" src="assets/brand/tethrd-wordmark-white.svg" alt="Tethrd">
+    </div>
+    <div class="eyebrow">Steak King UK &middot; No Fee Day &middot; Campaign read &middot; 24&ndash;25 July 2026</div>
+    <h1>No Fee Day: did free delivery unlock new buyers?</h1>
+    <p class="sub">A 48-hour test that carried no product discount at all. We refunded the delivery charge as store credit, which lets us separate <em>friction</em> from <em>price</em> for the first time.</p>
+    <div class="meta">Source: Shopify sales and sessions, Steak King UK &middot; measured at store level against 21 normal July trading days, excluding both promo windows &middot; all figures GBP</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+
+  <section style="padding-top:46px">
+    <div class="chapter"><span class="cn">01</span><span class="ct">Why we ran it</span></div>
+    <h2>We suspected delivery cost was blocking first orders</h2>
+    <p class="h2sub">Every other promo we run moves price, so we can never tell whether people bought because it got cheaper or because a barrier came down. This one held product price completely still.</p>
+
+    <div class="card hl">
+      <p><strong>The offer carried no product discount.</strong> Customers paid the normal price and we returned the &pound;7.90 delivery charge as store credit afterwards. If sales moved, it moved because we removed a checkout barrier, not because we made the meat cheaper. That is the cleanest read we have had on the UK list.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">02</span><span class="ct">The verdict</span></div>
+    <h2>It worked, and it was the cheapest test we have run</h2>
+    <p class="h2sub">Free delivery removed a real checkout friction for first-time buyers, and it did it on less paid traffic than an ordinary day. The gain landed exactly where the friction was.</p>
+
+    <div class="stats" style="margin-top:0">
+      <div class="stat"><b>12.50</b><span>New customers per day, up 24% on a normal day</span></div>
+      <div class="stat"><b>6.00</b><span>New customers at the &pound;79 entry point, more than double</span></div>
+      <div class="stat"><b>~&pound;26</b><span>Cost per incremental new customer, against ~&pound;132 on the 25% sale</span></div>
+      <div class="stat"><b>&minus;10%</b><span>Paid traffic versus normal. This was not bought</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">03</span><span class="ct">What we set out to test</span></div>
+    <h2>Three questions, one clean window</h2>
+    <p class="h2sub">Because product price never moved, each of these gets a straight answer rather than a guess.</p>
+
+    <div class="cols">
+      <div class="card">
+        <h3>The questions</h3>
+        <ul style="margin-bottom:0">
+          <li><strong>Is delivery the blocker?</strong> Does the &pound;7.90 charge suppress first orders?</li>
+          <li><strong>Can we acquire without discounting?</strong> Hold product price and see if volume still moves.</li>
+          <li><strong>Is it repeatable?</strong> Build a mechanic we can run again cheaply.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>How we judged it</h3>
+        <ul style="margin-bottom:0">
+          <li><strong>Store level, not email.</strong> Email attribution catches a fraction of the effect.</li>
+          <li><strong>New customers, not revenue.</strong> This was an acquisition test.</li>
+          <li><strong>Traffic-adjusted.</strong> We checked paid sessions before crediting the offer.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">04</span><span class="ct">Site performance</span></div>
+    <h2>Two promos, two completely different engines</h2>
+    <p class="h2sub">The 25% sitewide sale sits alongside for contrast. It bought reach; this one bought conversion. Both grew new customers, but they did it in opposite ways, and that difference is the useful part.</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Measure</th>
+            <th class="num">Normal trading</th>
+            <th class="num">No Fee Day</th>
+            <th class="num">World Cup 25% sitewide</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Sessions per day</td>
+            <td class="num"><b>526</b></td>
+            <td class="num"><b>560</b><span class="dlt mid">+6%</span></td>
+            <td class="num"><b>972</b><span class="dlt up">+85%</span></td></tr>
+          <tr><td>Paid sessions per day</td>
+            <td class="num"><b>380</b></td>
+            <td class="num"><b>340</b><span class="dlt dn">&minus;10%</span></td>
+            <td class="num"><b>699</b><span class="dlt up">+84%</span></td></tr>
+          <tr><td>New customers per day</td>
+            <td class="num"><b>10.10</b></td>
+            <td class="num"><b>12.50</b><span class="dlt up">+24%</span></td>
+            <td class="num"><b>15.20</b><span class="dlt up">+50%</span></td></tr>
+          <tr><td>New-customer conversion rate</td>
+            <td class="num"><b>1.92%</b></td>
+            <td class="num"><b>2.23%</b><span class="dlt up">+16%</span></td>
+            <td class="num"><b>1.56%</b><span class="dlt dn">&minus;19%</span></td></tr>
+          <tr class="habit"><td>Sub-&pound;99 new customers per day</td>
+            <td class="num"><b>4.81</b></td>
+            <td class="num"><b>8.50</b><span class="dlt up">+77%</span></td>
+            <td class="num"><b>7.40</b><span class="dlt up">+54%</span></td></tr>
+          <tr class="habit"><td>&pound;79-band new customers per day</td>
+            <td class="num"><b>2.90</b></td>
+            <td class="num"><b>6.00</b><span class="dlt up">+107%</span></td>
+            <td class="num"><b>n/a</b><span class="dlt mid">price point absent</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><strong>The contrast in one line:</strong> the sitewide sale grew new customers by buying 84% more paid traffic while its conversion rate <em>fell</em> 19%. No Fee Day grew them on 10% <em>less</em> paid traffic with conversion up 16%. One rents volume; the other removes a barrier.</p>
+    <p class="note" style="margin-top:10px">The &pound;79 band does not apply during the sitewide sale: prices were cut on-site rather than by code, so the box sat at &pound;74.25 and the &pound;79 basket did not exist. Normal trading is 21 July days with both promo windows removed. Tested against sessions, the &pound;79 band and the sub-&pound;99 group both clear significance (z=+2.15 and z=+1.97, p&lt;0.05); the headline conversion rate does not (z=+0.73), which is what a two-day window buys you.</p>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">05</span><span class="ct">The mechanism</span></div>
+    <h2>Why &pound;79 was the blocked price point</h2>
+    <p class="h2sub">The lift did not spread evenly across the catalogue. It landed almost entirely on one number, and that number tells us exactly what was wrong.</p>
+
+    <div class="card hl">
+      <div class="chain">
+        <span class="step">Wagyu Starter Box &pound;99</span>
+        <span class="arw">&rarr;</span>
+        <span class="step">WELCOME20 applied</span>
+        <span class="arw">&rarr;</span>
+        <span class="step">Basket &pound;79</span>
+        <span class="arw">&rarr;</span>
+        <span class="step bad">Under the &pound;99 threshold: &pound;7.90 delivery charged</span>
+      </div>
+      <p>Our two acquisition mechanics are cancelling each other out. The welcome code pushes the basket below the threshold that makes free delivery attractive, so a new subscriber gets charged for delivery at the exact moment they have just been told they are getting a discount. On No Fee Day, <strong>12 of 25 new customers bought at exactly &pound;79</strong>, and that price point's share of new-customer orders went from 29% to 48%.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">06</span><span class="ct">Acquisition efficiency</span></div>
+    <h2>It beat the 25% sale per pound of paid traffic</h2>
+    <p class="h2sub">The sitewide sale acquired more customers in total, but it did that by roughly doubling paid traffic. Per unit of spend it converted worse than an ordinary day.</p>
+
+    <div class="daygrid">
+      <div class="m"><span class="ml">No Fee Day</span><b>3.68</b><span class="d up">+38%</span><span class="dvs">vs normal trading</span></div>
+      <div class="m"><span class="ml">Normal trading</span><b>2.66</b><span class="d mid">baseline</span><span class="dvs">21 clean July days</span></div>
+      <div class="m"><span class="ml">World Cup 25% sale</span><b>2.17</b><span class="d dn">&minus;18%</span><span class="dvs">vs normal trading</span></div>
+    </div>
+    <p class="note" style="margin-top:14px">New customers per 100 paid sessions. The sale ran on 699 paid sessions a day against 380 on a normal day, so its extra volume came from reach rather than from the offer working harder.</p>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">07</span><span class="ct">What it cost</span></div>
+    <h2>&pound;126 issued, none of it spent yet</h2>
+    <p class="h2sub">No product margin was given away. Unlike a percentage sale, the offer never touched product price.</p>
+
+    <div class="daygrid">
+      <div class="m"><span class="ml">Store credit issued</span><b>&pound;126</b><span class="d mid">16 credits</span><span class="dvs">at &pound;7.90 each, sent automatically</span></div>
+      <div class="m"><span class="ml">Redeemed so far</span><b>&pound;0</b><span class="d mid">11 of 16 opened</span><span class="dvs">30-day window closes 24/08/2026</span></div>
+      <div class="m"><span class="ml">Cost per incremental new customer</span><b>~&pound;26</b><span class="d up">vs ~&pound;132</span><span class="dvs">on the 25% sitewide sale</span></div>
+    </div>
+    <p class="note" style="margin-top:14px"><strong>Two things to keep in view.</strong> Pull-forward is not settled: new customers ran 7.33 a day across 26&ndash;28/07, and the 24&ndash;28 average of 9.4 sits just under baseline, though the promo ran Friday and Saturday while the tail is Sunday to Tuesday, our weakest days. And with no ad-platform access, paid traffic is inferred from UTM-tagged sessions, so cost per acquisition is directional rather than exact.</p>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">08</span><span class="ct">What to do next</span></div>
+    <h2>Fix the threshold instead of promoting around it</h2>
+    <p class="h2sub">The test did its job. The finding is not that we should run No Fee Day again, it is that we should stop charging these customers in the first place.</p>
+
+    <div class="card hl">
+      <p><strong>1. Apply free delivery to the pre-discount subtotal, or drop the threshold to &pound;75.</strong> That clears the friction permanently for every welcome-code customer at no recurring cost. No Fee Day rented a fix we can own outright.</p>
+    </div>
+    <div class="card">
+      <p><strong>2. Re-test clean.</strong> Run a matched weekday pair against a like-for-like control to settle the pull-forward question and push the headline rate over the line.</p>
+    </div>
+    <div class="card">
+      <p><strong>3. Watch the &pound;79 close on 29/07.</strong> It lands on the same price point. If it converts, &pound;79 is the box's real acquisition price, which makes this a pricing decision rather than a promo one.</p>
+    </div>
+    <div class="card">
+      <p><strong>4. Recover the 16 open credits before 24/08.</strong> No clicks so far, and there is a &pound;50 minimum spend attached to each one.</p>
+    </div>
+  </section>
+
+  <footer>
+    Steak King UK &times; Tethrd &middot; prepared by Hani Siraj, 29 July 2026<br>
+    Sources: Shopify sales and sessions data via ShopifyQL &middot; Klaviyo campaign and flow reporting &middot; paid traffic inferred from UTM-tagged sessions
+  </footer>
+
+</div>
+</body>
+</html>
