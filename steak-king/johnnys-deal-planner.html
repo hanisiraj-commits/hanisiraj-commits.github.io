@@ -199,6 +199,7 @@
   .pbar{width:120px;height:5px;background:rgba(255,255,255,.2);position:relative;overflow:hidden}
   .pbar i{position:absolute;inset:0 auto 0 0;background:var(--good);transition:width .3s ease}
   .rtable{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px}
+  .rtable th.rt-m{color:var(--ink);font-family:'Fjalla One',sans-serif}
   .rtable th{background:var(--soft);color:var(--ink);border-bottom:1px solid var(--line);text-align:left;padding:9px 12px;font-family:'Fjalla One',sans-serif;font-weight:400;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;position:sticky;top:57px;z-index:5}
   .rtable td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
   .rtable tr.ok td{background:#F4FAF6}
@@ -210,15 +211,15 @@
   .rt-th img{width:44px;height:44px;object-fit:cover;display:block;background:var(--soft)}
   .rt-deal b{display:block;font-family:'Fjalla One',sans-serif;font-size:14px;text-transform:uppercase;color:var(--ink);line-height:1.2}
   .rt-deal span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
-  .rt-offer{font-weight:600;color:var(--ink);white-space:nowrap}
+  .rtable td:nth-child(3){width:40%}
+  .rt-offer{font-weight:600;color:var(--ink);white-space:nowrap;width:26%}
   .rt-offer small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;white-space:normal;max-width:230px}
-  .rt-m{white-space:nowrap;font-family:'Fjalla One',sans-serif;font-size:13px;color:var(--good)}
-  .rt-cap{white-space:nowrap;font-size:12.5px}
+  .rt-m{white-space:nowrap;font-family:'Fjalla One',sans-serif;font-size:13px;color:var(--good);width:96px}
   .rt-act{white-space:nowrap;width:1%}
-  .abtn{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;min-height:34px;border:1px solid var(--line-2);font-size:12px;font-weight:600;color:var(--ink-2);transition:all .18s ease}
-  .abtn+.abtn{margin-left:5px}
+  .acts{display:flex;align-items:center;gap:6px}
+  .abtn{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:6px 12px;min-height:34px;min-width:106px;border:1px solid var(--line-2);font-size:12px;font-weight:600;color:var(--ink-2);transition:all .18s ease}
   .abtn:hover{border-color:var(--ink);color:var(--ink)}
-  .abtn svg{width:13px;height:13px}
+  .abtn svg{width:13px;height:13px;flex:none}
   .abtn.on-ok{background:var(--good);border-color:var(--good);color:#fff}
   .abtn.on-ch{background:var(--warn);border-color:var(--warn);color:#fff}
   .note{display:none;width:100%;margin-top:7px;padding:7px 9px;border:1px solid var(--line-2);font:inherit;font-size:12.5px;background:#fff;color:var(--ink);resize:vertical;min-height:40px}
@@ -864,7 +865,7 @@ function renderReview(){
   document.getElementById('cPd').textContent=ks.length-ok-ch;
   document.getElementById('pFill').style.width=Math.round(ok/ks.length*100)+'%';
 
-  let rows=`<tr><th class="rt-date">Date</th><th class="rt-th"></th><th>Deal</th><th>Offer</th><th>GM</th><th>Allocation</th><th class="rt-act">Sign-off</th></tr>`;
+  let rows=`<tr><th class="rt-date">Date</th><th class="rt-th"></th><th>Deal</th><th>Offer</th><th class="rt-m">Gross Margin</th><th class="rt-act">Sign-off</th></tr>`;
   const [yy,mm]=k.split('-').map(Number), last=new Date(yy,mm,0).getDate();
   const seen=new Set();
   for(let i=1;i<=last;i++){
@@ -874,7 +875,7 @@ function renderReview(){
       if(seen.has(blk.name+blk.from))continue;
       seen.add(blk.name+blk.from);
       const a=parse(blk.from),b=parse(blk.to);
-      rows+=`<tr class="blk"><td class="rt-date">${a.getDate()}–${b.getDate()}<small>${MON[b.getMonth()].slice(0,3)}</small></td><td class="rt-th"></td><td colspan="4"><b style="font-family:'Fjalla One',sans-serif;text-transform:uppercase;font-size:14px">${blk.name}</b><span style="display:block;font-size:12px;margin-top:2px">Blackout — no daily deal. ${blk.target} target.</span></td><td class="rt-act">—</td></tr>`;
+      rows+=`<tr class="blk"><td class="rt-date">${a.getDate()}–${b.getDate()}<small>${MON[b.getMonth()].slice(0,3)}</small></td><td class="rt-th"></td><td colspan="3"><b style="font-family:'Fjalla One',sans-serif;text-transform:uppercase;font-size:14px">${blk.name}</b><span style="display:block;font-size:12px;margin-top:2px">Blackout — no daily deal. ${blk.target} target.</span></td><td class="rt-act">—</td></tr>`;
       continue;
     }
     const deal=dealFor(ds); if(!deal)continue;
@@ -888,11 +889,10 @@ function renderReview(){
         ${thread(ds)}</td>
       <td class="rt-offer">${offer}<small>${sub}</small></td>
       <td class="rt-m">${(deal.margin||'').replace(' margin','')}</td>
-      <td class="rt-cap">${b.cap||'—'}</td>
-      <td class="rt-act">
+      <td class="rt-act"><div class="acts">
         <button class="abtn ${st==='approved'?'on-ok':''}" data-a="approved" data-d="${ds}" title="Approve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Approve</button>
         <button class="abtn ${st==='changes'?'on-ch':''}" data-a="changes" data-d="${ds}" title="Request changes">Changes</button>
-      </td></tr>`;
+      </div></td></tr>`;
   }
   t.innerHTML=rows;
   t.querySelectorAll('.abtn').forEach(b=>b.addEventListener('click',()=>setStat(b.dataset.d,b.dataset.a)));
