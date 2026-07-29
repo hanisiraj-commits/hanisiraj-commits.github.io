@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steak King UK · Repeat Purchase Strategy · July 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#373E3E;--coral:#EC7D55;--paper:#FBF9F7;--line:#E6E0DA;--muted:#7A8383;--good:#2F7D5D;--warn:#C0492B;--soft:#F6F3F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.58;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px 80px}
+  h1,h2,h3,h4,h5,.fj{font-family:'Fjalla One',Impact,sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+  header{background:var(--ink);color:#fff;padding:34px 0 52px;background-image:radial-gradient(ellipse at 78% 0%, rgba(236,125,85,.16), transparent 58%)}
+  .brandbar{display:flex;align-items:center;gap:16px;margin-bottom:34px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.13)}
+  .sk-logo{height:46px;width:auto;display:block}
+  .tethrd-logo{height:17px;width:auto;display:block;opacity:.82}
+  .brand-x{color:#6E7878;font-size:15px;font-weight:300}
+  header .wrap{padding-bottom:0}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(32px,5vw,50px);line-height:1.03;margin-bottom:18px}
+  .sub{font-size:18px;color:#C9CFCF;max-width:790px;line-height:1.5}
+  .meta{margin-top:26px;font-size:12px;color:#8B9494;letter-spacing:.04em;line-height:1.6}
+  .chapter{border-top:1px solid var(--line);padding-top:14px;margin-bottom:24px;display:flex;align-items:baseline;gap:14px}
+  .chapter .cn{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--coral);letter-spacing:.12em}
+  .chapter .ct{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  section{margin-bottom:54px;padding-top:8px}
+  h2{font-size:26px;margin-bottom:10px;line-height:1.15}
+  .h2sub{font-size:15.5px;color:var(--muted);margin-bottom:24px;max-width:790px}
+  h3{font-size:15px;margin-bottom:8px}
+  p{margin-bottom:14px;font-size:15.5px}
+  strong,b{font-weight:600}
+  em{font-style:italic}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:22px 0 0}
+  .stat{background:#fff;padding:20px 18px}
+  .stat .src{display:block;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+  .stat.uk .src{color:var(--coral)} .stat.hk .src{color:var(--muted)}
+  .stat b{display:block;font-family:'Fjalla One',sans-serif;font-size:31px;line-height:1.05;color:var(--ink)}
+  .stat span.lab{display:block;font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.4}
+  .card{background:#fff;border:1px solid var(--line);padding:22px 24px;margin-bottom:16px}
+  .card.hl{border-left:3px solid var(--coral)}
+  .card p:last-child,.card ul:last-child{margin-bottom:0}
+  ul{margin:0 0 14px 19px}
+  li{font-size:15px;margin-bottom:8px;color:#54595A}
+  li b,li strong{color:var(--ink)}
+  .piece{background:#fff;border:1px solid var(--line);margin-bottom:16px}
+  .piece-head{padding:14px 22px;border-bottom:1px solid var(--line)}
+  .piece-head .pn{display:block;font-family:'Fjalla One',sans-serif;font-size:11px;color:var(--coral);letter-spacing:.1em;margin-bottom:5px}
+  .piece-head h3{font-size:17px;margin:0}
+  .piece-body{padding:18px 22px}
+  .piece-body ul{margin-bottom:0}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:13.5px}
+  th{background:var(--ink);color:#fff;font-family:'Fjalla One',sans-serif;font-weight:400;text-transform:uppercase;font-size:11px;letter-spacing:.05em;padding:11px 12px;text-align:left}
+  th.num,td.num{text-align:right}
+  td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+  tr:nth-child(even) td{background:#FCFAF9}
+  tr.habit td{border-top:2px solid var(--coral);background:#FEF6F2}
+  .tblwrap{overflow-x:auto;margin:16px 0}
+  .s{color:var(--muted);font-size:12.5px;font-weight:400}
+  .note{font-size:12.5px;color:var(--muted);line-height:1.6}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;background:var(--soft);border:1px solid var(--line);padding:1px 5px}
+  .timeline{position:relative;margin:22px 0 0;padding-left:30px;border-left:2px solid var(--line)}
+  .tstep{position:relative;margin:0 0 26px}
+  .tstep:last-child{margin-bottom:0}
+  .tstep:before{content:"";position:absolute;left:-37px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--line);border:2px solid var(--paper)}
+  .tstep.key:before{background:var(--coral)}
+  .tstep .day{font-family:'Fjalla One',sans-serif;font-size:11.5px;letter-spacing:.09em;color:var(--coral);text-transform:uppercase}
+  .tstep h5{margin:4px 0 5px;font-size:15.5px}
+  .tstep p{margin:0;font-size:14.5px;color:#54595A;max-width:720px}
+  .hkev{font-size:12.5px;color:var(--muted);margin-top:7px;padding-left:11px;border-left:2px solid var(--line)}
+  footer{border-top:1px solid var(--line);padding-top:22px;font-size:12px;color:var(--muted);line-height:1.6}
+  @media (max-width:820px){
+    header{padding:28px 0 40px}
+    h1{font-size:clamp(27px,6.4vw,44px)}
+    .sub{font-size:16px}
+    section{margin-bottom:44px}
+  }
+  @media (max-width:780px){ .wrap{padding:0 18px 56px} }
+  @media (max-width:600px){
+    .stats{grid-template-columns:1fr}
+    .stat b{font-size:28px}
+    h2{font-size:22px}
+    .h2sub{font-size:15px}
+  }
+  @media (max-width:460px){
+    .wrap{padding:0 14px 44px}
+    header{padding:24px 0 36px}
+    .brandbar{margin-bottom:22px;padding-bottom:16px;gap:12px}
+    .sk-logo{height:38px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brandbar">
+      <img class="sk-logo" src="assets/brand/steakking-uk-logo-white.png" alt="Steak King UK">
+      <span class="brand-x">&times;</span>
+      <img class="tethrd-logo" src="assets/brand/tethrd-wordmark-white.svg" alt="Tethrd">
+    </div>
+    <div class="eyebrow">Steak King UK &middot; Lifecycle Strategy</div>
+    <h1>Building the repeat-purchase funnel, benchmarked on Hong Kong</h1>
+    <p class="sub">What 12 months of Hong Kong order data tells us about how a second purchase happens, and the funnel we want to set up in the UK to guide every first-time buyer towards it. HK is the compass here, not the map: different region, different audience &mdash; everything below is a starting hypothesis to test, not a playbook to copy.</p>
+    <div class="meta">Prepared 17/07/2026 &middot; Reworked 21/07/2026 around the HK second-order journey analysis &middot; Data pulled live from Klaviyo (UK + HK) and Shopify &middot; Tethrd &times; Steak King</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section style="padding-top:46px">
+    <div class="card hl">
+      <h3 style="color:var(--coral);font-size:12px;letter-spacing:.12em;margin-bottom:10px">What the HK data points at</h3>
+      <p>In Hong Kong the second order is a <strong>cross-sell, not a top-up</strong>: 77.5% of second orders contain nothing from the first, the reorder wave lands around <strong>days 22&ndash;39</strong>, and the customers most likely to come back are the ones buying <strong>everyday staples</strong> &mdash; chicken, mince, salmon &mdash; not the deal boxes. Direction for UK: merchandise a staples destination worth coming back to, give every order a built-in reason to return, and time our guidance to that window. Then <strong>test each of those assumptions</strong> against how UK customers actually behave.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">01</span><span class="ct">Where the UK stands</span></div>
+    <h2>The gap to HK is mostly list age</h2>
+    <p class="h2sub">Since launch (11 June &ndash; 17 July), from live order data. The raw repeat rate looks alarming next to HK, but most of that gap is list age &mdash; read the cohort view, not the headline.</p>
+
+    <div class="stats">
+      <div class="stat uk"><span class="src">UK</span><b>&pound;52.0k</b><span class="lab">Revenue since launch (406 orders, 379 customers)</span></div>
+      <div class="stat uk"><span class="src">UK</span><b>&pound;130</b><span class="lab">Average order value</span></div>
+      <div class="stat uk"><span class="src">UK</span><b>7.5%</b><span class="lab">Launch cohort (93 custs, ~30 days old) placing a 2nd order</span></div>
+      <div class="stat hk"><span class="src">HK</span><b>42.1%</b><span class="lab">Repeat rate, trailing 12 months (5,461 of 12,973)</span></div>
+    </div>
+
+    <p style="margin-top:24px">Two early UK facts make the opportunity bigger than it looks:</p>
+    <ul>
+      <li><b>No basket decay.</b> UK second orders average <b>&pound;126</b> against a &pound;130 first order &mdash; a repeat customer is worth a full order, not a top-up. HK shows the identical pattern (HK$1,354 &rarr; HK$1,351).</li>
+      <li><b>Early repeaters move fast.</b> Of the 23 customers who've reordered, 14 did so within 14 days and every one within 30 &mdash; but this is the eager minority, not the pattern to build around (see the HK timing data below).</li>
+    </ul>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Days since 1st order</th><th class="num">HK new-customer repeat</th><th class="num">UK repeat</th><th class="num">UK vs HK</th></tr></thead>
+        <tbody>
+          <tr><td>14 days</td><td class="num">6.6%</td><td class="num">2.6%</td><td class="num">0.4&times;</td></tr>
+          <tr><td>30 days</td><td class="num">14.1%</td><td class="num">7.5%</td><td class="num">0.5&times;</td></tr>
+          <tr><td>60 days</td><td class="num">23.5%</td><td class="num s">list too young</td><td class="num">&mdash;</td></tr>
+          <tr><td>90 days</td><td class="num">29.1%</td><td class="num s">list too young</td><td class="num">&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card hl">
+      <p><b>Leak to fix regardless of strategy.</b> 5 of the 23 UK repeat orders reused <b>WELCOME20</b> &mdash; a new-subscriber code &mdash; on their second purchase. Returning buyers need their own offer (or none); the acquisition code shouldn't be doing retention's job.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">02</span><span class="ct">The Hong Kong benchmark</span></div>
+    <h2>What people buy next</h2>
+    <p class="h2sub">Every HK order from the last 12 months &mdash; 38,951 orders, 10,025 verified first-time buyers &mdash; mapped from first basket to second.</p>
+
+    <div class="card">
+      <p><b>How to read this section.</b> HK is a mature list in a different market with different tastes, price sensitivity and delivery habits. UK customers may well behave differently. Nothing here gets taken at face value &mdash; it's the direction we point our first experiments in, and UK cohort data decides what survives.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat hk"><span class="src">HK</span><b>27.8%</b><span class="lab">of new customers place a 2nd order within 90 days (7,503-buyer mature cohort)</span></div>
+      <div class="stat hk"><span class="src">HK</span><b>39 days</b><span class="lab">median gap to the 2nd order; the best-repeating first products reorder at 22&ndash;35 days</span></div>
+      <div class="stat hk"><span class="src">HK</span><b>77.5%</b><span class="lab">of 2nd orders contain nothing from the 1st &mdash; the journey is cross-sell, not replenishment</span></div>
+      <div class="stat hk"><span class="src">HK</span><b>100%</b><span class="lab">of 1st-order value held on the 2nd &mdash; repeat orders are full-value orders</span></div>
+    </div>
+
+    <p style="margin-top:24px"><b>The journey runs in two directions, and both matter.</b></p>
+    <ul>
+      <li><b>Premium first, staples second.</b> Wagyu-first buyers most often come back for more wagyu &mdash; but the biggest cross-category flows are wagyu &rarr; Black Angus, wagyu &rarr; fish and wagyu &rarr; poultry. The treat purchase comes first; the "fill the freezer for the week" basket comes second.</li>
+      <li><b>Staples first, wagyu second.</b> Mince &rarr; wagyu and fish &rarr; wagyu are both top-ten transitions. Cheap everyday proteins are a genuine on-ramp to the premium range, not a dead end.</li>
+    </ul>
+
+    <p><b>What's in the first basket predicts whether there'll be a second.</b> 90-day repeat rate by first-order contents, across the mature cohort:</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>First order contains</th><th class="num">90-day repeat</th><th class="num">Median reorder</th></tr></thead>
+        <tbody>
+          <tr class="habit"><td>Everyday staples &mdash; whole chicken, lean mince, salmon fillets, chicken thighs, pork mince</td><td class="num">43&ndash;52%</td><td class="num">22&ndash;35 days</td></tr>
+          <tr><td>Wagyu M4&ndash;5 fillet steaks (the lean half of the UK Taster Box)</td><td class="num">48.9%</td><td class="num">27 days</td></tr>
+          <tr><td>Category averages &mdash; poultry / fish / Black Angus</td><td class="num">35&ndash;37%</td><td class="num">&mdash;</td></tr>
+          <tr><td>Category average &mdash; wagyu</td><td class="num">33.0%</td><td class="num">&mdash;</td></tr>
+          <tr><td>Deep-discount bundle boxes with free steak knives (M9+ ribeye &times; striploin box et al.)</td><td class="num">13&ndash;15%</td><td class="num">&mdash;</td></tr>
+          <tr><td>One-off &amp; gift items &mdash; mooncakes, cooked ham, restaurant table deposits</td><td class="num">3&ndash;13%</td><td class="num">&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card hl">
+      <p><b>The flag for UK.</b> Our acquisition hero &mdash; the &pound;99 Wagyu Starter box with free knife &mdash; is structurally the same offer as HK's knife-bundle boxes, HK's <em>worst-repeating meat gateway at ~14%</em> (against a 27.8% average). Deal-box buyers skew deal-hunter. That doesn't mean changing the acquisition offer &mdash; it means the journey after the box has to work hardest, and the HK data suggests what it should sell: the everyday staples both halves of the journey converge on.</p>
+    </div>
+
+    <p class="note">Caveats: HK's product taxonomy is messy (~19% of line items untyped) and gateway rates are correlations, not proof of cause &mdash; staple buyers may simply be habitual weekly shoppers. Directionally useful; treat product-level differences under ~5pts as noise. Full analysis output: <code>hk-repeat-journey-benchmark-2026-07-21.txt</code>.</p>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">03</span><span class="ct">The funnel we want to set up</span></div>
+    <h2>Three pieces, each carrying a testable hypothesis</h2>
+    <p class="h2sub">Each piece carries a hypothesis from the HK data that UK cohorts will confirm or kill. Together they give a first-time buyer a place to go back to, a reason to go back, and guidance on when and what.</p>
+
+    <div class="piece">
+      <div class="piece-head"><span class="pn">Piece 1 &middot; Merchandising the second order</span><h3>A staples destination worth coming back to</h3></div>
+      <div class="piece-body">
+        <ul>
+          <li><b>A dedicated staples section on site.</b> The UK store is built around the box; HK's second orders are built around everyday proteins. Stand up a restock collection (salmon fillets, chicken breast and thighs, mince, sausages) so a returning customer can pick up the value cut they actually want <em>and</em> fill the cart to the &pound;99 free-shipping threshold in the same visit. Today that basket has nowhere to land.</li>
+          <li><b>Staple-anchored bundles.</b> Build bundles with staples in them &mdash; a "Freezer Fill" pack priced at the &pound;99 line, and staple add-ins on the premium boxes &mdash; alongside the BBQ pack and higher-ticket tiers already on the growth queue. <span class="s">HK hypothesis: staples in the basket predict ~1.5&times; repeat.</span></li>
+          <li><b>Seed the staple at order one.</b> Test a low-price staple add-on at checkout (1kg mince at a token price, or free above a threshold). If the HK gateway pattern is causal, putting a staple in the first UK basket should lift repeat measurably &mdash; a cheap, clean experiment.</li>
+          <li><b>Keep the repeat products in stock.</b> Back-in-stock notifications and stock priority for the staples that drive reorders &mdash; a repeat funnel pointing at out-of-stock products is worse than none.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="piece">
+      <div class="piece-head"><span class="pn">Piece 2 &middot; The reorder mechanic</span><h3>Steak King Credit &mdash; every order earns the next one</h3></div>
+      <div class="piece-body">
+        <ul>
+          <li><b>The mechanic:</b> every delivered order earns a fixed, visible store credit (proposal: 10% of order value, minimum &pound;10), issued after delivery and <b>expiring ~35 days later</b>. The credit is the reason to come back; the expiry is the reason to come back <em>now</em> &mdash; timed to the day 22&ndash;39 window where HK's best repeaters naturally reorder.</li>
+          <li><b>It rides existing rails.</b> The No Fee Day mechanic already issues coupon-as-store-credit via a Klaviyo flow with 30-day validity. This extends a proven pattern into an always-on economy &mdash; no new infrastructure.</li>
+          <li><b>It protects the price architecture.</b> Credit is a visible &pound; figure with the customer's name on it (David's rule: offers customers can see), and it replaces blanket %-off on second orders &mdash; &pound;79 on the box stays the floor we never cross.</li>
+          <li><b>Order-2 staple GWP as the bridge.</b> A free staple (1kg mince or chicken, picked on margin) on the second order: visible, cheap, mirrors the referral-ladder mental model customers already know, and stocks the freezer with the habit product that drives order three.</li>
+          <li><b>Test it, don't assume it:</b> pilot credit vs a control cohort with no mechanic; measure 60-day repeat rate and margin per customer, not just redemption.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="piece">
+      <div class="piece-head"><span class="pn">Piece 3 &middot; The guidance layer</span><h3>Lifecycle touches that walk people down the journey</h3></div>
+      <div class="piece-body">
+        <ul>
+          <li><b>Two cross-sell paths, split on first-order contents.</b> Box and premium buyers get the "stock your freezer" staples story; staple-first buyers get the wagyu step-up story. Both paths exist in the HK data &mdash; we guide, the first basket decides which script.</li>
+          <li><b>Replenish only what replenishes.</b> Reorder nudges on staples (roughly monthly cadence in HK); premium boxes get storytelling and cross-sell, never "running low?" nags.</li>
+          <li><b>The credit loop is itself a sequence:</b> credit issued on delivery &rarr; reminder &rarr; last-72-hours expiry push. Three touches pointing at the same reorder without a single sitewide discount.</li>
+          <li><b>Paid social as amplifier, not engine.</b> Sync Klaviyo segments to Meta and retarget only 1&times; buyers inside their day 20&ndash;45 window with the same staples/step-up creative and a credit-expiry reminder, suppressing anyone who reorders. The audience is a few hundred people at a time, so spend stays small by construction &mdash; it simply makes the ad say what the email says. Jay builds from the same creatives.</li>
+          <li><b>Winback at day 45+</b> with a dedicated returning-customer offer &mdash; and the WELCOME20 leak closed so the acquisition code stops doing retention's job.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="note">All discount depths, GWP picks, bundle SKUs and the credit % go through David's margin floors. No beer mechanics until the liquor licence lands.</p>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">04</span><span class="ct">The repeat-purchaser journey</span></div>
+    <h2>How it lands on one customer's calendar</h2>
+    <p class="h2sub">The default path from first order to second, with the HK evidence for each beat. Days are from delivery, not purchase. This is the workflow we design and test against; branch timings will be tuned to UK behaviour as cohorts mature.</p>
+
+    <div class="timeline">
+      <div class="tstep">
+        <div class="day">Day 0 &middot; Order placed</div>
+        <h5>Confirmation sets up the relationship</h5>
+        <p>Welcome from Johnny, what happens next, and the first tease of Steak King Credit: "your first &pound;X back is coming with your delivery." The next order is on the table before the first one arrives.</p>
+      </div>
+      <div class="tstep key">
+        <div class="day">Day 2&ndash;3 &middot; Delivery</div>
+        <h5>Credit issued + cook-it-tonight guide</h5>
+        <p>The credit email lands with the box: a visible &pound; balance, expiry date, and Johnny's method for the exact cuts they bought. The best retention email is the one that makes the first purchase taste great.</p>
+      </div>
+      <div class="tstep">
+        <div class="day">Day 5&ndash;7 &middot; Post-purchase nurture</div>
+        <h5>The eating moment &mdash; proof and pride</h5>
+        <p>Education and provenance (marbling, halal certification, direct-from-source), review and UGC ask while the experience is fresh, referral ladder reminder.</p>
+        <div class="hkev">HK: eager early repeaters (~7% by day 14) self-serve here &mdash; no discounting needed for them.</div>
+      </div>
+      <div class="tstep">
+        <div class="day">Day 10&ndash;14 &middot; Listen, then point</div>
+        <h5>Survey + soft "what to try next"</h5>
+        <p>The post-delivery survey (already being built) plus the first cross-sell nudge, routed by first basket: box buyers see the staples range, staple buyers see the wagyu step-up.</p>
+      </div>
+      <div class="tstep key">
+        <div class="day">Day 20&ndash;25 &middot; The main cross-sell</div>
+        <h5>"Stock your freezer" &mdash; staples story + credit reminder</h5>
+        <p>The weeknight basket pitch: salmon, chicken, mince from the staples section, cart-filled to the &pound;99 free-shipping line, credit balance front and centre. Meta retargeting layer switches on for this window with the same message.</p>
+        <div class="hkev">HK: best-repeating products reorder at median 22&ndash;35 days; the second order is a cross-sell 77.5% of the time.</div>
+      </div>
+      <div class="tstep key">
+        <div class="day">Day 30&ndash;35 &middot; Credit expiry</div>
+        <h5>Last-72-hours push</h5>
+        <p>Honest urgency on the expiring balance &mdash; the "come back now" beat, no sitewide discount required.</p>
+        <div class="hkev">HK: median gap to the second order is 39 days &mdash; expiry sits just ahead of the natural decision point.</div>
+      </div>
+      <div class="tstep">
+        <div class="day">Day 35&ndash;45 &middot; Didn't bite?</div>
+        <h5>The staple GWP offer</h5>
+        <p>Free 1kg staple on their next order &mdash; a visible perk that also seeds the habit product for order three. Replenish nudges start here for staple-first buyers.</p>
+      </div>
+      <div class="tstep">
+        <div class="day">Day 45+ &middot; Winback</div>
+        <h5>Returning-customer offer, then patience</h5>
+        <p>A dedicated returning-customer code (never WELCOME20), then the customer rolls into campaign land &mdash; LMTs, drops and seasonal moments do the long-tail reactivation.</p>
+        <div class="hkev">HK: repeat rate keeps climbing from 23.5% at day 60 to 29.1% at day 90 &mdash; the tail is long, don't burn it with discount spam.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">05</span><span class="ct">What it's worth</span></div>
+    <h2>Every point of repeat rate compounds</h2>
+    <p class="h2sub">At the current ~330 new customers/month and &pound;130 AOV, every point of repeat rate is real, compounding revenue. Second orders carry no basket decay, so this is close to pure incremental margin.</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Repeat rate</th><th class="num">2nd orders / mo</th><th class="num">Incremental / mo</th><th class="num">Incremental / yr</th></tr></thead>
+        <tbody>
+          <tr><td>7.5% <span class="s">(today)</span></td><td class="num">25</td><td class="num">&pound;3,200</td><td class="num">&pound;38,500</td></tr>
+          <tr><td>15% <span class="s">(first target)</span></td><td class="num">50</td><td class="num">&pound;6,400</td><td class="num">&pound;77,000</td></tr>
+          <tr class="habit"><td>25% <span class="s">(second target)</span></td><td class="num">82</td><td class="num">&pound;10,700</td><td class="num">&pound;128,500</td></tr>
+          <tr><td>42% <span class="s">(HK parity)</span></td><td class="num">139</td><td class="num">&pound;18,000</td><td class="num">&pound;215,800</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The targets aren't arbitrary &mdash; they're HK's own early-life numbers: <b>15%</b> is HK's 30-day rate, <b>25%</b> is its 60-day rate. Matching HK's new-customer behaviour gets us there; moving from today's 7.5% to <b>25%</b> is worth roughly <b>+&pound;90k/year</b> in incremental second-order revenue before any acquisition growth.</p>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">06</span><span class="ct">Next steps</span></div>
+    <h2>What happens from here</h2>
+    <div class="card">
+      <ul>
+        <li><b>With David:</b> staples section + bundle SKUs (what can we actually stock and at what margin), the credit % and floor, the GWP pick, and the checkout staple add-on test.</li>
+        <li><b>Fix</b> the WELCOME20 leak and stand up the returning-customer code.</li>
+        <li><b>Instrument</b> repeat rate by weekly cohort now, so every experiment above has a baseline from day one.</li>
+        <li><b>Sequence the tests:</b> staples section + credit pilot first (they carry the biggest HK signal), checkout staple seed second, GWP vs credit comparison once volume supports a split.</li>
+        <li><b>Design the journey flows</b> in section 04 at the dedicated UK+HK Klaviyo flows session &mdash; build them to this strategy, not from the HK clones as-is.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Sources: Klaviyo UK (<code>WSxBju</code>) &amp; HK (<code>WeKJg7</code>) live API, 17/07/2026 &middot; Shopify order history (HK <code>steak-king</code>, UK <code>steak-king-uk</code>) &middot; HK trailing-12-mo cohort analysis (Mar 2026) &middot; HK second-order journey analysis 21/07/2026 (12-mo Shopify pull: 38,951 orders, 10,025 verified first-time buyers; full output in <code>hk-repeat-journey-benchmark-2026-07-21.txt</code>). All figures verified against live data; UK revenue reconciles to the ~&pound;50k first-month figure on record.
+  </footer>
+
+</div>
+</body>
+</html>
