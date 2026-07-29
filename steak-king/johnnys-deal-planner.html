@@ -93,6 +93,13 @@
   .spec span{font-size:13px;color:var(--ink);word-break:break-word}
   .steps{margin:0 0 var(--s3) 18px}
   .steps li{font-size:13.5px;color:var(--ink-2);margin-bottom:5px}
+  .pdp{border:1px solid var(--line);background:var(--card);margin-bottom:var(--s3)}
+  .pdp-h{display:flex;align-items:center;gap:var(--s2);padding:9px 13px;border-bottom:1px solid var(--line);background:var(--soft);flex-wrap:wrap}
+  .pdp-h b{font-family:'Fjalla One',sans-serif;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--coral)}
+  .pdp-h span{font-size:12px;color:var(--muted)}
+  .pdp-h .abtn{margin-left:auto;min-width:0;min-height:30px;padding:5px 10px;font-size:11.5px}
+  .pdp p{margin:0;padding:13px;font-size:14px;line-height:1.62;color:var(--ink);white-space:pre-wrap}
+  .pdp.tbc{border-color:#E9CFC5;background:var(--warn-bg)}
   .copied{font-size:12.5px;color:var(--good);font-weight:600;display:none}
   .copied.on{display:inline}
 
@@ -371,7 +378,7 @@ const PLAN = {
         price:'3kg for $899', vs:'USDA Choice Ribeye · $300/kg vs $448/kg everyday', margin:'31% margin',
         lines:[['Stock','1,240 units · cap 60 · <strong>Full-list send</strong> + site hero + WhatsApp.']],
         why:'The programme has been dark for two weeks, so the opener has to be the highest-confidence thing in the library — the exact mechanic that produced the best deal-SKU day of the launch, on a value ribeye everyone recognises, with enough depth that it cannot sell out and embarrass us. Saturday is a grill day.',
-        build:{source:'Chilled USDA Choice Ribeye 1kg', clone:'Quantity Flash: USDA Choice Ribeye 3 × 1kg', price:'$899', compare:'$1,344', cap:'60 units', extras:'—', send:'Full list 09:00 + site hero + WhatsApp'}
+        build:{desc:"Three kilos of USDA Choice ribeye at $300 a kilo, today only. That is $1,344 worth at the everyday price, for $899. USDA Choice is the grade most steakhouses run: even marbling, forgiving on the grill, and cut thick enough to build a crust without losing the middle. Arrives as 3 x 1kg, so cook one and freeze two. Sixty sets available. Price goes back at midnight. Orders over $1,000 ship free.", source:'Chilled USDA Choice Ribeye 1kg', clone:'Quantity Flash: USDA Choice Ribeye 3 × 1kg', price:'$899', compare:'$1,344', cap:'60 units', extras:'—', send:'Full list 09:00 + site hero + WhatsApp'}
       },
       '2026-08-02': {
         title:'The Sunday Roast', mech:'Price Drop · New Category', tag:'new',
@@ -379,7 +386,7 @@ const PLAN = {
         price:'$749', vs:'Mount Schanck Boneless Lamb Leg 2.5kg · vs $868 everyday · $300/kg', margin:'63% margin',
         lines:[['Stock','69 units · hard cap 50 · sits $251 short of free shipping — push the add-on rail.']],
         why:'Occasion and product finally agree — a 2.5kg boneless leg is a roast you plan the day around, and the weakest day of the month ($57.7k) is the right place for a 69-unit SKU. It also opens the lamb question early: eight lamb SKUs carry 60–68% margin and over 1,500 units between them, and the category has never been featured. The rack follows on Tuesday, so by midweek we know whether lamb has legs.',
-        build:{source:'Chilled Mount Schanck Boneless Lamb Leg 2.5kg', clone:'Price Drop: Boneless Lamb Leg 2.5kg', price:'$749', compare:'$868', cap:'50 units', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"A 2.5kg boneless leg of Mount Schanck lamb for $749, down from $868. Boneless means no carving around the bone: season it, roast it, rest it, slice it. At 2.5kg it feeds eight comfortably, or four with a second night of sandwiches after. Fifty available, today only. Add anything else to reach $1,000 and delivery is on us.", source:'Chilled Mount Schanck Boneless Lamb Leg 2.5kg', clone:'Price Drop: Boneless Lamb Leg 2.5kg', price:'$749', compare:'$868', cap:'50 units', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-03': {
         title:'The Wagyu Double', mech:'Buy 1, Get 2nd 50%', tag:'proven',
@@ -387,7 +394,7 @@ const PLAN = {
         price:'2kg for $747', vs:'Rangers Station Wagyu M4-5 Striploin · $374/kg vs $498/kg · + free steak knives', margin:'43% margin',
         lines:[['Stock','128 units · hard cap 60 pairs.']],
         why:'Mondays carry the biggest BAU base of the month at $100k, so they get the cuts with the most want behind them. M4-5 striploin is genuine wagyu without being a hero, and buy-one-get-second-half-off keeps the per-kilo value intact while still doubling the basket.',
-        build:{source:'Chilled Rangers Station Wagyu M4-5 Striploin 1kg', clone:'B1G2nd-50%: Wagyu M4-5 Striploin', price:'$747', compare:'$996', cap:'60 pairs', extras:'Free steak knives', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"Buy one kilo of Rangers Station Wagyu M4-5 striploin and the second kilo is half price. Two kilos for $747, which is $374 a kilo against $498 every other day. M4-5 is the range where wagyu starts to eat like wagyu while still letting you finish a whole steak. Free steak knives with every order today. Sixty sets, closing at midnight.", source:'Chilled Rangers Station Wagyu M4-5 Striploin 1kg', clone:'B1G2nd-50%: Wagyu M4-5 Striploin', price:'$747', compare:'$996', cap:'60 pairs', extras:'Free steak knives', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-04': {
         title:'The Lamb Rack Flash', mech:'Quantity Flash',
@@ -395,7 +402,7 @@ const PLAN = {
         price:'3 racks (2.4kg) for $799', vs:'Mount Schanck Frenched Lamb Rack 800g · $333/kg vs $435/kg', margin:'46% margin',
         lines:[['Stock','321 units · cap 90 sets.']],
         why:'The second half of the lamb read, two days after the leg — same category, different price point and occasion, so we learn whether it is lamb that works or just the roast. Frenched racks photograph as well as anything in the catalogue, and 321 units means a Tuesday base is plenty to move real volume.',
-        build:{source:'Chilled Mount Schanck Bone-In Frenched Lamb Rack Cap Off 800g', clone:'Quantity Flash: Frenched Lamb Rack × 3', price:'$799', compare:'$1,044', cap:'90 sets', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"Three Frenched racks of Mount Schanck lamb, 2.4kg all up, for $799. That works out at $333 a kilo against $435. Frenched means the bones are already cleaned back, so it goes from the box to the pan to the oven with nothing in between. Each 800g rack carves into four generous cutlets. Ninety sets, today only.", source:'Chilled Mount Schanck Bone-In Frenched Lamb Rack Cap Off 800g', clone:'Quantity Flash: Frenched Lamb Rack × 3', price:'$799', compare:'$1,044', cap:'90 sets', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-05': {
         title:'The Organic Double', mech:'Buy 1, Get 2nd 50%', tag:'proven',
@@ -403,7 +410,7 @@ const PLAN = {
         price:'2kg for $735', vs:'Organic Grass Fed Angus Striploin · $368/kg vs $490/kg · + free steak knives', margin:'60% margin',
         lines:[['Stock','824 units · cap 100 pairs.']],
         why:'70% gross margin at list with 824 units behind it — the most repeatable deal on the account, which is why it comes back on the 20th and anchors the second ladder. Organic pulls a different buyer than the wagyu grades, so it widens the mix rather than cannibalising it.',
-        build:{source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'B1G2nd-50%: Organic Angus Striploin', price:'$735', compare:'$980', cap:'100 pairs', extras:'Free steak knives', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"Buy one kilo of certified organic grass-fed Angus striploin and the second is half price. Two kilos for $735, or $368 a kilo against $490. Grass-fed eats leaner and beefier than grain-fed, so it wants a hot pan, a short cook and a proper rest. Free steak knives today. One hundred sets available.", source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'B1G2nd-50%: Organic Angus Striploin', price:'$735', compare:'$980', cap:'100 pairs', extras:'Free steak knives', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-06': {
         title:'Three Kilos of Wagyu', mech:'Quantity Flash', tag:'proven',
@@ -411,7 +418,7 @@ const PLAN = {
         price:'3kg for $899', vs:'Chilled Wagyu M3-4 Ribeye · $300/kg vs $398/kg everyday', margin:'30% margin',
         lines:[['Stock','4,579 units — the biggest beef overhang on the account. Cap 80.']],
         why:'This is the SKU the programme exists for. Four and a half thousand units will not clear on browse traffic, and one deal day will not touch it — so it runs twice, here and again on the 18th. Thursday is the right slot: enough base to matter, not so much that we are spending a peak day on inventory work.',
-        build:{source:'Chilled Wagyu M3-4 Ribeye 1kg', clone:'Quantity Flash: Wagyu M3-4 Ribeye 3 × 1kg', price:'$899', compare:'$1,194', cap:'80 units', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"Three kilos of Wagyu M3-4 ribeye for $899, which is $300 a kilo against $398. M3-4 is the entry point into wagyu marbling: enough fat through the muscle to baste itself as it cooks, without one steak becoming the entire meal. Sold as 3 x 1kg. Eighty sets, today only, then the price goes back.", source:'Chilled Wagyu M3-4 Ribeye 1kg', clone:'Quantity Flash: Wagyu M3-4 Ribeye 3 × 1kg', price:'$899', compare:'$1,194', cap:'80 units', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-07': {
         title:'Picanhas, On Your Table', mech:'Price Drop · Story',
@@ -419,7 +426,7 @@ const PLAN = {
         price:'$899', vs:'Whole M6-7 Wagyu Rump Cap 2.1kg w/ chimichurri · vs $1,099 everyday', margin:'61% margin',
         lines:[['Stock','77 units · hard cap 40 · <strong>Beat the Clock LMT at 7pm.</strong>']],
         why:'Nobody else in Hong Kong can run it — "the cut they grill at Picanha\'s, on your table tonight." A deal with a story earns a share and a forward in a way a price never does, and 61% margin means the LMT can push hard without costing anything. Friday is where the weekend cook gets decided.',
-        build:{source:"Picanha's Chilled Whole M6-7 Wagyu Rump Cap 2.1kg", clone:'Price Drop: Whole M6-7 Picanha', price:'$899', compare:'$1,099', cap:'40 units', extras:'Chimichurri included', send:'Engaged segment 09:00 + site + WhatsApp + LMT 19:00'}
+        build:{desc:"Picanha's whole M6-7 wagyu rump cap, 2.1kg, for $899 instead of $1,099. Chimichurri comes in the box. Rump cap is the cut Brazilian grills are built on: a thick fat cap on top that bastes the meat the whole time it cooks. Score the fat, salt it heavily, start it fat-side down, then carve it into thick steaks across the grain. Forty available, today only.", source:"Picanha's Chilled Whole M6-7 Wagyu Rump Cap 2.1kg", clone:'Price Drop: Whole M6-7 Picanha', price:'$899', compare:'$1,099', cap:'40 units', extras:'Chimichurri included', send:'Engaged segment 09:00 + site + WhatsApp + LMT 19:00'}
       },
       '2026-08-08': {
         title:'Two Kilos, Have a Third', mech:'Buy 2, Get 1 Free',
@@ -427,7 +434,7 @@ const PLAN = {
         price:'3kg for $896', vs:'USDA Choice Ribeye · buy 2kg, get 1kg free · $299/kg vs $448/kg', margin:'31% margin',
         lines:[['Stock','1,240 units · cap 60.']],
         why:'Buy-two-get-one-free was the weakest of the three July tests at 2.5×, but it ran on the hanger — a cut with a fraction of this one\'s demand. Same cut, same price, same margin as the 1 Aug flash, exactly one week apart: whatever differs on the day is the mechanic and nothing else. That is the cleanest read we will get on whether "3kg for $899" or "buy 2kg, get 1kg free" is the better way to say the same offer.',
-        build:{source:'Chilled USDA Choice Ribeye 1kg', clone:'B2G1F: USDA Choice Ribeye', price:'$896', compare:'$1,344', cap:'60 units', extras:'3rd kg free', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"Buy two kilos of USDA Choice ribeye and the third kilo is free. Three kilos for $896, or $299 a kilo. Same grade the steakhouses run: even marbling, cut thick, hard to get wrong. Arrives as 3 x 1kg so you can freeze whatever you are not cooking tonight. Sixty sets, today only.", source:'Chilled USDA Choice Ribeye 1kg', clone:'B2G1F: USDA Choice Ribeye', price:'$896', compare:'$1,344', cap:'60 units', extras:'3rd kg free', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-09': {
         title:"The Fishmonger's Box", mech:'Bundle Box',
@@ -435,7 +442,7 @@ const PLAN = {
         price:'$749', vs:'Salmon fillet + MSC cod + yellowfin tuna + barramundi · $1,172 apart · 36% off', margin:'39% margin',
         lines:[['Stock','4,684 salmon fillets alone — the deepest single overhang on the account.'],['Gate','<strong>First bundle of the month.</strong> Needs Johnny\'s sign-off on pick-and-pack before this goes live.']],
         why:'The first bundle of the month, deliberately placed after Johnny has had a week to look at how the boxes are picked and packed. A quiet Sunday is the cheapest day to run the first one: a fixed box removes the decision and skews new customers, and this is the mix push — a database that has only ever bought beef, buying fish.',
-        build:{source:'Norwegian Salmon Fillet + MSC Cod 1kg + Yellowfin Tuna Steaks + Barramundi Steaks', clone:"Bundle: The Fishmonger's Box", price:'$749', compare:'$1,172', cap:'no cap needed', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"Four pieces of fish for $749, against $1,172 bought separately. A whole Norwegian salmon fillet, a kilo of MSC-certified Atlantic cod, four yellowfin tuna steaks and a kilo of Australian barramundi. Between them that is a week of dinners that are not beef: cod for the pan, tuna for the grill, salmon for the oven, barramundi for either. All frozen, so it keeps until you want it.", source:'Norwegian Salmon Fillet + MSC Cod 1kg + Yellowfin Tuna Steaks + Barramundi Steaks', clone:"Bundle: The Fishmonger's Box", price:'$749', compare:'$1,172', cap:'no cap needed', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-10': {
         title:'The Four-Kilo Rib Roast', mech:'Price Drop · Big Ticket',
@@ -443,7 +450,7 @@ const PLAN = {
         price:'$1,188', vs:'Black Angus Bone-in Ribeye OP Rib Roast 3.7–4.0kg · vs $1,888 · 37% off', margin:'45% margin',
         lines:[['Stock','548 units · cap 60 · <strong>Full-list send</strong> + <strong>LMT at 7pm</strong> + Back to School pre-announce in the same email.']],
         why:'548 units of a $1,888 bone-in roast sitting untouched, and the only way that moves is a day with real traffic behind it. It clears free shipping on its own, so it lifts AOV rather than diluting it, and it hands us the bridge into the flash sale: "last big one before Back to School."',
-        build:{source:'Chilled Black Angus Bone-in Ribeye OP Rib Roast 3.7-4.0kg', clone:'Price Drop: OP Rib Roast', price:'$1,188', compare:'$1,888', cap:'60 units', extras:'—', send:'Full list 09:00 + site + WhatsApp + LMT 19:00 + BTS pre-announce'}
+        build:{desc:"A bone-in Black Angus ribeye roast, 3.7 to 4kg, for $1,188 instead of $1,888. This is the centrepiece cut: four ribs, cap on, bones left in for flavour and for something to hold while you carve. Low oven, hot finish, long rest. Feeds ten to twelve. Sixty available, today only, and delivery on this one is free.", source:'Chilled Black Angus Bone-in Ribeye OP Rib Roast 3.7-4.0kg', clone:'Price Drop: OP Rib Roast', price:'$1,188', compare:'$1,888', cap:'60 units', extras:'—', send:'Full list 09:00 + site + WhatsApp + LMT 19:00 + BTS pre-announce'}
       },
       '2026-08-14': {
         title:'The Duck Box', mech:'Bundle Box · New Category', tag:'new',
@@ -451,7 +458,7 @@ const PLAN = {
         price:'$749', vs:'Whole duck + breasts + legs + duck fat · $1,040 apart · 28% off', margin:'73% margin',
         lines:[['Stock','201 / 124 / 123 / 291 · cap 120 boxes.'],['Send','<strong>Site + WhatsApp only. No email.</strong> First day back after three days of full-list flash-sale sends — the list is the tired asset, not the offer.']],
         why:'The fattest margin available anywhere in the catalogue — duck breasts cost $34 and sell at $298 — sitting in a category the list has almost certainly never been shown. Coming straight off the flash sale we want a day that costs the list nothing, and 73% margin means it can run site-only and still pay. If it lands, duck becomes a permanent rotation slot.',
-        build:{source:'Whole Duck + Duck Breasts 1kg + Duck Legs 1kg + Duck Fat 2×500g', clone:'Bundle: The Duck Box', price:'$749', compare:'$1,040', cap:'120 boxes', extras:'—', send:'Site + WhatsApp only — no email'}
+        build:{desc:"Everything for a duck dinner, $749 against $1,040 bought apart. A whole free-range duck, a kilo of duck breasts, a kilo of free-range duck legs and two 500g tubs of duck fat to cook them in. Roast the bird, sear the breasts and keep them pink, confit the legs slowly in the fat, then save what is left for the potatoes. If you have only ever bought beef from us, start here. One hundred and twenty boxes.", source:'Whole Duck + Duck Breasts 1kg + Duck Legs 1kg + Duck Fat 2×500g', clone:'Bundle: The Duck Box', price:'$749', compare:'$1,040', cap:'120 boxes', extras:'—', send:'Site + WhatsApp only — no email'}
       },
       '2026-08-15': {
         title:'The Rump Cap, Again', mech:'Buy 1, Get 2nd 50% · Recycle', tag:'proven',
@@ -459,7 +466,7 @@ const PLAN = {
         price:'2 caps for $837', vs:'Black Angus M2-3 Rump Cap + free chimichurri · the 18 July deal, verbatim', margin:'33% margin',
         lines:[['Stock','737 units · cap 80 pairs.']],
         why:'This did roughly 5× its in-stock rate on 18 July — the strongest recycle candidate we have, and a Saturday grill day is where it earned that number. Second send of the week after a deliberately silent Friday, so the list gets one clear ask rather than two soft ones.',
-        build:{source:'Chilled Black Angus M2-3 Rump Cap', clone:'B1G2nd-50%: Black Angus M2-3 Rump Cap', price:'$837', compare:'$1,116', cap:'80 pairs', extras:'Free chimichurri', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"Buy one Black Angus M2-3 rump cap and the second is half price. Two caps for $837. Rump cap is picanha under another name: a fat cap on top that bastes the meat as it renders, and enough thickness to carve into proper steaks afterwards. Score the fat, salt it, cook it fat-side down first. Chimichurri included with both. Eighty sets, today only.", source:'Chilled Black Angus M2-3 Rump Cap', clone:'B1G2nd-50%: Black Angus M2-3 Rump Cap', price:'$837', compare:'$1,116', cap:'80 pairs', extras:'Free chimichurri', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-16': {
         title:'The Weeknight Box', mech:'Bundle Box',
@@ -467,7 +474,7 @@ const PLAN = {
         price:'$749', vs:'Premium Trio + wagyu mince 1kg + whole salmon fillet · $1,074 apart · 30% off', margin:'38% margin',
         lines:[['Stock','572 / 959 / 4,684 — effectively uncapped.']],
         why:'School goes back and the job changes from "what shall we cook this weekend" to "what\'s for dinner on Wednesday." Burgers, mince and salmon is a week of weeknights in one click, it skews new customers the way the King\'s Box does, and it moves three of the five deepest stock positions at once.',
-        build:{source:'Steak King Premium Trio + Wagyu Full Blood Mince 1kg + Whole Norwegian Salmon Fillet', clone:'Bundle: The Weeknight Box', price:'$749', compare:'$1,074', cap:'no cap needed', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"A week of weeknight dinners for $749, against $1,074 bought apart. The Steak King Premium Trio, plus a kilo of full-blood wagyu mince and a whole Norwegian salmon fillet. Burgers one night, something slow with the mince another, fish twice. Nothing in this box needs a plan, a thermometer or a spare afternoon.", source:'Steak King Premium Trio + Wagyu Full Blood Mince 1kg + Whole Norwegian Salmon Fillet', clone:'Bundle: The Weeknight Box', price:'$749', compare:'$1,074', cap:'no cap needed', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-17': {
         title:'Twenty Only: M6-7 Striploin', mech:'Buy 1, Get 2nd 50% · Capped', tag:'proven',
@@ -475,7 +482,7 @@ const PLAN = {
         price:'2kg for $897', vs:'Chilled Wagyu M6-7 Striploin · $449/kg vs $598/kg', margin:'32% margin',
         lines:[['Stock','49 units · <strong>hard cap 20 pairs, published on the PDP.</strong>']],
         why:'July\'s scarcity was fiction — we topped stock up mid-day and left the page live overnight. This one is genuinely limited, so we say the number out loud: "20 available." A real cap on a Monday base is the cleanest read on whether stated scarcity moves anything, and M6-7 is a grade up from anything we have dealt so far.',
-        build:{source:'Chilled Wagyu M6-7 Striploin 1kg', clone:'B1G2nd-50%: Wagyu M6-7 Striploin — 20 only', price:'$897', compare:'$1,196', cap:'20 pairs — state it on the PDP', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"Buy one kilo of Wagyu M6-7 striploin and the second is half price. Two kilos for $897, or $449 a kilo against $598. M6-7 is a clear step up from M4-5: more marbling through the muscle, and it renders to a texture most people end up calling buttery. Cook it hotter and shorter than instinct says. Twenty sets only. When they are gone the deal is over, clock or no clock.", source:'Chilled Wagyu M6-7 Striploin 1kg', clone:'B1G2nd-50%: Wagyu M6-7 Striploin — 20 only', price:'$897', compare:'$1,196', cap:'20 pairs — state it on the PDP', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-18': {
         title:'Three Kilos of Wagyu', mech:'Quantity Flash · Recycle', tag:'proven',
@@ -483,7 +490,7 @@ const PLAN = {
         price:'3kg for $899', vs:'Chilled Wagyu M3-4 Ribeye · $300/kg · second run, 12 days on', margin:'30% margin',
         lines:[['Stock','4,579 units · cap 80.']],
         why:'The interval is the experiment. Twelve days is long enough that it does not read as the same deal and short enough to tell us whether a recycled offer decays. If the second run holds most of the first, a 25-day-a-month programme only needs about eight strong offers on rotation instead of twenty-one new ones — the difference between sustainable and a treadmill.',
-        build:{source:'Chilled Wagyu M3-4 Ribeye 1kg', clone:'Quantity Flash: Wagyu M3-4 Ribeye 3 × 1kg', price:'$899', compare:'$1,194', cap:'80 units', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"Running again today: three kilos of Wagyu M3-4 ribeye for $899, or $300 a kilo against $398. Enough marbling to baste itself as it cooks, without one steak turning into the whole meal. Sold as 3 x 1kg. Eighty sets, today only.", source:'Chilled Wagyu M3-4 Ribeye 1kg', clone:'Quantity Flash: Wagyu M3-4 Ribeye 3 × 1kg', price:'$899', compare:'$1,194', cap:'80 units', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-19': {
         title:'The Low & Slow Box', mech:'Bundle Box · Capped',
@@ -491,7 +498,7 @@ const PLAN = {
         price:'$849', vs:'Wagyu diced beef + M9+ beef cheeks + lamb shanks 2.2kg · $1,321 apart · 36% off', margin:'45% margin',
         lines:[['Stock','capped at <strong>28 boxes</strong> by the beef cheeks.']],
         why:'Three braising cuts that will never sell themselves in August heat, bundled so the box does the persuading. The 28-unit ceiling is real, which makes it the second honest scarcity read of the month.',
-        build:{source:'Frozen Wagyu Diced Beef 1kg + Chilled Wagyu M9+ Beef Cheeks 1kg + Lamb Shanks 2.2kg', clone:'Bundle: The Low & Slow Box — 28 only', price:'$849', compare:'$1,321', cap:'28 boxes — hard ceiling', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"Three braising cuts in one box for $849, against $1,321 apart. A kilo of wagyu diced beef, a kilo of Wagyu M9+ beef cheeks and 2.2kg of lamb shanks. These are the cuts that reward being left alone: cheeks for about four hours until they collapse, shanks until the meat gives up the bone, diced beef for anything with a lid on it. Twenty-eight boxes only, limited by the cheeks.", source:'Frozen Wagyu Diced Beef 1kg + Chilled Wagyu M9+ Beef Cheeks 1kg + Lamb Shanks 2.2kg', clone:'Bundle: The Low & Slow Box — 28 only', price:'$849', compare:'$1,321', cap:'28 boxes — hard ceiling', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-20': {
         title:'The Organic Double, Again', mech:'Buy 1, Get 2nd 50% · Recycle', tag:'proven',
@@ -499,7 +506,7 @@ const PLAN = {
         price:'2kg for $735', vs:'Organic Grass Fed Angus Striploin · $368/kg · + free steak knives', margin:'60% margin',
         lines:[['Stock','824 units · cap 100 pairs · email carries the first <strong>"tomorrow works differently"</strong> tease.']],
         why:'The day before a new mechanic should be a known quantity, not another variable. This is the highest-margin repeatable deal we have, so it holds the floor while the copy does the setting-up: tomorrow the price moves, and it only moves one way.',
-        build:{source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'B1G2nd-50%: Organic Angus Striploin', price:'$735', compare:'$980', cap:'100 pairs', extras:'Free steak knives', send:'Engaged segment 09:00 + site + WhatsApp — include ladder tease'}
+        build:{desc:"Running again: buy one kilo of certified organic grass-fed Angus striploin and the second is half price. Two kilos for $735, or $368 a kilo against $490. Leaner and beefier than grain-fed, so keep the pan hot and the cook short. Free steak knives. One hundred sets, today only.", source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'B1G2nd-50%: Organic Angus Striploin', price:'$735', compare:'$980', cap:'100 pairs', extras:'Free steak knives', send:'Engaged segment 09:00 + site + WhatsApp — include ladder tease'}
       },
       '2026-08-21': {
         title:'Beat the Clock, or Pay the Next Tier', mech:'Beat the Deal · NEW MECHANIC', tag:'new', ladder:true,
@@ -511,7 +518,7 @@ const PLAN = {
         ],
         flag:'Both the T-Bone parent listing and the July deal clone are currently DRAFT in Shopify. One of them needs publishing before this can run.',
         why:'The T-Bone at $799 did 5.2× its SKU norm — the best deal-SKU day on record. Running the ladder on that exact SKU at that exact opening price means anything different on the day is the mechanic and nothing else. It also fixes the one real behavioural problem in the July data: three of four bundles sold within 100 minutes of the send and demand died by 13:00. A rising price gives the afternoon and evening a reason to exist — and every hour of hesitation makes the day more profitable, not less.',
-        build:{source:'Chilled Black Angus T-Bone / Porterhouse 1kg (currently DRAFT)', clone:'Beat the Deal: T-Bone 3kg — price rises through the day', price:'$799 → $899 → $999', compare:'$1,908', cap:'Tier 1 capped at 20 units, then auto-advance', extras:'—', send:'Full list 09:00 + WhatsApp at 12:00 step + LMT 16:30'}
+        build:{desc:"The price on this one goes up through the day. Three kilos of Black Angus T-bone and porterhouse: $799 for the first twenty sets or until midday, whichever comes first. From midday it is $899. From 5pm it is $999. It does not come back down, and there is no discount at the end. A T-bone gives you a strip steak on one side of the bone and a fillet on the other, which is two cuts in one steak. Buy early or pay the next tier.", source:'Chilled Black Angus T-Bone / Porterhouse 1kg (currently DRAFT)', clone:'Beat the Deal: T-Bone 3kg — price rises through the day', price:'$799 → $899 → $999', compare:'$1,908', cap:'Tier 1 capped at 20 units, then auto-advance', extras:'—', send:'Full list 09:00 + WhatsApp at 12:00 step + LMT 16:30'}
       },
       '2026-08-22': {
         title:'Picanhas, On Your Table', mech:'Price Drop · Recycle',
@@ -519,7 +526,7 @@ const PLAN = {
         price:'$899', vs:'Whole M6-7 Wagyu Rump Cap 2.1kg · second run, 15 days on', margin:'61% margin',
         lines:[['Stock','77 less whatever the 7 Aug run took — <strong>confirm before committing</strong>; under 30, swap in the Lamb Rack Flash.']],
         why:'The strongest story in the catalogue on the best story-telling day of the week. It also gives the picanha its second read at the same interval as the wagyu ribeye, so by month end we have two independent tests of how fast a recycled deal decays rather than one.',
-        build:{source:"Picanha's Chilled Whole M6-7 Wagyu Rump Cap 2.1kg", clone:'Price Drop: Whole M6-7 Picanha', price:'$899', compare:'$1,099', cap:'confirm remaining stock first', extras:'Chimichurri included', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"Running again: Picanha's whole M6-7 wagyu rump cap, 2.1kg, for $899 instead of $1,099, chimichurri in the box. A thick fat cap on top bastes the meat the whole time it cooks. Score the fat, salt it heavily, start it fat-side down, then carve thick across the grain. Today only, and stock is tighter than last time.", source:"Picanha's Chilled Whole M6-7 Wagyu Rump Cap 2.1kg", clone:'Price Drop: Whole M6-7 Picanha', price:'$899', compare:'$1,099', cap:'confirm remaining stock first', extras:'Chimichurri included', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-23': {
         title:'The Taster Box', mech:'Bundle Box · Acquisition',
@@ -527,7 +534,7 @@ const PLAN = {
         price:'~$749', vs:'The new mixed-grade taster box — or recycle The Duck Box at $749', margin:'73% on the fallback',
         lines:[['Dependency','the mixed-grade taster box is on David and Jay\'s board from the 14 July internal. <strong>Confirm by Fri 15 Aug</strong> or default to the duck.']],
         why:'The Steak Box pattern runs 70% new customers at 3.06–3.43 ROAS, the best acquisition lever on the account. Putting the new taster box in the daily slot two days before the Emporium means the sale lands on a slightly bigger, slightly fresher list.',
-        build:{source:'New mixed-grade taster box (TBC) — fallback: The Duck Box', clone:'Bundle: The Taster Box', price:'~$749', compare:'TBC', cap:'TBC', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
+        build:{desc:"[CONFIRM PRODUCT BEFORE BUILD] A mixed-grade taster box built to do one job: let you taste the difference between the grades side by side, in one order, without committing to a full kilo of each. Cook them the same way on the same night and the marbling does the explaining. Today only.", source:'New mixed-grade taster box (TBC) — fallback: The Duck Box', clone:'Bundle: The Taster Box', price:'~$749', compare:'TBC', cap:'TBC', extras:'—', send:'Engaged segment 09:00 + site + WhatsApp'}
       },
       '2026-08-24': {
         title:'The Last Deal Before the Emporium', mech:'Beat the Deal · Run 2', tag:'new', ladder:true,
@@ -538,7 +545,7 @@ const PLAN = {
           ['Run','<strong>Full-list send</strong> + <strong>LMT at 7pm</strong>, framed as the last deal before Johnny goes quiet for the Emporium week.']
         ],
         why:'Friday tells us whether the ladder works on a proven SKU; this tells us whether it transfers, which is the only version of the answer worth having. It lands on the biggest BAU day of the month at 58–67% margin, so there is no downside to the opening tier — and a day of manufactured urgency two days out leaves the list warm going into the sale, not spent.',
-        build:{source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'Beat the Deal: Organic Angus Striploin 2kg', price:'$699 → $799 → $899', compare:'$980', cap:'Tier 1 capped at 25 units, then auto-advance', extras:'—', send:'Full list 09:00 + WhatsApp at 12:00 step + LMT 19:00'}
+        build:{desc:"Same rules as Friday: the price climbs through the day. Two kilos of certified organic grass-fed Angus striploin. $699 for the first twenty-five sets or until midday. $799 from midday. $899 from 5pm. It does not come back down. Certified organic, grass-fed, and the leanest striploin we carry, so keep the pan hot and the cook short. This is the last deal before the Meat Emporium opens, so it is the last one for a while.", source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'Beat the Deal: Organic Angus Striploin 2kg', price:'$699 → $799 → $899', compare:'$980', cap:'Tier 1 capped at 25 units, then auto-advance', extras:'—', send:'Full list 09:00 + WhatsApp at 12:00 step + LMT 19:00'}
       }
 
     }
@@ -735,8 +742,18 @@ function renderFocus(){
           <div><b>Allocation</b><span>${b.cap||'—'}</span></div>
           <div><b>Free gift</b><span>${b.extras||'—'}</span></div>
         </div>
+        ${b.desc?`<div class="pdp${/^\[CONFIRM/.test(b.desc)?' tbc':''}">
+          <div class="pdp-h"><b>Product description</b><span>paste straight into the cloned PDP</span>
+            <button class="abtn" id="descBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="1"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></svg>
+              Copy
+            </button><span class="copied" id="descCopied">Copied</span>
+          </div>
+          <p>${b.desc.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</p>
+        </div>`:''}
         <ol class="steps">
           <li>Clone the source SKU, rename to the deal title, set price and compare-at above.</li>
+          <li>Paste the product description above into the PDP body.</li>
           <li>Set the allocation and <strong>do not top it up</strong> during the day.</li>
           <li>Add to the <em>Johnny's Daily Deals</em> collection, set the 24h countdown, publish at 09:00 HKT.</li>
           <li>Check every link — site hero, nav, email, WhatsApp — routes to the deal PDP, not the parent listing.</li>
@@ -747,6 +764,13 @@ function renderFocus(){
       </div>
     </div>
   </div>`;
+
+  const dbtn=document.getElementById('descBtn');
+  if(dbtn) dbtn.addEventListener('click',()=>{
+    navigator.clipboard.writeText(b.desc||'').then(()=>{
+      const c=document.getElementById('descCopied');c.classList.add('on');setTimeout(()=>c.classList.remove('on'),1800);
+    });
+  });
 
   const btn=document.getElementById('copyBtn');
   if(btn) btn.addEventListener('click',()=>{
@@ -760,13 +784,16 @@ function renderFocus(){
       `Allocation:   ${b.cap||'-'}`,
       `Free gift:    ${b.extras||'-'}`,
       `Send plan:    ${b.send||'-'}`,'',
+      'PRODUCT DESCRIPTION (paste into the PDP):',
+      (b.desc||'-'),'',
       'Build steps:',
       '1. Clone source SKU, rename, set price + compare-at.',
-      '2. Set allocation. Do not top up during the day.',
-      "3. Add to Johnny's Daily Deals, 24h countdown, publish 09:00 HKT.",
-      '4. Check every link routes to the deal PDP, not the parent listing.',
-      '5. Surface the add-on rail so one item clears $1,000.',
-      '6. Unpublish at midnight.'
+      '2. Paste the product description above into the PDP body.',
+      '3. Set allocation. Do not top up during the day.',
+      "4. Add to Johnny's Daily Deals, 24h countdown, publish 09:00 HKT.",
+      '5. Check every link routes to the deal PDP, not the parent listing.',
+      '6. Surface the add-on rail so one item clears $1,000.',
+      '7. Unpublish at midnight.'
     ].join('\n');
     navigator.clipboard.writeText(txt).then(()=>{
       const c=document.getElementById('copied');c.classList.add('on');setTimeout(()=>c.classList.remove('on'),1800);
