@@ -176,6 +176,24 @@ h2 em{font-size:41px}
 .pil{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:0 22px 20px}
 .pil div{background:var(--linen-deep);border-radius:7px;padding:12px 4px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--onyx);font-weight:600}
 
+
+/* the loop */
+.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.lp{background:var(--linen-deep);border-radius:12px;padding:24px 20px;text-align:left;position:relative}
+.lp .ln{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--scarlet);line-height:1}
+.lp .lt{font-size:16px;font-weight:600;margin:10px 0 7px;letter-spacing:-.01em}
+.lp .lb{font-size:13px;color:var(--slate);line-height:1.45}
+.lp.key{background:var(--limestone)}
+
+.tbl{width:100%;border-collapse:separate;border-spacing:0 8px;font-size:14px;text-align:left}
+.tbl th{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cacao);font-weight:600;padding:0 18px 6px}
+.tbl td{padding:16px 18px;background:var(--linen-deep);vertical-align:top;color:#3A3733;line-height:1.45}
+.tbl tr td:first-child{border-radius:10px 0 0 10px;font-weight:600;color:var(--onyx)}
+.tbl tr td:last-child{border-radius:0 10px 10px 0}
+.tbl td.rec{background:var(--limestone)}
+.tbl .tag{display:inline-block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  background:var(--onyx);color:var(--linen);border-radius:20px;padding:4px 10px;margin-bottom:8px}
+
 /* notes */
 .notes{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 @media(max-width:900px){.notes,.ladder,.journey{grid-template-columns:1fr}}
@@ -193,7 +211,7 @@ footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate
   <div class="wrap">
     <div class="lock"><img src="img/bc-logo.png" alt="BON CHARGE"><span>&times;&nbsp;&nbsp;TETHRD</span></div>
     <h1>The <em>Protocol</em></h1>
-    <div class="oneline">Buy the kit, use it three times a week, earn your way to a reward. It all runs on email. No landing page, no app.</div>
+    <div class="oneline">Buy the kit, use it three times a week, earn your way to a bigger code. It all runs on email. No landing page, no app.</div>
     <div class="chips">
       <div class="chip"><b>20</b> emails</div>
       <div class="chip"><b>3</b> per week</div>
@@ -204,6 +222,67 @@ footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate
   </div>
 </header>
 
+
+<section>
+  <div class="wrap">
+    <h2>How it actually <em>works</em></h2>
+    <div class="sub2">Two fair questions: where does the button take them, and how does a reward balance exist without an app. Neither needs anything built by BON CHARGE.</div>
+
+    <div class="loop">
+      <div class="lp"><div class="ln">01</div><div class="lt">The email arrives</div><div class="lb">Monday, Wednesday, Friday. It tells them exactly what to do today and teaches them one thing.</div></div>
+      <div class="lp"><div class="ln">02</div><div class="lt">They do the session</div><div class="lb">Ten minutes. The email is the only prompt they get, which beats a page they have to remember to visit.</div></div>
+      <div class="lp key"><div class="ln">03</div><div class="lt">They tap the button</div><div class="lb">The tap is the check-in. Klaviyo records it as a click on that specific message. Nothing else has to happen for it to count.</div></div>
+      <div class="lp"><div class="ln">04</div><div class="lt">They get told</div><div class="lb">Session logged, here is where you are, here is what opens next. Without this step the track is invisible and the whole thing stops working.</div></div>
+    </div>
+
+    <h3 style="font-size:22px;margin:44px 0 6px;text-align:center">Where the button <em>lands</em></h3>
+    <div class="sub2" style="margin-bottom:22px">The honest answer is that a check-in needs somewhere to say "got it". The question is who builds it.</div>
+
+    <table class="tbl">
+      <thead><tr><th style="width:22%"></th><th style="width:39%">Nothing gets built</th><th style="width:39%">One page, hosted by us</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Button goes to</td>
+          <td>An article or product page BON CHARGE already has. That session's topic.</td>
+          <td class="rec"><span class="tag">Recommended</span><br>A single confirmation screen. Their session count, their track, their reward, a way to shop.</td>
+        </tr>
+        <tr>
+          <td>They find out it worked</td>
+          <td>In the next email, two days later.</td>
+          <td class="rec">Instantly, on screen.</td>
+        </tr>
+        <tr>
+          <td>BON CHARGE effort</td>
+          <td>None.</td>
+          <td class="rec">None. We build it, we host it, they never touch it. This is not the landing page project that got knocked back.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="notes" style="margin-top:34px">
+      <div class="nb">
+        <h3>Counting sessions, with <em>no app</em></h3>
+        <p style="font-size:14px;color:#3A3733;line-height:1.55;margin:0 0 12px">Klaviyo cannot add one to a number. It does not need to. There are only three moments where the count matters.</p>
+        <ul>
+          <li>At sessions 7, 14 and 20 a conditional split asks whether the person has clicked at least N protocol emails.</li>
+          <li>Clicked at least 5 of 7 goes down the unlocked path. Everyone else gets the version that says how many they are short.</li>
+          <li>That is a native Klaviyo split. No developer, no database, no app.</li>
+        </ul>
+      </div>
+      <div class="nb">
+        <h3>The reward, with <em>no app</em></h3>
+        <p style="font-size:14px;color:#3A3733;line-height:1.55;margin:0 0 12px">Shopify has no store credit we can rely on here, so the reward is a code. Klaviyo generates unique ones natively.</p>
+        <ul>
+          <li>Session 7 issues a unique $15 code. Session 14 issues $35. Session 20 issues $60.</li>
+          <li>Each new code replaces the one before it. Only one ever applies, so nothing stacks.</li>
+          <li>The code sits in the dashed block BON CHARGE already use for dynamic codes, so this is an approved component doing its normal job.</li>
+          <li>If store credit gets turned on later, the same flow points at it and not a word of copy changes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <h2>The <em>journey</em></h2>
@@ -211,10 +290,10 @@ footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate
     <div class="journey">
       <div class="j"><div class="jd">Day 0</div><div class="jt">Kit arrives</div><div class="jn">Two days to unbox and get set up.</div></div>
       <div class="j"><div class="jd">Day 2 &middot; Session 1</div><div class="jt">First session</div><div class="jn">Ten minutes. One button to log it. The track shows up, mostly locked.</div></div>
-      <div class="j mark"><div class="jd">Day 16 &middot; Session 7</div><div class="jt">First unlock</div><div class="jn">$15 credit lands. Proves the track is real.</div></div>
+      <div class="j mark"><div class="jd">Day 16 &middot; Session 7</div><div class="jt">First unlock</div><div class="jn">First code lands. Proves the track is real.</div></div>
       <div class="j"><div class="jd">Day 28 &middot; Session 12</div><div class="jt">Results check</div><div class="jn">Week four. This is where people start noticing something.</div></div>
-      <div class="j mark"><div class="jd">Day 32 &middot; Session 14</div><div class="jt">Second unlock</div><div class="jn">$35 total. Product direction gets named.</div></div>
-      <div class="j end"><div class="jd">Day 45 &middot; Session 20</div><div class="jt">Gift reveal</div><div class="jn">$60 to spend, and the gift finally opens.</div></div>
+      <div class="j mark"><div class="jd">Day 32 &middot; Session 14</div><div class="jt">Second unlock</div><div class="jn">Steps up to $35. Product direction gets named.</div></div>
+      <div class="j end"><div class="jd">Day 45 &middot; Session 20</div><div class="jt">Gift reveal</div><div class="jn">$60 off, and the gift finally opens.</div></div>
     </div>
   </div>
 </section>
@@ -222,11 +301,11 @@ footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate
 <section>
   <div class="wrap">
     <h2>What they are <em>chasing</em></h2>
-    <div class="sub2">Credit lands at three points. Nobody sees the gift until day 45.</div>
+    <div class="sub2">The reward steps up at three points. Nobody sees the gift until day 45.</div>
     <div class="ladder">
-      <div class="rung"><div class="rs">Session 07</div><div class="rv">$15</div><div class="rn">First credit. Needs 5 of 7 sessions logged.</div></div>
-      <div class="rung mark"><div class="rs">Session 14</div><div class="rv">$35</div><div class="rn">Running total. Needs 10 of 14.</div></div>
-      <div class="rung mark"><div class="rs">Session 20</div><div class="rv">$60</div><div class="rn">Spend it on anything. Needs 15 of 20.</div></div>
+      <div class="rung"><div class="rs">Session 07</div><div class="rv">$15</div><div class="rn">First code. Needs 5 of 7 sessions logged.</div></div>
+      <div class="rung mark"><div class="rs">Session 14</div><div class="rv">$35</div><div class="rn">Replaces the $15. Needs 10 of 14.</div></div>
+      <div class="rung mark"><div class="rs">Session 20</div><div class="rv">$60</div><div class="rn">Final code, plus the gift. Needs 15 of 20.</div></div>
       <div class="rung gift"><div class="rs">The reveal</div><div class="rv">?</div><div class="rn">Stays shut until they finish.</div></div>
     </div>
   </div>
@@ -269,9 +348,9 @@ footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate
             </div>
           </div>
           <div class="dyn">
-            <div class="dk">Credit banked</div>
-            <div class="dv">$0.00<small>live</small></div>
-            <div class="dn">Your first $15 unlocks at session 07</div>
+            <div class="dk">Unlocked so far</div>
+            <div class="dv">$0</div>
+            <div class="dn">Your first $15 opens at session 07</div>
           </div>
           <div class="trk"><div class="tl">Your reward track</div><div class="tn"><div class="n now"><div class="k">S07</div><div class="v">$15</div></div><div class="n lock"><div class="k">S14</div><div class="v">$35</div></div><div class="n lock"><div class="k">S20</div><div class="v">$60</div></div><div class="n gift"><div class="k">Gift</div><div class="v">?</div></div></div><div class="tnote">Six more sessions to your first $15</div></div>
           <div class="strip">Elite Athletes Worldwide <i></i> <img src="img/fulham.png" alt=""> <i></i> Scientific Advisory Board</div>
@@ -292,12 +371,12 @@ footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate
           <div class="hz">
             <div class="big">$15 off</div>
             <div class="h2l">Two weeks in, and it's <em class="ink">Yours</em></div>
-            <p>It's on your account now. No code to find, nothing to remember.</p>
+            <p>Your code is below. It gets bigger at session 14, so there is no rush to spend it.</p>
           </div>
           <div class="dyn">
-            <div class="dk">Credit banked</div>
-            <div class="dv">$15.00<small>live</small></div>
-            <div class="dn">Next $20 unlocks at session 14</div>
+            <div class="dk">$15 off, unlocked</div>
+            <div class="dv">USE CODE: {{ code }}<small>live</small></div>
+            <div class="dn">One code at a time. The next one replaces it at session 14</div>
           </div>
           <div class="btn">I'VE DONE SESSION 07 &rarr;</div>
           <img class="eduimg" src="img/hero-calm.jpg" alt="">
@@ -319,7 +398,7 @@ footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate
             <ol>
               <li>Same ten minutes, same distance.</li>
               <li>If you're stacking with skincare, <b>light first, serums after</b>.</li>
-              <li>Log it below so your credit keeps moving.</li>
+              <li>Log it below to keep the track moving.</li>
             </ol>
           </div>
           <div class="trk"><div class="tl">Your reward track</div><div class="tn"><div class="n on"><div class="k">S07</div><div class="v">$15</div></div><div class="n now"><div class="k">S14</div><div class="v">$35</div></div><div class="n lock"><div class="k">S20</div><div class="v">$60</div></div><div class="n gift"><div class="k">Gift</div><div class="v">?</div></div></div><div class="tnote">Seven more sessions to $35</div></div>
@@ -333,19 +412,19 @@ footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate
 
       <div class="slot"><div class="cap">Session 14 &middot; second unlock, direction named</div>
         <div class="em">
-          <div class="sj">BON CHARGE<b>$35 banked. One step left</b></div>
+          <div class="sj">BON CHARGE<b>$35 unlocked. One step left</b></div>
           <div class="tk"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5,700+ Reviews | Trusted by 400,000+ Customers</div>
           <div class="lg"><img src="img/bc-logo.png" alt="BON CHARGE"></div>
           <div class="nv">Skin &nbsp;&middot;&nbsp; Recovery &nbsp;&middot;&nbsp; Sleep &nbsp;&middot;&nbsp; Hair</div>
           <div class="hz">
             <div class="big">$35 off</div>
             <div class="h2l">Worth thinking about <em class="ink">What's Next</em></div>
-            <p>Your credit works on anything. This is where most people go after the kit.</p>
+            <p>Your code works on anything. This is where most people go after the kit.</p>
           </div>
           <div class="dyn">
-            <div class="dk">Credit banked</div>
-            <div class="dv">$35.00<small>live</small></div>
-            <div class="dn">Six sessions from the reveal</div>
+            <div class="dk">$35 off, unlocked</div>
+            <div class="dv">USE CODE: {{ code }}<small>live</small></div>
+            <div class="dn">This replaces your $15 code. Six sessions from the reveal</div>
           </div>
           <div class="btn">I'VE DONE SESSION 14 &rarr;</div>
           <div class="edu"><div class="ek">Learn</div>
@@ -362,7 +441,7 @@ footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate
             <ol>
               <li>Ten minutes as always.</li>
               <li>Try it <b>an hour before bed</b> this week and see if you sleep differently.</li>
-              <li>Log it to move your track.</li>
+              <li>Log it to move the track.</li>
             </ol>
           </div>
           <div class="trk"><div class="tl">Your reward track</div><div class="tn"><div class="n on"><div class="k">S07</div><div class="v">$15</div></div><div class="n on"><div class="k">S14</div><div class="v">$35</div></div><div class="n now"><div class="k">S20</div><div class="v">$60</div></div><div class="n gift"><div class="k">Gift</div><div class="v">?</div></div></div><div class="tnote">Finish the twenty and the gift opens</div></div>
@@ -394,14 +473,14 @@ footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate
           <div class="hz">
             <div class="big">$60 off</div>
             <div class="h2l">Forty-five days is long enough to <em class="ink">Know</em></div>
-            <p>Twenty sessions done. Pick a direction, the credit is already on.</p>
+            <p>Twenty sessions done. Pick a direction, your code does the rest.</p>
           </div>
           <div class="dyn">
-            <div class="dk">Ready to spend</div>
-            <div class="dv">$60.00<small>live</small></div>
-            <div class="dn">Applies across the full range</div>
+            <div class="dk">$60 off, unlocked</div>
+            <div class="dv">USE CODE: {{ code }}<small>live</small></div>
+            <div class="dn">Your final code. Works across the full range</div>
           </div>
-          <div class="btn">SHOP WITH YOUR CREDIT &rarr;</div>
+          <div class="btn">SHOP WITH YOUR CODE &rarr;</div>
           <div class="edu"><div class="ek">Where to go next</div>
             <h4>You have done the hard part <em>already</em></h4>
             <p>Forty-five days tells you more about what you want than a quiz will. Most people finish knowing which of the four they care about. Start there.</p>
@@ -431,14 +510,14 @@ footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate
           <li>The click is the check-in. One button per email, no page to build.</li>
           <li>Everyone gets all 20 emails whether they log a session or not. Only the track responds.</li>
           <li>Three a week is BON CHARGE's own published guidance. We didn't pick the number.</li>
-          <li>The credit figure is the only live text. It sits in the same dashed block already approved for discount codes.</li>
+          <li>The code is the only live text, in the dashed block BON CHARGE already use for exactly that.</li>
         </ul>
       </div>
       <div class="nb flag">
         <h3>Needs a <em>decision</em></h3>
         <ul>
           <li>Which gift, and does it clear margin. The bulb is a placeholder.</li>
-          <li>Store credit needs an app. Shopify has no native credit.</li>
+          <li>Sign-off that a rewards ladder does not clash with sale codes.</li>
           <li>Kit contents, price and go-live still open.</li>
           <li>"Red Light Starter Kit" is already a live $425 SKU, so that name is gone.</li>
         </ul>
