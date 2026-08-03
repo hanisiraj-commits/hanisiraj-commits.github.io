@@ -1,0 +1,450 @@
+<meta charset="utf-8">
+<title>BON CHARGE &middot; The Protocol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --onyx:#202020; --quartz:#FFFFFF; --linen:#FBF7F2; --linen-deep:#F5EEE7;
+  --limestone:#EBDBCB; --scarlet:#DE0526; --cacao:#7A5C4D; --sienna:#B39279; --slate:#6C6C6C;
+  --sans:"Instrument Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--linen);color:var(--onyx);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1600px;margin:0 auto;padding:0 44px}
+h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:-.015em}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;color:var(--scarlet)}
+em.ink{color:var(--onyx)}
+.eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--cacao);font-weight:600;margin-bottom:16px}
+
+/* ---- doc header ---- */
+header{padding:56px 0 40px;text-align:center}
+header .lock{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:30px}
+header .lock img{height:26px}
+header .lock span{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--slate)}
+h1{font-size:66px;line-height:1.03;letter-spacing:-.03em}
+h1 em{font-size:70px}
+.oneline{font-size:19px;color:var(--slate);margin:16px auto 0;max-width:58ch;font-weight:400}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px;justify-content:center}
+.chip{background:var(--linen-deep);border-radius:22px;padding:8px 18px;font-size:13px;color:var(--onyx)}
+.chip b{font-weight:600}
+
+section{padding:34px 0}
+h2{font-size:38px;text-align:center;letter-spacing:-.025em;margin-bottom:8px}
+h2 em{font-size:41px}
+.sub2{text-align:center;color:var(--slate);font-size:16px;margin:0 auto 32px;max-width:60ch}
+
+/* ---- journey ---- */
+.journey{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.j{background:var(--linen-deep);border-radius:12px;padding:22px 20px;text-align:center}
+.j .jd{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cacao);margin-bottom:10px;font-weight:600}
+.j .jt{font-size:17px;font-weight:600;line-height:1.2;margin-bottom:7px;letter-spacing:-.01em}
+.j .jn{font-size:13px;color:var(--slate);line-height:1.45}
+.j.mark{background:var(--limestone)}
+.j.end{background:var(--onyx);color:var(--linen)}
+.j.end .jd{color:var(--scarlet)}
+.j.end .jn{color:rgba(251,247,242,.62)}
+
+/* ---- ladder ---- */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.rung{background:var(--linen-deep);border-radius:12px;padding:30px 26px;text-align:center}
+.rung .rs{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cacao);font-weight:600}
+.rung .rv{font-family:var(--serif);font-style:italic;font-size:52px;line-height:1.05;margin:10px 0 8px;letter-spacing:0}
+.rung .rn{font-size:13px;color:var(--slate);line-height:1.45}
+.rung.mark{background:var(--limestone)}
+.rung.gift{background:var(--onyx)}
+.rung.gift .rs{color:var(--scarlet)}
+.rung.gift .rv{color:var(--scarlet)}
+.rung.gift .rn{color:rgba(251,247,242,.6)}
+
+/* =================== EMAILS =================== */
+.emails{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:26px}
+.slot .cap{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cacao);font-weight:600;margin-bottom:10px;text-align:center}
+.em{background:var(--linen);border-radius:8px;overflow:hidden;box-shadow:0 3px 26px rgba(32,32,32,.08);text-align:center}
+.em .sj{background:var(--quartz);padding:12px 15px;font-size:11px;color:var(--slate);text-align:left}
+.em .sj b{display:block;color:var(--onyx);font-size:13px;margin-top:2px;font-weight:600}
+
+.tk{background:var(--limestone);padding:8px;font-size:8.5px;letter-spacing:.04em;color:#4A4038}
+.tk .st{color:#E8A33D;letter-spacing:.5px}
+.lg{padding:20px 0 6px}
+.lg img{height:22px}
+.nv{padding:0 0 4px;font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--slate)}
+
+.hz{padding:24px 26px 8px}
+.hz .big{font-family:var(--serif);font-style:italic;color:var(--scarlet);font-size:44px;line-height:1;letter-spacing:0}
+.hz .h2l{font-size:21px;font-weight:600;line-height:1.2;margin-top:10px;letter-spacing:-.015em}
+.hz .h2l em{font-size:23px}
+.hz p{font-size:12.5px;color:var(--slate);margin:9px 0 0;line-height:1.5}
+
+.dyn{margin:16px 26px 0;border:1.5px dashed var(--scarlet);border-radius:7px;padding:13px 10px}
+.dyn .dk{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--cacao);font-weight:600}
+.dyn .dv{font-size:26px;font-weight:600;letter-spacing:-.02em;margin-top:3px}
+.dyn .dv small{font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--quartz);background:var(--onyx);border-radius:3px;padding:2px 6px;vertical-align:middle;margin-left:7px}
+.dyn .dn{font-size:11px;color:var(--slate);margin-top:4px}
+
+.btn{display:block;margin:16px 26px 22px;background:var(--onyx);color:var(--linen);border-radius:100px;
+  padding:15px;font-size:11px;letter-spacing:.1em;font-weight:600}
+.btn.ghost{background:transparent;color:var(--onyx);padding:9px;font-size:10px;margin-top:-12px}
+
+.hero{display:block;width:100%;height:172px;object-fit:cover}
+
+.strip{background:var(--linen);padding:11px 8px;font-size:7.5px;letter-spacing:.03em;color:#4A4038;
+  display:flex;align-items:center;justify-content:center;gap:9px}
+.strip img{height:15px}
+.strip i{width:1px;height:13px;background:var(--limestone);display:inline-block}
+
+.ctr{background:var(--onyx);color:var(--linen);padding:14px 20px;display:flex;justify-content:space-between;align-items:flex-end;text-align:left}
+.ctr .s{font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.5}
+.ctr .b{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1;margin-top:4px;letter-spacing:0}
+.ctr .r{font-size:8px;letter-spacing:.16em;text-transform:uppercase;opacity:.5;text-align:right;line-height:1.6}
+.pg{height:2px;background:rgba(251,247,242,.2);margin-top:10px;width:100%}
+.pg i{display:block;height:100%;background:var(--scarlet)}
+
+.stat{padding:26px 26px 22px}
+.stat .sv{font-family:var(--serif);font-style:italic;font-size:48px;line-height:1;letter-spacing:0}
+.stat .sd{font-size:12.5px;color:var(--slate);margin-top:8px;line-height:1.45}
+
+/* reward track */
+.trk{background:var(--linen-deep);padding:20px 18px}
+.trk .tl{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cacao);font-weight:600;margin-bottom:13px}
+.tn{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.n{border-radius:7px;padding:11px 3px;background:var(--linen)}
+.n .k{font-size:7.5px;letter-spacing:.12em;color:var(--slate);text-transform:uppercase}
+.n .v{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.1;margin-top:2px}
+.n.on{background:var(--limestone)}
+.n.on .k{color:var(--cacao)}
+.n.now{background:var(--onyx)}
+.n.now .k{color:var(--scarlet)}
+.n.now .v{color:var(--linen)}
+.n.lock{opacity:.38}
+.n.gift{background:var(--onyx)}
+.n.gift .k{color:var(--scarlet)}
+.n.gift .v{color:var(--scarlet);font-size:22px}
+.n.gift.rev{background:var(--scarlet)}
+.n.gift.rev .k{color:rgba(255,255,255,.82)}
+.n.gift.rev .v{color:#fff;font-family:var(--sans);font-style:normal;font-size:15px}
+.tnote{font-size:10px;color:var(--slate);margin-top:12px}
+
+.pg2{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 22px 8px}
+.pc{background:var(--linen-deep);border-radius:9px;padding:14px 10px 15px}
+.pc img{width:100%;height:70px;object-fit:contain;mix-blend-mode:multiply;display:block;margin-bottom:8px}
+.pc .pe{font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--cacao);font-weight:600}
+.pc .pn{font-size:11px;font-weight:600;margin-top:4px;line-height:1.25}
+.pc .ps{color:#E8A33D;font-size:8px;letter-spacing:.6px;margin-top:4px}
+
+.rv{background:var(--onyx);padding:26px 22px 24px}
+.rv .rk{font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--scarlet);font-weight:600;margin-bottom:14px}
+.rv img{width:100%;height:124px;object-fit:contain;display:block;margin-bottom:14px}
+.rv .rt{font-size:23px;font-weight:600;color:var(--linen);letter-spacing:-.02em;line-height:1.15}
+.rv .rt em{font-size:25px}
+.rv .rs2{font-size:12px;color:rgba(251,247,242,.55);margin-top:6px}
+
+.ft{background:var(--onyx);color:rgba(251,247,242,.4);padding:15px;font-size:8px;letter-spacing:.16em;text-transform:uppercase}
+
+
+/* protocol steps */
+.proto{background:var(--limestone);padding:22px 24px;text-align:left}
+.proto .pk{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cacao);font-weight:600;margin-bottom:14px;text-align:center}
+.proto ol{list-style:none;padding:0;margin:0;counter-reset:st}
+.proto li{counter-increment:st;position:relative;padding-left:32px;margin-bottom:11px;font-size:12.5px;color:#3A3733;line-height:1.45}
+.proto li:before{content:counter(st);position:absolute;left:0;top:0;width:21px;height:21px;border-radius:50%;
+  background:var(--onyx);color:var(--linen);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--sans)}
+.proto li b{font-weight:600}
+
+/* education module */
+.edu{padding:26px 26px 22px}
+.edu .ek{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cacao);font-weight:600;margin-bottom:12px}
+.edu h4{font-size:20px;font-weight:600;letter-spacing:-.015em;line-height:1.18}
+.edu h4 em{font-size:22px}
+.edu p{font-size:12.5px;color:var(--slate);line-height:1.55;margin:10px 0 0;text-align:left}
+.edu .wave{display:flex;gap:8px;margin-top:16px}
+.edu .wv{flex:1;background:var(--linen-deep);border-radius:8px;padding:12px 8px}
+.edu .wv .wn{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1}
+.edu .wv .wt{font-size:9.5px;color:var(--slate);margin-top:5px;line-height:1.35}
+.eduimg{display:block;width:100%;height:132px;object-fit:cover}
+
+/* SAB quote */
+.sab{background:var(--linen-deep);padding:22px 24px;display:flex;gap:14px;align-items:center;text-align:left}
+.sab img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.sab .sk{font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--cacao);font-weight:600;margin-bottom:5px}
+.sab .sq{font-family:var(--serif);font-style:italic;font-size:14px;line-height:1.4;color:var(--onyx)}
+.sab .sn{font-size:10px;color:var(--slate);margin-top:5px}
+
+/* pillar row */
+.pil{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:0 22px 20px}
+.pil div{background:var(--linen-deep);border-radius:7px;padding:12px 4px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--onyx);font-weight:600}
+
+/* notes */
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:900px){.notes,.ladder,.journey{grid-template-columns:1fr}}
+.nb{background:var(--linen-deep);border-radius:12px;padding:28px 30px}
+.nb.flag{background:var(--limestone)}
+.nb h3{font-size:19px;margin-bottom:15px}
+ul{list-style:none;padding:0;margin:0}
+li{position:relative;padding-left:22px;margin-bottom:10px;font-size:14px;color:#3A3733;line-height:1.5}
+li:before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--scarlet)}
+.nb.ok li:before{background:#55B705}
+footer{padding:30px 0 54px;font-size:11px;letter-spacing:.06em;color:var(--slate);text-align:center}
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="lock"><img src="img/bc-logo.png" alt="BON CHARGE"><span>&times;&nbsp;&nbsp;TETHRD</span></div>
+    <h1>The <em>Protocol</em></h1>
+    <div class="oneline">Buy the kit, use it three times a week, earn your way to a reward. It all runs on email. No landing page, no app.</div>
+    <div class="chips">
+      <div class="chip"><b>20</b> emails</div>
+      <div class="chip"><b>3</b> per week</div>
+      <div class="chip"><b>45</b> days</div>
+      <div class="chip">Triggers on <b>kit delivered</b></div>
+      <div class="chip">Ends on <b>gift reveal</b></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>The <em>journey</em></h2>
+    <div class="sub2">Starts when the kit lands, not when it's ordered.</div>
+    <div class="journey">
+      <div class="j"><div class="jd">Day 0</div><div class="jt">Kit arrives</div><div class="jn">Two days to unbox and get set up.</div></div>
+      <div class="j"><div class="jd">Day 2 &middot; Session 1</div><div class="jt">First session</div><div class="jn">Ten minutes. One button to log it. The track shows up, mostly locked.</div></div>
+      <div class="j mark"><div class="jd">Day 16 &middot; Session 7</div><div class="jt">First unlock</div><div class="jn">$15 credit lands. Proves the track is real.</div></div>
+      <div class="j"><div class="jd">Day 28 &middot; Session 12</div><div class="jt">Results check</div><div class="jn">Week four. This is where people start noticing something.</div></div>
+      <div class="j mark"><div class="jd">Day 32 &middot; Session 14</div><div class="jt">Second unlock</div><div class="jn">$35 total. Product direction gets named.</div></div>
+      <div class="j end"><div class="jd">Day 45 &middot; Session 20</div><div class="jt">Gift reveal</div><div class="jn">$60 to spend, and the gift finally opens.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What they are <em>chasing</em></h2>
+    <div class="sub2">Credit lands at three points. Nobody sees the gift until day 45.</div>
+    <div class="ladder">
+      <div class="rung"><div class="rs">Session 07</div><div class="rv">$15</div><div class="rn">First credit. Needs 5 of 7 sessions logged.</div></div>
+      <div class="rung mark"><div class="rs">Session 14</div><div class="rv">$35</div><div class="rn">Running total. Needs 10 of 14.</div></div>
+      <div class="rung mark"><div class="rs">Session 20</div><div class="rv">$60</div><div class="rn">Spend it on anything. Needs 15 of 20.</div></div>
+      <div class="rung gift"><div class="rs">The reveal</div><div class="rv">?</div><div class="rn">Stays shut until they finish.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The <em>emails</em></h2>
+    <div class="sub2">Each one gives them a job for the day and something they didn't know. The track moves either way.</div>
+    <div class="emails">
+
+      <div class="slot"><div class="cap">Session 01 &middot; standard send</div>
+        <div class="em">
+          <div class="sj">BON CHARGE<b>Session 01 of 20 starts today</b></div>
+          <div class="tk"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5,700+ Reviews | Trusted by 400,000+ Customers</div>
+          <div class="lg"><img src="img/bc-logo.png" alt="BON CHARGE"></div>
+          <div class="nv">Skin &nbsp;&middot;&nbsp; Recovery &nbsp;&middot;&nbsp; Sleep &nbsp;&middot;&nbsp; Hair</div>
+          <div class="hz">
+            <div class="big">Session 01</div>
+            <div class="h2l">Your first step toward <em class="ink">Better Skin</em></div>
+            <p>Ten minutes, three times a week. That's it.</p>
+          </div>
+          <img class="hero" src="img/hero-session.jpg" alt="">
+          <div class="proto"><div class="pk">Today's session</div>
+            <ol>
+              <li>Start with <b>clean, dry skin</b>. No serums underneath.</li>
+              <li>Sit the device about <b>15cm</b> from the area you're treating.</li>
+              <li><b>Ten minutes</b>, eyes closed. Then you're done.</li>
+              <li>Leave <b>a day between sessions</b>. More isn't better.</li>
+            </ol>
+          </div>
+          <div class="btn">I'VE DONE SESSION 01 &rarr;</div>
+          <div class="edu"><div class="ek">Learn</div>
+            <h4>Light that speaks to <em>your skin</em></h4>
+            <p>Your device runs two wavelengths at once and they do different jobs. You don't need to alternate, or think about which is which. Running both together is the whole idea.</p>
+            <div class="wave">
+              <div class="wv"><div class="wn">630nm</div><div class="wt">Red light. Works near the surface.</div></div>
+              <div class="wv"><div class="wn">850nm</div><div class="wt">Near-infrared. Travels deeper.</div></div>
+              <div class="wv"><div class="wn">10min</div><div class="wt">Long enough. Longer adds nothing.</div></div>
+            </div>
+          </div>
+          <div class="dyn">
+            <div class="dk">Credit banked</div>
+            <div class="dv">$0.00<small>live</small></div>
+            <div class="dn">Your first $15 unlocks at session 07</div>
+          </div>
+          <div class="trk"><div class="tl">Your reward track</div><div class="tn"><div class="n now"><div class="k">S07</div><div class="v">$15</div></div><div class="n lock"><div class="k">S14</div><div class="v">$35</div></div><div class="n lock"><div class="k">S20</div><div class="v">$60</div></div><div class="n gift"><div class="k">Gift</div><div class="v">?</div></div></div><div class="tnote">Six more sessions to your first $15</div></div>
+          <div class="strip">Elite Athletes Worldwide <i></i> <img src="img/fulham.png" alt=""> <i></i> Scientific Advisory Board</div>
+          <div class="ctr">
+            <div><div class="s">Session</div><div class="b">01 / 20</div><div class="pg"><i style="width:5%"></i></div></div>
+            <div class="r">Day 2<br>of 45</div>
+          </div>
+          <div class="ft">BON CHARGE</div>
+        </div>
+      </div>
+
+      <div class="slot"><div class="cap">Session 07 &middot; first unlock</div>
+        <div class="em">
+          <div class="sj">BON CHARGE<b>Your first $15 just landed</b></div>
+          <div class="tk"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5,700+ Reviews | Trusted by 400,000+ Customers</div>
+          <div class="lg"><img src="img/bc-logo.png" alt="BON CHARGE"></div>
+          <div class="nv">Skin &nbsp;&middot;&nbsp; Recovery &nbsp;&middot;&nbsp; Sleep &nbsp;&middot;&nbsp; Hair</div>
+          <div class="hz">
+            <div class="big">$15 off</div>
+            <div class="h2l">Two weeks in, and it's <em class="ink">Yours</em></div>
+            <p>It's on your account now. No code to find, nothing to remember.</p>
+          </div>
+          <div class="dyn">
+            <div class="dk">Credit banked</div>
+            <div class="dv">$15.00<small>live</small></div>
+            <div class="dn">Next $20 unlocks at session 14</div>
+          </div>
+          <div class="btn">I'VE DONE SESSION 07 &rarr;</div>
+          <img class="eduimg" src="img/hero-calm.jpg" alt="">
+          <div class="edu"><div class="ek">Learn</div>
+            <h4>Why nothing looks different <em>yet</em></h4>
+            <p>Two weeks in is where most people start wondering whether it's working. Skin turns over on its own schedule, closer to a month than a fortnight. The people who see the most change are the ones still going at week six.</p>
+          </div>
+          <div class="stat">
+            <div class="sv">84%</div>
+            <div class="sd">Saw results in just 4 weeks. You're two and a half weeks off that.</div>
+          </div>
+          <div class="sab"><img src="img/sab.jpg" alt="">
+            <div><div class="sk">Scientific Advisory Board</div>
+              <div class="sq">"Consistency matters far more than session length."</div>
+              <div class="sn">Dr Susanna Soberg</div>
+            </div>
+          </div>
+          <div class="proto"><div class="pk">Today's session</div>
+            <ol>
+              <li>Same ten minutes, same distance.</li>
+              <li>If you're stacking with skincare, <b>light first, serums after</b>.</li>
+              <li>Log it below so your credit keeps moving.</li>
+            </ol>
+          </div>
+          <div class="trk"><div class="tl">Your reward track</div><div class="tn"><div class="n on"><div class="k">S07</div><div class="v">$15</div></div><div class="n now"><div class="k">S14</div><div class="v">$35</div></div><div class="n lock"><div class="k">S20</div><div class="v">$60</div></div><div class="n gift"><div class="k">Gift</div><div class="v">?</div></div></div><div class="tnote">Seven more sessions to $35</div></div>
+          <div class="ctr">
+            <div><div class="s">Session</div><div class="b">07 / 20</div><div class="pg"><i style="width:35%"></i></div></div>
+            <div class="r">Day 16<br>of 45</div>
+          </div>
+          <div class="ft">BON CHARGE</div>
+        </div>
+      </div>
+
+      <div class="slot"><div class="cap">Session 14 &middot; second unlock, direction named</div>
+        <div class="em">
+          <div class="sj">BON CHARGE<b>$35 banked. One step left</b></div>
+          <div class="tk"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5,700+ Reviews | Trusted by 400,000+ Customers</div>
+          <div class="lg"><img src="img/bc-logo.png" alt="BON CHARGE"></div>
+          <div class="nv">Skin &nbsp;&middot;&nbsp; Recovery &nbsp;&middot;&nbsp; Sleep &nbsp;&middot;&nbsp; Hair</div>
+          <div class="hz">
+            <div class="big">$35 off</div>
+            <div class="h2l">Worth thinking about <em class="ink">What's Next</em></div>
+            <p>Your credit works on anything. This is where most people go after the kit.</p>
+          </div>
+          <div class="dyn">
+            <div class="dk">Credit banked</div>
+            <div class="dv">$35.00<small>live</small></div>
+            <div class="dn">Six sessions from the reveal</div>
+          </div>
+          <div class="btn">I'VE DONE SESSION 14 &rarr;</div>
+          <div class="edu"><div class="ek">Learn</div>
+            <h4>One device is a habit. Two is an <em>environment</em></h4>
+            <p>Most people start with one area and one goal. Stacking is what changes the result, so the light reaches you in more than one place across the day. Skin in the evening. Recovery after training.</p>
+          </div>
+          <div class="pil"><div>Skin</div><div>Sleep</div><div>Recovery</div><div>Hair</div></div>
+          <div class="pg2">
+            <div class="pc"><img src="img/pd-mask.png" alt=""><div class="pe">Best seller</div><div class="pn">Red Light Face Mask</div><div class="ps">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+            <div class="pc"><img src="img/pd-blanket.png" alt=""><div class="pe">Best seller</div><div class="pn">Infrared Sauna Blanket</div><div class="ps">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+          </div>
+          <img class="eduimg" src="img/hero-blanket.jpg" alt="">
+          <div class="proto"><div class="pk">Today's session</div>
+            <ol>
+              <li>Ten minutes as always.</li>
+              <li>Try it <b>an hour before bed</b> this week and see if you sleep differently.</li>
+              <li>Log it to move your track.</li>
+            </ol>
+          </div>
+          <div class="trk"><div class="tl">Your reward track</div><div class="tn"><div class="n on"><div class="k">S07</div><div class="v">$15</div></div><div class="n on"><div class="k">S14</div><div class="v">$35</div></div><div class="n now"><div class="k">S20</div><div class="v">$60</div></div><div class="n gift"><div class="k">Gift</div><div class="v">?</div></div></div><div class="tnote">Finish the twenty and the gift opens</div></div>
+          <div class="strip">Elite Athletes Worldwide <i></i> <img src="img/fulham.png" alt=""> <i></i> Scientific Advisory Board</div>
+          <div class="ctr">
+            <div><div class="s">Session</div><div class="b">14 / 20</div><div class="pg"><i style="width:70%"></i></div></div>
+            <div class="r">Day 32<br>of 45</div>
+          </div>
+          <div class="ft">BON CHARGE</div>
+        </div>
+      </div>
+
+      <div class="slot"><div class="cap">Session 20 &middot; the reveal</div>
+        <div class="em">
+          <div class="sj">BON CHARGE<b>You finished. Open this one</b></div>
+          <div class="tk"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5,700+ Reviews | Trusted by 400,000+ Customers</div>
+          <div class="lg"><img src="img/bc-logo.png" alt="BON CHARGE"></div>
+          <div class="nv">Skin &nbsp;&middot;&nbsp; Recovery &nbsp;&middot;&nbsp; Sleep &nbsp;&middot;&nbsp; Hair</div>
+          <div class="ctr">
+            <div><div class="s">Protocol complete</div><div class="b">20 / 20</div><div class="pg"><i style="width:100%"></i></div></div>
+            <div class="r">Day 45<br>of 45</div>
+          </div>
+          <div class="rv">
+            <div class="rk">Unlocked</div>
+            <img src="img/gift-bulb.png" alt="">
+            <div class="rt">Your gift, <em>on us</em></div>
+            <div class="rs2">Added to your next order automatically</div>
+          </div>
+          <div class="hz">
+            <div class="big">$60 off</div>
+            <div class="h2l">Forty-five days is long enough to <em class="ink">Know</em></div>
+            <p>Twenty sessions done. Pick a direction, the credit is already on.</p>
+          </div>
+          <div class="dyn">
+            <div class="dk">Ready to spend</div>
+            <div class="dv">$60.00<small>live</small></div>
+            <div class="dn">Applies across the full range</div>
+          </div>
+          <div class="btn">SHOP WITH YOUR CREDIT &rarr;</div>
+          <div class="edu"><div class="ek">Where to go next</div>
+            <h4>You have done the hard part <em>already</em></h4>
+            <p>Forty-five days tells you more about what you want than a quiz will. Most people finish knowing which of the four they care about. Start there.</p>
+          </div>
+          <div class="pil"><div>Skin</div><div>Sleep</div><div>Recovery</div><div>Hair</div></div>
+          <div class="pg2">
+            <div class="pc"><img src="img/pd-mask.png" alt=""><div class="pe">Best seller</div><div class="pn">Red Light Face Mask</div><div class="ps">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+            <div class="pc"><img src="img/pd-pillow.png" alt=""><div class="pe">Best seller</div><div class="pn">Red Light Therapy Blanket</div><div class="ps">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+          </div>
+          <div class="btn ghost">TAKE THE 30-SECOND QUIZ</div>
+          <div class="trk"><div class="tl">Your reward track</div><div class="tn"><div class="n on"><div class="k">S07</div><div class="v">$15</div></div><div class="n on"><div class="k">S14</div><div class="v">$35</div></div><div class="n on"><div class="k">S20</div><div class="v">$60</div></div><div class="n gift rev"><div class="k">Gift</div><div class="v">&#10003;</div></div></div></div>
+          <div class="strip">Elite Athletes Worldwide <i></i> <img src="img/fulham.png" alt=""> <i></i> Scientific Advisory Board</div>
+          <div class="ft">BON CHARGE</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="notes">
+      <div class="nb ok">
+        <h3>How it <em>works</em></h3>
+        <ul>
+          <li>The click is the check-in. One button per email, no page to build.</li>
+          <li>Everyone gets all 20 emails whether they log a session or not. Only the track responds.</li>
+          <li>Three a week is BON CHARGE's own published guidance. We didn't pick the number.</li>
+          <li>The credit figure is the only live text. It sits in the same dashed block already approved for discount codes.</li>
+        </ul>
+      </div>
+      <div class="nb flag">
+        <h3>Needs a <em>decision</em></h3>
+        <ul>
+          <li>Which gift, and does it clear margin. The bulb is a placeholder.</li>
+          <li>Store credit needs an app. Shopify has no native credit.</li>
+          <li>Kit contents, price and go-live still open.</li>
+          <li>"Red Light Starter Kit" is already a live $425 SKU, so that name is gone.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">BON CHARGE &times; Tethrd &nbsp;&middot;&nbsp; 03/08/2026 &nbsp;&middot;&nbsp; Onyx, Linen, Limestone, Scarlet &nbsp;&middot;&nbsp; Instrument Sans + Instrument Serif</div></footer>
