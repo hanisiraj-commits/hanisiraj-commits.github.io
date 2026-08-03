@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pistachio Papi &#215; Tethrd &mdash; August 2026 Campaign &amp; Flow Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#e8e8dc;
+  --shell:#f9f9dd;
+  --green:#8e9839;
+  --forest:#3e4728;
+  --ink:#1c2340;
+  --red:#ba3243;
+  --rule:rgba(28,35,64,.16);
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Inter,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+
+.display{font-family:Anton,Impact,"Arial Narrow",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:.86}
+.eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+
+/* hero */
+.hero{background:var(--forest);color:var(--shell);position:relative;overflow:hidden;padding:34px 0 0}
+.lockup{display:flex;align-items:center;gap:20px;padding-bottom:30px;border-bottom:1px solid rgba(249,249,221,.22)}
+.lockup img.tethrd{height:19px;width:auto}
+.lockup img.papi{height:40px;width:auto}
+.lockup .x{font-size:15px;opacity:.5;font-weight:500}
+.lockup .stamp{margin-left:auto;text-align:right;font-size:11px;line-height:1.5;opacity:.65;letter-spacing:.04em}
+.hero-body{position:relative;padding:52px 0 62px;z-index:2}
+.hero .kicker{color:var(--green);margin-bottom:20px;filter:brightness(1.45)}
+.hero h1{font-size:clamp(72px,15vw,204px);color:var(--shell);margin-left:-.055em}
+.hero h1 .year{color:var(--green);filter:brightness(1.3)}
+.hero .sub{max-width:530px;margin-top:26px;font-size:clamp(18px,2.1vw,23px);line-height:1.45;font-weight:500;color:rgba(249,249,221,.9)}
+.hero .head{position:absolute;right:-20px;bottom:-58px;width:min(540px,37vw);z-index:1;pointer-events:none;filter:drop-shadow(0 22px 50px rgba(0,0,0,.32))}
+.hero .kicker,.hero h1,.hero .sub{position:relative;z-index:2}
+.lockup{position:relative;z-index:3}
+
+/* stats */
+.stats{background:var(--shell);border-bottom:1px solid var(--rule)}
+.stats .grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:30px 28px 32px;border-left:1px solid var(--rule)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat .n{font-family:Anton,Impact,sans-serif;font-size:clamp(34px,4.4vw,50px);line-height:1;color:var(--forest)}
+.stat .l{margin-top:11px;font-size:12.5px;line-height:1.45;color:rgba(28,35,64,.72);font-weight:500}
+
+section{padding:78px 0}
+.sec-label{display:flex;align-items:baseline;gap:14px;margin-bottom:28px;color:var(--red)}
+.sec-label::after{content:"";flex:1;height:1px;background:var(--rule)}
+h2.display{font-size:clamp(38px,5.6vw,66px);line-height:.9}
+
+/* situation */
+.situation{display:grid;grid-template-columns:1.5fr 1fr;gap:64px;align-items:start;margin-top:34px}
+.situation p{font-size:17.5px;margin-bottom:19px;max-width:60ch}
+.situation p:last-child{margin-bottom:0}
+.situation strong{font-weight:700}
+.proof{border-top:2px solid var(--ink);padding-top:6px}
+.proof .row{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--rule)}
+.proof .v{font-family:Anton,Impact,sans-serif;font-size:25px;color:var(--forest);white-space:nowrap}
+.proof .k{font-size:12.5px;text-align:right;color:rgba(28,35,64,.72);font-weight:500;line-height:1.4}
+
+/* play */
+.play{background:var(--green);color:#fff;padding:76px 0}
+.play .eyebrow{color:rgba(255,255,255,.72);margin-bottom:22px}
+.play .line{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:clamp(34px,5.5vw,68px);line-height:.94;max-width:17ch}
+.play .line em{font-style:normal;color:var(--forest)}
+.play .under{margin-top:26px;max-width:60ch;font-size:17.5px;color:rgba(255,255,255,.94)}
+
+/* priorities */
+.pri{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
+.card{background:var(--shell);border:1px solid var(--rule);padding:30px 28px 32px;display:flex;flex-direction:column}
+.card .tag{align-self:flex-start;background:var(--forest);color:var(--shell);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;padding:6px 11px;margin-bottom:20px}
+.card h3{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:27px;line-height:.98;margin-bottom:15px;color:var(--forest)}
+.card p{font-size:15px;margin-bottom:13px;color:rgba(28,35,64,.86)}
+.card p:last-child{margin-bottom:0}
+.card .pull{margin-top:auto;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;font-weight:600;color:var(--red);letter-spacing:.02em}
+
+/* chart */
+.chart-intro{max-width:78ch;font-size:17px;margin:28px 0 6px}
+.chart-wrap{position:relative;margin-top:18px;background:var(--shell);border:1px solid var(--rule);padding:22px 18px 10px}
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.chart .grid{stroke:rgba(28,35,64,.13);stroke-width:1}
+.chart .axis{stroke:rgba(28,35,64,.35);stroke-width:1.5}
+.chart .ytick,.chart .xtick{font-family:Inter,sans-serif;font-size:12px;fill:rgba(28,35,64,.6);font-weight:500}
+.chart .xtick{font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.chart .val{font-family:Inter,sans-serif;font-size:12px;font-weight:700;fill:rgba(28,35,64,.82)}
+.chart .xtick.sm{font-size:9.5px;letter-spacing:0;font-weight:600;fill:rgba(28,35,64,.45)}
+.chart .yearsep{stroke:rgba(28,35,64,.22);stroke-width:1}
+.chart .yearlbl{font-family:Anton,Impact,sans-serif;font-size:15px;fill:rgba(28,35,64,.72);letter-spacing:.02em}
+.chart .fill{fill:#8e9839;transition:fill .15s ease}
+.chart .hit{fill:transparent}
+.chart .bar:hover .fill,.chart .bar:focus-visible .fill{fill:#7d8730}
+.chart .bar:focus-visible{outline:none}
+.chart .bar:focus-visible .hit{outline:2px solid var(--ink);outline-offset:-2px}
+.chart .baseline{stroke:#ba3243;stroke-width:2;stroke-dasharray:6 5}
+.tip{position:absolute;pointer-events:none;background:var(--forest);color:var(--shell);padding:10px 13px;font-size:12.5px;line-height:1.5;z-index:5;white-space:nowrap;transform:translate(-50%,-100%)}
+.tip b{display:block;font-size:13px;margin-bottom:3px;letter-spacing:.04em;text-transform:uppercase}
+.chart-caption{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:13.5px;color:rgba(28,35,64,.75)}
+.chart-caption .swatch{width:26px;height:0;border-top:2px dashed #ba3243;flex:none}
+.tbl-toggle{margin-top:16px;background:none;border:1px solid var(--rule);color:var(--ink);font-family:Inter,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;padding:9px 15px;cursor:pointer}
+.tbl-toggle:hover{background:var(--shell)}
+.tbl-toggle:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.tbl-panel{margin-top:14px;overflow-x:auto}
+.chart-table{width:100%;border-collapse:collapse;font-size:14px;min-width:460px}
+.chart-table th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.12em;color:rgba(28,35,64,.6);padding:0 16px 9px 0;border-bottom:2px solid var(--ink)}
+.chart-table td{padding:9px 16px 9px 0;border-bottom:1px solid var(--rule)}
+.chart-table tr.tot td{font-weight:700;border-bottom:0}
+@media(max-width:720px){ .chart .val{font-size:15px} .chart .xtick{font-size:15px} .chart .ytick{font-size:14px} .chart .baselbl{font-size:14px} }
+
+/* mechanisms */
+.mech{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:38px}
+.mech .m{background:var(--shell);border:1px solid var(--rule);border-top:4px solid var(--green);padding:30px 28px 32px}
+.mech h3{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:26px;line-height:1;margin-bottom:14px;color:var(--forest)}
+.mech p{font-size:15px;margin-bottom:12px;color:rgba(28,35,64,.86)}
+.mech p:last-child{margin-bottom:0}
+.mech .lead{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--red);margin-bottom:13px}
+
+/* funnels */
+.funnels{margin-top:40px;display:grid;gap:20px}
+.fn{display:grid;grid-template-columns:150px 1fr;gap:34px;background:var(--shell);border:1px solid var(--rule);padding:28px 30px 30px}
+.fn .side{border-right:1px solid var(--rule);padding-right:26px}
+.fn .side .lbl{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:22px;line-height:.98;color:var(--forest)}
+.fn .side .met{margin-top:12px;font-size:12px;font-weight:600;color:var(--red);line-height:1.4}
+.fn p{font-size:15px;margin-bottom:12px;color:rgba(28,35,64,.86)}
+.fn p:last-child{margin-bottom:0}
+.fn ul{margin:0 0 12px 0;padding-left:17px}
+.fn li{font-size:15px;margin-bottom:5px;color:rgba(28,35,64,.86)}
+
+/* runway */
+.runway{background:var(--forest);color:var(--shell);padding:76px 0}
+.runway .sec-label{color:var(--green);filter:brightness(1.4)}
+.runway .sec-label::after{background:rgba(249,249,221,.2)}
+.runway h2{color:var(--shell)}
+.rail{margin-top:44px;border-top:1px solid rgba(249,249,221,.22)}
+.leg{display:grid;grid-template-columns:96px 1fr auto;gap:24px;align-items:center;padding:19px 0;border-bottom:1px solid rgba(249,249,221,.14);position:relative}
+.leg .d{font-family:Anton,Impact,sans-serif;font-size:23px;color:var(--green);filter:brightness(1.35)}
+.leg .t{font-size:16.5px;font-weight:500}
+.leg .n{font-size:12.5px;color:rgba(249,249,221,.6);text-align:right}
+.leg.peak{background:rgba(142,152,57,.16);margin:0 -22px;padding-left:22px;padding-right:22px}
+.leg.peak .d,.leg.peak .t{color:#fff}
+.leg.peak .t{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:29px;letter-spacing:.01em}
+.flash{position:relative;display:inline-block;padding:11px 15px;margin-left:6px;color:#fff;vertical-align:middle}
+.flash svg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.flash span{position:relative;z-index:1;font-family:Anton,Impact,sans-serif;font-size:16px;letter-spacing:.03em;text-transform:uppercase}
+
+/* calendar */
+.cal-legend{display:flex;flex-wrap:wrap;align-items:flex-start;gap:9px;margin:28px 0 20px}
+.chip{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:6px 11px;border:1px solid var(--rule);white-space:nowrap;line-height:1.35}
+.chip.campaign{background:var(--forest);color:var(--shell);border-color:var(--forest)}
+.chip.launch{background:var(--red);color:#fff;border-color:var(--red)}
+.chip.brand{background:var(--green);color:#fff;border-color:var(--green)}
+.chip.retail{background:var(--shell);color:var(--ink)}
+.cal-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+.cal{width:100%;min-width:860px;border-collapse:collapse;background:var(--shell);border:1px solid var(--rule)}
+.cal th{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;color:rgba(28,35,64,.6);padding:12px 10px;text-align:left;border-bottom:1px solid var(--rule);width:14.285%}
+.cal td{border:1px solid var(--rule);vertical-align:top;height:104px;padding:8px 9px 10px;position:relative}
+.cal td.out{background:rgba(28,35,64,.045)}
+.cal .num{font-family:Anton,Impact,sans-serif;font-size:16px;color:rgba(28,35,64,.42);line-height:1}
+.cal td.out .num{opacity:.4}
+.band{display:block;margin-top:7px;padding:5px 7px;font-size:10.5px;font-weight:700;line-height:1.25;text-transform:uppercase;letter-spacing:.045em;background:var(--forest);color:var(--shell);transform-origin:left center}
+.band.launch{background:var(--red);color:#fff}
+.band.brand{background:var(--green);color:#fff}
+.band.retail{background:transparent;color:var(--ink);border:1px dashed rgba(186,50,67,.65);font-weight:600}
+.reveal .band{animation:sweep .5s cubic-bezier(.2,.7,.3,1) both}
+@keyframes sweep{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+
+/* send list */
+.sends{margin-top:44px;border-top:2px solid var(--ink)}
+.send{display:grid;grid-template-columns:84px 1.05fr 1.5fr;gap:26px;padding:17px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.send .dt{font-family:Anton,Impact,sans-serif;font-size:18px;color:var(--red)}
+.send .nm{font-weight:700;font-size:15.5px}
+.send .ob{font-size:14.5px;color:rgba(28,35,64,.78)}
+.send.hero-send{background:rgba(142,152,57,.14);margin:0 -18px;padding-left:18px;padding-right:18px}
+.send.hero-send .nm{color:var(--forest)}
+
+/* flows */
+.flows{width:100%;border-collapse:collapse;margin-top:34px}
+.flows th{text-align:left;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;color:rgba(28,35,64,.6);padding:0 20px 12px 0;border-bottom:2px solid var(--ink)}
+.flows td{padding:20px 20px 20px 0;border-bottom:1px solid var(--rule);vertical-align:top;font-size:14.5px}
+.flows td:last-child,.flows th:last-child{padding-right:0}
+.flows .fname{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:21px;color:var(--forest);line-height:1.05;display:block}
+.flows .fnum{display:block;margin-top:6px;font-family:Inter,sans-serif;font-size:12px;font-weight:600;color:var(--red);text-transform:none;letter-spacing:0}
+
+
+footer{background:var(--forest);color:rgba(249,249,221,.62);padding:44px 0;font-size:12.5px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+footer img{height:17px;width:auto;opacity:.85}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:1000px){
+  .situation{grid-template-columns:1fr;gap:38px}
+  .mech{grid-template-columns:1fr;gap:16px}
+  .fn{grid-template-columns:1fr;gap:18px}
+  .fn .side{border-right:0;border-bottom:1px solid var(--rule);padding-right:0;padding-bottom:16px}
+  .pri{grid-template-columns:1fr;gap:16px}
+    .send{grid-template-columns:70px 1fr;gap:8px 18px}
+  .send .ob{grid-column:2}
+}
+@media(max-width:720px){
+  .wrap{padding:0 20px}
+  section{padding:56px 0}
+  .stats .grid{grid-template-columns:repeat(2,1fr)}
+  .stat{padding:22px 18px;border-left:1px solid var(--rule);border-top:1px solid var(--rule)}
+  .stat:first-child,.stat:nth-child(2){border-top:0}
+  .stat:first-child,.stat:nth-child(3){border-left:0;padding-left:0}
+  .hero .head{width:230px;right:-26px;bottom:-14px;opacity:.92}
+  .hero .sub{max-width:none}
+  .leg{grid-template-columns:74px 1fr;gap:6px 16px}
+  .leg .n{grid-column:2;text-align:left}
+  .lockup{flex-wrap:wrap;gap:14px}
+  .lockup .stamp{margin-left:0;text-align:left;width:100%}
+  .flows thead{display:none}
+  .flows td{display:block;padding:6px 0;border:0}
+  .flows tr{display:block;padding:20px 0;border-bottom:1px solid var(--rule)}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .reveal .band{animation:none}
+}
+@media print{
+  .rv{opacity:1;transform:none}
+  section{padding:34px 0;break-inside:avoid}
+  .hero{padding-top:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="lockup">
+      <img class="tethrd" src="assets/tethrd-white.svg" alt="Tethrd">
+      <span class="x">&#215;</span>
+      <img class="papi" src="assets/papi-logo-white.png" alt="Pistachio Papi">
+      <div class="stamp">Prepared 04/08/2026<br>Email &amp; lifecycle &middot; Klaviyo</div>
+    </div>
+  </div>
+  <div class="wrap hero-body">
+    <div class="eyebrow kicker">Campaign &amp; flow strategy</div>
+    <h1 class="display">August<br><span class="year">2026</span></h1>
+    <p class="sub">Grow the list hard, and point every send at the morning of Tuesday 18 August.</p>
+  </div>
+  <img class="head" src="assets/papi-head.png" alt="">
+</header>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="grid">
+      <div class="stat"><div class="n">44,642</div><div class="l">People we can email today</div></div>
+      <div class="stat"><div class="n">63.7%</div><div class="l">Have bought at least once, but four in five of those orders landed in 2024 and 2025</div></div>
+      <div class="stat"><div class="n">$131</div><div class="l">Average customer lifetime value. The median is $68</div></div>
+      <div class="stat"><div class="n">36%</div><div class="l">Of customers ever place a second order</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap rv">
+    <div class="sec-label"><span class="eyebrow">The problem</span></div>
+    <h2 class="display">Retail wins the<br>sale we paid for</h2>
+    <div class="situation">
+      <div>
+        <p>Papi is on a shelf in over a thousand Woolworths and 660 Coles. Those retailers beat us on the three things a shopper actually weighs. They are <strong>cheaper</strong>. They can post a single jar, while our free shipping only starts at $100 and the average order is <strong>$83.87</strong>, so most baskets pay freight. And they hand it over today, which no delivery can match.</p>
+        <p>So the money we spend building the brand gets spent, and the purchase happens somewhere we earn less and learn nothing about the customer.</p>
+        <p>The list shows it. <strong>63.7% have bought before</strong>, so this is a customer list rather than an audience, and still only <strong>36% ever order twice</strong>. Lifetime, that is 1.6 orders each, on a jar most people finish inside a fortnight. They are re-buying. Just not from us.</p>
+        <p>None of which is a small-brand problem. The website has done <strong>$2.92m across 45,941 orders</strong> since launch, $951k in 2024 and $1.39m in 2025. The list is a real asset. It is just that almost all of it was earned in those two years, and the engine that earned it has stopped.</p>
+      </div>
+      <div class="proof">
+        <div class="row"><span class="v">$2,035</span><span class="k">D2C revenue in July,<br>off 35 orders</span></div>
+        <div class="row"><span class="v">$2.92m</span><span class="k">Lifetime D2C revenue,<br>45,941 orders</span></div>
+        <div class="row"><span class="v">$83.87</span><span class="k">Average order, against a<br>$100 free shipping floor</span></div>
+        <div class="row"><span class="v">1.6</span><span class="k">Orders per customer,<br>lifetime</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap rv">
+    <div class="sec-label"><span class="eyebrow">The baseline</span></div>
+    <h2 class="display">Email revenue,<br>month by month</h2>
+    <p class="chart-intro">Everything email produced over the last twelve months, campaigns and flows together. Two months carry <strong>78% of the year</strong>. Strip them out and the real baseline is <strong>$4,132 a month</strong>, and July came in at <strong>$533</strong>. That number is what August has to move.</p>
+    <div class="chart-wrap">
+      <svg class="chart" viewBox="0 0 1120 392" role="img" aria-label="Email attributed revenue by month, last 12 months">
+      <line class="grid" x1="76" x2="1104" y1="318.0" y2="318.0"/>
+      <text class="ytick" x="64" y="322.0" text-anchor="end">$0k</text>
+      <line class="grid" x1="76" x2="1104" y1="220.7" y2="220.7"/>
+      <text class="ytick" x="64" y="224.7" text-anchor="end">$30k</text>
+      <line class="grid" x1="76" x2="1104" y1="123.3" y2="123.3"/>
+      <text class="ytick" x="64" y="127.3" text-anchor="end">$60k</text>
+      <line class="grid" x1="76" x2="1104" y1="26.0" y2="26.0"/>
+      <text class="ytick" x="64" y="30.0" text-anchor="end">$90k</text>
+      <line class="baseline" x1="76" x2="1104" y1="304.6" y2="304.6"/>
+      <g class="bar" tabindex="0" data-m="Aug 2025" data-c="1,498" data-f="5,578" data-t="7,076"><rect class="hit" x="76.0" y="26" width="85.7" height="292"/><rect class="fill" x="94.8" y="295.0" width="48.0" height="23.0" rx="4"/><text class="val" x="118.8" y="285.0" text-anchor="middle">$7.1k</text><text class="xtick" x="118.8" y="342" text-anchor="middle">Aug</text></g>
+      <g class="bar" tabindex="0" data-m="Sep 2025" data-c="1,632" data-f="1,672" data-t="3,304"><rect class="hit" x="161.7" y="26" width="85.7" height="292"/><rect class="fill" x="180.5" y="307.3" width="48.0" height="10.7" rx="4"/><text class="val" x="204.5" y="297.3" text-anchor="middle">$3.3k</text><text class="xtick" x="204.5" y="342" text-anchor="middle">Sep</text></g>
+      <g class="bar" tabindex="0" data-m="Oct 2025" data-c="1,507" data-f="609" data-t="2,116"><rect class="hit" x="247.3" y="26" width="85.7" height="292"/><rect class="fill" x="266.2" y="311.1" width="48.0" height="6.9" rx="4"/><text class="val" x="290.2" y="301.1" text-anchor="middle">$2.1k</text><text class="xtick" x="290.2" y="342" text-anchor="middle">Oct</text></g>
+      <g class="bar" tabindex="0" data-m="Nov 2025" data-c="36,440" data-f="21,475" data-t="57,915"><rect class="hit" x="333.0" y="26" width="85.7" height="292"/><rect class="fill" x="351.8" y="130.1" width="48.0" height="187.9" rx="4"/><text class="val" x="375.8" y="120.1" text-anchor="middle">$57.9k</text><text class="xtick" x="375.8" y="342" text-anchor="middle">Nov</text></g>
+      <g class="bar" tabindex="0" data-m="Dec 2025" data-c="4,238" data-f="6,914" data-t="11,152"><rect class="hit" x="418.7" y="26" width="85.7" height="292"/><rect class="fill" x="437.5" y="281.8" width="48.0" height="36.2" rx="4"/><text class="val" x="461.5" y="271.8" text-anchor="middle">$11.2k</text><text class="xtick" x="461.5" y="342" text-anchor="middle">Dec</text></g>
+      <g class="bar" tabindex="0" data-m="Jan 2026" data-c="1,612" data-f="1,145" data-t="2,756"><rect class="hit" x="504.3" y="26" width="85.7" height="292"/><rect class="fill" x="523.2" y="309.1" width="48.0" height="8.9" rx="4"/><text class="val" x="547.2" y="299.1" text-anchor="middle">$2.8k</text><text class="xtick" x="547.2" y="342" text-anchor="middle">Jan</text></g>
+      <g class="bar" tabindex="0" data-m="Feb 2026" data-c="66,782" data-f="19,145" data-t="85,927"><rect class="hit" x="590.0" y="26" width="85.7" height="292"/><rect class="fill" x="608.8" y="39.2" width="48.0" height="278.8" rx="4"/><text class="val" x="632.8" y="29.2" text-anchor="middle">$85.9k</text><text class="xtick" x="632.8" y="342" text-anchor="middle">Feb</text></g>
+      <g class="bar" tabindex="0" data-m="Mar 2026" data-c="765" data-f="1,298" data-t="2,064"><rect class="hit" x="675.7" y="26" width="85.7" height="292"/><rect class="fill" x="694.5" y="311.3" width="48.0" height="6.7" rx="4"/><text class="val" x="718.5" y="301.3" text-anchor="middle">$2.1k</text><text class="xtick" x="718.5" y="342" text-anchor="middle">Mar</text></g>
+      <g class="bar" tabindex="0" data-m="Apr 2026" data-c="2,095" data-f="312" data-t="2,407"><rect class="hit" x="761.3" y="26" width="85.7" height="292"/><rect class="fill" x="780.2" y="310.2" width="48.0" height="7.8" rx="4"/><text class="val" x="804.2" y="300.2" text-anchor="middle">$2.4k</text><text class="xtick" x="804.2" y="342" text-anchor="middle">Apr</text></g>
+      <g class="bar" tabindex="0" data-m="May 2026" data-c="2,010" data-f="1,018" data-t="3,028"><rect class="hit" x="847.0" y="26" width="85.7" height="292"/><rect class="fill" x="865.8" y="308.2" width="48.0" height="9.8" rx="4"/><text class="val" x="889.8" y="298.2" text-anchor="middle">$3.0k</text><text class="xtick" x="889.8" y="342" text-anchor="middle">May</text></g>
+      <g class="bar" tabindex="0" data-m="Jun 2026" data-c="6,224" data-f="662" data-t="6,886"><rect class="hit" x="932.7" y="26" width="85.7" height="292"/><rect class="fill" x="951.5" y="295.7" width="48.0" height="22.3" rx="4"/><text class="val" x="975.5" y="285.7" text-anchor="middle">$6.9k</text><text class="xtick" x="975.5" y="342" text-anchor="middle">Jun</text></g>
+      <g class="bar" tabindex="0" data-m="Jul 2026" data-c="274" data-f="260" data-t="533"><rect class="hit" x="1018.3" y="26" width="85.7" height="292"/><rect class="fill" x="1037.2" y="316.3" width="48.0" height="2.0" rx="4"/><text class="val" x="1061.2" y="306.3" text-anchor="middle">$0.5k</text><text class="xtick" x="1061.2" y="342" text-anchor="middle">Jul</text></g>
+      <line class="axis" x1="76" x2="1104" y1="318" y2="318"/>
+      </svg>
+      <div class="tip" id="tip" hidden></div>
+    </div>
+    <p class="chart-caption"><span class="swatch" aria-hidden="true"></span>Typical month, excluding the two launch spikes: <strong>$4,132</strong></p>
+    <button class="tbl-toggle" type="button" aria-expanded="false">Show the numbers</button>
+    <div class="tbl-panel" hidden>
+      <table class="chart-table"><thead><tr><th>Month</th><th>Campaigns</th><th>Flows</th><th>Total</th></tr></thead><tbody>
+      <tr><td>Aug 2025</td><td>$1,498</td><td>$5,578</td><td>$7,076</td></tr>
+      <tr><td>Sep 2025</td><td>$1,632</td><td>$1,672</td><td>$3,304</td></tr>
+      <tr><td>Oct 2025</td><td>$1,507</td><td>$609</td><td>$2,116</td></tr>
+      <tr><td>Nov 2025</td><td>$36,440</td><td>$21,475</td><td>$57,915</td></tr>
+      <tr><td>Dec 2025</td><td>$4,238</td><td>$6,914</td><td>$11,152</td></tr>
+      <tr><td>Jan 2026</td><td>$1,612</td><td>$1,145</td><td>$2,756</td></tr>
+      <tr><td>Feb 2026</td><td>$66,782</td><td>$19,145</td><td>$85,927</td></tr>
+      <tr><td>Mar 2026</td><td>$765</td><td>$1,298</td><td>$2,064</td></tr>
+      <tr><td>Apr 2026</td><td>$2,095</td><td>$312</td><td>$2,407</td></tr>
+      <tr><td>May 2026</td><td>$2,010</td><td>$1,018</td><td>$3,028</td></tr>
+      <tr><td>Jun 2026</td><td>$6,224</td><td>$662</td><td>$6,886</td></tr>
+      <tr><td>Jul 2026</td><td>$274</td><td>$260</td><td>$533</td></tr>
+      <tr class="tot"><td>Total</td><td>$125,075</td><td>$60,088</td><td>$185,163</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap rv">
+    <div class="sec-label"><span class="eyebrow">Where the list came from</span></div>
+    <h2 class="display">Every customer,<br>by the month they arrived</h2>
+    <p class="chart-intro">The first order of all <strong>35,174</strong> people who have ever bought, placed against the month they bought it. <strong>82% arrived in 2024 and 2025.</strong> So far in 2026 the website has added <strong>2,088</strong>, which is <strong>5.9%</strong> of the base.</p>
+    <p class="chart-intro">The two months that made last year's revenue barely register here. November brought in <strong>701</strong> new customers and February <strong>1,286</strong>, together <strong>5.6%</strong> of the base. Those spikes sold to people we already had. They did not grow the list, which is the whole argument for putting acquisition first this month.</p>
+    <div class="chart-wrap">
+      <svg class="chart" viewBox="0 0 1120 404" role="img" aria-label="New customers acquired per month since launch">
+      <line class="grid" x1="76" x2="1104" y1="320.0" y2="320.0"/>
+      <text class="ytick" x="64" y="324.0" text-anchor="end">0</text>
+      <line class="grid" x1="76" x2="1104" y1="222.0" y2="222.0"/>
+      <text class="ytick" x="64" y="226.0" text-anchor="end">2,000</text>
+      <line class="grid" x1="76" x2="1104" y1="124.0" y2="124.0"/>
+      <text class="ytick" x="64" y="128.0" text-anchor="end">4,000</text>
+      <line class="grid" x1="76" x2="1104" y1="26.0" y2="26.0"/>
+      <text class="ytick" x="64" y="30.0" text-anchor="end">6,000</text>
+      <line class="yearsep" x1="260.5" x2="260.5" y1="26" y2="320"/>
+      <line class="yearsep" x1="576.8" x2="576.8" y1="26" y2="320"/>
+      <line class="yearsep" x1="893.1" x2="893.1" y1="26" y2="320"/>
+      <text class="yearlbl" x="168.3" y="366" text-anchor="middle">2023 &#183; 4,280</text>
+      <text class="yearlbl" x="418.7" y="366" text-anchor="middle">2024 &#183; 12,168</text>
+      <text class="yearlbl" x="735.0" y="366" text-anchor="middle">2025 &#183; 16,638</text>
+      <text class="yearlbl" x="998.6" y="366" text-anchor="middle">2026 &#183; 2,088</text>
+      <g class="bar" tabindex="0" data-m="May 2023" data-v="618" data-p="1.8"><rect class="hit" x="76.0" y="26" width="26.4" height="294"/><rect class="fill" x="81.0" y="289.7" width="16.3" height="30.3" rx="4"/><text class="xtick sm" x="89.2" y="341" text-anchor="middle">M</text></g>
+      <g class="bar" tabindex="0" data-m="Jul 2023" data-v="1,599" data-p="4.5"><rect class="hit" x="102.4" y="26" width="26.4" height="294"/><rect class="fill" x="107.4" y="241.6" width="16.3" height="78.4" rx="4"/><text class="xtick sm" x="115.5" y="341" text-anchor="middle">J</text></g>
+      <g class="bar" tabindex="0" data-m="Aug 2023" data-v="3" data-p="0.0"><rect class="hit" x="128.7" y="26" width="26.4" height="294"/><rect class="fill" x="133.7" y="319.9" width="16.3" height="2.0" rx="4"/><text class="xtick sm" x="141.9" y="341" text-anchor="middle">A</text></g>
+      <g class="bar" tabindex="0" data-m="Sep 2023" data-v="6" data-p="0.0"><rect class="hit" x="155.1" y="26" width="26.4" height="294"/><rect class="fill" x="160.1" y="319.7" width="16.3" height="2.0" rx="4"/><text class="xtick sm" x="168.3" y="341" text-anchor="middle">S</text></g>
+      <g class="bar" tabindex="0" data-m="Oct 2023" data-v="746" data-p="2.1"><rect class="hit" x="181.4" y="26" width="26.4" height="294"/><rect class="fill" x="186.4" y="283.4" width="16.3" height="36.6" rx="4"/><text class="xtick sm" x="194.6" y="341" text-anchor="middle">O</text></g>
+      <g class="bar" tabindex="0" data-m="Nov 2023" data-v="536" data-p="1.5"><rect class="hit" x="207.8" y="26" width="26.4" height="294"/><rect class="fill" x="212.8" y="293.7" width="16.3" height="26.3" rx="4"/><text class="xtick sm" x="221.0" y="341" text-anchor="middle">N</text></g>
+      <g class="bar" tabindex="0" data-m="Dec 2023" data-v="772" data-p="2.2"><rect class="hit" x="234.2" y="26" width="26.4" height="294"/><rect class="fill" x="239.2" y="282.2" width="16.3" height="37.8" rx="4"/><text class="xtick sm" x="247.3" y="341" text-anchor="middle">D</text></g>
+      <g class="bar" tabindex="0" data-m="Jan 2024" data-v="338" data-p="1.0"><rect class="hit" x="260.5" y="26" width="26.4" height="294"/><rect class="fill" x="265.5" y="303.4" width="16.3" height="16.6" rx="4"/><text class="xtick sm" x="273.7" y="341" text-anchor="middle">J</text></g>
+      <g class="bar" tabindex="0" data-m="Feb 2024" data-v="684" data-p="1.9"><rect class="hit" x="286.9" y="26" width="26.4" height="294"/><rect class="fill" x="291.9" y="286.5" width="16.3" height="33.5" rx="4"/><text class="xtick sm" x="300.1" y="341" text-anchor="middle">F</text></g>
+      <g class="bar" tabindex="0" data-m="Mar 2024" data-v="476" data-p="1.4"><rect class="hit" x="313.2" y="26" width="26.4" height="294"/><rect class="fill" x="318.2" y="296.7" width="16.3" height="23.3" rx="4"/><text class="xtick sm" x="326.4" y="341" text-anchor="middle">M</text></g>
+      <g class="bar" tabindex="0" data-m="Apr 2024" data-v="486" data-p="1.4"><rect class="hit" x="339.6" y="26" width="26.4" height="294"/><rect class="fill" x="344.6" y="296.2" width="16.3" height="23.8" rx="4"/><text class="xtick sm" x="352.8" y="341" text-anchor="middle">A</text></g>
+      <g class="bar" tabindex="0" data-m="May 2024" data-v="2,283" data-p="6.5"><rect class="hit" x="365.9" y="26" width="26.4" height="294"/><rect class="fill" x="371.0" y="208.1" width="16.3" height="111.9" rx="4"/><text class="val" x="379.1" y="198.1" text-anchor="middle">2,283</text><text class="xtick sm" x="379.1" y="341" text-anchor="middle">M</text></g>
+      <g class="bar" tabindex="0" data-m="Jun 2024" data-v="1,190" data-p="3.4"><rect class="hit" x="392.3" y="26" width="26.4" height="294"/><rect class="fill" x="397.3" y="261.7" width="16.3" height="58.3" rx="4"/><text class="xtick sm" x="405.5" y="341" text-anchor="middle">J</text></g>
+      <g class="bar" tabindex="0" data-m="Jul 2024" data-v="1,023" data-p="2.9"><rect class="hit" x="418.7" y="26" width="26.4" height="294"/><rect class="fill" x="423.7" y="269.9" width="16.3" height="50.1" rx="4"/><text class="xtick sm" x="431.8" y="341" text-anchor="middle">J</text></g>
+      <g class="bar" tabindex="0" data-m="Aug 2024" data-v="927" data-p="2.6"><rect class="hit" x="445.0" y="26" width="26.4" height="294"/><rect class="fill" x="450.0" y="274.6" width="16.3" height="45.4" rx="4"/><text class="xtick sm" x="458.2" y="341" text-anchor="middle">A</text></g>
+      <g class="bar" tabindex="0" data-m="Sep 2024" data-v="764" data-p="2.2"><rect class="hit" x="471.4" y="26" width="26.4" height="294"/><rect class="fill" x="476.4" y="282.6" width="16.3" height="37.4" rx="4"/><text class="xtick sm" x="484.6" y="341" text-anchor="middle">S</text></g>
+      <g class="bar" tabindex="0" data-m="Oct 2024" data-v="847" data-p="2.4"><rect class="hit" x="497.7" y="26" width="26.4" height="294"/><rect class="fill" x="502.8" y="278.5" width="16.3" height="41.5" rx="4"/><text class="xtick sm" x="510.9" y="341" text-anchor="middle">O</text></g>
+      <g class="bar" tabindex="0" data-m="Nov 2024" data-v="1,841" data-p="5.2"><rect class="hit" x="524.1" y="26" width="26.4" height="294"/><rect class="fill" x="529.1" y="229.8" width="16.3" height="90.2" rx="4"/><text class="xtick sm" x="537.3" y="341" text-anchor="middle">N</text></g>
+      <g class="bar" tabindex="0" data-m="Dec 2024" data-v="1,309" data-p="3.7"><rect class="hit" x="550.5" y="26" width="26.4" height="294"/><rect class="fill" x="555.5" y="255.9" width="16.3" height="64.1" rx="4"/><text class="xtick sm" x="563.6" y="341" text-anchor="middle">D</text></g>
+      <g class="bar" tabindex="0" data-m="Jan 2025" data-v="1,066" data-p="3.0"><rect class="hit" x="576.8" y="26" width="26.4" height="294"/><rect class="fill" x="581.8" y="267.8" width="16.3" height="52.2" rx="4"/><text class="xtick sm" x="590.0" y="341" text-anchor="middle">J</text></g>
+      <g class="bar" tabindex="0" data-m="Feb 2025" data-v="3,368" data-p="9.6"><rect class="hit" x="603.2" y="26" width="26.4" height="294"/><rect class="fill" x="608.2" y="155.0" width="16.3" height="165.0" rx="4"/><text class="val" x="616.4" y="145.0" text-anchor="middle">3,368</text><text class="xtick sm" x="616.4" y="341" text-anchor="middle">F</text></g>
+      <g class="bar" tabindex="0" data-m="Mar 2025" data-v="4,919" data-p="14.0"><rect class="hit" x="629.5" y="26" width="26.4" height="294"/><rect class="fill" x="634.5" y="79.0" width="16.3" height="241.0" rx="4"/><text class="val" x="642.7" y="69.0" text-anchor="middle">4,919</text><text class="xtick sm" x="642.7" y="341" text-anchor="middle">M</text></g>
+      <g class="bar" tabindex="0" data-m="Apr 2025" data-v="1,801" data-p="5.1"><rect class="hit" x="655.9" y="26" width="26.4" height="294"/><rect class="fill" x="660.9" y="231.8" width="16.3" height="88.2" rx="4"/><text class="xtick sm" x="669.1" y="341" text-anchor="middle">A</text></g>
+      <g class="bar" tabindex="0" data-m="May 2025" data-v="1,856" data-p="5.3"><rect class="hit" x="682.3" y="26" width="26.4" height="294"/><rect class="fill" x="687.3" y="229.1" width="16.3" height="90.9" rx="4"/><text class="xtick sm" x="695.4" y="341" text-anchor="middle">M</text></g>
+      <g class="bar" tabindex="0" data-m="Jun 2025" data-v="916" data-p="2.6"><rect class="hit" x="708.6" y="26" width="26.4" height="294"/><rect class="fill" x="713.6" y="275.1" width="16.3" height="44.9" rx="4"/><text class="xtick sm" x="721.8" y="341" text-anchor="middle">J</text></g>
+      <g class="bar" tabindex="0" data-m="Jul 2025" data-v="1,051" data-p="3.0"><rect class="hit" x="735.0" y="26" width="26.4" height="294"/><rect class="fill" x="740.0" y="268.5" width="16.3" height="51.5" rx="4"/><text class="xtick sm" x="748.2" y="341" text-anchor="middle">J</text></g>
+      <g class="bar" tabindex="0" data-m="Aug 2025" data-v="487" data-p="1.4"><rect class="hit" x="761.3" y="26" width="26.4" height="294"/><rect class="fill" x="766.3" y="296.1" width="16.3" height="23.9" rx="4"/><text class="xtick sm" x="774.5" y="341" text-anchor="middle">A</text></g>
+      <g class="bar" tabindex="0" data-m="Sep 2025" data-v="128" data-p="0.4"><rect class="hit" x="787.7" y="26" width="26.4" height="294"/><rect class="fill" x="792.7" y="313.7" width="16.3" height="6.3" rx="4"/><text class="xtick sm" x="800.9" y="341" text-anchor="middle">S</text></g>
+      <g class="bar" tabindex="0" data-m="Oct 2025" data-v="58" data-p="0.2"><rect class="hit" x="814.1" y="26" width="26.4" height="294"/><rect class="fill" x="819.1" y="317.2" width="16.3" height="2.8" rx="4"/><text class="xtick sm" x="827.2" y="341" text-anchor="middle">O</text></g>
+      <g class="bar" tabindex="0" data-m="Nov 2025" data-v="701" data-p="2.0"><rect class="hit" x="840.4" y="26" width="26.4" height="294"/><rect class="fill" x="845.4" y="285.7" width="16.3" height="34.3" rx="4"/><text class="xtick sm" x="853.6" y="341" text-anchor="middle">N</text></g>
+      <g class="bar" tabindex="0" data-m="Dec 2025" data-v="287" data-p="0.8"><rect class="hit" x="866.8" y="26" width="26.4" height="294"/><rect class="fill" x="871.8" y="305.9" width="16.3" height="14.1" rx="4"/><text class="xtick sm" x="879.9" y="341" text-anchor="middle">D</text></g>
+      <g class="bar" tabindex="0" data-m="Jan 2026" data-v="60" data-p="0.2"><rect class="hit" x="893.1" y="26" width="26.4" height="294"/><rect class="fill" x="898.1" y="317.1" width="16.3" height="2.9" rx="4"/><text class="xtick sm" x="906.3" y="341" text-anchor="middle">J</text></g>
+      <g class="bar" tabindex="0" data-m="Feb 2026" data-v="1,286" data-p="3.7"><rect class="hit" x="919.5" y="26" width="26.4" height="294"/><rect class="fill" x="924.5" y="257.0" width="16.3" height="63.0" rx="4"/><text class="xtick sm" x="932.7" y="341" text-anchor="middle">F</text></g>
+      <g class="bar" tabindex="0" data-m="Mar 2026" data-v="465" data-p="1.3"><rect class="hit" x="945.8" y="26" width="26.4" height="294"/><rect class="fill" x="950.9" y="297.2" width="16.3" height="22.8" rx="4"/><text class="xtick sm" x="959.0" y="341" text-anchor="middle">M</text></g>
+      <g class="bar" tabindex="0" data-m="Apr 2026" data-v="32" data-p="0.1"><rect class="hit" x="972.2" y="26" width="26.4" height="294"/><rect class="fill" x="977.2" y="318.4" width="16.3" height="2.0" rx="4"/><text class="xtick sm" x="985.4" y="341" text-anchor="middle">A</text></g>
+      <g class="bar" tabindex="0" data-m="May 2026" data-v="45" data-p="0.1"><rect class="hit" x="998.6" y="26" width="26.4" height="294"/><rect class="fill" x="1003.6" y="317.8" width="16.3" height="2.2" rx="4"/><text class="xtick sm" x="1011.7" y="341" text-anchor="middle">M</text></g>
+      <g class="bar" tabindex="0" data-m="Jun 2026" data-v="180" data-p="0.5"><rect class="hit" x="1024.9" y="26" width="26.4" height="294"/><rect class="fill" x="1029.9" y="311.2" width="16.3" height="8.8" rx="4"/><text class="xtick sm" x="1038.1" y="341" text-anchor="middle">J</text></g>
+      <g class="bar" tabindex="0" data-m="Jul 2026" data-v="19" data-p="0.1"><rect class="hit" x="1051.3" y="26" width="26.4" height="294"/><rect class="fill" x="1056.3" y="319.1" width="16.3" height="2.0" rx="4"/><text class="xtick sm" x="1064.5" y="341" text-anchor="middle">J</text></g>
+      <g class="bar" tabindex="0" data-m="Aug 2026" data-v="1" data-p="0.0"><rect class="hit" x="1077.6" y="26" width="26.4" height="294"/><rect class="fill" x="1082.6" y="320.0" width="16.3" height="2.0" rx="4"/><text class="xtick sm" x="1090.8" y="341" text-anchor="middle">A</text></g>
+      <line class="axis" x1="76" x2="1104" y1="320" y2="320"/>
+      </svg>
+      <div class="tip" id="tip2" hidden></div>
+    </div>
+    <button class="tbl-toggle" type="button" aria-expanded="false">Show the numbers</button>
+    <div class="tbl-panel" hidden>
+      <table class="chart-table"><thead><tr><th>Month</th><th>New customers</th><th>Share of all customers</th></tr></thead><tbody>
+      <tr><td>May 2023</td><td>618</td><td>1.8%</td></tr>
+      <tr><td>Jul 2023</td><td>1,599</td><td>4.5%</td></tr>
+      <tr><td>Aug 2023</td><td>3</td><td>0.0%</td></tr>
+      <tr><td>Sep 2023</td><td>6</td><td>0.0%</td></tr>
+      <tr><td>Oct 2023</td><td>746</td><td>2.1%</td></tr>
+      <tr><td>Nov 2023</td><td>536</td><td>1.5%</td></tr>
+      <tr><td>Dec 2023</td><td>772</td><td>2.2%</td></tr>
+      <tr><td>Jan 2024</td><td>338</td><td>1.0%</td></tr>
+      <tr><td>Feb 2024</td><td>684</td><td>1.9%</td></tr>
+      <tr><td>Mar 2024</td><td>476</td><td>1.4%</td></tr>
+      <tr><td>Apr 2024</td><td>486</td><td>1.4%</td></tr>
+      <tr><td>May 2024</td><td>2,283</td><td>6.5%</td></tr>
+      <tr><td>Jun 2024</td><td>1,190</td><td>3.4%</td></tr>
+      <tr><td>Jul 2024</td><td>1,023</td><td>2.9%</td></tr>
+      <tr><td>Aug 2024</td><td>927</td><td>2.6%</td></tr>
+      <tr><td>Sep 2024</td><td>764</td><td>2.2%</td></tr>
+      <tr><td>Oct 2024</td><td>847</td><td>2.4%</td></tr>
+      <tr><td>Nov 2024</td><td>1,841</td><td>5.2%</td></tr>
+      <tr><td>Dec 2024</td><td>1,309</td><td>3.7%</td></tr>
+      <tr><td>Jan 2025</td><td>1,066</td><td>3.0%</td></tr>
+      <tr><td>Feb 2025</td><td>3,368</td><td>9.6%</td></tr>
+      <tr><td>Mar 2025</td><td>4,919</td><td>14.0%</td></tr>
+      <tr><td>Apr 2025</td><td>1,801</td><td>5.1%</td></tr>
+      <tr><td>May 2025</td><td>1,856</td><td>5.3%</td></tr>
+      <tr><td>Jun 2025</td><td>916</td><td>2.6%</td></tr>
+      <tr><td>Jul 2025</td><td>1,051</td><td>3.0%</td></tr>
+      <tr><td>Aug 2025</td><td>487</td><td>1.4%</td></tr>
+      <tr><td>Sep 2025</td><td>128</td><td>0.4%</td></tr>
+      <tr><td>Oct 2025</td><td>58</td><td>0.2%</td></tr>
+      <tr><td>Nov 2025</td><td>701</td><td>2.0%</td></tr>
+      <tr><td>Dec 2025</td><td>287</td><td>0.8%</td></tr>
+      <tr><td>Jan 2026</td><td>60</td><td>0.2%</td></tr>
+      <tr><td>Feb 2026</td><td>1,286</td><td>3.7%</td></tr>
+      <tr><td>Mar 2026</td><td>465</td><td>1.3%</td></tr>
+      <tr><td>Apr 2026</td><td>32</td><td>0.1%</td></tr>
+      <tr><td>May 2026</td><td>45</td><td>0.1%</td></tr>
+      <tr><td>Jun 2026</td><td>180</td><td>0.5%</td></tr>
+      <tr><td>Jul 2026</td><td>19</td><td>0.1%</td></tr>
+      <tr><td>Aug 2026</td><td>1</td><td>0.0%</td></tr>
+      <tr class="tot"><td>Total</td><td>35,174</td><td>100%</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap rv">
+    <div class="sec-label"><span class="eyebrow">How we beat it online</span></div>
+    <h2 class="display">Two mechanisms</h2>
+    <div class="mech">
+      <div class="m">
+        <div class="lead">Give people something retail cannot sell</div>
+        <h3>Launch new product online first</h3>
+        <p>An online-exclusive launch is the one offer a supermarket cannot match at any price. It holds full margin, it converts hard, and it gives the website a reason to exist beyond being a more expensive version of the shelf.</p>
+        <p>Do it often enough and buying from Papi directly becomes a habit rather than an accident. October and January already proved the mechanic works. The chocolate bar on 18 August is the next one, and it should not be the last.</p>
+      </div>
+      <div class="m">
+        <div class="lead">Stop paying for a sale we then lose</div>
+        <h3>Convert the intent we already bought</h3>
+        <p>Ads, collabs and email do the persuading, then the shopper finishes the job in a supermarket aisle. We close that gap by making the website worth the extra few dollars: merch, an extra discount, gift with purchase, bundles, and offers that quietly pay the price difference back.</p>
+        <p>Influence.io loyalty is already installed and barely used. Even when someone does buy in-store, we get them into the program so the points land on their account and can only be spent online. The offline purchase then feeds the online one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="play">
+  <div class="wrap rv">
+    <div class="eyebrow">The August plan</div>
+    <div class="line">Build intent, and <em>grow the list</em>.</div>
+    <p class="under">Two jobs, delivered through three funnels that feed each other. The list gets bigger and warmer, the launch on 18 August converts it, and the flows keep the revenue coming after the spike has passed.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap rv">
+    <div class="sec-label"><span class="eyebrow">Three funnels</span></div>
+    <h2 class="display">Where August<br>gets spent</h2>
+    <div class="funnels">
+
+      <div class="fn">
+        <div class="side">
+          <div class="lbl">Grow the list</div>
+          <div class="met">1.75% pop-up rate today. A tuned pop-up sits near 5%.</div>
+        </div>
+        <div>
+          <p>We have brought in <strong>Alia</strong> to squeeze the pop-up properly. The BAU test runs the current 10% off sign-up against a sign-up for the new product launch, judged on email submit rate. Whatever wins the homepage stays up until the chocolate bar launches, then we revert to the 10% and keep testing the messaging from there.</p>
+          <p>Paid gets its own list-building budget: Meta campaigns pointed at a full-page capture experience we build in Alia, running for the whole tease window.</p>
+          <p>At the same time we tease the launch to the database we already have, hard enough that people join the waitlist. That builds intent in the current list and grows the new one through both funnels at once.</p>
+        </div>
+      </div>
+
+      <div class="fn">
+        <div class="side">
+          <div class="lbl">The launch</div>
+          <div class="met">18 August · online exclusive · the month's biggest D2C unlock</div>
+        </div>
+        <div>
+          <p>Four flavours, online only, website relaunching the same morning. Everything between now and then is readying the database and nurturing the waitlist we are acquiring, so that launch day converts at the highest rate we can engineer.</p>
+          <ul>
+            <li>Teaser emails that withhold the product before they reveal it</li>
+            <li>Existing video cut down into GIFs</li>
+            <li>Countdown timers as the date closes in</li>
+            <li>The free gift revealed as its own moment</li>
+          </ul>
+          <p>The gift is capped at the <strong>first 300 orders over $60</strong>. Capping it is the point: it manufactures the urgency that converts a waitlist on the day rather than a week later, and it beats the supermarket on value without discounting the bar.</p>
+        </div>
+      </div>
+
+      <div class="fn">
+        <div class="side">
+          <div class="lbl">The flows</div>
+          <div class="met">$59,534 a year · 12% of D2C revenue</div>
+        </div>
+        <div>
+          <p>The flows are bare bones. They fire, but they do not nurture anyone through a purchase decision, and the data says so: welcome email one returns <strong>$6.61 per recipient</strong> because it carries an offer, while emails two through five return <strong>$0.18 between them</strong>. Anything without a discount attached is currently doing nothing.</p>
+          <p>We rebuild from scratch, starting with <strong>welcome</strong>, the single biggest D2C contributor. It becomes a four to seven email series that sells the brand first and the first purchase second, rather than firing a code and going quiet.</p>
+          <p>In parallel we fix the leaks: a proper <strong>abandoned checkout</strong> flow, then a clone of it retuned as a true <strong>abandoned cart</strong>. Today one flow covers both jobs and nothing at all triggers on Added to Cart.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap rv">
+    <div class="sec-label"><span class="eyebrow">The calendar</span></div>
+    <h2 class="display">Fifteen sends,<br>built around one day</h2>
+
+    <div class="cal-legend">
+      <span class="chip campaign">Email campaign</span>
+      <span class="chip launch">Chocolate bar</span>
+      <span class="chip brand">Collab / retail moment</span>
+      <span class="chip retail">Retail promo (not ours)</span>
+    </div>
+
+    <div class="cal-scroll">
+      <table class="cal reveal">
+        <thead><tr><th>Sun</th><th>Mon</th><th>Tues</th><th>Wed</th><th>Thurs</th><th>Fri</th><th>Sat</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="out"><span class="num">26</span></td>
+            <td class="out"><span class="num">27</span></td>
+            <td class="out"><span class="num">28</span></td>
+            <td class="out"><span class="num">29</span></td>
+            <td class="out"><span class="num">30</span></td>
+            <td class="out"><span class="num">31</span></td>
+            <td><span class="num">1</span></td>
+          </tr>
+          <tr>
+            <td><span class="num">2</span></td>
+            <td><span class="num">3</span><span class="band brand">Woolworths NZ launch &middot; sent</span></td>
+            <td><span class="num">4</span><span class="band">Roasting collab teaser</span></td>
+            <td><span class="num">5</span><span class="band">Roasting collab launch</span></td>
+            <td><span class="num">6</span></td>
+            <td><span class="num">7</span><span class="band launch">Teaser 1 &middot; no reveal</span></td>
+            <td><span class="num">8</span></td>
+          </tr>
+          <tr>
+            <td><span class="num">9</span></td>
+            <td><span class="num">10</span><span class="band launch">Teaser 2</span></td>
+            <td><span class="num">11</span></td>
+            <td><span class="num">12</span><span class="band launch">Teaser 3 &middot; the reveal</span></td>
+            <td><span class="num">13</span></td>
+            <td><span class="num">14</span></td>
+            <td><span class="num">15</span><span class="band launch">Free gift revealed</span></td>
+          </tr>
+          <tr>
+            <td><span class="num">16</span></td>
+            <td><span class="num">17</span><span class="band launch">Campaign video &middot; countdown</span></td>
+            <td><span class="num">18</span><span class="band launch">Launch</span><span class="band launch">Gift running out</span></td>
+            <td><span class="num">19</span><span class="band">Retail 20% + launch hint</span><span class="band retail">Retail 20% off</span></td>
+            <td><span class="num">20</span><span class="band retail">Retail 20% off</span></td>
+            <td><span class="num">21</span><span class="band retail">Retail 20% off</span></td>
+            <td><span class="num">22</span><span class="band launch">Reviews &amp; UGC</span></td>
+          </tr>
+          <tr>
+            <td><span class="num">23</span></td>
+            <td><span class="num">24</span></td>
+            <td><span class="num">25</span><span class="band">Ways to eat it</span></td>
+            <td><span class="num">26</span></td>
+            <td><span class="num">27</span><span class="band">Engagement send</span></td>
+            <td><span class="num">28</span></td>
+            <td><span class="num">29</span></td>
+          </tr>
+          <tr>
+            <td><span class="num">30</span></td>
+            <td><span class="num">31</span><span class="band brand">Hungry Jacks announcement</span></td>
+            <td class="out"><span class="num">1</span></td>
+            <td class="out"><span class="num">2</span></td>
+            <td class="out"><span class="num">3</span></td>
+            <td class="out"><span class="num">4</span></td>
+            <td class="out"><span class="num">5</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sends">
+      <div class="send"><span class="dt">03/08</span><span class="nm">Woolworths NZ launch</span><span class="ob">Already sent. Puts Papi in front of the New Zealand list as the range lands.</span></div>
+      <div class="send"><span class="dt">04/08</span><span class="nm">Roasting collab teaser</span><span class="ob">Warm the list for tomorrow and re-establish a rhythm of opening Papi emails.</span></div>
+      <div class="send"><span class="dt">05/08</span><span class="nm">Roasting collab launch</span><span class="ob">Convert the collab while attention is on it, and prove the list still buys.</span></div>
+      <div class="send"><span class="dt">07/08</span><span class="nm">Teaser 1, nothing revealed</span><span class="ob">Say only that something is coming, and open the waitlist. Curiosity does the collecting.</span></div>
+      <div class="send"><span class="dt">10/08</span><span class="nm">Teaser 2</span><span class="ob">Give away one detail and push waitlist sign-ups while paid traffic starts arriving.</span></div>
+      <div class="send"><span class="dt">12/08</span><span class="nm">Teaser 3, the reveal</span><span class="ob">Show the bars and name the date, so the waitlist knows exactly what it is waiting for.</span></div>
+      <div class="send"><span class="dt">15/08</span><span class="nm">Free gift revealed</span><span class="ob">Convert the undecided by putting a cap on the reward: first 300 orders over $60.</span></div>
+      <div class="send"><span class="dt">17/08</span><span class="nm">Campaign video and countdown</span><span class="ob">Run the film and start the countdown timer so tomorrow feels like an event.</span></div>
+      <div class="send hero-send"><span class="dt">18/08</span><span class="nm">Launch, all four flavours</span><span class="ob">Sell out inside 24 to 48 hours and convert the waitlist while the timer is at zero.</span></div>
+      <div class="send hero-send"><span class="dt">18/08</span><span class="nm">Gift allocation running out</span><span class="ob">Later the same day. Burn the remaining gifts, then close the offer.</span></div>
+      <div class="send"><span class="dt">19/08</span><span class="nm">Retail 20% off, with a launch hint</span><span class="ob">Support the offline promo, and in the same email point anyone who missed out back to the bars.</span></div>
+      <div class="send"><span class="dt">22/08</span><span class="nm">Reviews and UGC</span><span class="ob">Turn launch buyers into proof, and convert the people who watched and did not order.</span></div>
+      <div class="send"><span class="dt">25/08</span><span class="nm">Ways to eat it</span><span class="ob">Build intent with use cases rather than a discount, and let the buying happen on its own.</span></div>
+      <div class="send"><span class="dt">27/08</span><span class="nm">Engagement send</span><span class="ob">Pure engagement, no ask. Keeps the list warm without another offer so soon after launch.</span></div>
+      
+      <div class="send"><span class="dt">31/08</span><span class="nm">Hungry Jacks announcement</span><span class="ob">Announce it plainly. It builds brand rather than D2C revenue, so it does not need a tease.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap rv">
+    <div class="sec-label"><span class="eyebrow">What the flow data says</span></div>
+    <h2 class="display">The rebuild,<br>in priority order</h2>
+    <table class="flows">
+      <thead><tr><th style="width:20%">Flow</th><th style="width:26%">Where it is now</th><th style="width:27%">What we're doing</th><th style="width:27%">What the numbers show</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="fname">Welcome<span class="fnum">$46,804 &middot; 79% of flow revenue</span></span></td>
+          <td>Five emails on two-day gaps, triggered off the Newsletter list. Fires a code, then goes quiet.</td>
+          <td>Rebuild as a four to seven email series that sells the brand before it sells the first order, split by whether someone joined for the bar or not.</td>
+          <td>Email one returns <strong>$6.61 per recipient</strong> and converts 7.3%. Emails two to five return <strong>$0.18 between them</strong>. The offer works; the nurture does not exist.</td>
+        </tr>
+        <tr>
+          <td><span class="fname">Abandoned checkout<span class="fnum">$7,877 &middot; 13% of flow revenue</span></span></td>
+          <td>Live since 23/05/2023 and never edited. Waits three hours, then 21, then a day. Named "Abandoned Cart" but triggered on Checkout Started.</td>
+          <td>Rewrite in the voice Papi uses now, pull the first send in to under an hour, and add a fourth.</td>
+          <td>4,187 people entered it last year and 71 bought, a 1.7% conversion. Three hours is a long time to leave a snack decision alone.</td>
+        </tr>
+        <tr>
+          <td><span class="fname">Abandoned cart<span class="fnum">Does not exist</span></span></td>
+          <td>Nothing triggers on Added to Cart. Everyone who adds and leaves without reaching checkout is currently uncontacted.</td>
+          <td>Clone the checkout flow and retune it for a softer, earlier intent signal.</td>
+          <td>This is the cheapest unclaimed revenue in the account, and it matters most on 18 August when traffic spikes.</td>
+        </tr>
+        
+        
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/tethrd-white.svg" alt="Tethrd">
+    <span>Pistachio Papi &#215; Tethrd &middot; August 2026 campaign &amp; flow strategy &middot; Prepared 04/08/2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  var cal = document.querySelector('.cal.reveal');
+  if(cal && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var bands = cal.querySelectorAll('.band');
+    bands.forEach(function(b){ b.style.animationPlayState='paused'; });
+    var co = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          bands.forEach(function(b,i){ b.style.animationDelay=(i*55)+'ms'; b.style.animationPlayState='running'; });
+          co.unobserve(e.target);
+        }
+      });
+    },{threshold:.15});
+    co.observe(cal);
+  }
+  document.querySelectorAll('.chart-wrap').forEach(function(wrap){
+    var tip=wrap.querySelector('.tip');
+    if(!tip) return;
+    function show(g){
+      var d=g.dataset, html='<b>'+d.m+'</b>';
+      if(d.t!==undefined){ html+='Campaigns $'+d.c+'<br>Flows $'+d.f+'<br>Total $'+d.t; }
+      else { html+=d.v+' new customers<br>'+d.p+'% of all customers'; }
+      tip.innerHTML=html;
+      var r=g.querySelector('.fill').getBoundingClientRect(), w=wrap.getBoundingClientRect();
+      tip.style.left=Math.min(Math.max(r.left-w.left+r.width/2,90),w.width-90)+'px';
+      tip.style.top=(r.top-w.top-10)+'px';
+      tip.hidden=false;
+    }
+    wrap.querySelectorAll('.bar').forEach(function(g){
+      g.addEventListener('mouseenter',function(){show(g)});
+      g.addEventListener('focus',function(){show(g)});
+      g.addEventListener('mouseleave',function(){tip.hidden=true});
+      g.addEventListener('blur',function(){tip.hidden=true});
+    });
+  });
+  document.querySelectorAll('.tbl-toggle').forEach(function(tg){
+    tg.addEventListener('click',function(){
+      var panel=tg.nextElementSibling, open=panel.hidden;
+      panel.hidden=!open;
+      tg.setAttribute('aria-expanded',String(open));
+      tg.textContent=open?'Hide the numbers':'Show the numbers';
+    });
+  });
+})();
+</script>
+</body>
+</html>
