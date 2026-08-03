@@ -174,6 +174,10 @@ h2.display{font-size:clamp(38px,5.6vw,66px);line-height:.9}
 .band{display:block;margin-top:7px;padding:5px 7px;font-size:10.5px;font-weight:700;line-height:1.25;text-transform:uppercase;letter-spacing:.045em;background:var(--forest);color:var(--shell);transform-origin:left center}
 .band.launch{background:var(--red);color:#fff}
 .band.brand{background:var(--green);color:#fff}
+.band.next{background:transparent;color:var(--forest);border:1px solid rgba(62,71,40,.55);font-weight:700}
+.cal td.out .band.next{opacity:.85}
+.chip.next{background:transparent;color:var(--forest);border-color:rgba(62,71,40,.55)}
+.carry{margin-top:22px;padding-top:18px;border-top:1px solid var(--rule);font-size:14.5px;color:rgba(28,35,64,.72);max-width:82ch}
 .band.retail{background:transparent;color:var(--ink);border:1px dashed rgba(186,50,67,.65);font-weight:600}
 .reveal .band{animation:sweep .5s cubic-bezier(.2,.7,.3,1) both}
 @keyframes sweep{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
@@ -550,6 +554,7 @@ footer img{height:17px;width:auto;opacity:.85}
       <span class="chip launch">Chocolate bar</span>
       <span class="chip brand">Collab / retail moment</span>
       <span class="chip retail">Retail promo (not ours)</span>
+      <span class="chip next">September lead-in</span>
     </div>
 
     <div class="cal-scroll">
@@ -606,7 +611,7 @@ footer img{height:17px;width:auto;opacity:.85}
             <td><span class="num">31</span><span class="band brand">Hungry Jacks announcement</span></td>
             <td class="out"><span class="num">1</span></td>
             <td class="out"><span class="num">2</span></td>
-            <td class="out"><span class="num">3</span></td>
+            <td class="out"><span class="num">3</span><span class="band next">Hungry Jacks giveaway &middot; 7pm</span></td>
             <td class="out"><span class="num">4</span></td>
             <td class="out"><span class="num">5</span></td>
           </tr>
@@ -630,7 +635,8 @@ footer img{height:17px;width:auto;opacity:.85}
       <div class="send"><span class="dt">25/08</span><span class="nm">Ways to eat it</span><span class="ob">Build intent with use cases rather than a discount, and let the buying happen on its own.</span></div>
       <div class="send"><span class="dt">27/08</span><span class="nm">Engagement send</span><span class="ob">Pure engagement, no ask. Keeps the list warm without another offer so soon after launch.</span></div>
       
-      <div class="send"><span class="dt">31/08</span><span class="nm">Hungry Jacks announcement</span><span class="ob">Announce it plainly. It builds brand rather than D2C revenue, so it does not need a tease.</span></div>
+      <div class="send"><span class="dt">31/08</span><span class="nm">Hungry Jacks announcement</span><span class="ob">Announce it plainly. It builds brand rather than D2C revenue, so it does not need a tease. It opens the Hungry Jacks run that carries the giveaway on 3 September.</span></div>
+      <p class="carry">Carrying into September: Hungry Jacks Storm &amp; Shake goes live Monday 31 August at 8pm and runs through September, with the <strong>giveaway on Thursday 3 September at 7pm</strong>. Email support for that sits in the September plan, not this one.</p>
     </div>
   </div>
 </section>
