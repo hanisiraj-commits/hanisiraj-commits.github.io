@@ -13,7 +13,7 @@
   .eyebrow { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--coral); margin-bottom:8px; }
   h1 { font-size:38px; line-height:1.1; margin:0 0 12px; }
   .sub { color:#9a9a9a; font-size:16px; max-width:760px; margin:0 0 8px; }
-  h2 { font-size:13px; letter-spacing:1.6px; text-transform:uppercase; color:var(--coral);
+  h2 { scroll-margin-top:24px; font-size:13px; letter-spacing:1.6px; text-transform:uppercase; color:var(--coral);
     margin:64px 0 6px; padding-top:28px; border-top:1px solid #1e1e1e; }
   h2:first-of-type { border-top:none; }
   h3 { font-size:15px; margin:36px 0 12px; color:var(--cream); }
@@ -64,7 +64,7 @@
   <p class="sub">Click any tile for the full-resolution file. Nothing here is a final template &mdash; the built
   emails live in Figma, linked at the bottom.</p>
 
-  <h2>1 &middot; Steak King Henry &mdash; the character</h2>
+  <h2 id="henry">1 &middot; Steak King Henry &mdash; the character</h2>
   <p class="lead">Henry is Steak King's mascot cow. He started as a physical brand mascot and we have been
   generating him as a hero character across campaigns. He is the closest thing the account has to a recurring
   brand device, and he is the piece that most needs a written usage rule.</p>
@@ -220,7 +220,7 @@
 </figure>
 </div>
 
-  <h3>Base generation prompt</h3>
+  <h3 id="prompt">Base generation prompt</h3>
   <p class="lead">This is the prompt we have converged on. It works with the master reference image attached
   &mdash; the reference does most of the work, the prompt holds the details the model keeps dropping.</p>
   <pre>Steak King Henry, a chibi bipedal cartoon cow mascot, full body, LANDSCAPE 16:9.
@@ -265,7 +265,7 @@ illustrated steaks. Portrait crop. Wordmark on one or two lines instead of three
     survive every swap.</li>
   </ul>
 
-  <h2>2 &middot; Brand core</h2>
+  <h2 id="brand">2 &middot; Brand core</h2>
   <p class="lead">Logo and the cut-out stickers currently in rotation as module accents.</p>
   <div class="grid">
 <figure class="card">
@@ -302,7 +302,7 @@ illustrated steaks. Portrait crop. Wordmark on one or two lines instead of three
 </figure>
 </div>
 
-  <h2>3 &middot; Campaign key visuals</h2>
+  <h2 id="campaign-kv">3 &middot; Campaign key visuals</h2>
   <p class="lead">Locked series marks and the campaign KVs behind the recent sends. The two flagged LOCKED are
   fixed identities &mdash; reuse them as-is rather than redrawing.</p>
   <div class="grid">
@@ -625,7 +625,7 @@ illustrated steaks. Portrait crop. Wordmark on one or two lines instead of three
 </figure>
 </div>
 
-  <h2>4 &middot; Product imagery</h2>
+  <h2 id="product">4 &middot; Product imagery</h2>
   <p class="lead">Hero plates and raw product shots. Meat is always photoreal, hard-lit, on black.</p>
   <div class="grid">
 <figure class="card">
@@ -766,7 +766,7 @@ illustrated steaks. Portrait crop. Wordmark on one or two lines instead of three
 </figure>
 </div>
 
-  <h2>5 &middot; WhatsApp creatives</h2>
+  <h2 id="whatsapp">5 &middot; WhatsApp creatives</h2>
   <p class="lead">WhatsApp is a live channel on this account and every email gets a WhatsApp companion, so most
   campaigns need a separate crop.</p>
   <div class="grid">
@@ -820,7 +820,7 @@ illustrated steaks. Portrait crop. Wordmark on one or two lines instead of three
 </figure>
 </div>
 
-  <h2>6 &middot; Where the rest lives</h2>
+  <h2 id="sources">6 &middot; Where the rest lives</h2>
   <table>
     <tr><th>Source</th><th>What is in it</th></tr>
     <tr><td><a href="https://www.figma.com/design/TPfT1cMGOMuqwvZIWr9xVw/Steak-Kings-HK-Klaviyo-Emails---SMS" target="_blank">Figma &mdash; Steak King HK, Klaviyo emails + SMS</a></td>
