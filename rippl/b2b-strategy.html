@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2B Strategy — Tethrd × Rippl</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#ffffff; --bg-soft:#fafafa; --dark:#0a0a0a;
+    --ink:#0a0a0a; --ink-2:#3a3a3a; --ink-3:#6a6a6a; --ink-4:#a0a0a0;
+    --line:#e8e8e8; --line-2:#d0d0d0;
+    --accent:#1f5d6e; --accent-bg:#e7eef0;
+    --won:#4a6a4a; --won-bg:#eaefea;
+    --lost:#8a5a6a; --lost-bg:#f0e9ec;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body {
+    background:var(--bg); color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased; font-weight:400;
+  }
+  .wrap { max-width:920px; margin:0 auto; padding:0 32px; }
+
+  /* TOP BAR */
+  .topbar { padding:28px 0 0; display:flex; justify-content:space-between; align-items:center; }
+  .wordmark { font-weight:800; font-size:15px; letter-spacing:-0.02em; }
+  .wordmark .x { color:var(--ink-4); margin:0 8px; font-weight:400; }
+  .wordmark .partner { font-weight:600; }
+  .topbar .meta-right { font-size:11px; color:var(--ink-3); text-transform:uppercase; letter-spacing:0.12em; }
+
+  /* HERO */
+  .hero { padding:76px 0 48px; }
+  .eyebrow { font-size:11px; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:0.18em; margin-bottom:26px; }
+  h1 { font-size:54px; line-height:1.03; font-weight:800; margin:0 0 24px; letter-spacing:-0.035em; }
+  h1 .accent { color:var(--accent); }
+  .lede { font-size:17px; line-height:1.5; color:var(--ink-2); max-width:640px; margin:0; }
+  .lede strong { color:var(--ink); font-weight:600; }
+
+  /* STATS */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); margin:0 0 8px; padding:30px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .stat { padding:0 24px; border-right:1px solid var(--line); }
+  .stat:first-child { padding-left:0; }
+  .stat:last-child { border-right:none; padding-right:0; }
+  .stat .n { font-size:34px; font-weight:800; line-height:1; letter-spacing:-0.03em; font-variant-numeric:tabular-nums; }
+  .stat .l { font-size:10.5px; color:var(--ink-3); text-transform:uppercase; letter-spacing:0.12em; margin-top:9px; font-weight:500; }
+
+  /* SECTION HEADS */
+  h2 { font-size:26px; font-weight:700; letter-spacing:-0.02em; margin:72px 0 8px; }
+  .sub { font-size:14px; color:var(--ink-3); margin:0 0 32px; max-width:620px; }
+
+  /* ============ FUNNEL ============ */
+  .funnel { position:relative; padding-left:44px; }
+  .fstage { margin:0 auto; }
+  .frow { display:flex; gap:10px; }
+  .cell {
+    flex:1; border:1px solid var(--line-2); border-radius:4px; background:#fff;
+    padding:14px 16px; text-align:left; font-family:inherit; cursor:pointer;
+    transition:border-color .16s, background .16s, transform .16s;
+  }
+  .cell:hover, .cell.active { border-color:var(--ink); background:var(--bg-soft); }
+  .cell .ct { font-size:9px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--ink-4); }
+  .cell .cn { font-size:14.5px; font-weight:700; margin-top:4px; letter-spacing:-0.01em; }
+  .cell .cd { font-size:11.5px; color:var(--ink-3); margin-top:3px; line-height:1.4; }
+
+  .taper { height:26px; display:block; width:100%; }
+
+  .band { border-radius:4px; padding:15px 20px; text-align:center; }
+  .band .bt { font-size:9px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; }
+  .band .bn { font-size:16px; font-weight:700; letter-spacing:-0.015em; margin-top:3px; }
+  .band .bd { font-size:11.5px; margin-top:3px; }
+
+  .band-nurture { background:var(--accent-bg); border:1px solid #cddfe3; }
+  .band-nurture .bt { color:var(--accent); }
+  .band-nurture .bd { color:var(--ink-3); }
+
+  .band-neck { background:var(--dark); color:#fff; padding:19px 20px; }
+  .band-neck .bn { font-size:19px; }
+  .band-neck .bt { color:rgba(255,255,255,0.5); }
+
+  .handover { display:flex; align-items:center; gap:14px; margin:20px 0; }
+  .handover span { font-size:9.5px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink-4); white-space:nowrap; }
+  .handover i { flex:1; height:0; border-top:1px dashed var(--line-2); }
+
+  .outcome { border-radius:4px; padding:14px 18px; text-align:center; }
+  .outcome .ot { font-size:9px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; }
+  .outcome .on { font-size:16px; font-weight:700; margin-top:2px; }
+  .outcome .od { font-size:11.5px; color:var(--ink-3); margin-top:2px; }
+  .out-won { background:var(--won-bg); border:1px solid #d3ded3; }
+  .out-won .ot { color:var(--won); }
+  .out-lost { background:var(--lost-bg); border:1px solid #e2d2d8; }
+  .out-lost .ot { color:var(--lost); }
+
+  .fchip {
+    display:block; width:100%; text-align:left; font-family:inherit; cursor:pointer;
+    border:1px solid var(--line); border-radius:4px; background:#fff; padding:11px 14px;
+    transition:border-color .16s, background .16s;
+  }
+  .fchip:hover, .fchip.active { border-color:var(--ink); background:var(--bg-soft); }
+  .fchip b { font-size:10px; font-weight:700; letter-spacing:0.1em; margin-right:8px; font-variant-numeric:tabular-nums; }
+  .fchip.acq b { color:var(--accent); }
+  .fchip.ret b { color:var(--won); }
+  .fchip.rec b { color:var(--lost); }
+  .fchip span { font-size:13.5px; font-weight:600; }
+  .fchip em { display:block; font-style:normal; font-size:11.5px; color:var(--ink-3); margin-top:2px; }
+
+  /* loop rail */
+  .rail { position:absolute; left:8px; top:14px; bottom:34px; width:26px; border-left:1px dashed var(--line-2); border-top:1px dashed var(--line-2); border-bottom:1px dashed var(--line-2); border-radius:3px 0 0 3px; }
+  .rail:after { content:''; position:absolute; top:-4px; right:-1px; width:7px; height:7px; border-top:1px solid var(--ink-4); border-right:1px solid var(--ink-4); transform:rotate(45deg); }
+  .rail-l { position:absolute; left:2px; top:50%; writing-mode:vertical-rl; transform:translateY(-50%) rotate(180deg); white-space:nowrap; font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-4); font-weight:600; }
+
+  .readout { margin:24px 0 0; padding:16px 18px; border-left:2px solid var(--ink); background:var(--bg-soft); font-size:13.5px; color:var(--ink-2); line-height:1.6; min-height:62px; }
+  .readout b { color:var(--ink); font-weight:600; }
+
+  /* ============ POP-UP MOCKS ============ */
+  .mocks { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .mock { }
+  .mstep { font-size:9.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-4); margin-bottom:10px; }
+  .mbox { border:1px solid var(--line-2); border-radius:6px; overflow:hidden; background:#fff; box-shadow:0 1px 0 rgba(0,0,0,0.02); }
+  .mbar { background:var(--bg-soft); border-bottom:1px solid var(--line); padding:7px 12px; font-size:8.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-4); display:flex; justify-content:space-between; }
+  .mbody { padding:20px 18px 22px; }
+  .mh { font-size:15.5px; font-weight:700; letter-spacing:-0.015em; line-height:1.25; }
+  .mp { font-size:11.5px; color:var(--ink-3); margin-top:7px; line-height:1.45; }
+  .mopt { border:1px solid var(--line-2); border-radius:3px; padding:9px 11px; font-size:12px; font-weight:600; margin-top:9px; }
+  .mfield { border:1px solid var(--line-2); border-radius:3px; padding:9px 11px; font-size:12px; color:var(--ink-4); margin-top:14px; }
+  .mbtn { background:var(--dark); color:#fff; border-radius:3px; padding:10px 11px; font-size:12px; font-weight:600; text-align:center; margin-top:10px; }
+  .mfoot { font-size:9.5px; color:var(--ink-4); margin-top:10px; }
+  .mgift { background:var(--accent-bg); border-radius:3px; padding:11px 12px; margin-top:12px; }
+  .mgift .g1 { font-size:11px; font-weight:700; color:var(--accent); letter-spacing:0.06em; text-transform:uppercase; }
+  .mgift .g2 { font-size:12px; color:var(--ink-2); margin-top:3px; line-height:1.4; }
+  .mnote { font-size:12.5px; color:var(--ink-3); margin:14px 0 0; line-height:1.5; }
+
+  /* ============ FLOW TIMELINES ============ */
+  .flow { border-top:1px solid var(--line); }
+  .flow:last-of-type { border-bottom:1px solid var(--line); }
+  .fh { display:block; width:100%; text-align:left; background:none; border:0; padding:20px 0; font-family:inherit; cursor:pointer; }
+  .fh:hover .fname { color:var(--accent); }
+  .ftop { display:flex; align-items:baseline; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+  .fid { font-size:10.5px; font-weight:800; letter-spacing:0.1em; font-variant-numeric:tabular-nums; }
+  .flow.acq .fid { color:var(--accent); }
+  .flow.ret .fid { color:var(--won); }
+  .flow.rec .fid { color:var(--lost); }
+  .fname { font-size:17px; font-weight:700; letter-spacing:-0.015em; transition:color .15s; }
+  .fgoal { margin-left:auto; font-size:11px; color:var(--ink-4); text-transform:uppercase; letter-spacing:0.1em; font-weight:600; }
+  .fexp { font-size:18px; color:var(--ink-4); line-height:1; transition:transform .2s; margin-left:10px; }
+  .flow.open .fexp { transform:rotate(45deg); }
+
+  .track { display:flex; align-items:center; gap:0; }
+  .tstart, .tend { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding:5px 10px; border-radius:20px; white-space:nowrap; }
+  .tstart { background:var(--bg-soft); border:1px solid var(--line-2); color:var(--ink-3); }
+  .tend { color:#fff; }
+  .flow.acq .tend { background:var(--accent); }
+  .flow.ret .tend { background:var(--won); }
+  .flow.rec .tend { background:var(--lost); }
+  .tline { flex:1; height:1px; background:var(--line-2); min-width:10px; }
+  .tdot { position:relative; width:11px; height:11px; border-radius:50%; background:#fff; border:2px solid var(--ink-4); flex:none; }
+  .flow.acq .tdot { border-color:var(--accent); }
+  .flow.ret .tdot { border-color:var(--won); }
+  .flow.rec .tdot { border-color:var(--lost); }
+  .tdot i { position:absolute; top:16px; left:50%; transform:translateX(-50%); font-size:9.5px; font-style:normal; color:var(--ink-4); white-space:nowrap; font-weight:600; letter-spacing:0.04em; }
+  .track { padding-bottom:20px; }
+
+  .fbody { max-height:0; overflow:hidden; transition:max-height .28s ease; }
+  .flow.open .fbody { max-height:640px; }
+  .finner { padding:4px 0 24px; }
+  .fmail { display:grid; grid-template-columns:64px 1fr; gap:18px; padding:11px 0; border-top:1px solid var(--line); }
+  .fmail:first-child { border-top:none; }
+  .fwhen { font-size:11px; font-weight:700; color:var(--ink-4); letter-spacing:0.06em; text-transform:uppercase; padding-top:2px; }
+  .fwhat { font-size:13.5px; color:var(--ink-2); line-height:1.5; }
+  .fwhat b { color:var(--ink); font-weight:600; }
+  .fnote { font-size:12.5px; color:var(--ink-3); margin-top:14px; padding-left:82px; line-height:1.5; }
+
+  /* ============ CAMPAIGNS ============ */
+  .camps { display:grid; grid-template-columns:1fr 1fr; gap:0 40px; border-top:1px solid var(--line-2); padding-top:6px; }
+  .camps div { font-size:13.5px; color:var(--ink-2); padding:15px 0; border-bottom:1px solid var(--line); line-height:1.5; }
+  .camps div b { color:var(--ink); font-weight:600; }
+
+  /* FOOTER */
+  .footer { background:var(--dark); color:#fff; margin-top:92px; padding:44px 32px; text-align:center; }
+  .footer .wordmark { color:#fff; font-size:16px; }
+  .footer .wordmark .x { color:rgba(255,255,255,0.4); }
+  .footer .copy { font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.15em; margin-top:18px; font-weight:500; }
+  .footer .copy a { color:rgba(255,255,255,0.7); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.3); }
+
+  @media print {
+    .fbody { max-height:none !important; }
+    .flow, .mock { break-inside:avoid; }
+    .footer { background:#fff; color:#000; }
+    .footer .wordmark, .footer .copy { color:#000; }
+  }
+  @media (max-width:760px) {
+    h1 { font-size:36px; }
+    .stats { grid-template-columns:repeat(2,1fr); gap:22px 0; }
+    .stat { border-right:none; padding:0 14px; }
+    .stat:first-child { padding-left:0; }
+    .funnel { padding-left:0; }
+    .rail { display:none; }
+    .frow { flex-direction:column; gap:8px; }
+    .fstage { width:100% !important; }
+    .taper { display:none; }
+    .frow.split { flex-direction:row; gap:8px; }
+    .mocks { grid-template-columns:1fr; gap:26px; }
+    .camps { grid-template-columns:1fr; gap:0; }
+    .fmail { grid-template-columns:1fr; gap:3px; }
+    .fnote { padding-left:0; }
+    .fgoal { margin-left:0; width:100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="wordmark">tethrd<span class="x">×</span><span class="partner">Rippl</span></div>
+    <div class="meta-right">August 2026 · B2B Lifecycle</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">For Bade · B2B Strategy</div>
+    <h1>The B2B<br>lifecycle <span class="accent">funnel</span>.</h1>
+    <p class="lede">
+      Pipedrive started writing into Klaviyo on 4 August, so we can finally follow a B2B lead from first touch through to deal value. Everything before the inquiry is ours to nurture, everything after is a sales conversation we support rather than run. <strong>Click anything below to open it up.</strong>
+    </p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">2,187</div><div class="l">B2B contacts</div></div>
+    <div class="stat"><div class="n">392</div><div class="l">Sample pack buyers</div></div>
+    <div class="stat"><div class="n">0 → 5</div><div class="l">B2B flows</div></div>
+    <div class="stat"><div class="n">3–4</div><div class="l">Campaigns a month</div></div>
+  </div>
+
+  <h2>The funnel</h2>
+  <p class="sub">Three ways in at the top, one conversion in the middle, two ways out the bottom.</p>
+
+  <div class="funnel">
+    <div class="rail"><span class="rail-l">a reorder starts a new deal</span></div>
+
+    <div class="fstage" style="width:100%">
+      <div class="frow">
+        <button class="cell" data-flow="f01">
+          <div class="ct">Way in 01 · Cold</div>
+          <div class="cn">Pop-up capture</div>
+          <div class="cd">Custom can page. Ads, organic, outreach.</div>
+        </button>
+        <button class="cell" data-flow="f01">
+          <div class="ct">Way in 02 · Cold</div>
+          <div class="cn">Leads you add</div>
+          <div class="cd">Outbound and event contacts.</div>
+        </button>
+        <button class="cell" data-flow="f02">
+          <div class="ct">Way in 03 · Warm · 392</div>
+          <div class="cn">Sample pack order</div>
+          <div class="cd">They paid to hold the product.</div>
+        </button>
+      </div>
+    </div>
+
+    <svg class="taper" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true">
+      <polygon points="0,0 100,0 88,26 12,26" fill="#fafafa" stroke="#e8e8e8" stroke-width="0.3"/>
+    </svg>
+
+    <div class="fstage" style="width:76%">
+      <div class="band band-nurture">
+        <div class="bt">Flows 01 + 02 · Ours to run</div>
+        <div class="bn">Nurture</div>
+        <div class="bd">Cold leads get sold on a sample. Sample buyers get asked for the inquiry.</div>
+      </div>
+    </div>
+
+    <svg class="taper" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true">
+      <polygon points="12,0 88,0 76,26 24,26" fill="#fafafa" stroke="#e8e8e8" stroke-width="0.3"/>
+    </svg>
+
+    <div class="fstage" style="width:52%">
+      <div class="band band-neck">
+        <div class="bt">The one conversion we own</div>
+        <div class="bn">B2B inquiry submitted</div>
+      </div>
+    </div>
+
+    <div class="handover"><i></i><span>Pipedrive · sales owns the close</span><i></i></div>
+
+    <div class="fstage" style="width:100%">
+      <div class="frow split" style="gap:20px">
+        <div style="flex:1">
+          <div class="outcome out-won">
+            <div class="ot">Deal won</div>
+            <div class="on">Ordered</div>
+            <div class="od">Deal value and delivery date come with it.</div>
+          </div>
+          <div style="height:10px"></div>
+          <button class="fchip ret" data-flow="f03"><b>F03</b><span>Delivery and proof</span><em>Lands after the cans do. Review and UGC.</em></button>
+          <div style="height:8px"></div>
+          <button class="fchip ret" data-flow="f04"><b>F04</b><span>Reorder loop</span><em>Timed to their own cycle, not the calendar.</em></button>
+        </div>
+        <div style="flex:1">
+          <div class="outcome out-lost">
+            <div class="ot">Deal lost</div>
+            <div class="on">Didn't go ahead</div>
+            <div class="od">The reason comes through with it.</div>
+          </div>
+          <div style="height:10px"></div>
+          <button class="fchip rec" data-flow="f05"><b>F05</b><span>Why not</span><em>One question, while the decision is still fresh.</em></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="readout" id="readout">
+    <b>Tap any box.</b> The two cold ways in both aim at one thing first: getting a sample pack into their hands. That's what turns a 240-can minimum from a big commitment into an obvious one.
+  </div>
+
+  <h2>The pop-up</h2>
+  <p class="sub">The custom can page only catches people ready to fill in a full inquiry form. This catches everyone below that, and pays them in product rather than a discount.</p>
+
+  <div class="mocks">
+    <div class="mock">
+      <div class="mstep">Step 1 · Qualify</div>
+      <div class="mbox">
+        <div class="mbar"><span>Rippl · Custom Branded</span><span>✕</span></div>
+        <div class="mbody">
+          <div class="mh">Branding cans for something?</div>
+          <div class="mp">Tell us which and we'll keep it relevant.</div>
+          <div class="mopt">A one-off event</div>
+          <div class="mopt">Ongoing supply</div>
+          <div class="mopt">Just looking for now</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mstep">Step 2 · Capture</div>
+      <div class="mbox">
+        <div class="mbar"><span>Rippl · Custom Branded</span><span>✕</span></div>
+        <div class="mbody">
+          <div class="mh">Where should we send it?</div>
+          <div class="mp">Pricing, turnarounds and what 800+ brands have printed.</div>
+          <div class="mfield">you@company.com</div>
+          <div class="mbtn">Continue</div>
+          <div class="mfoot">No spam. Unsubscribe any time.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mstep">Step 3 · Reward</div>
+      <div class="mbox">
+        <div class="mbar"><span>Rippl · Custom Branded</span><span>✕</span></div>
+        <div class="mbody">
+          <div class="mh">Your sample pack is on us.</div>
+          <div class="mgift">
+            <div class="g1">Free sample pack</div>
+            <div class="g2">Real cans, real print quality, in your hands this week. Just cover shipping.</div>
+          </div>
+          <div class="mbtn">Claim my sample pack</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="mnote">
+    The reward sits on the last screen on purpose. Leading with a free pack on step one promises it to people who have already had one, and it buries the reason to subscribe underneath a giveaway.
+  </p>
+
+  <h2>The five flows</h2>
+  <p class="sub">There isn't a single B2B flow in the account today. These five cover the whole funnel. Timings are my proposal, open to your read.</p>
+
+  <div class="flow acq" data-id="f01">
+    <button class="fh">
+      <div class="ftop">
+        <span class="fid">F01</span>
+        <span class="fname">Nurture to sample</span>
+        <span class="fgoal">Goal · sample pack ordered</span>
+        <span class="fexp">+</span>
+      </div>
+      <div class="track">
+        <span class="tstart">Joins the list</span>
+        <span class="tline"></span><span class="tdot"><i>Day 0</i></span>
+        <span class="tline"></span><span class="tdot"><i>Day 2</i></span>
+        <span class="tline"></span><span class="tdot"><i>Day 6</i></span>
+        <span class="tline"></span><span class="tdot"><i>Day 12</i></span>
+        <span class="tline"></span><span class="tend">Sample ordered</span>
+      </div>
+    </button>
+    <div class="fbody"><div class="finner">
+      <div class="fmail"><div class="fwhen">Day 0</div><div class="fwhat"><b>Who we are, and who prints with us.</b> Straight to the logo wall. L'Oréal, Prada, Mercedes-Benz, Microsoft, David Jones.</div></div>
+      <div class="fmail"><div class="fwhen">Day 2</div><div class="fwhat"><b>How it actually works.</b> Configure, send us a logo, approve, delivered. Four steps and the minimum is 240 cans.</div></div>
+      <div class="fmail"><div class="fwhen">Day 6</div><div class="fwhat"><b>Where the cans keep showing up.</b> Boardrooms, black-tie, fashion week, hotel rooms. This angle is our best opener on record at 69.1%.</div></div>
+      <div class="fmail"><div class="fwhen">Day 12</div><div class="fwhat"><b>Hold one before you commit.</b> The sample pack, shipping only.</div></div>
+      <div class="fnote">Exits the moment they order a sample or submit an inquiry. Leads you add by hand run the same flow on a slower cadence, since they haven't opted in themselves and the domain needs protecting.</div>
+    </div></div>
+  </div>
+
+  <div class="flow acq" data-id="f02">
+    <button class="fh">
+      <div class="ftop">
+        <span class="fid">F02</span>
+        <span class="fname">Nurture to inquiry</span>
+        <span class="fgoal">Goal · inquiry submitted</span>
+        <span class="fexp">+</span>
+      </div>
+      <div class="track">
+        <span class="tstart">Sample ordered</span>
+        <span class="tline"></span><span class="tdot"><i>Day 0</i></span>
+        <span class="tline"></span><span class="tdot"><i>Arrives</i></span>
+        <span class="tline"></span><span class="tdot"><i>+4</i></span>
+        <span class="tline"></span><span class="tdot"><i>+9</i></span>
+        <span class="tline"></span><span class="tend">Inquiry in</span>
+      </div>
+    </button>
+    <div class="fbody"><div class="finner">
+      <div class="fmail"><div class="fwhen">Day 0</div><div class="fwhat"><b>On its way.</b> What's in the pack and what to look for when it lands.</div></div>
+      <div class="fmail"><div class="fwhen">Arrival</div><div class="fwhat"><b>It's there.</b> Check the print against your brand guide. Hold it, photograph it, put it on a desk.</div></div>
+      <div class="fmail"><div class="fwhen">+4 days</div><div class="fwhat"><b>What a real run looks like.</b> From 240 cans, three weeks standard, seven days on priority. Pricing is instant on the configurator.</div></div>
+      <div class="fmail"><div class="fwhen">+9 days</div><div class="fwhat"><b>Ready when you are.</b> Straight into the inquiry, with their use case from the pop-up carried through.</div></div>
+      <div class="fnote">This is the flow the 392 existing sample buyers get dropped into. 328 of them aren't even on the B2B list yet.</div>
+    </div></div>
+  </div>
+
+  <div class="flow ret" data-id="f03">
+    <button class="fh">
+      <div class="ftop">
+        <span class="fid">F03</span>
+        <span class="fname">Delivery and proof</span>
+        <span class="fgoal">Goal · review and UGC</span>
+        <span class="fexp">+</span>
+      </div>
+      <div class="track">
+        <span class="tstart">Deal won</span>
+        <span class="tline"></span><span class="tdot"><i>Delivery +2</i></span>
+        <span class="tline"></span><span class="tdot"><i>+6</i></span>
+        <span class="tline"></span><span class="tdot"><i>+12</i></span>
+        <span class="tline"></span><span class="tend">Proof captured</span>
+      </div>
+    </button>
+    <div class="fbody"><div class="finner">
+      <div class="fmail"><div class="fwhen">+2 days</div><div class="fwhat"><b>Did they land alright?</b> One line, real reply address. Catches a print problem before it becomes a refund.</div></div>
+      <div class="fmail"><div class="fwhen">+6 days</div><div class="fwhat"><b>Show us.</b> Photos from the event or the fridge, in exchange for a tag. This is where the case-study library comes from.</div></div>
+      <div class="fmail"><div class="fwhen">+12 days</div><div class="fwhat"><b>Review request.</b> Short, specific, asks about print quality and turnaround rather than a star rating.</div></div>
+      <div class="fnote">Timed off the expected delivery date coming through on the deal, so it never lands before the cans do.</div>
+    </div></div>
+  </div>
+
+  <div class="flow ret" data-id="f04">
+    <button class="fh">
+      <div class="ftop">
+        <span class="fid">F04</span>
+        <span class="fname">Reorder loop</span>
+        <span class="fgoal">Goal · a new deal</span>
+        <span class="fexp">+</span>
+      </div>
+      <div class="track">
+        <span class="tstart">Deal won</span>
+        <span class="tline"></span><span class="tdot"><i>Cycle −3wk</i></span>
+        <span class="tline"></span><span class="tdot"><i>Cycle</i></span>
+        <span class="tline"></span><span class="tdot"><i>+2wk</i></span>
+        <span class="tline"></span><span class="tend">Reorders</span>
+      </div>
+    </button>
+    <div class="fbody"><div class="finner">
+      <div class="fmail"><div class="fwhen">−3 weeks</div><div class="fwhat"><b>Getting low?</b> Sent early enough that three weeks of standard production still lands before they run out.</div></div>
+      <div class="fmail"><div class="fwhen">Cycle date</div><div class="fwhat"><b>Same artwork, same specs.</b> Straight back to the configurator with their last order pre-filled.</div></div>
+      <div class="fmail"><div class="fwhen">+2 weeks</div><div class="fwhat"><b>Anything changed?</b> Last nudge, and an opening to talk about a different vessel or a bigger run.</div></div>
+      <div class="fnote">Splits on deal value. The bigger accounts get an email from their account manager, everyone else goes self-serve. This is the leak you flagged twice: people reorder through an AM a week after a send, and Klaviyo never sees it.</div>
+    </div></div>
+  </div>
+
+  <div class="flow rec" data-id="f05">
+    <button class="fh">
+      <div class="ftop">
+        <span class="fid">F05</span>
+        <span class="fname">Why not</span>
+        <span class="fgoal">Goal · the real reason</span>
+        <span class="fexp">+</span>
+      </div>
+      <div class="track">
+        <span class="tstart">Deal lost</span>
+        <span class="tline"></span><span class="tdot"><i>Day 2</i></span>
+        <span class="tline"></span><span class="tdot"><i>Day 45</i></span>
+        <span class="tline"></span><span class="tend">Reason logged</span>
+      </div>
+    </button>
+    <div class="fbody"><div class="finner">
+      <div class="fmail"><div class="fwhen">Day 2</div><div class="fwhat"><b>One question.</b> What stopped you? Four options and a free-text box, no pitch underneath it.</div></div>
+      <div class="fmail"><div class="fwhen">Day 45</div><div class="fwhat"><b>Back when it suits.</b> Branches on their answer. Timing gets a diary nudge, price gets the cost-per-can maths, a competitor gets the 7-day turnaround.</div></div>
+      <div class="fnote">Sales already logs a lost reason, so we start with a guess rather than a blank. No incentive to begin with. People who have just said no are usually happy to say why, and if the response rate comes back thin we add credit on a future order and test it again.</div>
+    </div></div>
+  </div>
+
+  <h2>The campaigns</h2>
+  <p class="sub">Three to four a month, so custom cans are already in mind when the need turns up. Most B2B buying comes down to timing.</p>
+
+  <div class="camps">
+    <div><b>Use cases, not deadlines.</b> Our deadline-led subject opened at 52.9%. The use-case one hit 69.1%.</div>
+    <div><b>One idea per send.</b> A new vessel, a turnaround, a brand that just printed with us.</div>
+    <div><b>Cut by deal state.</b> Never sampled, sampled, ordered, lost. Each gets a different reason to open.</div>
+    <div><b>Revenue attached.</b> The order event becomes the conversion metric, so we read revenue per send instead of guessing.</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="wordmark">tethrd<span class="x">×</span>Rippl</div>
+  <div class="copy">Prepared 05 Aug 2026 · <a href="mailto:hani@tethrd.co">hani@tethrd.co</a></div>
+</div>
+
+<script>
+(function () {
+  var readout = document.getElementById('readout');
+  var copy = {
+    f01: '<b>Flow 01 picks these up.</b> Pop-up leads and the contacts you add by hand land in the same nurture. It is not selling a 240-can order yet, it is selling a sample pack, because that is a decision someone can make on their own without a budget conversation.',
+    f02: '<b>Flow 02 picks these up.</b> They have already paid to hold the product, so this is the shortest run to an inquiry in the whole funnel. 392 people have bought a pack in the last year and 328 of them are not even on the B2B list.',
+    f03: '<b>Flow 03 runs here.</b> Timed off the delivery date on the deal, so it never asks how the cans look before they have arrived. Photos and reviews out of this feed every campaign that follows.',
+    f04: '<b>Flow 04 runs here.</b> Built around each account&rsquo;s own reorder gap rather than a fixed calendar, and it splits on deal value so the bigger accounts hear from their AM instead of a template.',
+    f05: '<b>Flow 05 runs here.</b> Sales already logs why a deal died, so we open with a guess instead of a blank page. One question, no pitch under it, then a re-approach that branches on the answer.'
+  };
+  var defaultCopy = readout.innerHTML;
+
+  function clearActive() {
+    document.querySelectorAll('.cell, .fchip').forEach(function (n) { n.classList.remove('active'); });
+  }
+
+  document.querySelectorAll('[data-flow]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-flow');
+      var wasActive = btn.classList.contains('active');
+      clearActive();
+      if (wasActive) { readout.innerHTML = defaultCopy; return; }
+      btn.classList.add('active');
+      readout.innerHTML = copy[id] || defaultCopy;
+      var flow = document.querySelector('.flow[data-id="' + id + '"]');
+      if (flow) {
+        document.querySelectorAll('.flow').forEach(function (f) { if (f !== flow) f.classList.remove('open'); });
+        flow.classList.add('open');
+      }
+    });
+  });
+
+  document.querySelectorAll('.flow .fh').forEach(function (head) {
+    head.addEventListener('click', function () {
+      head.parentNode.classList.toggle('open');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
