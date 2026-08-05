@@ -381,10 +381,10 @@
   <div class="wrap">
     <footer>
       <strong>Moving a deal:</strong> grab the handle on the left of any row and drag it up or down the table. Everything in between shifts along by one to close the gap &mdash; drag Tuesday's deal down to Friday and Wednesday, Thursday and Friday each move up a day. A deal pushed past the last available day drops into <em>Not scheduled</em> at the bottom, and can be dragged back in at any time. Moves are shared with everyone on this page within fifteen seconds, and sign-off and comments travel with the deal, not the date &mdash; approve something on the 5th, move it to the 12th, and it is still approved.<br><br>
-      <strong>Hero images:</strong> each deal ships with its PDP hero already built &mdash; the real product photograph with the value laid over it, the deal price against the everyday price and what you save. Copy it to the clipboard or download it straight from the deal view. They are generated from the plan itself, so the figures on a badge can never disagree with the figures on the page: run <span class="kbd">python3 scripts/build-deal-badges.py</span> after a price changes and the affected heroes rebuild. Headlines and the corner tab live in <span class="kbd">scripts/badge-copy.json</span>.<br><br>
+      <strong>Hero images:</strong> each deal ships with its PDP hero already built &mdash; the real product photograph with the value laid over it, the deal price against the <strong>RRP</strong> and what you save. Compare-at is the product's maximum RRP in Shopify &mdash; not the everyday selling price &mdash; so the strike-through on the badge, the strike-through on the PDP and the value line in the copy all quote the same number. Copy it to the clipboard or download it straight from the deal view. They are generated from the plan itself, so the figures on a badge can never disagree with the figures on the page: run <span class="kbd">python3 scripts/build-deal-badges.py</span> after a price changes and the affected heroes rebuild. Headlines and the corner tab live in <span class="kbd">scripts/badge-copy.json</span>.<br><br><strong>Six SKUs still need an RRP set in Shopify.</strong> They carry no compare-at price at all, so their deals currently run on a <em>2&times; everyday</em> placeholder rather than a real RRP: Organic Grass Fed Angus Striploin 1kg (drives the Organic Double, its 20 Aug recycle and the 24 Aug ladder), Black Angus Bone-in Ribeye OP Rib Roast, Frozen Wagyu Diced Beef 1kg, Frozen Australian Lamb Shanks 2.2kg, MSC Certified Atlantic Cod Fillet 1kg and Australian Yellowfin Tuna Steaks. David to set a real RRP on each, then the compare figure and the hero badge both need rebuilding.<br><br>
       <strong>How to add a month:</strong> open this file and append one entry to the <span class="kbd">PLAN</span> object at the top of the script &mdash; a label, the block rows, and one entry per day, each with its own <span class="kbd">id</span>. Nothing else needs touching; the calendar, lookahead and build specs all read from it. The dates in <span class="kbd">PLAN</span> are only the starting order &mdash; once anyone drags a row, the running order is whatever the shared backend says it is.<br><br>
       <strong>Keyboard:</strong> <span class="kbd">&larr;</span> <span class="kbd">&rarr;</span> move a day &middot; <span class="kbd">T</span> jump to today &middot; tab to a drag handle and use <span class="kbd">&uarr;</span> <span class="kbd">&darr;</span> to move a deal without dragging. Every date is linkable &mdash; the URL updates as you click, so you can paste someone straight onto a specific day.<br><br>
-      Steak King HK &times; Tethrd &middot; Promo blackouts and block targets from the Steak King HK August 2026 forecast (Scenario A, HK$4.6M) circulated 24 July 2026, amended 31 July: the July Meat Emporium sale carries into 1&ndash;2 August, so the daily deal starts on the 3rd and the $791,550 block target still covers the full 1&ndash;10 window. Prices, unit costs, gross margins, stock levels and product images pulled live from the Steak King Shopify Admin API on 27 July 2026 &mdash; all move, so confirm in the admin on the day before building. Gross margin is deal price against unit cost, before shipping and payment fees. Performance multiples are from the Deal of the Day first read, 16&ndash;18 July 2026 (n=3 days) &mdash; directional, not conclusive. All figures HKD.
+      Steak King HK &times; Tethrd &middot; Promo blackouts and block targets from the Steak King HK August 2026 forecast (Scenario A, HK$4.6M) circulated 24 July 2026, amended 31 July: the July Meat Emporium sale carries into 1&ndash;2 August, so the daily deal starts on the 3rd and the $791,550 block target still covers the full 1&ndash;10 window. Prices, unit costs, gross margins, stock levels and product images pulled live from the Steak King Shopify Admin API on 27 July 2026, RRP / compare-at refreshed 4 August 2026 &mdash; all move, so confirm in the admin on the day before building. Gross margin is deal price against unit cost, before shipping and payment fees. Performance multiples are from the Deal of the Day first read, 16&ndash;18 July 2026 (n=3 days) &mdash; directional, not conclusive. All figures HKD.
     </footer>
   </div>
 </main>
@@ -429,10 +429,10 @@ const PLAN = {
         why:'The July Meat Emporium sale holds the first two days, so the programme restarts on the biggest BAU base of the month at $100k — and a restart has to be the highest-confidence thing in the library. This is the exact mechanic that produced the best deal-SKU day of the launch, on a value ribeye everyone recognises, with enough depth that it cannot sell out and embarrass us. At $1,000 it also clears free shipping on its own, so it opens the month on AOV rather than diluting it.',
         flag:'$1,000 sits exactly on the free-shipping threshold. Confirm in Shopify whether the rule reads over $1,000 or $1,000 and above — if it is strictly over, the deal does not qualify and the copy has to drop the free-delivery line.',
         build:{desc:{hook:"3 KILOS OF RIBEYE FOR $1,000. TODAY ONLY.",
-          value:["It's $1,344 the rest of the month. You're $344 up.",
-                 "Works out at $333 a kilo instead of $448.",
+          value:["RRP $2,688. You're $1,688 up.",
+                 "Works out at $333 a kilo.",
                  "Back to full price at midnight."],
-          sell:"USDA Choice is what most steakhouses buy. Well marbled, hard to ruin, thick enough that you get a proper crust and the middle stays pink. It comes as three separate kilos, so cook one tonight and put the rest in the freezer."}, source:'Chilled USDA Choice Ribeye 1kg', clone:'Quantity Flash: USDA Choice Ribeye 3 × 1kg', price:'$1,000', compare:'$1,344'}
+          sell:"USDA Choice is what most steakhouses buy. Well marbled, hard to ruin, thick enough that you get a proper crust and the middle stays pink. It comes as three separate kilos, so cook one tonight and put the rest in the freezer."}, source:'Chilled USDA Choice Ribeye 1kg', clone:'Quantity Flash: USDA Choice Ribeye 3 × 1kg', price:'$1,000', compare:'$2,688'}
       },
       '2026-08-04':{
         id:'lamb-rack-flash', title:'The Lamb Rack Flash', mech:'Quantity Flash',
@@ -441,10 +441,10 @@ const PLAN = {
         lines:[['Stock','321 units.']],
         why:'The first half of the lamb read, five days before the leg — same category, different price point and occasion, so we learn whether it is lamb that works or just the roast. Frenched racks photograph as well as anything in the catalogue, and 321 units means a Tuesday base is plenty to move real volume.',
         build:{desc:{hook:"THREE LAMB RACKS. $799 TILL MIDNIGHT.",
-          value:["$1,044 if you bought them one at a time.",
-                 "$333 a kilo, down from $435.",
+          value:["RRP $2,088. You're $1,289 up.",
+                 "$333 a kilo across the three racks.",
                  "Tomorrow it's back."],
-          sell:"Mount Schanck, and they come Frenched, so the bones are already scraped clean. Nothing to do but season them and get them in the oven. One rack is four decent cutlets. Three will do a table of twelve without anyone going short."}, source:'Chilled Mount Schanck Bone-In Frenched Lamb Rack Cap Off 800g', clone:'Quantity Flash: Frenched Lamb Rack × 3', price:'$799', compare:'$1,044'}
+          sell:"Mount Schanck, and they come Frenched, so the bones are already scraped clean. Nothing to do but season them and get them in the oven. One rack is four decent cutlets. Three will do a table of twelve without anyone going short."}, source:'Chilled Mount Schanck Bone-In Frenched Lamb Rack Cap Off 800g', clone:'Quantity Flash: Frenched Lamb Rack × 3', price:'$799', compare:'$2,088'}
       },
       '2026-08-05':{
         id:'organic-double', title:'The Organic Double', mech:'Buy 1, Get 2nd 50%', tag:'proven',
@@ -453,11 +453,11 @@ const PLAN = {
         lines:[['Stock','824 units.']],
         why:'70% gross margin at list with 824 units behind it — the most repeatable deal on the account, which is why it comes back on the 20th and anchors the second ladder. Organic pulls a different buyer than the wagyu grades, so it widens the mix rather than cannibalising it.',
         build:{desc:{hook:"BUY A KILO, THE SECOND ONE'S HALF PRICE.",
-          value:["$735 for two kilos. It's $980 any other day.",
-                 "$368 a kilo instead of $490.",
+          value:["$735 for two kilos. RRP $1,960.",
+                 "$368 a kilo.",
                  "Steak knives free with anything you order today.",
                  "Ends midnight."],
-          sell:"Certified organic and grass fed, so it's leaner than the grain fed stuff and tastes more like beef. Don't cook it slow. Hot pan, quick sear, then leave it alone for five minutes before you cut into it."}, source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'B1G2nd-50%: Organic Angus Striploin', price:'$735', compare:'$980'}
+          sell:"Certified organic and grass fed, so it's leaner than the grain fed stuff and tastes more like beef. Don't cook it slow. Hot pan, quick sear, then leave it alone for five minutes before you cut into it."}, source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'B1G2nd-50%: Organic Angus Striploin', price:'$735', compare:'$1,960'}
       },
       '2026-08-06':{
         id:'wagyu-3kg', title:'Three Kilos of Wagyu', mech:'Quantity Flash', tag:'proven',
@@ -466,10 +466,10 @@ const PLAN = {
         lines:[['Stock','4,579 units — the biggest beef overhang on the account.']],
         why:'This is the SKU the programme exists for. Four and a half thousand units will not clear on browse traffic, and one deal day will not touch it — so it runs twice, here and again on the 18th. Thursday is the right slot: enough base to matter, not so much that we are spending a peak day on inventory work.',
         build:{desc:{hook:"THREE KILOS OF WAGYU. $899 TODAY.",
-          value:["$1,194 normally. That's $295 back in your pocket.",
-                 "$300 a kilo against $398.",
+          value:["RRP $3,978. You're $3,079 up.",
+                 "$300 a kilo.",
                  "Price goes back at midnight."],
-          sell:"M3-4 is where the marbling starts to show. Enough fat running through it to keep itself basted, not so much that one steak finishes you off. Three separate kilos, so you don't have to cook it all at once."}, source:'Chilled Wagyu M3-4 Ribeye 1kg', clone:'Quantity Flash: Wagyu M3-4 Ribeye 3 × 1kg', price:'$899', compare:'$1,194'}
+          sell:"M3-4 is where the marbling starts to show. Enough fat running through it to keep itself basted, not so much that one steak finishes you off. Three separate kilos, so you don't have to cook it all at once."}, source:'Chilled Wagyu M3-4 Ribeye 1kg', clone:'Quantity Flash: Wagyu M3-4 Ribeye 3 × 1kg', price:'$899', compare:'$3,978'}
       },
       '2026-08-07':{
         id:'picanha', title:'Picanhas, On Your Table', mech:'Price Drop · Story',
@@ -478,10 +478,10 @@ const PLAN = {
         lines:[['Stock','77 units — thin. Nothing is capped, so it sells out when it sells out. <strong>Beat the Clock LMT at 7pm.</strong>']],
         why:'Nobody else in Hong Kong can run it — "the cut they grill at Picanha\'s, on your table tonight." A deal with a story earns a share and a forward in a way a price never does, and 61% margin means the LMT can push hard without costing anything. Friday is where the weekend cook gets decided.',
         build:{desc:{hook:"THE WHOLE PICANHA. $899 TILL MIDNIGHT.",
-          value:["$1,099 the rest of the month.",
+          value:["RRP $2,196. You're $1,297 up.",
                  "2.1kg, and the chimichurri's in the box.",
                  "One day."],
-          sell:"This is what the Brazilians put on the grill. The fat cap on top melts down through the meat while it cooks, so there isn't much for you to do. Score the fat, salt it heavily, fat side down first. Carve it across the grain once it's rested."}, source:"Picanha's Chilled Whole M6-7 Wagyu Rump Cap 2.1kg", clone:'Price Drop: Whole M6-7 Picanha', price:'$899', compare:'$1,099'}
+          sell:"This is what the Brazilians put on the grill. The fat cap on top melts down through the meat while it cooks, so there isn't much for you to do. Score the fat, salt it heavily, fat side down first. Carve it across the grain once it's rested."}, source:"Picanha's Chilled Whole M6-7 Wagyu Rump Cap 2.1kg", clone:'Price Drop: Whole M6-7 Picanha', price:'$899', compare:'$2,196'}
       },
       '2026-08-08':{
         id:'ribeye-b2g1f', title:'Two Kilos, Have a Third', mech:'Buy 2, Get 1 Free',
@@ -491,10 +491,10 @@ const PLAN = {
         why:'Buy-two-get-one-free was the weakest of the three July tests at 2.5×, but it ran on the hanger — a cut with a fraction of this one\'s demand. Same cut, five days after the 3 Aug flash. The clean read is gone — the flash now opens at $1,000 and this lands at $896, so any difference on the day is price and mechanic together, not mechanic alone.',
         flag:'The 3 Aug price change broke the A/B. To recover a clean mechanic read, either move this to $1,000 (buy 2kg at $500/kg, get the third free) or accept it as a standalone offer and re-run the paired test in September. Hani\'s call, needs David\'s.',
         build:{desc:{hook:"BUY TWO KILOS. THE THIRD ONE'S FREE.",
-          value:["Three kilos for $896. You'd normally pay $1,344.",
+          value:["Three kilos for $896. RRP $2,688.",
                  "$299 a kilo.",
                  "Today only."],
-          sell:"Same USDA Choice ribeye we sell all year. Well marbled, cut thick, difficult to get wrong. Three separate kilos, so freeze whatever you're not using tonight."}, source:'Chilled USDA Choice Ribeye 1kg', clone:'B2G1F: USDA Choice Ribeye', price:'$896', compare:'$1,344'}
+          sell:"Same USDA Choice ribeye we sell all year. Well marbled, cut thick, difficult to get wrong. Three separate kilos, so freeze whatever you're not using tonight."}, source:'Chilled USDA Choice Ribeye 1kg', clone:'B2G1F: USDA Choice Ribeye', price:'$896', compare:'$2,688'}
       },
       '2026-08-09':{
         id:'sunday-roast', title:'The Sunday Roast', mech:'Price Drop · New Category', tag:'new',
@@ -503,10 +503,10 @@ const PLAN = {
         lines:[['Stock','69 units. Sits $251 short of free shipping, so push the add-on rail.']],
         why:'Occasion and product finally agree — a 2.5kg boneless leg is a roast you plan the day around, and a quiet Sunday is the right place for a 69-unit SKU. It also closes the lamb question: the rack ran on Tuesday at a third of this price point, so if the leg holds up too it is lamb that works and not one cut getting lucky. Eight lamb SKUs carry 60–68% margin and over 1,500 units between them, and the category has never been featured.',
         build:{desc:{hook:"A 2.5KG LEG OF LAMB. $749 TODAY.",
-          value:["$868 every other day.",
+          value:["RRP $1,440. You're $691 up.",
                  "$300 a kilo.",
                  "Gone at midnight."],
-          sell:"Mount Schanck, boned out, so you're not carving around anything. Season it, roast it, let it sit twenty minutes, then slice. It'll feed eight properly, or four with enough left over for sandwiches on Monday."}, source:'Chilled Mount Schanck Boneless Lamb Leg 2.5kg', clone:'Price Drop: Boneless Lamb Leg 2.5kg', price:'$749', compare:'$868'}
+          sell:"Mount Schanck, boned out, so you're not carving around anything. Season it, roast it, let it sit twenty minutes, then slice. It'll feed eight properly, or four with enough left over for sandwiches on Monday."}, source:'Chilled Mount Schanck Boneless Lamb Leg 2.5kg', clone:'Price Drop: Boneless Lamb Leg 2.5kg', price:'$749', compare:'$1,440'}
       },
       '2026-08-10':{
         id:'rib-roast', title:'The Four-Kilo Rib Roast', mech:'Price Drop · Big Ticket',
@@ -515,10 +515,10 @@ const PLAN = {
         lines:[['Stock','548 units. <strong>Full-list send</strong> + <strong>LMT at 7pm</strong> + Back to School pre-announce in the same email.']],
         why:'548 units of a $1,888 bone-in roast sitting untouched, and the only way that moves is a day with real traffic behind it. It clears free shipping on its own, so it lifts AOV rather than diluting it, and it hands us the bridge into the flash sale: "last big one before Back to School."',
         build:{desc:{hook:"A FOUR KILO RIB ROAST. $1,188 TODAY.",
-          value:["$1,888 the rest of the month. You're $700 up.",
+          value:["RRP $3,776. You're $2,588 up.",
                  "Delivery's free on this one.",
                  "Back to full price tomorrow."],
-          sell:"This is the one you put in the middle of the table. Four ribs, cap left on, bones still in, which gives it flavour and gives you something to hold while you carve. Low oven, hot blast at the end, then rest it properly. Feeds ten to twelve."}, source:'Chilled Black Angus Bone-in Ribeye OP Rib Roast 3.7-4.0kg', clone:'Price Drop: OP Rib Roast', price:'$1,188', compare:'$1,888'}
+          sell:"This is the one you put in the middle of the table. Four ribs, cap left on, bones still in, which gives it flavour and gives you something to hold while you carve. Low oven, hot blast at the end, then rest it properly. Feeds ten to twelve."}, source:'Chilled Black Angus Bone-in Ribeye OP Rib Roast 3.7-4.0kg', clone:'Price Drop: OP Rib Roast', price:'$1,188', compare:'$3,776'}
       },
       '2026-08-14':{
         id:'duck-box', title:'The Duck Box', mech:'Bundle Box · New Category', tag:'new',
@@ -527,10 +527,10 @@ const PLAN = {
         lines:[['Stock','201 / 124 / 123 / 291.'],['Send','<strong>Site + WhatsApp only. No email.</strong> First day back after three days of full-list flash-sale sends — the list is the tired asset, not the offer.']],
         why:'The fattest margin available anywhere in the catalogue — duck breasts cost $34 and sell at $298 — sitting in a category the list has almost certainly never been shown. Coming straight off the flash sale we want a day that costs the list nothing, and 73% margin means it can run site-only and still pay. If it lands, duck becomes a permanent rotation slot.',
         build:{desc:{hook:"THE DUCK BOX. $749 TILL MIDNIGHT.",
-          value:["$1,040 if you bought it piece by piece.",
+          value:["RRP $1,985 across the four.",
                  "Whole free range duck, a kilo of breasts, a kilo of legs, two tubs of duck fat.",
                  "Today only."],
-          sell:"Roast the bird. Sear the breasts and stop while they're still pink. The legs want to sit in the fat on a low heat for a couple of hours. Whatever fat's left, keep it for your potatoes. If you've only ever bought beef off us, this is a good place to start."}, source:'Whole Duck + Duck Breasts 1kg + Duck Legs 1kg + Duck Fat 2×500g', clone:'Bundle: The Duck Box', price:'$749', compare:'$1,040'}
+          sell:"Roast the bird. Sear the breasts and stop while they're still pink. The legs want to sit in the fat on a low heat for a couple of hours. Whatever fat's left, keep it for your potatoes. If you've only ever bought beef off us, this is a good place to start."}, source:'Whole Duck + Duck Breasts 1kg + Duck Legs 1kg + Duck Fat 2×500g', clone:'Bundle: The Duck Box', price:'$749', compare:'$1,985'}
       },
       '2026-08-15':{
         id:'rump-cap-recycle', title:'The Rump Cap, Again', mech:'Buy 1, Get 2nd 50% · Recycle', tag:'proven',
@@ -539,10 +539,10 @@ const PLAN = {
         lines:[['Stock','737 units.']],
         why:'This did roughly 5× its in-stock rate on 18 July — the strongest recycle candidate we have, and a Saturday grill day is where it earned that number. Second send of the week after a deliberately silent Friday, so the list gets one clear ask rather than two soft ones.',
         build:{desc:{hook:"BUY ONE RUMP CAP, THE SECOND ONE'S HALF PRICE.",
-          value:["Two for $837 instead of $1,116.",
+          value:["Two for $837. RRP $2,232.",
                  "Chimichurri with both.",
                  "Ends midnight."],
-          sell:"Rump cap and picanha are the same thing. Fat cap on top that bastes it while it cooks, thick enough to carve into steaks after. Score the fat, salt it, fat side down first."}, source:'Chilled Black Angus M2-3 Rump Cap', clone:'B1G2nd-50%: Black Angus M2-3 Rump Cap', price:'$837', compare:'$1,116'}
+          sell:"Rump cap and picanha are the same thing. Fat cap on top that bastes it while it cooks, thick enough to carve into steaks after. Score the fat, salt it, fat side down first."}, source:'Chilled Black Angus M2-3 Rump Cap', clone:'B1G2nd-50%: Black Angus M2-3 Rump Cap', price:'$837', compare:'$2,232'}
       },
       '2026-08-16':{
         id:'weeknight-box', title:'The Weeknight Box', mech:'Bundle Box',
@@ -551,10 +551,10 @@ const PLAN = {
         lines:[['Stock','572 / 959 / 4,684. Deep on all three.']],
         why:'School goes back and the job changes from "what shall we cook this weekend" to "what\'s for dinner on Wednesday." Burgers, mince and salmon is a week of weeknights in one click, it skews new customers the way the King\'s Box does, and it moves three of the five deepest stock positions at once.',
         build:{desc:{hook:"THE WEEKNIGHT BOX. $749 TODAY.",
-          value:["$1,074 bought piece by piece.",
+          value:["RRP $2,506 across the three.",
                  "The Premium Trio, a kilo of full blood wagyu mince, a whole Norwegian salmon fillet.",
                  "One day only."],
-          sell:"Burgers one night, something slow with the mince another, fish twice. Nothing in here needs a plan or a thermometer or an afternoon free."}, source:'Steak King Premium Trio + Wagyu Full Blood Mince 1kg + Whole Norwegian Salmon Fillet', clone:'Bundle: The Weeknight Box', price:'$749', compare:'$1,074'}
+          sell:"Burgers one night, something slow with the mince another, fish twice. Nothing in here needs a plan or a thermometer or an afternoon free."}, source:'Steak King Premium Trio + Wagyu Full Blood Mince 1kg + Whole Norwegian Salmon Fillet', clone:'Bundle: The Weeknight Box', price:'$749', compare:'$2,506'}
       },
       '2026-08-17':{
         id:'m67-twenty-only', title:'The M6-7 Double', mech:'Buy 1, Get 2nd 50%', tag:'proven',
@@ -563,10 +563,10 @@ const PLAN = {
         lines:[['Stock','49 units — the tightest of the month. <strong>Uncapped, so it will sell out well before midnight. Brief support.</strong>']],
         why:'Deal of the Day is time-limited, not stock-limited, so the published-cap experiment is off the table. What is left is a grade test: M6-7 is a step up from anything dealt so far, on the biggest BAU base of the week. With 49 units and no cap it will go early, which is its own read on demand.',
         build:{desc:{hook:"BUY A KILO OF M6-7, THE SECOND ONE'S HALF PRICE.",
-          value:["Two kilos for $897. Normally $1,196.",
-                 "$449 a kilo against $598.",
+          value:["Two kilos for $897. RRP $3,986.",
+                 "$449 a kilo.",
                  "Ends midnight."],
-          sell:"M6-7 is a real step up from M4-5. More fat through the muscle, and it goes soft in a way people usually end up calling buttery. Cook it hotter and for less time than you think you should."}, source:'Chilled Wagyu M6-7 Striploin 1kg', clone:'B1G2nd-50%: Wagyu M6-7 Striploin', price:'$897', compare:'$1,196'}
+          sell:"M6-7 is a real step up from M4-5. More fat through the muscle, and it goes soft in a way people usually end up calling buttery. Cook it hotter and for less time than you think you should."}, source:'Chilled Wagyu M6-7 Striploin 1kg', clone:'B1G2nd-50%: Wagyu M6-7 Striploin', price:'$897', compare:'$3,986'}
       },
       '2026-08-18':{
         id:'wagyu-3kg-recycle', title:'Three Kilos of Wagyu', mech:'Quantity Flash · Recycle', tag:'proven',
@@ -575,10 +575,10 @@ const PLAN = {
         lines:[['Stock','4,579 units.']],
         why:'The interval is the experiment. Twelve days is long enough that it does not read as the same deal and short enough to tell us whether a recycled offer decays. If the second run holds most of the first, a 25-day-a-month programme only needs about eight strong offers on rotation instead of twenty-one new ones — the difference between sustainable and a treadmill.',
         build:{desc:{hook:"THREE KILOS OF WAGYU. $899, BACK FOR ONE DAY.",
-          value:["$1,194 normally. $295 off.",
-                 "$300 a kilo against $398.",
+          value:["RRP $3,978. $3,079 off.",
+                 "$300 a kilo.",
                  "Tonight only."],
-          sell:"M3-4 is where the marbling starts to show. Enough fat through it to keep itself basted, without one steak finishing you off. Three separate kilos."}, source:'Chilled Wagyu M3-4 Ribeye 1kg', clone:'Quantity Flash: Wagyu M3-4 Ribeye 3 × 1kg', price:'$899', compare:'$1,194'}
+          sell:"M3-4 is where the marbling starts to show. Enough fat through it to keep itself basted, without one steak finishing you off. Three separate kilos."}, source:'Chilled Wagyu M3-4 Ribeye 1kg', clone:'Quantity Flash: Wagyu M3-4 Ribeye 3 × 1kg', price:'$899', compare:'$3,978'}
       },
       '2026-08-19':{
         id:'low-and-slow', title:'The Low & Slow Box', mech:'Bundle Box',
@@ -587,10 +587,10 @@ const PLAN = {
         lines:[['Stock','the beef cheeks run dry at <strong>28 boxes</strong>. Not a cap, a ceiling — it sells out when it sells out.']],
         why:'Three braising cuts that will never sell themselves in August heat, bundled so the box does the persuading. The beef cheeks run dry at 28 boxes, so this one answers itself: if it clears before midnight, braising bundles have a market even in summer.',
         build:{desc:{hook:"THE LOW AND SLOW BOX. $849 TILL MIDNIGHT.",
-          value:["Buy the three separately and it's $1,321.",
+          value:["RRP $2,642 across the three.",
                  "Wagyu diced beef, M9+ beef cheeks, 2.2kg of lamb shanks.",
                  "Price goes back tonight."],
-          sell:"All three are braising cuts, so don't plan on eating any of it tonight. The cheeks take about four hours before they'll fall apart. Shanks about the same. The diced beef goes in anything with a lid on it. Buy it now, cook it Sunday."}, source:'Frozen Wagyu Diced Beef 1kg + Chilled Wagyu M9+ Beef Cheeks 1kg + Lamb Shanks 2.2kg', clone:'Bundle: The Low & Slow Box', price:'$849', compare:'$1,321'}
+          sell:"All three are braising cuts, so don't plan on eating any of it tonight. The cheeks take about four hours before they'll fall apart. Shanks about the same. The diced beef goes in anything with a lid on it. Buy it now, cook it Sunday."}, source:'Frozen Wagyu Diced Beef 1kg + Chilled Wagyu M9+ Beef Cheeks 1kg + Lamb Shanks 2.2kg', clone:'Bundle: The Low & Slow Box', price:'$849', compare:'$2,642'}
       },
       '2026-08-20':{
         id:'organic-double-recycle', title:'The Organic Double, Again', mech:'Buy 1, Get 2nd 50% · Recycle', tag:'proven',
@@ -599,11 +599,11 @@ const PLAN = {
         lines:[['Stock','824 units · email carries the first <strong>"tomorrow works differently"</strong> tease.']],
         why:'The day before a new mechanic should be a known quantity, not another variable. This is the highest-margin repeatable deal we have, so it holds the floor while the copy does the setting-up: tomorrow the price moves, and it only moves one way.',
         build:{desc:{hook:"BUY A KILO, THE SECOND ONE'S HALF PRICE. BACK TODAY.",
-          value:["$735 for two kilos, down from $980.",
-                 "$368 a kilo instead of $490.",
+          value:["$735 for two kilos. RRP $1,960.",
+                 "$368 a kilo.",
                  "Steak knives free with anything today.",
                  "Ends midnight."],
-          sell:"Certified organic, grass fed, leaner than grain fed and it tastes more like beef. Hot pan, quick sear, then let it rest before you cut into it."}, source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'B1G2nd-50%: Organic Angus Striploin', price:'$735', compare:'$980'}
+          sell:"Certified organic, grass fed, leaner than grain fed and it tastes more like beef. Hot pan, quick sear, then let it rest before you cut into it."}, source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'B1G2nd-50%: Organic Angus Striploin', price:'$735', compare:'$1,960'}
       },
       '2026-08-21':{
         id:'ladder-tbone', title:'Beat the Clock, or Pay the Next Tier', mech:'Beat the Deal · NEW MECHANIC', tag:'new', ladder:true,
@@ -617,9 +617,9 @@ const PLAN = {
         why:'The T-Bone at $799 did 5.2× its SKU norm — the best deal-SKU day on record. Running the ladder on that exact SKU at that exact opening price means anything different on the day is the mechanic and nothing else. It also fixes the one real behavioural problem in the July data: three of four bundles sold within 100 minutes of the send and demand died by 13:00. A rising price gives the afternoon and evening a reason to exist — and every hour of hesitation makes the day more profitable, not less.',
         build:{desc:{hook:"$799 THIS MORNING. $899 AT MIDDAY. $999 FROM 5PM.",
           value:["Three kilos of Black Angus T-bone and porterhouse.",
-                 "It's $1,908 the rest of the month. Buy before midday and you're $1,109 up.",
+                 "RRP $2,568. Buy before midday and you're $1,769 up.",
                  "The price only goes one way. There's no discount at the end of the day."],
-          sell:"A T-bone is two steaks in one. Strip on one side of the bone, fillet on the other. The longer you think about it, the more it costs you."}, source:'Chilled Black Angus T-Bone / Porterhouse 1kg (currently DRAFT)', clone:'Beat the Deal: T-Bone 3kg — price rises through the day', price:'$799 → $899 → $999', compare:'$1,908'}
+          sell:"A T-bone is two steaks in one. Strip on one side of the bone, fillet on the other. The longer you think about it, the more it costs you."}, source:'Chilled Black Angus T-Bone / Porterhouse 1kg (currently DRAFT)', clone:'Beat the Deal: T-Bone 3kg — price rises through the day', price:'$799 → $899 → $999', compare:'$2,568'}
       },
       '2026-08-22':{
         id:'picanha-recycle', title:'Picanhas, On Your Table', mech:'Price Drop · Recycle',
@@ -628,10 +628,10 @@ const PLAN = {
         lines:[['Stock','77 less whatever the 7 Aug run took — <strong>confirm before committing</strong>; if it is thin, swap in the Lamb Rack Flash.']],
         why:'The strongest story in the catalogue on the best story-telling day of the week. It also gives the picanha its second read at the same interval as the wagyu ribeye, so by month end we have two independent tests of how fast a recycled deal decays rather than one.',
         build:{desc:{hook:"THE WHOLE PICANHA. $899, BACK FOR ONE DAY.",
-          value:["$1,099 the rest of the month.",
+          value:["RRP $2,196. You're $1,297 up.",
                  "2.1kg, and the chimichurri's in the box.",
                  "Tonight only."],
-          sell:"What the Brazilians put on the grill. The fat cap melts down through the meat as it cooks. Score the fat, salt it heavily, fat side down first, then carve across the grain."}, source:"Picanha's Chilled Whole M6-7 Wagyu Rump Cap 2.1kg", clone:'Price Drop: Whole M6-7 Picanha', price:'$899', compare:'$1,099'}
+          sell:"What the Brazilians put on the grill. The fat cap melts down through the meat as it cooks. Score the fat, salt it heavily, fat side down first, then carve across the grain."}, source:"Picanha's Chilled Whole M6-7 Wagyu Rump Cap 2.1kg", clone:'Price Drop: Whole M6-7 Picanha', price:'$899', compare:'$2,196'}
       },
       '2026-08-23':{
         id:'wagyu-double', title:'The Wagyu Double', mech:'Buy 1, Get 2nd 50%', tag:'proven',
@@ -641,11 +641,11 @@ const PLAN = {
         why:'Out of stock at the top of the month, so it takes the last Sunday before the Emporium instead. M4-5 striploin is genuine wagyu without being a hero, and buy-one-get-second-half-off keeps the per-kilo value intact while still doubling the basket. Landing it two days out means the list goes into the sale having just been shown a wagyu price it liked.',
         flag:'Out of stock as at 31 July. David to confirm the M4-5 striploin restock has actually landed before this is built — if it has not, one of the two parked deals below takes the slot.',
         build:{desc:{hook:"BUY A KILO OF WAGYU, THE SECOND ONE'S HALF PRICE.",
-          value:["Two kilos for $747 instead of $996.",
-                 "$374 a kilo against $498.",
+          value:["Two kilos for $747. RRP $2,256.",
+                 "$374 a kilo.",
                  "Steak knives free with anything today.",
                  "Closes at midnight."],
-          sell:"Rangers Station M4-5. This is the grade where wagyu starts tasting like wagyu and you can still get through a whole steak."}, source:'Chilled Rangers Station Wagyu M4-5 Striploin 1kg', clone:'B1G2nd-50%: Wagyu M4-5 Striploin', price:'$747', compare:'$996'}
+          sell:"Rangers Station M4-5. This is the grade where wagyu starts tasting like wagyu and you can still get through a whole steak."}, source:'Chilled Rangers Station Wagyu M4-5 Striploin 1kg', clone:'B1G2nd-50%: Wagyu M4-5 Striploin', price:'$747', compare:'$2,256'}
       },
       '2026-08-24':{
         id:'ladder-organic', title:'The Last Deal Before the Emporium', mech:'Beat the Deal · Run 2', tag:'new', ladder:true,
@@ -658,9 +658,9 @@ const PLAN = {
         why:'Friday tells us whether the ladder works on a proven SKU; this tells us whether it transfers, which is the only version of the answer worth having. It lands on the biggest BAU day of the month at 58–67% margin, so there is no downside to the opening tier — and a day of manufactured urgency two days out leaves the list warm going into the sale, not spent.',
         build:{desc:{hook:"$699 THIS MORNING. $799 AT MIDDAY. $899 FROM 5PM.",
           value:["Two kilos of certified organic grass fed Angus striploin.",
-                 "It's $980 normally. Buy before midday and you're $281 up.",
+                 "RRP $1,960. Buy before midday and you're $1,261 up.",
                  "The price only goes up. This is the last deal before the Meat Emporium opens."],
-          sell:"Organic, grass fed, and the leanest striploin we carry. Hot pan, short cook, don't walk away from it."}, source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'Beat the Deal: Organic Angus Striploin 2kg', price:'$699 → $799 → $899', compare:'$980'}
+          sell:"Organic, grass fed, and the leanest striploin we carry. Hot pan, short cook, don't walk away from it."}, source:'Chilled Organic Grass Fed Angus Striploin 1kg', clone:'Beat the Deal: Organic Angus Striploin 2kg', price:'$699 → $799 → $899', compare:'$1,960'}
       }
     },
     parked: [
@@ -671,10 +671,10 @@ const PLAN = {
         lines:[['Stock','4,684 salmon fillets alone — the deepest single overhang on the account.'],['Gate','<strong>First bundle of the month.</strong> Needs Johnny\'s sign-off on pick-and-pack before this goes live.']],
         why:'The first bundle of the month, deliberately placed after Johnny has had a week to look at how the boxes are picked and packed. A quiet Sunday is the cheapest day to run the first one: a fixed box removes the decision and skews new customers, and this is the mix push — a database that has only ever bought beef, buying fish.',
         build:{desc:{hook:"THE FISHMONGER'S BOX. $749 TILL MIDNIGHT.",
-          value:["$1,172 if you bought the four separately.",
+          value:["RRP $2,418 across the four.",
                  "Whole Norwegian salmon fillet, a kilo of MSC cod, four yellowfin tuna steaks, a kilo of barramundi.",
                  "All frozen, so there's no rush to eat it."],
-          sell:"A week of dinners that aren't beef. Cod in the pan, tuna on the grill, salmon in the oven. The barramundi will take either."}, source:'Norwegian Salmon Fillet + MSC Cod 1kg + Yellowfin Tuna Steaks + Barramundi Steaks', clone:"Bundle: The Fishmonger's Box", price:'$749', compare:'$1,172'}
+          sell:"A week of dinners that aren't beef. Cod in the pan, tuna on the grill, salmon in the oven. The barramundi will take either."}, source:'Norwegian Salmon Fillet + MSC Cod 1kg + Yellowfin Tuna Steaks + Barramundi Steaks', clone:"Bundle: The Fishmonger's Box", price:'$749', compare:'$2,418'}
       },
       {
         id:'taster-box', title:'The Taster Box', mech:'Bundle Box · Acquisition',
