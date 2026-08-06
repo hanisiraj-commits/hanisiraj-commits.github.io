@@ -117,6 +117,80 @@
     header{background:var(--ink) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     section{page-break-inside:avoid}
   }
+
+  /* ---------- mobile readability ---------- */
+  html,body{max-width:100%;overflow-x:hidden}
+  html{-webkit-text-size-adjust:100%}
+  .stats,.stat,.card,.clock,.tblwrap,section{min-width:0}
+  .kw,.mono{overflow-wrap:anywhere}
+  @media (max-width:620px){
+    .wrap{padding:0 16px 52px}
+    header{padding:22px 0 34px}
+    h1{font-size:30px;line-height:1.06}
+    .sub{font-size:16px}
+    .meta{font-size:10px;line-height:1.8;margin-top:22px}
+    .eyebrow{font-size:10px;margin-bottom:13px}
+    section{margin-bottom:40px}
+    h2{font-size:22px;line-height:1.2}
+    .h2sub{font-size:15px;margin-bottom:20px}
+    h3{font-size:15.5px}
+    p,li{font-size:15.5px}
+    .card{padding:19px 18px}
+    .clock-head{padding:13px 18px}
+    .clock-body{padding:18px 18px}
+    .pull{font-size:16px;padding:17px 18px;line-height:1.48}
+    .blocker{padding:17px 18px;gap:13px}
+    .stats{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:-20px}
+    .stat{min-width:0;padding:15px 14px}
+    .stat b{font-size:23px;overflow-wrap:anywhere}
+    .stat span{font-size:9px;letter-spacing:.01em}
+    .stat:last-child{grid-column:1 / -1}
+    ul{margin-left:17px}
+
+    /* tables become stacked cards — no sideways scrolling */
+    .tblwrap{overflow-x:visible;margin-bottom:18px}
+    table{min-width:0;border:0;background:transparent;font-size:15px}
+    thead{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+    tbody tr{display:block;background:#fff;border:1px solid var(--line);margin-bottom:11px}
+    tbody tr:nth-child(even) td{background:transparent}
+    tbody td{display:block;width:auto;border:0;border-top:1px solid var(--line);
+      padding:11px 16px;text-align:left !important;background:transparent;white-space:normal}
+    tbody tr td:first-child{border-top:0;background:var(--sand)}
+    tbody td::before{content:attr(data-label);display:block;font-family:'Space Mono',monospace;
+      font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+    tbody td:first-child::before{color:#8A9188}
+    tbody td.kw,tbody td:first-child{font-size:15px;color:var(--ink);font-weight:600;
+      font-family:'General Sans',sans-serif}
+    tbody td.num{font-size:16px;font-family:'Clash Display',sans-serif;color:var(--ink)}
+    tbody tr.total{border:1.5px solid var(--green)}
+    tbody tr.total td{background:#F0FAF6}
+    tbody tr.total td:first-child{background:#E4F5EC}
+    .tag{white-space:normal;display:inline-block;margin-bottom:3px}
+
+    /* short-cell tables stay compact instead of fully stacked */
+    table.kw-compact tbody tr{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 15px;padding:13px 15px}
+    table.kw-compact tbody td{display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:2px 6px;
+      width:auto;max-width:100%;min-width:0;border:0;border-top:0;padding:0;background:transparent}
+    table.kw-compact tbody td::before{flex:none}
+    table.kw-compact tbody td:first-child{flex:1 0 100%;margin-bottom:5px;background:transparent;
+      font-family:'General Sans',sans-serif;font-size:15px;font-weight:600;color:var(--ink);line-height:1.35}
+    table.kw-compact tbody td:first-child::before{display:none}
+    table.kw-compact tbody td::before{margin:0;font-size:8.5px;letter-spacing:.06em}
+    table.kw-compact tbody td.num{font-family:'Clash Display',sans-serif;font-size:15.5px}
+    table.kw-compact tbody tr.total td:first-child{background:transparent}
+
+  }
+  @media (max-width:339px){
+    .stats{grid-template-columns:1fr}
+    .stat:last-child{grid-column:auto}
+  }
+  @media (max-width:400px){
+    .wrap{padding:0 13px 44px}
+    h1{font-size:26px}
+    .stat b{font-size:22px}
+    .brandbar{gap:10px}
+    tbody td{padding:10px 14px}
+  }
 </style>
 </head>
 <body>
@@ -171,10 +245,10 @@
       <table>
         <thead><tr><th>Channel</th><th class="num">Budget</th><th>Owner</th><th>Job this month</th></tr></thead>
         <tbody>
-          <tr><td><strong>LinkedIn Ads</strong></td><td class="num">&#8377;60,000</td><td>Tethrd</td><td><span class="tag go">Fills seats</span> The volume channel. Buys the exact job title directly.</td></tr>
-          <tr><td><strong>Google Search</strong></td><td class="num">&#8377;20,000</td><td>Tethrd</td><td><span class="tag go">Fills seats</span> Tight non-brand clusters plus brand capture.</td></tr>
-          <tr><td><strong>Meta</strong></td><td class="num">&#8377;20,000</td><td>BoE in-house</td><td><span class="tag mid">Builds the base</span> Retargeting and audience building. Not the route to the ten.</td></tr>
-          <tr class="total"><td>Total</td><td class="num">&#8377;1,00,000</td><td>&mdash;</td><td>Plus the landing page, which is a prerequisite for all three</td></tr>
+          <tr><td data-label="Channel"><strong>LinkedIn Ads</strong></td><td data-label="Budget" class="num">&#8377;60,000</td><td data-label="Owner">Tethrd</td><td data-label="Job this month"><span class="tag go">Fills seats</span> The volume channel. Buys the exact job title directly.</td></tr>
+          <tr><td data-label="Channel"><strong>Google Search</strong></td><td data-label="Budget" class="num">&#8377;20,000</td><td data-label="Owner">Tethrd</td><td data-label="Job this month"><span class="tag go">Fills seats</span> Tight non-brand clusters plus brand capture.</td></tr>
+          <tr><td data-label="Channel"><strong>Meta</strong></td><td data-label="Budget" class="num">&#8377;20,000</td><td data-label="Owner">BoE in-house</td><td data-label="Job this month"><span class="tag mid">Builds the base</span> Retargeting and audience building. Not the route to the ten.</td></tr>
+          <tr class="total"><td data-label="Channel">Total</td><td data-label="Budget" class="num">&#8377;1,00,000</td><td data-label="Owner">&mdash;</td><td data-label="Job this month">Plus the landing page, which is a prerequisite for all three</td></tr>
         </tbody>
       </table>
     </div>
@@ -213,26 +287,26 @@
     <p class="h2sub">India, monthly. Exact and phrase match only. Broad match stays off for the whole account.</p>
 
     <div class="tblwrap">
-      <table>
+      <table class="kw-compact">
         <thead><tr><th>Keyword</th><th class="num">Searches / mo</th><th class="num">Est. CPC</th><th>Verdict</th></tr></thead>
         <tbody>
-          <tr><td class="kw">how to start a school in india</td><td class="num">1,600</td><td class="num">&#8377;45</td><td><span class="tag go">Bid &middot; core</span></td></tr>
-          <tr><td class="kw">state variants &middot; karnataka, kerala, maharashtra, up, bihar, telangana, delhi</td><td class="num">880</td><td class="num">&#8377;36</td><td><span class="tag go">Bid &middot; geo-split</span></td></tr>
-          <tr><td class="kw">how to open a school in india</td><td class="num">720</td><td class="num">&#8377;42</td><td><span class="tag go">Bid &middot; core</span></td></tr>
-          <tr><td class="kw">cost to start a school in india</td><td class="num">480</td><td class="num">&#8377;38</td><td><span class="tag go">Bid &middot; core</span></td></tr>
-          <tr><td class="kw">requirements to start a school in india</td><td class="num">390</td><td class="num">&#8377;35</td><td><span class="tag go">Bid &middot; core</span></td></tr>
-          <tr><td class="kw">start a school in india</td><td class="num">320</td><td class="num">&#8377;44</td><td><span class="tag go">Bid &middot; core</span></td></tr>
-          <tr><td class="kw">how to start a school business</td><td class="num">260</td><td class="num">&#8377;40</td><td><span class="tag go">Bid &middot; core</span></td></tr>
-          <tr><td class="kw">steps to start a school in india</td><td class="num">210</td><td class="num">&#8377;33</td><td><span class="tag go">Bid &middot; core</span></td></tr>
-          <tr><td class="kw">school business plan india</td><td class="num">190</td><td class="num">&#8377;30</td><td><span class="tag go">Bid &middot; core</span></td></tr>
-          <tr><td class="kw">how to start a microschool</td><td class="num">170</td><td class="num">&#8377;28</td><td><span class="tag go">Bid &middot; best fit</span></td></tr>
-          <tr><td class="kw">microschools in india</td><td class="num">140</td><td class="num">&#8377;25</td><td><span class="tag go">Bid &middot; best fit</span></td></tr>
-          <tr><td class="kw">school setup consultants india</td><td class="num">110</td><td class="num">&#8377;75</td><td><span class="tag go">Bid &middot; best fit</span></td></tr>
-          <tr><td class="kw">alternative school india &middot; founder intent</td><td class="num">90</td><td class="num">&#8377;22</td><td><span class="tag go">Bid &middot; best fit</span></td></tr>
-          <tr><td class="kw">bored of education fellowship &middot; boe fellowship &middot; school builders program</td><td class="num">90</td><td class="num">&#8377;10</td><td><span class="tag go">Bid &middot; brand</span></td></tr>
-          <tr><td class="kw">how to start a preschool in india</td><td class="num">590</td><td class="num">&#8377;52</td><td><span class="tag mid">Test only</span></td></tr>
-          <tr><td class="kw">how to start a play school in india</td><td class="num">430</td><td class="num">&#8377;48</td><td><span class="tag mid">Test only</span></td></tr>
-          <tr class="total"><td>Total addressable</td><td class="num">6,670</td><td class="num">&#8377;39 avg</td><td>&#8377;20,000 allocated</td></tr>
+          <tr><td data-label="Keyword" class="kw">how to start a school in india</td><td data-label="Searches / mo" class="num">1,600</td><td data-label="Est. CPC" class="num">&#8377;45</td><td data-label="Verdict"><span class="tag go">Bid &middot; core</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">state variants &middot; karnataka, kerala, maharashtra, up, bihar, telangana, delhi</td><td data-label="Searches / mo" class="num">880</td><td data-label="Est. CPC" class="num">&#8377;36</td><td data-label="Verdict"><span class="tag go">Bid &middot; geo-split</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">how to open a school in india</td><td data-label="Searches / mo" class="num">720</td><td data-label="Est. CPC" class="num">&#8377;42</td><td data-label="Verdict"><span class="tag go">Bid &middot; core</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">cost to start a school in india</td><td data-label="Searches / mo" class="num">480</td><td data-label="Est. CPC" class="num">&#8377;38</td><td data-label="Verdict"><span class="tag go">Bid &middot; core</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">requirements to start a school in india</td><td data-label="Searches / mo" class="num">390</td><td data-label="Est. CPC" class="num">&#8377;35</td><td data-label="Verdict"><span class="tag go">Bid &middot; core</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">start a school in india</td><td data-label="Searches / mo" class="num">320</td><td data-label="Est. CPC" class="num">&#8377;44</td><td data-label="Verdict"><span class="tag go">Bid &middot; core</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">how to start a school business</td><td data-label="Searches / mo" class="num">260</td><td data-label="Est. CPC" class="num">&#8377;40</td><td data-label="Verdict"><span class="tag go">Bid &middot; core</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">steps to start a school in india</td><td data-label="Searches / mo" class="num">210</td><td data-label="Est. CPC" class="num">&#8377;33</td><td data-label="Verdict"><span class="tag go">Bid &middot; core</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">school business plan india</td><td data-label="Searches / mo" class="num">190</td><td data-label="Est. CPC" class="num">&#8377;30</td><td data-label="Verdict"><span class="tag go">Bid &middot; core</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">how to start a microschool</td><td data-label="Searches / mo" class="num">170</td><td data-label="Est. CPC" class="num">&#8377;28</td><td data-label="Verdict"><span class="tag go">Bid &middot; best fit</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">microschools in india</td><td data-label="Searches / mo" class="num">140</td><td data-label="Est. CPC" class="num">&#8377;25</td><td data-label="Verdict"><span class="tag go">Bid &middot; best fit</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">school setup consultants india</td><td data-label="Searches / mo" class="num">110</td><td data-label="Est. CPC" class="num">&#8377;75</td><td data-label="Verdict"><span class="tag go">Bid &middot; best fit</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">alternative school india &middot; founder intent</td><td data-label="Searches / mo" class="num">90</td><td data-label="Est. CPC" class="num">&#8377;22</td><td data-label="Verdict"><span class="tag go">Bid &middot; best fit</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">bored of education fellowship &middot; boe fellowship &middot; school builders program</td><td data-label="Searches / mo" class="num">90</td><td data-label="Est. CPC" class="num">&#8377;10</td><td data-label="Verdict"><span class="tag go">Bid &middot; brand</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">how to start a preschool in india</td><td data-label="Searches / mo" class="num">590</td><td data-label="Est. CPC" class="num">&#8377;52</td><td data-label="Verdict"><span class="tag mid">Test only</span></td></tr>
+          <tr><td data-label="Keyword" class="kw">how to start a play school in india</td><td data-label="Searches / mo" class="num">430</td><td data-label="Est. CPC" class="num">&#8377;48</td><td data-label="Verdict"><span class="tag mid">Test only</span></td></tr>
+          <tr class="total"><td data-label="Keyword">Total addressable</td><td data-label="Searches / mo" class="num">6,670</td><td data-label="Est. CPC" class="num">&#8377;39 avg</td><td data-label="Verdict">&#8377;20,000 allocated</td></tr>
         </tbody>
       </table>
     </div>
@@ -243,16 +317,16 @@
     <p style="margin-bottom:14px">These terms carry <strong>roughly 3&times; the volume of everything we are bidding on</strong>. They look like the right audience and they are not. Added as account-level negatives before launch.</p>
 
     <div class="tblwrap">
-      <table>
+      <table class="kw-compact">
         <thead><tr><th>Negative</th><th class="num">Searches / mo</th><th>Who that actually is</th></tr></thead>
         <tbody>
-          <tr><td class="kw">cbse affiliation</td><td class="num">6,600</td><td>Operators of schools that already exist</td></tr>
-          <tr><td class="kw">school franchise in india</td><td class="num">3,600</td><td>Buying a brand, not building one</td></tr>
-          <tr><td class="kw">preschool franchise in india</td><td class="num">2,900</td><td>Franchise investors</td></tr>
-          <tr><td class="kw">play school franchise</td><td class="num">2,400</td><td>Franchise investors</td></tr>
-          <tr><td class="kw">homeschooling india</td><td class="num">2,400</td><td>Parents teaching their own children</td></tr>
-          <tr><td class="kw">alternative schools in bangalore &middot; near me</td><td class="num">1,900</td><td>Parents choosing a school for their child</td></tr>
-          <tr class="total"><td>Blocked</td><td class="num">19,800</td><td>Plus teacher-vacancy and job-seeker modifiers</td></tr>
+          <tr><td data-label="Negative" class="kw">cbse affiliation</td><td data-label="Searches / mo" class="num">6,600</td><td data-label="Who that actually is">Operators of schools that already exist</td></tr>
+          <tr><td data-label="Negative" class="kw">school franchise in india</td><td data-label="Searches / mo" class="num">3,600</td><td data-label="Who that actually is">Buying a brand, not building one</td></tr>
+          <tr><td data-label="Negative" class="kw">preschool franchise in india</td><td data-label="Searches / mo" class="num">2,900</td><td data-label="Who that actually is">Franchise investors</td></tr>
+          <tr><td data-label="Negative" class="kw">play school franchise</td><td data-label="Searches / mo" class="num">2,400</td><td data-label="Who that actually is">Franchise investors</td></tr>
+          <tr><td data-label="Negative" class="kw">homeschooling india</td><td data-label="Searches / mo" class="num">2,400</td><td data-label="Who that actually is">Parents teaching their own children</td></tr>
+          <tr><td data-label="Negative" class="kw">alternative schools in bangalore &middot; near me</td><td data-label="Searches / mo" class="num">1,900</td><td data-label="Who that actually is">Parents choosing a school for their child</td></tr>
+          <tr class="total"><td data-label="Negative">Blocked</td><td data-label="Searches / mo" class="num">19,800</td><td data-label="Who that actually is">Plus teacher-vacancy and job-seeker modifiers</td></tr>
         </tbody>
       </table>
     </div>
@@ -412,19 +486,19 @@
         <thead><tr><th>Option</th><th>What it gives you</th><th>Trade-off</th></tr></thead>
         <tbody>
           <tr>
-            <td><strong>A &middot; Move the form onto the landing page</strong><br><span class="mono" style="font-size:12px">Tally or Fillout</span></td>
-            <td>A real submit event on all three platforms, plus the ability to retarget everyone who submitted.</td>
-            <td>About an hour of setup. Both are free and both push responses into a Google Sheet, so nothing about the current workflow changes. <span class="tag go">Recommended</span></td>
+            <td data-label="Option"><strong>A &middot; Move the form onto the landing page</strong><br><span class="mono" style="font-size:12px">Tally or Fillout</span></td>
+            <td data-label="What it gives you">A real submit event on all three platforms, plus the ability to retarget everyone who submitted.</td>
+            <td data-label="Trade-off">About an hour of setup. Both are free and both push responses into a Google Sheet, so nothing about the current workflow changes. <span class="tag go">Recommended</span></td>
           </tr>
           <tr>
-            <td><strong>B &middot; Keep the form, fire the conversion on the click through to it</strong></td>
-            <td>Each platform gets an event it can record and build audiences from.</td>
-            <td>Measures application <em>starts</em>, not submits. Expect 40 to 70% completion on an application like this, so platform numbers will overstate.</td>
+            <td data-label="Option"><strong>B &middot; Keep the form, fire the conversion on the click through to it</strong></td>
+            <td data-label="What it gives you">Each platform gets an event it can record and build audiences from.</td>
+            <td data-label="Trade-off">Measures application <em>starts</em>, not submits. Expect 40 to 70% completion on an application like this, so platform numbers will overstate.</td>
           </tr>
           <tr>
-            <td><strong>C &middot; Keep the form, pass the source into it</strong><br><span class="mono" style="font-size:12px">prefilled entry fields</span></td>
-            <td>Add a short-answer field to the form, then have the landing page build the form link with source, campaign and click ID already filled in. Every response row then carries where it came from.</td>
-            <td>That data lives in the Sheet, not in the ad platform. Accurate for reporting and for the day-12 budget call. Useless for platform optimisation.</td>
+            <td data-label="Option"><strong>C &middot; Keep the form, pass the source into it</strong><br><span class="mono" style="font-size:12px">prefilled entry fields</span></td>
+            <td data-label="What it gives you">Add a short-answer field to the form, then have the landing page build the form link with source, campaign and click ID already filled in. Every response row then carries where it came from.</td>
+            <td data-label="Trade-off">That data lives in the Sheet, not in the ad platform. Accurate for reporting and for the day-12 budget call. Useless for platform optimisation.</td>
           </tr>
         </tbody>
       </table>
@@ -450,11 +524,11 @@
       <table>
         <thead><tr><th class="num">Days</th><th>Phase</th><th>Action</th></tr></thead>
         <tbody>
-          <tr><td class="num">1&ndash;3</td><td><strong>Build</strong></td><td>Landing page live. All three tags installed. Lists uploaded to Meta and LinkedIn and seeding. No spend.</td></tr>
-          <tr><td class="num">4&ndash;10</td><td><strong>Launch</strong></td><td>LinkedIn runs Audience A against B. Google Search live on brand and non-brand. Meta retargeting at full weight from day one, the pools already exist.</td></tr>
-          <tr><td class="num">11&ndash;12</td><td><strong>Read</strong></td><td>Cut the losing LinkedIn audience and the preschool test if quality is poor. Weight budget to whatever is producing applications. Info session promoted everywhere.</td></tr>
-          <tr><td class="num">13&ndash;20</td><td><strong>Scale</strong></td><td>Push the winner. Retarget everyone who registered for the info session and did not apply.</td></tr>
-          <tr><td class="num">21&ndash;25</td><td><strong>Close</strong></td><td>Deadline creative across all warm pools. Last call to applicants who stalled before the call stage.</td></tr>
+          <tr><td data-label="Days" class="num">1&ndash;3</td><td data-label="Phase"><strong>Build</strong></td><td data-label="Action">Landing page live. All three tags installed. Lists uploaded to Meta and LinkedIn and seeding. No spend.</td></tr>
+          <tr><td data-label="Days" class="num">4&ndash;10</td><td data-label="Phase"><strong>Launch</strong></td><td data-label="Action">LinkedIn runs Audience A against B. Google Search live on brand and non-brand. Meta retargeting at full weight from day one, the pools already exist.</td></tr>
+          <tr><td data-label="Days" class="num">11&ndash;12</td><td data-label="Phase"><strong>Read</strong></td><td data-label="Action">Cut the losing LinkedIn audience and the preschool test if quality is poor. Weight budget to whatever is producing applications. Info session promoted everywhere.</td></tr>
+          <tr><td data-label="Days" class="num">13&ndash;20</td><td data-label="Phase"><strong>Scale</strong></td><td data-label="Action">Push the winner. Retarget everyone who registered for the info session and did not apply.</td></tr>
+          <tr><td data-label="Days" class="num">21&ndash;25</td><td data-label="Phase"><strong>Close</strong></td><td data-label="Action">Deadline creative across all warm pools. Last call to applicants who stalled before the call stage.</td></tr>
         </tbody>
       </table>
     </div>
