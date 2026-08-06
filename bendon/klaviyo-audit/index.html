@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Bendon &mdash; The retention audit | Tethrd.</title>
+<style>
+@font-face{font-family:'Duplet';font-weight:300;src:url('assets/Duplet-Light.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'Duplet';font-weight:600;src:url('assets/Duplet-Semibold.woff2') format('woff2');font-display:swap}
+:root{--ink:#101014;--white:#fff;--cloud:#F2F3F7;--mut:#9DA2B3;--mut-d:#6E7180;
+--acc:#B0455C;--acc-soft:rgba(176,69,92,.14);--acc-line:rgba(176,69,92,.4);--faint:#E3E5EC;
+--sans:'Duplet',-apple-system,'Helvetica Neue',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);background:var(--white);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em}
+strong,b{font-weight:600}
+.sec{padding:96px 24px}
+.sec.dark{background:var(--ink);color:var(--white)}
+.sec.cloud{background:var(--cloud)}
+.in{max-width:1020px;margin:0 auto}
+.num{font-size:13px;letter-spacing:.22em;color:var(--acc);font-weight:600;margin-bottom:14px}
+.sec h2{font-size:clamp(28px,4vw,42px);line-height:1.1;margin-bottom:14px;max-width:900px}
+.lead{font-size:clamp(17px,2vw,19px);max-width:800px;color:var(--mut-d);margin-top:18px}
+.dark .lead{color:var(--mut)}
+.pull{border-left:3px solid var(--acc);padding:6px 0 6px 22px;font-size:clamp(20px,2.6vw,27px);line-height:1.3;max-width:840px;margin:44px 0 8px;font-weight:600}
+figure{margin:40px 0 0}
+figcaption{font-size:13px;color:var(--mut-d);margin-top:14px;max-width:800px}
+.dark figcaption{color:var(--mut)}
+.mk{font-size:21px;margin:56px 0 4px}
+.hero{min-height:82vh;display:flex;align-items:center;background:radial-gradient(1100px 600px at 70% 18%,rgba(176,69,92,.20),transparent 62%),var(--ink);color:var(--white);padding:80px 24px;position:relative}
+.hero h1{font-size:clamp(34px,5.4vw,58px);line-height:1.08;max-width:940px;margin:26px 0 18px}
+.hero .who{font-size:14px;letter-spacing:.2em;color:var(--mut)}
+.hero .sub{font-size:clamp(17px,2.1vw,20px);color:var(--mut);max-width:680px}
+.navbar{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:22px 28px}
+.navbar span{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);border-radius:14px;overflow:hidden;margin-top:54px}
+.strip div{background:var(--ink);padding:22px 22px 20px}
+.strip b{display:block;font-size:clamp(30px,4vw,40px);font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--acc)}
+.strip span{display:block;font-size:13px;color:var(--mut);margin-top:9px;line-height:1.4}
+.four{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:38px}
+.fc{background:var(--white);border-radius:16px;padding:24px;border:1px solid rgba(0,0,0,.07)}
+.fc .fn{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);font-weight:600}
+.fc h3{font-size:18px;line-height:1.25;margin:10px 0 8px}
+.fc p{font-size:14px;color:var(--mut-d);line-height:1.45}
+.nn{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(0,0,0,.10);border-radius:16px;overflow:hidden;margin:38px 0 0;max-width:900px}
+.dark .nn{border-color:rgba(255,255,255,.16)}
+.nn>div{padding:24px 26px}
+.nn .n-now{background:rgba(0,0,0,.028);border-right:1px solid rgba(0,0,0,.09)}
+.nn h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;color:var(--mut-d)}
+.nn .n-next h4{color:var(--acc)}
+.nn ul{list-style:none}
+.nn li{font-size:15px;line-height:1.4;padding:9px 0;border-top:1px solid rgba(0,0,0,.06)}
+.nn li:first-child{border-top:0;padding-top:0}
+@media(max-width:700px){.nn{grid-template-columns:1fr}.nn .n-now{border-right:0;border-bottom:1px solid rgba(0,0,0,.09)}}
+.shift{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin:22px 0 0;font-size:clamp(16px,2vw,19px);max-width:860px}
+.shift s{color:var(--mut-d);text-decoration-color:var(--acc-line);text-decoration-thickness:1.5px}
+.shift b{color:var(--acc);font-size:20px;line-height:1}
+.shift em{font-style:normal;font-weight:600;color:var(--acc)}
+.dark .shift s{color:var(--mut)}
+.ttab{width:100%;border-collapse:collapse;font-size:14.5px;margin:26px 0 0}
+.ttab th{text-align:left;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.18);font-weight:600}
+.ttab th.hi{color:var(--acc)}
+.ttab td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.09);vertical-align:top}
+.ttab td:first-child{color:var(--mut);font-size:12px;letter-spacing:.05em;text-transform:uppercase;width:20%}
+.ttab td.hi{background:rgba(176,69,92,.12)}
+.ttab tr.big td{font-size:19px;font-weight:600;color:var(--acc)}
+.ex{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:30px 0 0}
+.ex>div{border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:24px 26px}
+.ex .now{background:rgba(255,255,255,.03)}
+.ex .then{border-color:var(--acc-line);background:rgba(176,69,92,.13)}
+.ex h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:16px}
+.ex .then h4{color:var(--acc)}
+.ex dl{display:grid;grid-template-columns:1fr auto;gap:10px 14px;font-size:14.5px;margin:0}
+.ex dt{color:var(--mut)}
+.ex dd{margin:0;font-weight:600;text-align:right;color:#fff}
+.ex .tot{border-top:1px solid rgba(255,255,255,.16);margin-top:14px;padding-top:14px}
+@media(max-width:700px){.ex{grid-template-columns:1fr}}
+.why{max-width:820px;margin:34px 0 0;font-size:16px;color:var(--mut-d);line-height:1.62}
+.why strong{color:var(--ink)}
+.dark .why{color:var(--mut)}
+.dark .why strong{color:#fff}
+.nn li b{display:block;color:var(--ink);font-weight:600;margin-bottom:1px}
+.dark .nn li b{color:#fff}
+.nn li span{color:var(--mut-d);font-size:14.5px;line-height:1.4}
+.dark .nn li span{color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:26px 0 0}
+.chips span{border:1px solid var(--acc-line);background:var(--acc-soft);color:var(--acc);font-size:14px;padding:7px 15px;border-radius:10px;font-weight:600}
+.bignum{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;margin:40px 0 6px;max-width:860px}
+.bignum span{font-size:clamp(64px,9vw,104px);font-weight:600;letter-spacing:-.03em;color:var(--acc);line-height:1}
+.bignum p{font-size:16.5px;color:var(--mut-d);max-width:520px}
+@media(max-width:640px){.bignum{grid-template-columns:1fr;gap:8px}}
+/* tiers with imagery */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:36px 0 0}
+.tcard{border:1px solid rgba(255,255,255,.16);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03)}
+.tcard.t4{border-color:var(--acc-line);background:rgba(176,69,92,.13)}
+.tcard img{width:100%;height:auto;display:block}
+.tcard .tb{padding:18px 20px 20px}
+.tcard h4{font-size:19px;margin-bottom:2px}
+.tcard .tl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-weight:600;margin-bottom:14px}
+.tcard dt{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-top:11px}
+.tcard dt:first-child{margin-top:0}
+.tcard dd{font-size:13.5px;color:#fff}
+/* creative gallery */
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:20px;margin:36px 0 0}
+.gitem figure{margin:0}
+.gitem .shot{border:1px solid rgba(0,0,0,.10);border-radius:10px;overflow:hidden;background:#fff;height:330px}
+.gitem .shot img{width:100%;height:auto;display:block}
+.gitem h4{font-size:15px;margin:14px 0 2px}
+.gitem .gm{font-size:13px;color:var(--mut-d)}
+.gitem .gn{font-size:13.5px;font-weight:600;color:var(--acc)}
+/* before / after */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:36px 0 0;align-items:stretch}
+.ba .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
+.ba .before .lbl{color:var(--mut-d)}
+.ba .after .lbl{color:var(--acc)}
+.ba .frame{border:1px solid rgba(0,0,0,.10);border-radius:12px;overflow:hidden;background:#fff}
+.ba .frame img{width:100%;display:block}
+.ba .ghost{border:1.5px dashed var(--acc-line);border-radius:12px;background:var(--acc-soft);min-height:100%;display:flex;flex-direction:column;justify-content:center;padding:36px 30px}
+.ba .ghost b{font-size:19px;display:block;margin-bottom:10px}
+.ba .ghost p{font-size:14px;color:var(--mut-d);line-height:1.5}
+.ba .cap{font-size:13px;color:var(--mut-d);margin-top:12px}
+@media(max-width:700px){.ba{grid-template-columns:1fr}}
+.glide{margin:36px 0 6px;max-width:900px}
+.g-step{display:grid;grid-template-columns:44px 1fr auto;gap:16px;padding:17px 0;border-bottom:1px solid rgba(0,0,0,.08);font-size:15px;align-items:center}
+.g-step .g-n{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--acc);color:var(--acc);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px}
+.g-step .g-w{font-size:12px;color:var(--mut-d);white-space:nowrap}
+.g-step strong{display:block}
+.g-step em{font-style:normal;color:var(--mut-d);font-size:14px}
+.vis{border:1.5px dashed rgba(0,0,0,.22);border-radius:16px;padding:20px 24px;margin:34px 0 4px;max-width:880px;background:rgba(0,0,0,.015)}
+.vis-tag{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--acc);margin-right:10px}
+.vis p{font-size:13.5px;color:var(--mut-d);margin-top:6px}
+.src{font-size:12.5px;color:var(--mut-d);margin-top:22px}
+.dark .src{color:var(--mut)}
+svg{max-width:100%;height:auto;display:block}
+.foot{background:var(--ink);color:var(--mut);padding:40px 24px;font-size:13px}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="navbar"><span>Tethrd.</span><span>Retention audit &middot; 06 Aug 2026</span></div>
+  <div class="in">
+    <p class="who">BENDON GROUP &middot; KLAVIYO ACCOUNT AUDIT</p>
+    <h1>Eighty-five per cent of the business is invisible to the email programme.</h1>
+    <p class="sub">Audited on the New Zealand account. Australia is a clone of it, so every finding lands twice.</p>
+    <div class="strip">
+      <div><b>$19.9m</b><span>of store purchases entered Klaviyo this year and triggered nothing</span></div>
+      <div><b>5&times;</b><span>more revenue per subscriber from the welcome flow that was switched off</span></div>
+      <div><b>64</b><span>unsubscribes for every 100 people acquired</span></div>
+      <div><b>0</b><span>flows that bring a store customer back online</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cloud">
+  <div class="in">
+    <p class="num">01 &middot; THE SHORT VERSION</p>
+    <h2>Four things stand between this account and a growth channel.</h2>
+    <p class="lead">Two of them decide whether the programme can win a first online order. Two decide whether it can ever win a second.</p>
+    <div class="four">
+      <div class="fc"><div class="fn">01 &middot; Winning the first order</div><h3>Nothing in the account is built to turn a visitor into a first online purchase</h3><p>The pop-up, the welcome flow and every pre-purchase touch are pointed at rewards enrolment instead of a sale.</p></div>
+      <div class="fc"><div class="fn">02 &middot; Winning the second</div><h3>$19.9m of store purchases arrive every year and nothing turns them into a repeat</h3><p>The data lands in Klaviyo complete with size and brand. No flow reads it, and no journey brings that customer online.</p></div>
+      <div class="fc"><div class="fn">03 &middot; The execution</div><h3>The automation stops at the exact moment the money starts</h3><p>Three template flows before the purchase, effectively nothing after it. No replenishment, no cross-sell, no win-back worth the name.</p></div>
+      <div class="fc"><div class="fn">04 &middot; The calendar</div><h3>The campaign plan spends the list to make the month</h3><p>24 sends, three-quarters of them discounts, and 64 unsubscribes burned for every 100 people acquired.</p></div>
+    </div>
+    <p class="pull">You already own the data asset every competitor is trying to buy. It is being used to send everyone the same discount, six times a week.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="in">
+    <p class="num">02 &middot; WINNING THE FIRST ORDER</p>
+    <h2>The front door is collecting members. It should be making buyers.</h2>
+    <p class="shift"><s>Recruiting people into a rewards programme</s> <b>&rarr;</b> <em>earning a first purchase</em></p>
+    <p class="lead">Both versions ran at scale on the same traffic, so the comparison is clean.</p>
+
+    <figure>
+      <svg viewBox="0 0 1000 274" role="img" aria-label="Brand welcome earned $1.09 per subscriber; the loyalty welcome that replaced it earns $0.22">
+        <text x="0" y="14" font-size="12" font-weight="600" fill="#6E7180" letter-spacing="1.6">REVENUE PER SUBSCRIBER</text>
+        <text x="0" y="48" font-size="14.5" fill="#101014">Brand welcome flow &mdash; <tspan font-weight="600">switched off Feb 2026</tspan></text>
+        <rect x="0" y="58" width="760" height="44" rx="4" fill="#101014"/>
+        <text x="780" y="89" font-size="27" font-weight="600" fill="#101014">$1.09</text>
+        <text x="886" y="89" font-size="13.5" fill="#6E7180">143,301 people</text>
+        <text x="0" y="148" font-size="14.5" fill="#101014">Loyalty welcome flow &mdash; <tspan font-weight="600">what runs today</tspan></text>
+        <rect x="0" y="158" width="153" height="44" rx="4" fill="#B0455C"/>
+        <text x="173" y="189" font-size="27" font-weight="600" fill="#B0455C">$0.22</text>
+        <text x="279" y="189" font-size="13.5" fill="#6E7180">152,352 people</text>
+        <line x1="153" y1="228" x2="760" y2="228" stroke="#C8CBD6" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <line x1="153" y1="220" x2="153" y2="236" stroke="#C8CBD6" stroke-width="1.5"/>
+        <line x1="760" y1="220" x2="760" y2="236" stroke="#C8CBD6" stroke-width="1.5"/>
+        <text x="456" y="262" font-size="14" font-weight="600" fill="#B0455C" text-anchor="middle">the gap &mdash; roughly $132,000 in six months, New Zealand alone</text>
+      </svg>
+      <figcaption>Comparable volume, five times the return per person. The older flow&rsquo;s window included Black Friday, so we would not claim the full five-fold gap repeats &mdash; but a difference this size is not seasonality.</figcaption>
+    </figure>
+
+    <p class="why"><strong>Why this happens.</strong> A points balance is worth nothing to somebody who has never owned the product. Asking for enrolment first puts an abstract, long-horizon reward in front of a visitor who is still deciding whether to trust the brand at all &mdash; so most decline, and the ones who do join are then taught to think about tiers rather than about fit, size and product. That is why the same traffic converts five times harder when the sequence talks about the bra instead of the scheme.</p>
+    <p class="why"><strong>What it costs beyond the revenue.</strong> Everyone acquired through a rewards-first door enters the database with no first purchase, no size on file and no product history. That is precisely the data every flow in the rest of this document depends on, so the weakness at the front door quietly caps the ceiling on everything downstream.</p>
+
+    <div class="nn">
+      <div class="n-now"><h4>What is happening now</h4><ul>
+        <li><b>The only live form is a rewards sign-up</b><span>307,805 views produced 11,547 sign-ups &mdash; 3.75%, against a 5&ndash;8% benchmark for a well-built first-order offer.</span></li>
+        <li><b>The brand welcome flow sits in draft</b><span>Its content has not been edited since April 2023. It was switched off around February 2026 and replaced with the rewards sequence.</span></li>
+        <li><b>The pre-purchase journey sells the scheme, not the product</b><span>Tiers, balances and enrolment, at the exact moment the visitor is deciding whether to buy anything at all.</span></li>
+        <li><b>No first-order incentive exists anywhere on site</b><span>So there is nothing to convert the visitor who is interested but not yet committed.</span></li>
+      </ul></div>
+      <div class="n-next"><h4>What it should be</h4><ul>
+        <li><b>The pop-up becomes a first-order offer</b><span>One field, one reason to buy today &mdash; a welcome discount or a fit finder. No programme, no tiers, no terms.</span></li>
+        <li><b>A brand welcome, rebuilt</b><span>80 years of wired-bra engineering, how to find the right size, the core range, and a reason to act now. This is where the fit story earns its keep.</span></li>
+        <li><b>Rewards enrolment moves to after the first purchase</b><span>Where it is a reward rather than a request &mdash; and where the customer can be auto-enrolled instead of asked.</span></li>
+        <li><b>Every pre-purchase flow re-pointed at one goal</b><span>A first order. Nothing before that sale should be selling the programme.</span></li>
+      </ul></div>
+    </div>
+    <p class="src">The newest rewards welcome, live since 13 July, already returns $3.61 per recipient across its first 4,046 people. The craft is there. It is pointed at the wrong objective.</p>
+  </div>
+</section>
+
+<section class="sec cloud">
+  <div class="in">
+    <p class="num">03 &middot; WINNING THE SECOND ORDER</p>
+    <h2>Every store purchase is being treated as an ending. It should be a beginning.</h2>
+    <p class="shift"><s>Chasing store customers with outlet discounts</s> <b>&rarr;</b> <em>letting the purchase start the relationship</em></p>
+    <p class="lead">Two order feeds arrive in Klaviyo. Only one of them is wired to anything.</p>
+
+    <figure>
+      <svg viewBox="0 0 1000 200" role="img" aria-label="In-store purchases are 84.8% of orders; online is 15.2%">
+        <text x="0" y="16" font-size="12" font-weight="600" fill="#6E7180" letter-spacing="1.6">ORDERS IN KLAVIYO &middot; 12 MONTHS &middot; NEW ZEALAND</text>
+        <rect x="0" y="34" width="846" height="70" rx="4" fill="#B0455C"/>
+        <rect x="850" y="34" width="150" height="70" rx="4" fill="#101014"/>
+        <text x="24" y="64" font-size="19" font-weight="600" fill="#fff">In store</text>
+        <text x="24" y="88" font-size="15" fill="rgba(255,255,255,.82)">222,717 orders &middot; $19,929,833 &middot; 84.8%</text>
+        <text x="874" y="64" font-size="17" font-weight="600" fill="#fff">Online</text>
+        <text x="874" y="87" font-size="14" fill="rgba(255,255,255,.74)">15.2%</text>
+        <line x1="423" y1="112" x2="423" y2="132" stroke="#C8CBD6" stroke-width="1.5"/>
+        <line x1="925" y1="112" x2="925" y2="132" stroke="#C8CBD6" stroke-width="1.5"/>
+        <text x="423" y="156" font-size="15" font-weight="600" fill="#B0455C" text-anchor="middle">0 flows triggered</text>
+        <text x="423" y="178" font-size="13.5" fill="#6E7180" text-anchor="middle">the store customer is treated as a stranger</text>
+        <text x="925" y="156" font-size="15" font-weight="600" fill="#101014" text-anchor="middle">2 flows</text>
+        <text x="925" y="178" font-size="13.5" fill="#6E7180" text-anchor="middle">both basic</text>
+      </svg>
+      <figcaption>Every in-store transaction reaches Klaviyo through the RMS feed. The two flows that fire after a purchase are wired to the Shopify metric, so they only ever see the 15%.</figcaption>
+    </figure>
+
+    <h3 class="mk">And it is not a bare transaction.</h3>
+    <p class="lead" style="margin-top:10px">Every store event carries the data every competitor in this category is trying to buy:</p>
+    <div class="chips"><span>Size &middot; 12J</span><span>Brand &middot; Fayreform</span><span>Range &middot; Juniper</span><span>Item &middot; Juniper Underwire Bra</span><span>Store &middot; 1118 Riccarton</span><span>Value &middot; $79.95</span></div>
+
+    <p class="why"><strong>Why this is the most valuable finding in the audit.</strong> Everything else here is a repair to something that already exists. This is a channel the business does not currently have at all. Fit is the unsolved problem in this category and the single biggest driver of returns &mdash; and the store network solves it, in person, 222,717 times a year. That answer is captured, written into the marketing platform, and then never used again. A competitor selling online only cannot obtain this data at any price.</p>
+    <p class="why"><strong>Why the current approach works against the brand.</strong> The only route from store to site today is an outlet campaign. It converts occasionally, but it teaches the store customer that the website is where clearance lives, trains them to wait for a discount, and confines them to the narrowest, lowest-margin part of the range. The rest of the catalogue never gets in front of them.</p>
+
+    <div class="nn">
+      <div class="n-now"><h4>What is happening now</h4><ul>
+        <li><b>No flow is triggered by a store purchase</b><span>We checked the trigger on all 40 flows. Post Purchase Follow Up and Defecting both fire on the Shopify metric only.</span></li>
+        <li><b>Size, brand, range and store are captured and discarded</b><span>Not one segment or live flow in either account references a size, a brand, a range or a store.</span></li>
+        <li><b>The store customer receives the general newsletter</b><span>Identical to somebody who has never bought anything &mdash; the same discount, six times a week.</span></li>
+        <li><b>Outlet campaigns are the only bridge online</b><span>Which converts on price rather than on relationship, and only ever on clearance stock.</span></li>
+      </ul></div>
+      <div class="n-next"><h4>What it should be</h4><ul>
+        <li><b>Post-purchase fires on every order</b><span>One change takes the flow from covering 15% of purchases to 100%. This is the fastest meaningful win in the account.</span></li>
+        <li><b>A store-to-online journey</b><span>Bought a Juniper 12J at Riccarton: hear about that bra &mdash; the fit, the fabric, the engineering &mdash; then what else comes in that size, then the range the store does not carry.</span></li>
+        <li><b>Size-filtered back-in-stock and new-range alerts</b><span>Every new-arrival email filtered to what that customer can actually buy, which is the difference between a newsletter and a reason to click.</span></li>
+        <li><b>Replenishment on the real cycle</b><span>This category reorders every 16&ndash;20 months. That makes it a replenishment programme triggered off purchase date and size, not a frequency programme.</span></li>
+        <li><b>Brand routing</b><span>A Pleasure State buyer and a Fayreform buyer should not receive the same email. The vendor field already says which is which.</span></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="in">
+    <p class="num">04 &middot; THE FLOWS</p>
+    <h2>The automation stops exactly where the money starts.</h2>
+    <p class="shift"><s>Three stock templates before the sale</s> <b>&rarr;</b> <em>a built journey either side of it</em></p>
+    <p class="lead">Forty flows exist. Fifteen are live. They cluster entirely before the first order.</p>
+
+    <figure>
+      <svg viewBox="0 0 1000 300" role="img" aria-label="Lifecycle stages: pre-purchase partially built, everything after purchase missing">
+        <line x1="60" y1="96" x2="940" y2="96" stroke="#E3E5EC" stroke-width="2"/>
+        <g><circle cx="150" cy="96" r="13" fill="#101014"/><text x="150" y="64" font-size="14" font-weight="600" fill="#101014" text-anchor="middle">Browse</text><text x="150" y="130" font-size="13" fill="#6E7180" text-anchor="middle">1 email</text><text x="150" y="150" font-size="13" fill="#6E7180" text-anchor="middle">$0.34</text></g>
+        <g><circle cx="330" cy="96" r="13" fill="#101014"/><text x="330" y="64" font-size="14" font-weight="600" fill="#101014" text-anchor="middle">Cart</text><text x="330" y="130" font-size="13" fill="#6E7180" text-anchor="middle">2 emails</text><text x="330" y="150" font-size="13" fill="#6E7180" text-anchor="middle">$1.27</text></g>
+        <g><circle cx="510" cy="96" r="13" fill="#101014"/><text x="510" y="64" font-size="14" font-weight="600" fill="#101014" text-anchor="middle">Checkout</text><text x="510" y="130" font-size="13" fill="#6E7180" text-anchor="middle">2 emails</text><text x="510" y="150" font-size="13" fill="#6E7180" text-anchor="middle">$1.50</text></g>
+        <line x1="620" y1="40" x2="620" y2="230" stroke="#B0455C" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <text x="628" y="46" font-size="12" font-weight="600" fill="#B0455C" letter-spacing="1.2">THE PURCHASE</text>
+        <g><circle cx="730" cy="96" r="13" fill="none" stroke="#B0455C" stroke-width="2" stroke-dasharray="3 3"/><text x="730" y="64" font-size="14" font-weight="600" fill="#B0455C" text-anchor="middle">Post-purchase</text><text x="730" y="130" font-size="13" fill="#B0455C" text-anchor="middle">$0.11</text><text x="730" y="150" font-size="12" fill="#6E7180" text-anchor="middle">untouched since 2022</text></g>
+        <g><circle cx="860" cy="96" r="13" fill="none" stroke="#B0455C" stroke-width="2" stroke-dasharray="3 3"/><text x="860" y="64" font-size="14" font-weight="600" fill="#B0455C" text-anchor="middle">Repeat</text><text x="860" y="130" font-size="13" fill="#B0455C" text-anchor="middle">does not exist</text></g>
+        <text x="60" y="212" font-size="12" font-weight="600" fill="#B0455C" letter-spacing="1.4">MISSING ENTIRELY, BOTH MARKETS</text>
+        <g font-size="14" fill="#101014">
+          <text x="60" y="242">Replenishment &amp; reorder</text><text x="290" y="242">Cross-sell on what they own</text><text x="580" y="242">In-store to online</text><text x="790" y="242">Sunset</text>
+          <text x="60" y="272">VIP by lifetime value</text><text x="290" y="272">Product education after purchase</text><text x="580" y="272">Size-filtered back-in-stock</text>
+        </g>
+      </svg>
+      <figcaption>Revenue per recipient shown under each live flow. The three that exist are Klaviyo&rsquo;s stock templates with brand colours applied.</figcaption>
+    </figure>
+
+    <p class="why"><strong>What is actually wrong with them.</strong> These are the highest-intent emails the brand sends and the least considered. There is no split between a first-time and a returning buyer, though the two need completely different reassurance. There is no dynamic product block showing the item that was actually viewed. No size or brand logic, no review-backed social proof, no returns or fit reassurance for somebody buying an engineered product sight-unseen, no escalation across the sequence, and no plain-text founder note &mdash; consistently the highest-performing final touch in this category.</p>
+    <p class="why"><strong>Why the gap after purchase matters most.</strong> With 149,073 one-time customers on file and a category that reorders every 16&ndash;20 months, the absent post-purchase estate is the difference between an email programme and a retention programme. The first weeks after a purchase are when buyer&rsquo;s remorse is answered, when an 80-year fit story becomes credible, and when a second purchase is either set up or lost.</p>
+
+    <div class="nn">
+      <div class="n-now"><h4>What is happening now</h4><ul>
+        <li><b>Browse abandonment is a single email</b><span>At $0.34 per recipient against $1.50 for checkout. No second touch, no product logic.</span></li>
+        <li><b>Cart and checkout stop after two</b><span>The highest-intent moments in the account, given two touches and no escalation.</span></li>
+        <li><b>Post-purchase returns $0.11 per recipient</b><span>Two emails, unedited since August 2022, and firing on online orders only.</span></li>
+        <li><b>Win-back is one two-email flow</b><span>Against a lapsed base of over a million profiles.</span></li>
+        <li><b>Nothing suppresses the never-engaged</b><span>64,432 people who have never opened remain on file, dragging deliverability for everyone who does.</span></li>
+      </ul></div>
+      <div class="n-next"><h4>What it should be</h4><ul>
+        <li><b>Abandonment rebuilt to three or four emails</b><span>Split first-time versus returning, dynamic product blocks, fit and returns reassurance, escalating incentive rather than a discount in email one, plain-text founder note last.</span></li>
+        <li><b>A real post-purchase sequence</b><span>Confirmation, then the story of the product bought, then care and fit, then complementary product, then the rewards invitation once it has been earned.</span></li>
+        <li><b>Replenishment and reorder</b><span>Triggered off purchase date and size, timed to the 16&ndash;20 month cycle rather than a calendar.</span></li>
+        <li><b>Cross-sell on what is already owned</b><span>A bra bought without the matching brief is a cross-sell the account never makes.</span></li>
+        <li><b>Sunset switched on</b><span>So the list stops carrying people who will never open, which protects inbox placement for the people who will.</span></li>
+      </ul></div>
+    </div>
+    <p class="pull">Flows are 37.6% of email revenue on 3% of the send volume. They are already the efficient half of the programme, built badly.</p>
+  </div>
+</section>
+
+<section class="sec cloud">
+  <div class="in">
+    <p class="num">05 &middot; THE CAMPAIGNS</p>
+    <h2>The calendar is spending the list to make the month.</h2>
+    <p class="shift"><s>24 discount sends a month</s> <b>&rarr;</b> <em>three or four peaks the year is built toward</em></p>
+    <p class="lead">Twenty-four sends a month into a category that buys once every 16&ndash;20 months. Three-quarters of them are discounts.</p>
+
+    <figure>
+      <svg viewBox="0 0 1000 130" role="img" aria-label="Current cadence is 24 sends a month; proposed is 10 to 12">
+        <text x="0" y="14" font-size="12" font-weight="600" fill="#6E7180" letter-spacing="1.6">SENDS PER MONTH &middot; ONE DOT IS ONE CAMPAIGN</text>
+        <text x="0" y="48" font-size="15" fill="#101014">Today</text>
+        <g fill="#B0455C"><circle cx="120" cy="43" r="9"/><circle cx="152" cy="43" r="9"/><circle cx="184" cy="43" r="9"/><circle cx="216" cy="43" r="9"/><circle cx="248" cy="43" r="9"/><circle cx="280" cy="43" r="9"/><circle cx="312" cy="43" r="9"/><circle cx="344" cy="43" r="9"/><circle cx="376" cy="43" r="9"/><circle cx="408" cy="43" r="9"/><circle cx="440" cy="43" r="9"/><circle cx="472" cy="43" r="9"/><circle cx="504" cy="43" r="9"/><circle cx="536" cy="43" r="9"/><circle cx="568" cy="43" r="9"/><circle cx="600" cy="43" r="9"/><circle cx="632" cy="43" r="9"/><circle cx="664" cy="43" r="9"/><circle cx="696" cy="43" r="9"/><circle cx="728" cy="43" r="9"/><circle cx="760" cy="43" r="9"/><circle cx="792" cy="43" r="9"/><circle cx="824" cy="43" r="9"/><circle cx="856" cy="43" r="9"/></g>
+        <text x="890" y="48" font-size="15" font-weight="600" fill="#B0455C">24</text>
+        <text x="0" y="108" font-size="15" fill="#101014">Proposed</text>
+        <g fill="#101014"><circle cx="120" cy="103" r="9"/><circle cx="152" cy="103" r="9"/><circle cx="184" cy="103" r="9"/><circle cx="216" cy="103" r="9"/><circle cx="248" cy="103" r="9"/><circle cx="280" cy="103" r="9"/><circle cx="312" cy="103" r="9"/><circle cx="344" cy="103" r="9"/><circle cx="376" cy="103" r="9"/><circle cx="408" cy="103" r="9"/></g>
+        <text x="440" y="108" font-size="15" font-weight="600" fill="#101014">10&ndash;12</text>
+        <text x="524" y="108" font-size="13.5" fill="#6E7180">rising only through a tier-one window</text>
+      </svg>
+    </figure>
+
+    <div class="bignum">
+      <span>64</span>
+      <p><strong>unsubscribes for every 100 people acquired.</strong> 89,247 against 138,408 in twelve months. The worst single sends cost 1.2% of their audience &mdash; six times the level at which a send should be stopped.</p>
+    </div>
+
+    <p class="why"><strong>Why the discounting is self-reinforcing.</strong> Removing outlet from the site was a deliberate margin decision and the data supports it. But the campaign calendar has since re-created the same dependency on full-price product: constant discounting teaches the customer to wait, which softens full-price demand, which is then met with another discount. The way out is not to stop promoting &mdash; it is to compress the promotions into a small number of planned, hyped, finite windows, and to spend the quiet periods building the demand those windows convert.</p>
+    <p class="why"><strong>Why a large part of the database never hears anything.</strong> Campaigns go to engagement segments &mdash; broadly the 90-day engaged pool of 113,778. Sensible in principle, but applied here it excludes a very large group by accident. Somebody who joins, receives one flow email and does not open it is classified unengaged immediately and receives nothing from that point on. They never get a second chance to become engaged, because eligibility requires engagement they were never given the opportunity to show.</p>
+
+    <div class="nn">
+      <div class="n-now"><h4>What is happening now</h4><ul>
+        <li><b>74.8% of sends are offer-led</b><span>Sale, multibuy, gift-with-purchase and outlet. Education is 4.8% and sent as one-off blasts with nothing behind it.</span></li>
+        <li><b>Every campaign goes to the same audience</b><span>The segment does not change with the content, so a product launch reaches the same list as a clearance blast.</span></li>
+        <li><b>64,432 never-engaged profiles receive nothing, ever</b><span>Alongside a lapsed base of more than a million.</span></li>
+        <li><b>No systematic testing</b><span>Three test-named campaigns across the account&rsquo;s entire history, none in the last twelve months. A year of sending has produced no reusable learning.</span></li>
+        <li><b>0.67% click rate, $0.022 per email</b><span>Against benchmarks of 1.5&ndash;2% and $0.10+. Open rates are strong, so the list is willing &mdash; the content is not earning the click.</span></li>
+      </ul></div>
+      <div class="n-next"><h4>What it should be</h4><ul>
+        <li><b>Three to four tier-one sales a year</b><span>Teased and built toward, so intent accumulates instead of being spent weekly. Bigger peaks, less discounting overall.</span></li>
+        <li><b>Cadence down to two or three a week</b><span>Which is what makes it safe to widen the audience rather than keep narrowing it.</span></li>
+        <li><b>New product launches as their own revenue peak</b><span>Hype, launch, spike, return to baseline &mdash; a second peak type that costs no margin at all.</span></li>
+        <li><b>Audience matched to content</b><span>A launch to the interested, early access to the top of the file, clearance to the deal-seekers &mdash; not everything to everyone.</span></li>
+        <li><b>Testing as standing practice</b><span>Subject lines on every send; then format, length, complementary product sets, and plain-text founder letters, which also help inbox placement.</span></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="in">
+    <p class="num">06 &middot; THE CREATIVE</p>
+    <h2>The offer is doing all the work. The creative should be doing half.</h2>
+    <p class="shift"><s>A flat poster with a number on it</s> <b>&rarr;</b> <em>an email built to sell</em></p>
+    <p class="lead">These are the four highest-earning emails of the last twelve months, exactly as they were sent.</p>
+
+    <div class="gal">
+      <div class="gitem">
+        <div class="shot"><img src="assets/email-bf-early-access.jpg" alt="Black Friday Early Access email as sent: a 40% off storewide banner over a cropped product shot"></div>
+        <h4>Black Friday Early Access</h4>
+        <div class="gn">$13,374 &middot; $0.114 per email</div>
+        <div class="gm">The year&rsquo;s top earner. A discount banner, an outlet banner, then the footer.</div>
+      </div>
+      <div class="gitem">
+        <div class="shot"><img src="assets/email-labour-flash-vip.jpg" alt="Labour Weekend Flash VIP email as sent: a single full-length sale image"></div>
+        <h4>Labour Weekend Flash &mdash; VIP</h4>
+        <div class="gn">$10,604 &middot; $0.096 per email</div>
+        <div class="gm">The entire email is one image. Nothing in it is individually clickable.</div>
+      </div>
+      <div class="gitem">
+        <div class="shot"><img src="assets/email-warehouse-sale.jpg" alt="Online Warehouse Sale email as sent: a flat lime green poster reading bras from twenty dollars"></div>
+        <h4>Online Warehouse Sale</h4>
+        <div class="gn">$9,174 &middot; $0.082 per email</div>
+        <div class="gm">A flat price poster. No product, no models, no reason to click beyond the number.</div>
+      </div>
+      <div class="gitem">
+        <div class="shot"><img src="assets/email-bf-doorbusters.jpg" alt="Black Friday Doorbusters email as sent: stacked promotional banners"></div>
+        <h4>Black Friday Doorbusters</h4>
+        <div class="gn">$8,083 &middot; $0.067 per email</div>
+        <div class="gm">Longer, but still banners stacked on banners rather than a shoppable edit.</div>
+      </div>
+    </div>
+
+    <p class="why"><strong>What these have in common.</strong> Each is a poster: one flat image, one number, one button. Nothing inside is individually clickable, so the email cannot tell you what anybody was interested in &mdash; which means it also cannot feed the segmentation and personalisation everything else in this document depends on. There is no product hierarchy, no size or brand relevance, no social proof and no reason to open the next one. The Labour Weekend send is even labelled VIP while going to the entire list.</p>
+    <p class="why"><strong>Why that is the opportunity rather than the problem.</strong> Every number above was produced by the offer alone, with the creative contributing close to nothing. That is a floor, not a ceiling &mdash; and it is the cheapest thing in this audit to move, because the audience, the offer and the calendar slot all already exist.</p>
+
+    <h3 class="mk">What we would do with the best one.</h3>
+    <div class="ba">
+      <div class="before">
+        <div class="lbl">Their version &mdash; as sent</div>
+        <div class="frame"><img src="assets/email-warehouse-sale.jpg" alt="The Online Warehouse Sale email as sent"></div>
+        <p class="cap">One image. $9,174 from 112,130 sends.</p>
+      </div>
+      <div class="after">
+        <div class="lbl">Our version</div>
+        <div class="ghost">
+          <b>In production</b>
+          <p>The same offer and the same calendar slot, rebuilt as an email designed to sell: a hero leading with the benefit rather than the mechanic, a shoppable product grid with individual links, size and fit reassurance, review-backed social proof, a complementary-product row and one clear call to action &mdash; plus a plain-text founder variant for the follow-up send.</p>
+        </div>
+        <p class="cap">Landing before the next Warehouse Sale window.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark">
+  <div class="in">
+    <p class="num">07 &middot; LOYALTY</p>
+    <h2>A sign-up mechanic wearing a loyalty programme&rsquo;s name.</h2>
+    <p class="shift"><s>Points, online only, that nobody climbs</s> <b>&rarr;</b> <em>cashback earned everywhere, spent on the site</em></p>
+    <p class="lead">Eighty-three thousand people join it. Six hundred and ninety-one get anywhere.</p>
+
+    <figure>
+      <svg viewBox="0 0 1000 240" role="img" aria-label="Loyalty funnel collapses from 83,266 members to 691 at level 3">
+        <text x="0" y="14" font-size="12" font-weight="600" fill="#9DA2B3" letter-spacing="1.6">BRA BETTER REWARDS &middot; NEW ZEALAND</text>
+        <rect x="0" y="34" width="820" height="38" rx="4" fill="#B0455C"/>
+        <text x="16" y="59" font-size="15" font-weight="600" fill="#fff">In the database</text>
+        <text x="838" y="59" font-size="16" font-weight="600" fill="#fff">83,266</text>
+        <rect x="0" y="82" width="477" height="38" rx="4" fill="rgba(176,69,92,.66)"/>
+        <text x="16" y="107" font-size="15" font-weight="600" fill="#fff">Level 1</text>
+        <text x="495" y="107" font-size="16" font-weight="600" fill="#fff">48,465</text>
+        <rect x="0" y="130" width="74" height="38" rx="4" fill="rgba(176,69,92,.42)"/>
+        <text x="92" y="155" font-size="15" fill="#fff">Level 2</text>
+        <text x="168" y="155" font-size="16" font-weight="600" fill="#fff">7,490</text>
+        <rect x="0" y="178" width="7" height="38" rx="3" fill="rgba(176,69,92,.42)"/>
+        <text x="25" y="203" font-size="15" fill="#fff">Level 3</text>
+        <text x="101" y="203" font-size="16" font-weight="600" fill="#B0455C">691</text>
+        <text x="160" y="203" font-size="13" fill="#9DA2B3">&mdash; 0.8% of the database. Australia is the same shape: 25,755 &rarr; 165.</text>
+        <text x="0" y="234" font-size="13" fill="#9DA2B3">And because it only recognises online activity, it is blind to 85% of what its own members buy.</text>
+      </svg>
+    </figure>
+
+    <p class="why"><strong>Why nobody climbs.</strong> The programme only counts online orders, so it cannot see 85% of what its own members spend. A member can buy in store every eighteen months for a decade and stay on Level 1 forever. Add points as the currency &mdash; a number with no obvious value &mdash; and there is nothing to climb toward and no way to climb it.</p>
+
+    <h3 class="mk">The fix: earn everywhere, spend it on the site.</h3>
+    <p class="lead" style="margin-top:8px">That asymmetry is the whole point. It turns 55 stores into an acquisition channel for the website, without discounting anything.</p>
+
+    <figure>
+      <svg viewBox="0 0 1000 232" role="img" aria-label="Loop: buy in store or online, earn cashback, spend it on the site">
+        <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#B0455C"/></marker></defs>
+        <g><rect x="30" y="40" width="270" height="96" rx="14" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)"/><text x="165" y="79" font-size="16" font-weight="600" fill="#fff" text-anchor="middle">They buy</text><text x="165" y="103" font-size="14" fill="#9DA2B3" text-anchor="middle">in store or online</text></g>
+        <line x1="312" y1="88" x2="358" y2="88" stroke="#B0455C" stroke-width="2" marker-end="url(#ar)"/>
+        <g><rect x="368" y="40" width="270" height="96" rx="14" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)"/><text x="503" y="79" font-size="16" font-weight="600" fill="#fff" text-anchor="middle">They earn</text><text x="503" y="103" font-size="14" fill="#9DA2B3" text-anchor="middle">5&ndash;20% back as store credit</text></g>
+        <line x1="650" y1="88" x2="696" y2="88" stroke="#B0455C" stroke-width="2" marker-end="url(#ar)"/>
+        <g><rect x="706" y="40" width="270" height="96" rx="14" fill="rgba(176,69,92,.22)" stroke="rgba(176,69,92,.55)"/><text x="841" y="79" font-size="16" font-weight="600" fill="#fff" text-anchor="middle">They spend it</text><text x="841" y="103" font-size="14" fill="#E7BFC8" text-anchor="middle">on the website only</text></g>
+        <path d="M841,144 L841,176 L165,176 L165,144" fill="none" stroke="#B0455C" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+        <text x="503" y="204" font-size="14" fill="#9DA2B3" text-anchor="middle">Credit expires at six months, which compresses a 16&ndash;20 month reorder cycle</text>
+        <text x="503" y="226" font-size="14" font-weight="600" fill="#B0455C" text-anchor="middle">and gives us a reason to make contact that is not a discount.</text>
+      </svg>
+      <figcaption>Credit is earned on the 85% of purchases that happen in store and can only be spent on the website, on anything in the range. That puts full-price product in front of a customer who currently only ever sees clearance.</figcaption>
+    </figure>
+
+    <h3 class="mk">The ladder.</h3>
+    <p class="lead" style="margin-top:8px">Four tiers, one reward type that escalates. Auto-enrolled at the first purchase. Nobody is ever demoted.</p>
+
+    <div class="tiers">
+      <div class="tcard"><img src="assets/tier-1.jpg" alt="A small burgundy gift box tied with a blush ribbon">
+        <div class="tb"><h4>Member</h4><div class="tl">5% back</div></div></div>
+      <div class="tcard"><img src="assets/tier-2.jpg" alt="A medium burgundy gift box, lid lifted, blush tissue showing">
+        <div class="tb"><h4>Insider</h4><div class="tl">10% back</div></div></div>
+      <div class="tcard"><img src="assets/tier-3.jpg" alt="A large open burgundy gift box with silk inside and a smaller box beside it">
+        <div class="tb"><h4>Devotee</h4><div class="tl">15% back</div></div></div>
+      <div class="tcard t4"><img src="assets/tier-4.jpg" alt="A very large open burgundy presentation box overflowing with tissue and silk, with two smaller boxes stacked beside it">
+        <div class="tb"><h4>Icon</h4><div class="tl">20% back</div></div></div>
+    </div>
+
+    <table class="ttab">
+      <tr><th></th><th>Member</th><th>Insider</th><th>Devotee</th><th class="hi">Icon</th></tr>
+      <tr class="big"><td>Cashback</td><td>5%</td><td>10%</td><td>15%</td><td class="hi">20%</td></tr>
+      <tr><td>Unlocked at</td><td>First purchase</td><td>$250 lifetime spend</td><td>$600 lifetime spend</td><td class="hi">$1,200 lifetime spend</td></tr>
+      <tr><td>Free shipping</td><td>Orders over $150</td><td>Orders over $99</td><td>Every order</td><td class="hi">Every order</td></tr>
+      <tr><td>Joining gift</td><td>&mdash;</td><td>Mystery bundle</td><td>Mystery bundle, up a level</td><td class="hi">The signature bundle</td></tr>
+      <tr><td>Birthday</td><td>Bonus credit</td><td>Credit + a gift</td><td>Credit + a better gift</td><td class="hi">Credit, the best gift, first access</td></tr>
+      <tr><td>Also unlocks</td><td>&mdash;</td><td>Early access to drops</td><td>Free in-store fittings</td><td class="hi">First access to everything</td></tr>
+    </table>
+    <p class="src">The birthday mechanic is not theoretical &mdash; three tiered birthday flows already run in the account today. The structure exists; it is rewarding the wrong thing.</p>
+
+    <h3 class="mk">What thirty years with the brand looks like.</h3>
+    <p class="lead" style="margin-top:8px">Bendon is eighty years old and this category reorders every 16&ndash;20 months. A loyal customer is a thirty-year relationship, so it is worth being precise about what that relationship is currently worth &mdash; and what it could be.</p>
+
+    <div class="ex">
+      <div class="now">
+        <h4>Today &mdash; no working programme</h4>
+        <dl>
+          <dt>Purchases over 30 years</dt><dd>~20</dd>
+          <dt>Reorder cycle</dt><dd>18 months</dd>
+          <dt>Lifetime spend</dt><dd>~$1,800</dd>
+          <dt>Earned back</dt><dd>$0</dd>
+          <dt>Gifts received</dt><dd>0</dd>
+          <dt>Reason to shop online</dt><dd>a clearance email</dd>
+        </dl>
+        <div class="tot"><dl><dt>Recognition for 30 years</dt><dd>None</dd></dl></div>
+      </div>
+      <div class="then">
+        <h4>With the programme working</h4>
+        <dl>
+          <dt>Purchases over 30 years</dt><dd>~30</dd>
+          <dt>Reorder cycle</dt><dd>12 months</dd>
+          <dt>Lifetime spend</dt><dd>~$2,700</dd>
+          <dt>Earned back as credit</dt><dd>~$390</dd>
+          <dt>Gifts received</dt><dd>3 + 30 birthdays</dd>
+          <dt>Reason to shop online</dt><dd>credit that expires</dd>
+        </dl>
+        <div class="tot"><dl><dt>Reaches Icon</dt><dd>Year 14</dd></dl></div>
+      </div>
+    </div>
+    <p class="why" style="margin-top:26px"><strong>The number that matters.</strong> That customer earns roughly $390 back across three decades &mdash; a blended rate near 14% &mdash; and every dollar of it is spent on the website, on full-price product, at a moment we choose. Compare that with the 40% storewide discounts currently being used to drive the same purchases. The programme is not an added cost; it is a cheaper, better-targeted replacement for the discounting already happening, and it buys a relationship instead of a transaction.</p>
+    <p class="src">Thresholds, rates and the thirty-year model are illustrative and built on the account&rsquo;s own average order value of roughly $90. All of it needs modelling against real margin and the true lifetime-value curve before anything is committed.</p>
+  </div>
+</section>
+
+<section class="sec cloud">
+  <div class="in">
+    <p class="num">08 &middot; SCOPE</p>
+    <h2>Everything here is true twice.</h2>
+    <p class="lead">This audit was run on the Bendon New Zealand Klaviyo account, line by line &mdash; every flow, every campaign, every form and every metric feed, measured against the live API rather than inferred from benchmarks.</p>
+    <p class="why"><strong>The Australian account is a clone of it.</strong> Same flow architecture, same brand welcome flow sitting in draft, same rewards-first pop-up, same 283 campaigns a year, same missing post-purchase estate, and the same rewards funnel shape &mdash; 25,755 in the database, 2,436 at Level 2, 165 at Level 3. Australia leans on campaigns even harder than New Zealand does, at a 69.6/30.4 split against 62.4/37.6. Every finding and every fix in this document applies to both markets, and ships twice.</p>
+    <p class="why"><strong>What is already right, and worth protecting.</strong> The store data feed is genuinely rare &mdash; most brands in this category spend years and a great deal of money trying to build it. Open rates run 47.6%, so the list is willing. The segment library is mature and correctly constructed. The cart flow rebuilt in July already beats the version it replaced. The foundations here are considerably better than the output suggests, which is why this is connection work rather than construction work.</p>
+    <p class="pull">You already own the asset. It has simply never been switched on.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="in">Bendon Group &times; Tethrd &middot; Klaviyo retention audit &middot; New Zealand account, 12 months to 6 August 2026 &middot; every figure measured from the live Klaviyo API.</div>
+</footer>
+
+</body>
+</html>
