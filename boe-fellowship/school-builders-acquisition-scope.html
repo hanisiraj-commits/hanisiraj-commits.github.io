@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BoE Fellowship — School Builders: paid acquisition scope</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1F2A22; --mint:#2ACB9A; --green:#00854E; --deep:#0A5537;
+    --paper:#FDF9EE; --sand:#F1EBDD; --line:#E4DCC8; --muted:#6E7A70;
+    --body:#414B44; --warn:#B4552F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'General Sans',system-ui,sans-serif;color:var(--body);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 30px 80px}
+  h1,h2,h3,.cd{font-family:'Clash Display','General Sans',sans-serif;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+  .mono{font-family:'Space Mono',monospace}
+
+  header{background:var(--ink);color:#fff;padding:32px 0 56px;
+    background-image:radial-gradient(ellipse at 82% -10%, rgba(42,203,154,.22), transparent 60%)}
+  header .wrap{padding-bottom:0}
+  .brandbar{display:flex;align-items:center;gap:15px;margin-bottom:38px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.14)}
+  .boe-mark{font-family:'Clash Display',sans-serif;font-weight:600;font-size:23px;color:#fff;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+  .boe-mark em{font-style:normal;color:var(--mint)}
+  .brand-x{color:#5E6E64;font-size:15px;font-weight:300}
+  .tethrd-logo{height:16px;width:auto;display:block;opacity:.8}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--mint);margin-bottom:16px}
+  h1{font-size:clamp(32px,5.2vw,54px);line-height:1.03;color:#fff;margin-bottom:18px;font-weight:600}
+  .sub{font-size:18px;color:#B9C6BE;max-width:740px;line-height:1.5}
+  .meta{margin-top:28px;font-family:'Space Mono',monospace;font-size:11px;color:#7C8B82;letter-spacing:.03em;line-height:1.9}
+
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:-30px 0 54px;position:relative;z-index:2}
+  .stat{background:#fff;padding:20px 18px}
+  .stat b{display:block;font-family:'Clash Display',sans-serif;font-size:29px;line-height:1.05;color:var(--ink);font-weight:600}
+  .stat span{display:block;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);margin-top:8px;line-height:1.45;letter-spacing:.02em;text-transform:uppercase}
+
+  section{margin-bottom:52px}
+  .chapter{border-top:1px solid var(--line);padding-top:13px;margin-bottom:22px;display:flex;align-items:baseline;gap:13px}
+  .chapter .cn{font-family:'Space Mono',monospace;font-size:11px;color:var(--green);letter-spacing:.1em}
+  .chapter .ct{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+  h2{font-size:27px;margin-bottom:10px;line-height:1.16}
+  .h2sub{font-size:16px;color:var(--muted);margin-bottom:24px;max-width:770px}
+  h3{font-size:16px;margin-bottom:8px}
+  p{margin-bottom:14px;font-size:16px}
+  p:last-child{margin-bottom:0}
+  strong{font-weight:600;color:var(--ink)}
+
+  .card{background:#fff;border:1px solid var(--line);padding:22px 24px;margin-bottom:16px}
+  .card.hl{border-left:3px solid var(--mint)}
+  .card.warn{border-left:3px solid var(--warn)}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .cols .card{margin-bottom:0}
+  .verdict{background:var(--ink);color:#E4EDE7;padding:30px 32px;margin-bottom:16px;
+    background-image:radial-gradient(ellipse at 100% 0%, rgba(42,203,154,.16), transparent 62%)}
+  .verdict .eyebrow{margin-bottom:12px}
+  .verdict h3{color:#fff;font-size:23px;line-height:1.25;margin-bottom:12px}
+  .verdict p{color:#B9C6BE;font-size:16px}
+  .verdict strong{color:var(--mint)}
+  ul{margin:0 0 14px 19px}
+  ul:last-child{margin-bottom:0}
+  li{font-size:15.5px;margin-bottom:8px}
+  li strong{color:var(--ink)}
+  .tag{display:inline-block;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap}
+  .tag.go{background:#DFF6EC;color:var(--deep)}
+  .tag.no{background:#F7E3DB;color:var(--warn)}
+  .tag.mid{background:var(--sand);color:#6B6048}
+
+  .tblwrap{overflow-x:auto;margin-bottom:16px;-webkit-overflow-scrolling:touch}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:14px;min-width:560px}
+  th{background:var(--ink);color:#fff;font-family:'Space Mono',monospace;font-weight:400;text-transform:uppercase;font-size:10px;letter-spacing:.06em;padding:12px;text-align:left}
+  th.num,td.num{text-align:right}
+  td{padding:11px 12px;border-top:1px solid var(--line);vertical-align:top}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-family:'Space Mono',monospace;font-size:13px}
+  td.kw{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--ink)}
+  tr:nth-child(even) td{background:#FCFAF4}
+  tr.total td{border-top:2px solid var(--mint);font-weight:600;background:#F0FAF6;color:var(--ink)}
+
+  .pull{border-left:3px solid var(--green);background:var(--sand);padding:20px 24px;margin:20px 0;font-size:17px;color:var(--ink);line-height:1.5}
+  .note{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);line-height:1.7;margin-top:10px}
+
+  .blocker{display:flex;gap:18px;background:#fff;border:1px solid var(--line);padding:20px 24px;margin-bottom:14px}
+  .blocker .n{font-family:'Clash Display',sans-serif;font-size:26px;color:var(--mint);line-height:1;flex:none;width:34px;font-weight:600}
+  .blocker h3{margin-bottom:6px}
+  .blocker p{font-size:15.5px}
+
+  .clock{background:#fff;border:1px solid var(--line);margin-bottom:16px}
+  .clock-head{background:var(--sand);padding:14px 22px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .clock-head .lbl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+  .clock-head h3{margin:0;font-size:18px}
+  .clock-body{padding:20px 22px}
+
+  footer{border-top:1px solid var(--line);padding-top:24px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);line-height:1.85}
+
+  @media (max-width:900px){ .stats{grid-template-columns:repeat(3,1fr)} }
+  @media (max-width:780px){
+    .wrap{padding:0 20px 60px}
+    header{padding:26px 0 44px}
+    .cols{grid-template-columns:1fr}
+    .sub{font-size:16.5px}
+    .verdict{padding:26px 24px}
+    .verdict h3{font-size:20px}
+  }
+  @media (max-width:560px){
+    .stats{grid-template-columns:1fr 1fr;margin-top:-22px}
+    .stat{padding:16px 15px}
+    .stat b{font-size:24px}
+    h2{font-size:23px}
+    .brandbar{gap:11px;margin-bottom:26px;padding-bottom:17px;flex-wrap:wrap}
+    .boe-mark{font-size:19px}
+    .pull{font-size:16px;padding:17px 19px}
+    .blocker{gap:13px;padding:17px 19px}
+  }
+  @media print{
+    body{background:#fff}
+    header{background:var(--ink) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    section{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brandbar">
+      <span class="boe-mark">Bo<em>E</em> Fellowship</span>
+      <span class="brand-x">&times;</span>
+      <svg class="tethrd-logo" xmlns="http://www.w3.org/2000/svg" viewBox="624 472 676 127" aria-label="Tethrd.">
+        <g fill="#FFFFFF">
+          <polygon points="912.31 482.51 830.79 482.51 830.79 499.21 862.82 499.21 862.82 587.26 880.28 587.26 880.28 499.21 912.31 499.21 912.31 482.51"/>
+          <path d="M941.62,574.05c-11.84,0-20.34-6.98-22.31-19.28h58.9c.3-1.82.3-3.79.3-5.62,0-22.31-15.64-38.71-37.65-38.71s-38.26,17.15-38.26,39.17,16.85,39.17,39.02,39.17c16.7,0,31.42-10.17,37.19-26.57h-17.31c-3.34,7.13-10.48,11.84-19.89,11.84ZM940.71,525.01c11.39,0,19.28,7.29,20.65,17.46h-41.6c2.43-10.93,10.48-17.46,20.95-17.46Z"/>
+          <path d="M1082.52,510.44c-9.26,0-16.55,3.34-21.25,9.11v-37.04h-16.85v104.75h16.85v-41.29c0-11.99,7.44-19.58,18.67-19.58s17.61,7.29,17.61,19.58v41.29h16.85v-42.81c0-20.8-13.21-34.01-31.88-34.01Z"/>
+          <path d="M1145.83,522.43v-10.47h-16.09v75.3h16.85v-39.32c0-11.69,5.62-19.13,19.28-19.13h7.13v-16.85h-5.16c-10.63,0-17.76,3.95-22.01,10.47Z"/>
+          <path d="M1239.5,521.22c-5.62-6.83-14.27-10.78-24.44-10.78-21.56,0-37.95,17.15-37.95,39.17s16.4,39.17,37.95,39.17c10.63,0,19.74-4.25,25.2-11.54v10.02h16.09v-104.75h-16.85v38.71ZM1216.88,572.83c-13.21,0-22.92-9.72-22.92-23.23s9.72-23.38,22.92-23.38,22.77,9.87,22.77,23.38-9.57,23.23-22.77,23.23Z"/>
+          <path d="M1012.98,489.32h-16.85v13.39c0,2.86,1.78,5.42,4.47,6.4l5.13,1.88c.52.19.38.96-.17.96h-21.88v15.48h12.45v36.74c0,15.64,8.2,23.07,25.35,23.07h11.54v-15.79h-10.32c-6.83,0-9.72-3.04-9.72-8.96v-35.07h20.04v-15.48h-20.04v-22.64Z"/>
+          <path d="M794.67,482.51h-42.41c-5.58,0-10.95,2.15-14.99,6.01l-31.12,29.75-2.77,2.65h.02l-4.46,4.3c-3.63,3.5-5.69,8.33-5.69,13.38v58.9l33.17-31.97c2.83-2.73,4.43-6.5,4.43-10.43v-33.03c0-1.07.87-1.94,1.94-1.94h17.96c2.82,0,5.54-1.09,7.58-3.03l36.32-34.58Z"/>
+          <path d="M703.38,482.51v34.94c0,1.48-1.2,2.68-2.68,2.68h-66.72l36.18-34.59c2.04-1.95,4.74-3.03,7.56-3.03h25.66Z"/>
+          <path d="M1281.5,483.74c1.42.82,2.53,1.96,3.33,3.42.79,1.46,1.19,3.12,1.19,4.98s-.4,3.52-1.19,4.99c-.79,1.47-1.9,2.61-3.33,3.43-1.42.82-3.06,1.23-4.89,1.23s-3.48-.41-4.91-1.23c-1.43-.82-2.55-1.97-3.34-3.43-.79-1.47-1.19-3.13-1.19-4.99s.4-3.52,1.19-4.98c.79-1.46,1.91-2.6,3.34-3.42,1.43-.82,3.07-1.23,4.91-1.23s3.47.41,4.89,1.23ZM1272.76,485.54c-1.09.61-1.93,1.49-2.52,2.63s-.88,2.46-.88,3.97.29,2.82.88,3.95c.59,1.13,1.43,2.01,2.52,2.64s2.37.95,3.84.95,2.73-.32,3.82-.95,1.93-1.51,2.52-2.64c.59-1.13.89-2.45.89-3.95s-.3-2.83-.89-3.97-1.43-2.02-2.51-2.63-2.36-.92-3.83-.92-2.75.31-3.84.92ZM1273.84,487.25c-.81.46-1.44,1.11-1.9,1.95-.46.84-.69,1.81-.69,2.91s.23,2.07.7,2.92c.47.85,1.11,1.5,1.9,1.96.8.46,1.69.69,2.68.69,1.23,0,2.29-.33,3.18-.98.89-.65,1.49-1.52,1.79-2.58h-2.52c-.21.52-.51.91-.9,1.19-.39.28-.91.41-1.55.41-.86,0-1.55-.31-2.06-.93s-.78-1.52-.78-2.68.26-2.05.78-2.67c.52-.61,1.21-.92,2.06-.92.61,0,1.13.14,1.56.41.43.27.72.67.89,1.19h2.52c-.31-1.13-.9-2.01-1.77-2.63-.87-.62-1.94-.93-3.2-.93-.99,0-1.88.23-2.69.69Z"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="eyebrow">Paid acquisition scope &middot; School Builders, Cohort 01</div>
+    <h1>Ten seats by August.<br>Then a machine that<br>does it every quarter.</h1>
+    <p class="sub">Where the &#8377;1.5L School Builders seat should actually be bought, why the Meta creative-testing plan runs out of runway before September, and the one constraint that reshapes the media plan.</p>
+    <div class="meta">
+      Prepared for BoE Fellowship &middot; 06/08/2026<br>
+      Enrolment window: 06/08/2026 &rarr; 31/08/2026 &middot; Cohort 01 opens September &middot; Cadence thereafter: every 2 to 3 months
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="stats">
+    <div class="stat"><b>10</b><span>Seats to fill</span></div>
+    <div class="stat"><b>&#8377;15L</b><span>Cohort revenue at &#8377;1.5L</span></div>
+    <div class="stat"><b>25</b><span>Days of runway</span></div>
+    <div class="stat"><b>4–6</b><span>Cohorts a year</span></div>
+    <div class="stat"><b>~&#8377;25k</b><span>Search ceiling per cohort</span></div>
+  </div>
+
+  <!-- ============ 01 THE CALL ============ -->
+  <section>
+    <div class="chapter"><span class="cn mono">01</span><span class="ct">The call</span></div>
+    <h2>Two clocks, not one channel decision</h2>
+    <p class="h2sub">Because cohorts repeat every two to three months, this is not a 25-day campaign. It is a 25-day sprint bolted onto an engine build, and the two need different channels.</p>
+
+    <div class="verdict">
+      <div class="eyebrow">Recommendation</div>
+      <h3>Fill Cohort 01 with warm audiences and precise targeting. Build the always-on engine underneath it, and let Meta earn its place from Cohort 02 onward.</h3>
+      <p>The instinct to skip Meta creative testing is right, but the reason matters. Meta is not the wrong channel. It is the wrong channel <strong>for the 31 August deadline</strong>. Over a full year of cohorts it is likely the volume engine, because the learning you buy compounds across every cohort that follows.</p>
+    </div>
+
+    <div class="cols">
+      <div class="card warn">
+        <h3>Clock 1 &mdash; the 25 days</h3>
+        <p>Meta needs roughly <strong>50 conversions per ad set per week</strong> to exit learning. Cohort 01 offers ten, total. Add a 2 to 3 week creative testing cycle and the window shuts before there is anything worth scaling. For this clock: warm, precise, manual.</p>
+      </div>
+      <div class="card hl">
+        <h3>Clock 2 &mdash; the next twelve months</h3>
+        <p>Four to six cohorts a year at ten-plus seats is <strong>&#8377;60L to &#8377;90L of annual revenue</strong> and, more usefully, 200 to 400 applications a year. That is enough conversion signal for Meta to optimise properly, so long as you optimise on the <strong>application</strong>, not the seat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 SEARCH DATA ============ -->
+  <section>
+    <div class="chapter"><span class="cn mono">02</span><span class="ct">What the India search data says</span></div>
+    <h2>The category has no search demand. The underlying job has plenty.</h2>
+    <p class="h2sub">Two findings from live India-geo query data, and they pull in opposite directions.</p>
+
+    <div class="card hl">
+      <h3>Finding one &mdash; nobody searches for the product</h3>
+      <p>Query expansion on <span class="mono">education fellowship india</span> returns teacher fellowships, teaching fellowships and scholarships. Google's model does not recognise "a fellowship for people who want to build a school" as a concept that exists. <strong>There is no bottom-funnel category demand to capture.</strong> This is a category-creation product, and search is structurally poor at those.</p>
+    </div>
+
+    <div class="card hl">
+      <h3>Finding two &mdash; the job to be done is densely searched</h3>
+      <p><span class="mono">how to start a school in india</span> carries a deep state-level tail: Karnataka, Bangalore, Kerala, Andhra Pradesh, Uttar Pradesh, Bihar, Telangana, Delhi, Jharkhand. That depth is a reliable signal of sustained, real volume. Alongside it sit <span class="mono">cost to start a school in india</span>, <span class="mono">requirements to start a school</span> and <span class="mono">microschools in india</span>.</p>
+    </div>
+
+    <div class="pull">
+      The catch is intent. That searcher wants a <strong>licence, a compliance checklist, a franchise or a consultant</strong>. BoE sells a nine-week cohort on rethinking what a school is. Closing that gap on cold search is paid for in conversion rate, which is exactly where search's quality advantage gets spent.
+    </div>
+  </section>
+
+  <!-- ============ 03 KEYWORD MAP ============ -->
+  <section>
+    <div class="chapter"><span class="cn mono">03</span><span class="ct">Keyword map</span></div>
+    <h2>What to bid on, and what to block</h2>
+    <p class="h2sub">The highest-volume terms in this space are the wrong people. Blocking them is worth more than any bid adjustment.</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>Cluster</th><th class="num">Est. vol / mo</th><th>Intent fit</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="kw">bored of education fellowship &middot; school builder program</td><td class="num">Low, rising</td><td>Brand. Highest return in the account</td><td><span class="tag go">Must run</span></td></tr>
+          <tr><td class="kw">microschool india &middot; how to start a microschool</td><td class="num">200&ndash;500</td><td>Closest match to the real ICP</td><td><span class="tag go">Bid hard</span></td></tr>
+          <tr><td class="kw">cost to start a school in india &middot; requirements to&hellip;</td><td class="num">1,000&ndash;2,000</td><td>Budget-aware, self-qualifying</td><td><span class="tag go">Bid</span></td></tr>
+          <tr><td class="kw">start / open a school in india + state variants</td><td class="num">4,000&ndash;8,000</td><td>Compliance-led. Needs reframing</td><td><span class="tag mid">Exact &amp; phrase</span></td></tr>
+          <tr><td class="kw">school business plan &middot; school business india</td><td class="num">800&ndash;1,500</td><td>Mixed. Watch lead quality</td><td><span class="tag mid">Test small</span></td></tr>
+          <tr><td class="kw">school setup consultants india</td><td class="num">100&ndash;300</td><td>High fit, very thin volume</td><td><span class="tag go">Bid</span></td></tr>
+          <tr><td class="kw">school franchise &middot; preschool franchise</td><td class="num">10,000&ndash;20,000+</td><td>Buying a brand, not building one</td><td><span class="tag no">Negative</span></td></tr>
+          <tr><td class="kw">alternative schools in bangalore &middot; near me</td><td class="num">High</td><td>Parents seeking a school for their child</td><td><span class="tag no">Negative</span></td></tr>
+          <tr><td class="kw">cbse affiliation &middot; homeschooling india</td><td class="num">High</td><td>Wrong stage, wrong person</td><td><span class="tag no">Negative</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Volumes modelled from live query-expansion depth, suggestion ordering and SERP competition. Directional, not Keyword Planner pulls. Exact figures available once a Google Ads account exists, which is free and takes about ten minutes.</p>
+  </section>
+
+  <!-- ============ 04 THE MATH ============ -->
+  <section>
+    <div class="chapter"><span class="cn mono">04</span><span class="ct">The math</span></div>
+    <h2>Search caps out at two seats a cohort</h2>
+    <p class="h2sub">The funnel requirement and the available inventory are an order of magnitude apart, and that gap does not close with more budget.</p>
+
+    <div class="cols">
+      <div class="card">
+        <h3>What ten seats requires</h3>
+        <ul>
+          <li>Application to enrol at 15&ndash;20% &rarr; <strong>55 to 70 applications needed</strong></li>
+          <li>Landing page to application, cold search: 1.5&ndash;3%</li>
+          <li>Required cold clicks: <strong>2,500 to 3,500</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>What search can actually deliver</h3>
+        <ul>
+          <li>Available impressions on the tight cluster, 25 days: 4,000&ndash;5,000</li>
+          <li>At 4&ndash;6% CTR on exact and phrase: <strong>200 to 300 clicks</strong></li>
+          <li>At &#8377;40&ndash;70 CPC: <strong>&#8377;15,000 to &#8377;25,000 of spend</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pull">
+      The constraint on Google is inventory, not budget. Everything past roughly &#8377;25k is broad-match spill into franchise buyers, parents and job seekers. At a generous 3% conversion, 250 clicks returns <strong>7 to 8 applications, so one or two seats</strong>. Worth running every cohort. Never the engine.
+    </div>
+
+    <div class="card warn">
+      <h3>Also ruled out on Google</h3>
+      <p><strong>Performance Max</strong> needs conversion volume and its own 2 to 3 week learning period. <strong>Smart Bidding</strong> needs roughly 30 conversions per 30 days for target CPA to function. Until the account has a few cohorts of application history, this is a <strong>manual CPC account</strong> optimising on application starts, not on the sale.</p>
+    </div>
+  </section>
+
+  <!-- ============ 05 THE PLAN ============ -->
+  <section>
+    <div class="chapter"><span class="cn mono">05</span><span class="ct">Recommended plan</span></div>
+    <h2>Buy the person, not the keyword</h2>
+    <p class="h2sub">Two clocks, two budgets. The sprint is deliberately lean, because Cohort 01 is there to be filled and to seed the engine, not to be scaled.</p>
+
+    <div class="clock">
+      <div class="clock-head"><span class="lbl">Clock 1</span><h3>Sprint to 31 August &middot; &#8377;95,000</h3></div>
+      <div class="clock-body">
+        <div class="tblwrap">
+          <table>
+            <thead><tr><th>Line</th><th class="num">Budget</th><th>Role</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>LinkedIn Ads</strong></td><td class="num">&#8377;55,000</td>
+                <td>Where the ICP and the inventory both sit. Target Principal, School Director, Head of School, Academic Director and Founder, filtered to Education industry and Educational Leadership skills. Education is LinkedIn's cheapest vertical globally at roughly $4.18 CPC. At &#8377;1,500 to &#8377;3,000 per lead this returns 18 to 35 applications.</td>
+              </tr>
+              <tr>
+                <td><strong>Meta, retargeting only</strong></td><td class="num">&#8377;25,000</td>
+                <td>Site visitors, Instagram and Facebook engagers, video viewers, the 40-person March mixer list and past cohort applicants. No cold creative testing. Optimise for Lead, never Purchase. This is the piece the in-house team runs comfortably.</td>
+              </tr>
+              <tr>
+                <td><strong>Google Search</strong></td><td class="num">&#8377;15,000</td>
+                <td>Brand plus the tight non-brand cluster. Catches everyone who reads the LinkedIn post then googles the name, which is the single highest-return keyword in the plan. Manual CPC.</td>
+              </tr>
+              <tr class="total"><td>Sprint total</td><td class="num">&#8377;95,000</td><td>6.3% of &#8377;15L cohort revenue</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card hl">
+          <h3>Where six to eight of the ten actually come from</h3>
+          <p>Paid is the assist, not the engine. The seats close on <strong>alumni referrals</strong> from six prior cohorts, the <strong>40-person Mumbai mixer list</strong> from March, <strong>founder-led LinkedIn posting</strong> which is already performing, <strong>direct outreach</strong> to alternative-school operators, and <strong>one live info session</strong>, which is the highest-converting mechanic that exists for a high-ticket cohort product.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="clock">
+      <div class="clock-head"><span class="lbl">Clock 2</span><h3>The always-on engine &middot; from September</h3></div>
+      <div class="clock-body">
+        <p>Built during the sprint, switched on the day Cohort 01 closes. Everything below is what turns a repeating scramble into a pipeline.</p>
+        <ul>
+          <li><strong>A waitlist, not a deadline.</strong> This is the single biggest unlock from running cohorts quarterly. Anyone who does not convert for September is not lost, they roll to November. A lead gets three or four cohort attempts, so the effective cost per seat falls with every cycle even if CPL stays flat.</li>
+          <li><strong>Meta gets its creative testing budget from Cohort 02.</strong> By then the pixel has application history, the audience is seeded, and the learning compounds instead of expiring. This is the right time to do exactly what was originally proposed.</li>
+          <li><strong>Always-on search at &#8377;15k to &#8377;25k a month.</strong> Never more, because the inventory is not there. Its job is brand capture and a steady one to two seats a cohort.</li>
+          <li><strong>Nurture between cohorts.</strong> Every application that did not convert receives cohort content, alumni outcomes and Demo Day invitations until they take a seat or opt out.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 ACCOUNTING ============ -->
+  <section>
+    <div class="chapter"><span class="cn mono">06</span><span class="ct">How to account for it</span></div>
+    <h2>The sprint budget belongs to the engine, not to Cohort 01</h2>
+    <p class="h2sub">Why the plan above is deliberately lean, and the one lever worth reviewing before Cohort 02.</p>
+
+    <div class="card hl">
+      <p>At a minimum viable cohort size, acquisition cost has to be held deliberately low. That is why the sprint sits at <strong>&#8377;95,000</strong> rather than the 15 to 20 percent of revenue a mature program would comfortably carry. Cohort 01 is being filled, not scaled.</p>
+      <p>Framed correctly, that &#8377;95,000 is not a Cohort 01 line item at all. Nearly all of it is <strong>capital cost on the engine</strong>: the landing page, the tracking, the audience seeding and the waitlist all persist. Amortised across the first four cohorts it lands at roughly <strong>&#8377;24,000 per cohort, or &#8377;2,400 per seat</strong>. That is the number to judge the spend on.</p>
+      <p>The lever worth reviewing before Cohort 02 is <strong>cohort ceiling</strong>. Moving the cap from ten to fifteen or twenty means the marginal seats carry the acquisition cost, and a nine-week hybrid format should absorb those without a proportional rise in delivery cost. That is the shift that makes the engine pay for itself from Cohort 03 onward.</p>
+    </div>
+  </section>
+
+  <!-- ============ 07 BLOCKERS ============ -->
+  <section>
+    <div class="chapter"><span class="cn mono">07</span><span class="ct">Before anyone spends</span></div>
+    <h2>Three things to fix first</h2>
+    <p class="h2sub">The first is a hard blocker. Nothing should go live until it is done.</p>
+
+    <div class="blocker">
+      <div class="n">1</div>
+      <div>
+        <h3>The Google Form has to go</h3>
+        <p>Applications currently run through a form linked in LinkedIn comments. You cannot run performance marketing into that: no conversion tracking, no message match, no ad-to-application continuity, no retargeting pixel. A real landing page with a tracked submit and a thank-you URL is deliverable one, and it is reusable for every cohort after this.</p>
+      </div>
+    </div>
+
+    <div class="blocker">
+      <div class="n">2</div>
+      <div>
+        <h3>Price mechanics will move more than bidding will</h3>
+        <p>&#8377;1.5L as a single payment for a nine-week program is a genuine barrier in this market. A two-instalment or EMI option, plus an early-bird that visibly expires, will do more for seat count than any bid strategy in this plan.</p>
+      </div>
+    </div>
+
+    <div class="blocker">
+      <div class="n">3</div>
+      <div>
+        <h3>Decide the day-12 fallback now</h3>
+        <p>Fewer than 20 applications by 18/08/2026 means cutting paid, going all in on outreach and a second info session, and moving Cohort 01 to October. With a quarterly cadence that slip costs very little. Discounting the seat costs a great deal, because it permanently resets the price for every cohort after it.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Prepared by Tethrd for BoE Fellowship &middot; 06/08/2026<br>
+    Search volumes modelled from live India-geo query data. CPC and CPL figures from 2026 India Google Ads and LinkedIn Ads benchmarks.<br>
+    Funnel modelling assumes a &#8377;1.5L seat price, a screened application and a ten-seat minimum cohort. To be re-based once the fee, delivery cost and application deadline are confirmed.
+  </footer>
+
+</div>
+</body>
+</html>
