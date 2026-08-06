@@ -391,9 +391,60 @@
     </div>
   </section>
 
-  <!-- 08 FLIGHTING -->
+  <!-- 08 ATTRIBUTION -->
   <section>
-    <div class="chapter"><span class="cn mono">08</span><span class="ct">Flighting</span></div>
+    <div class="chapter"><span class="cn mono">08</span><span class="ct">Attribution</span></div>
+    <h2>Can a Google Form be tracked back to the ads? No.</h2>
+    <p class="h2sub">This decides whether any of the reporting above can be trusted, so it is worth being explicit about the mechanics.</p>
+
+    <div class="card warn">
+      <h3>Three hard blocks</h3>
+      <ul>
+        <li><strong>No pixel or tag can be installed on a Google Form.</strong> Forms does not allow script injection, and the Analytics tracking field it once offered was removed.</li>
+        <li><strong>The confirmation page cannot be tagged.</strong> "Your response has been recorded" is served from docs.google.com and is not yours to instrument.</li>
+        <li><strong>There is no redirect on submit</strong>, so there is no thank-you URL for a conversion to fire on.</li>
+      </ul>
+      <p style="margin-top:14px">Net effect: <strong>Meta, LinkedIn and Google Ads have no way of knowing a submission happened.</strong> Spend pointed at a Google Form is spend measured by guesswork.</p>
+    </div>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Option</th><th>What it gives you</th><th>Trade-off</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>A &middot; Move the form onto the landing page</strong><br><span class="mono" style="font-size:12px">Tally or Fillout</span></td>
+            <td>A real submit event on all three platforms, plus the ability to retarget everyone who submitted.</td>
+            <td>About an hour of setup. Both are free and both push responses into a Google Sheet, so nothing about the current workflow changes. <span class="tag go">Recommended</span></td>
+          </tr>
+          <tr>
+            <td><strong>B &middot; Keep the form, fire the conversion on the click through to it</strong></td>
+            <td>Each platform gets an event it can record and build audiences from.</td>
+            <td>Measures application <em>starts</em>, not submits. Expect 40 to 70% completion on an application like this, so platform numbers will overstate.</td>
+          </tr>
+          <tr>
+            <td><strong>C &middot; Keep the form, pass the source into it</strong><br><span class="mono" style="font-size:12px">prefilled entry fields</span></td>
+            <td>Add a short-answer field to the form, then have the landing page build the form link with source, campaign and click ID already filled in. Every response row then carries where it came from.</td>
+            <td>That data lives in the Sheet, not in the ad platform. Accurate for reporting and for the day-12 budget call. Useless for platform optimisation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pull">
+      <strong>Recommendation: Option A.</strong> If the Google Form has to stay exactly as it is, run <strong>B and C together</strong>. B gives the platforms something to fire on and build audiences from, C gives honest per-channel submit counts, and the two get reconciled at day 12.
+    </div>
+
+    <div class="card hl">
+      <h3>Why this matters less than it looks, this month</h3>
+      <p>Even with perfect submit-level tracking, none of these platforms will have the volume to <em>optimise</em> on it. Sixty applications across 25 days split three ways is roughly twenty per channel. Meta wants fifty per ad set per week. Google's Smart Bidding wants thirty per thirty days.</p>
+      <p>So the conversion event is not feeding an algorithm in August. It is doing two jobs: <strong>telling us where to move the &#8377;20,000 reserve at day 12</strong>, and <strong>building the retargeting and lookalike pools</strong>. Both are served adequately by B and C.</p>
+      <p>The reason to do Option A properly is <strong>Cohort 02</strong>, when the pixel has real history behind it and the optimisation actually starts to work.</p>
+    </div>
+  </section>
+
+  <!-- 09 FLIGHTING -->
+  <section>
+    <div class="chapter"><span class="cn mono">09</span><span class="ct">Flighting</span></div>
     <h2>25 days</h2>
     <div class="tblwrap">
       <table>
