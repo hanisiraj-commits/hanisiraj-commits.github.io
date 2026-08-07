@@ -89,6 +89,9 @@ figcaption{font-size:13px;color:var(--mut-d);margin-top:14px;max-width:800px}
 .bignum{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;margin:40px 0 6px;max-width:860px}
 .bignum span{font-size:clamp(64px,9vw,104px);font-weight:600;letter-spacing:-.03em;color:var(--acc);line-height:1}
 .bignum p{font-size:16.5px;color:var(--mut-d);max-width:520px}
+.dark .bignum p{color:var(--mut)}
+.dark .bignum p strong{color:#fff}
+.dark .bench td:first-child{color:var(--mut)}
 @media(max-width:640px){.bignum{grid-template-columns:1fr;gap:8px}}
 /* tiers with imagery */
 .tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:36px 0 0}
@@ -133,6 +136,38 @@ figcaption{font-size:13px;color:var(--mut-d);margin-top:14px;max-width:800px}
 .src{font-size:12.5px;color:var(--mut-d);margin-top:22px}
 .dark .src{color:var(--mut)}
 svg{max-width:100%;height:auto;display:block}
+/* list growth — pop-up screenshots */
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:38px 0 0}
+.shots .sh{border:1px solid rgba(255,255,255,.18);border-radius:14px;overflow:hidden;background:#000}
+.shots .sh img{width:100%;display:block}
+.shots .lb{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:11px;color:var(--mut)}
+.shots .hi .lb{color:var(--acc)}
+.shots .hi .sh{border-color:var(--acc-line)}
+.shots .cp{font-size:13px;color:var(--mut);margin-top:12px;line-height:1.5}
+@media(max-width:760px){.shots{grid-template-columns:1fr}}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:34px 0 0;align-items:start}
+.vs .lb{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:12px;color:var(--mut)}
+.vs .hi .lb{color:var(--acc)}
+.vs .fr{border:1px solid rgba(255,255,255,.18);border-radius:12px;overflow:hidden;background:#000}
+.vs .hi .fr{border-color:var(--acc-line)}
+.vs .fr img{width:100%;display:block}
+.vs .cp{font-size:13.5px;color:var(--mut);margin-top:13px;line-height:1.55}
+.vs.st{align-items:stretch}
+.vs.st .vsi{display:flex;flex-direction:column}
+.vs .cpx{border:1.5px dashed rgba(255,255,255,.24);border-radius:12px;padding:30px 28px;font-size:15px;
+ color:var(--mut);line-height:1.6;background:rgba(255,255,255,.03);flex:1;display:flex;align-items:center}
+@media(max-width:760px){.vs{grid-template-columns:1fr}}
+.bench{width:100%;border-collapse:collapse;font-size:15px;margin:30px 0 0;max-width:760px}
+.bench td{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.10)}
+.bench td:first-child{color:var(--mut)}
+.bench td:last-child{text-align:right;font-weight:600;white-space:nowrap}
+.bench tr.them td{background:rgba(176,69,92,.15)}
+.bench tr.them td:last-child{color:var(--acc);font-size:18px}
+.faults{display:grid;grid-template-columns:1fr 1fr;gap:0 34px;margin:34px 0 0;max-width:900px}
+.faults div{padding:13px 0;border-top:1px solid rgba(255,255,255,.13);font-size:15px;line-height:1.45}
+.faults b{display:block;color:#fff;margin-bottom:2px}
+.faults span{color:var(--mut);font-size:14px}
+@media(max-width:700px){.faults{grid-template-columns:1fr}}
 .foot{background:var(--ink);color:var(--mut);padding:40px 24px;font-size:13px}
 </style>
 </head>
@@ -159,7 +194,7 @@ svg{max-width:100%;height:auto;display:block}
     <h2>Four things stand between this account and a growth channel.</h2>
     <p class="lead">Two of them decide whether the programme can win a first online order. Two decide whether it can ever win a second.</p>
     <div class="four">
-      <div class="fc"><div class="fn">01 &middot; Winning the first order</div><h3>Nothing in the account is built to turn a visitor into a first online purchase</h3><p>The pop-up, the welcome flow and every pre-purchase touch are pointed at rewards enrolment instead of a sale.</p></div>
+      <div class="fc"><div class="fn">01 &middot; Winning the first order</div><h3>The website wins one new subscriber in five, and the pop-up is pointed at the wrong objective</h3><p>Stores do four-fifths of the list building. The one on-site form asks visitors to join a rewards programme instead of buying something, and converts at 3.1&ndash;3.8%.</p></div>
       <div class="fc"><div class="fn">02 &middot; Winning the second</div><h3>$19.9m of store purchases arrive every year and nothing turns them into a repeat</h3><p>The data lands in Klaviyo complete with size and brand. No flow reads it, and no journey brings that customer online.</p></div>
       <div class="fc"><div class="fn">03 &middot; The execution</div><h3>The automation stops at the exact moment the money starts</h3><p>Three template flows before the purchase, effectively nothing after it. No replenishment, no cross-sell, no win-back worth the name.</p></div>
       <div class="fc"><div class="fn">04 &middot; The calendar</div><h3>The campaign plan spends the list to make the month</h3><p>24 sends, three-quarters of them discounts, and 64 unsubscribes burned for every 100 people acquired.</p></div>
@@ -215,9 +250,99 @@ svg{max-width:100%;height:auto;display:block}
   </div>
 </section>
 
+<section class="sec dark">
+  <div class="in">
+    <p class="num">03 &middot; LIST GROWTH</p>
+    <h2>The file is being emptied faster than the website can fill it.</h2>
+    <p class="shift"><s>A pop-up recruiting programme members</s> <b>&rarr;</b> <em>a pop-up buying first orders</em></p>
+
+    <figure>
+      <svg viewBox="0 0 1000 268" role="img" aria-label="228,832 acquired against 132,099 unsubscribes, of which only 20,232 came from the website">
+        <text x="0" y="14" font-size="12" font-weight="600" fill="#9DA2B3" letter-spacing="1.6">TWELVE MONTHS &middot; BOTH MARKETS</text>
+        <text x="0" y="60" font-size="14.5" fill="#fff">Acquired</text>
+        <rect x="230" y="38" width="620" height="38" rx="4" fill="#fff"/>
+        <text x="868" y="64" font-size="19" font-weight="600" fill="#fff">228,832</text>
+        <text x="0" y="126" font-size="14.5" fill="#fff">Unsubscribed</text>
+        <rect x="230" y="104" width="358" height="38" rx="4" fill="#B0455C"/>
+        <text x="606" y="130" font-size="19" font-weight="600" fill="#B0455C">132,099</text>
+        <text x="0" y="192" font-size="14.5" fill="#9DA2B3">Won by the website</text>
+        <rect x="230" y="170" width="55" height="38" rx="4" fill="rgba(255,255,255,.34)"/>
+        <text x="303" y="196" font-size="19" font-weight="600" fill="#9DA2B3">20,232</text>
+        <text x="404" y="196" font-size="13.5" fill="#9DA2B3">&mdash; every on-site form, six months</text>
+        <line x1="0" y1="228" x2="1000" y2="228" stroke="rgba(255,255,255,.16)"/>
+        <text x="0" y="256" font-size="16" font-weight="600" fill="#B0455C">58 people leave for every 100 who join. New Zealand churns 57% of its file a year.</text>
+      </svg>
+      <figcaption>Gross acquisition is up year on year in both markets, so the top of the funnel is not the problem. The file still ends the year roughly where it started.</figcaption>
+    </figure>
+
+    <p class="why"><strong>The growth is real, but it is not the website&rsquo;s.</strong> Stores hand the email programme <strong>78%</strong> of every new subscriber. The site produces the other 22% &mdash; about 40,000 a year against 132,099 people walking out of the file over the same period. So the online list is not growing into the churn, it is falling behind it, and the gap is being covered by the store network. Australia makes that plain: on-site sign-ups fell <strong>29.6%</strong> across the last six months, from 51,657 to 36,390.</p>
+
+    <p class="pull">Take the stores out of the number and the online database is going backwards.</p>
+
+    <h3 class="mk">All of it turns on one pop-up. It is below average.</h3>
+
+    <table class="bench">
+      <tr><td>Klaviyo average submit rate</td><td>4&ndash;5%</td></tr>
+      <tr><td>What we run across our brands</td><td>9&ndash;12%</td></tr>
+      <tr class="them"><td><strong>Bendon New Zealand</strong> &middot; 307,805 views, 11,547 sign-ups</td><td>3.75%</td></tr>
+      <tr class="them"><td><strong>Bendon Australia</strong> &middot; 187,677 views, 5,797 sign-ups</td><td>3.09%</td></tr>
+    </table>
+    <p class="src">180 days to 6 August 2026, from the Klaviyo form report. Below the platform average on 1.1 million form views a year, and roughly a third of what the same traffic should return.</p>
+
+    <p class="lead" style="margin-top:34px">The move from 3% to the high single digits is the most documented thing Alia does.</p>
+    <div class="strip" style="margin-top:20px">
+      <div><b>3% &rarr; 8%</b><span>Beckett Simonon, after switching off Attentive. 2.5&times; the sign-up rate</span></div>
+      <div><b>3.5% &rarr; 7%</b><span>Travelpro. 114% more new subscribers inside 30 days</span></div>
+      <div><b>4&times;</b><span>Opopop list growth, and welcome flow revenue from $171k to $1.31m</span></div>
+    </div>
+    <p class="src">Alia&rsquo;s own published case studies. Beckett Simonon started within a tenth of a point of where Bendon sits today.</p>
+
+    <p class="why"><strong>It is below average because of how it is built, not how it is written.</strong> The pop-up is pointed at enrolling people in Bra Better Rewards rather than at selling them something. The headline offers $20; the first line of body copy takes it back and asks the customer to join a programme instead. A points balance is worth nothing to somebody who has never owned the product, so the ask lands as admin at the exact moment they are deciding whether to trust the brand at all. Section 02 shows the cost of that downstream: the rewards-led welcome earns $0.22 per subscriber against $1.09 for the brand welcome it replaced.</p>
+
+    <div class="faults">
+      <div><b>The offer cannot be used on a normal order</b><span>$20 off, conditional on spending over $99. The account&rsquo;s average order value is roughly $90, so the incentive is priced above the basket it is meant to unlock &mdash; and it reads as <em>next</em> purchase, not first.</span></div>
+      <div><b>Six fields before anything is given</b><span>First name, last name, email, then birthday split across three boxes. The birthday is being asked for before a single thing has been earned.</span></div>
+      <div><b>It is a side drawer, not a pop-up</b><span>Klaviyo&rsquo;s own form type on both records is <em>flyout</em>. Two thirds of people &mdash; 203,764 of 307,805 &mdash; close it without engaging.</span></div>
+      <div><b>It has never been tested</b><span>One variation, A/B testing switched off, unchanged since January 2026. No exit-intent form and no SMS capture exist in either account.</span></div>
+    </div>
+
+    <h3 class="mk">Theirs, and ours.</h3>
+    <p class="lead" style="margin-top:8px">Same traffic, same brand, same offer value. One asks for a programme. The other buys a first order.</p>
+
+    <div class="vs">
+      <div class="vsi">
+        <div class="lb">What runs today</div>
+        <div class="fr"><img src="assets/popup-current.jpg" alt="The live Bendon pop-up: a side drawer headed Get $20 off by signing up today, with Join Bra Better Rewards beneath it and six input fields"></div>
+        <div class="cp">A drawer down the side of the page, at the same scale as a cookie notice. Programme first, six fields, a $99 minimum, and four lines of terms under a button marked Submit.</div>
+      </div>
+      <div class="vsi hi">
+        <div class="lb">What Alia would run</div>
+        <div class="fr"><img src="assets/popup-alia-1.jpg" alt="Full-screen Alia takeover on the Bendon site: editorial model image with a five-star review on the left, and Try Your Luck with a gold scratch card on the right"></div>
+        <div class="cp">A full-screen takeover, not a panel down the side. Three words of copy, one thing to do, and a real review carrying the image. The design does the persuading before a single field is asked for.</div>
+      </div>
+    </div>
+
+    <div class="vs st" style="margin-top:24px">
+      <div class="vsi">
+        <div class="lb">Their reward</div>
+        <div class="cpx">$20 off &mdash; if the customer spends over $99, on a site where the average order is $90. Delivered as a line of small print beneath a six-field form.</div>
+      </div>
+      <div class="vsi hi">
+        <div class="lb">The Alia reward</div>
+        <div class="fr"><img src="assets/popup-alia-2.jpg" alt="Full-screen Alia reveal: You have won $20 OFF your first order, no minimum, with a single email field and a Claim My $20 button"></div>
+        <div class="cp">The reveal. Same $20, minimum removed, and now a single field &mdash; asked only after the customer has already engaged. Branched by subscriber status so nobody is promised an offer they cannot have.</div>
+      </div>
+    </div>
+    <p class="src">Rendered on the live Bendon Australia storefront on 07 August 2026 using current product imagery, built to the format Alia ships for Aviator Nation &mdash; full-screen, scratch-to-reveal, three words of copy. Creative and mechanic are illustrative and would be tested rather than assumed.</p>
+
+    <p class="why"><strong>What moving the number is worth.</strong> The traffic already exists and does not change. At 9&ndash;12% the same 1.1 million views return <strong>103,000&ndash;137,000</strong> subscribers a year instead of 40,000 &mdash; <strong>+63,000 to +97,000 net new</strong>, or <strong>22% to 34% growth on the reachable file</strong>. Routed through a first-order welcome, which already returns $3.61 per recipient on its newest version in this account, that is <strong>$227,000 to $350,000 a year</strong> before a single campaign is sent. And every tier-one sale in section 06 is then run to a file a third larger than the one it is planned against today.</p>
+    <p class="src">Views annualised from the 180-day form report. The 9&ndash;12% range is our observed book average and the platform average is quoted from Klaviyo&rsquo;s benchmark reporting; both should be confirmed against Bendon&rsquo;s own peer-group benchmark before this is presented as settled.</p>
+  </div>
+</section>
+
 <section class="sec cloud">
   <div class="in">
-    <p class="num">03 &middot; WINNING THE SECOND ORDER</p>
+    <p class="num">04 &middot; WINNING THE SECOND ORDER</p>
     <h2>Every store purchase is being treated as an ending. It should be a beginning.</h2>
     <p class="shift"><s>Chasing store customers with outlet discounts</s> <b>&rarr;</b> <em>letting the purchase start the relationship</em></p>
     <p class="lead">Two order feeds arrive in Klaviyo. Only one of them is wired to anything.</p>
@@ -268,7 +393,7 @@ svg{max-width:100%;height:auto;display:block}
 
 <section class="sec">
   <div class="in">
-    <p class="num">04 &middot; THE FLOWS</p>
+    <p class="num">05 &middot; THE FLOWS</p>
     <h2>The automation stops exactly where the money starts.</h2>
     <p class="shift"><s>Three stock templates before the sale</s> <b>&rarr;</b> <em>a built journey either side of it</em></p>
     <p class="lead">Forty flows exist. Fifteen are live. They cluster entirely before the first order.</p>
@@ -317,7 +442,7 @@ svg{max-width:100%;height:auto;display:block}
 
 <section class="sec cloud">
   <div class="in">
-    <p class="num">05 &middot; THE CAMPAIGNS</p>
+    <p class="num">06 &middot; THE CAMPAIGNS</p>
     <h2>The calendar is spending the list to make the month.</h2>
     <p class="shift"><s>24 discount sends a month</s> <b>&rarr;</b> <em>three or four peaks the year is built toward</em></p>
     <p class="lead">Twenty-four sends a month into a category that buys once every 16&ndash;20 months. Three-quarters of them are discounts.</p>
@@ -364,7 +489,7 @@ svg{max-width:100%;height:auto;display:block}
 
 <section class="sec">
   <div class="in">
-    <p class="num">06 &middot; THE CREATIVE</p>
+    <p class="num">07 &middot; THE CREATIVE</p>
     <h2>The offer is doing all the work. The creative should be doing half.</h2>
     <p class="shift"><s>A flat poster with a number on it</s> <b>&rarr;</b> <em>an email built to sell</em></p>
     <p class="lead">These are the four highest-earning emails of the last twelve months, exactly as they were sent.</p>
@@ -420,7 +545,7 @@ svg{max-width:100%;height:auto;display:block}
 
 <section class="sec dark">
   <div class="in">
-    <p class="num">07 &middot; LOYALTY</p>
+    <p class="num">08 &middot; LOYALTY</p>
     <h2>A sign-up mechanic wearing a loyalty programme&rsquo;s name.</h2>
     <p class="shift"><s>Points, online only, that nobody climbs</s> <b>&rarr;</b> <em>cashback earned everywhere, spent on the site</em></p>
     <p class="lead">Eighty-three thousand people join it. Six hundred and ninety-one get anywhere.</p>
@@ -526,7 +651,7 @@ svg{max-width:100%;height:auto;display:block}
 
 <section class="sec cloud">
   <div class="in">
-    <p class="num">08 &middot; SCOPE</p>
+    <p class="num">09 &middot; SCOPE</p>
     <h2>Everything here is true twice.</h2>
     <p class="lead">This audit was run on the Bendon New Zealand Klaviyo account, line by line &mdash; every flow, every campaign, every form and every metric feed, measured against the live API rather than inferred from benchmarks.</p>
     <p class="why"><strong>The Australian account is a clone of it.</strong> Same flow architecture, same brand welcome flow sitting in draft, same rewards-first pop-up, same 283 campaigns a year, same missing post-purchase estate, and the same rewards funnel shape &mdash; 25,755 in the database, 2,436 at Level 2, 165 at Level 3. Australia leans on campaigns even harder than New Zealand does, at a 69.6/30.4 split against 62.4/37.6. Every finding and every fix in this document applies to both markets, and ships twice.</p>
