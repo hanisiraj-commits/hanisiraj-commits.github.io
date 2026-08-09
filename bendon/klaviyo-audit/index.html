@@ -123,7 +123,15 @@ figcaption{font-size:13px;color:var(--mut-d);margin-top:14px;max-width:800px}
 .ba .ghost b{font-size:19px;display:block;margin-bottom:10px}
 .ba .ghost p{font-size:14px;color:var(--mut-d);line-height:1.5}
 .ba .cap{font-size:13px;color:var(--mut-d);margin-top:12px}
-@media(max-width:700px){.ba{grid-template-columns:1fr}}
+.ba.emails{align-items:start}
+.ba.emails .frame{max-height:78vh;overflow-y:auto;scrollbar-width:thin}
+.ba.emails .after .frame{border-color:var(--acc-line);box-shadow:0 0 0 3px var(--acc-soft)}
+.ba.emails .hint{font-size:12px;color:var(--mut-d);margin:14px 0 0;font-style:italic}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:0 34px;margin:34px 0 0;max-width:900px}
+.chg div{padding:14px 0;border-top:1px solid rgba(0,0,0,.10);font-size:15px;line-height:1.45}
+.chg b{display:block;margin-bottom:2px}
+.chg span{color:var(--mut-d);font-size:14px}
+@media(max-width:700px){.ba{grid-template-columns:1fr}.chg{grid-template-columns:1fr}}
 .glide{margin:36px 0 6px;max-width:900px}
 .g-step{display:grid;grid-template-columns:44px 1fr auto;gap:16px;padding:17px 0;border-bottom:1px solid rgba(0,0,0,.08);font-size:15px;align-items:center}
 .g-step .g-n{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--acc);color:var(--acc);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px}
@@ -524,21 +532,29 @@ svg{max-width:100%;height:auto;display:block}
     <p class="why"><strong>What these have in common.</strong> Each is a poster: one flat image, one number, one button. Nothing inside is individually clickable, so the email cannot tell you what anybody was interested in &mdash; which means it also cannot feed the segmentation and personalisation everything else in this document depends on. There is no product hierarchy, no size or brand relevance, no social proof and no reason to open the next one. The Labour Weekend send is even labelled VIP while going to the entire list.</p>
     <p class="why"><strong>Why that is the opportunity rather than the problem.</strong> Every number above was produced by the offer alone, with the creative contributing close to nothing. That is a floor, not a ceiling &mdash; and it is the cheapest thing in this audit to move, because the audience, the offer and the calendar slot all already exist.</p>
 
-    <h3 class="mk">What we would do with the best one.</h3>
-    <div class="ba">
+    <h3 class="mk">The same email, rebuilt.</h3>
+    <p class="lead">Afterpay Day Flash Sale, sent 19/03/2026 to 126,747 people. It is the same poster pattern as the four above, so we rebuilt it exactly as we would run it: same offer, same calendar slot, same brand furniture, nothing invented.</p>
+    <p class="hint" style="font-size:12px;color:var(--mut-d);margin:26px 0 -18px;font-style:italic">Both frames scroll. The full email is inside each one.</p>
+    <div class="ba emails">
       <div class="before">
         <div class="lbl">Their version &mdash; as sent</div>
-        <div class="frame"><img src="assets/email-warehouse-sale.jpg" alt="The Online Warehouse Sale email as sent"></div>
-        <p class="cap">One image. $9,174 from 112,130 sends.</p>
+        <div class="frame"><img src="assets/email-afterpay-assent.jpg" alt="The Afterpay Day Flash Sale email as sent: one cropped product image carrying the 30 per cent off message, followed by four text-only category buttons and the footer"></div>
+        <p class="cap">One image, four buttons. 47.4% opened it, 0.75% clicked. $5,378 in revenue, or 4.2 cents per recipient.</p>
       </div>
       <div class="after">
         <div class="lbl">Our version</div>
-        <div class="ghost">
-          <b>In production</b>
-          <p>The same offer and the same calendar slot, rebuilt as an email designed to sell: a hero leading with the benefit rather than the mechanic, a shoppable product grid with individual links, size and fit reassurance, review-backed social proof, a complementary-product row and one clear call to action &mdash; plus a plain-text founder variant for the follow-up send.</p>
-        </div>
-        <p class="cap">Landing before the next Warehouse Sale window.</p>
+        <div class="frame"><img src="assets/email-afterpay-rebuilt.jpg" alt="The rebuilt Afterpay Day Flash Sale email: a sign-up bar offering an extra ten per cent, an editorial hero with the offer set as layered stickers and a Save Now button, then a four-tile shoppable grid of real product photography with an individual button under each, the Afterpay strip, the service icons and the footer"></div>
+        <p class="cap">Same offer, same send window. Every element in it is now individually clickable.</p>
       </div>
+    </div>
+
+    <div class="chg">
+      <div><b>A sign-up bar above the hero</b><span>Sale emails get forwarded and screenshotted, so a share of the traffic they create is not on the list yet. An extra 10% on top of the sale captures that person instead of losing them, and feeds the same front door section 03 is built to fix.</span></div>
+      <div><b>The offer stops being the artwork</b><span>The discount moves onto layered stickers over an editorial shot, so the email reads as Bendon running a sale rather than a price poster with a logo on top. Same number, same terms, none of the discount-brand cost.</span></div>
+      <div><b>Four category buttons become four product tiles</b><span>Real product photography for sets, bras, briefs and mens, each with its own button and its own link. The click now tells you which category that person wants.</span></div>
+      <div><b>Which is the whole point</b><span>Individually tracked clicks are what every segment, every triggered follow-up and every personalised send in this document runs on. A single-image email cannot produce them, so the account never learns anything from the 283 campaigns it sends a year.</span></div>
+      <div><b>A visible reason to click</b><span>The button sits inside the hero rather than below the fold, and the four tiles give four separate entry points instead of one. The 0.75% click rate is the number this is built to move.</span></div>
+      <div><b>Everything else stays</b><span>The Afterpay instalment strip, the four service icons, the social row and the full T&amp;Cs are unchanged. This is not a rebrand. It is the same email doing its own selling.</span></div>
     </div>
   </div>
 </section>
