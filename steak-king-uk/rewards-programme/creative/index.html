@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steak Back · Creative concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#373E3E;--coral:#EC7D55;--paper:#FBF9F7;--line:#E6E0DA;--muted:#7A8383;--soft:#F6F3F0;--warn:#C0492B;
+        --bronze:#A9744F;--silver:#8C9598;--gold:#C29433;--night:#22282A}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.58;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px 80px}
+  h1,h2,h3,.fj{font-family:'Fjalla One',Impact,sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+  header{background:var(--ink);color:#fff;padding:34px 0 52px;background-image:radial-gradient(ellipse at 78% 0%, rgba(236,125,85,.16), transparent 58%)}
+  .brandbar{display:flex;align-items:center;gap:16px;margin-bottom:34px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.13)}
+  .sk-logo{height:46px;width:auto;display:block}
+  .tethrd-logo{height:17px;width:auto;display:block;opacity:.82}
+  .brand-x{color:#6E7878;font-size:15px;font-weight:300}
+  header .wrap{padding-bottom:0}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(32px,5vw,50px);line-height:1.03;margin-bottom:18px}
+  .sub{font-size:18px;color:#C9CFCF;max-width:770px;line-height:1.5}
+  .meta{margin-top:26px;font-size:12px;color:#8B9494;letter-spacing:.04em;line-height:1.6}
+  .chapter{border-top:1px solid var(--line);padding-top:14px;margin-bottom:24px;display:flex;align-items:baseline;gap:14px}
+  .chapter .cn{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--coral);letter-spacing:.12em}
+  .chapter .ct{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  section{margin-bottom:54px;padding-top:8px}
+  h2{font-size:26px;margin-bottom:10px;line-height:1.15}
+  .h2sub{font-size:15.5px;color:var(--muted);margin-bottom:24px;max-width:790px}
+  h3{font-size:15px;margin-bottom:8px}
+  p{margin-bottom:14px;font-size:15.5px}
+  .note{font-size:12.5px;color:var(--muted);line-height:1.6}
+  .caption{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:11px;display:block}
+  footer{border-top:1px solid var(--line);padding-top:22px;font-size:12px;color:var(--muted);line-height:1.6}
+
+  /* lockups */
+  .locks{display:grid;grid-template-columns:1.3fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:16px}
+  .lock{background:#fff;padding:30px 26px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:210px}
+  .lock.dark{background:var(--night);background-image:radial-gradient(ellipse at 70% 10%, rgba(236,125,85,.17), transparent 60%)}
+  .lock .cap{margin-top:22px;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .lock.dark .cap{color:#7E8888}
+  .locks3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+
+  /* palette */
+  .pal{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .sw{background:#fff}
+  .sw i{display:block;height:64px}
+  .sw b{display:block;font-family:'Fjalla One',sans-serif;font-size:12px;padding:9px 11px 1px;letter-spacing:.04em}
+  .sw span{display:block;font-size:10.5px;color:var(--muted);padding:0 11px 11px;font-variant-numeric:tabular-nums}
+
+  /* tier seals */
+  .seals{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:16px}
+  .seal{background:var(--night);padding:34px 20px 26px;text-align:center;background-image:radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.07), transparent 62%)}
+  .seal .sname{font-family:'Fjalla One',sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-top:20px;display:block}
+  .seal .sthr{font-size:11px;color:#7E8888;margin-top:5px;display:block;letter-spacing:.04em}
+  .s1 .sname{color:var(--bronze)} .s2 .sname{color:var(--silver)} .s3 .sname{color:var(--gold)}
+  .sealslight{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .seall{background:#fff;padding:30px 20px 24px;text-align:center}
+
+  /* chips */
+  .chips{background:#fff;border:1px solid var(--line);padding:26px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+  .chipd{background:var(--night);border:1px solid var(--night);padding:26px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 10px;border:1.5px solid;font-family:'Fjalla One',sans-serif;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;background:#fff}
+  .chip.c1{border-color:var(--bronze);color:var(--bronze)}
+  .chip.c2{border-color:var(--silver);color:#6E7679}
+  .chip.c3{border-color:var(--gold);color:#9A7526}
+  .chipd .chip{background:transparent}
+  .chipd .chip.c2{color:var(--silver)} .chipd .chip.c3{color:var(--gold)} .chipd .chip.c1{color:#C28B62}
+
+  /* applications */
+  .apps{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .app{border:1px solid var(--line);background:#fff;overflow:hidden}
+  .app .abody{padding:0}
+  .appcap{padding:12px 16px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);background:var(--soft)}
+
+  /* email header mock */
+  .em{background:var(--night);padding:26px 26px 30px;text-align:center;background-image:radial-gradient(ellipse at 50% 0%, rgba(236,125,85,.22), transparent 65%)}
+  .em .ebrand{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .em .ebrand span{font-family:'Fjalla One',sans-serif;font-size:12px;color:#fff;letter-spacing:.15em}
+  .em .eamt{font-family:'Fjalla One',sans-serif;font-size:56px;color:#fff;line-height:.98;display:block}
+  .em .elab{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--coral);letter-spacing:.2em;display:block;margin-bottom:11px}
+  .em .eexp{font-size:12.5px;color:#9BA4A4;margin-top:12px;display:block}
+  .em .eexp b{color:#fff;font-weight:600}
+  .em .ecta{display:inline-block;margin-top:20px;background:var(--coral);color:#fff;font-family:'Fjalla One',sans-serif;font-size:12.5px;letter-spacing:.11em;padding:12px 26px;text-transform:uppercase}
+
+  /* announcement bar */
+  .bar{background:var(--coral);color:#fff;padding:13px 18px;text-align:center;font-size:13.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap}
+  .bar .barb{font-family:'Fjalla One',sans-serif;letter-spacing:.09em;font-size:12.5px;text-transform:uppercase;font-weight:400}
+  .barsite{background:#fff;padding:0}
+  .sitebody{padding:24px 20px 30px;text-align:center;background:var(--soft)}
+  .sitebody .sb1{font-family:'Fjalla One',sans-serif;font-size:19px;margin-bottom:6px}
+  .sitebody .sb2{font-size:13px;color:var(--muted)}
+
+  /* whatsapp */
+  .wa{background:#0B141A;padding:22px 20px 26px}
+  .wabub{background:#005C4B;color:#fff;padding:13px 15px 9px;max-width:88%;font-size:13.5px;line-height:1.5;border-radius:9px;border-top-right-radius:2px;margin-left:auto}
+  .wabub .wat{display:block;text-align:right;font-size:10.5px;color:#A5B8B2;margin-top:6px}
+  .wabub b{font-weight:600}
+
+  /* urgency creative */
+  .urg{background:var(--night);padding:0;position:relative;overflow:hidden}
+  .urgtop{background:var(--warn);padding:9px 16px;text-align:center;font-family:'Fjalla One',sans-serif;font-size:11.5px;color:#fff;letter-spacing:.16em;text-transform:uppercase}
+  .urgbody{padding:28px 26px 32px;text-align:center;background-image:radial-gradient(ellipse at 50% 100%, rgba(192,73,43,.3), transparent 62%)}
+  .urgbody .ubig{font-family:'Fjalla One',sans-serif;font-size:38px;color:#fff;line-height:1.05;display:block;margin-bottom:10px}
+  .urgbody .usub{font-size:13.5px;color:#A9B2B2;display:block;margin-bottom:20px}
+  .urgbody .ucta{display:inline-block;background:#fff;color:var(--ink);font-family:'Fjalla One',sans-serif;font-size:12.5px;letter-spacing:.11em;padding:12px 26px;text-transform:uppercase}
+  .urgbody .uclock{font-family:'Fjalla One',sans-serif;font-size:13px;color:var(--warn);letter-spacing:.14em;display:block;margin-bottom:14px;text-transform:uppercase}
+
+  @media (max-width:880px){
+    .locks{grid-template-columns:1fr}
+    .apps{grid-template-columns:1fr}
+    .pal{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (max-width:700px){
+    .seals,.sealslight,.locks3{grid-template-columns:1fr}
+    .wrap{padding:0 16px 50px}
+    h2{font-size:22px}
+    .sk-logo{height:38px}
+  }
+</style>
+</head>
+<body>
+
+<!-- shared SVG defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="crown" d="M0,44 L0,10 L10,26 L20,2 L30,26 L40,10 L40,44 Z"/>
+    <linearGradient id="gBronze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E3A87C"/><stop offset="28%" stop-color="#A9744F"/>
+      <stop offset="55%" stop-color="#7A4A2B"/><stop offset="78%" stop-color="#C98A5B"/>
+      <stop offset="100%" stop-color="#8C5230"/>
+    </linearGradient>
+    <linearGradient id="gSilver" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F2F5F6"/><stop offset="28%" stop-color="#A8B1B4"/>
+      <stop offset="55%" stop-color="#6B7478"/><stop offset="78%" stop-color="#D8DEE0"/>
+      <stop offset="100%" stop-color="#8C9598"/>
+    </linearGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F7E3A8"/><stop offset="28%" stop-color="#C29433"/>
+      <stop offset="55%" stop-color="#8A6118"/><stop offset="78%" stop-color="#E8C168"/>
+      <stop offset="100%" stop-color="#B8892B"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap">
+    <div class="brandbar">
+      <img class="sk-logo" src="assets/brand/steakking-uk-logo-white.png" alt="Steak King UK">
+      <span class="brand-x">&times;</span>
+      <img class="tethrd-logo" src="assets/brand/tethrd-wordmark-white.svg" alt="Tethrd">
+    </div>
+    <div class="eyebrow">Steak King UK &middot; Steak Back rewards &middot; Creative concepts &middot; 11 August 2026</div>
+    <h1>What Steak Back looks like</h1>
+    <p class="sub">Identity, tier badges and how the programme shows up in an email, on the site and in WhatsApp. Everything here is built from the crown already in the Steak King mark, so the programme reads as part of the brand rather than bolted onto it.</p>
+    <div class="meta">Concept artwork for internal review &middot; final assets to be produced by the design team</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section style="padding-top:46px">
+    <div class="chapter"><span class="cn">01</span><span class="ct">The mark</span></div>
+    <h2>The crown is already ours, so the programme borrows it</h2>
+    <p class="h2sub">Steak King is a king, the customer earns their way up, and the crown carries all of that without a new symbol to explain. The wordmark uses the same condensed display face as the rest of the brand.</p>
+
+    <div class="locks">
+      <div class="lock dark">
+        <svg width="216" height="112" viewBox="0 0 216 112" role="img" aria-label="Steak Back stacked lockup">
+          <g transform="translate(88,6) scale(1)"><use href="#crown" fill="#EC7D55"/></g>
+          <text x="108" y="88" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="38" fill="#ffffff" letter-spacing="1.5">STEAK BACK</text>
+          <text x="108" y="105" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="9.5" fill="#8B9494" letter-spacing="5.2">STEAK KING REWARDS</text>
+        </svg>
+        <span class="cap">Primary lockup, reversed</span>
+      </div>
+      <div class="lock">
+        <svg width="240" height="60" viewBox="0 0 240 60" role="img" aria-label="Steak Back horizontal lockup">
+          <g transform="translate(2,8) scale(0.86)"><use href="#crown" fill="#EC7D55"/></g>
+          <text x="48" y="35" font-family="'Fjalla One',Impact,sans-serif" font-size="29" fill="#373E3E" letter-spacing="1">STEAK BACK</text>
+          <text x="49" y="49" font-family="'Fjalla One',Impact,sans-serif" font-size="8.5" fill="#7A8383" letter-spacing="4.1">STEAK KING REWARDS</text>
+        </svg>
+        <span class="cap">Horizontal, for headers and footers</span>
+      </div>
+    </div>
+
+    <div class="locks3">
+      <div class="lock" style="min-height:170px">
+        <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Steak Back seal, coral">
+          <circle cx="60" cy="60" r="56" fill="none" stroke="#EC7D55" stroke-width="2.5"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#EC7D55" stroke-width="1" opacity=".5"/>
+          <g transform="translate(44,27) scale(0.8)"><use href="#crown" fill="#EC7D55"/></g>
+          <text x="60" y="85" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="16" fill="#EC7D55" letter-spacing=".5">STEAK</text>
+          <text x="60" y="101" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="16" fill="#EC7D55" letter-spacing=".5">BACK</text>
+        </svg>
+        <span class="cap">Seal, one colour</span>
+      </div>
+      <div class="lock dark" style="min-height:170px">
+        <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Steak Back seal, reversed">
+          <circle cx="60" cy="60" r="56" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#ffffff" stroke-width="1" opacity=".38"/>
+          <g transform="translate(44,27) scale(0.8)"><use href="#crown" fill="#EC7D55"/></g>
+          <text x="60" y="85" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="16" fill="#ffffff" letter-spacing=".5">STEAK</text>
+          <text x="60" y="101" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="16" fill="#ffffff" letter-spacing=".5">BACK</text>
+        </svg>
+        <span class="cap">Seal, reversed</span>
+      </div>
+      <div class="lock" style="min-height:170px;background:var(--coral)">
+        <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Steak Back seal, knockout">
+          <circle cx="60" cy="60" r="56" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#ffffff" stroke-width="1" opacity=".45"/>
+          <g transform="translate(44,27) scale(0.8)"><use href="#crown" fill="#ffffff"/></g>
+          <text x="60" y="85" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="16" fill="#ffffff" letter-spacing=".5">STEAK</text>
+          <text x="60" y="101" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="16" fill="#ffffff" letter-spacing=".5">BACK</text>
+        </svg>
+        <span class="cap">Seal, knockout on coral</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">02</span><span class="ct">Palette</span></div>
+    <h2>Brand colours, plus three metals for the tiers</h2>
+    <p class="h2sub">The existing Steak King palette carries the programme. The three metals appear only on tier artwork, so a customer learns quickly that metal equals status.</p>
+
+    <div class="pal">
+      <div class="sw"><i style="background:#EC7D55"></i><b>Coral</b><span>#EC7D55</span></div>
+      <div class="sw"><i style="background:#373E3E"></i><b>Ink</b><span>#373E3E</span></div>
+      <div class="sw"><i style="background:#22282A"></i><b>Night</b><span>#22282A</span></div>
+      <div class="sw"><i style="background:linear-gradient(135deg,#E3A87C,#A9744F 30%,#7A4A2B 60%,#C98A5B)"></i><b>Bronze</b><span>#A9744F</span></div>
+      <div class="sw"><i style="background:linear-gradient(135deg,#F2F5F6,#A8B1B4 30%,#6B7478 60%,#D8DEE0)"></i><b>Silver</b><span>#8C9598</span></div>
+      <div class="sw"><i style="background:linear-gradient(135deg,#F7E3A8,#C29433 30%,#8A6118 60%,#E8C168)"></i><b>Gold</b><span>#C29433</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">03</span><span class="ct">Tier badges</span></div>
+    <h2>Three crowns, three metals, one number that matters</h2>
+    <p class="h2sub">Same crown, same seal, different metal. The percentage is the largest thing on the badge because it is the only number a customer needs to remember about their tier.</p>
+
+    <span class="caption">Presentation form &middot; on dark</span>
+    <div class="seals">
+      <div class="seal s1">
+        <svg width="168" height="168" viewBox="0 0 168 168" role="img" aria-label="Bronze tier badge, 5% back">
+          <circle cx="84" cy="84" r="79" fill="none" stroke="url(#gBronze)" stroke-width="3.5"/>
+          <circle cx="84" cy="84" r="71" fill="none" stroke="url(#gBronze)" stroke-width="1.2" opacity=".62"/>
+          <g transform="translate(68,38) scale(0.8)"><use href="#crown" fill="url(#gBronze)"/></g>
+          <text x="84" y="115" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="44" fill="url(#gBronze)">5%</text>
+          <text x="84" y="134" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="10.5" fill="#8E9797" letter-spacing="3.4">BACK</text>
+        </svg>
+        <span class="sname">Bronze</span>
+        <span class="sthr">From the first order</span>
+      </div>
+      <div class="seal s2">
+        <svg width="168" height="168" viewBox="0 0 168 168" role="img" aria-label="Silver tier badge, 7.5% back">
+          <circle cx="84" cy="84" r="79" fill="none" stroke="url(#gSilver)" stroke-width="3.5"/>
+          <circle cx="84" cy="84" r="71" fill="none" stroke="url(#gSilver)" stroke-width="1.2" opacity=".62"/>
+          <g transform="translate(68,38) scale(0.8)"><use href="#crown" fill="url(#gSilver)"/></g>
+          <text x="84" y="115" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="40" fill="url(#gSilver)">7.5%</text>
+          <text x="84" y="134" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="10.5" fill="#8E9797" letter-spacing="3.4">BACK</text>
+        </svg>
+        <span class="sname">Silver</span>
+        <span class="sthr">&pound;250 lifetime spend</span>
+      </div>
+      <div class="seal s3">
+        <svg width="168" height="168" viewBox="0 0 168 168" role="img" aria-label="Gold tier badge, 10% back">
+          <circle cx="84" cy="84" r="79" fill="none" stroke="url(#gGold)" stroke-width="3.5"/>
+          <circle cx="84" cy="84" r="71" fill="none" stroke="url(#gGold)" stroke-width="1.2" opacity=".62"/>
+          <g transform="translate(68,38) scale(0.8)"><use href="#crown" fill="url(#gGold)"/></g>
+          <text x="84" y="115" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="44" fill="url(#gGold)">10%</text>
+          <text x="84" y="134" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="10.5" fill="#8E9797" letter-spacing="3.4">BACK</text>
+        </svg>
+        <span class="sname">Gold</span>
+        <span class="sthr">&pound;600 lifetime spend</span>
+      </div>
+    </div>
+
+    <span class="caption">Same badges on light, for the site and printed inserts</span>
+    <div class="sealslight">
+      <div class="seall">
+        <svg width="132" height="132" viewBox="0 0 168 168" role="img" aria-label="Bronze tier badge on light">
+          <circle cx="84" cy="84" r="79" fill="none" stroke="url(#gBronze)" stroke-width="3.5"/>
+          <circle cx="84" cy="84" r="71" fill="none" stroke="url(#gBronze)" stroke-width="1.2" opacity=".62"/>
+          <g transform="translate(68,38) scale(0.8)"><use href="#crown" fill="url(#gBronze)"/></g>
+          <text x="84" y="115" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="44" fill="url(#gBronze)">5%</text>
+          <text x="84" y="134" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="10.5" fill="#8C7566" letter-spacing="3.4">BACK</text>
+        </svg>
+      </div>
+      <div class="seall">
+        <svg width="132" height="132" viewBox="0 0 168 168" role="img" aria-label="Silver tier badge on light">
+          <circle cx="84" cy="84" r="79" fill="none" stroke="url(#gSilver)" stroke-width="3.5"/>
+          <circle cx="84" cy="84" r="71" fill="none" stroke="url(#gSilver)" stroke-width="1.2" opacity=".62"/>
+          <g transform="translate(68,38) scale(0.8)"><use href="#crown" fill="url(#gSilver)"/></g>
+          <text x="84" y="115" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="40" fill="url(#gSilver)">7.5%</text>
+          <text x="84" y="134" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="10.5" fill="#767E80" letter-spacing="3.4">BACK</text>
+        </svg>
+      </div>
+      <div class="seall">
+        <svg width="132" height="132" viewBox="0 0 168 168" role="img" aria-label="Gold tier badge on light">
+          <circle cx="84" cy="84" r="79" fill="none" stroke="url(#gGold)" stroke-width="3.5"/>
+          <circle cx="84" cy="84" r="71" fill="none" stroke="url(#gGold)" stroke-width="1.2" opacity=".62"/>
+          <g transform="translate(68,38) scale(0.8)"><use href="#crown" fill="url(#gGold)"/></g>
+          <text x="84" y="115" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="44" fill="url(#gGold)">10%</text>
+          <text x="84" y="134" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="10.5" fill="#8A7331" letter-spacing="3.4">BACK</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">04</span><span class="ct">Tier chips</span></div>
+    <h2>The small form, for anywhere the badge won't fit</h2>
+    <p class="h2sub">Account pages, order confirmations, email signatures and the wallet header. Same crown, stripped back so it still reads at 20 pixels tall.</p>
+
+    <div class="chips">
+      <span class="chip c1"><svg width="15" height="15" viewBox="0 0 40 44"><use href="#crown" fill="#A9744F"/></svg>Bronze &middot; 5%</span>
+      <span class="chip c2"><svg width="15" height="15" viewBox="0 0 40 44"><use href="#crown" fill="#8C9598"/></svg>Silver &middot; 7.5%</span>
+      <span class="chip c3"><svg width="15" height="15" viewBox="0 0 40 44"><use href="#crown" fill="#C29433"/></svg>Gold &middot; 10%</span>
+    </div>
+    <div class="chipd">
+      <span class="chip c1"><svg width="15" height="15" viewBox="0 0 40 44"><use href="#crown" fill="#C28B62"/></svg>Bronze &middot; 5%</span>
+      <span class="chip c2"><svg width="15" height="15" viewBox="0 0 40 44"><use href="#crown" fill="#8C9598"/></svg>Silver &middot; 7.5%</span>
+      <span class="chip c3"><svg width="15" height="15" viewBox="0 0 40 44"><use href="#crown" fill="#C29433"/></svg>Gold &middot; 10%</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">05</span><span class="ct">In use</span></div>
+    <h2>Where a customer actually meets it</h2>
+    <p class="h2sub">The programme lives in four places. Each one leads with the balance, because the number is the message and everything else is supporting it.</p>
+
+    <div class="apps">
+      <div class="app">
+        <div class="em">
+          <div class="ebrand">
+            <svg width="17" height="19" viewBox="0 0 40 44"><use href="#crown" fill="#EC7D55"/></svg>
+            <span>STEAK BACK</span>
+          </div>
+          <span class="elab">YOU'VE EARNED</span>
+          <span class="eamt">&pound;7.43</span>
+          <span class="eexp">Yours to spend until <b>28 August</b></span>
+          <span class="ecta">Spend it now</span>
+        </div>
+        <div class="appcap">Email header, day 0. The amount is the hero and the expiry date sits directly under it.</div>
+      </div>
+
+      <div class="app">
+        <div class="urg">
+          <div class="urgtop">48 hours left</div>
+          <div class="urgbody">
+            <span class="uclock">Expires Friday</span>
+            <span class="ubig">&pound;14.86 is about<br>to disappear</span>
+            <span class="usub">Your Steak Back runs out at midnight on Friday. After that it is gone.</span>
+            <span class="ucta">Use it before it goes</span>
+          </div>
+        </div>
+        <div class="appcap">Day 43 urgency creative. Red band, no product, no other offer competing for the click.</div>
+      </div>
+
+      <div class="app barsite">
+        <div class="bar">
+          <svg width="15" height="17" viewBox="0 0 40 44"><use href="#crown" fill="#ffffff"/></svg>
+          <span class="barb">Steak Back</span>
+          <span>You have &pound;14.86 to spend. Expires 28 Aug.</span>
+        </div>
+        <div class="sitebody">
+          <div class="sb1">Site announcement bar</div>
+          <div class="sb2">Shows only to logged-in customers holding live credit, with the nearest expiry date.</div>
+        </div>
+        <div class="appcap">On-site bar. Turns the wallet into something they see without logging in.</div>
+      </div>
+
+      <div class="app">
+        <div class="wa">
+          <div class="wabub">
+            Your <b>&pound;14.86 Steak Back</b> expires Friday.<br><br>
+            That is a ribeye and change, already paid for. Spend it before midnight and we will have it with you this week.
+            <span class="wat">14:02 &nbsp;&check;&check;</span>
+          </div>
+        </div>
+        <div class="appcap">WhatsApp, day 43. Short, first person, one number and one deadline.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Steak King UK &times; Tethrd &middot; Steak Back creative concepts &middot; 11 August 2026<br>
+    Concept artwork built from the existing Steak King crown and display face. Tier thresholds shown are the working proposal. Final production artwork to be produced by the design team.
+  </footer>
+
+</div>
+</body>
+</html>

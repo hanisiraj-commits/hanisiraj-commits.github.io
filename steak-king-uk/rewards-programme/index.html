@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steak Back · Steak King UK rewards</title>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#373E3E;--coral:#EC7D55;--paper:#FBF9F7;--line:#E6E0DA;--muted:#7A8383;--good:#2F7D5D;--warn:#C0492B;--soft:#F6F3F0;
+        --bronze:#A9744F;--silver:#8C9598;--gold:#C29433;--night:#22282A}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px 70px}
+  h1,h2,h3,.fj{font-family:'Fjalla One',Impact,sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+  header{background:var(--ink);color:#fff;padding:34px 0 54px;background-image:radial-gradient(ellipse at 78% 0%, rgba(236,125,85,.17), transparent 58%)}
+  .brandbar{display:flex;align-items:center;gap:16px;margin-bottom:36px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.13)}
+  .sk-logo{height:46px;width:auto;display:block}
+  .tethrd-logo{height:17px;width:auto;display:block;opacity:.82}
+  .brand-x{color:#6E7878;font-size:15px;font-weight:300}
+  header .wrap{padding-bottom:0}
+  .eyebrow{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:15px}
+  h1{font-size:clamp(33px,5.2vw,52px);line-height:1.02;margin-bottom:20px}
+  .sub{font-size:17.5px;color:#C9CFCF;max-width:680px;line-height:1.5}
+
+  .chapter{border-top:1px solid var(--line);padding-top:13px;margin-bottom:20px;display:flex;align-items:baseline;gap:13px}
+  .chapter .cn{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--coral);letter-spacing:.12em}
+  .chapter .ct{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  section{margin-bottom:52px;padding-top:8px}
+  h2{font-size:27px;margin-bottom:9px;line-height:1.13}
+  .lede{font-size:16px;color:var(--muted);margin-bottom:24px;max-width:700px}
+  .note{font-size:12px;color:var(--muted);line-height:1.55;margin-top:13px}
+
+  /* 01 steps */
+  .mech{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .mech .m{background:#fff;padding:20px 18px}
+  .mech .mn{font-family:'Fjalla One',sans-serif;font-size:11px;color:var(--coral);letter-spacing:.12em;display:block;margin-bottom:9px}
+  .mech .m b{font-family:'Fjalla One',sans-serif;font-size:17px;display:block;line-height:1.15;margin-bottom:6px;text-transform:uppercase}
+  .mech .m span{font-size:13px;color:var(--muted);line-height:1.45;display:block}
+
+  /* 02 tiers */
+  .ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .tier{background:#fff;padding:26px 20px 24px;text-align:center}
+  .tier .badge{display:block;margin:0 auto 15px}
+  .tier .tname{font-family:'Fjalla One',sans-serif;font-size:20px;text-transform:uppercase;letter-spacing:.03em;margin-bottom:4px}
+  .tier .tthresh{font-size:12px;color:var(--muted);margin-bottom:16px}
+  .tier .eg{padding-top:14px;border-top:1px solid var(--line);font-size:13.5px;color:#54595A;line-height:1.5}
+  .tier .eg b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+  .t1 .tname{color:var(--bronze)} .t2 .tname{color:#6E7679} .t3 .tname{color:#9A7526}
+
+  /* 03 wallet */
+  .wgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .wallet{background:var(--night);color:#fff;overflow:hidden}
+  .wallet .wtop{padding:20px 22px 18px;background-image:radial-gradient(ellipse at 88% 0%, rgba(236,125,85,.2), transparent 62%)}
+  .wallet .wlab{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8B9494;font-weight:700;display:block;margin-bottom:9px}
+  .wallet .wbal{font-family:'Fjalla One',sans-serif;font-size:44px;line-height:1;display:block}
+  .wallet .wbsub{font-size:12px;color:#9BA4A4;margin-top:6px;display:block}
+  .wallet .wlist{background:#414949;padding:15px 22px 17px}
+  .wallet .wrow{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.09);font-size:13px;gap:12px}
+  .wallet .wrow:last-of-type{border-bottom:0}
+  .wallet .wrow b{font-family:'Fjalla One',sans-serif;font-size:16px;font-weight:400}
+  .wallet .wrow .wexp{color:#9BA4A4;font-size:11.5px;text-align:right;line-height:1.35}
+  .wallet .wrow .wexp em{font-style:normal;color:var(--coral);display:block;font-weight:600}
+  .wallet .wtier{padding:16px 22px 20px;border-top:1px solid rgba(255,255,255,.13)}
+  .wallet .wtn{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
+  .wallet .wtn b{font-family:'Fjalla One',sans-serif;font-size:15px;color:var(--silver);letter-spacing:.04em}
+  .wallet .wtn span{font-size:11.5px;color:#9BA4A4}
+  .wbar{height:6px;background:rgba(255,255,255,.15);position:relative}
+  .wbar i{position:absolute;left:0;top:0;bottom:0;width:49%;background:linear-gradient(90deg,var(--silver),var(--gold))}
+  .wsee{list-style:none}
+  .wsee li{position:relative;padding-left:19px;margin-bottom:13px;font-size:14.5px;color:#54595A;line-height:1.5}
+  .wsee li:before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;background:var(--coral)}
+  .wsee li strong{color:var(--ink)}
+  /* stacking maths */
+  .maths{display:flex;align-items:stretch;gap:0;border:1px solid var(--line);background:#fff;margin-top:16px;flex-wrap:wrap}
+  .mcell{flex:1 1 150px;padding:16px 16px;text-align:center;border-right:1px solid var(--line)}
+  .mcell:last-child{border-right:0;background:#FEF6F2}
+  .mcell .ml{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:7px}
+  .mcell .mv{font-family:'Fjalla One',sans-serif;font-size:26px;display:block;line-height:1;color:var(--ink)}
+  .mcell .ms{font-size:11.5px;color:var(--muted);display:block;margin-top:6px}
+  .mcell:last-child .mv{color:var(--coral)}
+  .mop{flex:0 0 34px;display:flex;align-items:center;justify-content:center;font-family:'Fjalla One',sans-serif;font-size:19px;color:var(--muted);border-right:1px solid var(--line)}
+
+  /* 04 window */
+  .win{background:#fff;border:1px solid var(--line);padding:26px 26px 18px}
+  .wrow2{display:flex;align-items:center;gap:16px;margin-bottom:15px}
+  .rowlab{flex:0 0 128px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;line-height:1.4;text-align:right}
+  .track{position:relative;flex:1;height:34px}
+  .trackline{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+  .oband{position:absolute;top:4px;bottom:4px;background:rgba(47,125,93,.13);border-left:2px solid var(--good);border-right:2px solid var(--good);display:flex;align-items:center;justify-content:center}
+  .oband span{font-size:11px;font-weight:700;color:var(--good);letter-spacing:.05em;white-space:nowrap;text-transform:uppercase}
+  .cbar{position:absolute;top:11px;height:12px;background:linear-gradient(90deg,#2F7D5D 0%,#2F7D5D 40%,#C29433 66%,#C0492B 100%)}
+  .cend{position:absolute;top:0;bottom:0;width:2px;background:var(--warn)}
+  .cendlab{position:absolute;top:-3px;font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--warn);text-transform:uppercase;white-space:nowrap;padding-left:7px}
+  .axis{position:relative;height:20px;margin-left:144px;border-top:1px solid var(--line);padding-top:6px}
+  .axis i{position:absolute;top:6px;font-size:10.5px;color:var(--muted);font-style:normal;transform:translateX(-50%)}
+  .axis i:first-child{transform:none}
+
+  /* 05 timeline */
+  .tl{border:1px solid var(--line);background:#fff;padding:24px 24px 20px}
+  .tlbar{height:7px;background:linear-gradient(90deg,#2F7D5D 0%,#2F7D5D 38%,#C29433 64%,#C0492B 88%,#8C3A22 100%);margin-bottom:16px}
+  .tlmarks{display:grid;grid-template-columns:repeat(5,1fr)}
+  .tlm{padding-right:13px;border-left:1px solid var(--line);padding-left:13px}
+  .tlm:first-child{border-left:0;padding-left:0}
+  .tlm .day{font-family:'Fjalla One',sans-serif;font-size:13px;letter-spacing:.06em;display:block;margin-bottom:5px}
+  .tlm .hd{font-size:13px;font-weight:600;display:block;margin-bottom:4px;line-height:1.3}
+  .tlm .what{font-size:12px;color:var(--muted);line-height:1.4;display:block}
+  .d0 .day{color:var(--good)} .d20 .day{color:var(--good)} .d35 .day{color:var(--gold)}
+  .d43 .day{color:var(--warn)} .d46 .day{color:#8C3A22}
+
+  /* 06 names */
+  .names{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .nm{background:#fff;padding:22px 22px;position:relative}
+  .nm.pick{background:#FEF9F6}
+  .nmtag{position:absolute;top:0;right:0;background:var(--coral);color:#fff;font-family:'Fjalla One',sans-serif;font-size:9.5px;letter-spacing:.11em;padding:4px 9px;text-transform:uppercase}
+  .nm h3{font-size:22px;margin-bottom:7px}
+  .nm .say{font-size:13px;color:var(--coral);font-weight:600;margin-bottom:9px;font-style:italic}
+  .nm .why{font-size:13.5px;color:#54595A;line-height:1.5}
+
+  footer{border-top:1px solid var(--line);padding-top:20px;font-size:11.5px;color:var(--muted);line-height:1.6}
+
+  @media (max-width:880px){
+    .wgrid{grid-template-columns:1fr}
+    .mech{grid-template-columns:1fr 1fr}
+    .tlmarks{grid-template-columns:1fr 1fr}
+    .tlm{border-left:0;padding-left:0;margin-bottom:14px}
+  }
+  @media (max-width:760px){
+    .wrap{padding:0 18px 50px}
+    .ladder,.names{grid-template-columns:1fr}
+    .rowlab{flex:0 0 92px;font-size:10px}
+    .axis{margin-left:108px}
+  }
+  @media (max-width:560px){
+    .mech{grid-template-columns:1fr}
+    h2{font-size:22px}
+    .sk-logo{height:38px}
+    .wrow2{flex-direction:column;align-items:stretch;gap:6px}
+    .rowlab{text-align:left;flex:none}
+    .axis{margin-left:0}
+    .mop{flex-basis:100%;padding:4px 0;border-right:0}
+    .mcell{border-right:0;border-bottom:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="crown" d="M0,44 L0,10 L10,26 L20,2 L30,26 L40,10 L40,44 Z"/>
+    <linearGradient id="gBronze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E3A87C"/><stop offset="28%" stop-color="#A9744F"/>
+      <stop offset="55%" stop-color="#7A4A2B"/><stop offset="78%" stop-color="#C98A5B"/>
+      <stop offset="100%" stop-color="#8C5230"/>
+    </linearGradient>
+    <linearGradient id="gSilver" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F2F5F6"/><stop offset="28%" stop-color="#A8B1B4"/>
+      <stop offset="55%" stop-color="#6B7478"/><stop offset="78%" stop-color="#D8DEE0"/>
+      <stop offset="100%" stop-color="#8C9598"/>
+    </linearGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F7E3A8"/><stop offset="28%" stop-color="#C29433"/>
+      <stop offset="55%" stop-color="#8A6118"/><stop offset="78%" stop-color="#E8C168"/>
+      <stop offset="100%" stop-color="#B8892B"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap">
+    <div class="brandbar">
+      <img class="sk-logo" src="assets/brand/steakking-uk-logo-white.png" alt="Steak King UK">
+      <span class="brand-x">&times;</span>
+      <img class="tethrd-logo" src="assets/brand/tethrd-wordmark-white.svg" alt="Tethrd">
+    </div>
+    <div class="eyebrow">Steak King UK &middot; Steak Back rewards &middot; 11 August 2026</div>
+    <h1>Every order pays you back.<br>You have 45 days to spend it.</h1>
+    <p class="sub">Customers earn a percentage of every order back as store credit. It sits in a wallet they log into, and it expires after 45 days.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section style="padding-top:44px">
+    <div class="chapter"><span class="cn">01</span><span class="ct">How it works</span></div>
+    <h2>Four steps. The customer only does two.</h2>
+
+    <div class="mech">
+      <div class="m"><span class="mn">01</span><b>They order</b><span>Any order. No minimum, no sign-up.</span></div>
+      <div class="m"><span class="mn">02</span><b>Credit lands</b><span>A percentage of what they spent, set by their tier.</span></div>
+      <div class="m"><span class="mn">03</span><b>45-day clock</b><span>Unspent after 45 days, it expires.</span></div>
+      <div class="m"><span class="mn">04</span><b>They redeem</b><span>It comes off the next order, which earns again.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">02</span><span class="ct">The tiers</span></div>
+    <h2>The more they spend with us, the more they earn back</h2>
+    <p class="lede">Three tiers, set by lifetime spend.</p>
+
+    <div class="ladder">
+      <div class="tier t1">
+        <svg class="badge" width="92" height="92" viewBox="0 0 168 168" aria-hidden="true">
+          <circle cx="84" cy="84" r="79" fill="none" stroke="url(#gBronze)" stroke-width="3.5"/>
+          <circle cx="84" cy="84" r="71" fill="none" stroke="url(#gBronze)" stroke-width="1.2" opacity=".62"/>
+          <g transform="translate(68,38) scale(0.8)"><use href="#crown" fill="url(#gBronze)"/></g>
+          <text x="84" y="115" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="44" fill="url(#gBronze)">5%</text>
+          <text x="84" y="134" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="10.5" fill="#9AA0A0" letter-spacing="3.4">BACK</text>
+        </svg>
+        <div class="tname">Bronze</div>
+        <div class="tthresh">From the first order</div>
+        <div class="eg">Spend <b>&pound;99</b>, get <b>&pound;4.95</b> back</div>
+      </div>
+      <div class="tier t2">
+        <svg class="badge" width="92" height="92" viewBox="0 0 168 168" aria-hidden="true">
+          <circle cx="84" cy="84" r="79" fill="none" stroke="url(#gSilver)" stroke-width="3.5"/>
+          <circle cx="84" cy="84" r="71" fill="none" stroke="url(#gSilver)" stroke-width="1.2" opacity=".62"/>
+          <g transform="translate(68,38) scale(0.8)"><use href="#crown" fill="url(#gSilver)"/></g>
+          <text x="84" y="115" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="40" fill="url(#gSilver)">7.5%</text>
+          <text x="84" y="134" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="10.5" fill="#9AA0A0" letter-spacing="3.4">BACK</text>
+        </svg>
+        <div class="tname">Silver</div>
+        <div class="tthresh">&pound;250 lifetime spend</div>
+        <div class="eg">Spend <b>&pound;99</b>, get <b>&pound;7.43</b> back</div>
+      </div>
+      <div class="tier t3">
+        <svg class="badge" width="92" height="92" viewBox="0 0 168 168" aria-hidden="true">
+          <circle cx="84" cy="84" r="79" fill="none" stroke="url(#gGold)" stroke-width="3.5"/>
+          <circle cx="84" cy="84" r="71" fill="none" stroke="url(#gGold)" stroke-width="1.2" opacity=".62"/>
+          <g transform="translate(68,38) scale(0.8)"><use href="#crown" fill="url(#gGold)"/></g>
+          <text x="84" y="115" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="44" fill="url(#gGold)">10%</text>
+          <text x="84" y="134" text-anchor="middle" font-family="'Fjalla One',Impact,sans-serif" font-size="10.5" fill="#9AA0A0" letter-spacing="3.4">BACK</text>
+        </svg>
+        <div class="tname">Gold</div>
+        <div class="tthresh">&pound;600 lifetime spend</div>
+        <div class="eg">Spend <b>&pound;99</b>, get <b>&pound;9.90</b> back</div>
+      </div>
+    </div>
+    <p class="note">10% is the ceiling. The two spend thresholds are our proposal, to confirm against UK spend data.</p>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">03</span><span class="ct">The wallet</span></div>
+    <h2>They log in and see a balance with a deadline on it</h2>
+    <p class="lede">Credit stacks, so every order adds to the pot.</p>
+
+    <div class="wgrid">
+      <div class="wallet">
+        <div class="wtop">
+          <span class="wlab">Your Steak Back</span>
+          <span class="wbal">&pound;14.86</span>
+          <span class="wbsub">Available to spend now</span>
+        </div>
+        <div class="wlist">
+          <span class="wlab" style="margin-bottom:4px">Active credits</span>
+          <div class="wrow"><b>&pound;7.43</b><span class="wexp">Earned 14 Jul<em>Expires 28 Aug</em></span></div>
+          <div class="wrow"><b>&pound;7.43</b><span class="wexp">Earned 2 Aug<em>Expires 16 Sep</em></span></div>
+        </div>
+        <div class="wtier">
+          <div class="wtn"><b>Silver &middot; 7.5% back</b><span>&pound;180 to Gold</span></div>
+          <div class="wbar"><i></i></div>
+        </div>
+      </div>
+
+      <div>
+        <ul class="wsee">
+          <li><strong>A balance, not an offer.</strong> Money already theirs is harder to walk away from than a discount.</li>
+          <li><strong>The date is on the screen.</strong> They see the deadline before we ever email about it.</li>
+          <li><strong>The next tier is visible.</strong> A reason to spend more, without running a promotion.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="maths">
+      <div class="mcell"><span class="ml">Order 1</span><span class="mv">&pound;99</span><span class="ms">earns &pound;7.43</span></div>
+      <div class="mop">+</div>
+      <div class="mcell"><span class="ml">Order 2</span><span class="mv">&pound;99</span><span class="ms">earns &pound;7.43</span></div>
+      <div class="mop">=</div>
+      <div class="mcell"><span class="ml">Order 3</span><span class="mv">&pound;14.86 off</span><span class="ms">and earns again</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">04</span><span class="ct">Why 45 days</span></div>
+    <h2>45 days is where the second order already happens</h2>
+    <p class="lede">Our repeat orders land in the 30 to 45 day window on their own. The credit expires at the back edge of it, so we can push at the exact moment a customer was about to drift.</p>
+
+    <div class="win">
+      <div class="wrow2">
+        <span class="rowlab">Repeat order</span>
+        <div class="track">
+          <div class="trackline"></div>
+          <div class="oband" style="left:50%;width:25%"><span>Days 30&ndash;45</span></div>
+        </div>
+      </div>
+      <div class="wrow2" style="margin-bottom:8px">
+        <span class="rowlab">Credit life</span>
+        <div class="track">
+          <div class="trackline"></div>
+          <div class="cbar" style="left:0;width:75%"></div>
+          <div class="cend" style="left:75%"></div>
+          <div class="cendlab" style="left:75%">Expires</div>
+        </div>
+      </div>
+      <div class="axis">
+        <i style="left:0">Day 0</i><i style="left:25%">15</i><i style="left:50%">30</i><i style="left:75%">45</i><i style="left:100%;transform:translateX(-100%)">60</i>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">05</span><span class="ct">The reminders</span></div>
+    <h2>Nobody loses credit without hearing from us first</h2>
+    <p class="lede">Every credit triggers an automated countdown, weighted to the back half where the reorder sits.</p>
+
+    <div class="tl">
+      <div class="tlbar"></div>
+      <div class="tlmarks">
+        <div class="tlm d0"><span class="day">DAY 0</span><span class="hd">Credit confirmed</span><span class="what">Balance, expiry date, one link.</span></div>
+        <div class="tlm d20"><span class="day">DAY 20</span><span class="hd">Still yours</span><span class="what">What the balance covers.</span></div>
+        <div class="tlm d35"><span class="day">DAY 35</span><span class="hd">Ten days left</span><span class="what">Email and WhatsApp.</span></div>
+        <div class="tlm d43"><span class="day">DAY 43</span><span class="hd">Final 48 hours</span><span class="what">Balance and deadline only.</span></div>
+        <div class="tlm d46"><span class="day">EXPIRED</span><span class="hd">You lost it</span><span class="what">Our strongest win-back trigger.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">06</span><span class="ct">The name</span></div>
+    <h2>Four to choose from</h2>
+    <p class="lede">It has to work in a subject line and explain itself without a caption.</p>
+
+    <div class="names">
+      <div class="nm pick">
+        <span class="nmtag">Our pick</span>
+        <h3>Steak Back</h3>
+        <p class="say">&ldquo;You've earned &pound;7.43 Steak Back. It expires Friday.&rdquo;</p>
+        <p class="why">Explains itself in two words. The only one a customer could repeat correctly after seeing it once.</p>
+      </div>
+      <div class="nm">
+        <h3>The Meat Locker</h3>
+        <p class="say">&ldquo;There's &pound;14.86 in your locker. It won't keep.&rdquo;</p>
+        <p class="why">Most ownable, and the expiry feels natural rather than punitive. Needs one line of explanation.</p>
+      </div>
+      <div class="nm">
+        <h3>King's Credit</h3>
+        <p class="say">&ldquo;&pound;7.43 King's Credit, yours for 45 days.&rdquo;</p>
+        <p class="why">The most premium of the four. Slightly formal, and the reward sounds granted rather than earned.</p>
+      </div>
+      <div class="nm">
+        <h3>The Prime Club</h3>
+        <p class="say">&ldquo;You're now Prime Gold. Every order earns 10%.&rdquo;</p>
+        <p class="why">Membership first, credit second. Best if this later grows into early access and member pricing.</p>
+      </div>
+    </div>
+    <p class="note">Identity, tier badges and creative are worked up in the <a href="creative/index.html" style="color:var(--coral);font-weight:600">Steak Back creative concepts</a>.</p>
+  </section>
+
+  <footer>
+    Steak King UK &times; Tethrd &middot; 11 August 2026 &middot; Built on Rise, already installed on the store.<br>
+    Cashback percentages, the three tiers and the 45-day term are agreed. Spend thresholds, reminder cadence and naming are Tethrd recommendations.
+  </footer>
+
+</div>
+</body>
+</html>
