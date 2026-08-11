@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steak King UK · Rewards build scope</title>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#373E3E;--coral:#EC7D55;--paper:#FBF9F7;--line:#E6E0DA;--muted:#7A8383;--good:#2F7D5D;--warn:#C0492B;--soft:#F6F3F0;
+        --silver:#8C9598;--gold:#C29433;--night:#22282A;--shop:#5A31F4}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px 70px}
+  h1,h2,h3,.fj{font-family:'Fjalla One',Impact,sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+  header{background:var(--ink);color:#fff;padding:34px 0 50px;background-image:radial-gradient(ellipse at 78% 0%, rgba(236,125,85,.17), transparent 58%)}
+  .brandbar{display:flex;align-items:center;gap:16px;margin-bottom:32px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.13)}
+  .sk-logo{height:46px;width:auto;display:block}
+  .tethrd-logo{height:17px;width:auto;display:block;opacity:.82}
+  .brand-x{color:#6E7878;font-size:15px;font-weight:300}
+  header .wrap{padding-bottom:0}
+  .eyebrow{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:15px}
+  h1{font-size:clamp(30px,4.4vw,46px);line-height:1.04;margin-bottom:18px}
+  .sub{font-size:16.5px;color:#B9C0C0;max-width:660px;line-height:1.5}
+
+  .chapter{border-top:1px solid var(--line);padding-top:13px;margin-bottom:20px;display:flex;align-items:baseline;gap:13px}
+  .chapter .cn{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--coral);letter-spacing:.12em}
+  .chapter .ct{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  section{margin-bottom:52px;padding-top:8px}
+  h2{font-size:26px;margin-bottom:9px;line-height:1.13}
+  .lede{font-size:15.5px;color:var(--muted);margin-bottom:22px;max-width:720px}
+  .note{font-size:12px;color:var(--muted);line-height:1.55;margin-top:12px}
+  .caption{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:26px 0 11px;display:block}
+  footer{border-top:1px solid var(--line);padding-top:20px;font-size:11.5px;color:var(--muted);line-height:1.6}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;background:var(--soft);border:1px solid var(--line);padding:1px 5px}
+
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:13px}
+  th{background:var(--ink);color:#fff;font-family:'Fjalla One',sans-serif;font-weight:400;text-transform:uppercase;font-size:10.5px;letter-spacing:.05em;padding:10px 11px;text-align:left}
+  td{padding:9px 11px;border-top:1px solid var(--line);vertical-align:top}
+  tr:nth-child(even) td{background:#FCFAF9}
+  .tblwrap{overflow-x:auto}
+  td b{font-weight:600}
+
+  .flag{background:#fff;border:1px solid var(--line);border-left:3px solid var(--warn);padding:18px 22px;margin-bottom:14px}
+  .flag b{display:block;font-size:14px;margin-bottom:5px;color:var(--warn)}
+  .flag p{font-size:14px;color:#54595A;margin:0}
+  .ok{border-left-color:var(--good)} .ok b{color:var(--good)}
+
+  /* journey mock screens */
+  .screens{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .scr{border:1px solid var(--line);background:#fff;display:flex;flex-direction:column}
+  .scrbar{background:var(--soft);border-bottom:1px solid var(--line);padding:7px 10px;display:flex;align-items:center;gap:5px}
+  .dot{width:7px;height:7px;border-radius:50%;background:#D8D2CB}
+  .url{margin-left:6px;font-size:9.5px;color:var(--muted);font-family:ui-monospace,monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .scrbody{padding:18px 16px;flex:1;min-height:196px;display:flex;flex-direction:column;justify-content:center}
+  .scrcap{border-top:1px solid var(--line);background:#fff;padding:11px 14px;font-size:12px;color:#54595A}
+  .scrcap b{display:block;font-family:'Fjalla One',sans-serif;font-size:11px;letter-spacing:.09em;color:var(--coral);margin-bottom:4px;text-transform:uppercase}
+
+  .mklogo{text-align:center;font-family:'Fjalla One',sans-serif;font-size:13px;letter-spacing:.02em;margin-bottom:14px;color:var(--ink)}
+  .mkh{font-size:15px;font-weight:700;margin-bottom:3px}
+  .mkp{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+  .btn-shop{background:var(--shop);color:#fff;border-radius:7px;padding:9px;text-align:center;font-size:12px;font-weight:600;margin-bottom:9px}
+  .orline{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:10px;margin-bottom:9px}
+  .orline:before,.orline:after{content:"";flex:1;height:1px;background:var(--line)}
+  .field{border:1px solid #C9C3BC;border-radius:7px;padding:9px 10px;font-size:11.5px;color:#9AA0A0;display:flex;justify-content:space-between}
+  .codebox{display:flex;gap:6px;margin-bottom:10px}
+  .codebox i{flex:1;border:1px solid #C9C3BC;border-radius:5px;height:34px;display:flex;align-items:center;justify-content:center;font-style:normal;font-family:'Fjalla One',sans-serif;font-size:16px}
+  .navmock{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:9px;margin-bottom:12px;font-size:10.5px;color:var(--muted)}
+  .navmock .navr{display:flex;gap:8px;align-items:center}
+  .pill{background:var(--coral);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:9px;letter-spacing:.04em}
+  .tile{background:var(--night);color:#fff;padding:13px 14px}
+  .tile .tl{font-size:9px;letter-spacing:.14em;color:#8B9494;font-weight:700;text-transform:uppercase;display:block;margin-bottom:6px}
+  .tile .tv{font-family:'Fjalla One',sans-serif;font-size:27px;display:block;line-height:1}
+  .tile .te{font-size:10px;color:var(--coral);margin-top:5px;display:block;font-weight:600}
+  .rowlist{font-size:10.5px;color:#54595A}
+  .rowlist div{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--line)}
+  .rowlist div:last-child{border-bottom:0}
+  .rowlist b{font-weight:600}
+  .tierbar{height:5px;background:var(--line);margin-top:9px;position:relative}
+  .tierbar i{position:absolute;left:0;top:0;bottom:0;width:49%;background:linear-gradient(90deg,var(--silver),var(--gold))}
+  .cart{font-size:11px}
+  .cart .cl{display:flex;justify-content:space-between;padding:5px 0}
+  .cart .cl.cr{color:var(--good);font-weight:600}
+  .cart .tot{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:5px;padding-top:7px;font-weight:700;font-size:13px}
+
+  .phases{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .ph{background:#fff;padding:17px 15px}
+  .ph .pn{font-family:'Fjalla One',sans-serif;font-size:10.5px;color:var(--coral);letter-spacing:.11em;display:block;margin-bottom:7px}
+  .ph b{display:block;font-family:'Fjalla One',sans-serif;font-size:15px;margin-bottom:6px;text-transform:uppercase}
+  .ph span{font-size:12px;color:var(--muted);line-height:1.45;display:block}
+
+  @media (max-width:900px){ .screens{grid-template-columns:1fr 1fr} .phases{grid-template-columns:1fr 1fr} }
+  @media (max-width:640px){ .screens,.phases{grid-template-columns:1fr} .wrap{padding:0 16px 50px} h2{font-size:22px} .sk-logo{height:38px} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brandbar">
+      <img class="sk-logo" src="assets/brand/steakking-uk-logo-white.png" alt="Steak King UK">
+      <span class="brand-x">&times;</span>
+      <img class="tethrd-logo" src="assets/brand/tethrd-wordmark-white.svg" alt="Tethrd">
+    </div>
+    <div class="eyebrow">Steak King UK &middot; Rewards programme &middot; Build scope &middot; 11 August 2026</div>
+    <h1>How it gets built on Rise</h1>
+    <p class="sub">The workflows, the tier logic, where the customer signs in to see their credit, and what has to be confirmed before we start.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section style="padding-top:44px">
+    <div class="chapter"><span class="cn">01</span><span class="ct">Before we start</span></div>
+    <h2>Two things to confirm</h2>
+    <p class="lede">We checked the live store rather than assume. One finding changes the build, and one needs a straight answer from your side.</p>
+
+    <div class="flag">
+      <b>We could not find Rise on the store</b>
+      <p>There is no Rise script, app-proxy route or rewards page on steak-king.co.uk, and none on the HK store either. Rise may be installed in admin with nothing switched on, but nothing is live customer-facing today. Please confirm the account, the plan and who owns the login before we scope hours.</p>
+    </div>
+
+    <div class="flag ok">
+      <b>You are on Shopify Plus with the new customer accounts</b>
+      <p>Signing in at steak-king.co.uk/account redirects to Shopify's new passwordless accounts. There is no password. Customers either continue with Shop or receive a six-digit code by email. This is good for us, because it removes the biggest drop-off in any loyalty programme, but it changes where the wallet can live.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">02</span><span class="ct">The Rise build</span></div>
+    <h2>Five workflows do the entire programme</h2>
+    <p class="lede">Rise workflows are trigger, condition, action. Three issue the cashback at the right rate, two move people up a tier. Tier membership is held as a Shopify customer tag, which is what the cashback workflows read.</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Workflow</th><th>Trigger</th><th>Condition</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><b>Bronze cashback</b></td><td>Order paid</td><td>Tag is <code>sb-bronze</code>, or no tier tag</td><td>Issue store credit, 5% of order, expires in 45 days</td></tr>
+          <tr><td><b>Silver cashback</b></td><td>Order paid</td><td>Tag is <code>sb-silver</code></td><td>Issue store credit, 7.5% of order, expires in 45 days</td></tr>
+          <tr><td><b>Gold cashback</b></td><td>Order paid</td><td>Tag is <code>sb-gold</code></td><td>Issue store credit, 10% of order, expires in 45 days</td></tr>
+          <tr><td><b>Promote to Silver</b></td><td>Order paid</td><td>Customer total spent &ge; &pound;250</td><td>Add <code>sb-silver</code>, remove <code>sb-bronze</code></td></tr>
+          <tr><td><b>Promote to Gold</b></td><td>Order paid</td><td>Customer total spent &ge; &pound;600</td><td>Add <code>sb-gold</code>, remove <code>sb-silver</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <span class="caption">Account settings that matter as much as the workflows</span>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Setting</th><th>What we set it to</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td><b>Redemption priority</b></td><td>Expiring soonest first</td><td>With credits stacking, the oldest must burn first or customers lose credit they could have spent.</td></tr>
+          <tr><td><b>Credit basis</b></td><td>Order total after discounts, excluding delivery</td><td>Stops us paying cashback on the &pound;7.90 delivery charge or on money we already discounted.</td></tr>
+          <tr><td><b>Expiry</b></td><td>45 days from issue, per credit</td><td>Each credit runs its own clock, which is what makes stacking work.</td></tr>
+          <tr><td><b>Code stacking</b></td><td>Credit cannot combine with a percentage-off code</td><td>Closes the discount-stacking gap already flagged on the account.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">One decision for you: when an order crosses a tier threshold, does that order earn at the old rate or the new one? We recommend the old rate, with the new tier applying from the next order, because it is simpler to explain and cannot be gamed.</p>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">03</span><span class="ct">Signing in</span></div>
+    <h2>How a customer gets to their credit</h2>
+    <p class="lede">Six screens end to end. Because accounts are passwordless there is nothing to remember and nothing to reset, so the whole journey is an email address and a code.</p>
+
+    <div class="screens">
+      <div class="scr">
+        <div class="scrbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="url">steak-king.co.uk</span></div>
+        <div class="scrbody">
+          <div class="navmock"><span>SHOP &nbsp; BUNDLES &nbsp; ABOUT</span><span class="navr"><span class="pill">&pound;14.86</span>ACCOUNT</span></div>
+          <div style="text-align:center;padding:14px 0">
+            <div style="font-family:'Fjalla One',sans-serif;font-size:15px;margin-bottom:6px">YOUR CREDIT IS WAITING</div>
+            <div style="font-size:11px;color:var(--muted)">Sign in to spend it</div>
+          </div>
+        </div>
+        <div class="scrcap"><b>01 &middot; The hook</b>A balance chip in the header, shown once we know who they are, plus the announcement bar.</div>
+      </div>
+
+      <div class="scr">
+        <div class="scrbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="url">shopify.com/authentication/&hellip;</span></div>
+        <div class="scrbody">
+          <div class="mklogo">STEAK KING</div>
+          <div class="mkh">Sign in</div>
+          <div class="mkp">Sign in or create an account</div>
+          <div class="btn-shop">Continue with Shop</div>
+          <div class="orline">or</div>
+          <div class="field"><span>Email</span><span>&rarr;</span></div>
+        </div>
+        <div class="scrcap"><b>02 &middot; Sign in</b>Shopify's own screen, already live and already branded. No password field exists.</div>
+      </div>
+
+      <div class="scr">
+        <div class="scrbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="url">shopify.com/authentication/&hellip;</span></div>
+        <div class="scrbody">
+          <div class="mkh">Enter your code</div>
+          <div class="mkp">We sent a code to dave@&hellip;</div>
+          <div class="codebox"><i>4</i><i>1</i><i>9</i><i>2</i><i>0</i><i>7</i></div>
+          <div style="font-size:10.5px;color:var(--muted)">Resend code</div>
+        </div>
+        <div class="scrcap"><b>03 &middot; Six-digit code</b>Arrives by email in seconds. This replaces the password reset that normally kills loyalty sign-ins.</div>
+      </div>
+
+      <div class="scr">
+        <div class="scrbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="url">steak-king.co.uk/account</span></div>
+        <div class="scrbody">
+          <div class="navmock"><span>MY ACCOUNT</span><span class="navr">ORDERS &nbsp; PROFILE</span></div>
+          <div class="tile">
+            <span class="tl">Your credit</span>
+            <span class="tv">&pound;14.86</span>
+            <span class="te">&pound;7.43 expires 28 Aug</span>
+          </div>
+          <div style="font-size:10.5px;color:var(--muted);margin-top:9px">Recent orders &middot; Delivery details</div>
+        </div>
+        <div class="scrcap"><b>04 &middot; Account home</b>Credit sits at the top, above orders. The nearest expiry date is on the tile, not buried.</div>
+      </div>
+
+      <div class="scr">
+        <div class="scrbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="url">steak-king.co.uk/account &middot; rewards</span></div>
+        <div class="scrbody">
+          <div class="tile" style="margin-bottom:10px">
+            <span class="tl">Available now</span><span class="tv">&pound;14.86</span>
+          </div>
+          <div class="rowlist">
+            <div><span>&pound;7.43 &middot; earned 14 Jul</span><b>Exp 28 Aug</b></div>
+            <div><span>&pound;7.43 &middot; earned 2 Aug</span><b>Exp 16 Sep</b></div>
+          </div>
+          <div style="font-size:10px;color:var(--muted);margin-top:10px;display:flex;justify-content:space-between"><span>SILVER &middot; 7.5%</span><span>&pound;180 to Gold</span></div>
+          <div class="tierbar"><i></i></div>
+        </div>
+        <div class="scrcap"><b>05 &middot; The wallet</b>Every credit listed with its own expiry, plus tier progress. This is the Rise widget.</div>
+      </div>
+
+      <div class="scr">
+        <div class="scrbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="url">steak-king.co.uk/checkout</span></div>
+        <div class="scrbody">
+          <div class="cart">
+            <div class="cl"><span>Wagyu Starter Box</span><span>&pound;99.00</span></div>
+            <div class="cl"><span>Delivery</span><span>&pound;7.90</span></div>
+            <div class="cl cr"><span>Steak King credit</span><span>&minus;&pound;14.86</span></div>
+            <div class="tot"><span>Total</span><span>&pound;92.04</span></div>
+          </div>
+          <div style="background:var(--ink);color:#fff;text-align:center;padding:8px;font-size:11px;font-family:'Fjalla One',sans-serif;letter-spacing:.08em;margin-top:11px">PAY NOW</div>
+        </div>
+        <div class="scrcap"><b>06 &middot; Redemption</b>Credit applies at checkout and the oldest credit burns first. This order then earns its own.</div>
+      </div>
+    </div>
+
+    <div class="flag" style="margin-top:20px">
+      <b>The one build question on this journey</b>
+      <p>Screens 04 and 05 sit inside Shopify's new customer accounts, which are not part of your theme, so they can only be extended with a customer account UI extension. We need to confirm Rise ships one. If it does not, the wallet lives on a storefront rewards page instead and the account area links to it. Same information for the customer, slightly different build, and we would rather find out now than mid-build.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">04</span><span class="ct">Klaviyo</span></div>
+    <h2>Rise feeds the reminder flows</h2>
+    <p class="lede">The countdown emails are Klaviyo, not Rise. Rise syncs the wallet data across and Klaviyo does the sending, which keeps every message in one place with the rest of your programme.</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>What Rise sends</th><th>What we build on it</th></tr></thead>
+        <tbody>
+          <tr><td><b>Credit issued</b></td><td>Triggers the day 0 confirmation, and starts the 45-day countdown sequence.</td></tr>
+          <tr><td><b>Credit redeemed</b></td><td>Exits the customer from the countdown so we stop chasing credit they have already spent.</td></tr>
+          <tr><td><b>Credit about to expire</b></td><td>Backs the day 35 and day 43 messages, and the WhatsApp companions.</td></tr>
+          <tr><td><b>Balance and expiry on the profile</b></td><td>Segmentation. Live balance in the copy, and the header chip on site.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Rise publishes the integration but not the exact event and property names. We will confirm those in the account on day one and map the five flows against what actually arrives, rather than building blind against a guess.</p>
+  </section>
+
+  <section>
+    <div class="chapter"><span class="cn">05</span><span class="ct">Sequence</span></div>
+    <h2>Four phases</h2>
+    <p class="lede">Nothing is customer-facing until phase three, so the tier logic can be proven on real orders first.</p>
+
+    <div class="phases">
+      <div class="ph"><span class="pn">PHASE 01</span><b>Set up</b><span>Confirm the Rise account, install and connect. Backfill tier tags across the existing customer base from lifetime spend.</span></div>
+      <div class="ph"><span class="pn">PHASE 02</span><b>Build and test</b><span>Five workflows, expiry, redemption priority and stacking rules. Test orders through each tier before anything is switched on.</span></div>
+      <div class="ph"><span class="pn">PHASE 03</span><b>Surface it</b><span>Wallet, account tile, header chip and announcement bar. Klaviyo connected and the five reminder flows built.</span></div>
+      <div class="ph"><span class="pn">PHASE 04</span><b>Launch</b><span>Announce to the full list so every past customer starts with a live balance and a 45-day clock.</span></div>
+    </div>
+    <p class="note">The backfill in phase one is the piece worth planning early. Every existing customer needs a tier tag before launch, or the whole list starts on Bronze regardless of what they have already spent with you.</p>
+  </section>
+
+  <footer>
+    Steak King UK &times; Tethrd &middot; Rewards build scope &middot; 11 August 2026<br>
+    Store checks run against steak-king.co.uk and the Shopify Admin API on 11 August 2026. App-level checks were limited by API scope, so the Rise install status needs confirming from inside the admin.
+  </footer>
+
+</div>
+</body>
+</html>
