@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Steak King — Monthly Flow Review · August 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#373E3E;--coral:#EC7D55;--coral-deep:#D96A42;--paper:#FBF9F7;--line:#E6E0DA;--muted:#7A8383;--good:#2F7D5D;--warn:#C0492B;--soft:#F6F3F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.58;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px 80px}
+  h1,h2,h3,.fj{font-family:'Fjalla One',Impact,sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+  header{background:var(--ink);color:#fff;padding:34px 0 52px;background-image:radial-gradient(ellipse at 78% 0%, rgba(236,125,85,.16), transparent 58%)}
+  .brandbar{display:flex;align-items:center;gap:16px;margin-bottom:34px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.13)}
+  .sk-logo{height:46px;width:auto;display:block}
+  .tethrd-logo{height:17px;width:auto;display:block;opacity:.82}
+  .brand-x{color:#6E7878;font-size:15px;font-weight:300}
+  header .wrap{padding-bottom:0}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(32px,5vw,50px);line-height:1.03;margin-bottom:18px}
+  .sub{font-size:18px;color:#C9CFCF;max-width:780px;line-height:1.5}
+  .meta{margin-top:26px;font-size:12px;color:#8B9494;letter-spacing:.04em;line-height:1.6}
+  .tabbar{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:1px solid var(--line);margin-bottom:44px}
+  .tabbar .wrap{padding-bottom:0;display:flex;gap:6px}
+  .tab{font-family:'Fjalla One',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:14px;background:none;border:none;color:var(--muted);padding:16px 18px 13px;cursor:pointer;border-bottom:3px solid transparent}
+  .tab:hover{color:var(--ink)}
+  .tab.on{color:var(--ink);border-bottom-color:var(--coral)}
+  .page{display:none}
+  .page.on{display:block}
+  .chapter{border-top:1px solid var(--line);padding-top:14px;margin-bottom:24px;display:flex;align-items:baseline;gap:14px}
+  .chapter .cn{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--coral);letter-spacing:.12em}
+  .chapter .ct{font-family:'Fjalla One',sans-serif;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  section{margin-bottom:54px;padding-top:8px}
+  h2{font-size:26px;margin-bottom:10px;line-height:1.15}
+  .h2sub{font-size:15.5px;color:var(--muted);margin-bottom:24px;max-width:790px}
+  h3{font-size:15px;margin-bottom:8px}
+  p{margin-bottom:14px;font-size:15.5px}
+  strong{font-weight:600}
+  em{font-style:italic}
+  .accent{color:var(--coral);font-weight:600}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:26px 0 0}
+  .stat{background:#fff;padding:20px 18px}
+  .stat b{display:block;font-family:'Fjalla One',sans-serif;font-size:30px;line-height:1.05;color:var(--ink)}
+  .stat span{display:block;font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.4}
+  .stat .d{display:inline-block;margin-top:6px;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}
+  .d.up{color:var(--good)} .d.dn{color:#B06A4F}
+  .card{background:#fff;border:1px solid var(--line);padding:22px 24px;margin-bottom:16px}
+  .card.hl{border-left:3px solid var(--coral)}
+  .card.gd{border-left:3px solid var(--good)}
+  .card.wn{border-left:3px solid var(--warn)}
+  .card p:last-child,.card ul:last-child{margin-bottom:0}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+  .cols .card{margin-bottom:0}
+  ul{margin:0 0 14px 19px}
+  li{font-size:15px;margin-bottom:8px;color:#54595A}
+  li strong{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:13.5px}
+  th{background:var(--ink);color:#fff;font-family:'Fjalla One',sans-serif;font-weight:400;text-transform:uppercase;font-size:11px;letter-spacing:.05em;padding:11px 12px;text-align:left}
+  th.num,td.num{text-align:right}
+  td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  tr:nth-child(even) td{background:#FCFAF9}
+  tr.total td{border-top:2px solid var(--coral);font-weight:600;background:#FEF6F2}
+  .tblwrap{overflow-x:auto;margin-bottom:10px}
+  .tbl-note{font-size:12px;color:var(--muted);margin-bottom:16px}
+  .pill{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:99px;white-space:nowrap}
+  .pill.live{background:rgba(47,125,93,.1);color:var(--good)}
+  .pill.watch{background:rgba(217,165,74,.14);color:#8A6414}
+  .pill.zero{background:rgba(192,73,43,.08);color:var(--warn)}
+  .wtoggle{display:inline-flex;border:1px solid var(--line);background:#fff;margin-bottom:14px}
+  .wtoggle button{font-family:'Fjalla One',sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:none;background:none;color:var(--muted);padding:8px 16px;cursor:pointer}
+  .wtoggle button.on{background:var(--ink);color:#fff}
+  .chart-card{background:#fff;border:1px solid var(--line);padding:22px 24px 16px;margin-bottom:18px}
+  .chart-title{font-family:'Fjalla One',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .legend{display:flex;gap:18px;font-size:12px;color:var(--muted);margin:6px 0 20px;flex-wrap:wrap}
+  .legend i{display:inline-block;width:10px;height:10px;margin-right:6px}
+  .chart{display:flex;align-items:flex-end;gap:3px;height:230px;position:relative}
+  .ccol{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;cursor:default}
+  .cbar{width:100%;position:relative;border-radius:3px 3px 0 0;background:#CFE4EC;min-height:2px}
+  .ccol:hover .cbar{background:#B9D8E4}
+  .fseg{position:absolute;bottom:0;left:0;right:0;background:var(--coral-deep)}
+  .cshare{position:absolute;bottom:calc(100% + 3px);left:50%;transform:translateX(-50%);font-size:10.5px;font-weight:600;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .clab{margin-top:7px;text-align:center;font-size:10.5px;color:var(--muted);line-height:1.25}
+  .ctip{position:fixed;z-index:90;background:var(--ink);color:#fff;font-size:12px;line-height:1.55;padding:9px 12px;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity .08s}
+  .ctip b{font-weight:600}
+  .ctip .tr{color:#C9CFCF}
+  .lc-axis{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:2px solid var(--ink);margin-bottom:14px;gap:10px}
+  .lc-axis div{font-family:'Fjalla One',sans-serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);padding:0 2px 7px}
+  .lc-axis div small{display:block;font-family:Inter;font-size:10px;color:var(--muted);letter-spacing:0;text-transform:none;font-weight:500}
+  .lc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:start}
+  .lc-cell{display:flex;flex-direction:column;gap:8px}
+  .lc-node{background:#fff;border:1px solid var(--line);border-left:3px solid var(--good);padding:10px 11px;font-size:12px;line-height:1.4}
+  .lc-node b{display:block;font-weight:600;font-size:12px;color:var(--ink);margin-bottom:2px}
+  .lc-node span{color:var(--muted);font-size:11px;display:block}
+  .lc-node.weak{border-left-color:#D9A54A}
+  .lc-node.miss{border:1px dashed var(--warn);border-left:3px dashed var(--warn);background:transparent}
+  .lc-node.miss b{color:var(--warn)}
+  .lc-key{display:flex;gap:18px;font-size:12px;color:var(--muted);margin-top:14px;flex-wrap:wrap}
+  .lc-key i{display:inline-block;width:10px;height:10px;margin-right:6px}
+  .fx{display:flex;gap:16px;background:#fff;border:1px solid var(--line);padding:18px 20px;margin-bottom:12px}
+  .fx .n{font-family:'Fjalla One',sans-serif;font-size:22px;color:var(--coral);flex:none;line-height:1.1;width:30px}
+  .fx h3{margin-bottom:3px}
+  .fx p{margin-bottom:0;font-size:14.5px;color:#54595A}
+  .fx .tag{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:7px;display:block;font-weight:600}
+  footer{border-top:1px solid var(--line);padding-top:22px;font-size:12px;color:var(--muted);line-height:1.6}
+  @media (max-width:900px){.lc-axis,.lc-grid{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:820px){header{padding:28px 0 40px}h1{font-size:clamp(27px,6.4vw,44px)}.sub{font-size:16px}section{margin-bottom:44px}}
+  @media (max-width:780px){.wrap{padding:0 18px 56px}.cols{grid-template-columns:1fr}.chart{height:190px}}
+  @media (max-width:600px){.stat{padding:17px 15px}.stat b{font-size:26px}h2{font-size:22px}.h2sub{font-size:15px}.lc-axis,.lc-grid{grid-template-columns:repeat(2,1fr)}.clab{font-size:8.5px}.cshare{font-size:8.5px}}
+  @media (max-width:460px){.wrap{padding:0 14px 44px}header{padding:24px 0 36px}.brandbar{margin-bottom:22px;padding-bottom:16px;gap:12px}.sk-logo{height:38px}.sub{font-size:15px}.stats{grid-template-columns:1fr 1fr}.stat b{font-size:24px}table{font-size:11.5px}th,td{padding:8px 9px}th{font-size:9.5px;letter-spacing:.02em}}
+  @media print{
+    body{background:#fff}
+    .tabbar{display:none}
+    .page{display:block !important;page-break-before:always}
+    .page:first-of-type{page-break-before:auto}
+    .pgtitle-print{display:block !important;font-family:'Fjalla One',sans-serif;font-size:20px;text-transform:uppercase;margin:20px 0 16px;padding-top:10px;border-top:3px solid var(--coral)}
+    header{padding:22px 0 30px}
+    section{margin-bottom:30px;break-inside:avoid-page}
+    .chart{height:170px}
+  }
+  .pgtitle-print{display:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brandbar">
+      <img class="sk-logo" src="assets/brand/steakking-logo-white.png" alt="Steak King">
+      <span class="brand-x">&times;</span>
+      <img class="tethrd-logo" src="assets/brand/tethrd-wordmark-white.svg" alt="Tethrd">
+    </div>
+    <div class="eyebrow">Steak King HK + UK &middot; Monthly Flow Review &middot; August 2026</div>
+    <h1>Flows: what's working, what's missing, what's next</h1>
+    <p class="sub">Flows earned <strong style="color:#fff">HK$486K</strong> in Hong Kong and <strong style="color:#fff">&pound;4.0K</strong> in the UK over the last 30 days &mdash; 11.6% and 11.8% of order revenue. A year ago the HK share was 6.5%. This review covers what the data taught us, where the customer journey still has gaps, and the levers that lift flow revenue from here.</p>
+    <div class="meta">Source: Klaviyo Reporting API, pulled 12/08/2026 &middot; conversion metric: Shopify Placed Order &middot; HK figures in HKD, UK figures in GBP &middot; flow revenue = Klaviyo-attributed order value from flow messages</div>
+  </div>
+</header>
+
+<div class="tabbar"><div class="wrap">
+  <button class="tab on" data-pg="hk" onclick="showPage('hk')">Hong Kong</button>
+  <button class="tab" data-pg="uk" onclick="showPage('uk')">United Kingdom</button>
+</div></div>
+
+<!-- ============ HONG KONG ============ -->
+<div class="page on" id="pg-hk">
+<div class="wrap">
+<span class="pgtitle-print">Hong Kong</span>
+
+<section>
+  <div class="chapter"><span class="cn">01</span><span class="ct">The headline</span></div>
+  <h2>Flow share has doubled in a year</h2>
+  <p class="h2sub">Since the flow suite rollout in March, monthly flow recipients went from ~5K to ~30K and flow share of order revenue moved from the 5&ndash;6% band to 11&ndash;15%. May proved 15.1% is achievable on the current list &mdash; that's the near-term bar.</p>
+  <div class="stats">
+    <div class="stat"><b>HK$486K</b><span>Flow revenue, last 30 days</span></div>
+    <div class="stat"><b>11.6%</b><span>Share of order revenue, last 30 days</span><i class="d up">&uarr; from 6.5% a year ago</i></div>
+    <div class="stat"><b>HK$1.49M</b><span>Flow revenue, last 90 days</span></div>
+    <div class="stat"><b>15.1%</b><span>Peak share &middot; May 2026 (HK$735K)</span></div>
+    <div class="stat"><b>HK$75</b><span>Revenue per recipient &middot; Abandoned Checkout, the account's most efficient flow</span></div>
+    <div class="stat"><b>11</b><span>Flows earning revenue (of 13 live)</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="chapter"><span class="cn">02</span><span class="ct">Performance</span></div>
+  <h2>Flow performance</h2>
+  <p class="h2sub">Cart and checkout recovery do the heavy lifting on intent; Welcome converts new subscribers; Price Drop has quietly become a top-four earner. The tail is where the next phase lives.</p>
+  <div class="chart-card">
+    <div class="chart-title">Flow revenue inside total order revenue &middot; last 12 months (HKD)</div>
+    <div class="legend"><span><i style="background:#CFE4EC"></i>Account order revenue</span><span><i style="background:var(--coral-deep)"></i>Flow-attributed revenue</span><span>% = flow share</span></div>
+    <div class="chart" id="hk-chart" role="img" aria-label="Monthly bar chart, August 2025 to July 2026: flow share of order revenue grows from about 6 percent to 11 to 15 percent after March 2026"></div>
+  </div>
+  <div class="wtoggle" id="hk-wtog"><button class="on" data-w="d30">Last 30 days</button><button data-w="d90">Last 90 days</button></div>
+  <div class="tblwrap"><table id="hk-tbl"></table></div>
+  <p class="tbl-note">Rates computed on delivered. Internal-alert and tagging flows excluded from ranking. 30-day window 13/07&ndash;11/08.</p>
+</section>
+
+<section>
+  <div class="chapter"><span class="cn">03</span><span class="ct">Learnings</span></div>
+  <h2>What the data has taught us</h2>
+  <p class="h2sub">From the 12-month repeat-purchase study (38,951 orders, 10,025 verified first-time buyers) plus this month's flow numbers.</p>
+  <div class="cols">
+    <div class="card gd"><h3>The second order is a cross-sell, not a repeat</h3><p>77.5% of second orders contain <em>none</em> of the products from the first. Customers don't rebuy their entry product &mdash; they explore. Yet Cross-Sell is currently the weakest earning flow (HK$3.4K in 90 days). The single biggest mismatch between what customers do and what the automation does.</p></div>
+    <div class="card gd"><h3>Day 22&ndash;35 is the golden window</h3><p>27.8% of new buyers reorder within 90 days, median 39 days &mdash; and the best gateway products reorder at day 22&ndash;35. Automation needs to be densest exactly there. Today that window is worked by one underweight Replenish flow (HK$14K/30d).</p></div>
+    <div class="card gd"><h3>Staples drive repeat, heroes drive acquisition</h3><p>Chicken, mince, salmon and pork-mince first orders repeat at 43&ndash;52%. Hero knife-deal boxes repeat at ~14%. Replenish and cross-sell content should push staples; the M9 heroes are for winning customers, not keeping them.</p></div>
+    <div class="card gd"><h3>Checkout intent is worth 6&times; cart intent</h3><p>Abandoned Checkout returns HK$75&ndash;78 per recipient vs HK$37&ndash;40 for cart &mdash; on a tenth of the volume (664 recipients/30d). Every extra person legitimately captured at checkout stage is the most valuable send in the account.</p></div>
+  </div>
+  <div class="card hl"><h3>Scale is proven &mdash; the March rollout worked</h3><p>The flow suite took recipients from ~5K to ~30K/month and share from 6% to 11&ndash;15%, with no damage to deliverability outside two watch items below. The playbook of building coverage stage-by-stage is validated; the remaining upside is in the stages still uncovered (chapter 05).</p></div>
+</section>
+
+<section>
+  <div class="chapter"><span class="cn">04</span><span class="ct">Findings</span></div>
+  <h2>Findings this month</h2>
+  <p class="h2sub">Three things to fix, two things to watch.</p>
+  <div class="card wn"><h3>Post-purchase nurture is barely triggering</h3><p>BE-YOUR-OWN-BUTCHER post-purchase reached <strong>8 people</strong> in 30 days against ~3,330 orders/month. When it does send, 75% open it. The audience clearly wants it &mdash; the trigger filters are throttling it. Highest-leverage fix in the account.</p></div>
+  <div class="card wn"><h3>Cross-Sell earns least and unsubscribes most</h3><p>HK$1.0K in 30 days with a 1.20% unsubscribe rate &mdash; the highest of any flow. Generic cross-sell content isn't matching what the transition data says people buy next. Rebuild it split by first-basket type (premium &rarr; staples, staples &rarr; wagyu trade-up).</p></div>
+  <div class="card wn"><h3>Account hygiene: 45 flows, 13 earning</h3><p>13 live flows had zero activity in 90 days (legacy seasonal, old tagging, duplicated alerts), 14 sit in draft, 5 in manual. None archived. Worth a one-hour sweep so reporting and QA stay clean.</p></div>
+  <div class="card"><h3>Watch: share eased from the May peak</h3><p>15.1% (May) &rarr; 12.5% (Jun) &rarr; 11.8% (Jul) while recipients held at ~30K &mdash; revenue per recipient softened, not volume. July's heavy promo calendar likely pulled orders forward of the flows. Watch August; if efficiency doesn't recover post-promo, we review message content and discount posture.</p></div>
+  <div class="card"><h3>Watch: Welcome unsubscribe rate</h3><p>0.91% on Welcome (vs &le;0.6% on everything else). Not urgent, but it's the first impression &mdash; worth revisiting frequency and email 2&ndash;4 content next optimisation pass.</p></div>
+</section>
+
+<section>
+  <div class="chapter"><span class="cn">05</span><span class="ct">Lifecycle coverage</span></div>
+  <h2>The customer journey: covered vs missing</h2>
+  <p class="h2sub">Every stage a customer moves through, and whether an automation is working that stage today. Dashed cards are stages where money moves but no flow is live.</p>
+  <div class="lc-axis">
+    <div>Subscribe<small>day 0</small></div>
+    <div>Browse<small>pre-purchase</small></div>
+    <div>Cart &amp; checkout<small>high intent</small></div>
+    <div>First order<small>day 0&ndash;7</small></div>
+    <div>Reorder window<small>day 22&ndash;45</small></div>
+    <div>Lapse<small>day 45+</small></div>
+  </div>
+  <div class="lc-grid">
+    <div class="lc-cell">
+      <div class="lc-node"><b>Welcome</b><span>HK$94K/30d &middot; #2 earner</span></div>
+      <div class="lc-node weak"><b>Welcome Re-Engage</b><span>HK$2.92/recipient &middot; underweight</span></div>
+    </div>
+    <div class="lc-cell">
+      <div class="lc-node"><b>Product Browse</b><span>HK$37K/30d</span></div>
+      <div class="lc-node"><b>Collection Browse</b><span>HK$21K/30d</span></div>
+      <div class="lc-node"><b>Price Drop</b><span>HK$47K/30d &middot; new top-4 earner</span></div>
+      <div class="lc-node miss"><b>Back in Stock</b><span>Built, sitting in manual &mdash; deals-page trigger agreed in August plan</span></div>
+    </div>
+    <div class="lc-cell">
+      <div class="lc-node"><b>Abandoned Cart</b><span>HK$159K/30d &middot; #1 earner</span></div>
+      <div class="lc-node"><b>Abandoned Checkout</b><span>HK$75/recipient &middot; most efficient</span></div>
+    </div>
+    <div class="lc-cell">
+      <div class="lc-node weak"><b>Thank You (new vs returning)</b><span>HK$21K/30d &middot; no cross-sell logic</span></div>
+      <div class="lc-node weak"><b>Post-Purchase Nurture</b><span>8 recipients/30d &mdash; trigger throttled</span></div>
+    </div>
+    <div class="lc-cell">
+      <div class="lc-node weak"><b>Replenish Reminder</b><span>HK$14K/30d &middot; underweight vs 43&ndash;52% staple repeat rates</span></div>
+      <div class="lc-node weak"><b>Cross-Sell</b><span>HK$1K/30d &middot; weakest link vs 77.5% cross-sell behaviour</span></div>
+    </div>
+    <div class="lc-cell">
+      <div class="lc-node weak"><b>Winback Standard</b><span>HK$35K/30d on a 4-year-old template</span></div>
+      <div class="lc-node miss"><b>Sunset / Re-engage</b><span>No flow &mdash; unengaged profiles keep getting full sends</span></div>
+      <div class="lc-node miss"><b>VIP / Loyalty</b><span>No flow after Nth purchase</span></div>
+    </div>
+  </div>
+  <div class="lc-key"><span><i style="background:var(--good)"></i>Live and earning</span><span><i style="background:#D9A54A"></i>Live but underweight</span><span><i style="border:1px dashed var(--warn);background:transparent"></i>Missing &mdash; no live coverage</span></div>
+</section>
+
+<section>
+  <div class="chapter"><span class="cn">06</span><span class="ct">Focus</span></div>
+  <h2>What we focus on next</h2>
+  <p class="h2sub">Ranked by expected revenue per unit of effort. May's 15.1% share on today's account revenue is worth ~HK$610K/month &mdash; getting back there and past it is the goal.</p>
+  <div class="fx"><div class="n">1</div><div><h3>Unthrottle the post-purchase nurture</h3><p>Fix the trigger filters so it reaches buyers, not 8 people a month. 3,330 orders/month are passing through this stage untouched.</p><span class="tag">Fix &middot; days</span></div></div>
+  <div class="fx"><div class="n">2</div><div><h3>Rebuild Cross-Sell around the transition data</h3><p>Split by first-basket type: premium first order &rarr; staples (chicken, mince, salmon); staples first order &rarr; wagyu trade-up. This is the flow the repeat study says should be the biggest in the reorder window.</p><span class="tag">Rebuild &middot; 1&ndash;2 weeks</span></div></div>
+  <div class="fx"><div class="n">3</div><div><h3>Weight the day 22&ndash;35 window</h3><p>Extend Replenish with staple-specific timings (gateway products reorder at day 22&ndash;35, median 39 days overall) so the reminder lands before the customer shops elsewhere.</p><span class="tag">Optimise &middot; 1 week</span></div></div>
+  <div class="fx"><div class="n">4</div><div><h3>Switch on Back in Stock off the deals page</h3><p>Already built, sitting in manual. The August strategy calls for the deals-page trigger &mdash; pure margin, zero list fatigue.</p><span class="tag">Activate &middot; days</span></div></div>
+  <div class="fx"><div class="n">5</div><div><h3>Modernise Winback, add Sunset</h3><p>Winback still earns HK$35K/30d on a 4-year-old template &mdash; a refresh is cheap upside. A sunset flow alongside it protects deliverability by retiring the unengaged before they hurt sender reputation.</p><span class="tag">Rebuild &middot; 2 weeks</span></div></div>
+  <div class="fx"><div class="n">6</div><div><h3>One-hour hygiene sweep</h3><p>Archive the 13 zero-activity live flows, resolve the 14 drafts, and the account reads clean for every future review.</p><span class="tag">Hygiene &middot; 1 hour</span></div></div>
+</section>
+
+</div>
+</div>
+
+<!-- ============ UNITED KINGDOM ============ -->
+<div class="page" id="pg-uk">
+<div class="wrap">
+<span class="pgtitle-print">United Kingdom</span>
+
+<section>
+  <div class="chapter"><span class="cn">01</span><span class="ct">The headline</span></div>
+  <h2>One flow is carrying the account</h2>
+  <p class="h2sub">Ninety days post-launch, flows already contribute 11.8% of order revenue &mdash; roughly the share Hong Kong reached only this January. But nearly two-thirds of it comes from the Welcome series alone, and the stages after the first order are still unbuilt.</p>
+  <div class="stats">
+    <div class="stat"><b>&pound;4,022</b><span>Flow revenue, last 30 days</span></div>
+    <div class="stat"><b>11.8%</b><span>Share of order revenue, last 30 days</span></div>
+    <div class="stat"><b>&pound;10,869</b><span>Flow revenue since launch (90 days)</span></div>
+    <div class="stat"><b>64%</b><span>Of 30-day flow revenue from the Welcome series alone</span></div>
+    <div class="stat"><b>&pound;5.25</b><span>Revenue per recipient &middot; Abandoned Checkout, best in account</span></div>
+    <div class="stat"><b>7 / 16</b><span>Flows live &middot; 9 in draft awaiting the strategy build</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="chapter"><span class="cn">02</span><span class="ct">Performance</span></div>
+  <h2>Flow performance</h2>
+  <p class="h2sub">Welcome converts the launch list; checkout recovery is small but the most efficient sender in the account. Everything else is early or dormant.</p>
+  <div class="chart-card">
+    <div class="chart-title">Flow revenue inside total order revenue &middot; weekly since launch (GBP)</div>
+    <div class="legend"><span><i style="background:#CFE4EC"></i>Account order revenue</span><span><i style="background:var(--coral-deep)"></i>Flow-attributed revenue</span><span>% = flow share</span></div>
+    <div class="chart" id="uk-chart" role="img" aria-label="Weekly bar chart from mid June to early August 2026: order revenue between 3 and 13 thousand pounds a week with flow share between 8 and 21 percent, and a sharp drop in the first week of August"></div>
+  </div>
+  <div class="wtoggle" id="uk-wtog"><button class="on" data-w="d30">Last 30 days</button><button data-w="d90">Last 90 days</button></div>
+  <div class="tblwrap"><table id="uk-tbl"></table></div>
+  <p class="tbl-note">Rates computed on delivered. Draft flows (9) not shown: Welcome Re-Engage, Replenish, Back in Stock, Cross-Sell, Be Your Own Butcher post-purchase, and three internal delivery-date alerts. Kickoff referral flow ran pre-launch only. Current week excluded as partial.</p>
+</section>
+
+<section>
+  <div class="chapter"><span class="cn">03</span><span class="ct">Learnings</span></div>
+  <h2>What the first 100 days taught us</h2>
+  <p class="h2sub">The UK account is young &mdash; these learnings decide which flows get built next, tested against the Hong Kong benchmark rather than cloned from it.</p>
+  <div class="cols">
+    <div class="card gd"><h3>Flows punched in early</h3><p>11.8% of order revenue within 90 days of launch, on essentially two working flows. Hong Kong's own history says each stage of coverage added compounds &mdash; the ceiling here is nowhere in sight.</p></div>
+    <div class="card gd"><h3>Checkout recovery works in the UK too</h3><p>&pound;5.25 per recipient and an 11.9% click rate &mdash; the same efficiency pattern as Hong Kong's best flow. But it reached only 103 people in 30 days against 294 orders. Verify the trigger is catching every abandoned checkout before assuming that's true demand.</p></div>
+    <div class="card gd"><h3>Launch-list quality shows in the unsubscribes</h3><p>Welcome unsubscribes at 1.14% &mdash; roughly double a healthy rate. The Kickoff referral cohort converted well at launch but is colder than organic signups. Future intake should favour on-site capture over giveaway mechanics.</p></div>
+    <div class="card gd"><h3>The reorder clock is already ticking</h3><p>Hong Kong's benchmark: repeaters come back at median 39 days, best gateways at day 22&ndash;35. The June and July UK cohorts (~760 orders) are inside that window <em>right now</em> &mdash; and there is no live post-purchase, replenish or cross-sell flow to meet them.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="chapter"><span class="cn">04</span><span class="ct">Findings</span></div>
+  <h2>Findings this month</h2>
+  <p class="h2sub">One structural risk, two mechanical fixes, one upstream constraint.</p>
+  <div class="card wn"><h3>Everything after the first order is unbuilt</h3><p>No live post-purchase, no cross-sell, no replenish at volume, and no winback flow exists in any state. With ~300 orders/month and a median 39-day reorder clock, this is where UK flow revenue is being left unearned. The post-purchase blueprint (03/08) is written and ready to build.</p></div>
+  <div class="card wn"><h3>Replenish is live but reaching 2 people</h3><p>2 recipients in 90 days means the trigger definition is too narrow, not that demand is absent. Quick diagnostic, quick fix.</p></div>
+  <div class="card wn"><h3>List intake has dried up post-launch</h3><p>Weekly account revenue fell from &pound;8&ndash;13K in July to &pound;2.9K in the first August week, and weekly flow recipients dropped from ~1,600 to ~240. Flows can only convert the traffic and signups they're fed &mdash; list growth is now the binding constraint on flow revenue.</p></div>
+  <div class="card"><h3>Hygiene: three duplicate delivery-date alert drafts</h3><p>Two SK-UK versions plus one HK clone of the same internal alert sit in drafts. Keep one, remove the rest.</p></div>
+</section>
+
+<section>
+  <div class="chapter"><span class="cn">05</span><span class="ct">Lifecycle coverage</span></div>
+  <h2>The customer journey: covered vs missing</h2>
+  <p class="h2sub">Same lens as Hong Kong. The map is deliberately sparse &mdash; drafts stay off until each flow is built to the UK repeat-purchase strategy, not switched on blind from HK clones.</p>
+  <div class="lc-axis">
+    <div>Subscribe<small>day 0</small></div>
+    <div>Browse<small>pre-purchase</small></div>
+    <div>Cart &amp; checkout<small>high intent</small></div>
+    <div>First order<small>day 0&ndash;7</small></div>
+    <div>Reorder window<small>day 22&ndash;45</small></div>
+    <div>Lapse<small>day 45+</small></div>
+  </div>
+  <div class="lc-grid">
+    <div class="lc-cell">
+      <div class="lc-node weak"><b>Welcome series</b><span>&pound;2.6K/30d &middot; carries the account &middot; 1.14% unsub watch</span></div>
+    </div>
+    <div class="lc-cell">
+      <div class="lc-node"><b>Product Browse</b><span>&pound;647/30d</span></div>
+      <div class="lc-node"><b>Collection Browse</b><span>&pound;260/30d</span></div>
+      <div class="lc-node miss"><b>Back in Stock</b><span>Draft &mdash; needed once cuts sell through</span></div>
+    </div>
+    <div class="lc-cell">
+      <div class="lc-node weak"><b>Abandoned Checkout</b><span>&pound;5.25/recipient &middot; coverage check: 103 recipients vs 294 orders</span></div>
+      <div class="lc-node miss"><b>Abandoned Cart</b><span>No flow &mdash; HK's #1 earner has no UK equivalent</span></div>
+    </div>
+    <div class="lc-cell">
+      <div class="lc-node miss"><b>Post-purchase</b><span>Blueprint written 03/08 &mdash; not yet built. ~300 orders/month pass untouched</span></div>
+    </div>
+    <div class="lc-cell">
+      <div class="lc-node weak"><b>Replenish Reminder</b><span>Live, 2 recipients in 90d &mdash; trigger too narrow</span></div>
+      <div class="lc-node miss"><b>Cross-sell / credit loop</b><span>Awaiting staples + store-credit decisions (Rise.ai)</span></div>
+    </div>
+    <div class="lc-cell">
+      <div class="lc-node miss"><b>Winback</b><span>No flow in any state &mdash; first cohorts lapse from here</span></div>
+    </div>
+  </div>
+  <div class="lc-key"><span><i style="background:var(--good)"></i>Live and earning</span><span><i style="background:#D9A54A"></i>Live but underweight</span><span><i style="border:1px dashed var(--warn);background:transparent"></i>Missing &mdash; no live coverage</span></div>
+</section>
+
+<section>
+  <div class="chapter"><span class="cn">06</span><span class="ct">Focus</span></div>
+  <h2>What we focus on next</h2>
+  <p class="h2sub">Sequenced so the June/July cohorts are met inside their reorder window, then the funnel fills upstream.</p>
+  <div class="fx"><div class="n">1</div><div><h3>Build and launch the post-purchase flow</h3><p>The blueprint is written; the cohorts it serves are in the reorder window now. This is the week-one priority.</p><span class="tag">Build &middot; this week</span></div></div>
+  <div class="fx"><div class="n">2</div><div><h3>Add an Abandoned Cart flow</h3><p>Checkout-only recovery misses everyone who carts and leaves before checkout &mdash; the stage that earns HK$159K/month in Hong Kong. While in there, verify the checkout trigger's coverage.</p><span class="tag">Build &middot; 1 week</span></div></div>
+  <div class="fx"><div class="n">3</div><div><h3>Fix the Replenish trigger</h3><p>Widen the trigger definition so staple buyers actually enter. HK data: staple first orders repeat at 43&ndash;52%.</p><span class="tag">Fix &middot; days</span></div></div>
+  <div class="fx"><div class="n">4</div><div><h3>Decide the store-credit loop, then build the credit flow</h3><p>Rise.ai recommendation is with Dave. Once decided, the credit-expiry sequence becomes the UK's engineered reason to come back at day 22&ndash;35.</p><span class="tag">Decision pending &middot; then 1&ndash;2 weeks</span></div></div>
+  <div class="fx"><div class="n">5</div><div><h3>Stand up Winback before cohorts lapse</h3><p>Median reorder is 39 days; anyone past day 45 without a nudge is drifting. A simple two-email winback covers the gap while the fuller strategy lands.</p><span class="tag">Build &middot; 1 week</span></div></div>
+  <div class="fx"><div class="n">6</div><div><h3>Reopen list intake</h3><p>Flows are fed by signups and traffic; both dropped sharply in August. On-site capture (not giveaway mechanics) is the quality lesson from launch &mdash; this constraint caps every other item on this list.</p><span class="tag">Upstream &middot; with Dave</span></div></div>
+</section>
+
+</div>
+</div>
+
+<div class="wrap">
+<footer>
+  Prepared by Hani Siraj &middot; Tethrd &middot; Monthly flow review, August 2026.<br>
+  Data: Klaviyo Reporting API (flow values + monthly/weekly series) against the Shopify Placed Order metric, pulled 12/08/2026. Flow-attributed revenue uses Klaviyo's attribution window; shares are of total order revenue, so cross-channel comparisons are directional. HK repeat-purchase figures from the 12-month order study (July 2026).
+</footer>
+</div>
+
+<div class="ctip" id="ctip"></div>
+
+<script>
+const HK_MONTHS=[
+ {lab:"Aug",sub:"2025",acct:2854273,flow:184123,orders:1897},
+ {lab:"Sep",sub:"2025",acct:3394065,flow:191199,orders:2255},
+ {lab:"Oct",sub:"2025",acct:3112625,flow:186837,orders:2055},
+ {lab:"Nov",sub:"2025",acct:5831345,flow:349687,orders:4420},
+ {lab:"Dec",sub:"2025",acct:4724292,flow:409821,orders:3379},
+ {lab:"Jan",sub:"2026",acct:4504629,flow:201274,orders:2982},
+ {lab:"Feb",sub:"2026",acct:3469605,flow:311292,orders:2455},
+ {lab:"Mar",sub:"2026",acct:4781941,flow:543934,orders:3399},
+ {lab:"Apr",sub:"2026",acct:5215045,flow:672912,orders:3649},
+ {lab:"May",sub:"2026",acct:4864918,flow:735337,orders:3397},
+ {lab:"Jun",sub:"2026",acct:4209259,flow:525571,orders:3281},
+ {lab:"Jul",sub:"2026",acct:4054079,flow:480020,orders:3281}
+];
+const UK_WEEKS=[
+ {lab:"15 Jun",sub:"",acct:12241,flow:2194,orders:95},
+ {lab:"22 Jun",sub:"",acct:11537,flow:2443,orders:74},
+ {lab:"29 Jun",sub:"",acct:6582,flow:526,orders:49},
+ {lab:"6 Jul",sub:"",acct:11750,flow:1684,orders:100},
+ {lab:"13 Jul",sub:"",acct:13058,flow:1170,orders:111},
+ {lab:"20 Jul",sub:"",acct:9784,flow:1298,orders:87},
+ {lab:"27 Jul",sub:"",acct:7931,flow:1272,orders:74},
+ {lab:"3 Aug",sub:"",acct:2885,flow:283,orders:19}
+];
+const HK_FLOWS=[
+ {name:"Abandoned Cart",stage:"Cart & checkout",st:"live",d30:{rev:159088,rec:4272,conv:120,open:51.4,click:4.79,rpr:37.24},d90:{rev:515783,rec:13004,conv:382,open:45.0,click:4.95,rpr:39.66}},
+ {name:"Welcome",stage:"Subscribe",st:"live",d30:{rev:94088,rec:7984,conv:81,open:46.8,click:2.71,rpr:11.78},d90:{rev:325328,rec:25986,conv:256,open:44.4,click:2.74,rpr:12.52}},
+ {name:"Price Drop",stage:"Browse",st:"live",d30:{rev:47362,rec:3094,conv:37,open:45.5,click:5.71,rpr:15.31},d90:{rev:145183,rec:7054,conv:107,open:40.2,click:5.34,rpr:20.58}},
+ {name:"Abandoned Checkout",stage:"Cart & checkout",st:"live",d30:{rev:49816,rec:664,conv:38,open:54.6,click:4.70,rpr:75.02},d90:{rev:143863,rec:1838,conv:110,open:52.9,click:6.46,rpr:78.27}},
+ {name:"Customer Winback",stage:"Lapse",st:"live",d30:{rev:34827,rec:2933,conv:26,open:49.9,click:3.52,rpr:11.87},d90:{rev:99242,rec:8502,conv:68,open:49.6,click:3.87,rpr:11.67}},
+ {name:"Product Browse",stage:"Browse",st:"live",d30:{rev:37311,rec:3093,conv:28,open:49.1,click:3.56,rpr:12.06},d90:{rev:99112,rec:9067,conv:78,open:43.3,click:3.39,rpr:10.93}},
+ {name:"Thank You (new vs returning)",stage:"First order",st:"live",d30:{rev:21021,rec:2281,conv:21,open:54.9,click:2.81,rpr:9.22},d90:{rev:53225,rec:6936,conv:46,open:48.2,click:3.57,rpr:7.67}},
+ {name:"Replenish Reminder",stage:"Reorder",st:"live",d30:{rev:14168,rec:1826,conv:9,open:45.0,click:3.02,rpr:7.76},d90:{rev:51177,rec:3845,conv:33,open:46.5,click:3.08,rpr:13.31}},
+ {name:"Collection Browse",stage:"Browse",st:"live",d30:{rev:20829,rec:790,conv:15,open:49.4,click:4.19,rpr:26.37},d90:{rev:37106,rec:2159,conv:26,open:47.5,click:4.55,rpr:17.19}},
+ {name:"Welcome Re-Engage",stage:"Subscribe",st:"watch",d30:{rev:6833,rec:2339,conv:8,open:41.1,click:1.08,rpr:2.92},d90:{rev:20072,rec:6023,conv:17,open:42.6,click:1.48,rpr:3.33}},
+ {name:"Cross-Sell",stage:"Reorder",st:"watch",d30:{rev:1016,rec:334,conv:1,open:52.6,click:2.10,rpr:3.04},d90:{rev:3400,rec:1137,conv:3,open:51.5,click:2.82,rpr:2.99}},
+ {name:"Post-Purchase Nurture",stage:"First order",st:"zero",d30:{rev:0,rec:8,conv:0,open:75.0,click:0,rpr:0},d90:{rev:0,rec:133,conv:0,open:57.9,click:3.76,rpr:0}}
+];
+const HK_TOT={d30:{rev:486359,rec:29618,conv:384},d90:{rev:1493491,rec:85684,conv:1109}};
+const UK_FLOWS=[
+ {name:"Welcome series",stage:"Subscribe",st:"live",d30:{rev:2574,rec:6699,conv:26,open:44.9,click:2.9,rpr:0.38},d90:{rev:7213,rec:16455,conv:64,open:45.3,click:2.9,rpr:0.44}},
+ {name:"Abandoned Checkout",stage:"Cart & checkout",st:"live",d30:{rev:541,rec:103,conv:6,open:58.4,click:11.9,rpr:5.25},d90:{rev:1250,rec:209,conv:12,open:55.3,click:11.7,rpr:5.98}},
+ {name:"Product Browse",stage:"Browse",st:"live",d30:{rev:647,rec:746,conv:5,open:46.5,click:2.4,rpr:0.87},d90:{rev:838,rec:1952,conv:7,open:40.3,click:1.9,rpr:0.43}},
+ {name:"Collection Browse",stage:"Browse",st:"live",d30:{rev:260,rec:384,conv:3,open:55.5,click:4.9,rpr:0.68},d90:{rev:260,rec:890,conv:3,open:52.4,click:4.8,rpr:0.29}},
+ {name:"Kickoff referral (pre-launch)",stage:"Acquisition",st:"zero",d30:null,d90:{rev:1308,rec:113318,conv:10,open:27.6,click:2.0,rpr:0.01}},
+ {name:"Replenish Reminder",stage:"Reorder",st:"zero",d30:{rev:0,rec:2,conv:0,open:50.0,click:0,rpr:0},d90:{rev:0,rec:2,conv:0,open:50.0,click:0,rpr:0}},
+ {name:"Referral Proximity",stage:"Referral",st:"zero",d30:null,d90:{rev:0,rec:55,conv:0,open:76.4,click:32.7,rpr:0}},
+ {name:"No Fee Day credit (manual)",stage:"Reorder",st:"zero",d30:{rev:0,rec:16,conv:0,open:75.0,click:0,rpr:0},d90:{rev:0,rec:16,conv:0,open:75.0,click:0,rpr:0}}
+];
+const UK_TOT={d30:{rev:4022,rec:7950,conv:40},d90:{rev:10869,rec:132897,conv:96}};
+
+function fmtMoney(v,cur){
+  if(cur==='HKD'){ return v>=1000000 ? 'HK$'+(v/1000000).toFixed(2)+'M' : 'HK$'+Math.round(v/1000)+'K'; }
+  return v>=1000 ? '£'+(v/1000).toFixed(1)+'K' : '£'+Math.round(v);
+}
+function fmtFull(v,cur){ return (cur==='HKD'?'HK$':'£')+v.toLocaleString('en-AU'); }
+
+function renderChart(elId,data,cur){
+  const el=document.getElementById(elId);
+  const max=Math.max(...data.map(d=>d.acct));
+  const tip=document.getElementById('ctip');
+  data.forEach(d=>{
+    const share=(d.flow/d.acct*100);
+    const col=document.createElement('div'); col.className='ccol';
+    const bar=document.createElement('div'); bar.className='cbar';
+    bar.style.height=(d.acct/max*100)+'%';
+    const seg=document.createElement('div'); seg.className='fseg';
+    seg.style.height=Math.max(2,(d.flow/d.acct*100))+'%';
+    const shareLab=document.createElement('div'); shareLab.className='cshare';
+    shareLab.textContent=share.toFixed(1)+'%';
+    bar.appendChild(seg); bar.appendChild(shareLab); col.appendChild(bar);
+    const lab=document.createElement('div'); lab.className='clab';
+    lab.innerHTML=d.lab+(d.sub?'<br>'+d.sub:''); col.appendChild(lab);
+    col.addEventListener('mousemove',e=>{
+      tip.innerHTML='<b>'+d.lab+(d.sub?' '+d.sub:'')+'</b><br><span class="tr">Orders revenue:</span> '+fmtFull(d.acct,cur)+' ('+d.orders.toLocaleString()+' orders)<br><span class="tr">Flow revenue:</span> '+fmtFull(d.flow,cur)+'<br><span class="tr">Flow share:</span> '+share.toFixed(1)+'%';
+      tip.style.opacity=1; tip.style.left=Math.min(e.clientX+14,window.innerWidth-230)+'px'; tip.style.top=(e.clientY-14)+'px';
+    });
+    col.addEventListener('mouseleave',()=>{tip.style.opacity=0});
+    el.appendChild(col);
+  });
+}
+
+function renderTable(elId,flows,tot,cur,win){
+  const money=v=>fmtFull(Math.round(v),cur);
+  let h='<thead><tr><th>Flow</th><th>Stage</th><th class="num">Revenue</th><th class="num">Recipients</th><th class="num">Orders</th><th class="num">Open %</th><th class="num">Click %</th><th class="num">Rev / recipient</th></tr></thead><tbody>';
+  const rows=flows.slice().sort((a,b)=>((b[win]?b[win].rev:-1)-(a[win]?a[win].rev:-1)));
+  rows.forEach(f=>{
+    const d=f[win];
+    if(!d){ h+='<tr><td>'+f.name+'</td><td>'+f.stage+'</td><td class="num" colspan="6" style="color:var(--muted)">no sends in this window</td></tr>'; return; }
+    h+='<tr><td>'+f.name+(f.st==='zero'?' <span class="pill zero">zero &middot; check</span>':(f.st==='watch'?' <span class="pill watch">watch</span>':''))+'</td><td>'+f.stage+'</td><td class="num"><strong>'+money(d.rev)+'</strong></td><td class="num">'+d.rec.toLocaleString()+'</td><td class="num">'+d.conv+'</td><td class="num">'+d.open.toFixed(1)+'</td><td class="num">'+d.click.toFixed(1)+'</td><td class="num">'+(cur==='HKD'?'HK$'+d.rpr.toFixed(2):'£'+d.rpr.toFixed(2))+'</td></tr>';
+  });
+  const t=tot[win];
+  h+='<tr class="total"><td>Total</td><td></td><td class="num">'+money(t.rev)+'</td><td class="num">'+t.rec.toLocaleString()+'</td><td class="num">'+t.conv+'</td><td colspan="3"></td></tr></tbody>';
+  document.getElementById(elId).innerHTML=h;
+}
+
+function wireToggle(togId,tblId,flows,tot,cur){
+  const tog=document.getElementById(togId);
+  tog.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    tog.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    renderTable(tblId,flows,tot,cur,b.dataset.w);
+  }));
+}
+
+function showPage(k){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('pg-'+k).classList.add('on');
+  document.querySelector('.tab[data-pg='+k+']').classList.add('on');
+  window.scrollTo({top:0});
+}
+
+renderChart('hk-chart',HK_MONTHS,'HKD');
+renderChart('uk-chart',UK_WEEKS,'GBP');
+renderTable('hk-tbl',HK_FLOWS,HK_TOT,'HKD','d30');
+renderTable('uk-tbl',UK_FLOWS,UK_TOT,'GBP','d30');
+wireToggle('hk-wtog','hk-tbl',HK_FLOWS,HK_TOT,'HKD');
+wireToggle('uk-wtog','uk-tbl',UK_FLOWS,UK_TOT,'GBP');
+</script>
+</body>
+</html>
