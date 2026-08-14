@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>F_B2B-NURTURE — Pass 1 blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1E3F; --ink:#000; --white:#fff; --grey:#EBEBEB;
+  --line:#DFE3E9; --muted:#5B6472; --soft:#F7F8FA;
+  --amber:#B45309; --amberbg:#FEF6E7; --amberline:#F0C577;
+  --red:#9B1C1C; --redbg:#FDF2F2; --redline:#EFB4B4;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 28px 90px}
+
+/* top bar */
+.bar{border-bottom:1px solid var(--line);margin-bottom:44px}
+.bar .wrap{padding-top:20px;padding-bottom:18px;display:flex;flex-wrap:wrap;
+  align-items:baseline;gap:14px}
+.key{font-weight:700;font-size:15px;letter-spacing:.01em;color:var(--navy)}
+.bar .sep{color:var(--line)}
+.bar .meta{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;padding:3px 9px;border-radius:3px;
+  background:var(--navy);color:#fff}
+
+h2{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 18px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+section{margin-bottom:52px}
+p{margin:0 0 15px;max-width:70ch}
+strong{font-weight:600}
+.lead{font-size:17px;line-height:1.62}
+
+/* setup table */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{width:170px;font-weight:600;color:var(--muted);font-size:13px}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;
+  background:var(--soft);padding:1px 5px;border-radius:3px;border:1px solid var(--line)}
+
+/* topology */
+.topo{background:var(--soft);border:1px solid var(--line);border-radius:6px;
+  padding:26px 24px;overflow-x:auto}
+.node{display:flex;align-items:flex-start;gap:14px;padding:9px 0}
+.pill{flex:0 0 auto;min-width:88px;text-align:center;font-size:11px;font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;padding:5px 10px;border-radius:4px}
+.p-trigger{background:#CFF5D1;border:1px solid #4CAF50;color:#1B5E20}
+.p-delay{background:#DBEAFE;border:1px solid #60A5FA;color:#1E40AF}
+.p-email{background:#E9D5FF;border:1px solid #A855F7;color:#5B21B6}
+.p-exit{background:#FEE2E2;border:1px solid #F87171;color:#991B1B}
+.p-filter{background:#fff;border:1px solid var(--line);color:var(--muted)}
+.nlabel{padding-top:3px;font-size:14px}
+.nlabel em{color:var(--muted);font-style:normal;font-size:13px}
+.rail{border-left:2px solid #C7CDD6;margin-left:43px;height:14px}
+
+/* email cards */
+.card{border:1px solid var(--line);border-radius:6px;margin-bottom:22px;overflow:hidden}
+.chead{background:var(--navy);color:#fff;padding:15px 20px;display:flex;
+  flex-wrap:wrap;align-items:baseline;gap:12px}
+.chead .pos{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  opacity:.72}
+.chead .nm{font-size:17px;font-weight:600}
+.chead .dl{margin-left:auto;font-size:12px;font-weight:500;
+  background:rgba(255,255,255,.14);padding:3px 10px;border-radius:3px}
+.cbody{padding:4px 20px 18px}
+.row{display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.rk{flex:0 0 132px;font-size:12px;font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--muted);padding-top:2px}
+.rv{flex:1;font-size:14.5px}
+.rv p{margin:0 0 9px}
+.rv p:last-child{margin:0}
+.chip{display:inline-block;font-size:12px;padding:3px 9px;border-radius:12px;
+  background:var(--grey);color:#3A4250;margin:0 5px 5px 0}
+.cta{display:inline-block;font-size:13px;font-weight:600;padding:4px 11px;border-radius:3px;
+  background:var(--navy);color:#fff;margin-right:8px}
+.cta.sec{background:#fff;color:var(--navy);border:1px solid var(--navy)}
+.sh{background:#FFFBEB;border:1px solid var(--amberline);border-left:3px solid var(--amberline);
+  border-radius:0 4px 4px 0;padding:10px 13px;font-size:13.5px;margin-top:8px}
+.sh .lbl{font-weight:600;color:var(--amber);font-size:11px;letter-spacing:.07em;
+  text-transform:uppercase;display:block;margin-bottom:4px}
+.msgname{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+  color:var(--muted)}
+
+/* callouts */
+.callout{border-radius:6px;padding:20px 24px;font-size:14.5px}
+.callout h3{margin:0 0 12px;font-size:12px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase}
+.callout ol,.callout ul{margin:0;padding-left:20px}
+.callout li{margin-bottom:11px;max-width:66ch}
+.callout li:last-child{margin-bottom:0}
+.c-amber{background:var(--amberbg);border:1px solid var(--amberline)}
+.c-amber h3{color:var(--amber)}
+.c-red{background:var(--redbg);border:1px solid var(--redline)}
+.c-red h3{color:var(--red)}
+
+.foot{border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--muted)}
+@media (max-width:640px){
+  .rk{flex:0 0 100%}.row{flex-direction:column;gap:5px}
+  th{width:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="wrap">
+  <span class="key">F_B2B-NURTURE</span>
+  <span class="sep">/</span>
+  <span class="meta">Rippl · Corporate Can Customers</span>
+  <span class="sep">/</span>
+  <span class="meta">4 emails, no SMS</span>
+  <span class="meta" style="margin-left:auto"><span class="tag">Pass 1 · blueprint</span> &nbsp;14/08/2026</span>
+</div></div>
+
+<div class="wrap">
+
+<section>
+  <h2>The idea</h2>
+  <p class="lead">This is not a funnel to the sample pack with the enquiry bolted on the end.
+  It is a nurture with <strong>two doors held open the whole way</strong>.</p>
+  <p>The person on <code>/pages/custom</code> is one of two people. Either they have a brief and a
+  budget and they are ready to talk, or they are sceptical and want to hold a printed can before
+  they commit to 240 of them. We cannot tell which from a pop-up submission, and guessing wrong
+  costs us the lead. So every email carries both doors, and their own behaviour tells us which one
+  they were on.</p>
+  <p>What changes across the four emails is which door is <strong>primary</strong>. E1 through E3
+  lead with the sample pack, because it is the lower-commitment ask and the pop-up already promised
+  it. E4 flips and leads with the enquiry, because by then the sceptic has had twelve days to claim
+  a free pack and hasn't, which means they were never the sceptic.</p>
+  <p>Four jobs, in order: <strong>claim what you were just offered</strong> → <strong>these are the
+  brands who already did</strong> → <strong>here is yours on a can</strong> → <strong>and it is
+  smaller than you think</strong>.</p>
+</section>
+
+<section>
+  <h2>Setup</h2>
+  <table>
+    <tr><th>Trigger</th><td>Added to List — Corporate Can Customers <code>VDbACH</code> (2,241 profiles today)</td></tr>
+    <tr><th>Trigger filter</th><td><code>b2b_source</code> equals <code>Alia — Custom Can Pop-up</code> &nbsp;<span style="color:var(--amber);font-size:13px">← open decision 1</span></td></tr>
+    <tr><th>Profile filters</th><td>Can receive email marketing · exclude <code>XfpVuL</code> Bounced at least once, <code>WD4xN3</code> Bounced Unclassified/External L30, <code>TVyPNi</code> Marked as Spam</td></tr>
+    <tr><th>Goal</th><td>First purchase through either door — B2B enquiry submitted, or sample pack ordered</td></tr>
+    <tr><th>Exits</th><td>
+      Placed Order <code>VKWkGu</code> where Items contains <em>Custom Branded Sample Pack</em> → hands to the live <code>[WP] F_POST-PURCHASE_SAMPLE-PACK</code><br>
+      B2B Inquiry Submitted <code>Utn4Ma</code> · B2B Order Placed <code>SyGap2</code> &nbsp;<em style="color:var(--muted)">(both live from Pipedrive)</em>
+    </td></tr>
+    <tr><th>Sender</th><td>June from Rippl &lt;june@ripplwater.com.au&gt;, reply-to custombranded@ripplwater.com.au</td></tr>
+    <tr><th>Cadence</th><td>Day 0 (+20 min), Day 2, Day 6, Day 12 — as per the 05 Aug strategy doc</td></tr>
+    <tr><th>Smart sending</th><td>On. Skip anyone who has received a B2B campaign in the last 16 hours.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Topology</h2>
+  <div class="topo">
+    <div class="node"><span class="pill p-trigger">Trigger</span><span class="nlabel">Added to List · Corporate Can Customers <em>(VDbACH)</em></span></div>
+    <div class="rail"></div>
+    <div class="node"><span class="pill p-filter">Filter</span><span class="nlabel">b2b_source = Alia — Custom Can Pop-up</span></div>
+    <div class="rail"></div>
+    <div class="node"><span class="pill p-delay">20 min</span><span class="nlabel"><em>settle buffer — lets an in-session sample order register first</em></span></div>
+    <div class="rail"></div>
+    <div class="node"><span class="pill p-email">Day 0 · E1</span><span class="nlabel">Two doors <em>— sample pack primary</em></span></div>
+    <div class="rail"></div>
+    <div class="node"><span class="pill p-delay">2 days</span><span class="nlabel"></span></div>
+    <div class="rail"></div>
+    <div class="node"><span class="pill p-email">Day 2 · E2</span><span class="nlabel">Who prints with us <em>— sample pack primary</em></span></div>
+    <div class="rail"></div>
+    <div class="node"><span class="pill p-delay">4 days</span><span class="nlabel"></span></div>
+    <div class="rail"></div>
+    <div class="node"><span class="pill p-email">Day 6 · E3</span><span class="nlabel">Where the cans show up <em>— sample pack primary · show/hide on use case</em></span></div>
+    <div class="rail"></div>
+    <div class="node"><span class="pill p-delay">6 days</span><span class="nlabel"></span></div>
+    <div class="rail"></div>
+    <div class="node"><span class="pill p-email">Day 12 · E4</span><span class="nlabel">From 240 cans <em>— enquiry primary, doors swap</em></span></div>
+    <div class="rail"></div>
+    <div class="node"><span class="pill p-exit">Exit</span><span class="nlabel">Sample ordered → post-purchase flow &nbsp;·&nbsp; Enquiry submitted → Pipedrive &nbsp;·&nbsp; Neither → B2B campaign list</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>The four emails</h2>
+
+  <div class="card">
+    <div class="chead"><span class="pos">E1</span><span class="nm">Two doors</span><span class="dl">Day 0 · +20 min</span></div>
+    <div class="cbody">
+      <div class="row"><div class="rk">Job</div><div class="rv">Honour the pop-up. They just watched a screen say "Your sample pack is on us" and then either bounced off the sample page or hit Maybe later. Pick that thread straight back up, and name the second door for the buyer who already has a brief and doesn't want a free can, they want a price.</div></div>
+      <div class="row"><div class="rk">Awareness</div><div class="rv">Product aware — they were on the custom page, they know what Rippl sells. Shortest copy in the sequence.</div></div>
+      <div class="row"><div class="rk">Triggers</div><div class="rv"><span class="chip">Reciprocity</span><span class="chip">Low-risk trial</span><span class="chip">Effort reduction</span><span class="chip">Self-selection</span></div></div>
+      <div class="row"><div class="rk">Carries</div><div class="rv">What is actually in the pack — five 330ml cans, still and sparkling, real print examples in gloss and matte. The shipping-credit mechanic: pack is free, shipping is credited back 100% against a first order within 60 days. Then the second door, stated plainly and without apology.</div></div>
+      <div class="row"><div class="rk">CTAs</div><div class="rv"><span class="cta">Claim my sample pack</span><span class="cta sec">Send us the brief</span></div></div>
+      <div class="row"><div class="rk">Show / hide</div><div class="rv"><div class="sh"><span class="lbl">Show if b2b_timing = Within a month</span>Flip the two doors so the enquiry sits first, and add the Priority Production line as an aside. Someone with a date inside a month cannot wait out a sample pack and then three weeks of standard production. Fallback if the property is missing: sample pack first, as written.</div></div></div>
+      <div class="row"><div class="rk">Subject angle</div><div class="rv">Outcome or curiosity led, never logistics. Preview text always populated — the one send that skipped it was the worst opener on record.</div></div>
+      <div class="row"><div class="rk">Message name</div><div class="rv"><span class="msgname">18991230_C_F_B2B-NURTURE_E1_TWO-DOORS</span></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="chead"><span class="pos">E2</span><span class="nm">Who prints with us</span><span class="dl">Day 2</span></div>
+    <div class="cbody">
+      <div class="row"><div class="rk">Job</div><div class="rv">Kill the two questions a sourcing manager asks before they'll spend anything: is this a real supplier, and is this for a business my size. Proof does both.</div></div>
+      <div class="row"><div class="rk">Awareness</div><div class="rv">Product aware — differentiation and credibility, not education.</div></div>
+      <div class="row"><div class="rk">Triggers</div><div class="rv"><span class="chip">Social proof</span><span class="chip">Authority</span><span class="chip">Herd</span><span class="chip">Behavioural proof</span></div></div>
+      <div class="row"><div class="rk">Carries</div><div class="rv">The logo wall, monochrome and evenly weighted — Prada, L'Oréal, Mercedes-Benz, Microsoft, Vogue, David Jones, RIMOWA, Arc'teryx, dentsu, JLL. 800+ brands. Then the number that does the real work: <strong>72% reorder within 12 months</strong> — that is not a testimonial, it is behaviour, and it answers "did it actually go well for them" better than any quote could. Case-study imagery from the custom page, printed cans in real environments.</div></div>
+      <div class="row"><div class="rk">CTAs</div><div class="rv"><span class="cta">Claim my sample pack</span><span class="cta sec">Configure and price your order</span></div></div>
+      <div class="row"><div class="rk">Show / hide</div><div class="rv">None.</div></div>
+      <div class="row"><div class="rk">Watch</div><div class="rv">Logos only. Not one of those brands has given Rippl a written quote, so nothing goes in quote marks next to a logo.</div></div>
+      <div class="row"><div class="rk">Message name</div><div class="rv"><span class="msgname">18991230_C_F_B2B-NURTURE_E2_WHO-PRINTS-WITH-US</span></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="chead"><span class="pos">E3</span><span class="nm">Where the cans show up</span><span class="dl">Day 6</span></div>
+    <div class="cbody">
+      <div class="row"><div class="rk">Job</div><div class="rv">Move from "Rippl is legitimate" to "I can see ours on that table". This angle is the best opener in the account on record at 69.1%, well clear of anything deadline-led at 52.9%.</div></div>
+      <div class="row"><div class="rk">Awareness</div><div class="rv">Solution aware — lead with the occasion and the feeling, not the product spec.</div></div>
+      <div class="row"><div class="rk">Triggers</div><div class="rv"><span class="chip">Identification</span><span class="chip">Specificity</span><span class="chip">Vividness</span></div></div>
+      <div class="row"><div class="rk">Carries</div><div class="rv">Environments rather than features. Boardroom tables, black-tie service, fashion week backstage, hotel rooms, office fridges, client gift boxes. Each one a short line and an image, no paragraphs.</div></div>
+      <div class="row"><div class="rk">CTAs</div><div class="rv"><span class="cta">Claim my sample pack</span><span class="cta sec">Send us the brief</span></div></div>
+      <div class="row"><div class="rk">Show / hide</div><div class="rv"><div class="sh"><span class="lbl">Show if b2b_use_case is set</span>Lead the grid with the environment matching their answer — <em>A one-off event</em> opens on black-tie and fashion week, <em>Ongoing supply</em> opens on the office fridge and hospitality service, <em>Client or staff gifting</em> opens on the gift box and the desk. The rest of the grid follows in default order underneath, so nothing is lost.<br><br><strong>Fallback if not set or <em>Just exploring</em>:</strong> run the full grid in default order. Screen 2 is skippable and this is the majority case, so the fallback has to be the strongest version, not a stripped one.</div></div></div>
+      <div class="row"><div class="rk">Message name</div><div class="rv"><span class="msgname">18991230_C_F_B2B-NURTURE_E3_WHERE-THEY-SHOW-UP</span></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="chead"><span class="pos">E4</span><span class="nm">From 240 cans</span><span class="dl">Day 12</span></div>
+    <div class="cbody">
+      <div class="row"><div class="rk">Job</div><div class="rv">The logic close, and the point where the doors swap. Twelve days of a free sample pack sitting on the table unclaimed means this person was never the sceptic — they were the buyer weighing up whether a custom run is worth the hassle. So answer that, then send them to the configurator.</div></div>
+      <div class="row"><div class="rk">Awareness</div><div class="rv">Most aware — mechanics, numbers, and the shortest path to a price.</div></div>
+      <div class="row"><div class="rk">Triggers</div><div class="rv"><span class="chip">Risk reversal</span><span class="chip">Effort reduction</span><span class="chip">Concreteness</span><span class="chip">Reframing</span></div></div>
+      <div class="row"><div class="rk">Carries</div><div class="rv">The four steps — configure, brief, approve, deliver — and the fact Rippl does the design off a logo and brand colours. From 240 units, the lowest MOQ in Australia for direct-to-can digital print. Instant pricing on the configurator up to 960 units. Standard three weeks from artwork approval, priority seven calendar days. Order any day, there is no monthly cut-off any more. The reframe underneath all of it: 240 is one event, not a warehouse.</div></div>
+      <div class="row"><div class="rk">CTAs</div><div class="rv"><span class="cta">Configure and price your order</span><span class="cta sec">Or hold one first — sample pack</span></div></div>
+      <div class="row"><div class="rk">Show / hide</div><div class="rv"><div class="sh"><span class="lbl">Show if b2b_timing = Within a month</span>Swap the standard-production line for the Priority Production aside — seven calendar days from artwork approval, subject to availability and capacity, with a surcharge, selected at submission. Fallback: standard three weeks leads, priority sits as the parenthetical.</div></div></div>
+      <div class="row"><div class="rk">Watch</div><div class="rv">Timeframes are a guide, never a promise. No countdown, no capacity scarcity, no guaranteed delivery date.</div></div>
+      <div class="row"><div class="rk">Message name</div><div class="rv"><span class="msgname">18991230_C_F_B2B-NURTURE_E4_FROM-240-CANS</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Decisions on you</h2>
+  <div class="callout c-amber">
+    <h3>Four open items before Pass 2</h3>
+    <ol>
+      <li><strong>Hand-added leads.</strong> Outbound and event contacts land on the same list. As drafted, the trigger filters on <code>b2b_source</code> so only pop-up leads enter, and outbound gets a sibling flow on a slower cadence later. The alternative is one flow with a split at entry — Klaviyo branches can't rejoin, so that means duplicating all four emails into a second path for eight columns of near-identical copy. My call is to keep this one clean and build the outbound sibling separately, but it's your scope call.</li>
+      <li><strong>Sample pack URL.</strong> The pop-up brief sends screen 3 to <code>/pages/custom-sample-pack</code>. The URL verified as live at the last build is <code>/products/custom-branded-sample-pack</code>. Need the canonical one before any CTA gets written.</li>
+      <li><strong>Enquiry destination.</strong> Where does the second door actually point — the form on <code>/pages/custom</code>, or somewhere else — and does submitting it fire <code>B2B Inquiry Submitted</code>? That metric is the exit condition, so if the form doesn't write to it, people who convert keep getting nurtured.</li>
+      <li><strong>Shipping charge.</strong> $19.99 is inferred from the preview text on the live post-purchase flow. Worth confirming it's still current before it goes in copy.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h2>Guardrails</h2>
+  <div class="callout c-red">
+    <h3>Does not go in this flow</h3>
+    <ul>
+      <li>No percentage-off or discount framing anywhere. The pack is the offer, not a coupon.</li>
+      <li>No countdowns, no stock scarcity, no guaranteed delivery dates.</li>
+      <li>No client testimonial quotes. Logo wall brands are logos only.</li>
+      <li>Manufacturing timeframes are a guide, never a promise.</li>
+      <li>No em dashes in body copy, and no emoji inside the design.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Downstream</h2>
+  <p>The live <code>[WP] F_POST-PURCHASE_SAMPLE-PACK</code> flow this hands into is carrying facts
+  that are no longer true: <em>"10 days from approval to delivery"</em>, <em>"Priority Production.
+  Limited capacity each month"</em>, <em>"Your 60-day window closes in 7 days"</em>. Current spec is
+  seven calendar days on priority and no monthly cut-off at all. It's a separate job, flagged here
+  because it is the first thing a sample buyer reads after leaving this flow.</p>
+</section>
+
+<div class="foot">
+  Pass 1 blueprint · structure only, no copy drafted yet · Tethrd × Rippl · 14/08/2026<br>
+  Approve or edit, then Pass 2 drafts all four columns into the planner's Flow Copy tab.
+</div>
+
+</div>
+</body>
+</html>

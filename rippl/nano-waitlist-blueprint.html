@@ -1,0 +1,290 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rippl Nano Waitlist Nurture — Blueprint</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.5; }
+  .header { padding: 40px 32px 22px; border-bottom: 1px solid #222; }
+  .header h1 { font-size: 23px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .header .meta { font-size: 13px; color: #666; }
+  .header .meta span { color: #2f9bb3; }
+  .arc { padding: 18px 32px; background: #0d1417; border-bottom: 1px solid #1a2b30; font-size: 13.5px; color: #9fd4df; line-height: 1.7; }
+  .arc b { color: #cdeef4; }
+  .arc p { max-width: 1000px; margin-bottom: 9px; }
+  .arc p:last-child { margin-bottom: 0; }
+  .flag { padding: 18px 32px; background: #1a1206; border-bottom: 1px solid #3a2a10; }
+  .flag p { font-size: 13px; color: #f5b955; line-height: 1.68; max-width: 1000px; margin-bottom: 10px; }
+  .flag p:last-child { margin-bottom: 0; }
+  .flag b { color: #ffd489; }
+  .flag .big { display:block; color:#ff9d5c; font-weight:700; margin-bottom:12px; font-size:13.5px; letter-spacing:.02em; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 8px 32px 70px; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid #1a2b30; border-radius:10px; overflow:hidden; margin:26px 0 6px; }
+  .stat { padding:18px 20px; background:#0d1417; border-right:1px solid #1a2b30; }
+  .stat:last-child { border-right:none; }
+  .stat .n { font-size:26px; font-weight:700; color:#2f9bb3; line-height:1.1; }
+  .stat .l { font-size:11px; color:#7d9aa2; text-transform:uppercase; letter-spacing:.09em; margin-top:6px; }
+  h2.stage { font-size:12px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:#5f8b96; margin:46px 0 14px; padding-bottom:9px; border-bottom:1px solid #1a2b30; }
+  .trig { border:1px solid #1f4a58; border-radius:10px; overflow:hidden; margin-bottom:8px; }
+  .trig-h { padding:14px 20px; background:#0d1a1f; border-bottom:1px solid #1f4a58; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#6fd0e4; }
+  .trig-b { padding:16px 20px; }
+  .kv { display:grid; grid-template-columns:190px 1fr; gap:6px 18px; font-size:13.5px; }
+  .kv dt { color:#6a6a6a; font-size:11px; text-transform:uppercase; letter-spacing:.9px; padding-top:3px; }
+  .kv dd { color:#e0e0e0; }
+  .kv dd code { background:#151515; padding:2px 6px; border-radius:4px; color:#9fd4df; font-size:12.5px; }
+  .diagram { border:1px solid #222; border-radius:10px; background:#0d0d0d; padding:24px 20px; margin:8px 0 0; overflow-x:auto; }
+  .dnode { display:flex; align-items:flex-start; gap:14px; margin-bottom:0; }
+  .dcol { width:150px; flex:none; text-align:right; padding-top:12px; }
+  .dcol .dly { font-size:11px; color:#6a6a6a; text-transform:uppercase; letter-spacing:.09em; }
+  .dbar { width:2px; background:#1f4a58; flex:none; margin:0 2px; position:relative; }
+  .dbox { flex:1; background:#151515; border:1px solid #222; border-left:3px solid #2f9bb3; border-radius:6px; padding:12px 15px; margin-bottom:10px; }
+  .dbox.trigger { border-left-color:#4CAF50; background:#0e150f; }
+  .dbox.exit { border-left-color:#555; background:#101010; }
+  .dbox .bt { font-size:14px; font-weight:700; color:#fff; }
+  .dbox .bs { font-size:12.5px; color:#8a8a8a; margin-top:3px; }
+  .camp { border: 1px solid #1f4a58; border-radius: 10px; margin: 22px 0; overflow: hidden; }
+  .camp-head { padding: 18px 22px; background: #0d1a1f; border-bottom: 1px solid #1f4a58; display:flex; justify-content:space-between; align-items:baseline; gap:16px; }
+  .camp-head .n { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color:#2f9bb3; }
+  .camp-head .t { font-size: 18px; font-weight: 700; color:#fff; margin-top:3px; }
+  .camp-head .aware { font-size:10.5px; color:#6a6a6a; text-transform:uppercase; letter-spacing:0.08em; margin-top:5px; }
+  .camp-head .d { font-size: 12px; color:#888; white-space:nowrap; text-align:right; }
+  .camp-head .d b { color:#6fd0e4; display:block; font-size:15px; }
+  .badge { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; padding:2px 8px; border-radius:4px; margin-left:8px; vertical-align:middle; }
+  .badge.gate { background:#3a2f10; color:#f5c561; }
+  .badge.new { background:#0f3540; color:#6fd0e4; }
+  .camp-body { padding: 20px 22px; }
+  .field { margin-bottom: 16px; }
+  .field:last-child { margin-bottom:0; }
+  .field-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin-bottom: 6px; }
+  .fv { font-size:14px; color:#e0e0e0; padding:12px 15px; background:#151515; border-radius:6px; border-left:3px solid #222; line-height:1.68; }
+  .fv.job { border-left-color:#2f9bb3; color:#fff; font-size:14.5px; }
+  .fv.warn { border-left-color:#c2701a; color:#f0b968; font-size:13.5px; }
+  .fv.note { border-left-color:#7c3aed; color:#b9a6ee; font-size:13px; }
+  .fv.wa { border-left-color:#25603f; color:#c8e6d4; font-size:13.5px; }
+  .fv.cta { border-left-color:#ef4444; color:#fff; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:13px; }
+  ul.spine { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  ul.spine li { font-size:14px; color:#d5d5d5; padding:11px 14px; background:#151515; border-left:3px solid #1f6070; border-radius:6px; line-height:1.6; }
+  ul.spine li b { color:#fff; }
+  .trg { display:flex; flex-wrap:wrap; gap:7px; }
+  .trg span { font-size:11px; color:#9fd4df; background:#0d1a1f; border:1px solid #1f4a58; padding:4px 10px; border-radius:99px; letter-spacing:.03em; }
+  table.dec { width:100%; border-collapse:collapse; font-size:13.5px; }
+  table.dec th { text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:1px; color:#666; padding:0 14px 9px 0; border-bottom:1px solid #222; font-weight:600; }
+  table.dec td { padding:13px 14px 13px 0; border-bottom:1px solid #181818; color:#d5d5d5; vertical-align:top; line-height:1.6; }
+  table.dec td:first-child { color:#fff; font-weight:600; width:210px; }
+  table.dec td.rec { color:#9fd4df; width:250px; }
+  .foot { margin-top:44px; padding-top:20px; border-top:1px solid #222; font-size:12.5px; color:#666; line-height:1.75; }
+  .foot b { color:#8a8a8a; }
+</style>
+
+<div class="header">
+  <h1>Rippl Nano — Waitlist Nurture Flow</h1>
+  <div class="meta">Blueprint · Pass 1 · <span>14/08/2026</span> · <code style="color:#9fd4df">F_NANO-WAITLIST-NURTURE</code> · 3 emails · structure only, no copy yet</div>
+</div>
+
+<div class="arc">
+  <p><b>Why this flow has to exist, and why it carries more than a thank-you.</b></p>
+  <p>The campaign sequence in drafts v3 and v4 excludes the Rippl Nano Early Access list from campaigns 1, 2 and 3, and only picks them up again on campaign 4, the reveal. So from the moment someone joins the waitlist, they are dark. They raised their hand, and then the only brand that has their attention says nothing to them for weeks while the cold list gets the tease, the PFAS story and the lab results.</p>
+  <p>That means this flow is not a confirmation email with two follow-ups. It is the <b>entire pre-launch experience for your highest-intent audience</b>, and it has to carry the same argument the campaigns carry, told better, because these people already said yes once.</p>
+  <p>Three emails, Day 0, Day 3, Day 8. Confirm and anchor, then prove, then make it theirs.</p>
+</div>
+
+<div class="flag">
+  <span class="big">Five things found while pulling this together, two of which change existing work</span>
+  <p><b>1. The mineral claim is unblocked.</b> Drafts v3 and v4 both stall on the same thing: you wanted Nano to name the minerals it retains, and I held it at "doesn't strip your water bare" because the ALS report had no mineral breakdown. The live waitlist page now states it publicly: <b>"Calcium and magnesium independently confirmed present in filtered water."</b> That is already published on your own site, so it is approved language. The blocked slot in campaign emails 3 and 4 can be written now.</p>
+  <p><b>2. The filter price in the playbook is wrong.</b> Vault has $45 every 2 to 3 months. The live page says <b>$59.99</b>. The page wins, and the $0.80 a day maths on the page is built off it. Worth correcting in the vault so it stops propagating.</p>
+  <p><b>3. It is SGS <i>and</i> ALS.</b> The playbook only knows about ALS. The page credits both, and leads with SGS. There is also a UV sterilisation stage that appears nowhere in the vault. Two-stage: UF nano filtration, then UV.</p>
+  <p><b>4. The 57 people already on the list have had nothing.</b> Early access ads went live 11/08 and the list is at 57 as of today. When this flow switches on it only catches new joiners. Backfill decision needed, options in the table at the bottom.</p>
+  <p><b>5. I could not watch the founder video.</b> You said it is on the success state after the form submits. The waitlist page renders that inline and I could not reach it without putting a real email onto the client's list, which I was not going to do. Send me the file or the URL and E1 gets built around it properly.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="stats">
+    <div class="stat"><div class="n">57</div><div class="l">On the list today</div></div>
+    <div class="stat"><div class="n">3</div><div class="l">Emails</div></div>
+    <div class="stat"><div class="n">8 days</div><div class="l">Day 0 · 3 · 8</div></div>
+    <div class="stat"><div class="n">~5 wks</div><div class="l">Runway to launch</div></div>
+  </div>
+
+  <h2 class="stage">Trigger and setup</h2>
+
+  <div class="trig">
+    <div class="trig-h">Flow configuration</div>
+    <div class="trig-b">
+      <dl class="kv">
+        <dt>Trigger</dt><dd>Added to list — <b>Rippl Nano Early Access</b> <code>RZNQUi</code></dd>
+        <dt>Flow filters</dt><dd>Person can receive email marketing. Global suppressions handle bounced and spam-marked, so nothing extra needed here.</dd>
+        <dt>Smart sending</dt><dd>Off. This audience opted in minutes ago and the sequence is only eight days. Smart sending would silently drop emails for anyone who also gets a campaign that week, which is exactly the wrong outcome for the highest-intent list you have.</dd>
+        <dt>Exit condition</dt><dd>None needed pre-launch. There is nothing to buy yet, so nobody can convert out of it.</dd>
+        <dt>Lifespan</dt><dd><b>Pre-launch only.</b> This flow is written for people waiting. On launch day it stops making sense and needs replacing with a conversion version. Flagged as a known follow-up, not a gap.</dd>
+        <dt>Naming</dt><dd><code>F_NANO-WAITLIST-NURTURE</code>, following the account's <code>[WP] F_</code> convention</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="diagram">
+    <div class="dnode"><div class="dcol"><div class="dly">Trigger</div></div><div class="dbar"></div><div class="dbox trigger"><div class="bt">Added to Rippl Nano Early Access</div><div class="bs">Form submit on drinkrippl.com/pages/rippl-nano-early-acess</div></div></div>
+    <div class="dnode"><div class="dcol"><div class="dly">Immediately</div></div><div class="dbar"></div><div class="dbox"><div class="bt">E1 · You're in</div><div class="bs">Confirm the position, deliver the founder video, set the September expectation</div></div></div>
+    <div class="dnode"><div class="dcol"><div class="dly">Wait 3 days</div></div><div class="dbar"></div><div class="dbox"><div class="bt">E2 · What's actually in your water</div><div class="bs">The PFAS problem, then the SGS and ALS results that answer it</div></div></div>
+    <div class="dnode"><div class="dcol"><div class="dly">Wait 5 days</div></div><div class="dbar"></div><div class="dbox"><div class="bt">E3 · One machine, and which finish is yours</div><div class="bs">Running cost, the kettle argument, then black or white</div></div></div>
+    <div class="dnode"><div class="dcol"><div class="dly">Day 8</div></div><div class="dbar" style="background:transparent"></div><div class="dbox exit"><div class="bt">Flow ends</div><div class="bs">Reveal campaign and launch sequence take over from here</div></div></div>
+  </div>
+
+  <h2 class="stage">The three emails</h2>
+
+  <div class="camp">
+    <div class="camp-head">
+      <div>
+        <div class="n">Email 1 <span class="badge new">Needs the video</span></div>
+        <div class="t">You're in</div>
+        <div class="aware">Solution aware · they know the problem, they just met the answer</div>
+      </div>
+      <div class="d"><b>Immediately</b>Day 0</div>
+    </div>
+    <div class="camp-body">
+      <div class="field"><div class="field-label">The job</div>
+        <div class="fv job">Turn a form fill into a felt commitment. Right now joining the waitlist cost them nothing and they will forget by Thursday. This email has to make the position feel real, put a date on it, and hand them something worth having so the next two emails get opened.</div></div>
+
+      <div class="field"><div class="field-label">Content spine</div>
+        <ul class="spine">
+          <li><b>Confirmation, stated plainly.</b> You're on the list. No cleverness in the first line, they submitted a form and they want to know it worked.</li>
+          <li><b>The founder video.</b> They have technically already seen this on the success state, but most people submit and leave the tab. The email is the durable copy of it. Written to acknowledge that honestly rather than pretend it's new.</li>
+          <li><b>What early access actually gets you.</b> Heard first, and first shipment priority. That is the page's own language and it is the only promise currently safe to make.</li>
+          <li><b>The date.</b> September 2026. See open decision 1 on whether we get to be more precise than that.</li>
+          <li><b>One line planting black or white.</b> Not a decision request, just enough that the choice is already sitting in their head when E3 arrives.</li>
+          <li><b>What's coming.</b> Two more emails, what each one covers. Sets the open expectation for E2 and E3 explicitly.</li>
+        </ul></div>
+
+      <div class="field"><div class="field-label">Triggers</div>
+        <div class="trg"><span>Reciprocity</span><span>Anticipation</span><span>Belonging</span><span>Founder authority</span><span>Commitment consistency</span></div></div>
+
+      <div class="field"><div class="field-label">CTA</div>
+        <div class="fv cta">[ WATCH BADE'S MESSAGE ]</div></div>
+
+      <div class="field"><div class="field-label">Note on the CTA</div>
+        <div class="fv note">There is no buy button anywhere in this flow, because there is nothing to buy. Every CTA is a content CTA. That is a feature, not a limitation: it means all three emails can be written to build belief without a single ask, which is the rarest and most persuasive position email copy ever gets to occupy.</div></div>
+
+      <div class="field"><div class="field-label">Asset</div>
+        <div class="fv warn">Founder thank-you video, as a still with a play overlay linking out. Blocked on you sending it to me. If it turns out to be unusable in email, E1 runs as a written founder note instead and loses very little.</div></div>
+
+      <div class="field"><div class="field-label">WhatsApp / SMS companion</div>
+        <div class="fv wa">Drafted per the standing rule, conditional on SMS or WhatsApp consent. Waitlist joiners come in through an email-only form, so this fires for very few people at first. Worth having ready rather than retrofitting later.</div></div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="camp-head">
+      <div>
+        <div class="n">Email 2</div>
+        <div class="t">What's actually in your water</div>
+        <div class="aware">Problem aware to solution aware · the belief-builder</div>
+      </div>
+      <div class="d"><b>Day 3</b>+3 days</div>
+    </div>
+    <div class="camp-body">
+      <div class="field"><div class="field-label">The job</div>
+        <div class="fv job">This is the most important email in the sequence and the reason the flow exists. It carries the whole argument the waitlist is suppressed from receiving as campaigns: the problem nothing else filters, and the independent proof that Nano does. Someone who reads this email properly is no longer deciding whether to buy a water filter, only which one.</div></div>
+
+      <div class="field"><div class="field-label">Content spine</div>
+        <ul class="spine">
+          <li><b>What PFAS actually is.</b> Most people have heard the term and could not define it. Non-stick pans, food packaging, firefighting foam, waterproof jackets, made since the 1950s.</li>
+          <li><b>Why forever.</b> They do not break down. Decades in the soil and water, no natural process clears them.</li>
+          <li><b>The gap.</b> Treatment plants kill bacteria and clear sediment and do it well. PFAS was not on the list when those plants were designed. Only granular activated carbon and ion-exchange resin remove it.</li>
+          <li><b>The rules moving.</b> Australia cut the safe limit roughly 90%. PFOS came down from 70 ng/L to 8. That is the one hard number in the email and it is doing the work.</li>
+          <li><b>The turn, into proof.</b> Tested across 38 PFAS compounds, none found. No lead, arsenic or mercury. Zero bacteria. UV stage after filtration.</li>
+          <li><b>The part that is better than clean.</b> Calcium and magnesium independently confirmed present. Removing everything is easy. Removing only what should not be there is the hard version, and it is now a claim we can actually make.</li>
+          <li><b>Credibility line.</b> Independently tested by SGS and ALS, NATA accredited.</li>
+        </ul></div>
+
+      <div class="field"><div class="field-label">Triggers</div>
+        <div class="trg"><span>Loss aversion</span><span>Third-party authority</span><span>Specificity</span><span>Curiosity gap</span><span>Problem agitation</span></div></div>
+
+      <div class="field"><div class="field-label">CTA</div>
+        <div class="fv cta">[ SEE THE FULL TEST RESULTS ]</div></div>
+
+      <div class="field"><div class="field-label">Two things I am deliberately not writing</div>
+        <div class="fv warn"><b>"Silent killer" stays out.</b> It is a health claim sitting next to a $675 product in a market where the ACCC polices exactly this, and nothing on the live page uses it. The 90% limit cut carries the same weight and is a fact.<br><br><b>Fluoride stays out entirely.</b> Per Bade's 21/07 direction. The live page does not mention it either, so there is no inconsistency to manage.</div></div>
+
+      <div class="field"><div class="field-label">Asset</div>
+        <div class="fv warn">Still no SGS or ALS report pages as images. Bade sent claim language on 21/07 but never the documents, and they are in neither the vault nor the Drive folder. The email works without them using a clean claims block, but real report pages with the NATA and SGS marks visible would make it materially stronger. Worth one chase.</div></div>
+
+      <div class="field"><div class="field-label">WhatsApp / SMS companion</div>
+        <div class="fv wa">Drafted. Compresses to the problem, the two lab lines, and the minerals point.</div></div>
+    </div>
+  </div>
+
+  <div class="camp">
+    <div class="camp-head">
+      <div>
+        <div class="n">Email 3</div>
+        <div class="t">One machine, and which finish is yours</div>
+        <div class="aware">Product aware · pre-decide the purchase</div>
+      </div>
+      <div class="d"><b>Day 8</b>+5 days</div>
+    </div>
+    <div class="camp-body">
+      <div class="field"><div class="field-label">The job</div>
+        <div class="fv job">Move them from "this is legitimate" to "this is mine". Everything here is designed so that on launch day the decision is already made and the only remaining action is clicking. The strongest lever is not the filtration story, it is that Nano quietly deletes three things they already own.</div></div>
+
+      <div class="field"><div class="field-label">Content spine</div>
+        <ul class="spine">
+          <li><b>The running cost.</b> $0.80 a day. Bottled water runs the average Australian household over $120 a month. One filter every 2 to 3 months at $59.99 is the only ongoing cost.</li>
+          <li><b>The kettle is redundant.</b> 100°C on demand, 6°C cold, five presets between, three seconds. This is the line that lands hardest and it is currently buried halfway down the landing page.</li>
+          <li><b>Nothing to install.</b> Out of the box, on the bench, plug in, fill the 3.5L tank. No plumber, no drilling, no permanent change to the kitchen.</li>
+          <li><b>Nothing to manage.</b> No wastewater tank, nothing to drain. On-screen indicator flashes at 10% so you are never guessing about the filter.</li>
+          <li><b>What it replaces.</b> Jug filter, kettle, bottled water delivery, all one machine. This is the comparison logic from the page, compressed.</li>
+          <li><b>Black or white.</b> Its own section, both finishes shown at equal weight, same angle and light. Visual only per your call, single CTA underneath.</li>
+          <li><b>Close on readiness.</b> Launching September, waitlist hears first, be ready to move. See open decision 2 on how hard to lean on the stock split.</li>
+        </ul></div>
+
+      <div class="field"><div class="field-label">Triggers</div>
+        <div class="trg"><span>Value stacking</span><span>Cost anchoring</span><span>Effort reduction</span><span>Ownership imagery</span><span>Scarcity (pending decision)</span></div></div>
+
+      <div class="field"><div class="field-label">CTA</div>
+        <div class="fv cta">[ SEE THE FULL SPEC ]</div></div>
+
+      <div class="field"><div class="field-label">Colour capture, per your call</div>
+        <div class="fv note">Not capturing black or white as a profile property. Section runs visual with one CTA. Noting once and leaving it: with a 250/250 split you will want colour-level segmentation on launch day and this was the only free chance to collect it. Easy to add later if you change your mind, and it does not change anything else in the build.</div></div>
+
+      <div class="field"><div class="field-label">WhatsApp / SMS companion</div>
+        <div class="fv wa">Drafted. Leads on the kettle line, which is the most WhatsApp-shaped fact in the whole product.</div></div>
+    </div>
+  </div>
+
+  <h2 class="stage">Open decisions</h2>
+
+  <table class="dec">
+    <tr><th>Decision</th><th>My recommendation</th><th>Why it matters</th></tr>
+    <tr>
+      <td>1. How precise on the launch date</td>
+      <td class="rec">Say September, hold the exact window</td>
+      <td>The page says "Launching September 2026". The vault has a Sep 20 to 26 window agreed 04/08. If we put a date in email and it slips, the waitlist is the audience that notices and the trust cost is highest. Vague and kept beats specific and missed. If the window is locked hard, tell me and E1 and E3 both tighten.</td>
+    </tr>
+    <tr>
+      <td>2. Do we use the 250/250 stock split as scarcity</td>
+      <td class="rec">Yes in E3, softly, no numbers</td>
+      <td>The split is real and it genuinely constrains colour choice, so it is honest scarcity. But publishing "250 units" invites a run and it sits against the standing rule on never exposing sales quantities. "Stock is split between the two finishes and we cannot move units from one to the other" gets the whole effect without a number.</td>
+    </tr>
+    <tr>
+      <td>3. Do we mention price at all</td>
+      <td class="rec">No. Hold it for launch day</td>
+      <td>$599 subscribe and save versus $675 one-time was locked 04/08 but is nowhere on the public page. Price is the single biggest lever you have on launch day and revealing it early spends it for nothing. E3 uses the $0.80 a day running cost instead, which is the friendlier number anyway.</td>
+    </tr>
+    <tr>
+      <td>4. The 57 already on the list</td>
+      <td class="rec">Backfill them through the flow</td>
+      <td>They joined off the 11/08 ads and have heard nothing. Cleanest fix is to switch the flow on, then add the existing 57 with backfill enabled so they run the same three emails. Alternative is a one-off catch-up campaign, which is more work for a worse result. Your call, but leaving them dark is the one option I would rule out.</td>
+    </tr>
+    <tr>
+      <td>5. Founder video</td>
+      <td class="rec">Send me the file or URL</td>
+      <td>Only hard blocker on drafting. E1 can be written around it as a marked slot, but if the video says something specific about what waitlisters get, the copy should lead into it rather than talk over it.</td>
+    </tr>
+  </table>
+
+  <div class="foot">
+    <b>Blueprint status:</b> draft, awaiting your approval. Nothing written to the planner sheet and nothing built in Klaviyo yet.<br>
+    <b>On approval I draft Pass 2:</b> all three emails in full to the Rippl planner row schema, three variations on E1 as the opener, one draft each on E2 and E3, plus WhatsApp companions, then a drafts preview for review before anything touches the sheet.<br>
+    <b>Facts sourced from:</b> live waitlist page (14/08/2026), vault/concepts/nano-launch-playbook.md, Klaviyo account SVAnRR, and drafts v3 and v4. Where the page and the vault disagree, the page wins and the disagreement is flagged above.
+  </div>
+
+</div>

@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>F_B2B-NURTURE — copy drafts v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1E3F;--grey:#EBEBEB;--line:#DFE3E9;--muted:#5B6472;--soft:#F7F8FA;
+  --amber:#B45309;--amberline:#F0C577;--amberbg:#FFFBEB;}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#000;font-family:Inter,-apple-system,sans-serif;
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 28px 90px}
+.bar{border-bottom:1px solid var(--line);margin-bottom:40px}
+.bar .wrap{padding:20px 28px 18px;display:flex;flex-wrap:wrap;align-items:baseline;gap:14px}
+.key{font-weight:700;color:var(--navy)}
+.sep{color:var(--line)}
+.meta{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;padding:3px 9px;border-radius:3px;background:var(--navy);color:#fff}
+h2{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  margin:0 0 18px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+section{margin-bottom:48px}
+p{margin:0 0 14px;max-width:70ch}
+code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--soft);
+  padding:1px 5px;border-radius:3px;border:1px solid var(--line)}
+.card{border:1px solid var(--line);border-radius:6px;margin-bottom:26px;overflow:hidden}
+.chead{background:var(--navy);color:#fff;padding:15px 20px;display:flex;flex-wrap:wrap;
+  align-items:baseline;gap:12px}
+.chead .pos{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.72}
+.chead .nm{font-size:17px;font-weight:600}
+.chead .dl{margin-left:auto;font-size:12px;background:rgba(255,255,255,.14);padding:3px 10px;border-radius:3px}
+.cbody{padding:20px}
+.sect{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+  margin:26px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+.cbody .sect:first-child{margin-top:0}
+.subj{border:1px solid var(--line);border-radius:5px;padding:12px 14px;margin-bottom:9px;background:var(--soft)}
+.subj .n{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
+.subj .s{font-size:15.5px;font-weight:600;margin-bottom:3px}
+.subj .pv{font-size:14px;color:var(--muted)}
+.subj.rec{background:#fff;border-color:var(--navy);border-width:1.5px}
+.subj.rec .n{color:var(--navy)}
+.mod{border-left:2px solid var(--grey);padding:0 0 0 16px;margin-bottom:20px}
+.mod .mh{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:8px}
+.copy{white-space:pre-wrap;font-size:15px;line-height:1.62}
+.hero{background:var(--soft);border:1px solid var(--line);border-radius:5px;padding:16px 18px;margin-bottom:16px}
+.hero .hl{font-size:21px;font-weight:700;line-height:1.28;margin-bottom:7px}
+.hero .sl{font-size:16px;color:#2C3542;margin-bottom:12px}
+.alt{border:1px dashed var(--line);border-radius:5px;padding:12px 14px;margin-bottom:9px}
+.alt .n{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
+.alt .hl{font-size:17px;font-weight:700;line-height:1.3;margin-bottom:4px}
+.alt .sl{font-size:14.5px;color:var(--muted)}
+.br{background:#FFFBEB;border:1px solid var(--amberline);border-radius:3px;padding:2px 7px;
+  font-size:13px;color:#7A4A08;display:inline-block;margin:2px 0}
+.mt{background:#EAF1FB;border:1px solid #A9C4E8;border-radius:3px;padding:1px 6px;
+  font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#1E40AF}
+.cta{display:inline-block;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:9px 16px;border-radius:3px;background:var(--navy);color:#fff;margin:4px 8px 4px 0}
+.cta.sec{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+.note{background:var(--amberbg);border:1px solid var(--amberline);border-left:3px solid var(--amberline);
+  border-radius:0 4px 4px 0;padding:11px 14px;font-size:13.5px;margin:12px 0}
+.note .lbl{display:block;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:4px}
+.reuse{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  background:var(--grey);color:#3A4250;padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle}
+.foot{border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="wrap">
+  <span class="key">F_B2B-NURTURE</span><span class="sep">/</span>
+  <span class="meta">Rippl · June, Custom Branded</span><span class="sep">/</span>
+  <span class="meta">4 emails</span>
+  <span class="meta" style="margin-left:auto"><span class="tag">Pass 2 · copy v2</span> &nbsp;14/08/2026</span>
+</div></div>
+
+<div class="wrap">
+
+<section>
+  <h2>What changed in v2</h2>
+  <p>All your edits are in. The sample pack module is now a single reusable block that appears in
+  every email, marked <span class="reuse">reused</span> wherever it repeats, so it gets built once
+  and dropped in four times.</p>
+  <p>One structural consequence worth naming: the second door is now the <strong>configurator</strong>
+  in every email, not a separate enquiry form. That answers the open question from the blueprint,
+  and it means the flow's two exits are a sample pack order or a configured order, both of which
+  we can already track.</p>
+</section>
+
+<!-- ============ E1 ============ -->
+<div class="card">
+  <div class="chead"><span class="pos">E1</span><span class="nm">Two doors</span><span class="dl">Day 0 · +20 min</span></div>
+  <div class="cbody">
+
+    <div class="sect">Subject &amp; preview</div>
+    <div class="subj rec"><div class="n">Option 1 · pick</div>
+      <div class="s">Try our custom cans before you order any</div>
+      <div class="pv">Five printed cans, free, so you can see them first.</div></div>
+    <div class="subj"><div class="n">Option 2</div>
+      <div class="s">Hold one before you commit to 240</div>
+      <div class="pv">Your sample pack is free. We'll send five.</div></div>
+    <div class="subj"><div class="n">Option 3</div>
+      <div class="s">Your sample pack is ready to go</div>
+      <div class="pv">Five cans, still and sparkling, real print.</div></div>
+
+    <div class="sect">Hero</div>
+    <div class="hero">
+      <span class="br">[ BANNER: Rippl® Custom Branded ]</span>
+      <div class="hl" style="margin-top:10px">Try our custom cans for free, before you order a single one.</div>
+      <div class="sl">We'll send you five printed cans so you can see exactly what you'd be getting.</div>
+      <span class="cta">Claim my sample pack</span>
+      <div><span class="br">[ HERO IMAGE: sample pack open, cans laid out, print visible — SAMPLE_PACK-7.jpg ]</span></div>
+    </div>
+    <div class="alt"><div class="n">Alt headline A</div>
+      <div class="hl">See our cans for yourself, free, before you order.</div>
+      <div class="sl">Five printed cans, sent to you, so nothing about your first run is a guess.</div></div>
+    <div class="alt"><div class="n">Alt headline B</div>
+      <div class="hl">Free custom cans, before you commit to any.</div>
+      <div class="sl">Five printed cans in your hands, so you know exactly what you're ordering.</div></div>
+
+    <div class="sect">Body</div>
+
+    <div class="mod"><div class="mh">01 · Open</div><div class="copy">Hi <span class="mt">{{ first_name }}</span>,
+
+Thanks for submitting your email.
+
+The quickest way to work out whether we're right for you is to get our sample pack of five custom printed cans in your hands and get a feel for them before you put in your order.</div></div>
+
+    <div class="mod"><div class="mh">02 · What's in the pack <span class="reuse">reusable block</span></div><div class="copy"><span class="br">[ MODULE: sample pack block. Product shot left, three lines right. Build once, reused in E2, E3 and E4 ]</span>
+
+What's in the pack
+
+5 x 330ml cans
+Still and sparkling
+A mixed selection of prints we've run recently, in gloss and matte</div></div>
+
+    <div class="mod"><div class="mh">03 · The mechanic</div><div class="copy">The pack itself is free. You just cover shipping, and we credit 100% of it back against your first custom order if you place one within 60 days.</div>
+      <span class="cta">Claim my sample pack</span></div>
+
+    <div class="mod"><div class="mh">04 · Already know what you want</div><div class="copy">Already know what you want?
+
+Skip the sample and configure your order instead. Pricing is instant up to 960 units.</div>
+      <span class="cta sec">Configure and customise your order</span></div>
+
+    <div class="mod"><div class="mh">05 · Proof bar</div><div class="copy">Brands that have worked with us
+
+<span class="br">[ GIF: horizontal scrolling logo marquee, continuous loop, monochrome, evenly weighted, no logo larger than another ]</span>
+
+<span class="br">[ Designer — use these logos: Prada · L'Oréal · Mercedes-Benz · Microsoft · Vogue · David Jones · RIMOWA · Arc'teryx · Salomon · Mecca · Uniqlo · dentsu · JLL · CBRE · Jellis Craig. PNGs are on the live logo set on /pages/custom ]</span></div></div>
+
+    <div class="mod"><div class="mh">06 · Sustainability card</div><div class="copy"><span class="br">[ MODULE: single card, quiet. Icon or a close print-detail shot, not a stock leaf ]</span>
+
+Better than a plastic bottle, by design
+
+Your artwork prints straight onto the can, so there's no plastic label or sleeve anywhere in the process. Zero plastic, and aluminium goes back into the recycling stream instead of landfill.</div></div>
+
+    <div class="mod"><div class="mh">07 · Reply line</div><div class="copy">Need anything else before you decide? Reply to this email and one of our customer representatives will reach out.</div></div>
+
+    <div class="mod"><div class="mh">08 · Sign-off</div><div class="copy">June
+Rippl Custom Branded</div></div>
+
+    <div class="note"><span class="lbl">Conditional · b2b_timing = Within a month</span>
+    Move module 04 up so it sits directly under the hero, and add: <em>"If your date is inside a month, don't wait on a sample."</em> The sample pack modules stay, they just sit underneath.
+    <br><strong>Fallback, property missing or any other answer:</strong> order as drafted.</div>
+
+    <div class="note"><span class="lbl">Needs confirming</span>
+    The sustainability card is the only copy here not lifted from the verified fact list. Zero plastic and direct-to-vessel print are confirmed. The recycling line is a general aluminium truth rather than a Rippl-specific claim, so worth a check with Bade before it ships.</div>
+
+  </div>
+</div>
+
+<!-- ============ E2 ============ -->
+<div class="card">
+  <div class="chead"><span class="pos">E2</span><span class="nm">Who prints with us</span><span class="dl">Day 2</span></div>
+  <div class="cbody">
+
+    <div class="sect">Subject &amp; preview</div>
+    <div class="subj rec"><div class="n">Option 1 · pick</div>
+      <div class="s">Prada, L'Oréal, Mercedes-Benz</div>
+      <div class="pv">Just some of the brands that have worked with us.</div></div>
+    <div class="subj"><div class="n">Option 2</div>
+      <div class="s">800+ brands have printed with us</div>
+      <div class="pv">And more than 72% of them come back.</div></div>
+    <div class="subj"><div class="n">Option 3</div>
+      <div class="s">The brands already on a Rippl can</div>
+      <div class="pv">Prada, L'Oréal, Mercedes-Benz, and 800 more.</div></div>
+
+    <div class="sect">Hero</div>
+    <div class="hero">
+      <span class="br">[ BANNER: Rippl® Custom Branded ]</span>
+      <div class="hl" style="margin-top:10px">800+ brands have chosen Rippl for custom cans.</div>
+      <div class="sl">More than 72% of them order again within 12 months.</div>
+      <span class="cta">Claim my sample pack</span>
+    </div>
+
+    <div class="sect">Body</div>
+
+    <div class="mod"><div class="mh">01 · Logo wall</div><div class="copy">Prada. L'Oréal. Mercedes-Benz. Microsoft. Vogue. David Jones. Arc'teryx. dentsu.
+
+<span class="br">[ MODULE: logo wall. Each brand shown alongside the custom cans we've shipped them, real can shots paired with the monochrome logo. Evenly weighted, no logo larger than another ]</span></div></div>
+
+    <div class="mod"><div class="mh">02 · The 72%</div><div class="copy"><span class="br">[ MODULE: single large numeral, navy, understated. No badge, no starburst ]</span>
+
+72%
+of brands who print with us order again within 12 months</div></div>
+
+    <div class="mod"><div class="mh">03 · Production timeline</div><div class="copy"><span class="br">[ MODULE: two cards side by side. Mirrors the Production Speed graphic on /pages/custom ]</span>
+
+Standard Production
+3 weeks from artwork approval to dispatch
+
+Priority Production
+As little as 7 days from artwork approval to dispatch
+
+<span class="br">[ T&Cs line: Priority Production is subject to availability and capacity, and carries a surcharge. Timeframes are a guide. ]</span></div></div>
+
+    <div class="mod"><div class="mh">04 · Minimum order</div><div class="copy"><span class="br">[ MODULE: single block, large numeral ]</span>
+
+From 240 cans
+The lowest minimum order in Australia for direct-to-can digital print</div></div>
+
+    <div class="mod"><div class="mh">05 · Sample pack <span class="reuse">reused from E1</span></div><div class="copy"><span class="br">[ MODULE: sample pack block, same build as E1 module 02 ]</span>
+
+Want to see the print for yourself first?
+
+What's in the pack
+
+5 x 330ml cans
+Still and sparkling
+A mixed selection of prints we've run recently, in gloss and matte
+
+The pack is free. You just cover shipping, and we credit 100% of it back against your first custom order if you place one within 60 days.</div>
+      <span class="cta">Claim my sample pack</span></div>
+
+    <div class="mod"><div class="mh">06 · Second door</div><div class="copy">Or price it up now. Instant pricing up to 960 units.</div>
+      <span class="cta sec">Configure and price your order</span></div>
+
+    <div class="mod"><div class="mh">07 · Reply line</div><div class="copy">Need anything else before you decide? Reply to this email and one of our customer representatives will reach out.</div></div>
+
+    <div class="mod"><div class="mh">08 · Sign-off</div><div class="copy">June
+Rippl Custom Branded</div></div>
+
+    <div class="note"><span class="lbl">Watch</span>
+    Logos only. None of these brands has given Rippl a written quote, so nothing goes in quote marks anywhere near a logo and no brand name gets attached to a claim about print quality.</div>
+
+  </div>
+</div>
+
+<!-- ============ E3 ============ -->
+<div class="card">
+  <div class="chead"><span class="pos">E3</span><span class="nm">Where the cans show up</span><span class="dl">Day 6</span></div>
+  <div class="cbody">
+
+    <div class="sect">Subject &amp; preview</div>
+    <div class="subj rec"><div class="n">Option 1 · pick</div>
+      <div class="s">Where do you use custom cans?</div>
+      <div class="pv">Branded cans are the easiest way to get your brand out there.</div></div>
+    <div class="subj"><div class="n">Option 2</div>
+      <div class="s">Where can you use custom cans?</div>
+      <div class="pv">From boardrooms to black-tie, and everywhere between.</div></div>
+    <div class="subj"><div class="n">Option 3</div>
+      <div class="s">Nobody throws this one out</div>
+      <div class="pv">The rare piece of branded kit people actually use.</div></div>
+
+    <div class="sect">Hero</div>
+    <div class="hero">
+      <span class="br">[ BANNER: Rippl® Custom Branded ]</span>
+      <div class="hl" style="margin-top:10px">From boardrooms to black-tie.</div>
+      <div class="sl">Custom branded cans are the easiest way to get your brand visible.</div>
+      <span class="cta">Claim my sample pack</span>
+    </div>
+
+    <div class="sect">Body</div>
+
+    <div class="mod"><div class="mh">01 · Open</div><div class="copy">Most branded merch gets a polite thank you and a quiet trip to the bin.
+
+A custom can doesn't, because it gets used before anyone stops to think about it. Here's where they keep turning up.</div></div>
+
+    <div class="mod"><div class="mh">02 · Environment grid</div><div class="copy"><span class="br">[ MODULE: 3 stacked blocks, one image each, heading plus one short line. Order is conditional — see note below ]</span></div></div>
+
+    <div class="mod"><div class="mh">Block A · Events</div><div class="copy">On the table at black-tie
+
+Events, fashion week backstage, conference rooms, festival bars, launch nights. The cans end up in every photo whether anyone planned for it or not.</div></div>
+
+    <div class="mod"><div class="mh">Block B · Ongoing supply</div><div class="copy">In the fridge, every day
+
+Office kitchens, hotel rooms, café counters, studio front desks.</div></div>
+
+    <div class="mod"><div class="mh">Block C · Gifting</div><div class="copy">In the box
+
+Client thank-yous, new-starter packs, property inspections, VIP send-outs. It's that one item in the box that gets used rather than shelved.</div></div>
+
+    <div class="mod"><div class="mh">03 · Close line</div><div class="copy">Somebody reaches for a can because they want water. Your brand being visible with it is the added benefit.</div></div>
+
+    <div class="mod"><div class="mh">04 · Sample pack <span class="reuse">reused from E1</span></div><div class="copy"><span class="br">[ MODULE: sample pack block, same build as E1 module 02 ]</span>
+
+See how yours would look in any of them.
+
+What's in the pack
+
+5 x 330ml cans
+Still and sparkling
+A mixed selection of prints we've run recently, in gloss and matte
+
+The pack is free. You just cover shipping, and we credit 100% of it back against your first custom order if you place one within 60 days.</div>
+      <span class="cta">Claim my sample pack</span><span class="cta sec">Configure and price your order</span></div>
+
+    <div class="mod"><div class="mh">05 · Sign-off</div><div class="copy">June
+Rippl Custom Branded</div></div>
+
+    <div class="note"><span class="lbl">Conditional order · b2b_use_case</span>
+    All three blocks built in all three positions as conditional display blocks, so the matching one renders first and the other two follow. One column, no flow split, and E4 doesn't fork behind it.
+    <br><br>
+    <code>A one-off event</code> → A, B, C &nbsp;·&nbsp;
+    <code>Ongoing supply</code> → B, C, A &nbsp;·&nbsp;
+    <code>Client or staff gifting</code> → C, A, B
+    <br><br>
+    <strong>Fallback — property missing, or <code>Just exploring</code>:</strong> A, B, C in default order, all three showing. Screen 2 is skippable so this is the majority case, which is why the fallback is the full version rather than a stripped one.</div>
+
+  </div>
+</div>
+
+<!-- ============ E4 ============ -->
+<div class="card">
+  <div class="chead"><span class="pos">E4</span><span class="nm">Send us a logo</span><span class="dl">Day 12 · doors swap</span></div>
+  <div class="cbody">
+
+    <div class="sect">Subject &amp; preview</div>
+    <div class="subj rec"><div class="n">Option 1 · pick</div>
+      <div class="s">Send us a logo and we'll do the rest</div>
+      <div class="pv">Let our team handle the design on your custom cans.</div></div>
+    <div class="subj"><div class="n">Option 2</div>
+      <div class="s">Four steps to your first batch</div>
+      <div class="pv">Send us a logo and we'll do the rest.</div></div>
+    <div class="subj"><div class="n">Option 3</div>
+      <div class="s">You don't have to design anything</div>
+      <div class="pv">Our team builds the artwork. You approve it.</div></div>
+
+    <div class="sect">Hero</div>
+    <div class="hero">
+      <span class="br">[ BANNER: Rippl® Custom Branded ]</span>
+      <div class="hl" style="margin-top:10px">Send us a logo and we'll do the rest.</div>
+      <div class="sl">Four simple steps to getting your first batch of custom cans.</div>
+      <span class="cta">Configure and price your order</span>
+    </div>
+
+    <div class="sect">Body</div>
+
+    <div class="mod"><div class="mh">01 · Open</div><div class="copy">Are you still overthinking what your custom branded can should look like?
+
+Let our highly skilled design team take care of that. Simply send us your brand logo and we'll take care of the rest.</div></div>
+
+    <div class="mod"><div class="mh">02 · The four steps</div><div class="copy"><span class="br">[ MODULE: build the four steps inside the email, step by step, numbered, one visual each. Do not link out to the custom page in place of showing them ]</span>
+
+01 Configure
+Choose still or sparkling, your finish and your quantity. Pricing is instant up to 960 units.
+
+02 Brief
+Send your logo and brand colours. Our design team builds the artwork.
+
+03 Approve
+You sign off the artwork before anything goes to print.
+
+04 Deliver
+Cans on a pallet, at your door.</div></div>
+
+    <div class="mod"><div class="mh">03 · Minimum order</div><div class="copy"><span class="br">[ MODULE: dedicated block, large numeral ]</span>
+
+240 cans
+The lowest minimum order in Australia for direct-to-can digital printing</div></div>
+
+    <div class="mod"><div class="mh">04 · Priority</div><div class="copy">Or receive them in as little as 7 days with Priority Production.
+
+<span class="br">[ T&Cs line: Subject to availability and capacity. Surcharge applies. Timeframes are a guide. ]</span></div>
+      <span class="cta">Configure and price your order</span></div>
+
+    <div class="mod"><div class="mh">05 · Sample pack <span class="reuse">reused from E1</span></div><div class="copy"><span class="br">[ MODULE: sample pack block, same build as E1 module 02 ]</span>
+
+Still want one in your hand first? That offer hasn't gone anywhere.
+
+What's in the pack
+
+5 x 330ml cans
+Still and sparkling
+A mixed selection of prints we've run recently, in gloss and matte
+
+The pack is free. You just cover shipping, and we credit 100% of it back against your first custom order if you place one within 60 days.</div>
+      <span class="cta sec">Claim my sample pack</span></div>
+
+    <div class="mod"><div class="mh">06 · Reply line</div><div class="copy">Need anything else before you decide? Reply to this email and one of our customer representatives will reach out.</div></div>
+
+    <div class="mod"><div class="mh">07 · Sign-off</div><div class="copy">June
+Rippl Custom Branded</div></div>
+
+    <div class="note"><span class="lbl">Conditional · b2b_timing = Within a month</span>
+    Move module 04 above module 03, so Priority Production leads and the minimum order sits underneath.
+    <br><strong>Fallback:</strong> order as drafted.</div>
+
+  </div>
+</div>
+
+<section>
+  <h2>Still open</h2>
+  <p>Two of the four blueprint items are now resolved: the second door is the configurator on
+  <code>/pages/custom</code> throughout, and the enquiry form is no longer in the flow. Still
+  outstanding, and both touch the copy: the canonical sample pack URL
+  (<code>/pages/custom-sample-pack</code> per the pop-up brief versus
+  <code>/products/custom-branded-sample-pack</code> which is the one verified live), and whether the
+  shipping charge is still $19.99. Every mention of shipping is currently written without a figure,
+  so it survives either answer.</p>
+</section>
+
+<div class="foot">
+  Pass 2 drafts v2 · Tethrd × Rippl · 14/08/2026<br>
+  Edit anything, then these write into the planner's Flow Copy tab as four columns.
+</div>
+
+</div>
+</body>
+</html>
