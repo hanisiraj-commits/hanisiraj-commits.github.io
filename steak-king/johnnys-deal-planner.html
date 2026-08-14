@@ -573,7 +573,7 @@ const PLAN = {
         price:'2kg for $776', vs:'Rangers Station Wagyu M4-5 Striploin · $388/kg · vs $1,940 RRP · 60% off', margin:'42% margin',
         lines:[['Stock','~1,920kg across the four cut options, plus 1,511 on the knives set. No ceiling risk.'],['Spec','David\'s numbers, 13 Aug: cost $448, sell $776, compare $1,940. The $778 in the planner comment was superseded by $776 in Slack.']],
         why:'David called this one twice — off the M6-7, onto M4-5 at 2kg. M4-5 is the grade the list already buys without being talked into it, and Monday is the biggest BAU base of the week, so it is the safest place in the month to run a straight quantity play. The M6-7 grade test it replaces was never going to read cleanly on 49 units anyway.',
-        flag:'<strong>There is no saving here as specced.</strong> Rangers Station M4-5 Striploin sells at $388/kg on site every day, so 2kg at $776 is exactly the shelf price — the only discount is against the $1,940 compare-at. And <strong>wagyu-double on the 23rd is the same cut at 2kg for $747</strong>, six days later and $29 cheaper. Two fixes, David\'s call: drop this to <strong>$698</strong> for 2kg ($349/kg, still 36% margin, a real $78 off shelf), and either move wagyu-double off the 23rd or swap in one of the parked deals. Shipping it as-is means a Deal of the Day at full price.',
+        flag:'<strong>There is no saving here as specced.</strong> Rangers Station M4-5 Striploin sells at $388/kg on site every day, so 2kg at $776 is exactly the shelf price — the only discount is against the $1,940 compare-at. The clash with the 23rd is now resolved — the Chateaubriand took that slot, so M4-5 runs once this month. The price still needs fixing: recommend <strong>$698</strong> for 2kg ($349/kg, still 36% margin, a real $78 off shelf). Shipping it as-is means a Deal of the Day at full price.',
         build:{desc:{hook:"TWO KILOS OF M4-5 WAGYU. $776 TODAY.",
           value:["RRP $1,940. You're $1,164 up.",
                  "$388 a kilo.",
@@ -635,30 +635,32 @@ const PLAN = {
           sell:"A T-bone is two steaks in one. Strip on one side of the bone, fillet on the other. The longer you think about it, the more it costs you."}, source:'Chilled Black Angus T-Bone / Porterhouse 1kg (currently DRAFT)', banner:['68% OFF 3kg of T-Bone, RISES AT MIDDAY', '64% OFF 3kg of T-Bone, RISES AT 5PM', '61% OFF 3kg of T-Bone, LAST PRICE TODAY'], clone:'3kg Black Angus T-Bone — the Price Rises at Midday and Again at 5pm', price:'$799 → $899 → $999', compare:'$2,568'}
       },
       '2026-08-22':{
-        id:'picanha-recycle', title:'The Whole Picanha, 2.1kg for $899, Back for One Day', mech:'Price Drop · Recycle',
-        img:IMG('files/RumpCapChimichurri1_1.png'),
-        price:'$899', vs:'Whole M6-7 Wagyu Rump Cap 2.1kg · second run, 15 days on', margin:'61% margin',
-        lines:[['Stock','77 less whatever the 7 Aug run took — <strong>confirm before committing</strong>; if it is thin, swap in the Lamb Rack Flash.']],
-        why:'The strongest story in the catalogue on the best story-telling day of the week. It also gives the picanha its second read at the same interval as the wagyu ribeye, so by month end we have two independent tests of how fast a recycled deal decays rather than one.',
-        build:{desc:{hook:"THE WHOLE PICANHA. $899, BACK FOR ONE DAY.",
-          value:["RRP $2,196. You're $1,297 up.",
-                 "2.1kg, and the chimichurri's in the box.",
+        /* id kept as picanha-recycle so sign-off and badge wiring stay attached. */
+        id:'picanha-recycle', title:'The Whole M9+ Picanha, 2.1kg for $998', mech:'Price Drop · Grade Up', tag:'new',
+        img:IMG('files/M9_Picanhas.png'),
+        price:'$998', vs:'Chilled Wagyu M9 Rump Cap 2.1kg · vs $2,255 RRP · 56% off', margin:'44% margin',
+        lines:[['Stock','<strong>0 on the live SKU.</strong> David is bringing this in for the 22nd — confirm it has landed before build.'],['Spec','David\'s numbers, 14 Aug: cost $560, sell $998, compare $2,255.']],
+        why:'David is taking the Saturday picanha up a grade — M9+ instead of the M6-7 that ran on the 7th. It is still the strongest story in the catalogue on the best story-telling day of the week, and going up a grade rather than repeating the same one means Saturday reads as a better deal, not the same deal again.',
+        flag:'<strong>Two things to clear.</strong> The M9 Rump Cap SKU shows <strong>0 inventory</strong> and sells at <strong>$838</strong> on site today — so as specced the deal price of $998 is $160 <em>above</em> the everyday price, and the only discount is against the $2,255 RRP. Confirm the stock has landed and that $838 is a stale price before this is built; if $838 is live on the day, the deal needs to open below it.',
+        build:{desc:{hook:"THE WHOLE M9+ PICANHA. $998 TODAY.",
+          value:["RRP $2,255. You're $1,257 up.",
+                 "2.1kg of M9+, and the chimichurri's in the box.",
                  "Tonight only."],
-          sell:"What the Brazilians put on the grill. The fat cap melts down through the meat as it cooks. Score the fat, salt it heavily, fat side down first, then carve across the grain."}, source:"Picanha's Chilled Whole M6-7 Wagyu Rump Cap 2.1kg", banner:['59% OFF the Whole 2.1kg Picanha'], clone:'Whole Wagyu Picanha 2.1kg with Chimichurri — $899, Back for One Day', price:'$899', compare:'$2,196'}
+          sell:"What the Brazilians put on the grill, at the top grade we carry. The fat cap melts down through the meat as it cooks. Score the fat, salt it heavily, fat side down first, then carve across the grain."}, source:'Chilled Wagyu M9 Rump Cap 2.1kg', banner:['56% OFF the Whole 2.1kg M9+ Picanha'], clone:'Whole Wagyu M9+ Picanha 2.1kg with Chimichurri — $998 Today Only', price:'$998', compare:'$2,255'}
       },
       '2026-08-23':{
-        id:'wagyu-double', title:'Buy a Kilo of Wagyu Striploin, Get the Second Half Price', mech:'Buy 1, Get 2nd 50%', tag:'proven',
-        img:IMG('products/Wagyu-Striploin-4-5-paper-wpp1616472807688_45cbe001-bf0c-44a2-a774-299839385837.jpg'),
-        price:'2kg for $747', vs:'Rangers Station Wagyu M4-5 Striploin · $374/kg vs $388/kg live · + free steak knives · moved from 3 Aug', margin:'43% margin',
-        lines:[['Stock','128 units on the last count · <strong>recount before build.</strong>']],
-        why:'Out of stock at the top of the month, so it takes the last Sunday before the Emporium instead. M4-5 striploin is genuine wagyu without being a hero, and buy-one-get-second-half-off keeps the per-kilo value intact while still doubling the basket. Landing it two days out means the list goes into the sale having just been shown a wagyu price it liked.',
-        flag:'<strong>Collides with the 17th.</strong> David moved M4-5 striploin onto Monday the 17th at 2kg for $776, so this runs the same cut six days later at $747 — cheaper, which makes the Monday deal look worse in hindsight. Recommend this slot goes to the Taster Box or the Fishmonger\'s Box below and M4-5 runs once this month. Separately, the stock note is stale: it read 128 units on 31 July but live is ~1,920kg across the cut options. <strong>Recount before build either way.</strong>',
-        build:{desc:{hook:"BUY A KILO OF WAGYU, THE SECOND ONE'S HALF PRICE.",
-          value:["Two kilos for $747. RRP $2,256.",
-                 "$374 a kilo.",
-                 "Steak knives free with anything today.",
+        /* id kept as wagyu-double so sign-off and badge wiring stay attached. */
+        id:'wagyu-double', title:'Buy a Chateaubriand, Get the Second Half Price', mech:'Buy 1, Get 2nd 50%', tag:'new',
+        img:IMG('files/WagyuM4-5Tenderloin_Chateaubriand.webp'),
+        price:'1.6kg for $738', vs:'Chilled Wagyu M4-5 Tenderloin (Chateaubriand) 800g · $488 each live · two pieces', margin:'67% margin',
+        lines:[['Stock','<strong>-8 on the live SKU.</strong> Oversold as at 14 Aug — confirm the restock before build.'],['Spec','David\'s numbers, 14 Aug: cost $245, sell $738, compare $976. Takes the slot off the M4-5 striploin double, which resolves the collision with Monday the 17th.']],
+        why:'The last Sunday before the Emporium, and David has put the most giftable cut in the catalogue on it. Chateaubriand is the centre-cut tenderloin — the thing people buy when the meal is the occasion — and buy-one-get-the-second-half-price doubles the basket on a 67% margin, the fattest of any beef deal this month. It also frees the M4-5 striploin to run once, on the 17th, rather than twice in a week.',
+        flag:'<strong>Compare-at basis.</strong> David\'s $976 is two pieces at today\'s $488 selling price, not RRP — every other badge this month strikes the Shopify RRP, so this one publishes as <strong>24% off</strong> against a month of 56–77% claims. Recommend striking the real RRP of <strong>$1,776</strong> (2 × $888), which is the same offer reading as 58% off and keeps the badge, the PDP and the copy quoting one number. David\'s call. <strong>Stock is -8 — confirm the restock landed.</strong>',
+        build:{desc:{hook:"BUY A CHATEAUBRIAND, THE SECOND ONE'S HALF PRICE.",
+          value:["Two pieces, 1.6kg, for $738.",
+                 "The second one is half price.",
                  "Closes at midnight."],
-          sell:"Rangers Station M4-5. This is the grade where wagyu starts tasting like wagyu and you can still get through a whole steak."}, source:'Chilled Rangers Station Wagyu M4-5 Striploin 1kg', banner:['BUY 1KG GET 2ND 50% OFF on M4-5 Striploin'], clone:'Buy 1kg of Wagyu M4-5 Striploin, Get the 2nd Half Price — 2kg $747', price:'$747', compare:'$2,256'}
+          sell:"Chateaubriand is the centre cut of the tenderloin, and there is only so much of it on an animal. Roast it whole, rest it properly, carve it thick. Buy the second one and freeze it for the night that matters."}, source:'Chilled Wagyu M4-5 Tenderloin (Chateaubriand) 800g × 2', banner:['BUY 1 GET 2ND 50% OFF on Wagyu Chateaubriand'], clone:'Buy 1 Wagyu Chateaubriand, Get the 2nd Half Price — 1.6kg $738', price:'$738', compare:'$976'}
       },
       '2026-08-24':{
         id:'ladder-organic', title:'2kg of Organic Striploin — $699 Now, $799 at Midday, $899 from 5pm', mech:'Beat the Deal · Run 2', tag:'new', ladder:true,
