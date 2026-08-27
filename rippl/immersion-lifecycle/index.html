@@ -1016,27 +1016,48 @@ section{padding:var(--s7) 0}
 .qq-num{width:88px;flex:none;text-align:right;font-family:var(--font-display);font-size:14px;color:var(--text-secondary);letter-spacing:-.01em}
 .qq-line.now .qq-num{color:var(--text-primary);font-weight:600}
 .qq-delta{text-align:right}
-.pop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
-.pop-card{border:1px solid var(--smoke);border-radius:var(--r-md);overflow:hidden;background:var(--white);display:flex;flex-direction:column}
-.pop-shot{aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--paper),var(--paper) 10px,var(--cloud) 10px,var(--cloud) 20px);border-bottom:1px solid var(--smoke);display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--s4)}
-.pop-shot span{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--space);background:var(--white);border:1px dashed var(--steel);border-radius:6px;padding:8px 12px;line-height:1.6}
-.pop-body{padding:var(--s4);display:flex;flex-direction:column;gap:6px;flex:1}
-.pop-name{font-family:var(--font-display);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--text-primary)}
-.pop-meta{font-size:12px;color:var(--text-secondary);line-height:1.5}
-.pop-foot{margin-top:auto;padding-top:var(--s3);border-top:1px solid var(--smoke);display:flex;justify-content:space-between;align-items:baseline;gap:var(--s2)}
-.pop-foot .l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary)}
-.pop-foot .v{font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--text-primary)}
+.vs-desc strong,.band-sub strong{color:#FFFFFF}
 .chart-wrap{border:1px solid var(--smoke);border-radius:var(--r-md);padding:var(--s5) var(--s4) var(--s4);background:var(--white)}
 .chart-legend{display:flex;gap:var(--s5);margin-bottom:var(--s4);padding-left:var(--s3);flex-wrap:wrap}
 .cl-i{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-secondary)}
 .cl-sw{width:14px;height:14px;border-radius:3px}
+.pop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
+.pop-card{border:1px solid var(--smoke);border-radius:var(--r-md);overflow:hidden;background:var(--white);display:flex;flex-direction:column}
+.pop-card.live{border-color:var(--bc-scarlet-2);box-shadow:0 0 0 1px var(--bc-scarlet-2)}
+.pop-shot{aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--paper),var(--paper) 10px,var(--cloud) 10px,var(--cloud) 20px);border-bottom:1px solid var(--smoke);display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--s4)}
+.pop-shot span{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--space);background:var(--white);border:1px dashed var(--steel);border-radius:6px;padding:8px 12px;line-height:1.6}
+.pop-body{padding:var(--s4);display:flex;flex-direction:column;gap:6px;flex:1}
+.pop-name{font-family:var(--font-display);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--text-primary);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pop-name .tag{display:inline-block;padding:2px 8px;background:rgba(44,111,209,.10);color:var(--bc-scarlet-deep);font-size:9.5px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;border-radius:999px}
+.pop-meta{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.pop-foot{margin-top:auto;padding-top:var(--s3);border-top:1px solid var(--smoke);display:flex;justify-content:space-between;align-items:baseline;gap:var(--s2)}
+.pop-foot .l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary)}
+.pop-foot .v{font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--text-primary)}
+.tblock{border:1px solid var(--smoke);border-radius:var(--r-md);background:var(--white);margin-bottom:var(--s4);overflow:hidden}
+.tblock-head{display:flex;align-items:baseline;gap:var(--s3);padding:var(--s4);border-bottom:1px solid var(--smoke);background:var(--paper);flex-wrap:wrap}
+.tb-n{font-family:var(--font-display);font-size:12px;font-weight:600;font-style:italic;color:var(--bc-scarlet)}
+.tb-t{font-family:var(--font-display);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--text-primary)}
+.tb-w{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin-left:auto}
+.tvars{display:grid;gap:var(--s4);padding:var(--s4)}
+.tvars.two{grid-template-columns:repeat(2,1fr)}
+.tvars.three{grid-template-columns:repeat(3,1fr)}
+.tvar{border:1px solid var(--smoke);border-radius:var(--r-sm);overflow:hidden;display:flex;flex-direction:column}
+.tvar-shot{aspect-ratio:5/4;max-height:250px;background:repeating-linear-gradient(135deg,var(--paper),var(--paper) 10px,var(--cloud) 10px,var(--cloud) 20px);display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--s3);border-bottom:1px solid var(--smoke)}
+.tvar-shot span{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--space);background:var(--white);border:1px dashed var(--steel);border-radius:5px;padding:6px 9px;line-height:1.6}
+.tvar-b{padding:var(--s3);display:flex;flex-direction:column;gap:4px}
+.tvar-n{font-size:13px;font-weight:600;color:var(--text-primary);line-height:1.35}
+.tvar-s{display:flex;gap:var(--s4);margin-top:6px;padding-top:8px;border-top:1px solid var(--smoke)}
+.tvar-s div{display:flex;flex-direction:column;gap:1px}
+.tvar-s .l{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary)}
+.tvar-s .v{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--text-primary)}
+.tvar-s .v.pend{color:var(--steel);font-weight:400}
 .poll-row{display:flex;align-items:center;gap:var(--s3);padding:7px 0}
 .poll-l{flex:0 0 118px;font-size:12.5px;color:var(--text-primary)}
 .poll-t{flex:1;height:13px;background:var(--cloud);border-radius:4px;overflow:hidden}
 .poll-f{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--bc-scarlet),#5A9BF0)}
 .poll-v{flex:0 0 34px;text-align:right;font-family:var(--font-display);font-size:13px;font-weight:600;color:var(--text-primary)}
-@media(max-width:900px){.pop-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){.pop-grid{grid-template-columns:1fr}
+@media(max-width:900px){.pop-grid{grid-template-columns:repeat(2,1fr)}.tvars.three{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.pop-grid,.tvars.two,.tvars.three{grid-template-columns:1fr}
   .qq,.qq-head{grid-template-columns:1fr;gap:var(--s2)}.qq-delta{text-align:left}}
 </style>
 </head>
@@ -1056,8 +1077,9 @@ section{padding:var(--s7) 0}
      PLUG-IN BLOCK STARTS HERE
      Copy everything down to "PLUG-IN BLOCK ENDS HERE" into the Q3 tab of
      the immersion deck, and copy the second <style> block in the head.
-     Only deck classes are used beyond that block. Renumber the two
-     section bands (07 and 08) to suit their position in the tab.
+     The creative cards use the deck's existing lightbox, so they will
+     become clickable automatically once plugged in.
+     Renumber the two section bands (07 and 08) to suit their position.
      ==================================================================== -->
 
 <div class="section-band dark" id="lifecycle">
@@ -1077,7 +1099,7 @@ section{padding:var(--s7) 0}
     <p class="block-lede">Q2 is 1 March to 31 May, the last full quarter before handover. Q3 is 1 June to 26 August. Both are measured the same way, so the comparison is like for like.</p>
     <div class="kpi-grid">
       <div class="kpi-card scarlet"><p class="kpi-label">Lifecycle revenue</p><p class="kpi-value">$60,740</p><p class="kpi-context">From $31,078. <strong>+95%</strong> quarter on quarter.</p></div>
-      <div class="kpi-card dark"><p class="kpi-label">New email subscribers</p><p class="kpi-value">2,029</p><p class="kpi-context">From 1,137. <strong>+78%</strong>, and the hook for everything below.</p></div>
+      <div class="kpi-card dark"><p class="kpi-label">New email subscribers</p><p class="kpi-value">2,029</p><p class="kpi-context">From 1,137. <strong>+78%</strong>, and the engine behind everything below.</p></div>
       <div class="kpi-card warm"><p class="kpi-label">Orders from email</p><p class="kpi-value"><span class="accent">76</span></p><p class="kpi-context">From 39. Email went from 13% of all orders to <strong>22%</strong>.</p></div>
       <div class="kpi-card"><p class="kpi-label">Share of store revenue</p><p class="kpi-value"><span class="accent">33.4%</span></p><p class="kpi-context">Held against 32.0%, on a store that nearly doubled underneath it.</p></div>
     </div>
@@ -1146,28 +1168,29 @@ section{padding:var(--s7) 0}
 
     <div class="callout">
       <p class="co-lbl">The two channels moved for different reasons</p>
-      <p>Flows grew 39% because <strong>more people entered them</strong>, from 4,131 recipients to 10,591. Campaigns grew 588% because there was a calendar for the first time: Q2 ran eleven sends and nine of them earned nothing, Q3 ran twenty-six and thirteen converted.</p>
+      <p>Flows grew 39% because <strong>more people entered them</strong>, from 4,131 recipients to 10,591. Campaigns grew 588% because there was a calendar for the first time. Q2 ran eleven sends and nine of them earned nothing. Q3 ran twenty-six and thirteen converted.</p>
     </div>
   </div>
 </section>
 
 <section class="alt">
   <div class="container">
-    <p class="block-eyebrow">List growth &middot; subscribers against site traffic</p>
-    <h2 class="block-title">Traffic grew 71%. The list grew 78%.</h2>
-    <p class="block-lede">Sign-ups follow visitors, so both are shown together. June carries the EOFY traffic spike. August is the month that matters: a third less traffic than June and still 83% of the sign-ups.</p>
+    <p class="block-eyebrow">List growth &middot; new subscribers by month</p>
+    <h2 class="block-title">The list grew 78% after takeover.</h2>
+    <p class="block-lede">Sign-ups sat flat at roughly 379 a month under the incumbent agency. They doubled in June and have not gone back. Site activity is on the same chart because sign-ups track visitors.</p>
 
     <div class="chart-wrap">
       <div class="chart-legend">
-        <span class="cl-i"><span class="cl-sw" style="background:linear-gradient(180deg,#B6BAC7,#D3D6E0)"></span> New email subscribers, Q2</span>
-        <span class="cl-i"><span class="cl-sw" style="background:linear-gradient(180deg,#2C6FD1,#5A9BF0)"></span> New email subscribers, Q3</span>
+        <span class="cl-i"><span class="cl-sw" style="background:linear-gradient(180deg,#B6BAC7,#D3D6E0)"></span> New subscribers, incumbent agency</span>
+        <span class="cl-i"><span class="cl-sw" style="background:linear-gradient(180deg,#2C6FD1,#5A9BF0)"></span> New subscribers, Tethrd</span>
         <span class="cl-i"><span class="cl-sw" style="background:#0A1E3F;border-radius:999px;height:4px;width:24px"></span> Tracked site activity</span>
       </div>
-      <svg viewBox="0 0 900 330" width="100%" role="img" aria-label="New email subscribers by month against tracked site activity, March to August 2026">
+      <svg viewBox="0 0 900 340" width="100%" role="img" aria-label="New email subscribers by month against tracked site activity, March to August 2026">
         <defs>
           <linearGradient id="gq2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B6BAC7"/><stop offset="1" stop-color="#D3D6E0"/></linearGradient>
           <linearGradient id="gq3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2C6FD1"/><stop offset="1" stop-color="#5A9BF0"/></linearGradient>
         </defs>
+        <rect x="70" y="30" width="390" height="250" fill="#F4F5F9"/>
         <g stroke="#EDEFF7" stroke-width="1">
           <line x1="70" y1="30" x2="850" y2="30"/><line x1="70" y1="92.5" x2="850" y2="92.5"/>
           <line x1="70" y1="155" x2="850" y2="155"/><line x1="70" y1="217.5" x2="850" y2="217.5"/>
@@ -1181,9 +1204,9 @@ section{padding:var(--s7) 0}
           <text x="862" y="284">0</text><text x="862" y="221.5">500</text><text x="862" y="159">1,000</text>
           <text x="862" y="96.5">1,500</text><text x="862" y="34">2,000</text>
         </g>
-        <line x1="460" y1="24" x2="460" y2="288" stroke="#BCBFCC" stroke-width="1" stroke-dasharray="4 4"/>
-        <text x="452" y="20" fill="#9DA2B3" font-family="Duplet,sans-serif" font-size="10.5" font-weight="600" letter-spacing="1.2" text-anchor="end">Q2</text>
-        <text x="468" y="20" fill="#2C6FD1" font-family="Duplet,sans-serif" font-size="10.5" font-weight="600" letter-spacing="1.2" text-anchor="start">Q3</text>
+        <line x1="460" y1="24" x2="460" y2="288" stroke="#2C6FD1" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="450" y="20" fill="#9DA2B3" font-family="Duplet,sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.1" text-anchor="end">INCUMBENT AGENCY</text>
+        <text x="470" y="20" fill="#2C6FD1" font-family="Duplet,sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.1" text-anchor="start">TETHRD, FROM 29 MAY</text>
         <g>
           <rect x="112" y="175.8" width="46" height="104.2" rx="4" fill="url(#gq2)"/>
           <rect x="242" y="174.4" width="46" height="105.6" rx="4" fill="url(#gq2)"/>
@@ -1218,14 +1241,14 @@ section{padding:var(--s7) 0}
 
     <div class="split-2" style="margin-top:var(--s6)">
       <div class="split-card">
-        <p class="sc-lbl">Where the growth came from</p>
+        <p class="sc-lbl">Before and after takeover</p>
         <div class="statlist">
-          <div class="sl-row"><span class="sl-l">Tracked visitors, Q2</span><span class="sl-v">2,558</span></div>
-          <div class="sl-row"><span class="sl-l">Tracked visitors, Q3</span><span class="sl-v">4,382</span></div>
-          <div class="sl-row"><span class="sl-l">Traffic growth</span><span class="sl-v">+71%</span></div>
-          <div class="sl-row hi"><span class="sl-l">Subscriber growth</span><span class="sl-v">+78%</span></div>
+          <div class="sl-row"><span class="sl-l">Q2 sign-ups</span><span class="sl-v">1,137</span></div>
+          <div class="sl-row"><span class="sl-l">Q3 sign-ups</span><span class="sl-v">2,029</span></div>
+          <div class="sl-row"><span class="sl-l">Q2 monthly average</span><span class="sl-v">379</span></div>
+          <div class="sl-row hi"><span class="sl-l">Q3 monthly average</span><span class="sl-v">676</span></div>
         </div>
-        <p class="cf-note">Most of the list growth is more traffic arriving. The capture rate improved on top of it, and that is the smaller but more durable half.</p>
+        <p class="cf-note">Three months at 375, 380 and 382 is not a list being grown. It is a pop-up left running.</p>
       </div>
       <div class="split-card" style="background:var(--bc-scarlet-1);border-color:rgba(44,111,209,.22)">
         <p class="sc-lbl">August is the proof</p>
@@ -1235,7 +1258,7 @@ section{padding:var(--s7) 0}
           <div class="sl-row hi"><span class="sl-l">August</span><span class="sl-v">0.55</span></div>
           <div class="sl-row"><span class="sl-l">Improvement on June</span><span class="sl-v">+27%</span></div>
         </div>
-        <p class="cf-note">August ran 35% less traffic than June and still produced 83% of the sign-ups, with no product on the shelf from the 20th. That is the pop-up and the waitlist page working harder per visitor.</p>
+        <p class="cf-note">August ran 35% less traffic than June and still produced 83% of the sign-ups, with nothing on the shelf to sell from the 20th.</p>
       </div>
     </div>
   </div>
@@ -1276,21 +1299,127 @@ section{padding:var(--s7) 0}
   </div>
 </section>
 
+<section class="alt">
+  <div class="container">
+    <p class="block-eyebrow">Customer lifecycle &middot; campaign creative</p>
+    <h2 class="block-title">What the list actually bought from.</h2>
+    <p class="block-lede">The five highest-earning campaign emails of the quarter. The top one went to 280 people.</p>
+    <div class="grid-split-label">
+      <span class="gsl-n">05</span><span class="gsl-t">Top campaign emails</span>
+      <span class="gsl-m">By revenue &middot; June and July 2026</span>
+    </div>
+    <div class="creative-grid">
+      <div class="creative-card" data-media="https://gifcdn.com/dph70oj0b9l70pjichm.gif" data-type="image">
+        <div class="thumb email">
+          <span class="rank-badge">1</span><span class="perf-badge">$5,848</span><span class="fmt-tag">14 Jun</span>
+          <img src="https://gifcdn.com/dph70oj0b9l70pjichm.gif" alt="" loading="lazy">
+        </div>
+        <div class="cmeta">
+          <p class="cm-name">Early access starts now.</p>
+          <p class="cm-sub">Two free bottles plus $200 off Rippl Pure inside. &middot; 280 recipients</p>
+          <div class="cm-stats">
+            <div><p class="cms-l">Open</p><p class="cms-v">45.7%</p></div>
+            <div><p class="cms-l">Click</p><p class="cms-v">12.1%</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="creative-card" data-media="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/767b893f-e575-44cc-82b1-4da964f98041.jpeg" data-type="image">
+        <div class="thumb email">
+          <span class="rank-badge">2</span><span class="perf-badge">$2,649</span><span class="fmt-tag">25 Jun</span>
+          <img src="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/767b893f-e575-44cc-82b1-4da964f98041.jpeg" alt="" loading="lazy">
+        </div>
+        <div class="cmeta">
+          <p class="cm-name">Free bottles are disappearing fast</p>
+          <p class="cm-sub">Jump in before we run out &middot; 2,069 recipients</p>
+          <div class="cm-stats">
+            <div><p class="cms-l">Open</p><p class="cms-v">39.3%</p></div>
+            <div><p class="cms-l">Click</p><p class="cms-v">0.9%</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="creative-card" data-media="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/fee312b2-6481-4248-947f-9cfbb5dd8d5e.jpeg" data-type="image">
+        <div class="thumb email">
+          <span class="rank-badge">3</span><span class="perf-badge">$1,959</span><span class="fmt-tag">18 Jun</span>
+          <img src="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/fee312b2-6481-4248-947f-9cfbb5dd8d5e.jpeg" alt="" loading="lazy">
+        </div>
+        <div class="cmeta">
+          <p class="cm-name">We extended the free bottle promo</p>
+          <p class="cm-sub">Claim the free bottles until the end of June. &middot; 1,247 recipients</p>
+          <div class="cm-stats">
+            <div><p class="cms-l">Open</p><p class="cms-v">57.3%</p></div>
+            <div><p class="cms-l">Click</p><p class="cms-v">1.4%</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="creative-card" data-media="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/fb7327f8-257a-46bd-9fd4-98612aa4a142.jpeg" data-type="image">
+        <div class="thumb email">
+          <span class="rank-badge">4</span><span class="perf-badge">$1,698</span><span class="fmt-tag">11 Jul</span>
+          <img src="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/fb7327f8-257a-46bd-9fd4-98612aa4a142.jpeg" alt="" loading="lazy">
+        </div>
+        <div class="cmeta">
+          <p class="cm-name">Hot and cold water, instantly.</p>
+          <p class="cm-sub">Two separate tanks, so you pour hot and cold in the same time. &middot; 1,415 recipients</p>
+          <div class="cm-stats">
+            <div><p class="cms-l">Open</p><p class="cms-v">46.4%</p></div>
+            <div><p class="cms-l">Click</p><p class="cms-v">0.6%</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="creative-card" data-media="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/4bf9e58a-8373-4133-a9fc-7f419b17d4b1.jpeg" data-type="image">
+        <div class="thumb email">
+          <span class="rank-badge">5</span><span class="perf-badge">$1,698</span><span class="fmt-tag">12 Jun</span>
+          <img src="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/4bf9e58a-8373-4133-a9fc-7f419b17d4b1.jpeg" alt="" loading="lazy">
+        </div>
+        <div class="cmeta">
+          <p class="cm-name">Last chance for two free glass bottles</p>
+          <p class="cm-sub">Sign up for early access before midnight tonight. &middot; 797 recipients</p>
+          <div class="cm-stats">
+            <div><p class="cms-l">Open</p><p class="cms-v">39.4%</p></div>
+            <div><p class="cms-l">Click</p><p class="cms-v">0.5%</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="callout">
+      <p class="co-lbl">The pattern across all five</p>
+      <p>Four of the five sell the free bottles rather than the machine, and the one that sells the machine on its features sits fourth on a list twice the size. <strong>The gift moved more units than the product story did.</strong></p>
+    </div>
+  </div>
+</section>
+
 <div class="section-band dark" id="alia">
   <div class="container">
     <p class="band-num">08</p>
     <div>
-      <h2 class="band-title">Alia is the needle mover behind the 78%.</h2>
-      <p class="band-sub">Live from 1 June. It collected <strong>1,518 sign-ups in the quarter</strong>, 87% of them reached Klaviyo, and in July it was responsible for 97% of every new subscriber the account added.</p>
+      <h2 class="band-title">List growth had stalled, and it is the one input the whole lifecycle depends on.</h2>
+      <p class="band-sub">Across Q2 the store more than doubled its monthly revenue while sign-ups moved 1.9%. <strong>Rippl sells one machine once</strong>, so there is no reorder to catch and no subscription to renew. Every dollar lifecycle earns next quarter has to come from someone who joined the list this quarter. Alia is what changed that.</p>
     </div>
   </div>
 </div>
 
 <section>
   <div class="container">
+    <p class="block-eyebrow">Alia &middot; why this is the number that matters</p>
+    <h2 class="block-title">A one-time purchase business runs out of people, not out of ideas.</h2>
+    <p class="block-lede">On a subscription or a consumable, lifecycle can grow by selling the same customer again. Rippl cannot. The welcome flow converts a new subscriber once and then that person is done, which makes top of funnel the ceiling on everything downstream.</p>
+    <div class="kpi-grid">
+      <div class="kpi-card scarlet"><p class="kpi-label">Q2 store revenue growth</p><p class="kpi-value">+141%</p><p class="kpi-context">March $19,353 to May $46,592, month on month.</p></div>
+      <div class="kpi-card dark"><p class="kpi-label">Q2 sign-up growth</p><p class="kpi-value">+1.9%</p><p class="kpi-context">375 to 382 across the same three months.</p></div>
+      <div class="kpi-card warm"><p class="kpi-label">Returning customers, Q3</p><p class="kpi-value"><span class="accent">18</span></p><p class="kpi-context">Of 346 orders. There is no second purchase to sell.</p></div>
+      <div class="kpi-card"><p class="kpi-label">Welcome flow share</p><p class="kpi-value"><span class="accent">67%</span></p><p class="kpi-context">Of all flow revenue. It only ever fires once per person.</p></div>
+    </div>
+    <div class="callout warn">
+      <p class="co-lbl">The consequence</p>
+      <p>A list growing at 1.9% a quarter behind a store growing at 141% means the lifecycle channel was being asked to do more with the same people. <strong>That works for one quarter and then it stops.</strong> Continuous top of funnel is not a nice-to-have on this account, it is the only way the channel grows at all.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
     <p class="block-eyebrow">Alia &middot; before and after</p>
     <h2 class="block-title">Flat for three months, then a step up that held.</h2>
-    <p class="block-lede">March, April and May came in at 375, 380 and 382. Alia replaced the Klaviyo pop-up on 1 June and no month since has been below 487.</p>
+    <p class="block-lede">Alia replaced the Klaviyo pop-up on 1 June. Since then it has done most of the acquiring, and in July it did almost all of it.</p>
     <div class="vs-panel">
       <div class="vs-side dim">
         <p class="vs-lbl">Before Alia &middot; Mar to May</p>
@@ -1304,42 +1433,107 @@ section{padding:var(--s7) 0}
         <p class="vs-desc">Sign-ups a month across all sources, <strong>up 78%</strong>, with Alia contributing 1,518 of the 2,029.</p>
       </div>
     </div>
-    <div class="rtable" style="margin-top:var(--s6)"><div class="rtable-scroll"><table>
-      <thead><tr><th>Month</th><th class="r">Alia sign-ups</th><th class="r">Confirmed to Klaviyo</th><th class="r">Pass-through</th><th class="r">All sign-ups</th><th class="r">Alia's share</th></tr></thead>
-      <tbody>
-        <tr><td class="k">June</td><td class="r">436</td><td class="r">374</td><td class="r">85.8%</td><td class="r">843</td><td class="r">52%</td></tr>
-        <tr><td class="k">July</td><td class="r">475</td><td class="r">431</td><td class="r">90.7%</td><td class="r">487</td><td class="r"><strong>97%</strong></td></tr>
-        <tr><td class="k">August<span class="sub">26 days</span></td><td class="r"><strong>607</strong></td><td class="r"><strong>520</strong></td><td class="r">85.7%</td><td class="r">699</td><td class="r"><strong>87%</strong></td></tr>
-        <tr class="total"><td class="k"><strong>Quarter</strong></td><td class="r"><strong>1,518</strong></td><td class="r"><strong>1,325</strong></td><td class="r"><span class="pill up">87.3%</span></td><td class="r"><strong>2,029</strong></td><td class="r"><strong>75%</strong></td></tr>
-      </tbody>
-    </table></div></div>
-    <div class="callout opp">
-      <p class="co-lbl">Three things worth saying in the room</p>
-      <ul class="opp-list">
-        <li><strong>87% of collected sign-ups reach Klaviyo.</strong> On another account audited the same way only 39% did, so a clean integration is not the default. Worth re-checking after any pop-up rebuild.</li>
-        <li><strong>Alia now does nearly all of the acquiring.</strong> In July it was 97% of new subscribers. If the pop-up stops, list growth stops.</li>
-        <li><strong>It is also collecting buying intent nobody is using.</strong> 768 poll answers so far, and the August answers are below.</li>
-      </ul>
+
+    <div class="chart-wrap" style="margin-top:var(--s6)">
+      <div class="chart-legend">
+        <span class="cl-i"><span class="cl-sw" style="background:linear-gradient(180deg,#B6BAC7,#D3D6E0)"></span> Klaviyo pop-up, pre-Alia</span>
+        <span class="cl-i"><span class="cl-sw" style="background:linear-gradient(180deg,#2C6FD1,#5A9BF0)"></span> Alia sign-ups</span>
+        <span class="cl-i"><span class="cl-sw" style="background:#A9C4EC"></span> All other sources</span>
+      </div>
+      <svg viewBox="0 0 900 310" width="100%" role="img" aria-label="Monthly sign-ups split by source, March to August 2026">
+        <defs>
+          <linearGradient id="apre" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B6BAC7"/><stop offset="1" stop-color="#D3D6E0"/></linearGradient>
+          <linearGradient id="aalia" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2C6FD1"/><stop offset="1" stop-color="#5A9BF0"/></linearGradient>
+        </defs>
+        <g stroke="#EDEFF7" stroke-width="1">
+          <line x1="70" y1="30" x2="850" y2="30"/><line x1="70" y1="103.3" x2="850" y2="103.3"/>
+          <line x1="70" y1="176.7" x2="850" y2="176.7"/>
+        </g>
+        <line x1="70" y1="250" x2="850" y2="250" stroke="#BCBFCC" stroke-width="1"/>
+        <g fill="#9DA2B3" font-family="Duplet,sans-serif" font-size="11" text-anchor="end">
+          <text x="58" y="254">0</text><text x="58" y="180.7">300</text><text x="58" y="107.3">600</text><text x="58" y="34">900</text>
+        </g>
+        <line x1="460" y1="24" x2="460" y2="258" stroke="#2C6FD1" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="470" y="20" fill="#2C6FD1" font-family="Duplet,sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.1" text-anchor="start">ALIA LIVE, 1 JUNE</text>
+        <g>
+          <rect x="109" y="158.3" width="52" height="91.7" rx="4" fill="url(#apre)"/>
+          <rect x="239" y="157.1" width="52" height="92.9" rx="4" fill="url(#apre)"/>
+          <rect x="369" y="156.6" width="52" height="93.4" rx="4" fill="url(#apre)"/>
+          <rect x="499" y="43.9"  width="52" height="99.5" rx="4" fill="#A9C4EC"/>
+          <rect x="499" y="143.4" width="52" height="106.6" rx="4" fill="url(#aalia)"/>
+          <rect x="629" y="130.9" width="52" height="6"    rx="3" fill="#A9C4EC"/>
+          <rect x="629" y="133.9" width="52" height="116.1" rx="4" fill="url(#aalia)"/>
+          <rect x="759" y="79.1"  width="52" height="26.5" rx="4" fill="#A9C4EC"/>
+          <rect x="759" y="101.6" width="52" height="148.4" rx="4" fill="url(#aalia)"/>
+        </g>
+        <g font-family="Duplet,sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#14141A">
+          <text x="135" y="150">375</text><text x="265" y="149">380</text><text x="395" y="148">382</text>
+          <text x="525" y="36">843</text><text x="655" y="123">487</text><text x="785" y="71">699</text>
+        </g>
+        <g font-family="Duplet,sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#FFFFFF">
+          <text x="525" y="202">436</text><text x="655" y="197">475</text><text x="785" y="181">607</text>
+        </g>
+        <g font-family="Duplet,sans-serif" font-size="10.5" text-anchor="middle" fill="#6E7180">
+          <text x="525" y="98" fill="#1B4A94">407 other</text><text x="785" y="95" fill="#1B4A94">92 other</text>
+        </g>
+        <g fill="#14141A" font-family="Duplet,sans-serif" font-size="12.5" font-weight="600" text-anchor="middle">
+          <text x="135" y="273">March</text><text x="265" y="273">April</text><text x="395" y="273">May</text>
+          <text x="525" y="273">June</text><text x="655" y="273">July</text><text x="785" y="273">August</text>
+        </g>
+        <g fill="#9DA2B3" font-family="Duplet,sans-serif" font-size="10.5" text-anchor="middle">
+          <text x="525" y="289">52% Alia</text><text x="655" y="289">97% Alia</text><text x="785" y="289">87% Alia</text>
+        </g>
+      </svg>
+    </div>
+    <div class="split-2" style="margin-top:var(--s6)">
+      <div class="split-card">
+        <p class="sc-lbl">Sign-ups reaching Klaviyo</p>
+        <div class="statlist">
+          <div class="sl-row"><span class="sl-l">Collected by Alia</span><span class="sl-v">1,518</span></div>
+          <div class="sl-row"><span class="sl-l">Confirmed into Klaviyo</span><span class="sl-v">1,325</span></div>
+          <div class="sl-row hi"><span class="sl-l">Pass-through</span><span class="sl-v">87.3%</span></div>
+          <div class="sl-row"><span class="sl-l">Lost between the two</span><span class="sl-v">193</span></div>
+        </div>
+        <p class="cf-note">On another account audited the same way, only 39% of collected sign-ups reached Klaviyo. A clean integration is not the default, and it is worth re-checking after any pop-up rebuild.</p>
+      </div>
+      <div class="split-card" style="background:var(--bc-scarlet-1);border-color:rgba(44,111,209,.22)">
+        <p class="sc-lbl">The dependency this creates</p>
+        <div class="statlist">
+          <div class="sl-row"><span class="sl-l">June, Alia's share</span><span class="sl-v">52%</span></div>
+          <div class="sl-row hi"><span class="sl-l">July</span><span class="sl-v">97%</span></div>
+          <div class="sl-row"><span class="sl-l">August</span><span class="sl-v">87%</span></div>
+          <div class="sl-row"><span class="sl-l">Quarter</span><span class="sl-v">75%</span></div>
+        </div>
+        <p class="cf-note">Three quarters of the list now arrives through one tool. That is the result working, and it is also a single point of failure worth naming out loud.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="container">
     <p class="block-eyebrow">Alia &middot; the pop-ups</p>
     <h2 class="block-title">Two audiences, three live pop-ups.</h2>
-    <p class="block-lede">Seven pop-up campaigns have been built since June. Creative cannot be exported through the Alia API, so the frames below are placeholders for screenshots.</p>
+    <p class="block-lede">Seven pop-up campaigns have been built since June. Alia's API returns account totals but no per-pop-up figures, so visitor counts below are measured and the rest come from the dashboard.</p>
     <div class="pop-grid">
-      <div class="pop-card">
-        <div class="pop-shot"><span>Screenshot<br>to be added</span></div>
+      <div class="pop-card live">
+        <div class="pop-shot"><span>Screenshot 1<br>Nano pop-up</span></div>
         <div class="pop-body">
-          <p class="pop-name">Nano</p>
-          <p class="pop-meta">B2C &middot; live from 20 August. The only consumer capture point on the site going into launch.</p>
+          <p class="pop-name">Nano <span class="tag flag">Live</span></p>
+          <p class="pop-meta">B2C &middot; from 20 August. The only consumer capture point on the site going into launch.</p>
           <div class="pop-foot"><span class="l">August visitors</span><span class="v">2,239</span></div>
         </div>
       </div>
+      <div class="pop-card live">
+        <div class="pop-shot"><span>Screenshot 2<br>B2B sample pack</span></div>
+        <div class="pop-body">
+          <p class="pop-name">B2B Custom Cans <span class="tag flag">Live</span></p>
+          <p class="pop-meta">B2B &middot; from 18 August. Free 5-can sample pack, with a question asked before the email.</p>
+          <div class="pop-foot"><span class="l">August visitors</span><span class="v">582</span></div>
+        </div>
+      </div>
       <div class="pop-card">
-        <div class="pop-shot"><span>Screenshot<br>to be added</span></div>
+        <div class="pop-shot"><span>Screenshot 3<br>Limited Supply</span></div>
         <div class="pop-body">
           <p class="pop-name">Limited Supply</p>
           <p class="pop-meta">B2C &middot; 28 July to 20 August. The $50 off Pure offer that carried most of the quarter's consumer traffic.</p>
@@ -1347,15 +1541,7 @@ section{padding:var(--s7) 0}
         </div>
       </div>
       <div class="pop-card">
-        <div class="pop-shot"><span>Screenshot<br>to be added</span></div>
-        <div class="pop-body">
-          <p class="pop-name">B2B Custom Cans</p>
-          <p class="pop-meta">B2B &middot; live from 18 August. Free 5-can sample pack, with a zero-party question asked before the email.</p>
-          <div class="pop-foot"><span class="l">August visitors</span><span class="v">582</span></div>
-        </div>
-      </div>
-      <div class="pop-card">
-        <div class="pop-shot"><span>Screenshot<br>to be added</span></div>
+        <div class="pop-shot"><span>Screenshot 4<br>EOFY Sale</span></div>
         <div class="pop-body">
           <p class="pop-name">EOFY Sale</p>
           <p class="pop-meta">B2C &middot; 3 to 17 July. Ran the sale offer and the first trigger test.</p>
@@ -1363,7 +1549,7 @@ section{padding:var(--s7) 0}
         </div>
       </div>
       <div class="pop-card">
-        <div class="pop-shot"><span>Screenshot<br>to be added</span></div>
+        <div class="pop-shot"><span>Screenshot 5<br>BAU</span></div>
         <div class="pop-body">
           <p class="pop-name">BAU</p>
           <p class="pop-meta">B2C &middot; June to July. Where the three-offer test and the mystery discount test both ran.</p>
@@ -1371,7 +1557,7 @@ section{padding:var(--s7) 0}
         </div>
       </div>
       <div class="pop-card">
-        <div class="pop-shot"><span>Screenshot<br>to be added</span></div>
+        <div class="pop-shot"><span>Screenshot 6<br>LMT pop-up</span></div>
         <div class="pop-body">
           <p class="pop-name">LMT Pop-up</p>
           <p class="pop-meta">B2C &middot; built 24 June, never published. Two offer variants still sitting unused.</p>
@@ -1381,34 +1567,70 @@ section{padding:var(--s7) 0}
     </div>
 
     <div class="block-head-row" style="margin-top:var(--s7)">
-      <h3>Every test run so far</h3>
-      <span class="head-meta">In sequence, reconstructed from the Alia account</span>
+      <h3>Pop-up performance, August</h3>
+      <span class="head-meta">Visitors measured from the Alia API</span>
     </div>
     <div class="rtable"><div class="rtable-scroll"><table>
-      <thead><tr><th>#</th><th>Window</th><th>Pop-up</th><th>Variants</th><th>What it tested</th><th>Result</th></tr></thead>
+      <thead><tr><th>Pop-up</th><th>Audience</th><th class="r">Visitors</th><th class="r">Sign-ups</th><th class="r">Sign-up rate</th><th class="r">Attributed orders</th></tr></thead>
       <tbody>
-        <tr><td class="k">1</td><td>9 to 18 Jun</td><td>BAU</td><td>2 free bottles &middot; $200 off Pure &middot; 50% off replacement filter</td><td>Which offer converts a cold visitor</td><td>Needs export</td></tr>
-        <tr><td class="k">2</td><td>Built 24 Jun</td><td>LMT Pop-up</td><td>$200 off Pure &middot; 50% off filter</td><td>Never published</td><td><span class="pill dn">Not run</span></td></tr>
-        <tr><td class="k">3</td><td>3 to 17 Jul</td><td>EOFY Sale</td><td>SmartTrigger &middot; $200 + $50 off with mystery quiz</td><td>Alia's trigger logic against a fixed offer</td><td>Needs export</td></tr>
-        <tr><td class="k">4</td><td>20 to 28 Jul</td><td>BAU</td><td>$50 off Pure &middot; $50 off with MysteryDiscount</td><td>Straight discount against a mystery mechanic</td><td>Needs export</td></tr>
-        <tr><td class="k">5</td><td>28 Jul to 20 Aug</td><td>Limited Supply</td><td>$50 off Pure &middot; MysteryDiscount</td><td>The same pair, as the main B2C pop-up</td><td>Needs export</td></tr>
-        <tr><td class="k">6</td><td>10 to 20 Aug</td><td>B2B Custom Cans</td><td>Sample pack form V1 &middot; V2</td><td>Form structure on the zero-party ask</td><td><span class="pill up">V2 kept</span></td></tr>
-        <tr><td class="k">7</td><td>From 20 Aug</td><td>B2B Custom Cans</td><td>1 second &middot; 5 seconds &middot; 9 seconds</td><td>When the pop-up should fire</td><td><span class="pill up">Live now</span></td></tr>
-        <tr><td class="k">8</td><td>From 20 Aug</td><td>Nano</td><td>Single variant</td><td>Mystery discount arm retired on 6 August</td><td>No test running</td></tr>
+        <tr><td class="k">Limited Supply<span class="sub">To 20 August</span></td><td>B2C</td><td class="r">6,515</td><td class="r"><span class="pill dn">Dashboard</span></td><td class="r"><span class="pill dn">Dashboard</span></td><td class="r"><span class="pill dn">Dashboard</span></td></tr>
+        <tr><td class="k">Nano<span class="sub">From 20 August</span></td><td>B2C</td><td class="r">2,239</td><td class="r"><span class="pill dn">Dashboard</span></td><td class="r"><span class="pill dn">Dashboard</span></td><td class="r"><span class="pill dn">Dashboard</span></td></tr>
+        <tr><td class="k">B2B Custom Cans<span class="sub">Three delay variants</span></td><td>B2B</td><td class="r">582</td><td class="r"><span class="pill dn">Dashboard</span></td><td class="r"><span class="pill dn">Dashboard</span></td><td class="r"><span class="pill dn">Dashboard</span></td></tr>
+        <tr><td class="k">Retired B2B set<span class="sub">To 20 August</span></td><td>B2B</td><td class="r">170</td><td class="r"><span class="pill dn">Dashboard</span></td><td class="r"><span class="pill dn">Dashboard</span></td><td class="r"><span class="pill dn">Dashboard</span></td></tr>
+        <tr class="total"><td class="k"><strong>All pop-ups, August</strong></td><td><strong>Both</strong></td><td class="r"><strong>9,506</strong></td><td class="r"><strong>607</strong></td><td class="r"><span class="pill up">6.4%</span></td><td class="r"><span class="pill dn">Dashboard</span></td></tr>
       </tbody>
     </table></div></div>
+    <p class="cf-note" style="margin-top:var(--s3)">The account-level 6.4% is measured and lines up with the 6.7% quoted on the weekly calls. Splitting it by pop-up is the part the API will not return.</p>
+
+    <div class="block-head-row" style="margin-top:var(--s7)">
+      <h3>Every test we have run</h3>
+      <span class="head-meta">In sequence, reconstructed from the Alia account</span>
+    </div>
+
+    <div class="tblock">
+      <div class="tblock-head"><span class="tb-n">01</span><span class="tb-t">Which offer converts a cold visitor</span><span class="tb-w">BAU &middot; 9 to 18 June</span></div>
+      <div class="tvars three">
+        <div class="tvar"><div class="tvar-shot"><span>Screenshot 7</span></div><div class="tvar-b"><p class="tvar-n">2 free bottles</p><div class="tvar-s"><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div><div><span class="l">Result</span><span class="v pend">Pending</span></div></div></div></div>
+        <div class="tvar"><div class="tvar-shot"><span>Screenshot 8</span></div><div class="tvar-b"><p class="tvar-n">$200 off Rippl Pure</p><div class="tvar-s"><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div><div><span class="l">Result</span><span class="v pend">Pending</span></div></div></div></div>
+        <div class="tvar"><div class="tvar-shot"><span>Screenshot 9</span></div><div class="tvar-b"><p class="tvar-n">50% off replacement filter</p><div class="tvar-s"><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div><div><span class="l">Result</span><span class="v pend">Pending</span></div></div></div></div>
+      </div>
+    </div>
+
+    <div class="tblock">
+      <div class="tblock-head"><span class="tb-n">02</span><span class="tb-t">Alia's trigger logic against a fixed offer</span><span class="tb-w">EOFY Sale &middot; 3 to 17 July</span></div>
+      <div class="tvars two">
+        <div class="tvar"><div class="tvar-shot"><span>Screenshot 10</span></div><div class="tvar-b"><p class="tvar-n">SmartTrigger</p><div class="tvar-s"><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div><div><span class="l">Result</span><span class="v pend">Pending</span></div></div></div></div>
+        <div class="tvar"><div class="tvar-shot"><span>Screenshot 11</span></div><div class="tvar-b"><p class="tvar-n">$200 + $50 off, mystery quiz</p><div class="tvar-s"><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div><div><span class="l">Result</span><span class="v pend">Pending</span></div></div></div></div>
+      </div>
+    </div>
+
+    <div class="tblock">
+      <div class="tblock-head"><span class="tb-n">03</span><span class="tb-t">Straight discount against a mystery mechanic</span><span class="tb-w">BAU, then Limited Supply &middot; 20 July to 20 August</span></div>
+      <div class="tvars two">
+        <div class="tvar"><div class="tvar-shot"><span>Screenshot 12</span></div><div class="tvar-b"><p class="tvar-n">$50 off Rippl Pure</p><div class="tvar-s"><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div><div><span class="l">Result</span><span class="v pend">Pending</span></div></div></div></div>
+        <div class="tvar"><div class="tvar-shot"><span>Screenshot 13</span></div><div class="tvar-b"><p class="tvar-n">$50 off, MysteryDiscount</p><div class="tvar-s"><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div><div><span class="l">Result</span><span class="v pend">Retired 6 Aug</span></div></div></div></div>
+      </div>
+    </div>
+
+    <div class="tblock">
+      <div class="tblock-head"><span class="tb-n">04</span><span class="tb-t">Form structure on the zero-party ask</span><span class="tb-w">B2B Custom Cans &middot; 10 to 20 August</span></div>
+      <div class="tvars two">
+        <div class="tvar"><div class="tvar-shot"><span>Screenshot 14</span></div><div class="tvar-b"><p class="tvar-n">Sample pack form, V1</p><div class="tvar-s"><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div><div><span class="l">Result</span><span class="v">Replaced</span></div></div></div></div>
+        <div class="tvar"><div class="tvar-shot"><span>Screenshot 15</span></div><div class="tvar-b"><p class="tvar-n">Sample pack form, V2</p><div class="tvar-s"><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div><div><span class="l">Result</span><span class="v">Kept</span></div></div></div></div>
+      </div>
+    </div>
+
+    <div class="tblock">
+      <div class="tblock-head"><span class="tb-n">05</span><span class="tb-t">When the pop-up should fire</span><span class="tb-w">B2B Custom Cans &middot; live from 20 August</span></div>
+      <div class="tvars three">
+        <div class="tvar"><div class="tvar-shot"><span>Screenshot 16</span></div><div class="tvar-b"><p class="tvar-n">1 second delay</p><div class="tvar-s"><div><span class="l">Visitors</span><span class="v">198</span></div><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div></div></div></div>
+        <div class="tvar"><div class="tvar-shot"><span>Same creative</span></div><div class="tvar-b"><p class="tvar-n">5 second delay</p><div class="tvar-s"><div><span class="l">Visitors</span><span class="v">190</span></div><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div></div></div></div>
+        <div class="tvar"><div class="tvar-shot"><span>Same creative</span></div><div class="tvar-b"><p class="tvar-n">9 second delay</p><div class="tvar-s"><div><span class="l">Visitors</span><span class="v">194</span></div><div><span class="l">Sign-up rate</span><span class="v pend">Dashboard</span></div></div></div></div>
+      </div>
+    </div>
+    <p class="cf-note">The delay test splits traffic almost perfectly, 198 against 190 against 194, so whatever the sign-up rates say the result is trustworthy. It is a decision the room can take today. A sixth test, $200 off against 50% off filter, was built on 24 June and never published.</p>
 
     <div class="split-2" style="margin-top:var(--s6)">
-      <div class="split-card">
-        <p class="sc-lbl">The test running right now</p>
-        <div class="statlist">
-          <div class="sl-row"><span class="sl-l">B2B sample pack, 1 second</span><span class="sl-v">198</span></div>
-          <div class="sl-row"><span class="sl-l">B2B sample pack, 5 seconds</span><span class="sl-v">190</span></div>
-          <div class="sl-row"><span class="sl-l">B2B sample pack, 9 seconds</span><span class="sl-v">194</span></div>
-          <div class="sl-row hi"><span class="sl-l">Split evenness</span><span class="sl-v">Clean</span></div>
-        </div>
-        <p class="cf-note">Traffic is almost perfectly even across the three arms, so whatever the sign-up rates say the test is trustworthy. It is a decision the room can take today.</p>
-      </div>
       <div class="split-card" style="background:var(--bc-scarlet-1);border-color:rgba(44,111,209,.22)">
         <p class="sc-lbl">Zero-party data being captured</p>
         <p class="cf-note" style="margin:0 0 var(--s3)">The B2B pop-up asks <strong>"When do you need them?"</strong> before the email. August answers:</p>
@@ -1416,19 +1638,29 @@ section{padding:var(--s7) 0}
         <div class="poll-row"><span class="poll-l">No date yet</span><div class="poll-t"><div class="poll-f" style="width:62.7%"></div></div><span class="poll-v">32</span></div>
         <div class="poll-row"><span class="poll-l">1 to 3 months</span><div class="poll-t"><div class="poll-f" style="width:52.9%"></div></div><span class="poll-v">27</span></div>
         <div class="poll-row"><span class="poll-l">Later this year</span><div class="poll-t"><div class="poll-f" style="width:17.6%"></div></div><span class="poll-v">9</span></div>
-        <p class="cf-note" style="margin-top:var(--s3)"><strong>66% of B2B leads need cans inside three months and 43% inside one.</strong> That is a buying window attached to a profile, and no flow or sales follow-up currently uses it.</p>
+        <p class="cf-note" style="margin-top:var(--s3)"><strong>66% of B2B leads need cans inside three months and 43% inside one.</strong> That is a buying window attached to a profile, and no flow or sales follow-up uses it today.</p>
+      </div>
+      <div class="split-card">
+        <p class="sc-lbl">What the pop-up layer needs next</p>
+        <div class="statlist">
+          <div class="sl-row"><span class="sl-l">Nano pop-up offer</span><span class="sl-v">Check it</span></div>
+          <div class="sl-row"><span class="sl-l">B2C sign-up rate against goal</span><span class="sl-v">6.7% v 10%</span></div>
+          <div class="sl-row"><span class="sl-l">Delay test decision</span><span class="sl-v">Today</span></div>
+          <div class="sl-row hi"><span class="sl-l">Poll answers going unused</span><span class="sl-v">768</span></div>
+        </div>
+        <p class="cf-note">The pop-up published to the Nano campaign on 20 August is still titled "$50 off Rippl Pure", against a product that sold out the same day. It may be an unrenamed clone, but it is the only B2C capture point on the site.</p>
       </div>
     </div>
 
     <div class="placeholder">
-      <span class="ph-tag">To be filled &middot; needs the Alia dashboard export and screenshots</span>
-      <div class="ph-title">Conversion rate per pop-up, and the result of every test above</div>
-      <p>Alia's API returns account totals cleanly and filters correctly by country, but every filter scoped to a single pop-up or campaign returns zero, including on pop-ups with thousands of recorded visitors. Creative cannot be exported at all. Both have to come out of the dashboard.</p>
+      <span class="ph-tag">To be filled &middot; needs the Alia dashboard export and 16 screenshots</span>
+      <div class="ph-title">Sign-up rate per pop-up, and the winner of each test</div>
+      <p>Alia's API filters correctly by country but returns zero for every query scoped to a single pop-up or campaign, including on pop-ups with thousands of recorded visitors. Creative cannot be exported at all. Both have to come from the dashboard.</p>
       <div class="ph-known"><ul>
-        <li><strong>On record from the weekly calls:</strong> opt-in up 70% against the Klaviyo pop-up it replaced; 7% sign-up against Klaviyo's 5.4% on the 21 July trial, revenue per subscriber up 75%; roughly 11% at peak in early July; 6.7% on B2C in August against a 10% goal, and 21% on B2B.</li>
-        <li><strong>What we need:</strong> August sign-up rate for each pop-up, and the winning variant for tests 1, 3, 4 and 5.</li>
-        <li><strong>Six screenshots</strong>, one per pop-up above, to drop into the frames.</li>
-        <li><strong>What it settles:</strong> the delay test winner, and whether B2B converting at roughly three times B2C is an audience effect or an offer effect. That decides whether the B2C pop-up is rebuilt before 7 September.</li>
+        <li><strong>From the dashboard:</strong> August sign-ups, sign-up rate and attributed orders for each of the four rows in the performance table, and the winning variant for tests 01 to 05.</li>
+        <li><strong>Screenshots 1 to 6:</strong> the six pop-ups as they appeared live.</li>
+        <li><strong>Screenshots 7 to 16:</strong> the test variants, one per card. Test 05 uses one creative across all three arms, so a single screenshot covers it.</li>
+        <li><strong>On record from the weekly calls, to be replaced by sourced figures:</strong> opt-in up 70% against the Klaviyo pop-up it replaced; 7% sign-up against Klaviyo's 5.4% on the 21 July trial, revenue per subscriber up 75%; roughly 11% at peak in early July; 6.7% on B2C in August against a 10% goal, and 21% on B2B.</li>
       </ul></div>
     </div>
     <p class="cf-note" style="margin-top:var(--s5)">Klaviyo and Alia figures pulled 27 August 2026. Q2 is 1 March to 31 May 2026, the last full quarter before handover on 29 May. Q3 is 1 June to 26 August 2026.</p>
@@ -1439,16 +1671,45 @@ section{padding:var(--s7) 0}
      PLUG-IN BLOCK ENDS HERE
      ==================================================================== -->
 
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <div class="lightbox-media" id="lightbox-media"></div>
+    <div class="lightbox-meta" id="lightbox-meta"></div>
+  </div>
+</div>
+
 <script>
 (function(){
   const prog = document.getElementById('prog');
-  if (!prog) return;
-  const onScroll = () => {
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
-  };
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  if (prog) {
+    const onScroll = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  }
+  const lightbox = document.getElementById('lightbox');
+  if (!lightbox) return;
+  const media = document.getElementById('lightbox-media');
+  const meta = document.getElementById('lightbox-meta');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  const esc = s => (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  document.querySelectorAll('.creative-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const src = card.dataset.media;
+      if (!src) return;
+      media.innerHTML = '<img src="' + esc(src) + '" alt="">';
+      const name = card.querySelector('.cm-name');
+      meta.textContent = name ? name.textContent : '';
+      lightbox.classList.add('open');
+    });
+  });
+  const close = () => { lightbox.classList.remove('open'); media.innerHTML = ''; };
+  closeBtn.addEventListener('click', close);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();
 </script>
 
