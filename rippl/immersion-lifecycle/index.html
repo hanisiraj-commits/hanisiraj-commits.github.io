@@ -1017,8 +1017,17 @@ section{padding:var(--s7) 0}
 .qq-line.now .qq-num{color:var(--text-primary);font-weight:600}
 .qq-delta{text-align:right}
 .vs-desc strong,.band-sub strong{color:#FFFFFF}
-.creative-grid .thumb.email{background:#0E0E12;aspect-ratio:4/5}
-.creative-grid .thumb.email img{object-fit:contain;object-position:center}
+.creative-grid .thumb.email{background:#FFFFFF;aspect-ratio:3/4;overflow:hidden;position:relative;display:block}
+.mailscroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;background:#FFF}
+.mailscroll::-webkit-scrollbar{width:5px}
+.mailscroll::-webkit-scrollbar-thumb{background:rgba(20,20,26,.22);border-radius:3px}
+.mailscroll img{width:100%;height:auto;display:block}
+.scroll-hint{position:absolute;bottom:8px;right:8px;z-index:3;padding:4px 9px;border-radius:999px;
+  background:rgba(10,30,63,.82);color:#FFF;font-size:9px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;pointer-events:none;transition:opacity .2s}
+.creative-card:hover .scroll-hint{opacity:0}
+.lb-mail{width:640px;max-width:92vw;height:80vh;overflow-y:auto;background:#FFF;border-radius:8px}
+.lb-mail img{width:100%;height:auto;display:block}
 .cms-v.rev{color:var(--bc-scarlet-deep);font-size:16px}
 .cm-stats{grid-template-columns:1fr 1fr;row-gap:var(--s3)}
 .chart-wrap{border:1px solid var(--smoke);border-radius:var(--r-md);padding:var(--s5) var(--s4) var(--s4);background:var(--white)}
@@ -1325,80 +1334,95 @@ section{padding:var(--s7) 0}
       <span class="gsl-m">By revenue &middot; June and July 2026</span>
     </div>
     <div class="creative-grid">
-      <div class="creative-card" data-media="https://gifcdn.com/dph70oj0b9l70pjichm.gif" data-type="image">
+      <div class="creative-card" data-email="e1">
         <div class="thumb email">
           <span class="rank-badge">1</span><span class="fmt-tag">14 Jun</span>
-          <img src="https://gifcdn.com/dph70oj0b9l70pjichm.gif" alt="" loading="lazy">
+          <div class="mailscroll"><img src="emails/e1.jpg" alt="Early access starts now." loading="lazy"></div>
+          <span class="scroll-hint">Scroll</span>
         </div>
         <div class="cmeta">
           <p class="cm-name">Early access starts now.</p>
           <p class="cm-sub">Two free bottles plus $200 off Rippl Pure inside. &middot; 280 recipients</p>
           <div class="cm-stats">
             <div><p class="cms-l">Open</p><p class="cms-v">45.7%</p></div>
-            <div><p class="cms-l">Click</p><p class="cms-v">12.1%</p></div><div><p class="cms-l">Revenue</p><p class="cms-v rev">$5,848</p></div><div><p class="cms-l">Orders</p><p class="cms-v">7</p></div>
+            <div><p class="cms-l">Click</p><p class="cms-v">12.1%</p></div>
+            <div><p class="cms-l">Revenue</p><p class="cms-v rev">$5,848</p></div>
+            <div><p class="cms-l">Orders</p><p class="cms-v">7</p></div>
           </div>
         </div>
       </div>
-      <div class="creative-card" data-media="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/767b893f-e575-44cc-82b1-4da964f98041.jpeg" data-type="image">
+      <div class="creative-card" data-email="e2">
         <div class="thumb email">
           <span class="rank-badge">2</span><span class="fmt-tag">25 Jun</span>
-          <img src="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/767b893f-e575-44cc-82b1-4da964f98041.jpeg" alt="" loading="lazy">
+          <div class="mailscroll"><img src="emails/e2.jpg" alt="Free bottles are disappearing fast" loading="lazy"></div>
+          <span class="scroll-hint">Scroll</span>
         </div>
         <div class="cmeta">
           <p class="cm-name">Free bottles are disappearing fast</p>
           <p class="cm-sub">Jump in before we run out &middot; 2,069 recipients</p>
           <div class="cm-stats">
             <div><p class="cms-l">Open</p><p class="cms-v">39.3%</p></div>
-            <div><p class="cms-l">Click</p><p class="cms-v">0.9%</p></div><div><p class="cms-l">Revenue</p><p class="cms-v rev">$2,649</p></div><div><p class="cms-l">Orders</p><p class="cms-v">3</p></div>
+            <div><p class="cms-l">Click</p><p class="cms-v">0.9%</p></div>
+            <div><p class="cms-l">Revenue</p><p class="cms-v rev">$2,649</p></div>
+            <div><p class="cms-l">Orders</p><p class="cms-v">3</p></div>
           </div>
         </div>
       </div>
-      <div class="creative-card" data-media="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/fee312b2-6481-4248-947f-9cfbb5dd8d5e.jpeg" data-type="image">
+      <div class="creative-card" data-email="e3">
         <div class="thumb email">
           <span class="rank-badge">3</span><span class="fmt-tag">18 Jun</span>
-          <img src="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/fee312b2-6481-4248-947f-9cfbb5dd8d5e.jpeg" alt="" loading="lazy">
+          <div class="mailscroll"><img src="emails/e3.jpg" alt="We extended the free bottle promo" loading="lazy"></div>
+          <span class="scroll-hint">Scroll</span>
         </div>
         <div class="cmeta">
           <p class="cm-name">We extended the free bottle promo</p>
           <p class="cm-sub">Claim the free bottles until the end of June. &middot; 1,247 recipients</p>
           <div class="cm-stats">
             <div><p class="cms-l">Open</p><p class="cms-v">57.3%</p></div>
-            <div><p class="cms-l">Click</p><p class="cms-v">1.4%</p></div><div><p class="cms-l">Revenue</p><p class="cms-v rev">$1,959</p></div><div><p class="cms-l">Orders</p><p class="cms-v">3</p></div>
+            <div><p class="cms-l">Click</p><p class="cms-v">1.4%</p></div>
+            <div><p class="cms-l">Revenue</p><p class="cms-v rev">$1,959</p></div>
+            <div><p class="cms-l">Orders</p><p class="cms-v">3</p></div>
           </div>
         </div>
       </div>
-      <div class="creative-card" data-media="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/fb7327f8-257a-46bd-9fd4-98612aa4a142.jpeg" data-type="image">
+      <div class="creative-card" data-email="e4">
         <div class="thumb email">
           <span class="rank-badge">4</span><span class="fmt-tag">11 Jul</span>
-          <img src="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/fb7327f8-257a-46bd-9fd4-98612aa4a142.jpeg" alt="" loading="lazy">
+          <div class="mailscroll"><img src="emails/e4.jpg" alt="Hot and cold water, instantly." loading="lazy"></div>
+          <span class="scroll-hint">Scroll</span>
         </div>
         <div class="cmeta">
           <p class="cm-name">Hot and cold water, instantly.</p>
           <p class="cm-sub">Two separate tanks, so you pour hot and cold in the same time. &middot; 1,415 recipients</p>
           <div class="cm-stats">
             <div><p class="cms-l">Open</p><p class="cms-v">46.4%</p></div>
-            <div><p class="cms-l">Click</p><p class="cms-v">0.6%</p></div><div><p class="cms-l">Revenue</p><p class="cms-v rev">$1,698</p></div><div><p class="cms-l">Orders</p><p class="cms-v">2</p></div>
+            <div><p class="cms-l">Click</p><p class="cms-v">0.6%</p></div>
+            <div><p class="cms-l">Revenue</p><p class="cms-v rev">$1,698</p></div>
+            <div><p class="cms-l">Orders</p><p class="cms-v">2</p></div>
           </div>
         </div>
       </div>
-      <div class="creative-card" data-media="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/4bf9e58a-8373-4133-a9fc-7f419b17d4b1.jpeg" data-type="image">
+      <div class="creative-card" data-email="e5">
         <div class="thumb email">
           <span class="rank-badge">5</span><span class="fmt-tag">12 Jun</span>
-          <img src="https://d3k81ch9hvuctc.cloudfront.net/company/SVAnRR/images/4bf9e58a-8373-4133-a9fc-7f419b17d4b1.jpeg" alt="" loading="lazy">
+          <div class="mailscroll"><img src="emails/e5.jpg" alt="Last chance for two free glass bottles" loading="lazy"></div>
+          <span class="scroll-hint">Scroll</span>
         </div>
         <div class="cmeta">
           <p class="cm-name">Last chance for two free glass bottles</p>
           <p class="cm-sub">Sign up for early access before midnight tonight. &middot; 797 recipients</p>
           <div class="cm-stats">
             <div><p class="cms-l">Open</p><p class="cms-v">39.4%</p></div>
-            <div><p class="cms-l">Click</p><p class="cms-v">0.5%</p></div><div><p class="cms-l">Revenue</p><p class="cms-v rev">$1,698</p></div><div><p class="cms-l">Orders</p><p class="cms-v">2</p></div>
+            <div><p class="cms-l">Click</p><p class="cms-v">0.5%</p></div>
+            <div><p class="cms-l">Revenue</p><p class="cms-v rev">$1,698</p></div>
+            <div><p class="cms-l">Orders</p><p class="cms-v">2</p></div>
           </div>
         </div>
       </div>
     </div>
     <div class="callout">
       <p class="co-lbl">The pattern across all five</p>
-      <p>Four of the five sell the free bottles rather than the machine, and the one that sells the machine on its features sits fourth on a list twice the size. <strong>The gift moved more units than the product story did.</strong></p>
+      <p>The top earner leads with the discount. Three of the other four lead with the free bottles. The one that sells the machine on its features sits fourth, on a list five times the size of the winner's. <strong>An offer in the subject beat a product story every time it was tried.</strong></p>
     </div>
   </div>
 </section>
@@ -1489,43 +1513,20 @@ section{padding:var(--s7) 0}
         
       </svg>
     </div>
-    <div class="split-2" style="margin-top:var(--s6)">
-      <div class="split-card">
-        <p class="sc-lbl">Sign-ups reaching Klaviyo</p>
-        <div class="statlist">
-          <div class="sl-row"><span class="sl-l">Collected by Alia</span><span class="sl-v">1,518</span></div>
-          <div class="sl-row"><span class="sl-l">Confirmed into Klaviyo</span><span class="sl-v">1,325</span></div>
-          <div class="sl-row hi"><span class="sl-l">Pass-through</span><span class="sl-v">87.3%</span></div>
-          <div class="sl-row"><span class="sl-l">Lost between the two</span><span class="sl-v">193</span></div>
-        </div>
-        <p class="cf-note">On another account audited the same way, only 39% of collected sign-ups reached Klaviyo. A clean integration is not the default, and it is worth re-checking after any pop-up rebuild.</p>
-      </div>
-      <div class="split-card" style="background:var(--bc-scarlet-1);border-color:rgba(44,111,209,.22)">
-        <p class="sc-lbl">The dependency this creates</p>
-        <div class="statlist">
-          <div class="sl-row"><span class="sl-l">June, Alia's share</span><span class="sl-v">52%</span></div>
-          <div class="sl-row hi"><span class="sl-l">July</span><span class="sl-v">97%</span></div>
-          <div class="sl-row"><span class="sl-l">August</span><span class="sl-v">87%</span></div>
-          <div class="sl-row"><span class="sl-l">Quarter</span><span class="sl-v">75%</span></div>
-        </div>
-        <p class="cf-note">Three quarters of the list now arrives through one tool. That is the result working, and it is also a single point of failure worth naming out loud.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 <section>
   <div class="container">
     <p class="block-eyebrow">Alia &middot; the pop-ups</p>
-    <h2 class="block-title">Two audiences, three live pop-ups.</h2>
+    <h2 class="block-title">The pop-up with no offer converts best.</h2>
     <p class="block-lede">Seven pop-up campaigns have been built since June, five of which went live. Every figure below is pulled from the Alia API, filtered to the individual pop-up.</p>
     <div class="pop-grid">
       <div class="pop-card live" data-media="popups/nano.jpg">
         <div class="pop-shot"><img src="popups/nano.jpg" alt="Rippl Nano waitlist pop-up" loading="lazy"></div>
         <div class="pop-body">
           <p class="pop-name">Nano <span class="tag">Live</span></p>
-          <p class="pop-meta">B2C &middot; from 20 August. "Rippl Nano is coming. Be the first to know." Waitlist capture, no offer, no discount.</p>
-          <div class="pop-foot"><div><span class="l">Views</span><span class="v pend">pulling</span></div><div><span class="l">Sign-ups</span><span class="v pend">pulling</span></div><div><span class="l">Rate</span><span class="v pend">pulling</span></div></div>
+          <p class="pop-meta">B2C &middot; from 20 August. "Rippl Nano is coming. Be the first to know." No offer, no discount, and the best sign-up rate on the B2C side.</p>
+          <div class="pop-foot"><div><span class="l">Views</span><span class="v">1,623</span></div><div><span class="l">Sign-ups</span><span class="v">166</span></div><div><span class="l">Rate</span><span class="v">10.23%</span></div></div>
         </div>
       </div>
       <div class="pop-card live" data-media="popups/b2b-sample-pack.jpg">
@@ -1533,7 +1534,7 @@ section{padding:var(--s7) 0}
         <div class="pop-body">
           <p class="pop-name">B2B Custom Cans <span class="tag">Live</span></p>
           <p class="pop-meta">B2B &middot; from 18 August. "Unlock a free custom can sample pack", with the timing question asked after the email.</p>
-          <div class="pop-foot"><div><span class="l">Views</span><span class="v pend">pulling</span></div><div><span class="l">Sign-ups</span><span class="v pend">pulling</span></div><div><span class="l">Rate</span><span class="v pend">pulling</span></div></div>
+          <div class="pop-foot"><div><span class="l">Views</span><span class="v">487</span></div><div><span class="l">Sign-ups</span><span class="v">107</span></div><div><span class="l">Rate</span><span class="v">21.97%</span></div></div>
         </div>
       </div>
       <div class="pop-card" data-media="popups/limited-supply.jpg">
@@ -1596,21 +1597,12 @@ section{padding:var(--s7) 0}
     </div>
 
     <div class="tblock">
-      <div class="tblock-head"><span class="tb-n">04</span><span class="tb-t">Form structure on the zero-party ask</span><span class="tb-win">B2B Custom Cans &middot; 10 to 20 August &middot; <strong>No data collected</strong></span></div>
-      <div class="tvars two">
-        <div class="tvar" data-media="popups/t4-v1.jpg"><div class="tvar-shot"><img src="popups/t4-v1.jpg" alt="Sample pack form V1" loading="lazy"></div><div class="tvar-b"><p class="tvar-n">Sample pack form, V1</p><div class="tvar-s"><div><span class="l">Views</span><span class="v">0</span></div><div><span class="l">Sign-ups</span><span class="v">0</span></div><div><span class="l">Rate</span><span class="v">nil</span></div><div><span class="l">Orders</span><span class="v">0</span></div></div></div></div>
-        <div class="tvar" data-media="popups/t4-v2.jpg"><div class="tvar-shot"><img src="popups/t4-v2.jpg" alt="Sample pack form V2" loading="lazy"></div><div class="tvar-b"><p class="tvar-n">Sample pack form, V2 <span class="win-badge">Kept</span></p><div class="tvar-s"><div><span class="l">Views</span><span class="v">0</span></div><div><span class="l">Sign-ups</span><span class="v">0</span></div><div><span class="l">Rate</span><span class="v">nil</span></div><div><span class="l">Orders</span><span class="v">0</span></div></div></div></div>
-      </div>
-      <p class="cf-note" style="padding:0 var(--s4) var(--s4)">Both arms were replaced before they recorded a single view, so V2 was kept on judgement rather than on evidence. Worth rerunning now the B2B pop-up has traffic.</p>
-    </div>
-
-    <div class="tblock">
-      <div class="tblock-head"><span class="tb-n">05</span><span class="tb-t">When the pop-up should fire</span><span class="tb-win">B2B Custom Cans &middot; live from 20 August &middot; <strong>Running now</strong></span></div>
+      <div class="tblock-head"><span class="tb-n">04</span><span class="tb-t">When the pop-up should fire</span><span class="tb-win">B2B Custom Cans &middot; live from 20 August &middot; Leader: <strong>1 second</strong></span></div>
       <p class="cf-note" style="padding:0 var(--s4);margin-top:var(--s3)">One creative across all three arms. Only the firing delay changes.</p>
       <div class="tvars three">
-        <div class="tvar" data-media="popups/t4-v2.jpg"><div class="tvar-shot"><img src="popups/t4-v2.jpg" alt="B2B sample pack pop-up" loading="lazy"><span class="delay-badge">1s delay</span></div><div class="tvar-b"><p class="tvar-n">Fires after 1 second</p><div class="tvar-s"><div><span class="l">Views</span><span class="v">177</span></div><div><span class="l">Sign-ups</span><span class="v">42</span></div><div><span class="l">Rate</span><span class="v">23.73%</span></div><div><span class="l">Orders</span><span class="v">0</span></div></div></div></div>
-        <div class="tvar" data-media="popups/t4-v2.jpg"><div class="tvar-shot"><img src="popups/t4-v2.jpg" alt="B2B sample pack pop-up" loading="lazy"><span class="delay-badge">5s delay</span></div><div class="tvar-b"><p class="tvar-n">Fires after 5 seconds</p><div class="tvar-s"><div><span class="l">Views</span><span class="v pend">pulling</span></div><div><span class="l">Sign-ups</span><span class="v pend">pulling</span></div><div><span class="l">Rate</span><span class="v pend">pulling</span></div><div><span class="l">Orders</span><span class="v pend">pulling</span></div></div></div></div>
-        <div class="tvar" data-media="popups/t4-v2.jpg"><div class="tvar-shot"><img src="popups/t4-v2.jpg" alt="B2B sample pack pop-up" loading="lazy"><span class="delay-badge">9s delay</span></div><div class="tvar-b"><p class="tvar-n">Fires after 9 seconds</p><div class="tvar-s"><div><span class="l">Views</span><span class="v pend">pulling</span></div><div><span class="l">Sign-ups</span><span class="v pend">pulling</span></div><div><span class="l">Rate</span><span class="v pend">pulling</span></div><div><span class="l">Orders</span><span class="v pend">pulling</span></div></div></div></div>
+        <div class="tvar" data-media="popups/t4-v2.jpg"><div class="tvar-shot"><img src="popups/t4-v2.jpg" alt="B2B sample pack pop-up" loading="lazy"><span class="delay-badge">1s delay</span></div><div class="tvar-b"><p class="tvar-n">Fires after 1 second</p><div class="tvar-s"><div><span class="l">Views</span><span class="v">177</span></div><div><span class="l">Sign-ups</span><span class="v">42</span></div><div><span class="l">Rate</span><span class="v">23.73%</span></div></div></div></div>
+        <div class="tvar" data-media="popups/t4-v2.jpg"><div class="tvar-shot"><img src="popups/t4-v2.jpg" alt="B2B sample pack pop-up" loading="lazy"><span class="delay-badge">5s delay</span></div><div class="tvar-b"><p class="tvar-n">Fires after 5 seconds</p><div class="tvar-s"><div><span class="l">Views</span><span class="v">157</span></div><div><span class="l">Sign-ups</span><span class="v">30</span></div><div><span class="l">Rate</span><span class="v">19.11%</span></div></div></div></div>
+        <div class="tvar" data-media="popups/t4-v2.jpg"><div class="tvar-shot"><img src="popups/t4-v2.jpg" alt="B2B sample pack pop-up" loading="lazy"><span class="delay-badge">9s delay</span></div><div class="tvar-b"><p class="tvar-n">Fires after 9 seconds</p><div class="tvar-s"><div><span class="l">Views</span><span class="v">153</span></div><div><span class="l">Sign-ups</span><span class="v">35</span></div><div><span class="l">Rate</span><span class="v">22.88%</span></div></div></div></div>
       </div>
     </div>
 
@@ -1620,11 +1612,11 @@ section{padding:var(--s7) 0}
         <li><strong>Sign-up rate and revenue point in opposite directions.</strong> The mystery headline collected 103 emails to the offer headline's 68, and produced half the orders. On a business where each subscriber has one purchase in them, the cheaper email is not the better one.</li>
         <li><strong>Money off the machine beat money off the consumable</strong> on the only clean test we have run, 9.61% against 6.22% with traffic split down the middle.</li>
         <li><strong>Two of the three declared winners do not match the sign-up rate</strong>, so Alia is calling winners on what happens after the opt-in. Worth knowing before anyone reads a winner badge as the whole story.</li>
-        <li><strong>The pop-up going into the launch has no offer on it at all.</strong> That may be right for a waitlist, but it is the one variable none of these tests has covered.</li>
+        <li><strong>The pop-up with no offer is the best performer in the account.</strong> The Nano waitlist pop-up converts at 10.23% against 5.50% on the $100 off pop-up it replaced. Going into a launch, a reason to wait is beating a reason to buy.</li>
       </ul>
     </div>
 
-    <p class="cf-note">Alia's internal variant names have drifted from the creative: test 03's winner is filed as "$50 off Rippl pure" while the pop-up on screen reads $100 off, so the screenshots are the reliable record. All figures above are pulled from the Alia API, filtered to each variant.</p>
+    <p class="cf-note">One second leads the delay test at 23.73% against 22.88% and 19.11%, on roughly 160 views an arm, so the gap is real but thin. Firing immediately is at least no worse than waiting. Alia's internal variant names have drifted from the creative: test 03's winner is filed as "$50 off Rippl pure" while the pop-up on screen reads $100 off, so the screenshots are the reliable record. All figures above are pulled from the Alia API, filtered to each variant.</p>
 
     <div class="block-head-row" style="margin-top:var(--s7)">
       <h3>The data the pop-ups collected along the way</h3>
@@ -1690,11 +1682,16 @@ section{padding:var(--s7) 0}
   const esc = s => (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   document.querySelectorAll('.creative-card, .pop-card[data-media], .tvar[data-media]').forEach(card => {
     card.addEventListener('click', () => {
-      const src = card.dataset.media;
-      if (!src) return;
-      media.innerHTML = '<img src="' + esc(src) + '" alt="">';
-      const name = card.querySelector('.cm-name, .pop-name, .tvar-n');
-      meta.textContent = name ? name.textContent : '';
+      const label = card.querySelector('.cm-name, .pop-name, .tvar-n');
+      const mail = card.dataset.email;
+      if (mail) {
+        media.innerHTML = '<div class="lb-mail"><img src="emails/' + esc(mail) + '.jpg" alt=""></div>';
+      } else {
+        const src = card.dataset.media;
+        if (!src) return;
+        media.innerHTML = '<img src="' + esc(src) + '" alt="">';
+      }
+      meta.textContent = label ? label.textContent.trim() : '';
       lightbox.classList.add('open');
     });
   });
