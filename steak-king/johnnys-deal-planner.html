@@ -105,6 +105,11 @@
   .pd-val{list-style:none;margin:0 0 13px;padding:0;border-left:2px solid var(--coral)}
   .pd-val li{font-size:14.5px;line-height:1.45;color:var(--ink);font-weight:600;padding:3px 0 3px 11px}
   .pd-sell{font-size:14px;line-height:1.62;color:var(--ink-2);margin:0}
+  .pd-lab{font-family:'Fjalla One',Impact,sans-serif;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--coral);margin:0 0 6px}
+  .pd-how{margin:0 0 13px;padding:0 0 0 18px}
+  .pd-how li{font-size:14px;line-height:1.5;color:var(--ink);padding:2px 0}
+  .pd-pair{font-size:14px;line-height:1.62;color:var(--ink);margin:0 0 12px;background:var(--soft);padding:11px 13px}
+  .pd-close{font-size:14px;line-height:1.5;color:var(--ink);font-weight:700;margin:12px 0 0;padding-top:11px;border-top:1px solid var(--line)}
   .ban-line{display:flex;align-items:center;gap:var(--s4);background:var(--coral);color:#fff;padding:9px 14px;margin-bottom:6px;flex-wrap:wrap}
   .ban-line:last-child{margin-bottom:0}
   .ban-txt b{display:block;font-family:'Fjalla One',sans-serif;font-size:16px;letter-spacing:.01em;line-height:1.15}
@@ -389,10 +394,10 @@
       <strong>Moving a deal:</strong> grab the handle on the left of any row and drag it up or down the table. Everything in between shifts along by one to close the gap &mdash; drag Tuesday's deal down to Friday and Wednesday, Thursday and Friday each move up a day. A deal pushed past the last available day drops into <em>Not scheduled</em> at the bottom, and can be dragged back in at any time. Moves are shared with everyone on this page within fifteen seconds, and sign-off and comments travel with the deal, not the date &mdash; approve something on the 5th, move it to the 12th, and it is still approved.<br><br>
       <strong>How a deal is named:</strong> the customer meets the deal three times before they meet the price &mdash; on the homepage bar, on the collection tile, and at the top of the PDP &mdash; and all three now say the same thing in the same words. The rule is that the <em>mechanic comes first and the product comes second</em>. A shopper reading nothing but the product title has to know what they get and why it is a deal: <em>Buy 1kg Organic Angus Striploin, Get the 2nd Half Price</em>, not <em>The Organic Double</em>. Where there is no mechanic to name &mdash; a straight price drop or a bundle &mdash; the unit of sale leads instead, because the confusion that costs us the sale is a $735 price tag next to a photograph of one steak when the deal is two kilos. The headline on this page is now that same customer-facing line, so what David signs off is what the shopper reads. Prices stay out of the PDP title where Shopify already shows them; the badge carries the strike-through, the title carries the mechanic, the banner carries both.<br><br>
       <strong>The homepage banner</strong> is where the programme actually lives &mdash; the site does the daily beat, email supports it once or twice a week. The bar itself is fixed furniture: the <em>Johnny's Deal of The Day</em> subline, the countdown and the CLAIM NOW button never change, and they sit directly above the free-shipping line so the two mechanics reinforce each other on every pageview. The only thing written each day is the headline, and it has room for about <strong>forty-five characters</strong> before it wraps on mobile. So it carries the mechanic in caps and the cut after it &mdash; <em>BUY 1KG GET 2ND 50% OFF on Organic Striploin</em> &mdash; and nothing else. No <em>today only</em>, because the countdown already says it. And it leads on <strong>the value, not the price</strong> &mdash; the percentage off RRP, which is the number that earns the click and the language the Steak King catalogue has always used (<em>50% Off &mdash;</em>, <em>65% Off &mdash;</em>). Percentages are floored, never rounded up, so the bar can never claim more than the tile. The four buy-one-get-second deals are the exception: their mechanic is already a percentage, and two competing percentages in one line reads as a mistake, so those keep the mechanic. <strong>The bar percentage and the tile ribbon are calculated from different places</strong> &mdash; ours from the compare-at in this plan, the tile's from whatever compare-at is actually set on the deal clone &mdash; so if they are not set to the same number the two disagree on screen. As at 6 August the live Organic Striploin clone carries a $980 compare-at against this plan's $1,960, and the tile is showing 25% where it should show 62%. Each deal ships its headline in the build spec, and the ladder days ship three, swapped at 12:00 and 17:00.<br><br>
-      <strong>Hero images:</strong> each deal ships with its PDP hero already built &mdash; the real product photograph with the value laid over it, the deal price against the <strong>RRP</strong> and what you save. Compare-at is the product's maximum RRP in Shopify &mdash; not the everyday selling price &mdash; so the strike-through on the badge, the strike-through on the PDP and the value line in the copy all quote the same number. Copy it to the clipboard or download it straight from the deal view. They are generated from the plan itself, so the figures on a badge can never disagree with the figures on the page: run <span class="kbd">python3 scripts/build-deal-badges.py</span> after a price changes and the affected heroes rebuild. Headlines and the corner tab live in <span class="kbd">scripts/badge-copy.json</span>.<br><br><strong>Six SKUs still need an RRP set in Shopify.</strong> They carry no compare-at price at all, so their deals currently run on a <em>2&times; everyday</em> placeholder rather than a real RRP: Organic Grass Fed Angus Striploin 1kg (drives the Organic Double, its 20 Aug recycle and the 24 Aug ladder), Black Angus Bone-in Ribeye OP Rib Roast, Frozen Wagyu Diced Beef 1kg, Frozen Australian Lamb Shanks 2.2kg, MSC Certified Atlantic Cod Fillet 1kg and Australian Yellowfin Tuna Steaks. David to set a real RRP on each, then the compare figure and the hero badge both need rebuilding.<br><br>
+      <strong>Hero images:</strong> each deal ships with its PDP hero already built &mdash; the real product photograph with the value laid over it, the deal price against the <strong>RRP</strong> and what you save. Compare-at is the product's maximum RRP in Shopify &mdash; not the everyday selling price &mdash; so the strike-through on the badge, the strike-through on the PDP and the value line in the copy all quote the same number. Copy it to the clipboard or download it straight from the deal view. They are generated from the plan itself, so the figures on a badge can never disagree with the figures on the page: run <span class="kbd">python3 scripts/build-deal-badges.py</span> after a price changes and the affected heroes rebuild. Headlines and the corner tab live in <span class="kbd">scripts/badge-copy.json</span>.<br><br><strong>Eight SKUs still carry no compare-at price at all</strong>, so they cannot anchor a deal on a real RRP and are held out of September: Organic Grass Fed Angus Striploin 1kg, Frozen Wagyu Diced Beef 1kg, Chilled Angus M2-3 Tenderloin Fillet Steaks 1kg, Frozen Spanish Acorn Fed Iberico Pork Chops, Frozen Acorn Fed Iberico Pork Rack Roast, Australian Yellowfin Tuna Steaks, Chilled Appellation Sydney Rock Oysters and Frozen Spanish Free Range Pork Belly. David to set a real RRP on each and they come back into the rotation.<br><br><strong>Two anchors contradict each other and both need settling before build.</strong> The Rangers Station wagyu sausages carry a $400 compare-at each on their three individual listings, giving $1,200 for the flight, while the existing Sausage Sampler 1.5kg SKU is anchored at $510. And the M4-5 wagyu ribeye exists as two live listings with different unit costs and different compare-at figures ($247 / $976 on the plain 1kg, $212 / $1,327 on the Rangers Station buy-2-get-1 listing), which is the difference between a $1,325 and a $1,140 deal on the same three kilos.<br><br>
       <strong>How to add a month:</strong> open this file and append one entry to the <span class="kbd">PLAN</span> object at the top of the script &mdash; a label, the block rows, and one entry per day, each with its own <span class="kbd">id</span>. Nothing else needs touching; the calendar, lookahead and build specs all read from it. The dates in <span class="kbd">PLAN</span> are only the starting order &mdash; once anyone drags a row, the running order is whatever the shared backend says it is.<br><br>
       <strong>Keyboard:</strong> <span class="kbd">&larr;</span> <span class="kbd">&rarr;</span> move a day &middot; <span class="kbd">T</span> jump to today &middot; tab to a drag handle and use <span class="kbd">&uarr;</span> <span class="kbd">&darr;</span> to move a deal without dragging. Every date is linkable &mdash; the URL updates as you click, so you can paste someone straight onto a specific day.<br><br>
-      Steak King HK &times; Tethrd &middot; Promo blackouts and block targets from the Steak King HK August 2026 forecast (Scenario A, HK$4.6M) circulated 24 July 2026, amended 31 July: the July Meat Emporium sale carries into 1&ndash;2 August, so the daily deal starts on the 3rd and the $791,550 block target still covers the full 1&ndash;10 window. Prices, unit costs, gross margins, stock levels and product images pulled live from the Steak King Shopify Admin API on 27 July 2026, RRP / compare-at refreshed 4 August 2026 &mdash; all move, so confirm in the admin on the day before building. Gross margin is deal price against unit cost, before shipping and payment fees. Performance multiples are from the Deal of the Day first read, 16&ndash;18 July 2026 (n=3 days) &mdash; directional, not conclusive. All figures HKD.
+      Steak King HK &times; Tethrd &middot; Block dates and targets are taken from the Steak King HK September 2026 forecast: HK$6.0m for the month at 12% blended spend, BAU &amp; JDOTD 1&ndash;7 Sep ($846,167) and 11&ndash;21 Sep ($1,313,833), Flash Sale 8&ndash;10 Sep ($1,250,000), Meat Emporium 22&ndash;30 Sep ($2,590,000). The two JDOTD blocks average $120,000 a day against $107,469 on the best BAU stretch we have run, so the deal is closing part of a $12,531 daily gap and paid is closing the rest. Every deal is priced at cost &divide; 0.48, which holds gross margin between 51% and 55%: the floor is 50% and the ceiling is deliberate, because the point is to keep the price low. Prices, unit costs, stock levels and product images pulled live from the Steak King Shopify Admin API on 27 August 2026, mid Meat Emporium, so shelf prices are sale prices &mdash; re-pull on 1 September before anything is cloned. Gross margin is deal price against unit cost, before shipping and payment fees. Bundles are built from co-purchase lift measured across 4,302 non-promo orders, 1 June to 24 August 2026. All figures HKD.
     </footer>
   </div>
 </main>
@@ -406,9 +411,14 @@
    running order and the hero image all hang off, so once a deal has
    been shown to anyone its id must never change.
 
-   `build.desc` is three parts, in the order they are read: `hook` is
-   the deal in one line, `value` is the stack of reasons it is worth
-   buying today, `sell` is the product. Deal first, product second.
+   `build.desc` from September is six parts, read in this order:
+   `hook` (the deal in one line), `how` (the mechanic in plain steps,
+   because the customer has to understand what they get before they
+   care what it costs), `math` (how big the saving is, always off RRP),
+   `pairing` (bundles only: why these products go together and what the
+   box is worth), `sell` (the product, and how to cook it), `close`
+   (the deadline). August deals still use the older three-part shape of
+   hook / value / sell and render unchanged.
 
    `why` is the record of why each pick sits where it does. It is not
    rendered on the page any more; it is here for whoever plans the
@@ -418,6 +428,543 @@ const CDN = 'https://cdn.shopify.com/s/files/1/0525/7638/7266/';
 const IMG = p => CDN + p + '?width=520';
 
 const PLAN = {
+  '2026-09': {
+    label: 'September 2026',
+    target: 'HK$6,000,000',
+    blocks: [
+      {name:'BAU & JDOTD',          from:'2026-09-01', to:'2026-09-07', target:'$846,167',   deals:true},
+      {name:'Flash Sale',           from:'2026-09-08', to:'2026-09-10', target:'$1,250,000', deals:true},
+      {name:'BAU & JDOTD',          from:'2026-09-11', to:'2026-09-21', target:'$1,313,833', deals:true},
+      {name:'Meat Emporium Sale',   from:'2026-09-22', to:'2026-09-30', target:'$2,590,000', deals:true}
+    ],
+    days: {
+      '2026-09-01':{
+        id:'sep-picanha-open', title:'The Whole Picanha for $740', mech:'Price Drop · Single SKU', tag:'proven',
+        img:IMG('files/M9_Picanhas.png'),
+        price:'$740', vs:'Chilled Wagyu M8-9 Rump Cap ~2kg · RRP $2,256 · 67% off', margin:'52% margin',
+        lines:[['Day target','$135,935'],['Stock','296 units.']],
+        why:'Day one off the back of a $2.59m Emporium. The June read is the warning: the six days after that sale ran $66,215 a day with no deal engine, 29% below its own BAU, while the six after July ran $92,164 with deals on. So the month opens on the highest-confidence single-SKU deal in the library. Picanha did 4.4x on 22 Aug, it needs no explaining, and one item at one price is the right ask of a list that has just spent.',
+        build:{desc:{hook:"A WHOLE WAGYU PICANHA FOR JUST $740",
+          how:["One whole M8-9 wagyu rump cap, around 2kg, with the chimichurri in the box.",
+               "That is dinner for six with leftovers, or one very good Sunday.",
+               "No code. The price on the page is the price you pay."],
+          math:["This cut is $2,256 at RRP.",
+                "Today it is $740.",
+                "You save $1,516. That is 67% off."],
+          sell:"If you have never cooked a picanha, this is the one to start on. The fat cap on top does the work for you, so it bastes itself while you get on with everything else. Score the fat, salt it heavily, fat side down first. Twenty minutes later you carve it at the table and everyone stops talking. It is the best value cut on the whole site and the easiest one to look like a hero with.",
+          close:"Today only. Back to $2,256 at midnight."},
+          source:'Chilled Wagyu M8-9 Rump Cap', banner:['67% OFF the Whole M8-9 Picanha'], clone:'Whole Wagyu M8-9 Picanha ~2kg — $740 Today Only', price:'$740', compare:'$2,256'}
+      },
+      '2026-09-02':{
+        id:'sep-angus-ribeye-3kg', title:'Buy 2kg of Angus Ribeye, Get the Third Kilo Free', mech:'Buy 2, Get 1 Free', tag:'proven',
+        img:IMG('files/shutterstock_2594441313_1_cb96eb05-edbe-44c6-8180-3302b5e82c48.jpg'),
+        price:'3kg for $698', vs:'Chilled Black Angus M1-2 Ribeye 1kg · RRP $2,235 · 68% off', margin:'52% margin',
+        lines:[['Day target','$124,088'],['Stock','3,787 units. Deepest stock of any deal this month.'],['Mechanic maths','2kg at $349/kg = $698, third kilo free. Confirm $349 still sits at or under the everyday price on the day.']],
+        why:'The highest multiple any single-cut deal has produced (12.9x on 18 Aug at $948). The margin rule reprices it to $698, which is the point of the rule: at $948 it was running a 63% margin, and that is money left on the table when the job is filling a soft week. Cost is $111 a kilo, so this is the deepest headline available on a cut the list already knows.',
+        build:{desc:{hook:"BUY 2KG OF ANGUS RIBEYE, GET THE THIRD KILO FREE",
+          how:["Buy two kilos of Black Angus M1-2 ribeye at $349 a kilo and we put a third kilo in the box for nothing.",
+               "Three separate 1kg pieces, so you are not carving up one enormous slab.",
+               "No code. It is applied for you."],
+          math:["Three kilos at RRP is $2,235.",
+                "Today the lot is $698.",
+                "You save $1,537. That is 68% off, and a whole kilo of ribeye you did not pay for."],
+          sell:"Three kilos of ribeye is roughly six proper steaks. One for tonight, one for the weekend, and a kilo sitting in the freezer for the night you need to impress someone at short notice. M1-2 is the grade most people should be buying and quietly are not. Enough marbling to stay juicy, not so rich that half a steak beats you.",
+          close:"Today only. Gone at midnight."},
+          source:'Chilled Black Angus M1-2 Ribeye 1kg', banner:['BUY 2KG GET 1KG FREE on Angus M1-2 Ribeye'], clone:'Buy 2kg Black Angus M1-2 Ribeye, Get the Third Kilo Free — 3kg $698', price:'$698', compare:'$2,235'}
+      },
+      '2026-09-03':{
+        id:'sep-freezer-run', title:'The Freezer Run — 4kg for $328', mech:'Fixed Bundle · Affinity', tag:'new',
+        img:IMG('files/RSAngusMince.png'),
+        price:'4kg for $328', vs:'Mince + thighs + supreme + tenders · RRP $1,145 · 71% off', margin:'52% margin',
+        lines:[['Day target','$118,476'],['Stock','333 sets. Tenders are the constraint.']],
+        why:'Thursday is the only genuinely soft weekday in the current data (0.88x against a flat week). Entry price and low consideration is what converts a soft day. It is also the one bundle built entirely from measured basket behaviour: mince pairs with chicken supreme at 2.77x chance, with tenders at 2.31x and with thighs at 1.87x, and thighs pair with tenders at 2.70x. And it is the acquisition slot. The $348 Weekday Trio had 29% first-time buyers, the highest of any deal we have run.',
+        build:{desc:{hook:"4KG OF FREEZER FOOD FOR JUST $328",
+          how:["A bundle of four of our best-selling freezer staples: Angus mince, chicken thighs, chicken supreme and chicken tenders.",
+               "A kilo of each, 4kg in total. That is a week of dinners for a family of four.",
+               "One box, one price, no code."],
+          math:["Buy the four separately and it comes to $1,145.",
+                "Today the whole box is $328.",
+                "You save $817. That is 71% off."],
+          pairing:"These are four products our customers already love buying together. We have bundled them so you do not have to build it yourself, and priced the box far lower than you could ever put it together one item at a time.",
+          sell:"This fills your freezer for the week. Mince for bolognese on Monday and burgers on Friday. Thighs for a curry that tastes better the next day. The supreme for a proper roast on Sunday. Tenders for the kids, or for a stir fry on the night you have twenty minutes and no plan. Four kilos of dinners already sorted, and a week of takeaway money back in your pocket.",
+          close:"Today only. It ends at midnight."},
+          source:'Bundle builder: Angus Mince 1kg + Chicken Thighs 1kg + Chicken Supreme 1kg + Chicken Tenders 1kg', banner:['71% OFF the 4kg Freezer Run'], clone:'The Freezer Run — Mince, Thighs, Supreme, Tenders · 4kg $328', price:'$328', compare:'$1,145'}
+      },
+      '2026-09-04':{
+        id:'sep-chateaubriand-2', title:'Two Chateaubriands, 1.6kg for $524', mech:'Quantity Flash', tag:'proven',
+        img:IMG('files/WagyuM4-5Tenderloin_Chateaubriand.webp'),
+        price:'1.6kg for $524', vs:'Chilled Wagyu M4-5 Tenderloin 800g · RRP $1,776 · 70% off', margin:'52% margin',
+        lines:[['Day target','$112,240'],['Stock','424 sets.']],
+        why:'Proven at 7.1x on 23 Aug, and at a $126 unit cost it carries the deepest percentage of any chilled premium cut we sell. Friday is where the weekend cook gets decided and tenderloin is what people buy when they have decided to make an occasion of it. Runs as a straight two-piece lot rather than a giveaway framing, because at this price the first piece would have to be quoted above the everyday price for the mechanic to add up.',
+        build:{desc:{hook:"TWO WAGYU CHATEAUBRIANDS FOR $524",
+          how:["Two 800g centre-cut wagyu M4-5 tenderloins, 1.6kg between them.",
+               "Each piece feeds three to four people properly.",
+               "Sold as a pair at one price. No code needed."],
+          math:["The two pieces are $1,776 at RRP.",
+                "Today they are $524.",
+                "You save $1,252. That is 70% off, the biggest percentage we will put on a premium cut this month."],
+          sell:"Chateaubriand is the middle of the tenderloin, the piece restaurants charge a fortune for and then slice into medallions in front of you. Roast one whole for a dinner party and carve it at the table. Put the second in the freezer and you have a birthday, an anniversary or a very good Tuesday already handled. Nothing else on the site makes this little effort look like this much money.",
+          close:"Today only. Ends midnight."},
+          source:'Chilled Wagyu M4-5 Tenderloin (Chateaubriand) 800g', banner:['70% OFF Two Wagyu Chateaubriands'], clone:'Two Wagyu Chateaubriands, 1.6kg — $524 Today Only', price:'$524', compare:'$1,776'}
+      },
+      '2026-09-05':{
+        id:'sep-hangers', title:'Buy One Whole Hanger, Get the Second Half Price', mech:'Buy 1, Get 2nd 50%',
+        img:IMG('files/BeefHanger_8356e176-011d-46e7-952b-802ffb9c1e1c.jpg'),
+        price:'2 pieces for $754', vs:'Chilled Wagyu M3-4 Untrimmed Hanger · RRP $2,220 · 66% off', margin:'52% margin',
+        lines:[['Day target','$106,628'],['Stock','353 sets.'],['Mechanic maths','First hanger $503, second $251. Everyday price is $798, so the framing holds comfortably.']],
+        why:'Rank 16 on the account with $120k in 60 days, so the demand is real, and it has never once been priced properly. The 16 Jul buy-two-get-one at $996 took $3,984 and got written off as a weak cut when it was actually a weak price. Unit cost is $181, which is what makes 66% reachable and what lets the second piece go at half price inside the margin band.',
+        build:{desc:{hook:"BUY ONE WAGYU HANGER, GET THE SECOND HALF PRICE",
+          how:["One whole untrimmed wagyu M3-4 hanger is $503 today, down from $798.",
+               "Add a second and it is half that, $251. Two hangers for $754.",
+               "Applied automatically. Nothing to type in."],
+          math:["Two hangers at RRP is $2,220.",
+                "Today the pair is $754.",
+                "You save $1,466. That is 66% off."],
+          sell:"Hanger is the piece the butcher used to keep for himself, which tells you most of what you need to know. Huge flavour, and it soaks up a marinade like nothing else in the fridge. Marinate one overnight, cook it hot and fast, slice it thin against the grain and put it in the middle of the table with flatbreads. It is the best steak most people have never ordered, and at $251 for the second one there is no reason not to find out.",
+          close:"Today only. Ends midnight."},
+          source:'Chilled Wagyu M3-4 Untrimmed Hanger Steak', banner:['BUY 1 GET 2ND HALF PRICE on Wagyu Hanger'], clone:'Buy One Wagyu M3-4 Hanger, Get the Second Half Price — $754', price:'$754', compare:'$2,220'}
+      },
+      '2026-09-06':{
+        id:'sep-usda-choice-2kg', title:'2kg of USDA Choice Ribeye for $798', mech:'Quantity Flash',
+        img:IMG('files/USDAChoiceRibeye2.jpg'),
+        price:'2kg for $798', vs:'Chilled USDA Choice Ribeye 1kg · RRP $1,792 · 55% off', margin:'52% margin',
+        lines:[['Day target','$100,393'],['Stock','161 sets. Thinnest of the week.']],
+        why:'The value-ribeye slot and the weakest headline of the block at 55%, so it sits on the lowest-target day where there is least to lose. Stock caps it at 161 sets, which is another reason it belongs on a Sunday rather than a Monday.',
+        build:{desc:{hook:"2KG OF USDA RIBEYE FOR $798",
+          how:["Two separate 1kg USDA Choice ribeyes, cut thick.",
+               "That is four steaks, or two very generous ones.",
+               "One price for the pair. No code."],
+          math:["Two kilos at RRP is $1,792.",
+                "Today it is $798.",
+                "You save $994. That is 55% off."],
+          sell:"USDA Choice is what most steakhouses are actually serving you, whatever the menu says. Grain fed, well marbled and genuinely hard to ruin, which matters when you are cooking for people who will have opinions about it. Cut it thick, get the pan properly hot, and rest it longer than feels necessary. One kilo tonight, one in the freezer for the next time someone invites themselves over.",
+          close:"Sunday only. Ends midnight."},
+          source:'Chilled USDA Choice Ribeye 1kg', banner:['55% OFF 2kg of USDA Choice Ribeye'], clone:'2kg of USDA Choice Ribeye — $798 Today Only', price:'$798', compare:'$1,792'}
+      },
+      '2026-09-07':{
+        id:'sep-wagyu-ribeye-3kg', title:'3kg of Wagyu M4-5 Ribeye for $1,325', mech:'Quantity Flash', tag:'proven',
+        img:IMG('files/2_a47273c2-2039-4041-9e50-021041d56e64.png'),
+        price:'3kg for $1,325', vs:'Rangers Station Wagyu M4-5 Ribeye 1kg · RRP $3,981 · 66% off', margin:'52% margin',
+        lines:[['Day target','$148,407 — highest of the block'],['Stock','277 sets.']],
+        why:'The direct replication of the best deal the programme has ever run ($34,860 on 7 Aug). Cloned off the 1kg listing rather than the 3kg one, because the 1kg carries a $1,327 compare-at against the 3kg listing\'s $896 a kilo. Same meat, same price, a far bigger headline. Highest target day of the block gets the biggest deal, and it prices above the wall so free delivery folds into the offer.',
+        flag:'Two live listings of this cut carry different costs and compare-at figures ($247 / $976 on the plain 1kg, $212 / $1,327 on the Rangers Station buy-2-get-1 listing). $1,325 versus $1,140 for the same 3kg hangs on which is right. Confirm with David before cloning.',
+        build:{desc:{hook:"3KG OF WAGYU RIBEYE FOR $1,325",
+          how:["Three separate 1kg Rangers Station wagyu M4-5 ribeyes.",
+               "That is six wagyu steaks, and delivery is already free at this price.",
+               "One price for all three. No code."],
+          math:["Three kilos at RRP is $3,981.",
+                "Today it is $1,325.",
+                "You save $2,656. That is 66% off, and the biggest saving we will put up all month."],
+          sell:"M4-5 is the grade where marbling stops being a talking point and becomes the reason you bought it. The fat runs right through, so it stays forgiving even if you get distracted halfway through cooking. Three kilos is a barbecue, a dinner party and a quiet Thursday all sorted in one order. Delivered free, straight to the door.",
+          close:"Today only. Back to full price at midnight."},
+          source:'Chilled Rangers Station Wagyu M4-5 Ribeye 1kg', banner:['66% OFF 3kg of Wagyu M4-5 Ribeye'], clone:'3kg of Rangers Station Wagyu M4-5 Ribeye — $1,325 Today Only', price:'$1,325', compare:'$3,981'}
+      },
+      '2026-09-08':{
+        id:'sep-addon-thighs', title:'Add-On of the Day — 2kg of Chicken Thighs, $104', mech:'Add-On · Flash Sale', tag:'new',
+        img:IMG('files/ChickenThigh.jpg'),
+        price:'2kg for $104', vs:'Barn Raised Chicken Thighs 1kg · RRP $720 · 85% off', margin:'52% margin',
+        lines:[['Day target','$450,000 — flash sale launch'],['Where it lives','In cart and on the flash collection. No email of its own.']],
+        why:'The flash sale has no sag to fill, so a competing headline deal would only split the day. Deal carts run 3.0 lines against 3.6 for non-deal carts on the same day, which means a headline deal actively works against basket size on the three biggest non-Emporium days of the month. The slot becomes a gap-closer instead. Chicken thighs already turn up in 4% of deal carts and pair with mince at 1.87x chance.',
+        build:{desc:{hook:"ADD 2KG OF CHICKEN THIGHS FOR $104",
+          how:["Two kilos of boneless, skinless chicken thighs, added to any order today.",
+               "It sits in the cart alongside whatever else you are buying.",
+               "Available for today only, while the sale is on."],
+          math:["Two kilos at RRP is $720.",
+                "Today it is $104.",
+                "You save $616. That is 85% off."],
+          sell:"Thighs are the cut that survives being forgotten about for twenty minutes. Boneless and skinless, so there is nothing to trim and nothing to think about. They go in curries, on the grill and into the lunchbox, and they are the reason a Tuesday turns into dinner instead of a delivery app.",
+          close:"Today only, with any order."},
+          source:'Frozen Barn Raised Chicken Thighs (Boneless & Skinless) 1kg', banner:['ADD 2KG OF CHICKEN THIGHS FOR $104'], clone:'2kg Chicken Thighs — $104 Add-On Today Only', price:'$104', compare:'$720'}
+      },
+      '2026-09-09':{
+        id:'sep-addon-burgers', title:'Add-On of the Day — 8 Wagyu Burgers, $216', mech:'Add-On · Flash Sale',
+        img:IMG('files/Mix_RSBurger_image_1.png'),
+        price:'1.2kg for $216', vs:'Grain Fed Full Blood Wagyu Burgers 600g · RRP $712 · 69% off', margin:'52% margin',
+        lines:[['Day target','$400,000'],['Where it lives','In cart and on the flash collection. No email of its own.']],
+        why:'Day two of the flash. Wagyu burgers pair with Angus mince at 5.27x chance, the second tightest pair in the whole basket dataset, so this lands naturally next to whatever beef the sale is moving.',
+        build:{desc:{hook:"ADD 8 WAGYU BURGERS FOR $216",
+          how:["Two packs of full blood wagyu burgers, eight patties in total.",
+               "Added to any order today, sitting in the cart with the rest of your shop.",
+               "Today only."],
+          math:["Eight patties at RRP is $712.",
+                "Today they are $216.",
+                "You save $496. That is 69% off."],
+          sell:"Wagyu in a burger sounds like a waste until you cook one. The fat content does all the work, so they stay juicy even if you press them down out of habit. Please do not press them down. Eight patties is a barbecue for the family or four evenings where nobody wants to cook and everybody eats well anyway.",
+          close:"Today only, with any order."},
+          source:'Frozen Grain Fed Full Blood Wagyu Beef Burgers 600g (150g x 4)', banner:['ADD 8 WAGYU BURGERS FOR $216'], clone:'8 Wagyu Burgers, 1.2kg — $216 Add-On Today Only', price:'$216', compare:'$712'}
+      },
+      '2026-09-10':{
+        id:'sep-addon-tenders', title:'Add-On of the Day — 2kg of Chicken Tenders, $76', mech:'Add-On · Flash Sale',
+        img:IMG('files/JA_ChickenTenderloins_28.jpg'),
+        price:'2kg for $76', vs:'Barn Raised Chicken Tenders 1kg · RRP $392 · 80% off', margin:'52% margin',
+        lines:[['Day target','$400,000 — flash sale close'],['Stock','166 sets. Thin.']],
+        why:'Last day of the flash and the cheapest thing we can put in a cart. Tenders already attach to 7% of deal carts and pair with mince at 2.31x chance. At $76 it is a decision nobody has to think about, which is exactly what you want on a closing day.',
+        build:{desc:{hook:"ADD 2KG OF CHICKEN TENDERS FOR $76",
+          how:["Two kilos of barn raised chicken tenderloins, added to any order today.",
+               "Straight into the cart with everything else. No code.",
+               "Last day of the sale."],
+          math:["Two kilos at RRP is $392.",
+                "Today it is $76.",
+                "You save $316. That is 80% off."],
+          sell:"Tenderloins are the fastest thing you will ever put in a freezer. Straight from frozen into a hot pan, done in minutes, and children eat them without a single round of negotiation. Not glamorous. Extremely useful on a Wednesday.",
+          close:"Today only, with any order."},
+          source:'Frozen Barn Raised Chicken Tenders 1kg', banner:['ADD 2KG OF CHICKEN TENDERS FOR $76'], clone:'2kg Chicken Tenders — $76 Add-On Today Only', price:'$76', compare:'$392'}
+      },
+      '2026-09-11':{
+        id:'sep-weekend-grill', title:'The Weekend Grill Box for $348', mech:'Fixed Bundle · Affinity', tag:'new',
+        img:IMG('files/Mix_RSBurger_image_1.png'),
+        price:'2.1kg for $348', vs:'Mince 1kg + wagyu burgers 600g + Cumberland sausages 500g · RRP $989 · 64% off', margin:'51% margin',
+        lines:[['Day target','$112,240'],['Stock','155 sets. Sausages are the constraint.']],
+        why:'Day one after a three day flash, so the list has just spent again and an entry price is the right ask. Built on the two tightest pairs in the entire basket dataset: mince with Cumberland sausages at 5.80x chance and mince with wagyu burgers at 5.27x. Nobody has sold these three together and the data says they are already being bought together.',
+        build:{desc:{hook:"THE WEEKEND GRILL BOX FOR $348",
+          how:["Three things in one box: Angus mince 1kg, wagyu burgers 600g and Cumberland sausages 500g.",
+               "2.1kg in total, which covers a barbecue and still leaves you a couple of dinners.",
+               "One box, one price, nothing to choose."],
+          math:["Buy the three separately and it comes to $989.",
+                "Today the box is $348.",
+                "You save $641. That is 64% off."],
+          pairing:"Mince, sausages and burgers turn up in the same order more often than any other three things we sell. Our customers were already building this box one product at a time, so we put it together properly and priced it lower than they could.",
+          sell:"This is the Saturday shop. Burgers for the barbecue you keep promising everyone. Cumberlands for a Sunday breakfast that takes nine minutes of actual effort. Mince for the meatballs or the bolognese that gets eaten twice and tastes better the second night. Everything here is a crowd pleaser and nothing here needs a recipe.",
+          close:"Today only. Ends midnight."},
+          source:'Bundle builder: Angus Mince 1kg + Wagyu Burgers 600g + Cumberland Sausages 500g', banner:['64% OFF the Weekend Grill Box'], clone:'The Weekend Grill Box — Mince, Burgers, Cumberlands · $348', price:'$348', compare:'$989'}
+      },
+      '2026-09-12':{
+        id:'sep-sausage-flight', title:'The Wagyu Sausage Flight — 1.5kg for $208', mech:'Fixed Bundle · Range Exposure', tag:'new',
+        img:IMG('files/PlainWagyuBeefSausageBrand_d382b299-d49b-4ad4-95c1-d3f1880ae512.jpg'),
+        price:'1.5kg for $208', vs:'3 x Rangers Station Wagyu Sausages 500g · RRP $1,200 · 82% off', margin:'52% margin',
+        lines:[['Day target','$106,628'],['Stock','61 sets. Caramelised onion is the constraint — needs a restock to 150.']],
+        why:'Low-ticket test one, and the biggest range-exposure play of the month. We sell three flavours of Rangers Station wagyu sausage at $170 a pack and almost nobody knows they exist. Fixed three-pack rather than a pick-any-three, so it needs no picker. At 82% off it carries the second deepest headline of the month and it puts a genuinely premium product in front of people at a price they will try on impulse.',
+        flag:'Two anchors exist for this. The three individual listings each carry a $400 compare-at, giving $1,200. There is also a Rangers Station Sausage Sampler 1.5kg SKU anchored at $510. The two contradict each other and David needs to settle which is the real RRP before this is built.',
+        build:{desc:{hook:"THREE KINDS OF WAGYU SAUSAGE, 1.5KG, FOR $208",
+          how:["One pack of each flavour: classic wagyu, caramelised onion and red wine, and wagyu with ghost chilli.",
+               "Three packs, 1.5kg, around fifteen sausages.",
+               "One fixed box at one price. Nothing to pick."],
+          math:["Three packs at RRP is $1,200.",
+                "Today the flight is $208.",
+                "You save $992. That is 82% off, the deepest discount on any beef we sell this month."],
+          pairing:"One of each is on purpose. The classic is the one you will reorder. The caramelised onion is the one you put out when people come over. The ghost chilli is for whoever at the table insists nothing is ever hot enough. Try all three for less than the price of one at full whack.",
+          sell:"These are made from the same Rangers Station wagyu we sell as steak, which is why they taste nothing like a supermarket sausage. Fire up the barbecue, load a bun, and let people argue about which flavour wins. They are also the easiest weeknight dinner in the freezer, and the fastest way to find out what wagyu tastes like without spending like it.",
+          close:"Today only. Back to $400 a pack at midnight."},
+          source:'Rangers Station Wagyu Sausages 500g (Plain + Caramelised Onion & Red Wine + Ghost Chilli)', banner:['82% OFF the Wagyu Sausage Flight'], clone:'The Wagyu Sausage Flight — 3 Flavours, 1.5kg · $208 Today Only', price:'$208', compare:'$1,200'}
+      },
+      '2026-09-13':{
+        id:'sep-usda-prime-single', title:'1kg of USDA Prime Striploin for $700', mech:'Single SKU · Control Test', tag:'new',
+        img:IMG('files/wagyu-striploin-m7.jpg'),
+        price:'1kg for $700', vs:'Chilled USDA Prime Striploin 1kg · RRP $1,620 · 56% off', margin:'52% margin',
+        lines:[['Day target','$100,393'],['Stock','1,741 units.']],
+        why:'The control. Every deal this programme has run has been a quantity multiple, a bundle or a giveaway, so we have never separated the mechanic from the price. This is the same price band with the multiple stripped out: one kilo, one price, nothing else. If it lands anywhere near the multi-kilo deals then the mechanic is doing less than we think and the whole build process gets simpler.',
+        build:{desc:{hook:"1KG OF USDA PRIME STRIPLOIN FOR $700",
+          how:["A single kilo of chilled USDA Prime striploin.",
+               "That is two proper steaks, or three if you are being polite about it.",
+               "One piece, one price. No bundle and no code."],
+          math:["A kilo at RRP is $1,620.",
+                "Today it is $700.",
+                "You save $920. That is 56% off."],
+          sell:"Prime is the top few per cent of American beef and the grade above Choice, and you can see the difference before it hits the pan. More marbling, finer grain, and it holds its own with nothing but salt and a very hot skillet. Cut it thick and cut it yourself. Thin steaks are a false economy and this is not the piece to be careful with.",
+          close:"Today only. Ends midnight."},
+          source:'Chilled USDA Prime Striploin 1kg', banner:['56% OFF 1kg of USDA Prime Striploin'], clone:'1kg USDA Prime Striploin — $700 Today Only', price:'$700', compare:'$1,620'}
+      },
+      '2026-09-14':{
+        id:'sep-beat-the-clock', title:'Beat the Clock — 2kg of Angus M3-4 Ribeye, $884 Now, $984 at 1pm, $1,084 from 5pm', mech:'Rising Price', tag:'new',
+        img:IMG('files/3_08c743fb-1179-42cd-820e-2c3e03405686.png'),
+        price:'from $884', tiers:[['$884','9:00am'],['$984','1:00pm'],['$1,084','5:00pm']],
+        vs:'Rangers Station Black Angus M3-4 Ribeye 1kg · RRP $2,320 · 61% off at open', margin:'52% / 57% / 61% margin',
+        lines:[['Day target','$148,406 — highest of the block'],['Stock','408 sets.'],['Distribution','WhatsApp broadcast 9am + one email 9am + social. This is the variable that was missing.']],
+        why:'Both August runs are void as tests. They landed on days the deals page was taking between 3 and 11 sessions because the Emporium hype window had taken the channel, and neither opened below the cut\'s own best flat price. The T-bone opened at $799 on a cut that takes $4,055 on an ordinary day. The organic striploin opened at $699 when $735 flat had already done $4,410 twice. There was nothing to rush for. This opens at the margin floor, which is genuinely the lowest that cut can ever be sold, and every step up earns margin back rather than giving it away. Placed on the highest-target day of the block so it finally gets the traffic.',
+        flag:'Two things. Confirm the ladder against the creative, not the PDP copy — the 21 Aug run had the PDP saying midday and the campaign saying 1pm, and it had to be cancelled and rescheduled an hour before it fired. And the source photo on this listing carries a burned-in "2 PIECES FREE CHICKEN TENDERS" roundel from an earlier promo. Clean it deterministically with clean_patch.py into assets/deal-sources/ before the badge is built. Never ask an image model to remove it.',
+        build:{desc:{hook:"2KG OF ANGUS RIBEYE FROM $884. THE PRICE GOES UP AT 1PM.",
+          how:["Two kilos of Rangers Station Black Angus M3-4 ribeye.",
+               "It opens at $884 this morning. At 1pm it becomes $984. At 5pm it becomes $1,084.",
+               "The price only ever goes up. Whatever it says when you check out is what you pay."],
+          math:["Two kilos at RRP is $2,320.",
+                "Buy it this morning and you save $1,436, which is 61% off.",
+                "Wait until this afternoon and you save $1,336. Wait until tonight and it is $1,236.",
+                "Every hour you think about it costs you money."],
+          sell:"M3-4 is the sensible end of the wagyu range. Marbled enough to look like the photograph, not so rich that one steak finishes the evening. Two separate kilos means four steaks, so cook a pair tonight and keep the rest for the weekend. The only thing to work out is how quickly you want to decide.",
+          close:"Back to $2,320 at midnight, whatever you do."},
+          source:'Chilled Rangers Station Black Angus M3-4 Ribeye 1kg', banner:['61% OFF 2kg Angus M3-4 Ribeye — the price rises at 1pm'], clone:'2kg Black Angus M3-4 Ribeye — the Price Rises at 1pm and Again at 5pm', price:'$884 → $984 → $1,084', compare:'$2,320'}
+      },
+      '2026-09-15':{
+        id:'sep-chateaubriand-3', title:'Buy Two Chateaubriands, Get the Third Half Price', mech:'Buy 2, Get 3rd 50%', tag:'proven',
+        img:IMG('files/WagyuM4-5Tenderloin_Chateaubriand.webp'),
+        price:'2.4kg for $788', vs:'Chilled Wagyu M4-5 Tenderloin 800g · RRP $2,664 · 70% off', margin:'52% margin',
+        lines:[['Day target','$135,935'],['Stock','283 sets.'],['Mechanic maths','Two at $315, third at $158. Confirm $315 sits at or under the everyday price on the day.']],
+        why:'Same cut as 4 Sept, eleven days apart, but a bigger lot and a different mechanic rather than a cheaper price. That keeps the escalation honest and gives a clean read on whether weight, price or mechanic moves a proven cut. 70% is the deepest headline available on anything chilled and premium.',
+        build:{desc:{hook:"BUY TWO CHATEAUBRIANDS, GET THE THIRD HALF PRICE",
+          how:["Two 800g wagyu M4-5 chateaubriands at $315 each, and the third one is half that, $158.",
+               "Three pieces, 2.4kg, for $788 all in.",
+               "Applied at checkout. No code to remember."],
+          math:["Three pieces at RRP is $2,664.",
+                "Today all three are $788.",
+                "You save $1,876. That is 70% off."],
+          sell:"Three chateaubriands in September is a Christmas amount of tenderloin, which is precisely the appeal. Roast one whole for a table of six. Cut the second into thick medallions for a midweek dinner that feels like a restaurant. Put the third in the freezer and stop worrying about the next time someone announces they are coming over.",
+          close:"Today only. Ends midnight."},
+          source:'Chilled Wagyu M4-5 Tenderloin (Chateaubriand) 800g', banner:['BUY 2 GET 3RD HALF PRICE on Wagyu Chateaubriand'], clone:'Buy Two Wagyu Chateaubriands, Get the Third Half Price — 2.4kg $788', price:'$788', compare:'$2,664'}
+      },
+      '2026-09-16':{
+        id:'sep-whole-ducks', title:'Buy One Whole Duck, Get the Second Half Price', mech:'Buy 1, Get 2nd 50% · Range Exposure', tag:'new',
+        img:IMG('files/duck1.png'),
+        price:'2 birds, ~4kg, for $246', vs:'Frozen Free Range Whole Duck 1.8-2kg · RRP $992 · 75% off', margin:'52% margin',
+        lines:[['Day target','$124,088'],['Stock','95 sets.'],['Mechanic maths','First duck $164, second $82. Everyday is $248, so the framing holds comfortably.']],
+        why:'Range exposure. Whole duck sits at rank 187 with 191 units on the shelf and has never been featured, and at a $59 unit cost it carries 75% off while still clearing the margin band. It is also the right format for Hong Kong, where whole birds are how people actually eat duck. The 15 Aug Duck Box failed because it was a four-item box at $498, not because the category is wrong.',
+        build:{desc:{hook:"BUY ONE WHOLE DUCK, GET THE SECOND HALF PRICE",
+          how:["A whole free-range duck, 1.8kg to 2kg, is $164 today instead of $248.",
+               "Add a second and it is half that, $82. Two birds for $246.",
+               "Antibiotic free and hormone free. No code needed."],
+          math:["Two ducks at RRP is $992.",
+                "Today the pair is $246.",
+                "You save $746. That is 75% off."],
+          sell:"A whole duck is the least effort for the most praise in all of cooking. Score the skin, salt it, put it in a low oven and go and do something else for two hours. What comes out is crisp skin, soft meat and a jar of duck fat that will make the best roast potatoes your family has ever eaten. Two birds because one is never enough and you will only be annoyed about it later.",
+          close:"Today only. Ends midnight."},
+          source:'Frozen Free Range Whole Duck (1.8-2kg)', banner:['BUY 1 GET 2ND HALF PRICE on Whole Free-Range Duck'], clone:'Buy One Whole Free-Range Duck, Get the Second Half Price — $246', price:'$246', compare:'$992'}
+      },
+      '2026-09-17':{
+        id:'sep-thighs-b2g2', title:'Buy 2kg of Chicken Thighs, Get 2kg Free', mech:'Buy 2, Get 2 Free', tag:'new',
+        img:IMG('files/ChickenThigh.jpg'),
+        price:'4kg for $208', vs:'Barn Raised Chicken Thighs 1kg · RRP $1,440 · 85% off', margin:'52% margin',
+        lines:[['Day target','$118,476'],['Stock','745 sets.'],['Mechanic maths','2kg at $104, 2kg free. Everyday is $98/kg, so confirm the paid half still reads as a discount on the day.']],
+        why:'Low-ticket test two. Sits on a Thursday against the 3 Sept box at $328, so the two soft days are matched and the price ladder reads $208, $208, $328 across the month. It is also the deepest percentage in the whole plan.',
+        build:{desc:{hook:"BUY 2KG OF CHICKEN THIGHS, GET 2KG FREE",
+          how:["Pay $104 for two kilos of boneless, skinless chicken thighs.",
+               "Four kilos turn up. The second two are on us.",
+               "No code, no minimum spend, no catch."],
+          math:["Four kilos at RRP is $1,440.",
+                "Today it is $208.",
+                "You save $1,232. That is 85% off, the biggest percentage of the month."],
+          sell:"Four kilos of chicken thigh is around sixteen dinners sitting in your freezer. Curry on Monday, grilled with lemon on Wednesday, shredded into a salad for lunch, and a tray bake on Sunday that cooks itself. Boneless and skinless, so there is nothing to trim and nothing to think about. Portion them into bags before they go in, unless you fancy chiselling at a four kilo brick in three weeks.",
+          close:"Today only. Four kilos for the price of two."},
+          source:'Frozen Barn Raised Chicken Thighs (Boneless & Skinless) 1kg', banner:['BUY 2KG GET 2KG FREE on Chicken Thighs'], clone:'Buy 2kg Chicken Thighs, Get 2kg Free — 4kg $208', price:'$208', compare:'$1,440'}
+      },
+      '2026-09-18':{
+        id:'sep-angus-pair', title:'The Angus Pair — 3kg for $768', mech:'Fixed Bundle · Affinity', tag:'new',
+        img:IMG('files/shutterstock_1878705322_1_11.jpg'),
+        price:'3kg for $768', vs:'2 x M1-2 Ribeye 1kg + 1 x M1-2 Striploin 1kg · RRP $2,035 · 62% off', margin:'52% margin',
+        lines:[['Day target','$112,240'],['Stock','1,897 sets.']],
+        why:'The only premium bundle in the month, because it is the only one the basket data supports. Angus M1-2 ribeye and striploin are bought together at 1.75x chance with an 18% and 15% cross rate. Every other chilled cut pairing on the account sits at or below chance, which is why the rest of the bundles are frozen staples. Two ribeyes to one striploin because ribeye is what people reach for first.',
+        build:{desc:{hook:"3KG OF CHILLED ANGUS FOR $768",
+          how:["Two kilos of Black Angus M1-2 ribeye and one kilo of M1-2 striploin.",
+               "Three separate pieces, 3kg in total. Six steaks, give or take.",
+               "One box, one price, nothing to choose."],
+          math:["The three separately are $2,035 at RRP.",
+                "Today the box is $768.",
+                "You save $1,267. That is 62% off."],
+          pairing:"Ribeye and striploin is the pairing our customers make more than any other two steaks on the site, and it makes sense the moment you cook them side by side. The ribeye is the rich one with fat running all the way through. The striploin is leaner with a firmer bite and a proper strip of fat down the edge. Put both on the table and let everyone settle the argument themselves.",
+          sell:"Three kilos of chilled Angus cut into three pieces, so you get three separate steak nights out of one order and can pretend each one was planned. Take them out of the fridge half an hour before they go near heat, salt them properly, and do not touch them once they are in the pan.",
+          close:"Today only. Ends midnight."},
+          source:'Bundle builder: 2 x Chilled Black Angus M1-2 Ribeye 1kg + 1 x Chilled Black Angus M1-2 Striploin 1kg', banner:['62% OFF the 3kg Angus Pair Box'], clone:'The Angus Pair — 2kg Ribeye + 1kg Striploin · 3kg $768', price:'$768', compare:'$2,035'}
+      },
+      '2026-09-19':{
+        id:'sep-butchers-choice', title:"Butcher's Choice — 4kg, Johnny Picks, $849", mech:"Butcher's Choice Box", tag:'new',
+        img:IMG('files/shutterstock_2594441313_1_cb96eb05-edbe-44c6-8180-3302b5e82c48.jpg'),
+        price:'4kg for $849', vs:'Contents vary · RRP ~$2,200 · ~61% off', margin:'52% margin at a $408 cost cap',
+        lines:[['Day target','$106,628'],['Build rule','Total unit cost must not exceed $408. Worked example: 2 x Angus M1-2 Ribeye 1kg + 1 x M1-2 Striploin 1kg + 1 x Chicken Supreme 1kg = $393 cost, $2,191 RRP, 61% off, 54% margin.']],
+        why:'The only deal in the month that cannot be broken by a stock-out, because the contents flex to whatever is in the cold room. It is also the only mechanic that clears overhang without us having to pick a loser SKU and put it in a window. New mechanic, so it sits on a lower-target Saturday where a miss is cheap.',
+        flag:'Never publish the contents in advance and never publish a unit count. The price is known, the contents are the surprise. The box must state a guaranteed floor (at least 2kg of chilled premium beef) so nobody feels they got the offcuts.',
+        build:{desc:{hook:"4KG OF MEAT FOR $849. JOHNNY PICKS.",
+          how:["Four kilos of meat, chosen by Johnny on the morning, for $849.",
+               "You know the price and you know the weight. You find out what is in it when it arrives.",
+               "At least 2kg of it is chilled premium beef. That part is a promise."],
+          math:["Whatever goes in the box is worth around $2,200 at RRP.",
+                "Today it is $849.",
+                "That is roughly 61% off, and about $212 a kilo."],
+          sell:"Johnny has been a chef, a butcher and a fishmonger for thirty years, which means he has spent most of his life telling people what they should be eating and being right about it. He walks the cold room in the morning and picks the four best kilos in it. Some of it will be a cut you would never have chosen for yourself. That is the whole point, and it is usually the bit people come back asking for.",
+          close:"One box, one day, one price. Ends midnight."},
+          source:'New bundle SKU. Contents assembled on the day to a $408 cost cap.', banner:["61% OFF Johnny's 4kg Butcher's Choice Box"], clone:"Butcher's Choice — 4kg, Johnny Picks · $849 Today Only", price:'$849', compare:'$2,200'}
+      },
+      '2026-09-20':{
+        id:'sep-wagyu-ribeye-hold-1', title:'3kg of Wagyu M4-5 Ribeye for $1,325 — Day One', mech:'Quantity Flash · Two-Day Hold', tag:'proven',
+        img:IMG('files/2_a47273c2-2039-4041-9e50-021041d56e64.png'),
+        price:'3kg for $1,325', vs:'Rangers Station Wagyu M4-5 Ribeye 1kg · RRP $3,981 · 66% off', margin:'52% margin',
+        lines:[['Day target','$100,393'],['Stock','277 sets.'],['Note','Runs again tomorrow. Same price, same deal, second day.']],
+        why:'The only held-over deal we have ever run gave the two best days of the programme, and day two beat day one (+38.9% against +28.4%). That happened by accident when the wagyu ribeye ran 7 and 8 August. This is the deliberate replication, and it puts day two on the highest-target day of the block where the compounding is worth most.',
+        flag:'Third run of this cut in the month after 7 Sept. Watch for decay. If 7 Sept comes in soft, substitute Angus M3-4 Ribeye 3kg at $1,325 (RRP $3,480, 61% off, 52% margin) and keep the two-day structure.',
+        build:{desc:{hook:"3KG OF WAGYU RIBEYE FOR $1,325. TWO DAYS ONLY.",
+          how:["Three separate 1kg Rangers Station wagyu M4-5 ribeyes.",
+               "Six wagyu steaks, with delivery already free at this price.",
+               "This one runs today and tomorrow, then it is finished."],
+          math:["Three kilos at RRP is $3,981.",
+                "Today it is $1,325.",
+                "You save $2,656. That is 66% off."],
+          sell:"M4-5 is the grade where marbling stops being a talking point and becomes the reason you bought it. The fat runs right through, so it bastes itself and forgives you for checking your phone halfway through. Three kilos covers a barbecue, a dinner party and a quiet Thursday, all in one order and all delivered free.",
+          close:"Today and tomorrow only."},
+          source:'Chilled Rangers Station Wagyu M4-5 Ribeye 1kg', banner:['66% OFF 3kg of Wagyu M4-5 Ribeye'], clone:'3kg of Rangers Station Wagyu M4-5 Ribeye — $1,325', price:'$1,325', compare:'$3,981'}
+      },
+      '2026-09-21':{
+        id:'sep-wagyu-ribeye-hold-2', title:'3kg of Wagyu M4-5 Ribeye for $1,325 — Last Day', mech:'Quantity Flash · Two-Day Hold', tag:'proven',
+        img:IMG('files/2_a47273c2-2039-4041-9e50-021041d56e64.png'),
+        price:'3kg for $1,325', vs:'Rangers Station Wagyu M4-5 Ribeye 1kg · RRP $3,981 · 66% off', margin:'52% margin',
+        lines:[['Day target','$148,406 — joint highest of the block'],['Note','Day two of the hold. Same price, no extension.']],
+        why:'Day two of the hold, landing on the block\'s joint-highest target day and the day before the Emporium launches. Nothing here competes with the Emporium heroes, and the deadline is real because the sale starts tomorrow.',
+        build:{desc:{hook:"LAST DAY. 3KG OF WAGYU RIBEYE FOR $1,325.",
+          how:["Same deal as yesterday. Three separate 1kg wagyu M4-5 ribeyes.",
+               "Second and final day. It does not run again.",
+               "Delivery is free at this price."],
+          math:["Three kilos at RRP is $3,981.",
+                "Today it is $1,325.",
+                "You save $2,656. That is 66% off.",
+                "Tomorrow it is $3,981 again."],
+          sell:"Six wagyu steaks, delivered free, for less than a third of what the three kilos are worth. If you looked at this yesterday and told yourself you would think about it, this is the thinking part finished. Same price, one day left.",
+          close:"Ends midnight. It does not come back."},
+          source:'Chilled Rangers Station Wagyu M4-5 Ribeye 1kg', banner:['LAST DAY — 66% OFF 3kg of Wagyu M4-5 Ribeye'], clone:'3kg of Rangers Station Wagyu M4-5 Ribeye — $1,325 Last Day', price:'$1,325', compare:'$3,981'}
+      },
+      '2026-09-22':{
+        id:'sep-addon-mince', title:'Add-On of the Day — 2kg of Angus Mince, $374', mech:'Add-On · Meat Emporium',
+        img:IMG('files/RSAngusMince.png'),
+        price:'2kg for $374', vs:'Rangers Station Black Angus Grass Fed Mince 1kg · RRP $866 · 56% off', margin:'52% margin',
+        lines:[['Day target','$850,000 — Emporium launch'],['Where it lives','In cart and on the Emporium collection. No email of its own.']],
+        why:'Emporium launch day belongs to the sale. Mince is the hub of the entire basket network on this account: it pairs above chance with sausages, burgers, salmon pieces, whole chicken, chicken supreme, chicken breast, tenders and diced beef. Whatever the Emporium is selling, mince belongs next to it.',
+        build:{desc:{hook:"ADD 2KG OF ANGUS MINCE FOR $374",
+          how:["Two kilos of Rangers Station grass fed Angus mince, added to any order today.",
+               "Sits in the cart with whatever else you are buying from the sale.",
+               "Today only."],
+          math:["Two kilos at RRP is $866.",
+                "Today it is $374.",
+                "You save $492. That is 56% off."],
+          sell:"Mince is the thing you will use most and think about least. Bolognese, meatballs, a chilli that improves overnight, a shepherd's pie that gets eaten twice. Freeze it flat in bags and it defrosts in twenty minutes instead of ruining an afternoon.",
+          close:"Today only, with any order."},
+          source:'Frozen Rangers Station Black Angus Grass Fed Minced Beef 1kg', banner:['ADD 2KG OF ANGUS MINCE FOR $374'], clone:'2kg Angus Mince — $374 Add-On Today Only', price:'$374', compare:'$866'}
+      },
+      '2026-09-23':{
+        id:'sep-addon-supreme', title:'Add-On of the Day — 2kg of Chicken Supreme, $100', mech:'Add-On · Meat Emporium',
+        img:IMG('files/ChickenSupreme2.webp'),
+        price:'2kg for $100', vs:'Free-Range Chicken Supreme 1kg · RRP $312 · 67% off', margin:'52% margin',
+        lines:[['Day target','$450,000'],['Where it lives','In cart and on the Emporium collection. No email of its own.']],
+        why:'Day two of the Emporium. Chicken supreme pairs with mince at 2.77x chance and with salmon pieces at 5.83x, so it lands naturally in a sale basket. At $100 it is the cheapest way to move a cart another notch.',
+        build:{desc:{hook:"ADD 2KG OF CHICKEN SUPREME FOR $100",
+          how:["Two kilos of free-range chicken supreme, bone in and skin on with the wing left attached.",
+               "Added to any order today.",
+               "Today only, while the sale is on."],
+          math:["Two kilos at RRP is $312.",
+                "Today it is $100.",
+                "You save $212. That is 67% off."],
+          sell:"Supreme is the breast with the bone and the skin still on, which is the only version worth cooking. The bone keeps it from drying out and the skin goes properly crisp, so it looks like you tried much harder than you did. Roast it hot, skin side up, and leave it uncovered.",
+          close:"Today only, with any order."},
+          source:'Frozen Free-Range Chicken Supreme (Bone-in, skin on with wing) 1kg', banner:['ADD 2KG OF CHICKEN SUPREME FOR $100'], clone:'2kg Chicken Supreme — $100 Add-On Today Only', price:'$100', compare:'$312'}
+      },
+      '2026-09-24':{
+        id:'sep-lamb-shanks', title:'Four Lamb Shanks for $362', mech:'Quantity Flash · Emporium Deal',
+        img:IMG('files/Mix_image_image_1_c03e1b98-de75-4a7a-87f0-ec0c6fb44539.png'),
+        price:'4 shanks for $362', vs:'Chilled Mount Schanck Lamb Shanks 2pcs · RRP $892 · 59% off', margin:'52% margin',
+        lines:[['Day target','$210,000 — the sale starts to sag here'],['Stock','162 sets.'],['Distribution','Site and WhatsApp only. Badged inside the Emporium. No email.']],
+        why:'The Emporium front-loads hard then drops to $210k, $210k, $168k, $168k across four days, which is only 40-75% above an ordinary BAU day. The collection is not carrying that stretch on its own and this is exactly what the deal engine was built for. Lamb is non-beef, so it takes nothing from the sale heroes.',
+        build:{desc:{hook:"FOUR LAMB SHANKS FOR $362",
+          how:["Four Mount Schanck lamb shanks, enough for four people.",
+               "Running alongside the Meat Emporium. Every sale price on the site still applies to everything else.",
+               "Today only."],
+          math:["Four shanks at RRP is $892.",
+                "Today it is $362.",
+                "You save $530. That is 59% off."],
+          sell:"A shank is the part of the animal that did the most work, which is why it needs three hours and pays you back for every one of them. Brown them, throw them in a pot with wine, stock and whatever vegetables have been in the drawer too long, and walk away. The meat falls off the bone on its own. Serve it over mash and watch the table go quiet.",
+          close:"Today only. Ends midnight."},
+          source:'Chilled Mount Schanck Lamb Shanks (2pcs)', banner:['59% OFF Four Mount Schanck Lamb Shanks'], clone:'Four Lamb Shanks — $362 Today Only', price:'$362', compare:'$892'}
+      },
+      '2026-09-25':{
+        id:'sep-prawns', title:'Buy 1kg of Cooked Prawns, Get the Second Kilo Free', mech:'Buy 1, Get 1 Free · Emporium Deal',
+        img:IMG('files/cooked-tiger-prawn-2.jpg'),
+        price:'2kg for $166', vs:'Australian Endeavor Prawn Cooked 1kg · RRP $776 · 78% off', margin:'52% margin',
+        lines:[['Day target','$210,000'],['Stock','58 sets. Thin — needs a restock.'],['Mechanic maths','1kg at $166, second kilo free. Everyday is $298, so the framing holds comfortably.'],['Distribution','Site and WhatsApp only. No email.']],
+        why:'Second sag day. Non-beef so it does not touch the sale, cheap enough to be an impulse, and the only place in the month where a straight buy-one-get-one-free clears the margin band comfortably, because the paid kilo at $166 still sits well under the $298 everyday price.',
+        build:{desc:{hook:"BUY 1KG OF COOKED PRAWNS, GET THE SECOND KILO FREE",
+          how:["Pay $166 for a kilo of Australian Endeavor prawns, already cooked.",
+               "Two kilos arrive. The second is free.",
+               "Running alongside the Emporium. Nothing to enter."],
+          math:["Two kilos at RRP is $776.",
+                "Today it is $166.",
+                "You save $610. That is 78% off."],
+          sell:"Already cooked, so the hardest job you have is finding a big enough bowl. Defrost them, pile them up, put out lemon and something to dip them in and let everybody get on with it. Two kilos turns an ordinary evening into something that looks like a party, and you did not cook a thing.",
+          close:"Today only. Ends midnight."},
+          source:'Frozen Australian Endeavor Prawn Cooked 1kg', banner:['BUY 1KG GET 1KG FREE on Cooked Prawns'], clone:'Buy 1kg Australian Cooked Prawns, Get the Second Kilo Free — $166', price:'$166', compare:'$776'}
+      },
+      '2026-09-26':{
+        id:'sep-picanha-recycle', title:'The Whole Picanha for $740 — Back Again', mech:'Price Drop · Recycle', tag:'proven',
+        img:IMG('files/M9_Picanhas.png'),
+        price:'$740', vs:'Chilled Wagyu M8-9 Rump Cap ~2kg · RRP $2,256 · 67% off', margin:'52% margin',
+        lines:[['Day target','$168,000'],['Stock','296 units.'],['Distribution','Site and WhatsApp only. No email.']],
+        why:'Third sag day and the deepest one. Recycling repeats almost exactly: the organic striploin did $4,410 and six units on 6 Aug and then $4,410 and six units on 20 Aug. Picanha has never been an Emporium hero so it takes nothing from the sale, and running it again on the 26th gives a clean recycle read against 1 Sept.',
+        build:{desc:{hook:"THE PICANHA IS BACK. A WHOLE ONE FOR $740.",
+          how:["One whole M8-9 wagyu rump cap, around 2kg, with the chimichurri in the box.",
+               "Same deal we ran on the first of the month, back for one more day.",
+               "Running alongside the Emporium. No code needed."],
+          math:["This cut is $2,256 at RRP.",
+                "Today it is $740.",
+                "You save $1,516. That is 67% off."],
+          sell:"Enough people asked about this one that we brought it back, which is the honest reason. The fat cap on top does the cooking for you, so all you do is score it, salt it hard and put it fat side down first. Carve it at the table across the grain and let everyone assume it was difficult. If you missed it at the start of the month, this is your apology.",
+          close:"One more day. Then it is properly gone."},
+          source:'Chilled Wagyu M8-9 Rump Cap', banner:['67% OFF the Whole M8-9 Picanha'], clone:'Whole Wagyu M8-9 Picanha ~2kg — $740 Today Only', price:'$740', compare:'$2,256'}
+      },
+      '2026-09-27':{
+        id:'sep-chateaubriand-recycle', title:'Two Chateaubriands, 1.6kg for $524 — Back Again', mech:'Quantity Flash · Recycle', tag:'proven',
+        img:IMG('files/WagyuM4-5Tenderloin_Chateaubriand.webp'),
+        price:'1.6kg for $524', vs:'Chilled Wagyu M4-5 Tenderloin 800g · RRP $1,776 · 70% off', margin:'52% margin',
+        lines:[['Day target','$168,000'],['Stock','424 sets.'],['Distribution','Site and WhatsApp only. No email.']],
+        why:'Last of the four sag days. Chateaubriand shares no cut with the Emporium heroes and it is the second most reliable deal in the library. Sunday is also where the 23 Aug chateaubriand run did $11,546, so the day and the cut already agree.',
+        build:{desc:{hook:"TWO WAGYU CHATEAUBRIANDS FOR $524. BACK FOR ONE DAY.",
+          how:["Two 800g centre-cut wagyu M4-5 tenderloins, 1.6kg between them.",
+               "Same pair we ran earlier this month, back for a single day.",
+               "Running alongside the Emporium."],
+          math:["The two pieces are $1,776 at RRP.",
+                "Today they are $524.",
+                "You save $1,252. That is 70% off."],
+          sell:"Tenderloin on a Sunday is not a difficult decision. Roast one whole, rest it longer than you think you need to, and carve it thick at the table. The second piece goes in the freezer and quietly improves a week somewhere down the line.",
+          close:"Today only. Ends midnight."},
+          source:'Chilled Wagyu M4-5 Tenderloin (Chateaubriand) 800g', banner:['70% OFF Two Wagyu Chateaubriands'], clone:'Two Wagyu Chateaubriands, 1.6kg — $524 Today Only', price:'$524', compare:'$1,776'}
+      },
+      '2026-09-28':{
+        id:'sep-addon-cumberland', title:'Add-On of the Day — 1kg of Cumberland Sausages, $112', mech:'Add-On · Meat Emporium',
+        img:IMG('files/Cumberland.png'),
+        price:'1kg for $112', vs:'British Cumberland Pork Sausages 500g · RRP $400 · 72% off', margin:'52% margin',
+        lines:[['Day target','$294,000 — final Monday of the sale'],['Stock','77 sets. Thin.'],['Where it lives','In cart and on the Emporium collection. No email of its own.']],
+        why:'The final Monday belongs to the sale close, so the deal slot goes back to being a gap-closer. Cumberlands pair with mince at 5.80x chance, the tightest pair on the account, so they attach to almost any beef order without needing a pitch.',
+        build:{desc:{hook:"ADD 1KG OF CUMBERLAND SAUSAGES FOR $112",
+          how:["Two packs of British Cumberland pork sausages, a kilo in total.",
+               "Added to any order on the last day of the sale.",
+               "Nothing to enter."],
+          math:["A kilo at RRP is $400.",
+                "Today it is $112.",
+                "You save $288. That is 72% off."],
+          sell:"A proper Cumberland is coarse cut, heavy on the pepper and coiled rather than linked, because that is how it has always been done. Grill it slowly so the outside caramelises instead of splitting. It is the correct thing to eat the morning after a very large delivery arrives.",
+          close:"Last day of the sale."},
+          source:'Frozen British Cumberland Pork Sausages 500g', banner:['ADD 1KG OF CUMBERLAND SAUSAGES FOR $112'], clone:'1kg Cumberland Sausages — $112 Add-On Today Only', price:'$112', compare:'$400'}
+      },
+      '2026-09-29':{
+        id:'sep-freezer-run-recycle', title:'The Freezer Run — 4kg for $328, Back Again', mech:'Fixed Bundle · Recycle',
+        img:IMG('files/RSAngusMince.png'),
+        price:'4kg for $328', vs:'Mince + thighs + supreme + tenders · RRP $1,145 · 71% off', margin:'52% margin',
+        lines:[['Day target','$120,000 — post-sale'],['Stock','333 sets.']],
+        why:'The sale is over and everyone has just spent. This is the exact shape that works in that hole: entry price, no thinking required, and the highest first-time-buyer share of any deal format we have. It is also the second read on the 3 Sept result, three and a half weeks apart, which is the cleanest recycle test in the month.',
+        build:{desc:{hook:"THE FREEZER RUN IS BACK. 4KG FOR $328.",
+          how:["Four freezer staples, a kilo of each: Angus mince, chicken thighs, chicken supreme and chicken tenders.",
+               "4kg in total, which is a week of dinners for a family of four.",
+               "Same box and same price as the third of the month."],
+          math:["Buy the four separately and it comes to $1,145.",
+                "Today the box is $328.",
+                "You save $817. That is 71% off."],
+          pairing:"Still the four things our customers buy together more than any other combination on the site. It ran at the start of the month, it sold out of the door, and it is back because the freezer you filled three weeks ago is looking thin.",
+          sell:"After a week of Emporium cooking, this is the opposite of ambitious and that is exactly the appeal. Mince for the bolognese. Thighs for the curry. Supreme for Sunday. Tenders for the kids or a fifteen minute stir fry. Six weeknights handled, no imagination required, and no takeaway app opened.",
+          close:"Today only. Ends midnight."},
+          source:'Bundle builder: Angus Mince 1kg + Chicken Thighs 1kg + Chicken Supreme 1kg + Chicken Tenders 1kg', banner:['71% OFF the 4kg Freezer Run'], clone:'The Freezer Run — Mince, Thighs, Supreme, Tenders · 4kg $328', price:'$328', compare:'$1,145'}
+      },
+      '2026-09-30':{
+        id:'sep-weekly-wagyu-set', title:'The Weekly Wagyu Set for $823', mech:'Fixed Bundle · Dead Stock Clear', tag:'new',
+        img:IMG('files/1312.png'),
+        price:'2.6kg for $823', vs:'Weekly Wagyu Set · RRP $1,971 · 58% off', margin:'52% margin',
+        lines:[['Day target','$120,000 — last day of the month'],['Stock','728 sets and zero sales in the last 60 days. The largest single piece of dead stock on the account.']],
+        why:'728 sets have taken no orders at all in two months, which is roughly $600k of shelf value doing nothing. It gets the last day of the month, after the Emporium has closed, because the set contains M4-5 striploin and that cut is ring-fenced while the sale is live. Once the sale is done the ring-fence has done its job and this becomes the cleanest inventory win available.',
+        flag:'The set contains Chilled Wagyu M4-5 Striploin 1kg, which is rank 2 on the account and was an Emporium hero. Running it on the 30th keeps it out of the sale window, but it is still a hero inside a discounted bundle and that is Hani and David\'s call, not mine.',
+        build:{desc:{hook:"THE WEEKLY WAGYU SET, 2.6KG, FOR $823",
+          how:["Three things in one box: wagyu M4-5 striploin 1kg, wagyu burgers 600g and wagyu mince 1kg.",
+               "2.6kg of wagyu, built to cover a whole week rather than one big night.",
+               "Last deal of September. One box, one price."],
+          math:["The set is $1,971 at RRP.",
+                "Today it is $823.",
+                "You save $1,148. That is 58% off, and works out around $317 a kilo for wagyu."],
+          pairing:"The box is built the way a week actually runs. The striploin is Saturday night. The burgers are the evening nobody wants to cook. The mince is the pot of something that gets eaten twice and tastes better the second day. Same beef in all three, three completely different jobs.",
+          sell:"It is Rangers Station wagyu the whole way down, and that is the part worth knowing. Most places sell you the good cut and then quietly hand you commodity mince to go with it. Here even the bolognese is wagyu, which is a slightly ridiculous sentence and an extremely good week of dinners.",
+          close:"Last deal of the month. Midnight and it is over."},
+          source:'Weekly Wagyu Set', banner:['58% OFF the Weekly Wagyu Set'], clone:'The Weekly Wagyu Set — Striploin, Burgers, Mince · 2.6kg $823', price:'$823', compare:'$1,971'}
+      }
+    }
+  },
   '2026-08': {
     label: 'August 2026',
     target: 'HK$4,600,000',
@@ -704,15 +1251,9 @@ const PLAN = {
           sell:"It does one thing: lets you taste the grades against each other without buying a kilo of each. Cook them the same way on the same night and you'll see where your money goes."}, source:'New mixed-grade taster box (TBC) — fallback: The Duck Box', banner:['[%] OFF the Taster Box — confirm price first'], clone:'The Taster Box — Every Grade We Carry, Side by Side, $749', price:'~$749', compare:'TBC'}
       }
     ]
-  },
-
-  /* Next month goes here — same shape. Left empty so the pattern is obvious. */
-  '2026-09': {
-    label: 'September 2026',
-    target: 'TBC',
-    blocks: [],
-    days: {}
   }
+
+  /* Next month goes in above August, same shape. September is already there. */
 };
 
 /* ══════════════════════════════════════════════════════════════════
@@ -1005,16 +1546,35 @@ function banner(){
 }
 
 function badgeSrc(id){return 'assets/deal-badges/'+id+'.jpg'}
-function descTBC(d){return !!(d&&(d.value||[]).some(v=>/^\[CONFIRM/.test(v)))}
+function descTBC(d){return !!(d&&[...(d.value||[]),...(d.math||[])].some(v=>/^\[CONFIRM/.test(v)))}
+/* Two shapes are supported. The August deals use hook/value/sell. From
+   September the shape is richer: hook, how (the mechanic in plain steps),
+   math (the size of the saving), pairing (bundles only), sell, close. */
 function descText(d){
   if(!d) return '-';
-  return [d.hook,'',...(d.value||[]),'',d.sell].join('\n');
+  if(!d.how && !d.math) return [d.hook,'',...(d.value||[]),'',d.sell].join('\n');
+  const out=[d.hook,''];
+  if(d.how&&d.how.length){ out.push('HOW IT WORKS'); d.how.forEach((h,i)=>out.push((i+1)+'. '+h)); out.push('') }
+  if(d.math&&d.math.length){ out.push('WHAT YOU SAVE'); d.math.forEach(m=>out.push('- '+m)); out.push('') }
+  if(d.pairing){ out.push(d.pairing,'') }
+  if(d.sell){ out.push(d.sell,'') }
+  if(d.close){ out.push(d.close) }
+  return out.join('\n').trim();
 }
 function descHTML(d){
   if(!d) return '';
-  return '<p><strong>'+esc(d.hook)+'</strong></p>\n<ul>\n'
-    +(d.value||[]).map(v=>'  <li>'+esc(v)+'</li>').join('\n')
-    +'\n</ul>\n<p>'+esc(d.sell)+'</p>';
+  if(!d.how && !d.math){
+    return '<p><strong>'+esc(d.hook)+'</strong></p>\n<ul>\n'
+      +(d.value||[]).map(v=>'  <li>'+esc(v)+'</li>').join('\n')
+      +'\n</ul>\n<p>'+esc(d.sell)+'</p>';
+  }
+  let h='<p><strong>'+esc(d.hook)+'</strong></p>\n';
+  if(d.how&&d.how.length) h+='<p><strong>How it works</strong></p>\n<ol>\n'+d.how.map(x=>'  <li>'+esc(x)+'</li>').join('\n')+'\n</ol>\n';
+  if(d.math&&d.math.length) h+='<p><strong>What you save</strong></p>\n<ul>\n'+d.math.map(x=>'  <li>'+esc(x)+'</li>').join('\n')+'\n</ul>\n';
+  if(d.pairing) h+='<p>'+esc(d.pairing)+'</p>\n';
+  if(d.sell) h+='<p>'+esc(d.sell)+'</p>\n';
+  if(d.close) h+='<p><strong>'+esc(d.close)+'</strong></p>';
+  return h.trim();
 }
 function copyOut(txt,pill){
   navigator.clipboard.writeText(txt).then(()=>{
@@ -1132,8 +1692,11 @@ function renderFocus(){
           </div>
           <div class="pdp-body">
             <p class="pd-hook">${esc(b.desc.hook)}</p>
-            <ul class="pd-val">${(b.desc.value||[]).map(v=>`<li>${esc(v)}</li>`).join('')}</ul>
-            <p class="pd-sell">${esc(b.desc.sell)}</p>
+            ${(b.desc.how||[]).length?`<p class="pd-lab">How it works</p><ol class="pd-how">${b.desc.how.map(v=>`<li>${esc(v)}</li>`).join('')}</ol>`:''}
+            ${(b.desc.math||b.desc.value||[]).length?`${b.desc.math?'<p class="pd-lab">What you save</p>':''}<ul class="pd-val">${(b.desc.math||b.desc.value).map(v=>`<li>${esc(v)}</li>`).join('')}</ul>`:''}
+            ${b.desc.pairing?`<p class="pd-pair">${esc(b.desc.pairing)}</p>`:''}
+            ${b.desc.sell?`<p class="pd-sell">${esc(b.desc.sell)}</p>`:''}
+            ${b.desc.close?`<p class="pd-close">${esc(b.desc.close)}</p>`:''}
           </div>
         </div>`:''}
         <ol class="steps">
