@@ -1471,6 +1471,15 @@ function firstPlanned(){
   for(const k of MONTHS){const ks=dealDays(k);if(ks.length)return ks[0]}
   return MONTHS[0]+'-01';
 }
+/* The next day that actually has a deal on it, today included. Opening the planner
+   during a sale used to land on the blackout you are standing in, which meant the
+   month being planned was a dropdown away and the page looked empty. */
+function nextPlanned(from){
+  for(const k of MONTHS){
+    for(const d of dealDays(k)) if(d>=from) return d;
+  }
+  return null;
+}
 function movedChip(id,ds){
   const h=HOME[id];
   if(!h||h===ds) return '';
@@ -1990,12 +1999,13 @@ document.addEventListener('keydown',e=>{
   } else if(e.key==='t'||e.key==='T'){ select(inPlan(todayISO)?todayISO:firstPlanned()); }
 });
 
-/* boot: deep link → today → first planned day */
+/* boot: deep link, then today if today is a deal day, then the next deal day.
+   Landing on a blackout parks you on a month that is already finished. */
 (function(){
   const h=location.hash.slice(1);
   if(/^\d{4}-\d{2}-\d{2}$/.test(h)&&inPlan(h)) select(h,false);
-  else if(dealFor(todayISO)||isBlackout(todayISO)) select(todayISO,false);
-  else select(firstPlanned(),false);
+  else if(dealFor(todayISO)) select(todayISO,false);
+  else select(nextPlanned(todayISO)||firstPlanned(),false);
   setView(/^\d{4}-\d{2}-\d{2}$/.test(h)?'day':'review');
 })();
 </script>
