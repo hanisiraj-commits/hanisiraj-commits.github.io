@@ -321,7 +321,7 @@
     <img class="sk-logo" src="assets/brand/steakking-logo-white.png" alt="Steak King">
     <span class="brand-x">&times;</span>
     <img class="tethrd-logo" src="assets/brand/tethrd-wordmark-white.svg" alt="Tethrd">
-    <div class="top-title">Johnny's Deal of the Day<small>Planner &middot; internal</small></div>
+    <div class="top-title">Johnny's Deal of the Day<small>Planner</small></div>
     <div class="top-tools">
       <div class="seg" role="group" aria-label="View">
         <button id="vReview" aria-pressed="true">Review</button>
@@ -360,7 +360,7 @@
       </button>
       <button class="btn ghost" id="okAll">Approve all remaining</button>
       <button class="btn ghost" id="clrAll">Reset</button>
-      <span class="copied" id="sumCopied">Copied &mdash; paste it to Hani</span>
+      <span class="copied" id="sumCopied">Copied</span>
       <span style="font-size:12px;color:var(--muted);margin-left:auto" id="syncNote">&nbsp;</span>
     </div>
   </div>
@@ -399,11 +399,10 @@
     <footer>
       <strong>Moving a deal:</strong> grab the handle on the left of any row and drag it up or down the table. Everything in between shifts along by one to close the gap &mdash; drag Tuesday's deal down to Friday and Wednesday, Thursday and Friday each move up a day. A deal pushed past the last available day drops into <em>Not scheduled</em> at the bottom, and can be dragged back in at any time. Moves are shared with everyone on this page within fifteen seconds, and sign-off and comments travel with the deal, not the date &mdash; approve something on the 5th, move it to the 12th, and it is still approved.<br><br>
       <strong>How a deal is named:</strong> the customer meets the deal three times before they meet the price &mdash; on the homepage bar, on the collection tile, and at the top of the PDP &mdash; and all three now say the same thing in the same words. The rule is that the <em>mechanic comes first and the product comes second</em>. A shopper reading nothing but the product title has to know what they get and why it is a deal: <em>Buy 1kg Organic Angus Striploin, Get the 2nd Half Price</em>, not <em>The Organic Double</em>. Where there is no mechanic to name &mdash; a straight price drop or a bundle &mdash; the unit of sale leads instead, because the confusion that costs us the sale is a $735 price tag next to a photograph of one steak when the deal is two kilos. The headline on this page is now that same customer-facing line, so what David signs off is what the shopper reads. Prices stay out of the PDP title where Shopify already shows them; the badge carries the strike-through, the title carries the mechanic, the banner carries both.<br><br>
-      <strong>The homepage banner</strong> is where the programme actually lives &mdash; the site does the daily beat, email supports it once or twice a week. The bar itself is fixed furniture: the <em>Johnny's Deal of The Day</em> subline, the countdown and the CLAIM NOW button never change, and they sit directly above the free-shipping line so the two mechanics reinforce each other on every pageview. The only thing written each day is the headline, and it has room for about <strong>forty-five characters</strong> before it wraps on mobile. So it carries the mechanic in caps and the cut after it &mdash; <em>BUY 1KG GET 2ND 50% OFF on Organic Striploin</em> &mdash; and nothing else. No <em>today only</em>, because the countdown already says it. And it leads on <strong>the value, not the price</strong> &mdash; the percentage off RRP, which is the number that earns the click and the language the Steak King catalogue has always used (<em>50% Off &mdash;</em>, <em>65% Off &mdash;</em>). Percentages are floored, never rounded up, so the bar can never claim more than the tile. The four buy-one-get-second deals are the exception: their mechanic is already a percentage, and two competing percentages in one line reads as a mistake, so those keep the mechanic. <strong>The bar percentage and the tile ribbon are calculated from different places</strong> &mdash; ours from the compare-at in this plan, the tile's from whatever compare-at is actually set on the deal clone &mdash; so if they are not set to the same number the two disagree on screen. As at 6 August the live Organic Striploin clone carries a $980 compare-at against this plan's $1,960, and the tile is showing 25% where it should show 62%. Each deal ships its headline in the build spec, and the ladder days ship three, swapped at 12:00 and 17:00.<br><br>
-      <strong>Hero images:</strong> each deal ships with its PDP hero already built &mdash; the real product photograph with the value laid over it, the deal price against the <strong>RRP</strong> and what you save. Compare-at is the product's maximum RRP in Shopify &mdash; not the everyday selling price &mdash; so the strike-through on the badge, the strike-through on the PDP and the value line in the copy all quote the same number. Copy it to the clipboard or download it straight from the deal view. They are generated from the plan itself, so the figures on a badge can never disagree with the figures on the page: run <span class="kbd">python3 scripts/build-deal-badges.py</span> after a price changes and the affected heroes rebuild. Headlines and the corner tab live in <span class="kbd">scripts/badge-copy.json</span>.<br><br><strong>Eight SKUs still carry no compare-at price at all</strong>, so they cannot anchor a deal on a real RRP and are held out of September: Organic Grass Fed Angus Striploin 1kg, Frozen Wagyu Diced Beef 1kg, Chilled Angus M2-3 Tenderloin Fillet Steaks 1kg, Frozen Spanish Acorn Fed Iberico Pork Chops, Frozen Acorn Fed Iberico Pork Rack Roast, Australian Yellowfin Tuna Steaks, Chilled Appellation Sydney Rock Oysters and Frozen Spanish Free Range Pork Belly. David to set a real RRP on each and they come back into the rotation.<br><br><strong>Two anchors contradict each other and both need settling before build.</strong> The Rangers Station wagyu sausages carry a $400 compare-at each on their three individual listings, giving $1,200 for the flight, while the existing Sausage Sampler 1.5kg SKU is anchored at $510. And the M4-5 wagyu ribeye exists as two live listings with different unit costs and different compare-at figures ($247 / $976 on the plain 1kg, $212 / $1,327 on the Rangers Station buy-2-get-1 listing), which is the difference between a $1,325 and a $1,140 deal on the same three kilos.<br><br>
-      <strong>How to add a month:</strong> open this file and append one entry to the <span class="kbd">PLAN</span> object at the top of the script &mdash; a label, the block rows, and one entry per day, each with its own <span class="kbd">id</span>. Nothing else needs touching; the calendar, lookahead and build specs all read from it. The dates in <span class="kbd">PLAN</span> are only the starting order &mdash; once anyone drags a row, the running order is whatever the shared backend says it is.<br><br>
+      <strong>The homepage banner</strong> is where the programme actually lives &mdash; the site does the daily beat, email supports it once or twice a week. The bar itself is fixed furniture: the <em>Johnny's Deal of The Day</em> subline, the countdown and the CLAIM NOW button never change, and they sit directly above the free-shipping line so the two mechanics reinforce each other on every pageview. The only thing written each day is the headline, and it has room for about <strong>forty-five characters</strong> before it wraps on mobile. So it carries the mechanic in caps and the cut after it &mdash; <em>BUY 1KG GET 2ND 50% OFF on Organic Striploin</em> &mdash; and nothing else. No <em>today only</em>, because the countdown already says it. And it leads on <strong>the value, not the price</strong> &mdash; the percentage off RRP, which is the number that earns the click and the language the Steak King catalogue has always used (<em>50% Off &mdash;</em>, <em>65% Off &mdash;</em>). Percentages are floored, never rounded up, so the bar can never claim more than the tile. The four buy-one-get-second deals are the exception: their mechanic is already a percentage, and two competing percentages in one line reads as a mistake, so those keep the mechanic. <strong>The bar percentage and the tile ribbon are calculated from different places</strong> &mdash; ours from the compare-at in this plan, the tile's from whatever compare-at is actually set on the deal clone &mdash; so the compare-at on the deal clone must be set to the figure in the build spec or the two disagree on screen. Each deal ships its headline in the build spec, and the ladder days ship three, swapped at 12:00 and 17:00.<br><br>
+      <strong>Hero images:</strong> each deal ships with its PDP hero already built &mdash; the real product photograph with the value laid over it, the deal price against the <strong>RRP</strong> and what you save. Compare-at is the product's maximum RRP in Shopify &mdash; not the everyday selling price &mdash; so the strike-through on the badge, the strike-through on the PDP and the value line in the copy all quote the same number. Copy it to the clipboard or download it straight from the deal view. They are generated from the plan itself, so the figures on a badge can never disagree with the figures on the page; when a price changes, the hero is rebuilt to match.<br><br><strong>Eight SKUs still carry no compare-at price at all</strong>, so they cannot anchor a deal on a real RRP and are held out of September: Organic Grass Fed Angus Striploin 1kg, Frozen Wagyu Diced Beef 1kg, Chilled Angus M2-3 Tenderloin Fillet Steaks 1kg, Frozen Spanish Acorn Fed Iberico Pork Chops, Frozen Acorn Fed Iberico Pork Rack Roast, Australian Yellowfin Tuna Steaks, Chilled Appellation Sydney Rock Oysters and Frozen Spanish Free Range Pork Belly. David to set a real RRP on each and they come back into the rotation.<br><br><strong>Two anchors contradict each other and both need settling before build.</strong> The Rangers Station wagyu sausages carry a $400 compare-at each on their three individual listings, giving $1,200 for the flight, while the existing Sausage Sampler 1.5kg SKU is anchored at $510. And the M4-5 wagyu ribeye exists as two live listings with different unit costs and different compare-at figures ($247 / $976 on the plain 1kg, $212 / $1,327 on the Rangers Station buy-2-get-1 listing), which is the difference between a $1,325 and a $1,140 deal on the same three kilos.<br><br>
       <strong>Keyboard:</strong> <span class="kbd">&larr;</span> <span class="kbd">&rarr;</span> move a day &middot; <span class="kbd">T</span> jump to today &middot; tab to a drag handle and use <span class="kbd">&uarr;</span> <span class="kbd">&darr;</span> to move a deal without dragging. Every date is linkable &mdash; the URL updates as you click, so you can paste someone straight onto a specific day.<br><br>
-      Steak King HK &times; Tethrd &middot; Block dates and targets are taken from the Steak King HK September 2026 forecast: HK$6.0m for the month at 12% blended spend, BAU &amp; JDOTD 1&ndash;7 Sep ($846,167) and 11&ndash;21 Sep ($1,313,833), Flash Sale 8&ndash;10 Sep ($1,250,000), Meat Emporium 22&ndash;30 Sep ($2,590,000). The two JDOTD blocks average $120,000 a day against $107,469 on the best BAU stretch we have run, so the deal is closing part of a $12,531 daily gap and paid is closing the rest. Every deal is priced at cost &divide; 0.48, which holds gross margin between 51% and 55%: the floor is 50% and the ceiling is deliberate, because the point is to keep the price low. Prices, unit costs, stock levels and product images pulled live from the Steak King Shopify Admin API on 27 August 2026, mid Meat Emporium, so shelf prices are sale prices &mdash; re-pull on 1 September before anything is cloned. Gross margin is deal price against unit cost, before shipping and payment fees. Bundles are built from co-purchase lift measured across 4,302 non-promo orders, 1 June to 24 August 2026. All figures HKD.
+      Steak King HK &times; Tethrd &middot; Block dates and targets are taken from the Steak King HK September 2026 forecast: HK$6.0m for the month at 12% blended spend, BAU &amp; JDOTD 1&ndash;7 Sep ($846,167) and 11&ndash;21 Sep ($1,313,833), Flash Sale 8&ndash;10 Sep ($1,250,000), Meat Emporium 22&ndash;30 Sep ($2,590,000). The two JDOTD blocks average $120,000 a day against $107,469 on the best BAU stretch we have run, so the deal is closing part of a $12,531 daily gap and paid is closing the rest. Prices, unit costs, stock levels and product images pulled live from the Steak King Shopify Admin API on 27 August 2026, mid Meat Emporium, so shelf prices shown are sale prices. Gross margin is deal price against unit cost, before shipping and payment fees. Bundles are built from co-purchase lift measured across 4,302 non-promo orders, 1 June to 24 August 2026. All figures HKD.
     </footer>
   </div>
 </main>
@@ -426,10 +425,17 @@
    (the deadline). August deals still use the older three-part shape of
    hook / value / sell and render unchanged.
 
-   `why` is the record of why each pick sits where it does. It is not
-   rendered on the page any more; it is here for whoever plans the
-   next month.
+   `why` and `flag` are internal planning notes. Neither is rendered:
+   this page is client-facing and David builds straight off it, so the
+   card shows only the deal, the spec and the facts he needs. `lines`
+   render only for the labels in CLIENT_LINES below; everything else
+   (who said what, margin workings, provenance) stays in the data.
    ══════════════════════════════════════════════════════════════════ */
+const CLIENT_LINES = new Set(['Day target','Stock','Contents']);
+const INTERNAL_RX = /\bHani\b|assumed in stock|per Hani/i;
+function clientLines(deal){
+  return (deal.lines||[]).filter(l=>CLIENT_LINES.has(l[0]) && !INTERNAL_RX.test(l[1]));
+}
 const CDN = 'https://cdn.shopify.com/s/files/1/0525/7638/7266/';
 const IMG = p => CDN + p + '?width=520';
 
@@ -1524,15 +1530,17 @@ function renderFocus(){
     el.innerHTML=`<div class="focus"><div class="fc-main" style="padding:24px">
       <div class="fc-date">${prettyDate(ds)}</div>
       <h3>Nothing planned for this day yet</h3>
-      <p class="ln">${inPlan(ds)?'This month is in the planner but this date has no deal against it.':'This month has not been planned yet.'} Add it to the <span class="kbd">PLAN</span> object, or drag one across in the review view.</p>
+      <p class="ln">${inPlan(ds)?'This month is in the planner but this date has no deal against it.':'This month has not been planned yet.'} Drag a deal across in the review view to fill it.</p>
     </div></div>`;
     return;
   }
 
   const tiers = deal.tiers ? `<div class="tiers">${deal.tiers.map(t=>`<div class="tier${t[2]?' hot':''}"><b>${t[0]}</b><span>${t[1]}</span></div>`).join('')}</div>` : '';
   const offer = deal.price ? `<div class="offer"><b>${deal.price}</b><span class="vs">${deal.vs||''}</span>${deal.margin?`<span class="marg">${deal.margin}</span>`:''}</div>` : '';
-  const lines = (deal.lines||[]).map(l=>`<p class="ln"><strong>${l[0]}:</strong> ${l[1]}</p>`).join('');
-  const flag  = deal.flag ? `<p class="ln flag"><strong>Flag:</strong> ${deal.flag}</p>` : '';
+  // Client-facing card: only the facts David needs. Internal notes (`flag`, `why`,
+  // pricing workings, who-said-what) stay in PLAN for planning but never render.
+  const lines = clientLines(deal).map(l=>`<p class="ln"><strong>${l[0]}:</strong> ${l[1]}</p>`).join('');
+  const flag  = '';
   const b=deal.build||{};
 
   el.innerHTML=`<div class="focus${state==='today'?' is-today':''}${deal.ladder?' is-ladder':''}">
@@ -1583,7 +1591,7 @@ function renderFocus(){
             <span class="copied" id="heroCopied">Copied</span>
           </div>
           <div class="hero-img"><img id="heroImg" src="${badgeSrc(id)}" alt="${esc(deal.title)} — deal hero with value badge"></div>
-          <p class="hero-note">No hero generated for this deal yet. Run <span class="kbd">scripts/build-deal-badges.py</span> and it will appear here.</p>
+          <p class="hero-note">Hero image for this deal is still being prepared. It will appear here once ready.</p>
         </div>
         ${b.desc?`<div class="pdp${descTBC(b.desc)?' tbc':''}">
           <div class="pdp-h"><b>Product description</b><span>paste straight into the cloned PDP</span>
