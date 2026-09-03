@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Steak Back email mockups</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF; --cream:#FBF3E4; --sand:#F4EEE3;
+    --ink:#171717; --body:#4A4A48; --soft:#7A7A76; --line:#E3DACA; --rule:#D8CDB8;
+    --coral:#EC7D55; --deep:#C24A22; --gold:#B8862B; --band:#373E3E;
+    --tag:#1B5E7A; --tagbg:#E2F0F6; --tagline:#9CC8DA;
+    --blk:#8A5A12; --blkbg:#FBEFD6; --blkline:#DDBE7E;
+    --disp:"Fjalla One",Impact,"Arial Narrow Bold",sans-serif;
+    --sans:"Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:#E8E3DA; color:#3C3C3A; font-family:var(--sans); line-height:1.6; -webkit-font-smoothing:antialiased}
+
+  .top{padding:34px 24px 26px; border-bottom:1px solid #D2CBBF; max-width:1500px; margin:0 auto; background:#F3EFE7}
+  .top h1{font-family:var(--disp); font-size:34px; letter-spacing:.03em; text-transform:uppercase; color:#1E1E1C; margin:0 0 10px}
+  .top p{margin:0 0 7px; max-width:92ch; font-size:14.5px; color:#5C5C58}
+  .top b{color:#1E1E1C}
+  .top code{background:#E6E0D4; padding:1px 5px; border-radius:2px; font-size:12.5px; font-family:var(--mono)}
+  .top .ctrls{margin-top:16px; display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+  .top .grp{display:flex; gap:6px; padding-right:14px; margin-right:6px; border-right:1px solid #D2CBBF}
+  .top .grp:last-child{border-right:0}
+  .top button{font:inherit; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+              background:#FFF; color:#5C5C58; border:1px solid #CFC7B9; padding:7px 14px; cursor:pointer; border-radius:2px}
+  .top button.on{background:var(--coral); border-color:var(--coral); color:#fff}
+
+  .legend{display:flex; gap:22px; flex-wrap:wrap; margin:16px 0 0; padding:14px 16px; background:#FFF; border:1px solid #D8D2C6}
+  .legend div{font-size:12.5px; color:#5C5C58}
+  .legend b{display:block; color:#1E1E1C; font-size:11px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:4px}
+
+  .rail{display:flex; gap:30px; padding:34px 24px 90px; overflow-x:auto; align-items:flex-start; max-width:1500px; margin:0 auto}
+  .col{flex:0 0 auto; width:600px}
+  .col.mob{width:390px}
+  .col > .lab{font-family:var(--disp); font-size:15px; letter-spacing:.13em; text-transform:uppercase; color:var(--deep); margin:0 0 4px}
+  .col > .sub{font-size:12.5px; color:#6E6E6A; margin:0 0 14px}
+  .col > .subj{background:#FFF; border:1px solid #D8D2C6; padding:11px 14px; margin:0 0 14px; font-size:13px; color:#5C5C58}
+  .col > .subj b{color:#1E1E1C; display:block; font-size:13.5px; margin-bottom:3px}
+
+  /* ---- dynamic markers ---- */
+  .dyn{font-family:var(--mono); font-size:.72em; background:var(--tagbg); color:var(--tag);
+       border-bottom:1.5px dotted var(--tagline); padding:0 3px; border-radius:2px;
+       letter-spacing:0; text-transform:none; font-weight:500; word-break:break-word; display:inline-block; line-height:1.35}
+  .blk{font-family:var(--mono); font-size:.72em; background:var(--blkbg); color:var(--blk);
+       border:1px dashed var(--blkline); padding:0 4px; border-radius:2px;
+       letter-spacing:0; text-transform:none; font-weight:500; display:inline-block; line-height:1.35}
+  /* keep the tag a readable chip rather than letting it inherit display sizes */
+  .em h2 .dyn, .em h2 .blk{font-size:14px; vertical-align:middle}
+  .col.mob .em h2 .dyn, .col.mob .em h2 .blk{font-size:12px}
+  .rows .v .dyn, .rows .v .blk{font-size:12px}
+  .col.mob .rows .v .dyn, .col.mob .rows .v .blk{font-size:10.5px}
+  body.vals .em h2 .dyn, body.vals .em h2 .blk,
+  body.vals .rows .v .dyn, body.vals .rows .v .blk{font-size:inherit; vertical-align:baseline}
+
+  body.vals .dyn{font-family:inherit; font-size:inherit; background:transparent; color:inherit;
+                 border-bottom:0; padding:0; letter-spacing:inherit; text-transform:inherit; font-weight:inherit}
+  body.vals .blk{font-family:inherit; font-size:inherit; background:transparent; color:inherit;
+                 border:0; padding:0; letter-spacing:inherit; text-transform:inherit; font-weight:inherit}
+
+  /* ---- THE EMAIL ---- */
+  .em{background:var(--paper); width:100%; border:1px solid #DAD3C6; box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .em .hd{background:var(--band); padding:15px 22px; display:flex; align-items:center}
+  .em .hd img{height:38px; width:auto; display:block}
+  .col.mob .em .hd img{height:31px}
+
+  .em .hero{padding:36px 30px 32px; background:var(--cream); border-bottom:1px solid var(--line)}
+  .em .kick{font-family:var(--disp); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--deep); margin:0 0 12px}
+  .em h2{font-family:var(--disp); font-size:36px; line-height:1.05; letter-spacing:.01em; text-transform:uppercase; color:var(--ink); margin:0 0 14px}
+  .col.mob .em h2{font-size:29px}
+  .em h2 .amt{color:var(--deep)}
+  .em p{margin:0 0 14px; font-size:15px; color:var(--body)}
+  .cta{display:inline-block; background:var(--ink); color:#fff; font-family:var(--disp); font-size:14px;
+       letter-spacing:.1em; text-transform:uppercase; padding:13px 28px; text-decoration:none; margin:4px 0 0}
+
+  .em .sec{padding:28px 30px; border-bottom:1px solid var(--line)}
+
+  .rows{border:1px solid var(--rule); background:var(--sand); padding:4px 18px}
+  .rows div{display:flex; justify-content:space-between; gap:16px; align-items:baseline; padding:12px 0; border-bottom:1px dashed #C9BCA2}
+  .rows div:last-child{border-bottom:0}
+  .rows .k{font-family:var(--disp); font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:#8A8168; flex:0 0 auto}
+  .rows .v{font-family:var(--disp); font-size:19px; letter-spacing:.02em; color:var(--ink); text-align:right}
+  .rows .v.hot{color:var(--deep); font-size:22px}
+  .rows .v.gold{color:var(--gold)}
+  .rows .v.sm{font-size:14px; font-family:var(--sans); font-weight:500; color:var(--body)}
+
+  .signin{font-size:14.5px; color:var(--body); margin:16px 0 0}
+
+  .tiers{display:grid; grid-template-columns:1fr 1fr 1fr; gap:9px}
+  .tier{border:1px solid var(--line); background:#FFF; padding:15px 8px 14px; text-align:center}
+  .tier .n{font-family:var(--disp); font-size:13px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink); margin:0 0 5px; line-height:1.15}
+  .col.mob .tier .n{font-size:11.5px}
+  .tier .r{font-family:var(--disp); font-size:26px; color:var(--deep); margin:0 0 4px; line-height:1}
+  .col.mob .tier .r{font-size:21px}
+  .tier .b{font-size:10.5px; color:var(--soft); margin:0; line-height:1.35}
+  .col.mob .tier .b{font-size:9.5px}
+  .tiernote{font-size:13px; color:var(--soft); margin:13px 0 0}
+
+  .usp{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#4A5251}
+  .usp div{background:var(--band); padding:14px 16px}
+  .usp .t{font-family:var(--disp); font-size:12.5px; letter-spacing:.05em; text-transform:uppercase; color:#fff; margin:0 0 2px}
+  .usp .d{font-size:11.5px; color:#D3D8D8; margin:0}
+  .col.mob .usp .t{font-size:11px}
+  .col.mob .usp .d{font-size:10.5px}
+
+  .em .ft{background:#FFF; padding:20px 30px 24px; border-top:1px solid var(--line)}
+  .em .ft p{font-size:11.5px; color:#8A8A85; margin:0 0 7px; line-height:1.55}
+  .em .ft a{color:#8A8A85}
+  .em .ft .tc{color:#9A9A94}
+
+  .why{font-size:12.5px; color:#6E6E6A; border-left:2px solid var(--coral); padding:2px 0 2px 12px; margin:16px 0 0; line-height:1.5}
+  .why b{color:#3C3C3A}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>Steak Back email mockups</h1>
+  <p><b>Built on the locked copy of 03/09.</b> All seven on one template: hero, four data rows with no section heading, the sign in paragraph, the three tiers shown equally, the USP band, footer. Modules three, four and five are identical on every email and ship as saved universal blocks.</p>
+  <p><b>No mascot.</b> Per Dave, 02/09, the UK Steak Back mark is objects only. The header carries the approved v6 wordmark, <b>steak with coins beside it</b>, light cut (<code>steak-back-steak-coins-ink.png</code>; the file suffix names the ground it sits on, not the lettering).</p>
+  <p><b>Colour calls:</b> money figures use <code>#C24A22</code> rather than <code>#FF875F</code>, which reads as the same coral but stays legible at text weight on paper. The primary button is near-black, because coral behind white text fails contrast. Coral stays on the kickers and the crown.</p>
+
+  <div class="ctrls">
+    <div class="grp">
+      <button id="bDesk" class="on">Desktop 600px</button>
+      <button id="bMob">Mobile 390px</button>
+    </div>
+    <div class="grp">
+      <button id="bTags" class="on">Show merge tags</button>
+      <button id="bVals">Show sample values</button>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div><b>Blue, dotted</b><span class="dyn">&#123;&#123; person.rise_wallet_code &#125;&#125;</span> &nbsp;A Klaviyo merge tag. Pulls live per recipient.</div>
+    <div><b>Amber, dashed</b><span class="blk">[ TIER ]</span> &nbsp;A show/hide block on the tier segment, not a merge tag.</div>
+    <div><b>Everything else</b> Static. Set once in the template.</div>
+  </div>
+</div>
+
+<div class="rail" id="rail">
+
+  <!-- ============ E1 ============ -->
+  <div class="col">
+    <p class="lab">E1 &middot; Credit earned</p>
+    <p class="sub">Store Credit Issued, immediate. Filter: credit_source not equal MANUAL.</p>
+    <div class="subj"><b>&pound;<span class="dyn" data-tag="{{ event.$value|default:0|floatformat:2 }}" data-val="18.40">{{ event.$value|default:0|floatformat:2 }}</span> has been credited to your Steak Back wallet</b>We&rsquo;ve just issued you store credit for your recent order with us.</div>
+
+    <div class="em">
+      <div class="hd"><img src="assets/steak-back-steak-coins-ink.png" alt="Steak Back Rewards"></div>
+
+      <div class="hero">
+        <p class="kick">Steak Back Rewards</p>
+        <h2>You&rsquo;ve just earned <span class="amt">&pound;<span class="dyn" data-tag="{{ event.$value|default:0|floatformat:2 }}" data-val="18.40">{{ event.$value|default:0|floatformat:2 }}</span></span>, credited to your wallet for your most recent order</h2>
+        <p>Thanks for shopping with us. Make sure you put this credit to good use, as it expires in the next 45 days.</p>
+        <a class="cta" href="#">Spend my credit</a>
+      </div>
+
+      <div class="sec">
+        <div class="rows">
+          <div><span class="k">Credit earned</span><span class="v hot">&pound;<span class="dyn" data-tag="{{ event.$value|default:0|floatformat:2 }}" data-val="18.40">{{ event.$value|default:0|floatformat:2 }}</span></span></div>
+          <div><span class="k">Expires</span><span class="v gold"><span class="dyn" data-tag="{{ event.expiration_date }}" data-val="15 October">{{ event.expiration_date }}</span></span></div>
+          <div><span class="k">Your tier</span><span class="v"><span class="blk" data-tag="[ TIER ] &middot; [ RATE ]" data-val="Medium Rare &middot; 7.5%">[ TIER ] &middot; [ RATE ]</span></span></div>
+          <div><span class="k">Your code</span><span class="v"><span class="dyn" data-tag="{{ person.rise_wallet_code }}" data-val="SAMPLE7X2K9QM4B1">{{ person.rise_wallet_code }}</span></span></div>
+        </div>
+        <p class="signin">Sign in and your store credit is sitting in your Steak Back Rewards wallet. If you would rather not sign in, simply paste the code above at checkout and you can redeem these cash back points.</p>
+      </div>
+
+      <div class="sec">
+        <div class="tiers">
+          <div class="tier"><p class="n">Rare</p><p class="r">5%</p><p class="b">Up to &pound;250<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Medium Rare</p><p class="r">7.5%</p><p class="b">&pound;250 to &pound;600<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Well Done</p><p class="r">10%</p><p class="b">&pound;600 and above<br>lifetime spend</p></div>
+        </div>
+        <p class="tiernote">Your tier is set by what you have spent with us in total, and every order earns that percentage back.</p>
+      </div>
+
+      <div class="usp">
+        <div><p class="t">Next day</p><p class="d">Order before 1:30pm</p></div>
+        <div><p class="t">Free delivery</p><p class="d">Over &pound;99</p></div>
+        <div><p class="t">Steak Back</p><p class="d">Up to 10% on every order</p></div>
+        <div><p class="t">Australian Wagyu</p><p class="d">Straight from the farm</p></div>
+      </div>
+
+      <div class="ft">
+        <p class="tc">Steak Back credit expires 45 days after it is issued. It has no cash value and cannot be transferred. Credit earned on a refunded order is removed. Full terms apply.</p>
+        <p>Steak King UK &middot; Milton Keynes &middot; <a href="#">Unsubscribe</a></p>
+      </div>
+    </div>
+
+    <p class="why"><b>Four dynamic elements, one of them a block.</b> The tier row is the only conditional: three show/hide variants on <code>Shopify Tags</code>. Everything outside the rows and the hero figure is static.</p>
+  </div>
+
+
+  <!-- ============ E2 ============ -->
+  <div class="col">
+    <p class="lab">E2 &middot; Mid&#8209;window nudge</p>
+    <p class="sub">Day 30. Exits on the Wallet Redemption metric.</p>
+    <div class="subj"><b>Your Steak Back rewards are about to expire</b>You currently have &pound;<span class="dyn" data-tag="{{ person.rise_wallet_balance|default:0|floatformat:2 }}" data-val="18.40">{{ person.rise_wallet_balance|default:0|floatformat:2 }}</span> sitting in your wallet, which is about to expire soon.</div>
+
+    <div class="em">
+      <div class="hd"><img src="assets/steak-back-steak-coins-ink.png" alt="Steak Back Rewards"></div>
+
+      <div class="hero">
+        <p class="kick">Steak Back Rewards</p>
+        <h2><span class="amt">&pound;<span class="dyn" data-tag="{{ person.rise_wallet_balance|default:0|floatformat:2 }}" data-val="18.40">{{ person.rise_wallet_balance|default:0|floatformat:2 }}</span></span> is about to expire</h2>
+        <p>It has been sitting in your Steak Back Rewards wallet since your last order. Once it runs out on <span class="dyn" data-tag="{{ person.rise_wallet_next_expiration_date }}" data-val="15 October">{{ person.rise_wallet_next_expiration_date }}</span> it does not come back, so put it towards your next one.</p>
+        <a class="cta" href="#">Spend my credit</a>
+      </div>
+
+      <div class="sec">
+        <div class="rows">
+          <div><span class="k">In your wallet</span><span class="v hot">&pound;<span class="dyn" data-tag="{{ person.rise_wallet_balance|default:0|floatformat:2 }}" data-val="18.40">{{ person.rise_wallet_balance|default:0|floatformat:2 }}</span></span></div>
+          <div><span class="k">Expires</span><span class="v gold"><span class="dyn" data-tag="{{ person.rise_wallet_next_expiration_date }}" data-val="15 October">{{ person.rise_wallet_next_expiration_date }}</span></span></div>
+          <div><span class="k">Your tier</span><span class="v"><span class="blk" data-tag="[ TIER ] &middot; [ RATE ]" data-val="Medium Rare &middot; 7.5%">[ TIER ] &middot; [ RATE ]</span></span></div>
+          <div><span class="k">Your code</span><span class="v"><span class="dyn" data-tag="{{ person.rise_wallet_code }}" data-val="SAMPLE7X2K9QM4B1">{{ person.rise_wallet_code }}</span></span></div>
+        </div>
+        <p class="signin">Sign in and your store credit is sitting in your Steak Back Rewards wallet. If you would rather not sign in, simply paste the code above at checkout and you can redeem these cash back points.</p>
+      </div>
+
+      <div class="sec">
+        <div class="tiers">
+          <div class="tier"><p class="n">Rare</p><p class="r">5%</p><p class="b">Up to &pound;250<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Medium Rare</p><p class="r">7.5%</p><p class="b">&pound;250 to &pound;600<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Well Done</p><p class="r">10%</p><p class="b">&pound;600 and above<br>lifetime spend</p></div>
+        </div>
+        <p class="tiernote">Your tier is set by what you have spent with us in total, and every order earns that percentage back.</p>
+      </div>
+
+      <div class="usp">
+        <div><p class="t">Next day</p><p class="d">Order before 1:30pm</p></div>
+        <div><p class="t">Free delivery</p><p class="d">Over &pound;99</p></div>
+        <div><p class="t">Steak Back</p><p class="d">Up to 10% on every order</p></div>
+        <div><p class="t">Australian Wagyu</p><p class="d">Straight from the farm</p></div>
+      </div>
+
+      <div class="ft">
+        <p class="tc">Credit shown is your live balance and expires on the date above. It has no cash value and cannot be transferred. Full terms apply.</p>
+        <p>Steak King UK &middot; Milton Keynes &middot; <a href="#">Unsubscribe</a></p>
+      </div>
+    </div>
+
+    <p class="why"><b>Date rows hide if empty</b> rather than defaulting. A raw ISO timestamp in front of a customer is worse than no row, and both Rise date properties arrive as strings, not Klaviyo date types.</p>
+  </div>
+
+
+  <!-- ============ E3 ============ -->
+  <div class="col">
+    <p class="lab">E3 &middot; Final call</p>
+    <p class="sub">Day 43. Exits on Wallet Redemption. WhatsApp companion.</p>
+    <div class="subj"><b>Last chance to spend your Steak Back rewards</b>You currently have &pound;<span class="dyn" data-tag="{{ person.rise_wallet_balance|default:0|floatformat:2 }}" data-val="18.40">{{ person.rise_wallet_balance|default:0|floatformat:2 }}</span> sitting in your wallet, and this is the last reminder we&rsquo;ll send.</div>
+
+    <div class="em">
+      <div class="hd"><img src="assets/steak-back-steak-coins-ink.png" alt="Steak Back Rewards"></div>
+
+      <div class="hero">
+        <p class="kick">Steak Back Rewards</p>
+        <h2><span class="amt">&pound;<span class="dyn" data-tag="{{ person.rise_wallet_balance|default:0|floatformat:2 }}" data-val="18.40">{{ person.rise_wallet_balance|default:0|floatformat:2 }}</span></span> expires on <span class="dyn" data-tag="{{ person.rise_wallet_next_expiration_date }}" data-val="15 October">{{ person.rise_wallet_next_expiration_date }}</span></h2>
+        <p>This is the last reminder we&rsquo;ll send about it. Once that date passes the credit comes off your account and it cannot be reinstated, so spend it while it is still yours.</p>
+        <a class="cta" href="#">Spend my credit</a>
+      </div>
+
+      <div class="sec">
+        <div class="rows">
+          <div><span class="k">In your wallet</span><span class="v hot">&pound;<span class="dyn" data-tag="{{ person.rise_wallet_balance|default:0|floatformat:2 }}" data-val="18.40">{{ person.rise_wallet_balance|default:0|floatformat:2 }}</span></span></div>
+          <div><span class="k">Gone on</span><span class="v gold"><span class="dyn" data-tag="{{ person.rise_wallet_next_expiration_date }}" data-val="15 October">{{ person.rise_wallet_next_expiration_date }}</span></span></div>
+          <div><span class="k">Your tier</span><span class="v"><span class="blk" data-tag="[ TIER ] &middot; [ RATE ]" data-val="Medium Rare &middot; 7.5%">[ TIER ] &middot; [ RATE ]</span></span></div>
+          <div><span class="k">Your code</span><span class="v"><span class="dyn" data-tag="{{ person.rise_wallet_code }}" data-val="SAMPLE7X2K9QM4B1">{{ person.rise_wallet_code }}</span></span></div>
+        </div>
+        <p class="signin">Sign in and your store credit is sitting in your Steak Back Rewards wallet. If you would rather not sign in, simply paste the code above at checkout and you can redeem these cash back points.</p>
+      </div>
+
+      <div class="sec">
+        <div class="tiers">
+          <div class="tier"><p class="n">Rare</p><p class="r">5%</p><p class="b">Up to &pound;250<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Medium Rare</p><p class="r">7.5%</p><p class="b">&pound;250 to &pound;600<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Well Done</p><p class="r">10%</p><p class="b">&pound;600 and above<br>lifetime spend</p></div>
+        </div>
+        <p class="tiernote">Your tier is set by what you have spent with us in total, and every order earns that percentage back.</p>
+      </div>
+
+      <div class="usp">
+        <div><p class="t">Next day</p><p class="d">Order before 1:30pm</p></div>
+        <div><p class="t">Free delivery</p><p class="d">Over &pound;99</p></div>
+        <div><p class="t">Steak Back</p><p class="d">Up to 10% on every order</p></div>
+        <div><p class="t">Australian Wagyu</p><p class="d">Straight from the farm</p></div>
+      </div>
+
+      <div class="ft">
+        <p class="tc">Credit expires on the date shown and cannot be reinstated. It has no cash value and cannot be transferred. Full terms apply.</p>
+        <p>Steak King UK &middot; Milton Keynes &middot; <a href="#">Unsubscribe</a></p>
+      </div>
+    </div>
+
+    <p class="why"><b>WhatsApp companion sits alongside this one.</b> Copy in <code>copy/locked.html</code>. Confirm the channel is live for SKUK before briefing it.</p>
+  </div>
+
+
+  <!-- ============ E4 ============ -->
+  <div class="col">
+    <p class="lab">E4 &middot; Expired</p>
+    <p class="sub">Store Credit Expired. No event properties used.</p>
+    <div class="subj"><b>Your Steak Back rewards have expired</b>The credit from that order has run out, but your tier has not moved.</div>
+
+    <div class="em">
+      <div class="hd"><img src="assets/steak-back-steak-coins-ink.png" alt="Steak Back Rewards"></div>
+
+      <div class="hero">
+        <p class="kick">Steak Back Rewards</p>
+        <h2>Your credit has expired</h2>
+        <p>There is nothing to fix and nothing to claim back. Your tier has not moved, so the next order you place earns Steak Back credit exactly the way that one did.</p>
+        <a class="cta" href="#">Start earning again</a>
+      </div>
+
+      <div class="sec">
+        <div class="rows">
+          <div><span class="k">In your wallet</span><span class="v">&pound;<span class="dyn" data-tag="{{ person.rise_wallet_balance|default:0|floatformat:2 }}" data-val="0.00">{{ person.rise_wallet_balance|default:0|floatformat:2 }}</span></span></div>
+          <div><span class="k">Next credit</span><span class="v sm">Earned on your next order</span></div>
+          <div><span class="k">Your tier</span><span class="v"><span class="blk" data-tag="[ TIER ] &middot; [ RATE ]" data-val="Medium Rare &middot; 7.5%">[ TIER ] &middot; [ RATE ]</span></span></div>
+          <div><span class="k">Your code</span><span class="v"><span class="dyn" data-tag="{{ person.rise_wallet_code }}" data-val="SAMPLE7X2K9QM4B1">{{ person.rise_wallet_code }}</span></span></div>
+        </div>
+        <p class="signin">Sign in and your store credit is sitting in your Steak Back Rewards wallet. If you would rather not sign in, simply paste the code above at checkout and you can redeem these cash back points.</p>
+      </div>
+
+      <div class="sec">
+        <div class="tiers">
+          <div class="tier"><p class="n">Rare</p><p class="r">5%</p><p class="b">Up to &pound;250<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Medium Rare</p><p class="r">7.5%</p><p class="b">&pound;250 to &pound;600<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Well Done</p><p class="r">10%</p><p class="b">&pound;600 and above<br>lifetime spend</p></div>
+        </div>
+        <p class="tiernote">Your tier is set by what you have spent with us in total, and every order earns that percentage back.</p>
+      </div>
+
+      <div class="usp">
+        <div><p class="t">Next day</p><p class="d">Order before 1:30pm</p></div>
+        <div><p class="t">Free delivery</p><p class="d">Over &pound;99</p></div>
+        <div><p class="t">Steak Back</p><p class="d">Up to 10% on every order</p></div>
+        <div><p class="t">Australian Wagyu</p><p class="d">Straight from the farm</p></div>
+      </div>
+
+      <div class="ft">
+        <p class="tc">Expired Steak Back credit cannot be reinstated. Credit is earned on every order and expires 45 days after it is issued. Full terms apply.</p>
+        <p>Steak King UK &middot; Milton Keynes &middot; <a href="#">Unsubscribe</a></p>
+      </div>
+    </div>
+
+    <p class="why"><b>Two row labels change here.</b> Credit earned and Expires make no sense on an expiry notice. The wallet row still pulls the live balance, so it reads &pound;0.00 only when they hold nothing else. No date, because the <code>Store Credit Expired</code> payload has never fired.</p>
+  </div>
+
+
+  <!-- ============ E5 RARE ============ -->
+  <div class="col">
+    <p class="lab">E5a &middot; Rare</p>
+    <p class="sub">Segment entry, Shopify Tags contains sb-rare. Enrolment, not a promotion.</p>
+    <div class="subj"><b>You&rsquo;re in. Welcome to Steak Back Rewards</b>Every order now earns you 5% back as store credit.</div>
+
+    <div class="em">
+      <div class="hd"><img src="assets/steak-back-steak-coins-ink.png" alt="Steak Back Rewards"></div>
+
+      <div class="hero">
+        <p class="kick">Steak Back Rewards</p>
+        <h2>You&rsquo;re in at <span class="amt">Rare</span></h2>
+        <p>You are enrolled in Steak Back Rewards, so every order you place from here earns you 5% back as store credit. Spend more with us in total and that percentage climbs.</p>
+        <a class="cta" href="#">See what&rsquo;s in stock</a>
+      </div>
+
+      <div class="sec">
+        <div class="rows">
+          <div><span class="k">Your tier</span><span class="v"><span class="blk" data-tag="[ TIER ]" data-val="Rare">[ TIER ]</span></span></div>
+          <div><span class="k">You now earn</span><span class="v hot"><span class="blk" data-tag="[ RATE ]" data-val="5%">[ RATE ]</span></span></div>
+          <div><span class="k">In your wallet</span><span class="v">&pound;<span class="dyn" data-tag="{{ person.rise_wallet_balance|default:0|floatformat:2 }}" data-val="0.00">{{ person.rise_wallet_balance|default:0|floatformat:2 }}</span></span></div>
+          <div><span class="k">Your code</span><span class="v"><span class="dyn" data-tag="{{ person.rise_wallet_code }}" data-val="SAMPLE7X2K9QM4B1">{{ person.rise_wallet_code }}</span></span></div>
+        </div>
+        <p class="signin">Sign in and your store credit is sitting in your Steak Back Rewards wallet. If you would rather not sign in, simply paste the code above at checkout and you can redeem these cash back points.</p>
+      </div>
+
+      <div class="sec">
+        <div class="tiers">
+          <div class="tier"><p class="n">Rare</p><p class="r">5%</p><p class="b">Up to &pound;250<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Medium Rare</p><p class="r">7.5%</p><p class="b">&pound;250 to &pound;600<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Well Done</p><p class="r">10%</p><p class="b">&pound;600 and above<br>lifetime spend</p></div>
+        </div>
+        <p class="tiernote">Your tier is set by what you have spent with us in total, and every order earns that percentage back.</p>
+      </div>
+
+      <div class="usp">
+        <div><p class="t">Next day</p><p class="d">Order before 1:30pm</p></div>
+        <div><p class="t">Free delivery</p><p class="d">Over &pound;99</p></div>
+        <div><p class="t">Steak Back</p><p class="d">Up to 10% on every order</p></div>
+        <div><p class="t">Australian Wagyu</p><p class="d">Straight from the farm</p></div>
+      </div>
+
+      <div class="ft">
+        <p class="tc">Tiers are based on lifetime spend with Steak King UK. Steak Back credit expires 45 days after it is issued. Full terms apply.</p>
+        <p>Steak King UK &middot; Milton Keynes &middot; <a href="#">Unsubscribe</a></p>
+      </div>
+    </div>
+
+    <p class="why"><b>Check this one is wanted.</b> Nobody is promoted to the entry tier, so this reads as an enrolment confirmation rather than a tier-up. Written because you asked for all three tier versions. If Steak Back is announced somewhere else instead, kill it and the set is two.</p>
+  </div>
+
+
+  <!-- ============ E5 MEDIUM RARE ============ -->
+  <div class="col">
+    <p class="lab">E5b &middot; Medium Rare</p>
+    <p class="sub">Segment entry, Shopify Tags contains sb-medium-rare.</p>
+    <div class="subj"><b>You&rsquo;ve moved up to Medium Rare</b>Every order now earns you 7.5% back instead of 5%.</div>
+
+    <div class="em">
+      <div class="hd"><img src="assets/steak-back-steak-coins-ink.png" alt="Steak Back Rewards"></div>
+
+      <div class="hero">
+        <p class="kick">Steak Back Rewards</p>
+        <h2>You&rsquo;re now <span class="amt">Medium Rare</span></h2>
+        <p>Your lifetime spend with us has crossed &pound;250, so every order from here earns you 7.5% back instead of 5%.</p>
+        <a class="cta" href="#">See what&rsquo;s in stock</a>
+      </div>
+
+      <div class="sec">
+        <div class="rows">
+          <div><span class="k">Your tier</span><span class="v"><span class="blk" data-tag="[ TIER ]" data-val="Medium Rare">[ TIER ]</span></span></div>
+          <div><span class="k">You now earn</span><span class="v hot"><span class="blk" data-tag="[ RATE ]" data-val="7.5%">[ RATE ]</span></span></div>
+          <div><span class="k">In your wallet</span><span class="v">&pound;<span class="dyn" data-tag="{{ person.rise_wallet_balance|default:0|floatformat:2 }}" data-val="18.40">{{ person.rise_wallet_balance|default:0|floatformat:2 }}</span></span></div>
+          <div><span class="k">Your code</span><span class="v"><span class="dyn" data-tag="{{ person.rise_wallet_code }}" data-val="SAMPLE7X2K9QM4B1">{{ person.rise_wallet_code }}</span></span></div>
+        </div>
+        <p class="signin">Sign in and your store credit is sitting in your Steak Back Rewards wallet. If you would rather not sign in, simply paste the code above at checkout and you can redeem these cash back points.</p>
+      </div>
+
+      <div class="sec">
+        <div class="tiers">
+          <div class="tier"><p class="n">Rare</p><p class="r">5%</p><p class="b">Up to &pound;250<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Medium Rare</p><p class="r">7.5%</p><p class="b">&pound;250 to &pound;600<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Well Done</p><p class="r">10%</p><p class="b">&pound;600 and above<br>lifetime spend</p></div>
+        </div>
+        <p class="tiernote">Your tier is set by what you have spent with us in total, and every order earns that percentage back.</p>
+      </div>
+
+      <div class="usp">
+        <div><p class="t">Next day</p><p class="d">Order before 1:30pm</p></div>
+        <div><p class="t">Free delivery</p><p class="d">Over &pound;99</p></div>
+        <div><p class="t">Steak Back</p><p class="d">Up to 10% on every order</p></div>
+        <div><p class="t">Australian Wagyu</p><p class="d">Straight from the farm</p></div>
+      </div>
+
+      <div class="ft">
+        <p class="tc">Tiers are based on lifetime spend with Steak King UK. Steak Back credit expires 45 days after it is issued. Full terms apply.</p>
+        <p>Steak King UK &middot; Milton Keynes &middot; <a href="#">Unsubscribe</a></p>
+      </div>
+    </div>
+
+    <p class="why"><b>Tier name is hardcoded per version, not a merge tag.</b> Each of these three is its own send on its own segment, so the hero can state the tier in plain type. The rows keep the block markers because the same saved rows module is reused across all seven emails.</p>
+  </div>
+
+
+  <!-- ============ E5 WELL DONE ============ -->
+  <div class="col">
+    <p class="lab">E5c &middot; Well Done</p>
+    <p class="sub">Segment entry, Shopify Tags contains sb-well-done.</p>
+    <div class="subj"><b>You&rsquo;ve moved up to Well Done</b>Every order now earns you 10% back, the highest rate we do.</div>
+
+    <div class="em">
+      <div class="hd"><img src="assets/steak-back-steak-coins-ink.png" alt="Steak Back Rewards"></div>
+
+      <div class="hero">
+        <p class="kick">Steak Back Rewards</p>
+        <h2>You&rsquo;re now <span class="amt">Well Done</span></h2>
+        <p>Your lifetime spend with us has crossed &pound;600, which puts you on the highest rate we do. Every order from here earns you 10% back.</p>
+        <a class="cta" href="#">See what&rsquo;s in stock</a>
+      </div>
+
+      <div class="sec">
+        <div class="rows">
+          <div><span class="k">Your tier</span><span class="v"><span class="blk" data-tag="[ TIER ]" data-val="Well Done">[ TIER ]</span></span></div>
+          <div><span class="k">You now earn</span><span class="v hot"><span class="blk" data-tag="[ RATE ]" data-val="10%">[ RATE ]</span></span></div>
+          <div><span class="k">In your wallet</span><span class="v">&pound;<span class="dyn" data-tag="{{ person.rise_wallet_balance|default:0|floatformat:2 }}" data-val="18.40">{{ person.rise_wallet_balance|default:0|floatformat:2 }}</span></span></div>
+          <div><span class="k">Your code</span><span class="v"><span class="dyn" data-tag="{{ person.rise_wallet_code }}" data-val="SAMPLE7X2K9QM4B1">{{ person.rise_wallet_code }}</span></span></div>
+        </div>
+        <p class="signin">Sign in and your store credit is sitting in your Steak Back Rewards wallet. If you would rather not sign in, simply paste the code above at checkout and you can redeem these cash back points.</p>
+      </div>
+
+      <div class="sec">
+        <div class="tiers">
+          <div class="tier"><p class="n">Rare</p><p class="r">5%</p><p class="b">Up to &pound;250<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Medium Rare</p><p class="r">7.5%</p><p class="b">&pound;250 to &pound;600<br>lifetime spend</p></div>
+          <div class="tier"><p class="n">Well Done</p><p class="r">10%</p><p class="b">&pound;600 and above<br>lifetime spend</p></div>
+        </div>
+        <p class="tiernote">Your tier is set by what you have spent with us in total, and every order earns that percentage back.</p>
+      </div>
+
+      <div class="usp">
+        <div><p class="t">Next day</p><p class="d">Order before 1:30pm</p></div>
+        <div><p class="t">Free delivery</p><p class="d">Over &pound;99</p></div>
+        <div><p class="t">Steak Back</p><p class="d">Up to 10% on every order</p></div>
+        <div><p class="t">Australian Wagyu</p><p class="d">Straight from the farm</p></div>
+      </div>
+
+      <div class="ft">
+        <p class="tc">Tiers are based on lifetime spend with Steak King UK. Steak Back credit expires 45 days after it is issued. Full terms apply.</p>
+        <p>Steak King UK &middot; Milton Keynes &middot; <a href="#">Unsubscribe</a></p>
+      </div>
+    </div>
+
+    <p class="why"><b>Top of the ladder.</b> The support line says so without claiming anything above it exists. This is the one email where highlighting the current tier in the block below would have earned its keep, if you ever want an exception to the static row.</p>
+  </div>
+
+</div>
+
+<script>
+  var rail  = document.getElementById('rail');
+  var bDesk = document.getElementById('bDesk');
+  var bMob  = document.getElementById('bMob');
+  var bTags = document.getElementById('bTags');
+  var bVals = document.getElementById('bVals');
+
+  function setWidth(mob){
+    var cols = rail.getElementsByClassName('col');
+    for (var i = 0; i < cols.length; i++){ cols[i].classList.toggle('mob', mob); }
+    bDesk.classList.toggle('on', !mob);
+    bMob.classList.toggle('on', mob);
+  }
+  function setMode(showVals){
+    document.body.classList.toggle('vals', showVals);
+    var nodes = document.querySelectorAll('.dyn[data-tag], .blk[data-tag]');
+    for (var i = 0; i < nodes.length; i++){
+      nodes[i].innerHTML = showVals ? nodes[i].dataset.val : nodes[i].dataset.tag;
+    }
+    bTags.classList.toggle('on', !showVals);
+    bVals.classList.toggle('on', showVals);
+  }
+  bDesk.addEventListener('click', function(){ setWidth(false); });
+  bMob.addEventListener('click',  function(){ setWidth(true);  });
+  bTags.addEventListener('click', function(){ setMode(false); });
+  bVals.addEventListener('click', function(){ setMode(true);  });
+  setMode(false);
+</script>
+
+</body>
+</html>
