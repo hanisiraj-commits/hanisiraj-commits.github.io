@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Steak Back Rewards — page mockup</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#010101; --band:#373E3E; --coral:#EC7D55; --live:#FF875F;
+    --gold:#FFB949; --grey:#A5A5A5; --white:#FFFFFF; --smoke:#BBBDC0;
+    --panel:#141A1A; --line:#2A3232;
+    --disp:"Fjalla One",Impact,"Haettenschweiler","Arial Narrow Bold",sans-serif;
+    --body:"Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:#0A0C0C; color:var(--white); font-family:var(--body); line-height:1.6;
+       -webkit-font-smoothing:antialiased}
+
+  /* annotation chrome (mockup only, not part of the page) */
+  .anno{background:#121A20; border-bottom:1px solid #24343E; padding:14px 20px; font-size:13px; color:#9FB6C2}
+  .anno b{color:#CFE3ED}
+  .anno p{margin:0 0 6px}
+  .anno p:last-child{margin:0}
+  .why{position:relative}
+  .why::after{content:attr(data-why); position:absolute; right:-10px; top:10px; transform:translateX(100%);
+              width:210px; font-size:11.5px; line-height:1.45; color:#7E949F; border-left:2px solid #2C3E49;
+              padding-left:10px; font-family:var(--body); text-transform:none; letter-spacing:0; font-weight:400}
+  @media (max-width:1320px){ .why::after{display:none} }
+
+  .page{max-width:1180px; margin:0 auto; background:var(--black)}
+
+  /* nav */
+  .nav{display:flex; align-items:center; gap:22px; padding:16px 24px; border-bottom:1px solid var(--line)}
+  .logo{display:flex; align-items:baseline; gap:7px}
+  .crown{color:var(--coral); font-size:19px; line-height:1}
+  .logo b{font-family:var(--disp); font-size:19px; letter-spacing:.04em; text-transform:uppercase}
+  .nav .links{display:flex; gap:18px; margin-left:auto; font-size:13px; color:var(--smoke); flex-wrap:wrap}
+  .nav .links span.cur{color:var(--coral)}
+
+  /* announcement */
+  .bar{background:var(--coral); color:#141414; text-align:center; font-family:var(--disp);
+       font-size:13.5px; letter-spacing:.07em; text-transform:uppercase; padding:9px 16px}
+
+  /* hero */
+  .hero{padding:52px 24px 48px; border-bottom:1px solid var(--line); text-align:center;
+        background:radial-gradient(105% 78% at 50% 8%, #2E1913 0%, var(--black) 66%)}
+  .kv{display:block; width:100%; max-width:660px; height:auto; margin:0 auto 30px}
+  h1{font-family:var(--disp); font-size:clamp(34px,5.6vw,62px); line-height:.98; letter-spacing:.01em;
+     text-transform:uppercase; margin:0 auto 18px; max-width:17ch; text-wrap:balance}
+  h1 em{font-style:normal; color:var(--coral)}
+  .lede{font-size:18px; color:var(--smoke); max-width:50ch; margin:0 auto 28px}
+  .lede b{color:var(--white); font-weight:500}
+  .btn{display:inline-block; background:var(--coral); color:#141414; font-family:var(--disp); font-size:15px;
+       letter-spacing:.09em; text-transform:uppercase; padding:14px 30px; text-decoration:none; border:0; cursor:pointer}
+  .btn.ghost{background:transparent; color:var(--white); border:1.5px solid #43514F}
+  .btnrow{display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:center}
+
+  /* sections */
+  section{padding:60px 24px; border-bottom:1px solid var(--line)}
+  h2{font-family:var(--disp); font-size:clamp(28px,4.2vw,42px); line-height:1.02; letter-spacing:.02em;
+     text-transform:uppercase; margin:0 0 10px}
+  .sub{color:var(--smoke); max-width:56ch; margin:0 0 34px; font-size:16px}
+
+  /* steps */
+  .steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line)}
+  .step{background:var(--black); padding:30px 24px}
+  .step .n{font-family:var(--disp); font-size:46px; line-height:1; color:var(--coral); margin:0 0 12px}
+  .step h3{font-family:var(--disp); font-size:19px; letter-spacing:.04em; text-transform:uppercase; margin:0 0 8px}
+  .step p{margin:0; color:var(--smoke); font-size:14.5px}
+
+  /* tiers */
+  .tiers{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px}
+  .tier{border:1px solid var(--line); background:var(--panel); padding:28px 24px}
+  .tier .seal{width:74px; height:74px; border-radius:50%; border:2.5px solid var(--coral);
+              display:flex; align-items:center; justify-content:center; margin:0 0 16px;
+              font-family:var(--disp); font-size:26px; color:var(--coral); letter-spacing:.02em}
+  .tier h3{font-family:var(--disp); font-size:24px; letter-spacing:.05em; text-transform:uppercase; margin:0 0 4px}
+  .tier .band{font-size:13px; color:var(--smoke); margin:0 0 14px}
+  .tier .rate{font-family:var(--disp); font-size:40px; line-height:1; color:var(--live); margin:0 0 4px}
+  .tier .rl{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke); margin:0}
+
+  /* usp strip */
+  .usp{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px; background:var(--line);
+       border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .usp div{background:var(--band); padding:20px 22px}
+  .usp .t{font-family:var(--disp); font-size:15px; letter-spacing:.05em; text-transform:uppercase; margin:0 0 3px}
+  .usp .d{font-size:13px; color:#D6DBDC; margin:0}
+
+  /* faq */
+  .faq{max-width:760px}
+  .q{border-bottom:1px solid var(--line); padding:20px 0}
+  .q h3{font-family:var(--disp); font-size:18px; letter-spacing:.03em; text-transform:uppercase; margin:0 0 7px; color:var(--white)}
+  .q p{margin:0; color:var(--smoke); font-size:15px}
+
+  /* close */
+  .close{text-align:center; padding:70px 24px}
+  .close h2{margin:0 0 14px}
+  .terms{font-size:13px; color:#7E8A8C; margin:26px 0 0}
+  .terms a{color:var(--smoke)}
+
+  .sticky{position:sticky; bottom:0; background:var(--coral); color:#141414; display:none;
+          padding:14px 20px; font-family:var(--disp); letter-spacing:.08em; text-transform:uppercase;
+          justify-content:space-between; align-items:center; gap:12px; font-size:14px}
+  @media (max-width:640px){ .sticky{display:flex} }
+</style>
+</head>
+<body>
+
+<div class="anno">
+  <p><b>Mockup, not a build.</b> Steak Back Rewards page for Steak King UK, v2 &mdash; 03/09/2026. Grey notes in the right margin explain why each block is there.</p>
+  <p><b>Signed-out page only.</b> Nobody signs in here. This page exists to explain the programme; the wallet, the balance and redemption all live behind the customer's account.</p>
+  <p><b>USP strip is indicative.</b> &ldquo;Butcher owned&rdquo; and &ldquo;Vacuum sealed, packed chilled&rdquo; are stand-ins; the final tiles should match whatever the site already runs.</p>
+</div>
+
+<div class="page">
+
+  <div class="bar">Every order now earns you up to 10% back &nbsp;&rsaquo;</div>
+
+  <div class="nav">
+    <div class="logo"><span class="crown">&#9819;</span><b>Steak King</b></div>
+    <div class="links"><span>Shop</span><span>Bundles</span><span>Wagyu</span><span class="cur">Steak Back</span><span>Account</span></div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero why" data-why="The KV leads. It is the only thing on the page that has to be recognised again later, in emails and on the announcement bar, so it gets the top of the screen rather than a headline set in web type.">
+    <img class="kv" src="assets/steak-back-lockup.png" alt="Steak Back Rewards">
+    <h1>Every order puts money <em>back</em> in your pocket</h1>
+    <p class="lede">With Steak Back Rewards, we are basically paying you to order from us. <b>The more you spend, the more you earn back.</b></p>
+    <div class="btnrow">
+      <a class="btn" href="#how">See how it works</a>
+      <a class="btn ghost" href="#tiers">The tiers</a>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="why" data-why="Three steps, numbered, no paragraph. The four-day wait is stated up front rather than hidden, because 'where is my credit' is the number one CS question on programmes like this.">
+    <h2>How it works</h2>
+    <p class="sub">No sign-up, no points to decode, no minimum to reach before anything happens.</p>
+    <div class="steps">
+      <div class="step">
+        <p class="n">1</p>
+        <h3>Order as normal</h3>
+        <p>There is nothing to opt into. You are in the programme the moment you place an order.</p>
+      </div>
+      <div class="step">
+        <p class="n">2</p>
+        <h3>Credit lands within 4 days</h3>
+        <p>It goes straight into your wallet once your order is on its way, and we email you the moment it does.</p>
+      </div>
+      <div class="step">
+        <p class="n">3</p>
+        <h3>Spend it within 45 days</h3>
+        <p>Sign into your account to redeem it against your next order. We will remind you before it expires.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section id="tiers" class="why" data-why="The ladder is the reason to spend more rather than just to spend. The rate is the display figure and the spend band is the small support line under it.">
+    <h2>The more you order, the more you earn back</h2>
+    <p class="sub">Your tier is set by what you have spent with us in total. It never goes down.</p>
+    <div class="tiers">
+      <div class="tier">
+        <div class="seal">R</div>
+        <h3>Rare</h3>
+        <p class="band">Up to &pound;250 spent</p>
+        <p class="rate">5%</p>
+        <p class="rl">Back on every order</p>
+      </div>
+      <div class="tier">
+        <div class="seal">MR</div>
+        <h3>Medium Rare</h3>
+        <p class="band">&pound;250 to &pound;600 spent</p>
+        <p class="rate">7.5%</p>
+        <p class="rl">Back on every order</p>
+      </div>
+      <div class="tier">
+        <div class="seal">WD</div>
+        <h3>Well Done</h3>
+        <p class="band">&pound;600 and above</p>
+        <p class="rate">10%</p>
+        <p class="rl">Back on every order</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP -->
+  <div class="usp">
+    <div><p class="t">Next day delivery</p><p class="d">Order before 1:30pm</p></div>
+    <div><p class="t">Free delivery</p><p class="d">On orders over &pound;99</p></div>
+    <div><p class="t">Australian Wagyu</p><p class="d">Straight from the farm</p></div>
+    <div><p class="t">Butcher owned</p><p class="d">30 years in the trade</p></div>
+    <div><p class="t">Vacuum sealed</p><p class="d">Packed chilled, cut to order</p></div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="why" data-why="The real objections, in the order they get asked. Stacking is the genuine advantage of credit over a discount code, so it is stated plainly rather than buried in terms.">
+    <h2>Worth knowing</h2>
+    <div class="faq">
+      <div class="q">
+        <h3>Why does it take four days?</h3>
+        <p>Your credit only clears once the order has left our warehouse. It means we are not issuing credit against an order that never ships.</p>
+      </div>
+      <div class="q">
+        <h3>What happens if I cancel my order?</h3>
+        <p>No credit is issued. Credit is only confirmed once the order is on its way, so a cancelled order does not earn any.</p>
+      </div>
+      <div class="q">
+        <h3>Can I use it with a discount code?</h3>
+        <p>Yes. This is cash you have earned back rather than a discount, so it stacks on top of sale prices, bundles and codes.</p>
+      </div>
+      <div class="q">
+        <h3>Can I hold more than one credit?</h3>
+        <p>Absolutely. It all sits in your digital wallet. Earn as many as you like, redeem as many as you like, and put several towards the same order. Each one carries its own expiry date.</p>
+      </div>
+      <div class="q">
+        <h3>What happens if I return something?</h3>
+        <p>The credit earned on that order comes off, and on a partial refund it reduces by the same proportion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSE -->
+  <div class="close why" data-why="One CTA, and the terms are a link rather than a wall of text. A rewards page that ends on legal copy reads as a catch.">
+    <h2>Start earning on your next order</h2>
+    <p class="lede" style="margin:0 auto 26px">Every cut, every bundle, every order. No sign-up required.</p>
+    <a class="btn" href="#">Shop the range</a>
+    <p class="terms">Steak Back credit expires 45 days after it is issued and has no cash value. <a href="#">Full terms and conditions</a>.</p>
+  </div>
+
+  <div class="sticky"><span>Up to 10% back</span><span>Shop now &rsaquo;</span></div>
+
+</div>
+
+</body>
+</html>
