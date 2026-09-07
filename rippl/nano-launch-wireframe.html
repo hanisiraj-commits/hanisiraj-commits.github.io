@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rippl Nano — launch email wireframe</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;background:#e8eaec;color:#1a1a1a;line-height:1.5;padding:0 0 60px}
+  .top{background:#0e2a33;color:#fff;padding:26px 24px}
+  .top h1{font-size:20px;font-weight:700;letter-spacing:.2px}
+  .top .sub{font-size:13px;color:#8fc3d1;margin-top:5px}
+  .legend{background:#12333d;padding:14px 24px;display:flex;flex-wrap:wrap;gap:20px;font-size:11.5px;color:#b9dae2}
+  .legend b{color:#fff}
+  .key{display:flex;align-items:center;gap:7px}
+  .sw{width:15px;height:15px;border-radius:3px;flex-shrink:0}
+  .sw.img{background:#c9cdd1;border:1px dashed #8b9198}
+  .sw.txt{background:#fff;border:1px solid #c2c6ca}
+  .sw.ann{background:#fff4d6;border:1px solid #e0b93c}
+  .sw.cta{background:#0e2a33}
+
+  .stage{max-width:760px;margin:26px auto;padding:0 16px}
+  .emailwrap{background:#fff;border:1px solid #c8ccd0;border-radius:4px;overflow:hidden}
+
+  .mod{border-bottom:1px solid #e2e5e8;position:relative}
+  .modtag{position:absolute;left:-96px;top:12px;width:84px;text-align:right;font-size:10px;font-weight:700;color:#6b7278;letter-spacing:.8px;text-transform:uppercase}
+  .inner{padding:26px 30px}
+
+  .imgbox{background:#c9cdd1;border:1px dashed #8b9198;border-radius:3px;display:flex;align-items:center;justify-content:center;text-align:center;color:#4b5157;font-size:12px;font-style:italic;padding:16px;position:relative}
+  .imgbox .lbl{max-width:90%}
+  .imgbox b{display:block;font-style:normal;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#333;margin-bottom:6px}
+
+  .sticker{position:absolute;top:14px;right:14px;background:#0e2a33;color:#fff;border-radius:4px;padding:10px 14px;text-align:center;font-style:normal;max-width:190px}
+  .sticker .a{font-size:15px;font-weight:800;line-height:1.25}
+  .sticker .b{font-size:10px;color:#8fc3d1;margin-top:3px}
+
+  h2.hero{font-size:31px;font-weight:800;letter-spacing:.6px;text-align:center;margin-bottom:9px}
+  p.herosub{font-size:15px;color:#4b5157;text-align:center;margin-bottom:18px}
+  h3{font-size:22px;font-weight:800;margin-bottom:8px;letter-spacing:.2px}
+  h3.ctr{text-align:center}
+  p.body{font-size:15px;color:#33383d;margin-bottom:13px}
+  p.body:last-child{margin-bottom:0}
+  p.sub{font-size:14.5px;color:#4b5157;margin-bottom:14px}
+  p.sub.ctr{text-align:center}
+
+  .cta{display:block;background:#0e2a33;color:#fff;text-align:center;padding:14px;border-radius:3px;font-size:12.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;margin:16px auto 0;max-width:280px}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+  .pointers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+  .pointers div{text-align:center}
+  .pointers .ic{width:34px;height:34px;border-radius:50%;background:#dfe3e6;border:1px dashed #9aa0a6;margin:0 auto 7px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#5d6469;font-style:italic}
+  .pointers .t{font-size:12px;color:#33383d;line-height:1.35}
+
+  .infog{display:grid;grid-template-columns:1fr 58px 1fr;gap:0;align-items:stretch;margin:6px 0 14px}
+  .col{padding:16px 14px}
+  .col h4{font-size:10.5px;letter-spacing:1.3px;text-transform:uppercase;color:#6b7278;margin-bottom:12px}
+  .col ul{list-style:none}
+  .col li{font-size:14.5px;color:#1a1a1a;padding:7px 0;border-bottom:1px solid #eceef0;font-weight:600}
+  .col li:last-child{border-bottom:none}
+  .col li i{display:block;font-size:11.5px;color:#787f85;font-style:normal;font-weight:400;margin-top:2px}
+  .membrane{background:repeating-linear-gradient(180deg,#0e2a33 0 4px,transparent 4px 8px);width:5px;margin:0 auto;border-radius:3px}
+  .memwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+  .memwrap span{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#6b7278;writing-mode:vertical-rl;margin-bottom:8px}
+  .colnote{background:#eef4f2;border-radius:3px;padding:10px 11px;margin-top:11px;font-size:12.5px;color:#33483f;line-height:1.45}
+
+  .presets{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:14px 0 10px}
+  .presets div{background:#f2f4f5;border-radius:3px;padding:13px 4px;text-align:center}
+  .presets .n{font-size:16px;font-weight:800}
+  .presets .l{font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;color:#6b7278;margin-top:4px}
+
+  .big{text-align:center;padding:34px 30px}
+  .big .n{font-size:33px;font-weight:800;letter-spacing:.2px;line-height:1.2}
+  .big .n span{display:block;font-size:19px;font-weight:600;color:#4b5157;margin-top:6px}
+  .big .s{font-size:14.5px;color:#4b5157;margin-top:14px}
+
+  .finish{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .finish .f{text-align:center}
+  .finish .f .nm{font-size:15px;font-weight:700;margin:10px 0 3px}
+  .finish .f .lk{font-size:12px;color:#0e2a33;text-decoration:underline}
+
+  .foot{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .foot b{display:block;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+  .foot span{font-size:13.5px;color:#4b5157}
+  .tcs{font-size:10.5px;color:#8b9198;line-height:1.55;padding:20px 30px;background:#f7f8f9}
+
+  .ann{background:#fff4d6;border-left:3px solid #e0b93c;padding:11px 14px;font-size:12.5px;color:#5c4a12;margin:14px 30px 0}
+  .ann b{display:block;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#8a6d12;margin-bottom:4px}
+  .ann + .ann{margin-top:7px}
+  .annpad{padding-bottom:18px}
+
+  .assets{max-width:760px;margin:0 auto;padding:24px 16px}
+  .assets h3{font-size:16px;margin-bottom:12px}
+  .assets .box{background:#fff;border:1px solid #c8ccd0;border-radius:4px;padding:18px 20px}
+  .assets ul{list-style:none}
+  .assets li{font-size:13.5px;padding:6px 0;border-bottom:1px solid #eceef0}
+  .assets li:last-child{border-bottom:none}
+  .assets a{color:#0e5a70}
+  .assets .cat{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#8b9198;margin:14px 0 4px}
+  .assets .cat:first-child{margin-top:0}
+
+  @media(max-width:900px){.modtag{position:static;width:auto;text-align:left;padding:10px 30px 0}}
+  @media(max-width:640px){.two,.foot,.finish{grid-template-columns:1fr}.infog{grid-template-columns:1fr}.memwrap{display:none}.presets{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>Rippl Nano — launch email</h1>
+  <div class="sub">Lo-fi wireframe &middot; Friday 11 September 2026, 9:00am AEST &middot; planner column AN &middot; C_ANNOUNCEMENT_NANO_LAUNCH-DAY_ITS-LIVE</div>
+</div>
+<div class="legend">
+  <div class="key"><span class="sw img"></span><b>Grey dashed</b>&nbsp;= image, brief inside it</div>
+  <div class="key"><span class="sw txt"></span><b>White</b>&nbsp;= live text, copy is final</div>
+  <div class="key"><span class="sw cta"></span><b>Dark</b>&nbsp;= button</div>
+  <div class="key"><span class="sw ann"></span><b>Yellow</b>&nbsp;= note for you</div>
+</div>
+
+<div class="stage">
+<div class="emailwrap">
+
+  <!-- HERO -->
+  <div class="mod">
+    <div class="modtag">01 Hero</div>
+    <div class="inner">
+      <div class="imgbox" style="height:280px">
+        <div class="lbl"><b>Hero image</b>The white Nano and the black Nano side by side, one on each side of the frame. Same shot, same lighting, same angle. The eye should read exactly one difference.</div>
+        <div class="sticker"><div class="a">$76 OFF<br>+ FREE WELCOME KIT<br>WORTH $95</div></div>
+      </div>
+    </div>
+    <div class="inner" style="padding-top:0">
+      <h2 class="hero">RIPPL NANO IS LIVE</h2>
+      <p class="herosub">In white and in black. Both available today.</p>
+      <div class="cta">SHOP NANO</div>
+    </div>
+    <div class="ann annpad"><b>Note</b>Sticker sits over the image, top right. It is the only thing allowed to compete with the product. $76 and $95 are the display figures. Black disappears against a dark surface without rim light — Bade's Nano Black folder is linked at the bottom of this page.</div>
+  </div>
+
+  <!-- STORY -->
+  <div class="mod">
+    <div class="modtag">02 Story</div>
+    <div class="inner">
+      <p class="body">You've been telling us what you wanted for years.</p>
+      <p class="body">Water that's properly filtered without stripping out what's good in it. Hot and cold on the same tap. Cheap enough to run that you stop thinking about it.</p>
+      <p class="body">Every round of testing went back to Rippl customers, and those answers kept coming back. Nano is the best water filter we've built, with years of R&amp;D behind it. We'd love for you to try it.</p>
+    </div>
+    <div class="ann annpad"><b>Note</b>Live text, centred, no image. This is the only long-copy block in the email and it wants air above and below it.</div>
+  </div>
+
+  <!-- PRODUCT BLOCK -->
+  <div class="mod">
+    <div class="modtag">03 Offer</div>
+    <div class="inner">
+      <div class="two">
+        <div>
+          <h3>Save $76 on your first Rippl Nano, plus a welcome kit worth $95 free with your order.</h3>
+          <p class="sub">The only thing Nano costs to run is a filter, changed every two to three months. Subscribe and it arrives on time, every time.</p>
+          <div class="pointers">
+            <div><div class="ic">icon</div><div class="t">$76 off your<br>first order</div></div>
+            <div><div class="ic">icon</div><div class="t">Filters every<br>2 months</div></div>
+            <div><div class="ic">icon</div><div class="t">Pause or cancel<br>any time</div></div>
+          </div>
+          <div class="cta" style="margin-left:0">BUY NOW</div>
+        </div>
+        <div class="imgbox" style="height:300px">
+          <div class="lbl"><b>Product + kit</b>Nano standing, with the welcome kit laid out beside it. Two glass bottles, the chlorine testing tablets, The Clean Water Kitchen guide. Everything visible and identifiable.</div>
+          <div class="sticker" style="max-width:150px"><div class="a">$76 OFF<br>+ $95 KIT FREE</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ann"><b>Note</b>Copy left, product right. The kit is the point of this module — the reader should be able to count what arrives in the box without reading a word.</div>
+    <div class="ann annpad"><b>Note</b>The three pointers are an icon row, stacked horizontally, not bullets. Icon above, two short lines under. They stack vertically on mobile.</div>
+  </div>
+
+  <!-- USP 1 -->
+  <div class="mod">
+    <div class="modtag">04 USP 1</div>
+    <div class="inner">
+      <h3 class="ctr">Nano filtration</h3>
+      <p class="sub ctr">A membrane fine enough to stop what's harmful in your water, and smart enough to let the minerals through.</p>
+      <div class="infog">
+        <div class="col">
+          <h4>Taken out</h4>
+          <ul>
+            <li>Bacteria</li>
+            <li>Heavy metals<i>Lead, arsenic and mercury</i></li>
+            <li>PFAS<i>The forever chemicals</i></li>
+            <li>Chlorine<i>The taste and smell of the tap</i></li>
+          </ul>
+        </div>
+        <div class="memwrap"><span>Membrane</span><div class="membrane" style="height:120px"></div></div>
+        <div class="col">
+          <h4>Left in</h4>
+          <ul>
+            <li>Calcium</li>
+            <li>Magnesium</li>
+          </ul>
+          <div class="colnote">The electrolytes your body uses to take up what you drink. Strip them out and water stops hydrating you properly.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ann annpad"><b>Note</b>One infographic, not two lists. A membrane runs down the middle. Four things stop at it on the left, two pass through to the right. The imbalance is the argument, so do not pad the right column to match. The electrolyte line sits inside the right column, under calcium and magnesium.</div>
+  </div>
+
+  <!-- USP 2 -->
+  <div class="mod">
+    <div class="modtag">05 USP 2</div>
+    <div class="inner">
+      <h3 class="ctr">Then UV-C</h3>
+      <p class="sub ctr">Every drop passes under UV light on its way to your glass, which takes out 99.99% of harmful bacteria.</p>
+      <div class="imgbox" style="height:190px">
+        <div class="lbl"><b>UV diagram</b>Water travelling through the UV chamber. Bacteria going in on one side, nothing coming out the other.</div>
+      </div>
+    </div>
+    <div class="ann annpad"><b>Note</b>Same illustration language as the membrane above, so 04 and 05 read as one water path rather than two unrelated diagrams.</div>
+  </div>
+
+  <!-- USP 3 -->
+  <div class="mod">
+    <div class="modtag">06 USP 3</div>
+    <div class="inner">
+      <h3 class="ctr">Hot and cold, built in</h3>
+      <p class="sub ctr">One of the only benchtop filters that gives you instant hot and instant cold from the same tap. Five presets saved, and three seconds to go from one to the other.</p>
+      <div class="presets">
+        <div><div class="n">Amb</div><div class="l">Ambient</div></div>
+        <div><div class="n">6°</div><div class="l">Cold</div></div>
+        <div><div class="n">45°</div><div class="l">Warm</div></div>
+        <div><div class="n">85°</div><div class="l">Hot</div></div>
+        <div><div class="n">95°</div><div class="l">Extra hot</div></div>
+      </div>
+    </div>
+    <div class="ann annpad"><b>Note</b>Five tiles across on desktop, three then two on mobile. Cold tile reads blue, the three hot tiles read red, matching what the machine's own dispense light does.</div>
+  </div>
+
+  <!-- RUNNING COST -->
+  <div class="mod">
+    <div class="big">
+      <div class="modtag">07 Cost</div>
+      <div class="n">Just 80 cents a day<span>for unlimited clean drinking water</span></div>
+      <div class="s">One filter change every two to three months. That's the only running cost you will have with Nano, ever.<br>Your Nano arrives with the first filter already included.</div>
+      <div class="cta">SHOP NANO</div>
+    </div>
+    <div class="ann annpad"><b>Note</b>Largest type in the email after the hero. All live text, no image behind it, so it survives images being off.</div>
+  </div>
+
+  <!-- FINISH -->
+  <div class="mod">
+    <div class="modtag">08 Finish</div>
+    <div class="inner">
+      <div class="finish">
+        <div class="f">
+          <div class="imgbox" style="height:170px"><div class="lbl"><b>White Nano</b>Straight-on product shot</div></div>
+          <div class="nm">White</div><div class="lk">Shop white</div>
+        </div>
+        <div class="f">
+          <div class="imgbox" style="height:170px"><div class="lbl"><b>Black Nano</b>Straight-on product shot, matched to the white</div></div>
+          <div class="nm">Black</div><div class="lk">Shop black</div>
+        </div>
+      </div>
+    </div>
+    <div class="ann annpad"><b>Note</b>Two separate links, white variant and black variant, so the click tells us the colour split before the Q4 reorder.</div>
+  </div>
+
+  <!-- FOOTER BLOCKS -->
+  <div class="mod">
+    <div class="modtag">09 Trust</div>
+    <div class="inner">
+      <div class="foot">
+        <div><b>30-day money-back guarantee</b><span>Thirty days in your kitchen. If it isn't the best water you've had at home, send it back for a refund.</span></div>
+        <div><b>1-year warranty</b><span>Full parts and labour for twelve months. If anything fails, we fix it or replace it.</span></div>
+      </div>
+    </div>
+    <div class="ann annpad"><b>Note</b>Both headings bold. Two columns on desktop, stacked on mobile.</div>
+  </div>
+
+  <div class="tcs">
+    The $76 saving and the $95 welcome kit apply to Rippl Nano orders on the Subscribe &amp; Save plan. Welcome kit contains two Rippl glass bottles, chlorine testing tablets and The Clean Water Kitchen guide, valued at the price of those items sold separately in the Rippl store. Replacement filters are $59.99 and rebill every two months with free shipping. Pause or cancel any time from your account. The 80 cents a day figure covers filter replacement only and does not include the machine. Filter life is two to three months or 200 litres, depending on use. Rippl Nano dispenses between 6°C and 95°C. Independently tested by SGS using NSF/ANSI 42 and 53 test methods, and by ALS under NATA accreditation 992. Calcium and magnesium confirmed present in filtered water. 30-day money-back guarantee, return postage payable by the customer. 12-month warranty. Available in white and black.
+  </div>
+
+</div>
+</div>
+
+<div class="assets">
+  <h3>Assets</h3>
+  <div class="box">
+    <div class="cat">Master folders</div>
+    <ul>
+      <li><a href="https://drive.google.com/drive/folders/1_YkhuNPKCkqUMHjRxcYGLG45m7iVBteP">Rippl x Bouz Creative — master asset folder</a></li>
+      <li><a href="https://drive.google.com/drive/folders/111YNl52wK3SkJAh4zTcqkPFEV2Wds0Ev">Rippl Nano Black — new content, shared 07/09/2026</a></li>
+    </ul>
+    <div class="cat">Live pages</div>
+    <ul>
+      <li><a href="https://drinkrippl.com/products/rippl-nano-water-filtration-system">Nano product page</a> — currently hidden, publishing before launch</li>
+      <li><a href="https://drinkrippl.com/pages/rippl-nano">Nano landing page</a> — Bade's new build, in A/B test</li>
+      <li><a href="https://drinkrippl.com/pages/rippl-nano-learn-more">Nano learn more</a> — canonical messaging source</li>
+    </ul>
+    <div class="cat">Proof</div>
+    <ul>
+      <li><a href="https://cdn.shopify.com/s/files/1/0701/0549/7634/files/Nano_Filter_SGS_Performance_Test_Report_2_10.pdf">SGS performance test report</a></li>
+      <li><a href="https://cdn.shopify.com/s/files/1/0701/0549/7634/files/Analysis_Report_-_Rippl_nano_-_Complete_and_Heavy_Metals_-_NATA_-_TN200002782_64.pdf">ALS NATA report — heavy metals and PFAS</a></li>
+      <li><a href="https://cdn.shopify.com/s/files/1/0701/0549/7634/files/Analysis_Report_-_Rippl_Nano.pdf">ALS NATA report — chlorine</a></li>
+    </ul>
+    <div class="cat">Product reference</div>
+    <ul>
+      <li><a href="https://www.youtube.com/shorts/ZS7Ig15Da40">How to set up Rippl Nano</a></li>
+      <li><a href="https://www.youtube.com/shorts/tAHC2NHKLmM">How to use Rippl Nano</a> — the five presets come from here</li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>
