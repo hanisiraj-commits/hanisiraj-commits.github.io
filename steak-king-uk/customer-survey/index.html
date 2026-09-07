@@ -90,9 +90,9 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
 .donuts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:6px}
 .dn{text-align:center}
 .dn svg{width:100%;max-width:150px;height:auto;display:block;margin:0 auto}
-.d-big{font-size:27px;font-weight:800;fill:var(--ink);text-anchor:middle;letter-spacing:-.02em}
+.d-big{font-size:30px;font-weight:800;fill:var(--ink);text-anchor:middle;letter-spacing:-.02em}
 .d-big.acc{fill:var(--accent)}
-.d-sml{font-size:10.5px;font-weight:700;fill:var(--ink-3);text-anchor:middle;letter-spacing:.09em;text-transform:uppercase}
+.dn-sub{font-size:12.5px;color:var(--ink-3);margin-top:3px;line-height:1.4}
 .dn-lab{font-size:14px;font-weight:700;color:var(--ink);margin-top:11px;line-height:1.35}
 .dn-lab.acc{color:var(--accent)}
 /* stacked scale */
@@ -271,49 +271,49 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
     <!-- 2.1 -->
     <div class="card">
       <div class="ch">Do they rate us?</div>
-      <div class="chs">Buyers &middot; NPS +59 from 51 responses &middot; rating grid n=50</div>
+      <div class="chs">Buyers &middot; NPS +59 from 51 responses &middot; rating grid n=50. Each ring is the full five-point spread. The number is the share who rated it in the top two, so Very good or Excellent.</div>
       <div class="donuts">
         <div class="dn">
-          <svg viewBox="0 0 140 140" role="img" aria-label="Quality of the meat: 90% rated very good or excellent">
+          <svg viewBox="0 0 140 140" role="img" aria-label="Quality of the meat: 90% of buyers rated it very good or excellent">
             <g transform="rotate(-90 70 70)">
               <circle cx="70" cy="70" r="54" fill="none" stroke="#E5A488" stroke-width="22" stroke-dasharray="20.36 318.93" stroke-dashoffset="-0.00"><title>Fair: 3</title></circle>
               <circle cx="70" cy="70" r="54" fill="none" stroke="#ddd8d1" stroke-width="22" stroke-dasharray="13.57 325.72" stroke-dashoffset="-20.36"><title>Good: 2</title></circle>
               <circle cx="70" cy="70" r="54" fill="none" stroke="#8f9a92" stroke-width="22" stroke-dasharray="67.86 271.43" stroke-dashoffset="-33.93"><title>Very good: 10</title></circle>
               <circle cx="70" cy="70" r="54" fill="none" stroke="#2f3a34" stroke-width="22" stroke-dasharray="237.50 101.79" stroke-dashoffset="-101.79"><title>Excellent: 35</title></circle>
             </g>
-            <text x="70" y="67" class="d-big">90%</text>
-            <text x="70" y="86" class="d-sml">top two</text>
+            <text x="70" y="79" class="d-big">90%</text>
           </svg>
           <div class="dn-lab">Quality of the meat</div>
+          <div class="dn-sub">rated it very good or excellent</div>
         </div>
         <div class="dn">
-          <svg viewBox="0 0 140 140" role="img" aria-label="The condition it arrived in: 90% rated very good or excellent">
+          <svg viewBox="0 0 140 140" role="img" aria-label="The condition it arrived in: 90% of buyers rated it very good or excellent">
             <g transform="rotate(-90 70 70)">
               <circle cx="70" cy="70" r="54" fill="none" stroke="#E5A488" stroke-width="22" stroke-dasharray="6.79 332.51" stroke-dashoffset="-0.00"><title>Fair: 1</title></circle>
               <circle cx="70" cy="70" r="54" fill="none" stroke="#ddd8d1" stroke-width="22" stroke-dasharray="27.14 312.15" stroke-dashoffset="-6.79"><title>Good: 4</title></circle>
               <circle cx="70" cy="70" r="54" fill="none" stroke="#8f9a92" stroke-width="22" stroke-dasharray="88.22 251.08" stroke-dashoffset="-33.93"><title>Very good: 13</title></circle>
               <circle cx="70" cy="70" r="54" fill="none" stroke="#2f3a34" stroke-width="22" stroke-dasharray="217.15 122.15" stroke-dashoffset="-122.15"><title>Excellent: 32</title></circle>
             </g>
-            <text x="70" y="67" class="d-big">90%</text>
-            <text x="70" y="86" class="d-sml">top two</text>
+            <text x="70" y="79" class="d-big">90%</text>
           </svg>
           <div class="dn-lab">The condition it arrived in</div>
+          <div class="dn-sub">rated it very good or excellent</div>
         </div>
         <div class="dn">
-          <svg viewBox="0 0 140 140" role="img" aria-label="Packaging: 80% rated very good or excellent">
+          <svg viewBox="0 0 140 140" role="img" aria-label="Packaging: 80% of buyers rated it very good or excellent">
             <g transform="rotate(-90 70 70)">
               <circle cx="70" cy="70" r="54" fill="none" stroke="#E5A488" stroke-width="22" stroke-dasharray="13.57 325.72" stroke-dashoffset="-0.00"><title>Fair: 2</title></circle>
               <circle cx="70" cy="70" r="54" fill="none" stroke="#ddd8d1" stroke-width="22" stroke-dasharray="54.29 285.01" stroke-dashoffset="-13.57"><title>Good: 8</title></circle>
               <circle cx="70" cy="70" r="54" fill="none" stroke="#8f9a92" stroke-width="22" stroke-dasharray="115.36 223.93" stroke-dashoffset="-67.86"><title>Very good: 17</title></circle>
               <circle cx="70" cy="70" r="54" fill="none" stroke="#2f3a34" stroke-width="22" stroke-dasharray="156.07 183.22" stroke-dashoffset="-183.22"><title>Excellent: 23</title></circle>
             </g>
-            <text x="70" y="67" class="d-big">80%</text>
-            <text x="70" y="86" class="d-sml">top two</text>
+            <text x="70" y="79" class="d-big">80%</text>
           </svg>
           <div class="dn-lab">Packaging</div>
+          <div class="dn-sub">rated it very good or excellent</div>
         </div>
         <div class="dn">
-          <svg viewBox="0 0 140 140" role="img" aria-label="Value for money: 58% rated very good or excellent">
+          <svg viewBox="0 0 140 140" role="img" aria-label="Value for money: 58% of buyers rated it very good or excellent">
             <g transform="rotate(-90 70 70)">
               <circle cx="70" cy="70" r="54" fill="none" stroke="#C0492B" stroke-width="22" stroke-dasharray="13.57 325.72" stroke-dashoffset="-0.00"><title>Poor: 2</title></circle>
               <circle cx="70" cy="70" r="54" fill="none" stroke="#E5A488" stroke-width="22" stroke-dasharray="40.72 298.58" stroke-dashoffset="-13.57"><title>Fair: 6</title></circle>
@@ -321,10 +321,10 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
               <circle cx="70" cy="70" r="54" fill="none" stroke="#8f9a92" stroke-width="22" stroke-dasharray="108.57 230.72" stroke-dashoffset="-142.50"><title>Very good: 16</title></circle>
               <circle cx="70" cy="70" r="54" fill="none" stroke="#2f3a34" stroke-width="22" stroke-dasharray="88.22 251.08" stroke-dashoffset="-251.08"><title>Excellent: 13</title></circle>
             </g>
-            <text x="70" y="67" class="d-big acc">58%</text>
-            <text x="70" y="86" class="d-sml">top two</text>
+            <text x="70" y="79" class="d-big acc">58%</text>
           </svg>
           <div class="dn-lab acc">Value for money</div>
+          <div class="dn-sub">rated it very good or excellent</div>
         </div>
       </div>
       <div class="legend">
