@@ -129,6 +129,18 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
 .gapchart .pct{font-size:14px;font-weight:800;fill:var(--ink);text-anchor:middle}
 .gapchart .cnt{font-size:12.5px;font-weight:700;fill:#3a1c10;text-anchor:middle}
 .gapchart .ax{font-size:12px;fill:var(--ink-3);text-anchor:middle;font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--panel);stroke-width:4px;stroke-linejoin:round}
+.plist{margin-top:26px;border-top:1px solid var(--line);padding-top:22px}
+.plist-hd{font-size:12.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--ink);margin-bottom:16px}
+.lnum3{color:var(--accent);margin-right:10px}
+.pgrid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.pcard{display:flex;flex-direction:column}
+.pcard img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px;display:block;background:var(--line)}
+.pcard .pn{font-size:12.5px;font-weight:600;color:var(--ink-2);margin-top:9px;line-height:1.35}
+.pcard .pp{font-size:15px;font-weight:800;color:var(--ink);margin-top:2px}
+.plist-note{font-size:14.5px;color:var(--ink-2);margin:18px 0 0}
+.plist-note b{color:var(--accent);font-weight:800}
+@media(max-width:820px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .gapnote{font-size:14.5px;color:var(--ink-2);margin:16px 0 0;text-align:center}
 .gapnote b{color:var(--ink);font-weight:800}
 .gapchart .inband{font-size:15px;font-weight:800;fill:#3a1c10}
@@ -382,7 +394,7 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
         <rect x="36" y="320" width="928" height="80" rx="10" fill="#F7F3F0"/>
         <text x="52" y="344" class="lnum">3</text><text x="70" y="344" class="lane">Where the current offering is</text>
         <rect x="427.7" y="356" width="180.8" height="34" rx="6" fill="#2f3a34"/>
-        <circle cx="427.7" cy="370" r="4.5" fill="#fff" opacity=".9"/><circle cx="472.9" cy="370" r="4.5" fill="#fff" opacity=".9"/><circle cx="495.5" cy="370" r="4.5" fill="#fff" opacity=".9"/><circle cx="509.0" cy="370" r="4.5" fill="#fff" opacity=".9"/><circle cx="522.6" cy="370" r="4.5" fill="#fff" opacity=".9"/><circle cx="536.2" cy="370" r="4.5" fill="#fff" opacity=".9"/><circle cx="563.3" cy="370" r="4.5" fill="#fff" opacity=".9"/><circle cx="567.8" cy="370" r="4.5" fill="#fff" opacity=".9"/><circle cx="581.4" cy="370" r="4.5" fill="#fff" opacity=".9"/><circle cx="608.5" cy="370" r="4.5" fill="#fff" opacity=".9"/>
+        
         <text x="624.5" y="378" class="side"><tspan class="sb">£84 to £124</tspan> · every comparable four-steak pack</text>
 
         <!-- 4 -->
@@ -391,6 +403,22 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
         <rect x="251.4" y="448" width="67.8" height="34" rx="6" fill="#fff" stroke="#EC7D55" stroke-width="2" stroke-dasharray="6 4"/>
         <text x="335.2" y="470" class="side"><tspan class="sb acc">£45 to £60</tspan> · a two-steak entry pack, sitting inside the demand</text>
       </svg>
+      </div>
+      <div class="plist">
+        <div class="plist-hd"><span class="lnum3">3</span>Everything currently sitting in that £84 to £124 band</div>
+        <ul class="pgrid">
+          <li class="pcard"><img src="assets/products/sirloin-45.jpg" alt="M4-5 Sirloin 1kg" loading="lazy"><span class="pn">M4-5 Sirloin 1kg</span><span class="pp">£84</span></li>
+          <li class="pcard"><img src="assets/products/ribeye-45.png" alt="M4-5 Ribeye 1kg" loading="lazy"><span class="pn">M4-5 Ribeye 1kg</span><span class="pp">£94</span></li>
+          <li class="pcard"><img src="assets/products/taster-sir.png" alt="Sirloin Taster Set" loading="lazy"><span class="pn">Sirloin Taster Set</span><span class="pp">£99</span></li>
+          <li class="pcard"><img src="assets/products/sirloin-67.png" alt="M6-7 Sirloin 1kg" loading="lazy"><span class="pn">M6-7 Sirloin 1kg</span><span class="pp">£102</span></li>
+          <li class="pcard"><img src="assets/products/taster-rib.png" alt="Ribeye Taster Set" loading="lazy"><span class="pn">Ribeye Taster Set</span><span class="pp">£105</span></li>
+          <li class="pcard"><img src="assets/products/duo.png" alt="Steakhouse Duo" loading="lazy"><span class="pn">Steakhouse Duo</span><span class="pp">£108</span></li>
+          <li class="pcard"><img src="assets/products/sirloin-m9.png" alt="M9+ Sirloin 1kg" loading="lazy"><span class="pn">M9+ Sirloin 1kg</span><span class="pp">£114</span></li>
+          <li class="pcard"><img src="assets/products/tbone.png" alt="M9+ T-Bone / Porterhouse" loading="lazy"><span class="pn">M9+ T-Bone / Porterhouse</span><span class="pp">£115</span></li>
+          <li class="pcard"><img src="assets/products/ribeye-67.png" alt="M6-7 Ribeye 1kg" loading="lazy"><span class="pn">M6-7 Ribeye 1kg</span><span class="pp">£118</span></li>
+          <li class="pcard"><img src="assets/products/ribeye-m9.png" alt="M9+ Ribeye 1kg" loading="lazy"><span class="pn">M9+ Ribeye 1kg</span><span class="pp">£124</span></li>
+        </ul>
+        <p class="plist-note">Ten packs, and the cheapest way to buy four wagyu steaks is <b>£84</b>. There is no rung below it.</p>
       </div>
       <p class="gapnote">Nothing on the site sits below <b>£84</b>. The demand stops at <b>£75</b>. That gap is the whole finding.</p>
       <div class="note"><b style="color:var(--ink)">The read.</b> These look like one problem and they are two. Buyers are not arguing with the rate; 75% say we are fair or better value for the grade. Non-buyers are not arguing with it either, because they have never seen it. They are working off a number they formed at the supermarket. So the gap sits between our entry point and their budget.</div>
