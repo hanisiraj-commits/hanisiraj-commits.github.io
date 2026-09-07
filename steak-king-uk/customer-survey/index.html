@@ -119,29 +119,20 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
 .nonbuyers .voices li{border-left-color:var(--accent)}
 .voices li:last-child{margin-bottom:0}
 
-/* price histogram */
-.hist{position:relative;height:150px;margin-top:34px}
-.hbin{position:absolute;bottom:0;top:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3px}
-.hbar{background:var(--accent);position:relative;border-radius:6px 6px 0 0}
-.hbin.cold .hbar{background:var(--grey)}
-.hpct{position:absolute;bottom:100%;margin-bottom:6px;left:0;right:0;text-align:center;font-size:13px;font-weight:800;color:var(--ink)}
-.hbin.cold .hpct{color:var(--ink-3)}
-.hn{position:absolute;bottom:6px;left:0;right:0;text-align:center;font-size:11.5px;font-weight:700;color:#3a1c10}
-.hbin.cold .hn{color:var(--ink-2)}
-.cliff{position:absolute;top:-10px;bottom:0;width:2px;background:var(--ink);left:37.5%}
-.cliff-tag{position:absolute;left:calc(37.5% + 11px);top:-10px;max-width:240px;font-size:13.5px;line-height:1.4;color:var(--ink-2)}
-.cliff-tag b{font-weight:800;font-size:15px;display:block;color:var(--ink);letter-spacing:-.01em}
-.axis{position:relative;height:26px;border-top:1px solid var(--line-2)}
-.tick{position:absolute;top:0;transform:translateX(-50%);padding-top:6px;font-size:11.5px;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
-.binlabels{position:relative;height:20px}
-.binlabel{position:absolute;text-align:center;font-size:12.5px;color:var(--ink-2);white-space:nowrap;font-weight:500}
-.pinrail{position:relative;height:70px;margin-top:16px;border-top:1px dashed var(--line-2)}
-.pin{position:absolute;top:0;width:0}
-.pin i{display:block;width:2px;height:13px;background:var(--ink-2);margin:0 auto}
-.pin .pl{margin-top:6px;transform:translateX(-50%);white-space:nowrap;font-size:12.5px;line-height:1.35;color:var(--ink-3);text-align:center}
-.pin .pl b{font-weight:800;font-size:16px;color:var(--ink);display:block;letter-spacing:-.02em}
-.pin.right .pl{transform:translateX(-100%);text-align:right}
-.pin.right i{margin:0 0 0 auto}
+/* demand vs shelf chart */
+.gapwrap{overflow-x:auto;margin-top:8px}
+.gapchart{display:block;width:100%;min-width:660px;height:auto;font-family:inherit}
+.gapchart .lane{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;fill:var(--ink-3)}
+.gapchart .pct{font-size:14px;font-weight:800;fill:var(--ink);text-anchor:middle}
+.gapchart .cnt{font-size:12.5px;font-weight:700;fill:#3a1c10;text-anchor:middle}
+.gapchart .ax{font-size:12px;fill:var(--ink-3);text-anchor:middle;font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--panel);stroke-width:4px;stroke-linejoin:round}
+.gapnote{font-size:14.5px;color:var(--ink-2);margin:16px 0 0;text-align:center}
+.gapnote b{color:var(--ink);font-weight:800}
+.gapchart .inband{font-size:15px;font-weight:800;fill:#3a1c10}
+.gapchart .side{font-size:14px;font-weight:600;fill:var(--ink-2)}
+.gapchart .side.acc{fill:var(--ink-2)}
+.gapchart .sb{font-weight:800;fill:var(--ink)}
+.gapchart .sb.acc{fill:var(--accent)}
 
 /* trend grid */
 .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -342,34 +333,48 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
     <!-- 2.2 price -->
     <div class="card">
       <div class="ch">What do they think it should cost?</div>
-      <div class="chs">Non-buyers: "What would you expect to pay for four premium wagyu steaks delivered to your door?" &middot; 338 answered &middot; our shelf pinned underneath</div>
+      <div class="chs">Non-buyers were asked what they would expect to pay for four premium wagyu steaks delivered &middot; 338 answered. Their answers are the top row. The range is the row underneath.</div>
 
-      <div class="hist">
-        <div class="hbin" style="left:0;width:25%"><div class="hbar" style="height:91.7%"><div class="hpct">38%</div><div class="hn">127</div></div></div>
-        <div class="hbin" style="left:25%;width:12.5%"><div class="hbar" style="height:100%"><div class="hpct">41%</div><div class="hn">137</div></div></div>
-        <div class="hbin cold" style="left:37.5%;width:12.5%"><div class="hbar" style="height:43.4%"><div class="hpct">18%</div><div class="hn">60</div></div></div>
-        <div class="hbin cold" style="left:50%;width:25%"><div class="hbar" style="height:5.1%"><div class="hpct">2%</div></div></div>
-        <div class="hbin cold" style="left:75%;width:25%"><div class="hbar" style="height:5.1%"><div class="hpct">2%</div></div></div>
-        <div class="cliff"></div>
-        <div class="cliff-tag"><b>78% sit left of here</b>Four in five decided this was a sub-&pound;75 purchase before seeing a product.</div>
+      <div class="gapwrap">
+      <svg class="gapchart" viewBox="0 0 1000 400" role="img" aria-label="78% of non-buyers expect to pay under £75. Every comparable four-steak pack sits between £84 and £124. We propose an entry pack at £45 to £60.">
+        <text x="48" y="16" class="lane">What the list expects to pay for four wagyu steaks</text>
+    <rect x="49.5" y="75.3" width="223.0" height="92.7" rx="4" fill="#EC7D55"/>
+    <text x="161.0" y="66.3" class="pct">38%</text>
+    <text x="161.0" y="155.0" class="cnt">127</text>
+    <rect x="275.5" y="68.0" width="110.0" height="100.0" rx="4" fill="#EC7D55"/>
+    <text x="330.5" y="59.0" class="pct">41%</text>
+    <text x="330.5" y="155.0" class="cnt">137</text>
+    <rect x="388.5" y="124.1" width="110.0" height="43.9" rx="4" fill="#d5d0c9"/>
+    <text x="443.5" y="115.1" class="pct">18%</text>
+    <text x="443.5" y="155.0" class="cnt">60</text>
+    <rect x="501.5" y="163.1" width="223.0" height="4.9" rx="4" fill="#d5d0c9"/>
+    <text x="613.0" y="154.1" class="pct">2%</text>
+    <rect x="727.5" y="163.1" width="223.0" height="4.9" rx="4" fill="#d5d0c9"/>
+    <text x="839.0" y="154.1" class="pct">2%</text>
+        <line x1="48" y1="168.0" x2="952" y2="168.0" stroke="#d8d8d8" stroke-width="1"/>
+    <text x="48.0" y="188" class="ax">£0</text>
+    <text x="274.0" y="188" class="ax">£50</text>
+    <text x="387.0" y="188" class="ax">£75</text>
+    <text x="500.0" y="188" class="ax">£100</text>
+    <text x="726.0" y="188" class="ax">£150</text>
+    <text x="952.0" y="188" class="ax">£200</text>
+        <line x1="387.0" y1="52" x2="387.0" y2="322" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+        <text x="48" y="212" class="lane">Where the demand is</text>
+        <rect x="48" y="220" width="339.0" height="34" rx="6" fill="#EC7D55"/>
+        <text x="62" y="242" class="inband">78% expect to pay under £75</text>
+
+        <text x="48" y="272" class="lane">What the range offers today</text>
+        <rect x="427.7" y="280" width="180.8" height="34" rx="6" fill="#2f3a34"/>
+        <circle cx="427.7" cy="297" r="4.5" fill="#fff" opacity=".9"/><circle cx="472.9" cy="297" r="4.5" fill="#fff" opacity=".9"/><circle cx="495.5" cy="297" r="4.5" fill="#fff" opacity=".9"/><circle cx="509.0" cy="297" r="4.5" fill="#fff" opacity=".9"/><circle cx="522.6" cy="297" r="4.5" fill="#fff" opacity=".9"/><circle cx="536.2" cy="297" r="4.5" fill="#fff" opacity=".9"/><circle cx="563.3" cy="297" r="4.5" fill="#fff" opacity=".9"/><circle cx="567.8" cy="297" r="4.5" fill="#fff" opacity=".9"/><circle cx="581.4" cy="297" r="4.5" fill="#fff" opacity=".9"/><circle cx="608.5" cy="297" r="4.5" fill="#fff" opacity=".9"/>
+        <text x="624.5" y="302" class="side"><tspan class="sb">£84 to £124</tspan> · every comparable pack</text>
+
+        <text x="48" y="332" class="lane">What we propose</text>
+        <rect x="251.4" y="340" width="67.8" height="34" rx="6" fill="#FBEDE6" stroke="#EC7D55" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="335.2" y="362" class="side"><tspan class="sb acc">£45 to £60</tspan> · a two-steak entry pack, inside the demand</text>
+      </svg>
       </div>
-      <div class="axis">
-        <div class="tick" style="left:0">&pound;0</div><div class="tick" style="left:25%">&pound;50</div>
-        <div class="tick" style="left:37.5%">&pound;75</div><div class="tick" style="left:50%">&pound;100</div>
-        <div class="tick" style="left:75%">&pound;150</div><div class="tick" style="left:100%">&pound;200</div>
-      </div>
-      <div class="binlabels">
-        <div class="binlabel" style="left:0;width:25%">Under &pound;50</div>
-        <div class="binlabel" style="left:25%;width:12.5%">&pound;50&ndash;75</div>
-        <div class="binlabel" style="left:37.5%;width:12.5%">&pound;75&ndash;100</div>
-        <div class="binlabel" style="left:50%;width:25%">&pound;100&ndash;150</div>
-        <div class="binlabel" style="left:75%;width:25%">Over &pound;150</div>
-      </div>
-      <div class="pinrail">
-        <div class="pin" style="left:42%"><i></i><div class="pl"><b>&pound;84</b>M4-5 Sirloin 1kg<br>cheapest four-steak pack</div></div>
-        <div class="pin" style="left:62%"><i></i><div class="pl"><b>&pound;124</b>M9+ Ribeye 1kg<br>the flagship</div></div>
-        <div class="pin right" style="left:99%"><i></i><div class="pl"><b>&pound;198</b>BBQ Set</div></div>
-      </div>
+      <p class="gapnote">Nothing on the site sits below <b>£84</b>. The demand stops at <b>£75</b>. That gap is the whole finding.</p>
       <div class="note"><b style="color:var(--ink)">The read.</b> These look like one problem and they are two. Buyers are not arguing with the rate; 75% say we are fair or better value for the grade. Non-buyers are not arguing with it either, because they have never seen it. They are working off a number they formed at the supermarket. So the gap sits between our entry point and their budget.</div>
     </div>
 
