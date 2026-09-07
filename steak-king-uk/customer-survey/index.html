@@ -92,7 +92,7 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
 .dn svg{width:100%;max-width:150px;height:auto;display:block;margin:0 auto}
 .d-big{font-size:30px;font-weight:800;fill:var(--ink);text-anchor:middle;letter-spacing:-.02em}
 .d-big.acc{fill:var(--accent)}
-.dn-sub{font-size:12.5px;color:var(--ink-3);margin-top:3px;line-height:1.4}
+.dn-note{text-align:center;font-size:14px;color:var(--ink-2);margin:14px 0 0}
 .dn-lab{font-size:14px;font-weight:700;color:var(--ink);margin-top:11px;line-height:1.35}
 .dn-lab.acc{color:var(--accent)}
 /* stacked scale */
@@ -271,7 +271,7 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
     <!-- 2.1 -->
     <div class="card">
       <div class="ch">Do they rate us?</div>
-      <div class="chs">Buyers &middot; NPS +59 from 51 responses &middot; rating grid n=50. Each ring is the full five-point spread. The number is the share who rated it in the top two, so Very good or Excellent.</div>
+      <div class="chs">Buyers &middot; NPS +59 from 51 responses &middot; rating grid n=50. Each ring is the full five-point spread. <b style="color:var(--ink)">The score in the middle is the share who rated it Very good or Excellent.</b></div>
       <div class="donuts">
         <div class="dn">
           <svg viewBox="0 0 140 140" role="img" aria-label="Quality of the meat: 90% of buyers rated it very good or excellent">
@@ -284,7 +284,6 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
             <text x="70" y="79" class="d-big">90%</text>
           </svg>
           <div class="dn-lab">Quality of the meat</div>
-          <div class="dn-sub">rated it very good or excellent</div>
         </div>
         <div class="dn">
           <svg viewBox="0 0 140 140" role="img" aria-label="The condition it arrived in: 90% of buyers rated it very good or excellent">
@@ -297,7 +296,6 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
             <text x="70" y="79" class="d-big">90%</text>
           </svg>
           <div class="dn-lab">The condition it arrived in</div>
-          <div class="dn-sub">rated it very good or excellent</div>
         </div>
         <div class="dn">
           <svg viewBox="0 0 140 140" role="img" aria-label="Packaging: 80% of buyers rated it very good or excellent">
@@ -310,7 +308,6 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
             <text x="70" y="79" class="d-big">80%</text>
           </svg>
           <div class="dn-lab">Packaging</div>
-          <div class="dn-sub">rated it very good or excellent</div>
         </div>
         <div class="dn">
           <svg viewBox="0 0 140 140" role="img" aria-label="Value for money: 58% of buyers rated it very good or excellent">
@@ -324,13 +321,13 @@ h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-hei
             <text x="70" y="79" class="d-big acc">58%</text>
           </svg>
           <div class="dn-lab acc">Value for money</div>
-          <div class="dn-sub">rated it very good or excellent</div>
         </div>
       </div>
       <div class="legend">
         <span><i style="background:#C0492B"></i>Poor</span><span><i style="background:#E5A488"></i>Fair</span>
         <span><i style="background:#ddd8d1"></i>Good</span><span><i style="background:#8f9a92"></i>Very good</span><span><i style="background:#2f3a34"></i>Excellent</span>
       </div>
+      <p class="dn-note">Value for money is the only score under 80%, and the only one anybody marked Poor.</p>
       <div class="voices">
         <div class="vh">In their own words &middot; buyers</div>
         <ul>
