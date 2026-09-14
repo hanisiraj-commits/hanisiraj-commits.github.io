@@ -313,6 +313,21 @@
     html{scroll-behavior:auto}
   }
   /* per-deal analytics */
+  .an-verdict{display:flex;gap:var(--s4);align-items:flex-start}
+  .an-vtext{flex:1;min-width:0}
+  .an-shot{width:132px;flex:0 0 132px;background:#2B3131;border:1px solid rgba(255,255,255,.12)}
+  .an-shot img{width:100%;height:132px;object-fit:cover;display:block}
+  .an-promo{display:inline-block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+    font-weight:700;background:#8A4A33;color:#fff;padding:3px 8px;margin-top:9px}
+  .bk{display:flex;flex-direction:column;gap:6px}
+  .bk .r{display:grid;grid-template-columns:1fr 54px 78px;align-items:center;gap:10px;font-size:12.5px}
+  .bk .tr{grid-column:1/-1;height:6px;background:var(--soft);border:1px solid var(--line)}
+  .bk .tr i{display:block;height:100%;background:var(--coral)}
+  .bk .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bk .pc{text-align:right;font-weight:600}
+  .bk .ct{text-align:right;color:var(--muted);font-size:11.5px}
+  @media(max-width:600px){ .an-verdict{flex-direction:column} .an-shot{width:100%;flex:none} }
+
   .an-bar{display:flex;align-items:flex-end;gap:var(--s3);flex-wrap:wrap}
   .an-grow{flex:1;min-width:260px}
   .an-grow select{width:100%}
@@ -2305,6 +2320,9 @@ function renderPerf(){
     ?Math.round(d.deal_returning/d.deal_buyers*100):null;
   if(dRet!==null) sub+=' <b>'+dRet+'%</b> of the people who bought the deal had bought here before'+
     (retPct!==null?', against '+retPct+'% across the whole day':'')+'.';
+  if(d.repeat_deal_buyers!==null&&d.repeat_deal_buyers!==undefined&&d.deal_buyers)
+    sub+=' <b>'+d.repeat_deal_buyers+'</b> of them ('+
+      Math.round(d.repeat_deal_buyers/d.deal_buyers*100)+'%) had bought a previous deal.';
   else if(retPct!==null) sub+=' <b>'+retPct+'%</b> of the day’s buyers had bought before.';
 
   /* ── benchmark ladders ─────────────────────────────────── */
@@ -2330,7 +2348,12 @@ function renderPerf(){
     '<span class="an-delta '+(mult>=1?'up':'dn')+'">'+mult.toFixed(1)+'x</span></div>'+
     '<div class="an-vs">against <b>'+w.prod_units_mean.toFixed(1)+'</b> units on an average BAU day'+
     (w.prod_rev_mean?', worth '+anShort(w.prod_rev_mean):'')+'</div>'+
-    '<div class="an-src">'+(d.verified?'':'<b style="color:var(--warn)">Listing not confirmed for this deal</b> — '+
+    '<div class="an-src">'+
+    ((w.prod_days_sold!==undefined&&w.prod_days_total)
+      ? 'This cut sold on <b>'+w.prod_days_sold+' of the '+w.prod_days_total+'</b> benchmark days'+
+        (w.prod_days_sold<=1?' — too few to call this a normal rate, usually because the listing changed':'')+'. '
+      : '')+
+    (d.verified?'':'<b style="color:var(--warn)">Listing not confirmed for this deal</b> — '+
       'the figures below are a best guess at which listing carried it. ')+
     'Deal took <b>'+anFmt(d.deal_rev)+'</b>'+
     (d.rev?', '+(d.deal_rev/d.rev*100).toFixed(1)+'% of the day':'')+'. Benchmark is the last '+
@@ -2339,9 +2362,14 @@ function renderPerf(){
   const rest=d.rev-d.deal_rev, restD=w.dow_mean?((rest-w.dow_mean)/w.dow_mean*100):null;
 
   body.innerHTML=
-    '<div class="an-verdict"><div class="vk">'+anNice(d.date)+' · '+(d.mech||'')+'</div>'+
-    '<h2>'+(d.title||'').replace(/\s+—.*$/,'')+'</h2>'+
-    '<div class="vs">'+head+' '+sub+'</div></div>'+
+    '<div class="an-verdict">'+
+      (d.img?'<div class="an-shot"><img src="'+d.img+'" alt="" loading="lazy"></div>':'')+
+      '<div class="an-vtext"><div class="vk">'+anNice(d.date)+' · '+(d.mech||'')+'</div>'+
+      '<h2>'+(d.title||'').replace(/\s+—.*$/,'')+'</h2>'+
+      '<div class="vs">'+head+' '+sub+'</div>'+
+      (d.in_promo?'<div class="an-promo">Ran during '+(d.promo_name||'a promotion')+
+        ' — the day\u2019s lift is not the deal\u2019s alone</div>':'')+
+    '</div></div>'+
 
     (d.matched?'':'<div class="an-warn">This deal’s listing could not be found in the order lines, '+
       'so the product figures are blank. Either it did not go live, or it sold under a listing the '+
@@ -2370,12 +2398,17 @@ function renderPerf(){
       '<div class="an-cell"><div class="l">Returning · deal buyers</div><div class="v">'+
         (dRet!==null?d.deal_returning.toLocaleString():'—')+'</div>'+
         '<div class="s">'+(dRet!==null?dRet+'% of '+d.deal_buyers+' who bought the deal':'not available for this day')+'</div></div>'+
+      '<div class="an-cell"><div class="l">Bought a previous deal</div><div class="v">'+
+        ((d.repeat_deal_buyers!==null&&d.repeat_deal_buyers!==undefined)?d.repeat_deal_buyers:'—')+'</div>'+
+        '<div class="s">'+((d.repeat_deal_buyers!==null&&d.repeat_deal_buyers!==undefined&&d.deal_buyers)
+          ?Math.round(d.repeat_deal_buyers/d.deal_buyers*100)+'% of deal buyers came back':'')+'</div></div>'+
       '<div class="an-cell"><div class="l">Rest of shop</div><div class="v">'+anShort(rest)+'</div>'+
         '<div class="s">'+(restD!==null?'<b class="'+anCls(restD)+'">'+anPct(restD)+
         '</b> vs a normal '+dow:'')+'</div></div>'+
     '</div>'+
 
-    '<div class="an-sec"><div class="an-h"><span class="n">01</span><h3>Every deal so far</h3>'+
+    anBasket(d)+
+    '<div class="an-sec"><div class="an-h"><span class="n">02</span><h3>Every deal so far</h3>'+
     '<div class="sub">Same benchmark on every row. Click one to open it.</div></div>'+
     anTable()+'</div>';
 
@@ -2392,6 +2425,23 @@ function renderPerf(){
     'listing, not to a price, because Steak King shelf prices and deal prices collide. '+
     (PERF.bau_days_total?'Built on '+PERF.bau_days_total+' BAU days between '+PERF.first_date+' and '+PERF.last_date+'. ':'')+
     'Generated '+(PERF.generated||'').replace('T',' ').slice(0,16)+'. All figures HKD.';
+}
+
+/* What the deal's own buyers put in the cart alongside it. This is a co-purchase among
+   deal buyers, not the day's bestsellers, so it says what the deal actually pulls
+   through rather than what the store sells anyway. */
+function anBasket(d){
+  const b=d.basket||[];
+  if(!b.length) return '';
+  const mx=Math.max.apply(null,b.map(x=>x.share))||1;
+  return '<div class="an-sec"><div class="an-h"><span class="n">01</span>'+
+    '<h3>What else they bought</h3><div class="sub">Share of the '+
+    (d.deal_buyers||0)+' deal buyers who also took this on the day.</div></div>'+
+    '<div class="an-box"><div class="bk">'+
+    b.map(x=>'<div class="r"><span class="nm">'+x.title+'</span>'+
+      '<span class="pc">'+x.share+'%</span><span class="ct">'+x.buyers+' buyers</span>'+
+      '<span class="tr"><i style="width:'+(x.share/mx*100)+'%"></i></span></div>').join('')+
+    '</div></div></div>';
 }
 
 function anTable(){
