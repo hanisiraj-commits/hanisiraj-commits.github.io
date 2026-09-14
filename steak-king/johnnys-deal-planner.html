@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Johnny's Deal of the Day — Planner</title>
@@ -2315,7 +2315,9 @@ function renderPerf(){
     sub='The cut itself sold <b>'+d.deal_units+'</b> '+(d.deal_units===1?'unit':'units')+
         ' against <b>'+w.prod_units_mean.toFixed(1)+'</b> on a normal day, which is <b>'+
         mult.toFixed(1)+'x</b>.';
-  else sub='No sales could be matched to this deal’s listing, so the product read is unavailable.';
+  else if(d.sold_nothing)
+    sub='<b>The deal sold nothing.</b> Its listing was live and took no orders all day.';
+  else sub='The listing that carried this deal has not been identified, so there is no product read for it.';
   const dRet=(d.deal_buyers&&d.deal_returning!==null&&d.deal_returning!==undefined)
     ?Math.round(d.deal_returning/d.deal_buyers*100):null;
   if(dRet!==null) sub+=' <b>'+dRet+'%</b> of the people who bought the deal had bought here before'+
@@ -2343,7 +2345,11 @@ function renderPerf(){
     return h;
   };
 
-  const prodRow=(mult===null||!d.matched)?'':
+  const prodRow=d.sold_nothing
+    ?'<div class="an-big">0 <span style="font-size:15px;color:var(--muted)">units</span></div>'+
+     '<div class="an-vs">nothing sold'+(w.prod_units_mean?', against <b>'+w.prod_units_mean.toFixed(1)+
+     '</b> units on an average BAU day':'')+'</div>'
+    :(mult===null||!d.matched)?'':
     '<div class="an-big">'+d.deal_units+' <span style="font-size:15px;color:var(--muted)">units</span>'+
     '<span class="an-delta '+(mult>=1?'up':'dn')+'">'+mult.toFixed(1)+'x</span></div>'+
     '<div class="an-vs">against <b>'+w.prod_units_mean.toFixed(1)+'</b> units on an average BAU day'+
@@ -2371,9 +2377,13 @@ function renderPerf(){
         ' — the day\u2019s lift is not the deal\u2019s alone</div>':'')+
     '</div></div>'+
 
-    (d.matched?'':'<div class="an-warn">This deal’s listing could not be found in the order lines, '+
-      'so the product figures are blank. Either it did not go live, or it sold under a listing the '+
-      'builder does not recognise yet.</div>')+
+    (d.sold_nothing
+      ?'<div class="an-warn"><b>No sales.</b> The listing for this deal is confirmed and it took '+
+       'no orders on the day. This is a zero, not a gap in the data.</div>'
+      :d.verified?''
+      :'<div class="an-warn">The listing that carried this deal has not been identified, so its '+
+       'units and revenue are missing rather than zero. Pin it in '+
+       '<code>scripts/deal-products.json</code> to fix it permanently.</div>')+
 
     '<div class="an-cmp">'+
       '<div class="an-box"><div class="bh">The day · store revenue</div>'+
@@ -2463,8 +2473,8 @@ function anTable(){
        '<td>'+(x.title||'').replace(/\s+—.*$/,'')+'</td>'+
        '<td class="r">'+anShort(x.rev)+'</td>'+
        '<td class="r '+anCls(dd)+'">'+anPct(dd)+'</td>'+
-       '<td class="r">'+(x.matched?x.deal_units:'—')+'</td>'+
-       '<td class="r">'+(m!==null&&x.matched?m.toFixed(1)+'x':'—')+'</td>'+
+       '<td class="r">'+(x.sold_nothing?'<b>0</b>':x.matched?x.deal_units:'<span style="color:var(--muted)">?</span>')+'</td>'+
+       '<td class="r">'+(x.sold_nothing?'<span class="dn">no sales</span>':(m!==null&&x.matched?m.toFixed(1)+'x':'—'))+'</td>'+
        '<td class="r">'+(rp!==null?rp+'%':'—')+'</td></tr>';
   });
   return h+'</tbody></table></div>';
