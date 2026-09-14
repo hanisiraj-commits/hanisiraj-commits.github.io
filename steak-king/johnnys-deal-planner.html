@@ -312,6 +312,75 @@
     *{transition:none!important;animation:none!important}
     html{scroll-behavior:auto}
   }
+  /* per-deal analytics */
+  .an-bar{display:flex;align-items:flex-end;gap:var(--s3);flex-wrap:wrap}
+  .an-grow{flex:1;min-width:260px}
+  .an-grow select{width:100%}
+  .an-nav{border:1px solid var(--line-2);background:var(--card);width:38px;height:38px;
+    font-size:15px;color:var(--ink-2);align-self:flex-end}
+  .an-nav:hover:not(:disabled){background:var(--soft)}
+  .an-nav:disabled{opacity:.35;cursor:default}
+
+  .an-verdict{background:var(--ink);color:#fff;padding:var(--s5) var(--s4);margin-bottom:var(--s5)}
+  .an-verdict .vk{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#B9C0C0;margin-bottom:9px}
+  .an-verdict h2{font-size:25px;line-height:1.2;color:#fff}
+  .an-verdict .vs{font-size:13.5px;color:#CDD3D3;margin-top:9px;line-height:1.55;max-width:760px}
+  .an-verdict b{color:#fff}
+  .big-up{color:#7FD3A8}.big-dn{color:#F2A08A}
+
+  .an-cmp{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);margin-bottom:var(--s5)}
+  .an-box{background:var(--card);border:1px solid var(--line);padding:var(--s4)}
+  .an-box .bh{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+    font-weight:700;margin-bottom:var(--s3)}
+  .an-big{font-family:'Fjalla One',Impact,sans-serif;font-size:34px;line-height:1}
+  .an-vs{font-size:13px;color:var(--ink-2);margin-top:7px}
+  .an-vs b{font-weight:600}
+  .an-delta{font-family:'Fjalla One',Impact,sans-serif;font-size:21px;margin-left:8px}
+  .an-src{font-size:11px;color:var(--muted);margin-top:11px;line-height:1.5;
+    border-top:1px solid var(--line);padding-top:9px}
+
+  .bl{display:flex;flex-direction:column;gap:5px;margin-top:var(--s3)}
+  .bl .row{display:grid;grid-template-columns:76px 1fr 74px;align-items:center;gap:9px;font-size:11.5px}
+  .bl .row.me{font-weight:700}
+  .bl .tr{background:var(--soft);height:14px;position:relative;border:1px solid var(--line)}
+  .bl .tr i{display:block;height:100%;background:#9AA3A3}
+  .bl .row.me .tr i{background:var(--coral)}
+  .bl .row .rv{text-align:right;color:var(--ink-2)}
+  .bl .avg{border-top:1px dashed var(--line-2);margin-top:4px;padding-top:6px}
+
+  .an-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+    background:var(--line);border:1px solid var(--line);margin-bottom:var(--s5)}
+  .an-cell{background:var(--card);padding:var(--s4)}
+  .an-cell .l{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+    font-weight:700;margin-bottom:6px}
+  .an-cell .v{font-family:'Fjalla One',Impact,sans-serif;font-size:23px;line-height:1.05}
+  .an-cell .s{font-size:11.5px;color:var(--muted);margin-top:4px}
+
+  .an-sec{margin-bottom:var(--s6)}
+  .an-h{display:flex;align-items:baseline;gap:var(--s3);margin-bottom:var(--s3);flex-wrap:wrap}
+  .an-h .n{font-size:10px;letter-spacing:.1em;color:var(--coral);font-weight:700}
+  .an-h h3{font-size:18px}
+  .an-h .sub{width:100%;font-size:12.5px;color:var(--muted);margin-top:-4px}
+  .an-empty{padding:var(--s6);text-align:center;color:var(--muted);font-size:13.5px;
+    background:var(--card);border:1px solid var(--line)}
+
+  .an-tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--line)}
+  table.an{width:100%;border-collapse:collapse;font-size:13px;min-width:680px}
+  table.an th{text-align:left;font-size:10px;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--muted);font-weight:700;padding:12px 12px 9px;border-bottom:1px solid var(--line-2);white-space:nowrap}
+  table.an th.r,table.an td.r{text-align:right}
+  table.an td{padding:11px 12px;border-bottom:1px solid var(--line)}
+  table.an tr:last-child td{border-bottom:0}
+  table.an tr.cur{background:var(--warn-bg)}
+  table.an tbody tr{cursor:pointer}
+  table.an tbody tr:hover{background:var(--soft)}
+  .an-meth{font-size:11.5px;color:var(--muted);line-height:1.65;border-top:1px solid var(--line);
+    padding-top:var(--s4);margin-top:var(--s5)}
+  .an-meth b{color:var(--ink-2);font-weight:600}
+  .an-warn{background:var(--warn-bg);border:1px solid #E9CFC5;padding:var(--s3) var(--s4);
+    font-size:12.5px;color:var(--warn);margin-bottom:var(--s4)}
+  @media(max-width:820px){ .an-cmp{grid-template-columns:1fr} }
+
   /* ── Analytics tab ───────────────────────────────────────────── */
   .an-bar{display:flex;align-items:flex-end;gap:var(--s4);flex-wrap:wrap;background:var(--card);
     border:1px solid var(--line);padding:var(--s4);margin-bottom:var(--s5)}
@@ -480,76 +549,22 @@
 
   <div class="wrap hide" id="perfView">
     <div class="an-bar">
+      <button class="an-nav" id="anPrev" aria-label="Previous deal">&larr;</button>
+      <div class="an-f an-grow">
+        <label for="anDeal">Deal</label>
+        <select id="anDeal"></select>
+      </div>
+      <button class="an-nav" id="anNext" aria-label="Next deal">&rarr;</button>
       <div class="an-f">
-        <label for="anRange">Date range</label>
-        <select id="anRange"></select>
-      </div>
-      <div class="an-f gone" id="anCustWrap">
-        <label for="anFrom">From</label>
-        <input type="date" id="anFrom">
-      </div>
-      <div class="an-f gone" id="anCustWrap2">
-        <label for="anTo">To</label>
-        <input type="date" id="anTo">
-      </div>
-      <div class="an-f">
-        <label for="anCmp">Compare against</label>
-        <select id="anCmp">
-          <option value="bench">Normal day for that weekday</option>
-          <option value="prev">The period just before</option>
-          <option value="nodeal">Days in range with no deal</option>
-        </select>
-      </div>
-      <div class="an-note" id="anNote"></div>
-    </div>
-
-    <div class="an-tiles" id="anTiles"></div>
-
-    <div class="an-sec">
-      <div class="an-h">
-        <span class="n">01</span><h3>Every day against its comparison</h3>
-        <div class="an-seg" role="group" aria-label="Measure">
-          <button id="mRev" aria-pressed="true">Revenue</button>
-          <button id="mOrd" aria-pressed="false">Orders</button>
-          <button id="mCus" aria-pressed="false">Customers</button>
+        <label>Benchmark window</label>
+        <div class="an-seg" role="group" aria-label="Benchmark window">
+          <button id="w7" aria-pressed="true">Last 7</button>
+          <button id="w14" aria-pressed="false">Last 14</button>
         </div>
-        <div class="sub" id="anDaysSub"></div>
-      </div>
-      <div class="an-card">
-        <div class="an-legend" id="anDaysLeg"></div>
-        <div id="anDays"></div>
       </div>
     </div>
 
-    <div class="an-sec">
-      <div class="an-h">
-        <span class="n">02</span><h3>New against returning</h3>
-        <div class="sub" id="anCustSub"></div>
-      </div>
-      <div class="an-split">
-        <div class="an-card">
-          <div class="an-legend"><span><i style="background:var(--coral)"></i>New</span><span><i style="background:var(--ink)"></i>Returning</span></div>
-          <div id="anMix"></div>
-        </div>
-        <div class="an-card"><div id="anMixTrend"></div></div>
-      </div>
-    </div>
-
-    <div class="an-sec">
-      <div class="an-h">
-        <span class="n">03</span><h3>Deal by deal</h3>
-        <div class="sub">Store column is the whole shop that day. Rest of shop strips the deal out, which is where substitution shows up.</div>
-      </div>
-      <div class="an-card" style="padding:var(--s4)">
-        <div class="an-tblwrap"><table class="an" id="anTbl"></table></div>
-      </div>
-    </div>
-
-    <div class="an-sec">
-      <div class="an-h"><span class="n">04</span><h3>What stands out</h3></div>
-      <div class="an-card"><ul class="an-ins" id="anIns"></ul></div>
-    </div>
-
+    <div id="anBody"></div>
     <div class="an-meth" id="anMeth"></div>
   </div>
 </main>
@@ -1672,6 +1687,16 @@ function movedChip(id,ds){
 }
 
 /* ---------- focus card ---------- */
+/* Once a deal has run there is a read for it, so the day card offers the way through
+   rather than making anyone go and find it in a list. */
+function perfLink(id){
+  if(!PERF||!(PERF.deals||[]).some(d=>d.deal_id===id)) return '';
+  return `<button class="btn" id="perfJump" data-id="${id}" style="border-color:var(--line-2);color:var(--ink);margin-top:12px">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+    See how it did
+  </button>`;
+}
+
 function renderFocus(){
   const el=document.getElementById('focus');
   const ds=curDate, deal=dealFor(ds), id=idFor(ds), black=isBlackout(ds), blk=blockFor(monthOf(ds),ds);
@@ -1712,6 +1737,7 @@ function renderFocus(){
         <h3>${deal.title}</h3>
         <div class="tags"><span class="tag ${deal.tag||''}">${deal.mech}</span>${sBadge(id)}${movedChip(id,ds)}</div>
         ${tiers}${offer}${lines}${flag}
+        ${perfLink(id)}
       </div>
     </div>
     <div class="build">
@@ -2126,6 +2152,10 @@ function showMonth(k){
 
 document.getElementById('vReview').addEventListener('click',()=>setView('review'));
 document.getElementById('vPerf').addEventListener('click',()=>setView('perf'));
+document.addEventListener('click',e=>{
+  const b=e.target.closest('#perfJump');
+  if(b) anShow(b.dataset.id);
+});
 document.getElementById('vDay').addEventListener('click',()=>setView('day'));
 document.getElementById('okAll').addEventListener('click',async()=>{
   if(!needWho()) return;
@@ -2193,351 +2223,228 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ══════════════════════════════════════════════════════════════════
-   ANALYTICS
-   Reads assets/perf-data.json, built by scripts/build-perf.py. One row per
-   calendar day; every number on this tab is arithmetic over that table, so the
-   date range and the comparison picker are just different slices of it.
+   ANALYTICS — one deal at a time.
+
+   Two benchmarks, set by Hani on 14/09/2026, and they answer different questions:
+
+     THE DAY      the whole store on the deal day against the last N **BAU days of the
+                  same weekday**. A Monday is judged against Mondays, because the weekday
+                  swing here is large. The search reaches back as far as it needs to,
+                  across months, since promos usually launch on a Monday and BAU Mondays
+                  are scarce. The benchmark days are listed on the card so the reach is
+                  visible rather than implied.
+
+     THE PRODUCT  the deal's own cut against how much of it sells on the last N **BAU
+                  days, any weekday** — "did putting this on the deal move the product".
+
+   A BAU day is a trading day that is neither a sale day nor a deal day.
+   Data: assets/perf-data.json, built by scripts/build-perf.py.
 ================================================================== */
-let PERF=null, anMetric='rev';
+let PERF=null, anWin='7', anIdx=0;
 const anFmt=n=>'$'+Math.round(n).toLocaleString();
-const anShort=n=>n>=1000?'$'+(n/1000).toFixed(n>=10000?0:1)+'k':'$'+Math.round(n);
-const DOW=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-const anDay=ds=>{const d=parse(ds);return DOW[(d.getDay()+6)%7]+' '+d.getDate()};
+const anShort=n=>Math.abs(n)>=1000?'$'+(n/1000).toFixed(Math.abs(n)>=10000?0:1)+'k':'$'+Math.round(n);
+const AN_DOW=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const AN_MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const anNice=ds=>{const d=parse(ds);return AN_DOW[(d.getDay()+6)%7]+' '+d.getDate()+' '+AN_MON[d.getMonth()]};
+const anShortD=ds=>{const d=parse(ds);return d.getDate()+' '+AN_MON[d.getMonth()]};
+const anPct=v=>(v===null||v===undefined||!isFinite(v))?'—':(v>=0?'+':'')+Math.round(v)+'%';
+const anCls=v=>(v===null||v===undefined||!isFinite(v))?'':(v>=0?'up':'dn');
 
 function anLoad(){
   if(PERF) return Promise.resolve(PERF);
   return fetch('assets/perf-data.json?v='+Date.now()).then(r=>r.ok?r.json():null)
     .then(j=>{PERF=j;return j}).catch(()=>null);
 }
+function anDeals(){ return (PERF&&PERF.deals)||[] }
 
-/* Ranges are built from the planner's own blocks, so "the 11-21 Sep deal block"
-   is always exactly what David signed off rather than a hand-typed date pair. */
-function anRanges(){
-  const out=[];
-  const rows=(PERF&&PERF.days)||[];
-  const have=rows.filter(r=>r.rev>0).map(r=>r.date).sort();
-  if(!have.length) return out;
-  const last=have[have.length-1];
-  const lastDeal=rows.filter(r=>r.deal_id&&r.rev>0).map(r=>r.date).sort().pop();
-  if(lastDeal) out.push({k:'lastday',label:'Last deal day ('+anDay(lastDeal)+')',from:lastDeal,to:lastDeal});
-  const d7=iso(new Date(parse(last).getTime()-6*864e5));
-  out.push({k:'l7',label:'Last 7 days',from:d7,to:last});
-  Object.keys(PLAN).sort().reverse().forEach(mk=>{
-    (PLAN[mk].blocks||[]).forEach(b=>{
-      if(!have.some(d=>d>=b.from&&d<=b.to)) return;
-      out.push({k:mk+b.from,label:b.name+' '+b.from.slice(8)+'-'+b.to.slice(8)+' '+AN_MONTHS[+mk.slice(5,7)-1],
-                from:b.from,to:b.to>last?last:b.to});
-    });
-    if(have.some(d=>d.slice(0,7)===mk))
-      out.push({k:mk,label:AN_MONTHS[+mk.slice(5,7)-1]+' '+mk.slice(0,4)+' (whole month)',
-                from:mk+'-01',to:last>mk+'-31'?mk+'-31':last});
-  });
-  out.push({k:'custom',label:'Custom range…'});
-  return out;
+/* Open analytics on a given deal id, or the most recent deal that has run. */
+function anShow(dealId){
+  const ds=anDeals();
+  const i=ds.findIndex(d=>d.deal_id===dealId);
+  anIdx=i>=0?i:ds.length-1;
+  setView('perf');
 }
-const AN_MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
-
-function anSlice(){
-  const sel=document.getElementById('anRange'), rs=anRanges();
-  let r=rs.find(x=>x.k===sel.value)||rs[0];
-  if(!r) return {rows:[],cmp:[],label:''};
-  let from=r.from,to=r.to;
-  if(r.k==='custom'){ from=document.getElementById('anFrom').value; to=document.getElementById('anTo').value; }
-  const all=(PERF&&PERF.days)||[];
-  const rows=all.filter(x=>x.date>=from&&x.date<=to&&(x.rev>0||x.blackout));
-  const mode=document.getElementById('anCmp').value;
-  let cmp=[],cmpLabel='';
-  if(mode==='prev'){
-    const n=rows.length||1, endPrev=iso(new Date(parse(from).getTime()-864e5));
-    const startPrev=iso(new Date(parse(endPrev).getTime()-(n-1)*864e5));
-    cmp=all.filter(x=>x.date>=startPrev&&x.date<=endPrev&&x.rev>0);
-    cmpLabel='the '+n+' days before';
-  } else if(mode==='nodeal'){
-    cmp=rows.filter(x=>!x.deal_id&&!x.blackout);
-    cmpLabel='no-deal days in range';
-  } else cmpLabel='a normal day for that weekday';
-  return {rows,cmp,from,to,label:r.label,mode,cmpLabel};
-}
-
-/* Expected value for a day under the chosen comparison. */
-function anExp(row,S){
-  if(S.mode==='bench') return row.bench;
-  const pool=S.cmp.filter(x=>!x.blackout);
-  if(!pool.length) return null;
-  if(S.mode==='nodeal'){
-    const same=pool.filter(x=>x.dow===row.dow);
-    const p=same.length?same:pool;
-    return p.reduce((a,b)=>a+b.rev,0)/p.length;
-  }
-  return pool.reduce((a,b)=>a+b.rev,0)/pool.length;
-}
-
-function anDelta(a,b){ return (b&&b>0)?((a-b)/b*100):null; }
-function anPct(v,dp){ if(v===null||v===undefined||!isFinite(v)) return '—';
-  return (v>=0?'+':'')+v.toFixed(dp===undefined?0:dp)+'%'; }
-function anCls(v){ return v===null||v===undefined||!isFinite(v)?'':(v>=0?'up':'dn'); }
 
 function renderPerf(){
-  if(!PERF){
-    document.getElementById('anTiles').innerHTML=
-      '<div class="an-t" style="grid-column:1/-1"><div class="an-empty">'+
-      'Performance data has not been built yet. Run <code>scripts/build-perf.py</code>.</div></div>';
-    ['anDays','anMix','anMixTrend','anIns','anTbl','anMeth'].forEach(i=>document.getElementById(i).innerHTML='');
+  const body=document.getElementById('anBody');
+  const deals=anDeals();
+  if(!PERF||!deals.length){
+    body.innerHTML='<div class="an-empty">No deal performance yet. Run <code>scripts/build-perf.py</code>.</div>';
+    document.getElementById('anMeth').innerHTML='';
+    document.getElementById('anDeal').innerHTML='';
     return;
   }
-  const S=anSlice();
-  const live=S.rows.filter(r=>!r.blackout&&r.rev>0);
-  const deals=S.rows.filter(r=>r.deal_id&&r.rev>0);
-  const measured=deals.filter(r=>r.detail!==false);
+  if(anIdx<0) anIdx=0;
+  if(anIdx>deals.length-1) anIdx=deals.length-1;
+  const d=deals[anIdx], w=d.windows[anWin]||{};
 
-  const store=live.reduce((a,b)=>a+b.rev,0);
-  const dealRev=measured.reduce((a,b)=>a+b.deal_rev,0);
-  const newC=live.reduce((a,b)=>a+b.new_cust,0), retC=live.reduce((a,b)=>a+b.ret_cust,0);
-  const expTot=live.reduce((a,b)=>a+(anExp(b,S)||0),0);
-  const haveExp=live.filter(b=>anExp(b,S));
-  const storeD=expTot>0?anDelta(store,expTot):null;
+  const sel=document.getElementById('anDeal');
+  sel.innerHTML=deals.map((x,i)=>'<option value="'+i+'">'+anNice(x.date)+' · '+
+    (x.title||'').replace(/\s+—.*$/,'')+'</option>').join('');
+  sel.value=String(anIdx);
+  document.getElementById('anPrev').disabled=anIdx<=0;
+  document.getElementById('anNext').disabled=anIdx>=deals.length-1;
 
-  /* the steal test: everything except the deal, against the same comparison */
-  const other=live.reduce((a,b)=>a+(b.rev-(b.detail===false?0:b.deal_rev)),0);
-  const otherD=expTot>0?anDelta(other,expTot):null;
+  const dayD=w.dow_mean?((d.rev-w.dow_mean)/w.dow_mean*100):null;
+  const mult=w.prod_units_mean?(d.deal_units/w.prod_units_mean):null;
+  const retPct=d.buyers?Math.round(d.returning/d.buyers*100):null;
+  const dow=AN_DOW[d.dow];
 
-  const dAov=deals.filter(r=>r.deal_aov), oAov=live.filter(r=>r.other_aov);
-  const dAovV=dAov.length?dAov.reduce((a,b)=>a+b.deal_aov,0)/dAov.length:null;
-  const oAovV=oAov.length?oAov.reduce((a,b)=>a+b.other_aov,0)/oAov.length:null;
+  /* ── verdict ───────────────────────────────────────────── */
+  let head;
+  if(dayD===null) head='The store did <b>'+anFmt(d.rev)+'</b> on '+dow+'.';
+  else head='The store did <b>'+anFmt(d.rev)+'</b> on '+dow+', <b class="'+(dayD>=0?'big-up':'big-dn')+'">'+
+            anPct(dayD)+'</b> '+(dayD>=0?'above':'below')+' a normal '+dow+'.';
+  let sub='';
+  if(mult!==null&&d.matched)
+    sub='The cut itself sold <b>'+d.deal_units+'</b> '+(d.deal_units===1?'unit':'units')+
+        ' against <b>'+w.prod_units_mean.toFixed(1)+'</b> on a normal day, which is <b>'+
+        mult.toFixed(1)+'x</b>.';
+  else sub='No sales could be matched to this deal’s listing, so the product read is unavailable.';
+  const dRet=(d.deal_buyers&&d.deal_returning!==null&&d.deal_returning!==undefined)
+    ?Math.round(d.deal_returning/d.deal_buyers*100):null;
+  if(dRet!==null) sub+=' <b>'+dRet+'%</b> of the people who bought the deal had bought here before'+
+    (retPct!==null?', against '+retPct+'% across the whole day':'')+'.';
+  else if(retPct!==null) sub+=' <b>'+retPct+'%</b> of the day’s buyers had bought before.';
 
-  document.getElementById('anNote').textContent=
-    S.label+' · '+live.length+' trading day'+(live.length===1?'':'s')+
-    (deals.length?', '+deals.length+' with a deal':'')+'. Compared against '+S.cmpLabel+'.';
+  /* ── benchmark ladders ─────────────────────────────────── */
+  const ladder=(days,meanV,cur)=>{
+    if(!days||!days.length) return '<div class="an-src">No BAU days found to compare against.</div>';
+    const all=days.map(x=>PERF.daily[x]?PERF.daily[x].rev:0).concat([cur]);
+    const mx=Math.max.apply(null,all)||1;
+    let h='<div class="bl">';
+    h+='<div class="row me"><span>'+anShortD(d.date)+'</span><span class="tr"><i style="width:'+
+       (cur/mx*100)+'%"></i></span><span class="rv">'+anShort(cur)+'</span></div>';
+    days.forEach(x=>{
+      const v=PERF.daily[x]?PERF.daily[x].rev:0;
+      h+='<div class="row"><span>'+anShortD(x)+'</span><span class="tr"><i style="width:'+
+         (v/mx*100)+'%"></i></span><span class="rv">'+anShort(v)+'</span></div>';
+    });
+    h+='<div class="row avg"><span>average</span><span></span><span class="rv"><b>'+
+       anShort(meanV||0)+'</b></span></div></div>';
+    return h;
+  };
 
-  const tiles=[
-    {l:'Store revenue',v:anFmt(store),d:haveExp.length?'<b class="'+anCls(storeD)+'">'+anPct(storeD)+'</b> vs '+S.cmpLabel:''},
-    {l:'Deal revenue',v:anFmt(dealRev),d:measured.length<deals.length?'<b>'+measured.length+' of '+deals.length+'</b> deal days measured':store>0?'<b>'+(dealRev/store*100).toFixed(1)+'%</b> of the store':''},
-    {l:'Rest of shop',v:anFmt(other),d:haveExp.length?'<b class="'+anCls(otherD)+'">'+anPct(otherD)+'</b> with the deal stripped out':''},
-    {l:'Returning buyers',v:retC.toLocaleString(),d:(newC+retC)>0?'<b>'+(retC/(newC+retC)*100).toFixed(0)+'%</b> of buyers in range':''},
-    {l:'New buyers',v:newC.toLocaleString(),d:(newC+retC)>0?'<b>'+(newC/(newC+retC)*100).toFixed(0)+'%</b> of buyers in range':''},
-    {l:'Deal order AOV',v:dAovV?anFmt(dAovV):'—',d:(dAovV&&oAovV)?'<b class="'+anCls(dAovV-oAovV)+'">'+anPct((dAovV-oAovV)/oAovV*100)+'</b> vs a non-deal order':''},
-  ];
-  document.getElementById('anTiles').innerHTML=tiles.map(t=>
-    '<div class="an-t"><div class="l">'+t.l+'</div><div class="v">'+t.v+'</div>'+
-    (t.d?'<div class="d">'+t.d+'</div>':'')+'</div>').join('');
+  const prodRow=(mult===null||!d.matched)?'':
+    '<div class="an-big">'+d.deal_units+' <span style="font-size:15px;color:var(--muted)">units</span>'+
+    '<span class="an-delta '+(mult>=1?'up':'dn')+'">'+mult.toFixed(1)+'x</span></div>'+
+    '<div class="an-vs">against <b>'+w.prod_units_mean.toFixed(1)+'</b> units on an average BAU day'+
+    (w.prod_rev_mean?', worth '+anShort(w.prod_rev_mean):'')+'</div>'+
+    '<div class="an-src">'+(d.verified?'':'<b style="color:var(--warn)">Listing not confirmed for this deal</b> — '+
+      'the figures below are a best guess at which listing carried it. ')+
+    'Deal took <b>'+anFmt(d.deal_rev)+'</b>'+
+    (d.rev?', '+(d.deal_rev/d.rev*100).toFixed(1)+'% of the day':'')+'. Benchmark is the last '+
+    anWin+' BAU days'+(w.bau_reach?', back to '+anShortD(w.bau_reach):'')+', any weekday.</div>';
 
-  anRenderDays(S,live);
-  anRenderMix(S,live);
-  anRenderTable(S);
-  anRenderInsights(S,live,deals,store,dealRev,otherD);
+  const rest=d.rev-d.deal_rev, restD=w.dow_mean?((rest-w.dow_mean)/w.dow_mean*100):null;
+
+  body.innerHTML=
+    '<div class="an-verdict"><div class="vk">'+anNice(d.date)+' · '+(d.mech||'')+'</div>'+
+    '<h2>'+(d.title||'').replace(/\s+—.*$/,'')+'</h2>'+
+    '<div class="vs">'+head+' '+sub+'</div></div>'+
+
+    (d.matched?'':'<div class="an-warn">This deal’s listing could not be found in the order lines, '+
+      'so the product figures are blank. Either it did not go live, or it sold under a listing the '+
+      'builder does not recognise yet.</div>')+
+
+    '<div class="an-cmp">'+
+      '<div class="an-box"><div class="bh">The day · store revenue</div>'+
+        '<div class="an-big">'+anFmt(d.rev)+
+        (dayD!==null?'<span class="an-delta '+anCls(dayD)+'">'+anPct(dayD)+'</span>':'')+'</div>'+
+        '<div class="an-vs">against <b>'+anFmt(w.dow_mean||0)+'</b>, the average of the last '+
+        (w.dow_days?w.dow_days.length:0)+' BAU '+dow+'s</div>'+
+        ladder(w.dow_days,w.dow_mean,d.rev)+
+        '<div class="an-src">Same weekday, sale days and other deal days excluded'+
+        (w.dow_reach?'. Reaches back to <b>'+anShortD(w.dow_reach)+'</b>':'')+'.</div>'+
+      '</div>'+
+      '<div class="an-box"><div class="bh">The product · units sold</div>'+
+        (prodRow||'<div class="an-empty" style="border:0;padding:var(--s5) 0">Not available.</div>')+
+      '</div>'+
+    '</div>'+
+
+    '<div class="an-strip">'+
+      '<div class="an-cell"><div class="l">Orders</div><div class="v">'+d.orders.toLocaleString()+'</div>'+
+        '<div class="s">'+anFmt(d.rev/(d.orders||1))+' average order</div></div>'+
+      '<div class="an-cell"><div class="l">Returning · whole day</div><div class="v">'+d.returning.toLocaleString()+'</div>'+
+        '<div class="s">'+(retPct!==null?retPct+'% of '+d.buyers+' buyers':'')+'</div></div>'+
+      '<div class="an-cell"><div class="l">Returning · deal buyers</div><div class="v">'+
+        (dRet!==null?d.deal_returning.toLocaleString():'—')+'</div>'+
+        '<div class="s">'+(dRet!==null?dRet+'% of '+d.deal_buyers+' who bought the deal':'not available for this day')+'</div></div>'+
+      '<div class="an-cell"><div class="l">Rest of shop</div><div class="v">'+anShort(rest)+'</div>'+
+        '<div class="s">'+(restD!==null?'<b class="'+anCls(restD)+'">'+anPct(restD)+
+        '</b> vs a normal '+dow:'')+'</div></div>'+
+    '</div>'+
+
+    '<div class="an-sec"><div class="an-h"><span class="n">01</span><h3>Every deal so far</h3>'+
+    '<div class="sub">Same benchmark on every row. Click one to open it.</div></div>'+
+    anTable()+'</div>';
 
   const lb=PERF.lookback_from;
   document.getElementById('anMeth').innerHTML=
-    '<b>How these are worked out.</b> Store revenue is every order placed that day in Hong Kong time, '+
-    'cancelled and refunded orders removed. <b>A normal day</b> is the average of the same weekday across '+
-    'trading days with no sale and no deal on them, taken from this planner\'s own blocks, so it updates itself '+
-    'as months are added. <b>New against returning</b> is decided on the buyer\'s email: returning means that '+
-    'address has ordered here before'+(lb?', looking back to '+lb:'')+'. The Shopify token we have cannot read '+
-    'the customer record itself, so this is the email, not the account. <b>Deal revenue</b> is found by matching '+
-    'the day\'s deal listing in the order lines. It is worked out automatically and currently lands within about '+
-    'ten per cent of the hand-built weekly reads, so treat it as the shape rather than the cent. '+
+    '<b>How these are worked out.</b> <b>A BAU day</b> is a trading day with no sale and no deal on it. '+
+    'Sale days come from this planner’s own blocks plus any day trading at more than twice the '+
+    'recent median, which is how the flash sale and the Meat Emporium are caught without anyone '+
+    'maintaining a list. <b>The day</b> is benchmarked against the last '+anWin+' BAU days of the same '+
+    'weekday, reaching back across months where it has to. <b>The product</b> is benchmarked against the '+
+    'last '+anWin+' BAU days whatever weekday they fall on. <b>Returning</b> means the buyer’s email '+
+    'has ordered here before'+(lb?', looking back to '+lb:'')+' — the token cannot read the customer '+
+    'record, so this is the email, not the account. <b>Deal revenue</b> is matched to the day’s own '+
+    'listing, not to a price, because Steak King shelf prices and deal prices collide. '+
+    (PERF.bau_days_total?'Built on '+PERF.bau_days_total+' BAU days between '+PERF.first_date+' and '+PERF.last_date+'. ':'')+
     'Generated '+(PERF.generated||'').replace('T',' ').slice(0,16)+'. All figures HKD.';
 }
 
-function anRenderDays(S,live){
-  const rows=S.rows.filter(r=>r.rev>0||r.blackout);
-  if(!rows.length){document.getElementById('anDays').innerHTML='<div class="an-empty">No trading days in this range.</div>';return}
-  const leg={rev:'<span><i style="background:var(--ink)"></i>Rest of shop</span><span><i style="background:var(--coral)"></i>The deal</span><span><i style="background:transparent;border-top:2px dashed #9AA3A3;height:0;width:16px"></i>Comparison</span>',
-             ord:'<span><i style="background:var(--ink)"></i>Orders</span>',
-             cus:'<span><i style="background:var(--coral)"></i>New</span><span><i style="background:var(--ink)"></i>Returning</span>'}[anMetric];
-  document.getElementById('anDaysLeg').innerHTML=leg;
-  document.getElementById('anDaysSub').textContent=
-    anMetric==='rev'?'The coral slice is the deal itself. The dashed line is what that day would normally do.'
-    :anMetric==='ord'?'Orders placed each day.':'Who bought each day, split by whether they had ordered before.';
-
-  const val=r=>anMetric==='rev'?r.rev:anMetric==='ord'?r.orders:(r.new_cust+r.ret_cust);
-  const max=Math.max(...rows.map(r=>Math.max(val(r),anMetric==='rev'?(anExp(r,S)||0):0)))||1;
-  const W=Math.max(760,rows.length*62), H=260, PADB=52, PADT=26;
-  const bw=Math.min(46,(W/rows.length)*0.62), gap=W/rows.length;
-
-  let bars='',lines='';
-  rows.forEach((r,i)=>{
-    const x=i*gap+(gap-bw)/2, h=(val(r)/max)*(H-PADT-PADB), y=H-PADB-h;
-    if(r.blackout){
-      bars+=`<rect x="${x}" y="${H-PADB-6}" width="${bw}" height="6" fill="#E6E0DA"/>`+
-            `<text x="${x+bw/2}" y="${H-PADB-12}" text-anchor="middle" font-size="9" fill="#9AA3A3">sale</text>`;
-    } else if(anMetric==='rev'){
-      const dh=(r.detail!==false&&r.deal_rev>0)?(r.deal_rev/max)*(H-PADT-PADB):0;
-      bars+=`<rect x="${x}" y="${y}" width="${bw}" height="${Math.max(h-dh,0)}" fill="#373E3E"/>`;
-      if(dh>0) bars+=`<rect x="${x}" y="${H-PADB-dh}" width="${bw}" height="${dh}" fill="#EC7D55"/>`;
-      const e=anExp(r,S);
-      if(e){
-        const ey=H-PADB-(e/max)*(H-PADT-PADB);
-        lines+=`<line x1="${x-3}" y1="${ey}" x2="${x+bw+3}" y2="${ey}" stroke="#9AA3A3" stroke-width="1.5" stroke-dasharray="4 3"/>`;
-        const d=anDelta(r.rev,e);
-        if(d!==null) lines+=`<text x="${x+bw/2}" y="${Math.min(ey,y)-6}" text-anchor="middle" font-size="10" font-weight="600" fill="${d>=0?'#2F7D5D':'#C0492B'}">${anPct(d)}</text>`;
-      }
-    } else if(anMetric==='cus'){
-      const tot=r.new_cust+r.ret_cust||1;
-      const nh=h*(r.new_cust/tot), rh=h-nh;
-      bars+=`<rect x="${x}" y="${y}" width="${bw}" height="${rh}" fill="#373E3E"/>`;
-      bars+=`<rect x="${x}" y="${y+rh}" width="${bw}" height="${nh}" fill="#EC7D55"/>`;
-      bars+=`<text x="${x+bw/2}" y="${y-5}" text-anchor="middle" font-size="10" fill="#4A5252">${tot}</text>`;
-    } else {
-      bars+=`<rect x="${x}" y="${y}" width="${bw}" height="${h}" fill="#373E3E"/>`;
-      bars+=`<text x="${x+bw/2}" y="${y-5}" text-anchor="middle" font-size="10" fill="#4A5252">${r.orders}</text>`;
-    }
-    bars+=`<text x="${x+bw/2}" y="${H-PADB+16}" text-anchor="middle" font-size="10.5" fill="#4A5252">${anDay(r.date)}</text>`;
-    if(r.deal_id&&!r.blackout)
-      bars+=`<text x="${x+bw/2}" y="${H-PADB+30}" text-anchor="middle" font-size="9" fill="#EC7D55">deal</text>`;
+function anTable(){
+  const deals=anDeals();
+  let h='<div class="an-tblwrap"><table class="an"><thead><tr><th>Day</th><th>Deal</th>'+
+        '<th class="r">Store</th><th class="r">vs normal '+
+        '</th><th class="r">Deal units</th><th class="r">vs normal day</th>'+
+        '<th class="r">Returning</th></tr></thead><tbody>';
+  deals.slice().reverse().forEach(x=>{
+    const w=x.windows[anWin]||{};
+    const dd=w.dow_mean?((x.rev-w.dow_mean)/w.dow_mean*100):null;
+    const m=w.prod_units_mean?(x.deal_units/w.prod_units_mean):null;
+    const rp=(x.deal_buyers&&x.deal_returning!==null&&x.deal_returning!==undefined)
+      ?Math.round(x.deal_returning/x.deal_buyers*100)
+      :(x.buyers?Math.round(x.returning/x.buyers*100):null);
+    const i=deals.indexOf(x);
+    h+='<tr data-i="'+i+'"'+(i===anIdx?' class="cur"':'')+'>'+
+       '<td style="white-space:nowrap">'+anShortD(x.date)+'</td>'+
+       '<td>'+(x.title||'').replace(/\s+—.*$/,'')+'</td>'+
+       '<td class="r">'+anShort(x.rev)+'</td>'+
+       '<td class="r '+anCls(dd)+'">'+anPct(dd)+'</td>'+
+       '<td class="r">'+(x.matched?x.deal_units:'—')+'</td>'+
+       '<td class="r">'+(m!==null&&x.matched?m.toFixed(1)+'x':'—')+'</td>'+
+       '<td class="r">'+(rp!==null?rp+'%':'—')+'</td></tr>';
   });
-  document.getElementById('anDays').innerHTML=
-    `<div style="overflow-x:auto"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="max-width:100%;height:auto;display:block">
-      <line x1="0" y1="${H-PADB}" x2="${W}" y2="${H-PADB}" stroke="#D6CEC5"/>${bars}${lines}</svg></div>`;
-}
-
-function anRenderMix(S,live){
-  const newC=live.reduce((a,b)=>a+b.new_cust,0), retC=live.reduce((a,b)=>a+b.ret_cust,0);
-  const dn=live.reduce((a,b)=>a+b.deal_new,0), dr=live.reduce((a,b)=>a+b.deal_ret,0);
-  document.getElementById('anCustSub').textContent=
-    'Returning means this email has bought from Steak King before'+(PERF.lookback_from?', back to '+PERF.lookback_from:'')+'.';
-  const pair=(label,n,r)=>{
-    const t=n+r||1;
-    return '<div class="an-pair"><div class="pl"><span>'+label+'</span><span><b>'+r.toLocaleString()+'</b> returning · '+
-      n.toLocaleString()+' new</span></div><div class="an-track">'+
-      '<i style="width:'+(r/t*100)+'%;background:var(--ink)"></i>'+
-      '<i style="width:'+(n/t*100)+'%;background:var(--coral)"></i></div>'+
-      '<div class="pl" style="margin-top:4px;color:var(--muted)"><span>'+(r/t*100).toFixed(0)+'% returning</span></div></div>';
-  };
-  document.getElementById('anMix').innerHTML=
-    pair('Everyone who bought',newC,retC)+
-    (dn+dr>0?pair('People who bought the deal',dn,dr):'<div class="an-empty" style="padding:var(--s4)">No deal buyers in range.</div>');
-
-  const rows=live.slice(-14);
-  if(!rows.length){document.getElementById('anMixTrend').innerHTML='';return}
-  const max=Math.max(...rows.map(r=>r.ret_cust))||1;
-  const W=Math.max(300,rows.length*34),H=190,PB=34;
-  let p='',pts=[];
-  rows.forEach((r,i)=>{
-    const x=i*(W/rows.length)+(W/rows.length)/2, y=H-PB-(r.ret_cust/max)*(H-PB-22);
-    pts.push([x,y]);
-    p+=`<circle cx="${x}" cy="${y}" r="${r.deal_id?3.5:2.5}" fill="${r.deal_id?'#EC7D55':'#373E3E'}"/>`;
-  });
-  const path=pts.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ');
-  document.getElementById('anMixTrend').innerHTML=
-    '<div class="an-legend"><span><i style="background:var(--ink)"></i>Returning buyers a day</span>'+
-    '<span><i style="background:var(--coral)"></i>Deal day</span></div>'+
-    `<div style="overflow-x:auto"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="max-width:100%;height:auto;display:block">
-      <line x1="0" y1="${H-PB}" x2="${W}" y2="${H-PB}" stroke="#D6CEC5"/>
-      <path d="${path}" fill="none" stroke="#373E3E" stroke-width="1.5"/>${p}
-      <text x="2" y="14" font-size="10" fill="#7A8383">peak ${max}</text></svg></div>`;
-}
-
-function anRenderTable(S){
-  const deals=S.rows.filter(r=>r.deal_id);
-  const t=document.getElementById('anTbl');
-  if(!deals.length){t.innerHTML='<tbody><tr><td class="an-empty">No deals ran in this range.</td></tr></tbody>';return}
-  let h='<thead><tr><th>Day</th><th>Deal</th><th class="r">Store</th><th class="r">vs normal</th>'+
-        '<th class="r">Deal</th><th class="r">Units</th><th class="r">Share</th>'+
-        '<th class="r">Rest of shop</th><th class="r">Returning</th><th>Read</th></tr></thead><tbody>';
-  deals.forEach(r=>{
-    const e=anExp(r,S), sd=anDelta(r.rev,e), od=anDelta(r.rev-r.deal_rev,e);
-    const buyers=r.deal_new+r.deal_ret;
-    let vd,vc;
-    if(r.detail===false){vd='Not measured';vc='flat'}
-    else if(!r.deal_orders){vd='Not found';vc='miss'}
-    else if(sd!==null&&sd>=2&&od!==null&&od>=-2){vd='Moved the store';vc='store'}
-    else if(sd!==null&&sd>=2){vd='Store up, shop down';vc='prod'}
-    else if(sd!==null&&sd<-2){vd='Under a normal day';vc='miss'}
-    else {vd='Flat';vc='flat'}
-    h+='<tr><td style="white-space:nowrap">'+anDay(r.date)+'</td>'+
-       '<td class="an-dl">'+(r.deal_title||'').replace(/\s+—.*$/,'')+'<small>'+(r.mech||'')+'</small></td>'+
-       '<td class="r">'+anShort(r.rev)+'</td>'+
-       '<td class="r '+anCls(sd)+'">'+anPct(sd)+'</td>'+
-       '<td class="r">'+(r.detail===false?'<span style="color:var(--muted)">no detail</span>':r.deal_orders?anShort(r.deal_rev):'—')+'</td>'+
-       '<td class="r">'+(r.deal_units||'—')+'</td>'+
-       '<td class="r">'+(r.rev>0&&r.deal_rev>0?(r.deal_rev/r.rev*100).toFixed(1)+'%':'—')+'</td>'+
-       '<td class="r '+anCls(od)+'">'+anPct(od)+'</td>'+
-       '<td class="r">'+(buyers?Math.round(r.deal_ret/buyers*100)+'%':'—')+'</td>'+
-       '<td><span class="vd '+vc+'">'+vd+'</span></td></tr>';
-  });
-  t.innerHTML=h+'</tbody>';
-}
-
-function anRenderInsights(S,live,deals,store,dealRev,otherD){
-  const out=[];
-  if(deals.length){
-    const scored=deals.map(r=>({r,d:anDelta(r.rev,anExp(r,S))})).filter(x=>x.d!==null);
-    scored.sort((a,b)=>b.d-a.d);
-    if(scored.length){
-      const b=scored[0], w=scored[scored.length-1];
-      out.push('<b>'+(b.r.deal_title||'').replace(/\s+—.*$/,'')+'</b> had the best day against its comparison, '+
-               anPct(b.d)+' on '+anDay(b.r.date)+'.');
-      if(scored.length>1)
-        out.push('<b>'+(w.r.deal_title||'').replace(/\s+—.*$/,'')+'</b> had the worst, '+anPct(w.d)+' on '+anDay(w.r.date)+'.');
-    }
-    const won=scored.filter(x=>x.d>=2).length;
-    if(scored.length) out.push('<b>'+won+' of '+scored.length+'</b> deal days beat '+S.cmpLabel+'.');
-    if(otherD!==null)
-      out.push(otherD>=-2
-        ? 'With the deal stripped out the rest of the shop was <b class="up">'+anPct(otherD)+'</b> against '+S.cmpLabel+', so the deal is adding rather than moving money around.'
-        : 'With the deal stripped out the rest of the shop was <b class="dn">'+anPct(otherD)+'</b> against '+S.cmpLabel+', which is what substitution looks like.');
-    const missing=deals.filter(r=>r.detail!==false&&!r.deal_orders);
-    if(missing.length)
-      out.push('<b>'+missing.length+' deal day'+(missing.length===1?'':'s')+'</b> had no sales matched to the planned deal ('+
-               missing.map(r=>anDay(r.date)).join(', ')+'). Either it did not go live, or it sold under a listing this does not recognise.');
-    /* mechanic league, once there is enough of it to mean something */
-    const byMech={};
-    scored.forEach(x=>{const m=x.r.mech||'Other';(byMech[m]=byMech[m]||[]).push(x.d)});
-    const ranked=Object.entries(byMech).filter(([,v])=>v.length>=2)
-      .map(([m,v])=>({m,n:v.length,avg:v.reduce((a,b)=>a+b,0)/v.length})).sort((a,b)=>b.avg-a.avg);
-    if(ranked.length>=2)
-      out.push('By mechanic: '+ranked.map(r=>'<b>'+r.m.split('·')[0].trim()+'</b> '+anPct(r.avg)+' over '+r.n+' runs').join(' · ')+'.');
-  }
-  const nc=live.reduce((a,b)=>a+b.new_cust,0), rc=live.reduce((a,b)=>a+b.ret_cust,0);
-  if(nc+rc>0){
-    const dn=live.reduce((a,b)=>a+b.deal_new,0), dr=live.reduce((a,b)=>a+b.deal_ret,0);
-    if(dn+dr>0){
-      const storeShare=rc/(nc+rc)*100, dealShare=dr/(dn+dr)*100;
-      out.push('Deal buyers were <b>'+dealShare.toFixed(0)+'%</b> returning customers against <b>'+storeShare.toFixed(0)+
-               '%</b> for the shop as a whole, so the deal is '+(dealShare>=storeShare?'skewing to the people who already buy here':'pulling a newer crowd than the shop average')+'.');
-    }
-  }
-  document.getElementById('anIns').innerHTML=out.length?out.map(x=>'<li>'+x+'</li>').join(''):'<li>Nothing to report for this range yet.</li>';
+  return h+'</tbody></table></div>';
 }
 
 function anInit(){
-  const sel=document.getElementById('anRange');
-  const rs=anRanges();
-  sel.innerHTML=rs.map(r=>'<option value="'+r.k+'">'+r.label+'</option>').join('');
-  /* Open on the block we are trading in, not on a single day - one bar tells you
-     nothing and the point of the tab is the shape of a run of days. */
-  const inBlock=rs.find(r=>r.from&&r.to&&r.from<=todayISO&&todayISO<=r.to&&
-                          r.k!=='custom'&&r.k!=='lastday'&&r.k!=='l7');
-  sel.value=(inBlock||rs.find(r=>r.k==='l7')||rs[0]).k;
-  const all=(PERF&&PERF.days)||[];
-  const live=all.filter(r=>r.rev>0).map(r=>r.date).sort();
-  if(live.length){
-    document.getElementById('anFrom').value=live[0];
-    document.getElementById('anTo').value=live[live.length-1];
-  }
-  const sync=()=>{
-    const c=sel.value==='custom';
-    document.getElementById('anCustWrap').classList.toggle('gone',!c);
-    document.getElementById('anCustWrap2').classList.toggle('gone',!c);
-    renderPerf();
-  };
-  sel.addEventListener('change',sync);
-  ['anFrom','anTo','anCmp'].forEach(i=>document.getElementById(i).addEventListener('change',renderPerf));
-  [['mRev','rev'],['mOrd','ord'],['mCus','cus']].forEach(([id,m])=>{
+  document.getElementById('anDeal').addEventListener('change',e=>{anIdx=+e.target.value;renderPerf()});
+  document.getElementById('anPrev').addEventListener('click',()=>{anIdx--;renderPerf()});
+  document.getElementById('anNext').addEventListener('click',()=>{anIdx++;renderPerf()});
+  [['w7','7'],['w14','14']].forEach(([id,v])=>{
     document.getElementById(id).addEventListener('click',()=>{
-      anMetric=m;
-      [['mRev','rev'],['mOrd','ord'],['mCus','cus']].forEach(([i2,m2])=>
-        document.getElementById(i2).setAttribute('aria-pressed',String(m2===m)));
+      anWin=v;
+      [['w7','7'],['w14','14']].forEach(([i2,v2])=>
+        document.getElementById(i2).setAttribute('aria-pressed',String(v2===v)));
       renderPerf();
     });
   });
-  sync();
+  document.getElementById('perfView').addEventListener('click',e=>{ void e });
+  document.getElementById('anBody').addEventListener('click',e=>{
+    const tr=e.target.closest('tr[data-i]');
+    if(tr){ anIdx=+tr.dataset.i; renderPerf(); window.scrollTo({top:0,behavior:'smooth'}); }
+  });
+  if(!anDeals().length) anIdx=0; else anIdx=anDeals().length-1;
+  renderPerf();
 }
 
 /* boot: deep link, then today if today is a deal day, then the next deal day.
    Landing on a blackout parks you on a month that is already finished. */
 (function(){
+  anLoad().then(()=>{ if(view==='day') renderFocus() });
   const h=location.hash.slice(1);
   if(/^\d{4}-\d{2}-\d{2}$/.test(h)&&inPlan(h)) select(h,false);
   else if(dealFor(todayISO)) select(todayISO,false);
