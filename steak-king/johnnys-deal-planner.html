@@ -2301,7 +2301,12 @@ function renderPerf(){
   document.getElementById('anNext').disabled=anIdx>=deals.length-1;
 
   const dayD=w.dow_mean?((d.rev-w.dow_mean)/w.dow_mean*100):null;
-  const mult=w.prod_units_mean?(d.deal_units/w.prod_units_mean):null;
+  /* A deal can be a multi-piece pack while the everyday listing is a single piece, so
+     convert the deal into the baseline's unit before dividing. Without this a 2-piece
+     chateaubriand bundle is compared to single 800g pieces and the lift reads half. */
+  const perDeal=d.units_per_deal||1;
+  const dealPieces=d.deal_units*perDeal;
+  const mult=w.prod_units_mean?(dealPieces/w.prod_units_mean):null;
   const retPct=d.buyers?Math.round(d.returning/d.buyers*100):null;
   const dow=AN_DOW[d.dow];
 
@@ -2311,13 +2316,19 @@ function renderPerf(){
   else head='The store did <b>'+anFmt(d.rev)+'</b> on '+dow+', <b class="'+(dayD>=0?'big-up':'big-dn')+'">'+
             anPct(dayD)+'</b> '+(dayD>=0?'above':'below')+' a normal '+dow+'.';
   let sub='';
-  if(mult!==null&&d.matched)
-    sub='The cut itself sold <b>'+d.deal_units+'</b> '+(d.deal_units===1?'unit':'units')+
+  if(d.sold_nothing)
+    sub='<b>The deal sold nothing.</b> Its listing was live and took no orders all day.';
+  else if(!d.matched)
+    sub='The listing that carried this deal has not been identified, so there is no product read for it.';
+  else if(mult!==null)
+    sub='The cut itself sold <b>'+dealPieces+'</b> '+(dealPieces===1?'piece':'pieces')+
+        (perDeal>1?' ('+d.deal_units+' packs of '+perDeal+')':'')+
         ' against <b>'+w.prod_units_mean.toFixed(1)+'</b> on a normal day, which is <b>'+
         mult.toFixed(1)+'x</b>.';
-  else if(d.sold_nothing)
-    sub='<b>The deal sold nothing.</b> Its listing was live and took no orders all day.';
-  else sub='The listing that carried this deal has not been identified, so there is no product read for it.';
+  else
+    sub='The deal sold <b>'+d.deal_units+'</b> '+(d.deal_units===1?'unit':'units')+
+        ' worth <b>'+anFmt(d.deal_rev)+'</b>. This cut barely sells on an ordinary day, '+
+        'so there is no normal rate to measure it against.';
   const dRet=(d.deal_buyers&&d.deal_returning!==null&&d.deal_returning!==undefined)
     ?Math.round(d.deal_returning/d.deal_buyers*100):null;
   if(dRet!==null) sub+=' <b>'+dRet+'%</b> of the people who bought the deal had bought here before'+
@@ -2349,12 +2360,24 @@ function renderPerf(){
     ?'<div class="an-big">0 <span style="font-size:15px;color:var(--muted)">units</span></div>'+
      '<div class="an-vs">nothing sold'+(w.prod_units_mean?', against <b>'+w.prod_units_mean.toFixed(1)+
      '</b> units on an average BAU day':'')+'</div>'
+    :(d.matched&&mult===null)
+    ?'<div class="an-big">'+d.deal_units+' <span style="font-size:15px;color:var(--muted)">units</span></div>'+
+     '<div class="an-vs">worth <b>'+anFmt(d.deal_rev)+'</b>'+
+     (d.rev?', '+(d.deal_rev/d.rev*100).toFixed(1)+'% of the day':'')+'</div>'+
+     '<div class="an-src">No multiple: this cut sold on '+
+     ((w.prod_days_sold!==undefined&&w.prod_days_total)?'<b>'+w.prod_days_sold+' of the '+
+       w.prod_days_total+'</b> benchmark days':'too few benchmark days')+
+     ', so there is no normal-day rate to measure the lift against. Usually the cut only '+
+     'appears when it is the deal, or the listing changed.</div>'
     :(mult===null||!d.matched)?'':
-    '<div class="an-big">'+d.deal_units+' <span style="font-size:15px;color:var(--muted)">units</span>'+
+    '<div class="an-big">'+dealPieces+' <span style="font-size:15px;color:var(--muted)">'+
+    (perDeal>1?'pieces':'units')+'</span>'+
     '<span class="an-delta '+(mult>=1?'up':'dn')+'">'+mult.toFixed(1)+'x</span></div>'+
-    '<div class="an-vs">against <b>'+w.prod_units_mean.toFixed(1)+'</b> units on an average BAU day'+
+    '<div class="an-vs">against <b>'+w.prod_units_mean.toFixed(1)+'</b> on an average BAU day'+
     (w.prod_rev_mean?', worth '+anShort(w.prod_rev_mean):'')+'</div>'+
     '<div class="an-src">'+
+    ((d.source_titles&&d.source_titles.length)
+      ? 'Measured against <b>'+d.source_titles.join('</b>, <b>')+'</b>. ' : '')+
     ((w.prod_days_sold!==undefined&&w.prod_days_total)
       ? 'This cut sold on <b>'+w.prod_days_sold+' of the '+w.prod_days_total+'</b> benchmark days'+
         (w.prod_days_sold<=1?' — too few to call this a normal rate, usually because the listing changed':'')+'. '
@@ -2474,7 +2497,9 @@ function anTable(){
        '<td class="r">'+anShort(x.rev)+'</td>'+
        '<td class="r '+anCls(dd)+'">'+anPct(dd)+'</td>'+
        '<td class="r">'+(x.sold_nothing?'<b>0</b>':x.matched?x.deal_units:'<span style="color:var(--muted)">?</span>')+'</td>'+
-       '<td class="r">'+(x.sold_nothing?'<span class="dn">no sales</span>':(m!==null&&x.matched?m.toFixed(1)+'x':'—'))+'</td>'+
+       '<td class="r">'+(x.sold_nothing?'<span class="dn">no sales</span>'
+          :(m!==null&&x.matched)?m.toFixed(1)+'x'
+          :x.matched?'<span style="color:var(--muted)">no baseline</span>':'—')+'</td>'+
        '<td class="r">'+(rp!==null?rp+'%':'—')+'</td></tr>';
   });
   return h+'</tbody></table></div>';
