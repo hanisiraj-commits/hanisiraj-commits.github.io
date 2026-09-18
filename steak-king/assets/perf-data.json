@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-18T08:45:11",
+ "generated": "2026-09-18T08:49:26",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -3727,8 +3727,8 @@
    "mech": "Quantity Flash",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/M2-3ThinSkirtSteak.webp?width=520",
    "price": "$598",
-   "rev": 59196.1,
-   "orders": 51,
+   "rev": 59294.1,
+   "orders": 52,
    "deal_rev": 1794,
    "deal_units": 3,
    "matched": true,
@@ -5220,8 +5220,8 @@
    "deal": true
   },
   "2026-09-18": {
-   "rev": 59196.1,
-   "orders": 51,
+   "rev": 59294.1,
+   "orders": 52,
    "bau": false,
    "promo": true,
    "deal": true
