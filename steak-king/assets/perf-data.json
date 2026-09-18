@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-18T09:06:07",
+ "generated": "2026-09-18T17:31:22",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -164,7 +164,7 @@
   "2026-09-18"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-09-18",
+ "last_date": "2026-09-19",
  "deals": [
   {
    "date": "2026-08-03",
@@ -3727,20 +3727,20 @@
    "mech": "Quantity Flash",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/M2-3ThinSkirtSteak.webp?width=520",
    "price": "$598",
-   "rev": 59294.1,
-   "orders": 52,
-   "deal_rev": 1794,
-   "deal_units": 3,
+   "rev": 99704.7,
+   "orders": 83,
+   "deal_rev": 7176,
+   "deal_units": 12,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 47,
-   "returning": 34,
-   "deal_buyers": 3,
-   "repeat_deal_buyers": 1,
+   "buyers": 75,
+   "returning": 54,
+   "deal_buyers": 11,
+   "repeat_deal_buyers": 2,
    "in_promo": true,
    "promo_name": "Salmon Bar",
-   "deal_returning": 3,
+   "deal_returning": 10,
    "windows": {
     "7": {
      "prod_days_sold": 1,
@@ -3804,9 +3804,143 @@
      "prod_rev_mean": null
     }
    },
-   "basket": [],
+   "basket": [
+    {
+     "pid": "9604001300712",
+     "title": "Frozen Norwegian Salmon Pieces - 1kg/5kg",
+     "buyers": 4,
+     "share": 36,
+     "rev": 7915.42
+    },
+    {
+     "pid": "9575646003432",
+     "title": "Frozen Wagyu M9+ grain fed Beef Cheeks 1kg (2 pieces)",
+     "buyers": 3,
+     "share": 27,
+     "rev": 2352
+    },
+    {
+     "pid": "9262839169256",
+     "title": "Frozen Black Angus Grass Fed Minced Beef 1kg",
+     "buyers": 3,
+     "share": 27,
+     "rev": 4585.45
+    },
+    {
+     "pid": "9041047322856",
+     "title": "FREE - Frozen Norwegian Salmon Pieces 500g",
+     "buyers": 2,
+     "share": 18,
+     "rev": 0
+    },
+    {
+     "pid": "9361205723368",
+     "title": "Frozen Free-Range Chicken Supreme (Bone-in, skin on with w",
+     "buyers": 2,
+     "share": 18,
+     "rev": 999.46
+    },
+    {
+     "pid": "9311397511400",
+     "title": "Frozen Barn Raised Chicken Breast Fillets 1kg",
+     "buyers": 2,
+     "share": 18,
+     "rev": 1180
+    }
+   ],
    "source_titles": [
     "Chilled M4-5 Wagyu Thin Skirt Steak"
+   ],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-09-19",
+   "dow": 5,
+   "deal_id": "sep-hangers-2",
+   "title": "Buy One Whole Wagyu Hanger, Get the Second Free",
+   "mech": "Buy 1, Get 1 Free",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/BeefHanger_8356e176-011d-46e7-952b-802ffb9c1e1c.jpg?width=520",
+   "price": "$798",
+   "rev": 4107.4,
+   "orders": 3,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 3,
+   "returning": 2,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": false,
+   "promo_name": null,
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 2,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-18",
+      "2026-07-04",
+      "2026-06-06",
+      "2026-05-16",
+      "2026-05-02",
+      "2026-03-07"
+     ],
+     "dow_mean": 79123.89,
+     "dow_reach": "2026-03-07",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": 1.29,
+     "prod_rev_mean": 640.29
+    },
+    "14": {
+     "prod_days_sold": 7,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-18",
+      "2026-07-04",
+      "2026-06-06",
+      "2026-05-16",
+      "2026-05-02",
+      "2026-03-07"
+     ],
+     "dow_mean": 79123.89,
+     "dow_reach": "2026-03-07",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": 2.21,
+     "prod_rev_mean": 1118.57
+    }
+   },
+   "basket": [],
+   "source_titles": [
+    "Chilled Wagyu M3-4 Untrimmed Hanger Steak"
    ],
    "units_per_deal": null
   }
@@ -5220,10 +5354,17 @@
    "deal": true
   },
   "2026-09-18": {
-   "rev": 59294.1,
-   "orders": 52,
+   "rev": 99704.7,
+   "orders": 83,
    "bau": false,
    "promo": true,
+   "deal": true
+  },
+  "2026-09-19": {
+   "rev": 4107.4,
+   "orders": 3,
+   "bau": false,
+   "promo": false,
    "deal": true
   }
  }
