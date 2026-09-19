@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-18T17:31:22",
+ "generated": "2026-09-19T17:31:40",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -161,10 +161,12 @@
   "2026-09-15",
   "2026-09-16",
   "2026-09-17",
-  "2026-09-18"
+  "2026-09-18",
+  "2026-09-19",
+  "2026-09-20"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-09-19",
+ "last_date": "2026-09-20",
  "deals": [
   {
    "date": "2026-08-03",
@@ -3636,7 +3638,7 @@
    "mech": "Mystery Box",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/image_12.png?width=520",
    "price": "$448",
-   "rev": 107069.05,
+   "rev": 107627.05,
    "orders": 82,
    "deal_rev": 0,
    "deal_units": 0,
@@ -3861,20 +3863,20 @@
    "mech": "Buy 1, Get 1 Free",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/BeefHanger_8356e176-011d-46e7-952b-802ffb9c1e1c.jpg?width=520",
    "price": "$798",
-   "rev": 4107.4,
-   "orders": 3,
-   "deal_rev": 0,
-   "deal_units": 0,
+   "rev": 142524.2,
+   "orders": 124,
+   "deal_rev": 798,
+   "deal_units": 1,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 3,
-   "returning": 2,
-   "deal_buyers": null,
-   "repeat_deal_buyers": null,
-   "in_promo": false,
-   "promo_name": null,
-   "deal_returning": null,
+   "buyers": 110,
+   "returning": 81,
+   "deal_buyers": 1,
+   "repeat_deal_buyers": 0,
+   "in_promo": true,
+   "promo_name": "Salmon Bar",
+   "deal_returning": 1,
    "windows": {
     "7": {
      "prod_days_sold": 2,
@@ -3941,6 +3943,99 @@
    "basket": [],
    "source_titles": [
     "Chilled Wagyu M3-4 Untrimmed Hanger Steak"
+   ],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-09-20",
+   "dow": 6,
+   "deal_id": "sep-m89-picanha",
+   "title": "The Whole M8-9 Picanha, 2.1kg for $1,098",
+   "mech": "Price Drop · Single SKU",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/M9_Picanhas.png?width=520",
+   "price": "$1,098",
+   "rev": 3051,
+   "orders": 2,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 2,
+   "returning": 2,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": true,
+   "promo_name": "Salmon Bar",
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 5,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-12",
+      "2026-07-05",
+      "2026-06-07",
+      "2026-05-17",
+      "2026-05-03",
+      "2026-03-15",
+      "2026-03-08"
+     ],
+     "dow_mean": 81470.73,
+     "dow_reach": "2026-03-08",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": 1.29,
+     "prod_rev_mean": 1450.29
+    },
+    "14": {
+     "prod_days_sold": 7,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-12",
+      "2026-07-05",
+      "2026-06-07",
+      "2026-05-17",
+      "2026-05-03",
+      "2026-03-15",
+      "2026-03-08"
+     ],
+     "dow_mean": 81470.73,
+     "dow_reach": "2026-03-08",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": 0.86,
+     "prod_rev_mean": 966.86
+    }
+   },
+   "basket": [],
+   "source_titles": [
+    "Chilled Wagyu M8-9 Rump Cap"
    ],
    "units_per_deal": null
   }
@@ -5347,7 +5442,7 @@
    "deal": true
   },
   "2026-09-17": {
-   "rev": 107069.05,
+   "rev": 107627.05,
    "orders": 82,
    "bau": false,
    "promo": true,
@@ -5361,10 +5456,17 @@
    "deal": true
   },
   "2026-09-19": {
-   "rev": 4107.4,
-   "orders": 3,
+   "rev": 142524.2,
+   "orders": 124,
    "bau": false,
-   "promo": false,
+   "promo": true,
+   "deal": true
+  },
+  "2026-09-20": {
+   "rev": 3051,
+   "orders": 2,
+   "bau": false,
+   "promo": true,
    "deal": true
   }
  }
