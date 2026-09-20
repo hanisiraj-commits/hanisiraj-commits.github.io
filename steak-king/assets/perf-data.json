@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-19T17:31:40",
+ "generated": "2026-09-20T17:31:38",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -163,10 +163,11 @@
   "2026-09-17",
   "2026-09-18",
   "2026-09-19",
-  "2026-09-20"
+  "2026-09-20",
+  "2026-09-21"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-09-20",
+ "last_date": "2026-09-21",
  "deals": [
   {
    "date": "2026-08-03",
@@ -3954,15 +3955,15 @@
    "mech": "Price Drop · Single SKU",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/M9_Picanhas.png?width=520",
    "price": "$1,098",
-   "rev": 3051,
-   "orders": 2,
+   "rev": 98534.9,
+   "orders": 83,
    "deal_rev": 0,
    "deal_units": 0,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 2,
-   "returning": 2,
+   "buyers": 64,
+   "returning": 44,
    "deal_buyers": null,
    "repeat_deal_buyers": null,
    "in_promo": true,
@@ -4037,6 +4038,97 @@
    "source_titles": [
     "Chilled Wagyu M8-9 Rump Cap"
    ],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-09-21",
+   "dow": 0,
+   "deal_id": "sep-lobster-surf-turf",
+   "title": "The Surf and Turf Set — 1kg Angus Ribeye and Two Lobster Tails for $598",
+   "mech": "Fixed Bundle · Surf and Turf",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/shutterstock_2594441313_1_cb96eb05-edbe-44c6-8180-3302b5e82c48.jpg?width=520",
+   "price": "$598",
+   "rev": 3779,
+   "orders": 3,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 3,
+   "returning": 3,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": true,
+   "promo_name": "Salmon Bar",
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 0,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-13",
+      "2026-07-06",
+      "2026-05-18",
+      "2026-05-04",
+      "2026-04-06",
+      "2026-03-16",
+      "2026-03-09"
+     ],
+     "dow_mean": 92359.47,
+     "dow_reach": "2026-03-09",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    },
+    "14": {
+     "prod_days_sold": 0,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-13",
+      "2026-07-06",
+      "2026-05-18",
+      "2026-05-04",
+      "2026-04-06",
+      "2026-03-16",
+      "2026-03-09"
+     ],
+     "dow_mean": 92359.47,
+     "dow_reach": "2026-03-09",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    }
+   },
+   "basket": [],
+   "source_titles": [],
    "units_per_deal": null
   }
  ],
@@ -5463,8 +5555,15 @@
    "deal": true
   },
   "2026-09-20": {
-   "rev": 3051,
-   "orders": 2,
+   "rev": 98534.9,
+   "orders": 83,
+   "bau": false,
+   "promo": true,
+   "deal": true
+  },
+  "2026-09-21": {
+   "rev": 3779,
+   "orders": 3,
    "bau": false,
    "promo": true,
    "deal": true
