@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-20T17:31:38",
+ "generated": "2026-09-21T17:31:44",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -164,10 +164,11 @@
   "2026-09-18",
   "2026-09-19",
   "2026-09-20",
-  "2026-09-21"
+  "2026-09-21",
+  "2026-09-22"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-09-21",
+ "last_date": "2026-09-22",
  "deals": [
   {
    "date": "2026-08-03",
@@ -3864,7 +3865,7 @@
    "mech": "Buy 1, Get 1 Free",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/BeefHanger_8356e176-011d-46e7-952b-802ffb9c1e1c.jpg?width=520",
    "price": "$798",
-   "rev": 142524.2,
+   "rev": 142880.2,
    "orders": 124,
    "deal_rev": 798,
    "deal_units": 1,
@@ -4048,20 +4049,20 @@
    "mech": "Fixed Bundle · Surf and Turf",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/shutterstock_2594441313_1_cb96eb05-edbe-44c6-8180-3302b5e82c48.jpg?width=520",
    "price": "$598",
-   "rev": 3779,
-   "orders": 3,
-   "deal_rev": 0,
-   "deal_units": 0,
+   "rev": 134048.2,
+   "orders": 101,
+   "deal_rev": 5824,
+   "deal_units": 13,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 3,
-   "returning": 3,
-   "deal_buyers": null,
-   "repeat_deal_buyers": null,
+   "buyers": 96,
+   "returning": 72,
+   "deal_buyers": 9,
+   "repeat_deal_buyers": 0,
    "in_promo": true,
    "promo_name": "Salmon Bar",
-   "deal_returning": null,
+   "deal_returning": 8,
    "windows": {
     "7": {
      "prod_days_sold": 0,
@@ -4127,7 +4128,43 @@
      "prod_rev_mean": null
     }
    },
-   "basket": [],
+   "basket": [
+    {
+     "pid": "9604001300712",
+     "title": "Frozen Norwegian Salmon Pieces - 1kg/5kg",
+     "buyers": 2,
+     "share": 22,
+     "rev": 7454
+    },
+    {
+     "pid": "6615232020674",
+     "title": "Chilled Wagyu M4-5 Ribeye 1kg",
+     "buyers": 2,
+     "share": 22,
+     "rev": 7428
+    },
+    {
+     "pid": "9163291328744",
+     "title": "Frozen Whole Norwegian Premium Salmon Fillet - 1.2kg -1.6k",
+     "buyers": 2,
+     "share": 22,
+     "rev": 2670
+    },
+    {
+     "pid": "9262839169256",
+     "title": "Frozen Black Angus Grass Fed Minced Beef 1kg",
+     "buyers": 2,
+     "share": 22,
+     "rev": 6216
+    },
+    {
+     "pid": "9506199503080",
+     "title": "Frozen Black Angus M1-2 T-Bone/Porterhouse 500g",
+     "buyers": 2,
+     "share": 22,
+     "rev": 712
+    }
+   ],
    "source_titles": [],
    "units_per_deal": null
   }
@@ -5548,7 +5585,7 @@
    "deal": true
   },
   "2026-09-19": {
-   "rev": 142524.2,
+   "rev": 142880.2,
    "orders": 124,
    "bau": false,
    "promo": true,
@@ -5562,11 +5599,18 @@
    "deal": true
   },
   "2026-09-21": {
-   "rev": 3779,
-   "orders": 3,
+   "rev": 134048.2,
+   "orders": 101,
    "bau": false,
    "promo": true,
    "deal": true
+  },
+  "2026-09-22": {
+   "rev": 19470.9,
+   "orders": 16,
+   "bau": false,
+   "promo": true,
+   "deal": false
   }
  }
 }
