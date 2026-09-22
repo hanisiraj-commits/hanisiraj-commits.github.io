@@ -148,6 +148,9 @@
 .revenue-stat__value { font-family: 'Press Start 2P', monospace; font-size: clamp(28px,5vw,56px); color: #00ff66; text-shadow: 0 0 20px rgba(0,255,102,0.4), 0 0 60px rgba(0,255,102,0.15); white-space: nowrap; margin-bottom: 20px; }
 .revenue-stat__label { font-size: clamp(14px,2vw,18px); color: rgba(255,255,255,0.5); max-width: 500px; margin: 0 auto; }
 .revenue-stat__brands { width: 100%; overflow: hidden; }
+/* With the scroll animation running, the hero itself ends on this number — don't repeat it straight after */
+.js .revenue-stat__inner { display: none; }
+.js .revenue-stat { padding-top: 60px; }
 
 /* Mobile */
 @media (max-width: 834px) {

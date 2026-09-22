@@ -22,7 +22,7 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
-  scroll-behavior: smooth;
+  /* no scroll-behavior: smooth — it fights ScrollTrigger's pinning; anchor links smooth-scroll in main.js */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
@@ -1294,8 +1294,8 @@ img { max-width: 100%; display: block; }
 
 /* Ensure body content sits above particles canvas */
 body > *:not(#stars) { position: relative; z-index: 1; }
-.nav { z-index: 1000; }
-/* :not(#stars) above outranks .page-transition's position:fixed, so restate it at matching specificity */
+/* :not(#stars) above outranks the fixed nav and overlay, so restate them at matching specificity */
+body > .nav:not(#stars) { position: fixed; z-index: 1000; }
 body > .page-transition:not(#stars) { position: fixed; z-index: 9999; }
 
 /* ---- HEADSHOT: fade white bg edges into black ---- */

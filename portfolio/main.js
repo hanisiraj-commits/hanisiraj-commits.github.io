@@ -115,8 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const t = document.querySelector(link.getAttribute('href'));
       if (t) {
-        // Skip hero animation if it hasn't played yet
-        if (window.skipHeroAnimation) window.skipHeroAnimation();
         window.scrollTo({ top: t.offsetTop - 56, behavior: 'smooth' });
         if (navLinks) navLinks.classList.remove('active');
       }
