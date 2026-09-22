@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthyCell — Hyper-Personalised Email Strategy | Hani Siraj</title>
+  <meta name="description" content="How hyper-personalisation helped HealthyCell optimise their email campaign strategy.">
+  <link rel="stylesheet" href="style.css">
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="particles.js" defer></script>
+  <script src="main.js" defer></script>
+  <style>
+    .solution-block {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+      align-items: start;
+    }
+
+    .solution-block__number {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--white-20);
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    .solution-block__title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .solution-block__text {
+      font-size: 17px;
+      color: var(--white-48);
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      max-width: 640px;
+    }
+
+    .solution-block__text p { margin-bottom: 14px; }
+
+    /* Wide landscape images */
+    .solution-img--wide {
+      display: block;
+      max-width: 480px;
+      width: 100%;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    /* Tall portrait emails: height-constrained */
+    .solution-img--portrait {
+      display: block;
+      max-height: 320px;
+      width: auto;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    /* Square-ish images */
+    .solution-img--square {
+      display: block;
+      max-width: 360px;
+      width: 100%;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 600px) {
+      .solution-block { grid-template-columns: 36px 1fr; gap: 12px; }
+      .solution-block__number { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-transition" style="opacity:1"></div>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Hani Siraj</a>
+      <button class="nav__mobile-toggle" aria-label="Menu">&#9776;</button>
+      <ul class="nav__links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#showcase">Emails</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="assets/Hani_Siraj_Resume_2026.pdf" target="_blank" rel="noopener">Resume</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="case-hero space space--tr">
+    <img src="assets/emails/healthycell-3.png" alt="HealthyCell" style="height:36px; margin: 0 auto 6px; display:block;">
+    <p class="case-hero__brand">HealthyCell &middot; United States</p>
+    <h1 class="case-hero__title">How hyper-personalisation helped HealthyCell optimise their email campaign strategy.</h1>
+    <p class="case-hero__subtitle">A/B tested across 9 campaigns over 30 days. Every metric moved.</p>
+    <div class="case-hero__metrics">
+      <div><div class="case-hero__metric-value">13.5%</div><div class="case-hero__metric-label">Boost in click rate</div></div>
+      <div><div class="case-hero__metric-value">28%</div><div class="case-hero__metric-label">Increase in orders</div></div>
+      <div><div class="case-hero__metric-value">20%</div><div class="case-hero__metric-label">Increase in loyalty signups</div></div>
+    </div>
+  </section>
+
+  <div class="case-body">
+    <div class="container">
+      <a href="index.html#work" class="case-back">&larr; All work</a>
+
+      <!-- About -->
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">About</p>
+        <div class="case-section__text">
+          <p>Healthycell is a leading US-based health supplement brand, known for its science-backed, high-quality products. They partnered with me to improve their email performance, enhance customer engagement, and drive higher retention rates.</p>
+        </div>
+      </div>
+
+      <!-- Challenge -->
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">Challenge faced</p>
+        <div class="case-section__text">
+          <p>Healthycell had a very solid foundation with their email marketing. They wanted to utilise my expertise to further optimise their email campaigns. They needed to increase the click rates of their email campaigns, boost the number of orders and subscription orders, and strengthen their loyalty program.</p>
+        </div>
+      </div>
+
+      <!-- The Solution -->
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">The solution</p>
+      </div>
+
+      <!-- Solution 1 -->
+      <div class="solution-block reveal">
+        <div class="solution-block__number">1</div>
+        <div>
+          <div class="solution-block__title">Adding a Site-Action Block in Marketing Emails</div>
+          <div class="solution-block__text">
+            <p>I implemented a site-action block using RetainIQ widgets in Healthycell's campaign emails. This block displayed recently abandoned or browsed products, offering a personalised touch to each recipient and encouraging them to complete their purchase.</p>
+          </div>
+          <img src="assets/emails/healthycell-2.jpg" alt="Cart abandonment email: Jenna, still looking for REM SLEEP?" class="solution-img--wide" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Solution 2 -->
+      <div class="solution-block reveal">
+        <div class="solution-block__number">2</div>
+        <div>
+          <div class="solution-block__title">Incorporating Social Signals and Hero Images</div>
+          <div class="solution-block__text">
+            <p>To build urgency and drive conversions, I integrated social signals into the emails and used hero images that displayed highly relevant product photos. This visual strategy helped convey reliability and attract attention, particularly during new product launches.</p>
+          </div>
+          <img src="assets/emails/healthycell-4.jpg" alt="Social proof: People are loving Focus + Recall" class="solution-img--square" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Solution 3 -->
+      <div class="solution-block reveal">
+        <div class="solution-block__number">3</div>
+        <div>
+          <div class="solution-block__title">Focusing on Loyalty Programs</div>
+          <div class="solution-block__text">
+            <p>I developed a targeted approach to increase loyalty program adoption. This included identifying subscribers with unused loyalty points and reminding them to utilise these points. I also crafted content that explained how customers could use their loyalty points to try new products at a reduced cost, making the loyalty program more appealing and accessible.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solution 4 -->
+      <div class="solution-block reveal">
+        <div class="solution-block__number">4</div>
+        <div>
+          <div class="solution-block__title">Using RetainIQ Blocks for Trust-Building</div>
+          <div class="solution-block__text">
+            <p>I used RetainIQ dynamic blocks to target users with low intent of conversion to convey social proof and build trust, especially for first-time buyers. Additionally, these users were allocated a first-time discount which was continuously promoted in all campaigns as a reminder.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">Results produced</p>
+      </div>
+
+      <div class="case-stats-row">
+        <div class="case-stat-card"><div class="case-stat-card__value">13.5%</div><div class="case-stat-card__label">Boost in click rate</div></div>
+        <div class="case-stat-card"><div class="case-stat-card__value">28%</div><div class="case-stat-card__label">Increase in orders</div></div>
+        <div class="case-stat-card"><div class="case-stat-card__value">20%</div><div class="case-stat-card__label">Increase in loyalty signups</div></div>
+      </div>
+
+      <!-- What this meant -->
+      <div class="case-section reveal" style="margin-top: 48px;">
+        <p class="case-section__eyebrow">What this meant to the brand</p>
+        <h2 class="case-section__title">Healthycell already had solid email foundations. Hyper-personalisation turned good into measurably better across every metric that matters: clicks, orders, and loyalty adoption.</h2>
+      </div>
+
+      <div style="margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.04);">
+        <a href="index.html#work" class="case-back">&larr; Back to all work</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><div class="container"><p>&copy; 2026 Hani Siraj</p></div></footer>
+
+</body>
+</html>

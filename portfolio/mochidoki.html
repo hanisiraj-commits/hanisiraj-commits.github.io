@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mochidoki — 208% Revenue Increase | Hani Siraj</title>
+  <meta name="description" content="An email marketing strategy that sparked a 208% revenue increase and higher store footfall for Mochidoki.">
+  <link rel="stylesheet" href="style.css">
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="particles.js" defer></script>
+  <script src="main.js" defer></script>
+  <style>
+    .challenge-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .challenge-card {
+      background: var(--white-03);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .challenge-card__icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      opacity: 0.6;
+    }
+
+    .challenge-card__text {
+      font-size: 14px;
+      color: var(--white-48);
+      line-height: 1.5;
+    }
+
+    /* Email screenshots: narrow portraits, constrain height */
+    .email-pair {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px auto;
+    }
+
+    .email-pair img {
+      max-height: 300px;
+      width: auto;
+      border-radius: 8px;
+    }
+
+    /* Wide banner image */
+    .solution-banner {
+      display: block;
+      max-width: 500px;
+      width: 100%;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+
+    @media (max-width: 834px) {
+      .challenge-cards { grid-template-columns: 1fr; gap: 10px; }
+      .email-pair img { max-height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-transition" style="opacity:1"></div>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Hani Siraj</a>
+      <button class="nav__mobile-toggle" aria-label="Menu">&#9776;</button>
+      <ul class="nav__links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#showcase">Emails</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="assets/Hani_Siraj_Resume_2026.pdf" target="_blank" rel="noopener">Resume</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="case-hero space space--tr">
+    <img src="assets/logos/mochidoki.png" alt="Mochidoki" style="height:40px; filter: brightness(0) invert(1); margin: 0 auto 6px; display:block;">
+    <p class="case-hero__brand">Mochidoki &middot; New York</p>
+    <h1 class="case-hero__title">208% increase in email revenue.</h1>
+    <p class="case-hero__subtitle">An email marketing strategy that sparked a 208% revenue increase and higher store footfall.</p>
+    <div class="case-hero__metrics">
+      <div><div class="case-hero__metric-value">208%</div><div class="case-hero__metric-label">Email revenue increase</div></div>
+      <div><div class="case-hero__metric-value">55%</div><div class="case-hero__metric-label">Click rate increase</div></div>
+      <div><div class="case-hero__metric-value">102%</div><div class="case-hero__metric-label">Placed order rate increase</div></div>
+    </div>
+  </section>
+
+  <div class="case-body">
+    <div class="container">
+      <a href="index.html#work" class="case-back">&larr; All work</a>
+
+      <!-- About -->
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">About</p>
+        <div class="case-section__text">
+          <p>Mochidoki is a renowned New York-based mochi ice cream company, celebrated for its innovative and sophisticated Japanese-inspired desserts. Committed to using only the finest ingredients, their mission is "Connecting people by crafting moments of joy and discovery."</p>
+        </div>
+      </div>
+
+      <!-- Challenges — 3 icon cards -->
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">Challenges faced</p>
+      </div>
+
+      <div class="challenge-cards">
+        <div class="challenge-card">
+          <div class="challenge-card__icon">&#128722;</div>
+          <div class="challenge-card__text">Promoting multiple sales channels simultaneously without undermining each other. B2B, B2C e-commerce, Amazon Fresh, and retail stores.</div>
+        </div>
+        <div class="challenge-card">
+          <div class="challenge-card__icon">&#127919;</div>
+          <div class="challenge-card__text">Overcoming a $75 minimum order value on the website and channelling the right audience to the right business channel.</div>
+        </div>
+        <div class="challenge-card">
+          <div class="challenge-card__icon">&#9993;</div>
+          <div class="challenge-card__text">Standard email campaigns lacked effective audience segmentation and personalisation.</div>
+        </div>
+      </div>
+
+      <!-- Solutions Implemented -->
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">Solutions implemented</p>
+        <h2 class="case-section__title">Enhanced B2B Experience</h2>
+        <div class="case-section__text">
+          <p>B2B customers accounted for a significant portion of online revenue, regularly reordering from the site. Previously, the brand segmented all B2B users and sent out re-order reminder campaigns three times a month. I saw an opportunity to optimise this and boost the re-order rate.</p>
+          <p>By classifying B2B users into six buckets based on their average reorder frequency (7, 14, 21, 30, 45, and 60 days), I set up an automated, personalised replenishment flow. This greatly improved repeat order rates, increased LTV, and enhanced the B2B customer experience.</p>
+        </div>
+        <!-- B2B emails: narrow portraits, height-constrained side by side -->
+        <div class="email-pair">
+          <img src="assets/emails/mochidoki-5.png" alt="B2B reorder email: It's been a while since you stocked up" loading="lazy">
+          <img src="assets/emails/mochidoki-6.png" alt="B2B reorder email: Order now for the week ahead" loading="lazy">
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <h2 class="case-section__title">Location-Based Targeting</h2>
+        <div class="case-section__text">
+          <p>I implemented location-based targeting using RetainIQ dynamic widgets to nudge users who weren't purchasing due to the $75 limit towards physical stores, retail partners, or Amazon Fresh.</p>
+          <p>I specifically targeted users who spent considerable time on the website but did not convert. If they were near a physical store, they would see dynamic creatives in the emails and flows directing them to that store. If not, they were encouraged to purchase from Amazon Fresh. This strategy effectively promoted all sales channels without cannibalising any single channel.</p>
+        </div>
+        <!-- Location emails: height-constrained pair -->
+        <div class="email-pair">
+          <img src="assets/emails/mochidoki-1.png" alt="Email with product grid and Find a Store CTA" loading="lazy">
+          <img src="assets/emails/mochidoki-2.png" alt="Email variant showing products with store redirect" loading="lazy">
+        </div>
+        <!-- Wide store redirect banner on its own row -->
+        <img src="assets/emails/mochidoki-4.png" alt="Store redirect: Shop Mochidoki at the Upper East Side store near you" class="solution-banner" loading="lazy">
+      </div>
+
+      <!-- Results -->
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">Results</p>
+      </div>
+
+      <div class="case-stats-row">
+        <div class="case-stat-card"><div class="case-stat-card__value">208%</div><div class="case-stat-card__label">Increase in email revenue</div></div>
+        <div class="case-stat-card"><div class="case-stat-card__value">55%</div><div class="case-stat-card__label">Increase in click rate</div></div>
+        <div class="case-stat-card"><div class="case-stat-card__value">102%</div><div class="case-stat-card__label">Increase in placed order rates</div></div>
+      </div>
+
+      <!-- What this meant -->
+      <div class="case-section reveal" style="margin-top: 48px;">
+        <p class="case-section__eyebrow">What this meant to the brand</p>
+        <h2 class="case-section__title">Same list, 2x+ revenue. B2B frequency flows made wholesale predictable. Location widgets solved the $75 problem. Every subscriber got a path that matched how they buy.</h2>
+      </div>
+
+      <div style="margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.04);">
+        <a href="index.html#work" class="case-back">&larr; Back to all work</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><div class="container"><p>&copy; 2026 Hani Siraj</p></div></footer>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+/* Hero: Orbital Inbox → Rocket Launch
+   
+   3D Architecture:
+   .scene (overflow:hidden, bg:#000, NO preserve-3d)
+     └ .world (perspective:600px — creates 3D projection)
+         ├ .text (z-index:20, flat 2D — unaffected by perspective)
+         └ .orbit (preserve-3d, rotateX:18deg — the tilted ring plane)
+              ├ .orbit-ring-line (circle → projected as tilted ellipse)
+              └ .orbit-email × 6 (positioned on the circle, counter-rotated to face viewer)
+*/
+
+.hero-cinema {
+  position: relative;
+  min-height: 100vh;
+}
+
+.hero-cinema__scene {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+  z-index: 10;
+}
+
+/* Nebula layer */
+.hero-cinema__scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 45% at 50% 50%, rgba(15,80,220,0.25) 0%, rgba(10,60,200,0.10) 40%, transparent 70%),
+    radial-gradient(ellipse 35% 30% at 30% 35%, rgba(10,90,240,0.18) 0%, rgba(5,60,200,0.06) 50%, transparent 75%),
+    radial-gradient(ellipse 30% 40% at 72% 65%, rgba(10,70,230,0.15) 0%, rgba(5,50,180,0.05) 50%, transparent 70%),
+    radial-gradient(ellipse 20% 15% at 20% 60%, rgba(15,100,255,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 18% 20% at 80% 30%, rgba(10,80,240,0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 25% 20% at 55% 25%, rgba(10,70,220,0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 22% 18% at 40% 75%, rgba(10,80,230,0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* World: the 3D projection source */
+.hero-cinema__world {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 600px;
+  perspective-origin: 50% 38%;
+}
+
+.hero-cinema__world::before {
+  content: '';
+  position: absolute;
+  width: 1000px; height: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(10,70,230,0.15) 0%, rgba(5,50,200,0.06) 40%, transparent 65%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: auraBreath 12s ease-in-out infinite;
+}
+
+@keyframes auraBreath {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.06); }
+}
+
+/* Text — flat 2D, always in front of orbit */
+.hero-cinema__text { position: relative; z-index: 20; text-align: center; max-width: 700px; padding: 0 24px; }
+.hero-cinema__greeting { font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.hero-cinema__greeting .wave { display: inline-block; animation: wave 2.2s ease-in-out 1.5s 1; transform-origin: 70% 70%; }
+@keyframes wave { 0%,100%{transform:rotate(0)} 15%{transform:rotate(14deg)} 30%{transform:rotate(-8deg)} 45%{transform:rotate(14deg)} 60%{transform:rotate(-4deg)} 75%{transform:rotate(10deg)} }
+.hero-cinema__title { font-size: clamp(42px,6.5vw,72px); font-weight: 700; line-height: 1.04; letter-spacing: -0.04em; color: #fff; margin-bottom: 22px; }
+.hero-cinema__title em { font-style: normal; color: transparent; background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0.4) 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; animation: shimmer 5s ease-in-out infinite; }
+@keyframes shimmer { 0%,100%{background-position:200% center} 50%{background-position:-200% center} }
+.hero-cinema__subtitle { font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto 32px; line-height: 1.55; }
+.hero-cinema__actions { display: flex; gap: 14px; justify-content: center; }
+
+/* Orbit container — the 3D ring plane.
+   preserve-3d lets children live in real 3D space.
+   rotateX is set by JS to tilt the ring. */
+.hero-cinema__orbit {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  z-index: 5;
+  transform-style: preserve-3d;
+}
+
+/* Visible ring path — a CSS circle in the orbit's 3D plane.
+   The world's perspective projects it as a tilted ellipse naturally. */
+.orbit-ring-line {
+  position: absolute;
+  top: 50%; left: 50%;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 50%;
+  pointer-events: none;
+  /* width/height/transform set by JS to match RADIUS */
+}
+
+/* Email cards */
+.orbit-email {
+  position: absolute;
+  top: 0; left: 0;
+  will-change: transform, opacity;
+}
+/* Until hero.js places them on the ring, the cards all sit at the orbit centre — keep them hidden */
+.js .orbit-email { opacity: 0; }
+.orbit-email__card {
+  width: 200px; height: 360px;
+  border-radius: 6px;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  position: relative;
+  backface-visibility: hidden;
+}
+.orbit-email__card > img:first-child { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.orbit-email__card::after { content:''; position:absolute; inset:0; background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,0.03) 48%,rgba(255,255,255,0.05) 50%,rgba(255,255,255,0.03) 52%,transparent 58%); animation:shine 9s ease-in-out infinite; pointer-events:none; }
+@keyframes shine { 0%,100%{transform:translateX(-250%)} 50%{transform:translateX(250%)} }
+
+/* Exhaust */
+.orbit-email__exhaust { position: absolute; top: 150px; left: 0; transform: translateX(-50%); width: 60px; height: 0; opacity: 0; pointer-events: none; z-index: -1; }
+.orbit-email__exhaust::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:24px; height:100%; background:radial-gradient(ellipse at 50% 0%,#FFF 0%,#FFEE00 15%,#FFB800 35%,#FF6600 55%,#FF2200 75%,transparent 100%); border-radius:8px 8px 50% 50%; animation:flameWobble 0.08s ease-in-out infinite alternate; }
+.orbit-email__exhaust::after { content:''; position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:56px; height:120%; background:radial-gradient(ellipse at 50% 20%,rgba(255,200,0,0.7) 0%,rgba(255,120,0,0.4) 35%,rgba(255,40,0,0.15) 65%,transparent 100%); border-radius:8px 8px 50% 50%; filter:blur(6px); }
+@keyframes flameWobble { 0%{transform:translateX(-50%) scaleX(0.82) scaleY(1.03)} 100%{transform:translateX(-50%) scaleX(1.18) scaleY(0.97)} }
+
+/* Scroll indicator */
+.hero-cinema__scroll { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 20; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.hero-cinema__scroll span { font-size: 10px; color: rgba(255,255,255,0.15); letter-spacing: 0.1em; text-transform: uppercase; }
+.hero-cinema__scroll-dot { width: 1px; height: 32px; background: rgba(255,255,255,0.08); position: relative; overflow: hidden; }
+.hero-cinema__scroll-dot::after { content:''; position:absolute; top:-100%; width:100%; height:100%; background:rgba(255,255,255,0.4); animation:scrollPulse 2s ease-in-out infinite; }
+@keyframes scrollPulse { 0%{top:-100%} 100%{top:100%} }
+
+/* Counter inside hero */
+.hero-cinema__counter { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 30; text-align: center; pointer-events: none; }
+.hero-cinema__counter-value { font-family: "Press Start 2P", monospace; font-size: clamp(28px,5vw,56px); color: #00ff66; text-shadow: 0 0 20px rgba(0,255,102,0.4), 0 0 60px rgba(0,255,102,0.15); white-space: nowrap; }
+.hero-cinema__counter-label { font-size: clamp(14px,2vw,18px); color: rgba(255,255,255,0.5); margin-top: 20px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+/* Revenue stat */
+.revenue-stat { position: relative; z-index: 1; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 24px 60px; }
+.revenue-stat__inner { text-align: center; margin-bottom: 60px; }
+.revenue-stat__value { font-family: 'Press Start 2P', monospace; font-size: clamp(28px,5vw,56px); color: #00ff66; text-shadow: 0 0 20px rgba(0,255,102,0.4), 0 0 60px rgba(0,255,102,0.15); white-space: nowrap; margin-bottom: 20px; }
+.revenue-stat__label { font-size: clamp(14px,2vw,18px); color: rgba(255,255,255,0.5); max-width: 500px; margin: 0 auto; }
+.revenue-stat__brands { width: 100%; overflow: hidden; }
+
+/* Mobile */
+@media (max-width: 834px) {
+  .hero-cinema { min-height: auto; }
+  .hero-cinema__scene { min-height: 100vh; min-height: 100svh; }
+  .hero-cinema__world { align-items: flex-start; padding-top: 80px; }
+  .hero-cinema__world::before { width: 500px; height: 500px; }
+  .hero-cinema__orbit { top: 38%; }
+  .orbit-email__card { width: 130px !important; height: 234px !important; }
+  .orbit-email[data-index="5"], .orbit-email[data-index="6"], .orbit-email[data-index="7"] { display: none; }
+  .hero-cinema__title { font-size: clamp(28px,7.5vw,44px); }
+  .hero-cinema__subtitle { font-size: 15px; margin-bottom: 24px; }
+  .hero-cinema__greeting { font-size: 15px; margin-bottom: 10px; }
+  .hero-cinema__text { padding: 0 16px; }
+  .hero-cinema__actions { gap: 10px; }
+  .orbit-email__exhaust { top: 95px; width: 36px; }
+  .orbit-email__exhaust::before { width: 14px; }
+  .orbit-email__exhaust::after { width: 32px; }
+  .hero-cinema__counter-value { font-size: clamp(22px,6vw,36px); }
+  .hero-cinema__counter-label { font-size: 13px; padding: 0 16px; }
+  .hero-cinema__scroll { bottom: 20px; }
+  .revenue-stat { padding: 60px 16px 40px; }
+  .revenue-stat__value { font-size: clamp(22px,6vw,36px); }
+  .revenue-stat__label { font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .orbit-email__card { width: 110px !important; height: 198px !important; }
+  .hero-cinema__title { font-size: clamp(26px,7vw,38px); }
+  .orbit-email[data-index="4"] { display: none; }
+}
+
+/* GIF overlay on orbit email cards — static template + animated GIF on top */
+.orbit-email__card--gif {
+  position: relative;
+}
+.orbit-email__card .orbit-email__gif-overlay {
+  position: absolute;
+  left: 0;
+  top: var(--gif-top, 0%);
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: top center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Video overlays (replacing GIF img elements) */
+.orbit-email__card video.orbit-email__gif-overlay,
+.email-showcase__item video.email-showcase__gif-overlay {
+  position: absolute;
+  left: 0;
+  top: var(--gif-top, 0%);
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: top center;
+  pointer-events: none;
+  z-index: 1;
+}

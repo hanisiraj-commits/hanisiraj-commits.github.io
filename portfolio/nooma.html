@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOOMA — Boosting LTV Through Customer Retention | Hani Siraj</title>
+  <meta name="description" content="Boosting LTV: How I transformed NOOMA's customer retention through personalised email marketing.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="particles.js" defer></script>
+  <script src="main.js" defer></script>
+  <style>
+    .email-screenshot {
+      display: block;
+      max-height: 360px;
+      width: auto;
+      border-radius: 8px;
+    }
+
+    .email-pair {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px auto;
+    }
+
+    .email-pair img {
+      max-height: 300px;
+      width: auto;
+      border-radius: 8px;
+    }
+
+    /*
+      =============================================
+      ANNOTATION CONTROLS — edit these vars to tune
+      =============================================
+    */
+    .annotated-img {
+      /* Layout */
+      --gap: 20px;              /* space between image and note */
+
+      /* Note position */
+      --note-top: 60px;         /* push note down from top */
+      --note-width: 180px;      /* max width of note text */
+
+      /* Font */
+      --font-size: 18px;        /* annotation text size */
+      --font-color: #e8d5b5;    /* warm cream */
+
+      /* Arrow */
+      --arrow-w: 80px;          /* arrow SVG width */
+      --arrow-h: 60px;          /* arrow SVG height */
+      --arrow-rotate: 180deg;     /* rotate the arrow */
+      --arrow-flip: -1;          /* set to -1 to flip horizontally */
+      --arrow-mb: 6px;          /* space below arrow */
+
+      display: flex;
+      align-items: flex-start;
+      gap: var(--gap);
+      margin: 28px 0;
+    }
+
+    .annotated-img__note {
+      padding-top: var(--note-top);
+      max-width: var(--note-width);
+      flex-shrink: 0;
+    }
+
+    .annotated-img__arrow {
+      display: block;
+      width: var(--arrow-w);
+      height: var(--arrow-h);
+      margin-bottom: var(--arrow-mb);
+      transform: rotate(var(--arrow-rotate)) scaleX(var(--arrow-flip));
+    }
+
+    .annotated-img__arrow path {
+      fill: none;
+      stroke: var(--font-color);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+
+    .annotated-img__text {
+      font-family: 'Caveat', cursive;
+      font-size: var(--font-size);
+      font-weight: 700;
+      color: var(--font-color);
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      .annotated-img { flex-direction: column-reverse; align-items: center; --note-top: 0; }
+      .annotated-img__note { max-width: 100%; text-align: center; }
+      .annotated-img__arrow { display: none; }
+      .email-screenshot { max-height: 280px; }
+      .email-pair { flex-direction: column; align-items: center; }
+      .email-pair img { max-height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-transition" style="opacity:1"></div>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Hani Siraj</a>
+      <button class="nav__mobile-toggle" aria-label="Menu">&#9776;</button>
+      <ul class="nav__links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#showcase">Emails</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="assets/Hani_Siraj_Resume_2026.pdf" target="_blank" rel="noopener">Resume</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="case-hero space space--tr">
+    <img src="assets/logos/nooma.png" alt="NOOMA" style="height:40px; filter: brightness(0) invert(1); margin: 0 auto 6px; display:block;">
+    <p class="case-hero__brand">NOOMA &middot; United States</p>
+    <h1 class="case-hero__title">Boosting LTV: How I Transformed NOOMA's Customer Retention.</h1>
+    <p class="case-hero__subtitle">Personalised email marketing that turned one-time buyers into repeat subscribers.</p>
+    <div class="case-hero__metrics">
+      <div><div class="case-hero__metric-value">18%</div><div class="case-hero__metric-label">Increase in customer LTV</div></div>
+      <div><div class="case-hero__metric-value">64%</div><div class="case-hero__metric-label">Rise in subscription opt-ins</div></div>
+      <div><div class="case-hero__metric-value">22%</div><div class="case-hero__metric-label">Faster repeat orders</div></div>
+    </div>
+  </section>
+
+  <div class="case-body">
+    <div class="container">
+      <a href="index.html#work" class="case-back">&larr; All work</a>
+
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">About</p>
+        <div class="case-section__text">
+          <p>NOOMA is known for its unique, all-natural hydration drinks, competing in the crowded health drink market. They wanted to establish themselves as the go-to choice for health-conscious consumers.</p>
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">Challenge faced</p>
+        <div class="case-section__text">
+          <p>NOOMA needed to enhance their email marketing to both attract new customers and retain them, thereby increasing Customer Lifetime Value.</p>
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">Market analysis and competitive positioning</p>
+        <div class="case-section__text">
+          <p>I began with a thorough market study to understand NOOMA's audience and competitors. This helped identify key Unique Selling Propositions that could convert users. My research found that meta ads comparing NOOMA to industry leaders were most effective.</p>
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">Solutions implemented</p>
+        <h2 class="case-section__title">Enhanced Welcome Series</h2>
+        <div class="case-section__text">
+          <p>Using this insight, I restructured the welcome series to feature in-depth product comparisons personalised to the user's last viewed product. Paired with a strong first-time discount, this strategy boosted new customer acquisition by 35%.</p>
+        </div>
+
+        <!--
+          ==================== ANNOTATION TUNING ====================
+          Override any var here with style="--var: value"
+          e.g. style="--note-top: 40px; --font-size: 22px; --arrow-rotate: 15deg"
+        -->
+        <div class="annotated-img" style="--note-top: 60px; --font-size: 18px; --note-width: 180px; --arrow-rotate: 180deg; --arrow-flip: -1;">
+          <img src="assets/emails/nooma-1.gif" alt="Animated welcome series with dynamic product comparison" class="email-screenshot" loading="lazy">
+          <div class="annotated-img__note">
+            <svg class="annotated-img__arrow" viewBox="0 0 80 60">
+              <path d="M70,10 C55,10 30,18 15,35 C10,42 8,50 12,55" marker-end="url(#ah-nooma)"/>
+              <defs><marker id="ah-nooma" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#e8d5b5"/></marker></defs>
+            </svg>
+            <span class="annotated-img__text">Dynamic based on what the user browsed last</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <h2 class="case-section__title">Educational and Engaging Email Campaigns</h2>
+        <div class="case-section__text">
+          <p>To improve retention, I crafted a strategy and content calendar focusing on educational emails about the benefits of NOOMA's ingredients and their health advantages. This content was interspersed with engaging snippets from their Instagram feed, appealing to their health-conscious, upper-middle-class demographic.</p>
+        </div>
+        <img src="assets/emails/nooma-2.png" alt="Educational lifecycle email" class="email-screenshot" style="margin:20px 0;" loading="lazy">
+      </div>
+
+      <div class="case-section reveal">
+        <h2 class="case-section__title">Personalised Post-Purchase Flow</h2>
+        <div class="case-section__text">
+          <p>I implemented a detailed, personalised post-purchase flow that educated users and provided timely reorder reminders. This strategy ensured ongoing engagement and informed customers about the continuous benefits of the product they purchased.</p>
+        </div>
+        <div class="email-pair">
+          <img src="assets/emails/nooma-3.png" alt="Post-purchase lifecycle email" loading="lazy">
+          <img src="assets/emails/nooma-5.png" alt="Reorder reminder email" loading="lazy">
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="case-section__eyebrow">Results produced</p>
+      </div>
+
+      <div class="case-stats-row">
+        <div class="case-stat-card"><div class="case-stat-card__value">18%</div><div class="case-stat-card__label">Increase in customer LTV within three months</div></div>
+        <div class="case-stat-card"><div class="case-stat-card__value">64%</div><div class="case-stat-card__label">Rise in product subscription opt-ins</div></div>
+        <div class="case-stat-card"><div class="case-stat-card__value">22%</div><div class="case-stat-card__label">Reduction in time between repeat orders</div></div>
+      </div>
+
+      <div class="case-section reveal" style="margin-top: 48px;">
+        <p class="case-section__eyebrow">What this meant to the brand</p>
+        <div class="case-section__text">
+          <p>By personalising email marketing strategies and combining educational and engaging content, I helped NOOMA enhance their Customer Lifetime Value and strengthen their market presence. This approach not only increased new customer acquisition but also boosted customer loyalty, ensuring sustainable growth for the brand.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.04);">
+        <a href="index.html#work" class="case-back">&larr; Back to all work</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><div class="container"><p>&copy; 2026 Hani Siraj</p></div></footer>
+
+</body>
+</html>

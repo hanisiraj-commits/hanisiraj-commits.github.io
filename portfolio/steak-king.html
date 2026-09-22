@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steak King — HK$1M in a Day | Hani Siraj</title>
+  <meta name="description" content="How a scarcity-driven lifecycle strategy generated over HK$1,000,000 in a single day for Steak King.">
+  <link rel="stylesheet" href="style.css">
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="particles.js" defer></script>
+  <script src="main.js" defer></script>
+  <style>
+    /* === Case study: Steak King ME === */
+
+    .case-hero__brand-logo {
+      height: 40px;
+      width: auto;
+      margin: 0 auto 6px;
+      display: block;
+    }
+
+    .case-brand-inline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .case-brand-inline__logo {
+      height: 32px;
+      width: auto;
+    }
+
+    .case-previous-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0 0;
+    }
+
+    .case-previous-stat {
+      background: var(--white-03);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .case-previous-stat__value {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white-48);
+    }
+
+    .case-previous-stat__value--target { color: var(--white); }
+
+    .case-previous-stat__label {
+      font-size: 11px;
+      color: var(--white-48);
+      margin-top: 4px;
+    }
+
+    .case-previous-stat__label--target {
+      color: rgba(236, 125, 85, 0.8);
+      font-weight: 500;
+    }
+
+    .milestone-bar {
+      display: flex;
+      gap: 2px;
+      margin: 24px 0;
+      position: relative;
+    }
+
+    .milestone-bar::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--white-10), var(--white-20), var(--white-10));
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .milestone {
+      flex: 1;
+      background: var(--white-03);
+      border-radius: 10px;
+      padding: 14px 8px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .milestone:last-child {
+      background: rgba(236, 125, 85, 0.08);
+      border: 1px solid rgba(236, 125, 85, 0.2);
+    }
+
+    .milestone__value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white-80);
+    }
+
+    .milestone:last-child .milestone__value { color: #EC7D55; }
+
+    .milestone__time {
+      font-size: 10px;
+      color: var(--white-48);
+      margin-top: 3px;
+    }
+
+    /* Email showcase — iframes, always horizontal */
+    .email-showcase {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 32px 0 48px;
+    }
+
+    .email-frame {
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--white-03);
+      transition: transform 0.5s var(--ease-enter), box-shadow 0.5s var(--ease);
+    }
+
+    .email-frame:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .email-frame__viewport {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .email-frame__viewport iframe {
+      width: 600px;
+      height: 1000px;
+      border: none;
+      transform-origin: top left;
+      pointer-events: none;
+    }
+
+    .email-frame__meta {
+      padding: 12px 14px;
+      border-top: 1px solid var(--white-06);
+    }
+
+    .email-frame__label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .email-frame__subject {
+      font-size: 11px;
+      color: var(--white-48);
+      line-height: 1.4;
+    }
+
+    .insight-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .insight-card {
+      background: var(--white-03);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .insight-card__icon {
+      font-size: 24px;
+      font-weight: 700;
+      color: #EC7D55;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .insight-card__text {
+      font-size: 13px;
+      color: var(--white-48);
+      line-height: 1.45;
+    }
+
+    .insight-card__text strong { color: var(--white); font-weight: 600; }
+
+    .strategy-phases { margin: 32px 0; }
+
+    .strategy-phase {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+      align-items: start;
+    }
+
+    .strategy-phase:last-child { margin-bottom: 0; }
+
+    .strategy-phase__number {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--white-03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .strategy-phase__content h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .strategy-phase__content p {
+      font-size: 14px;
+      color: var(--white-48);
+      line-height: 1.45;
+    }
+
+    .comparison-chart {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+      height: 180px;
+      align-items: flex-end;
+    }
+
+    .comparison-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+    }
+
+    .comparison-bar__value { font-size: 13px; font-weight: 600; color: var(--white-48); margin-bottom: 6px; }
+    .comparison-bar__value--highlight { color: #EC7D55; }
+    .comparison-bar__fill { width: 100%; border-radius: 6px 6px 0 0; background: var(--white-06); }
+    .comparison-bar__fill--highlight { background: linear-gradient(180deg, #EC7D55, rgba(236,125,85,0.4)); }
+    .comparison-bar__label { font-size: 10px; color: var(--white-48); margin-top: 6px; text-align: center; }
+
+    .callout {
+      background: rgba(236, 125, 85, 0.04);
+      border-left: 2px solid rgba(236, 125, 85, 0.4);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+
+    .callout p {
+      font-size: 14px;
+      color: var(--white-80);
+      line-height: 1.45;
+    }
+
+    .callout strong { color: var(--white); }
+
+    @media (max-width: 834px) {
+      .case-hero__brand-logo { height: 30px; }
+
+      .case-previous-stats { gap: 8px; }
+      .case-previous-stat { padding: 14px 10px; }
+      .case-previous-stat__value { font-size: 18px; }
+
+      .email-showcase {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+      .email-frame__meta { padding: 8px 10px; }
+      .email-frame__label { font-size: 10px; }
+      .email-frame__subject { font-size: 8px; }
+
+      .insight-row { grid-template-columns: 1fr; gap: 8px; }
+      .insight-card { padding: 16px; }
+
+      .milestone-bar { gap: 2px; }
+      .milestone { padding: 10px 4px; }
+      .milestone__value { font-size: 12px; }
+      .milestone__time { font-size: 8px; }
+
+      .case-stats-row { grid-template-columns: repeat(2, 1fr); }
+      .comparison-chart { height: 140px; }
+
+      .strategy-phase { grid-template-columns: 36px 1fr; gap: 12px; }
+      .strategy-phase__number { width: 36px; height: 36px; font-size: 14px; }
+      .strategy-phase__content h3 { font-size: 14px; }
+      .strategy-phase__content p { font-size: 13px; }
+
+      .case-section { margin-bottom: 48px; }
+    }
+
+    @media (max-width: 480px) {
+      .email-frame__subject { display: none; }
+      .case-hero__brand-logo { height: 24px; }
+      .case-brand-inline__logo { height: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-transition" style="opacity:1"></div>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Hani Siraj</a>
+      <button class="nav__mobile-toggle" aria-label="Menu">&#9776;</button>
+      <ul class="nav__links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#showcase">Emails</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="assets/Hani_Siraj_Resume_2026.pdf" target="_blank" rel="noopener">Resume</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="case-hero space space--tr">
+    <img src="assets/logos/steakking-wordmark.png" alt="Steak King" class="case-hero__brand-logo">
+    <p class="case-hero__brand">Hong Kong</p>
+    <h1 class="case-hero__title">How emails generated HK$1,000,000 in a single day.</h1>
+    <p class="case-hero__subtitle">The lifecycle strategy that created the single largest revenue day in Steak King's five-year Shopify history.</p>
+    <div class="case-hero__metrics">
+      <div><div class="case-hero__metric-value">HK$1.03M</div><div class="case-hero__metric-label">Day 1 revenue</div></div>
+      <div><div class="case-hero__metric-value">824</div><div class="case-hero__metric-label">Orders in one day</div></div>
+      <div><div class="case-hero__metric-value">HK$724K</div><div class="case-hero__metric-label">Email-attributed revenue (70.3%)</div></div>
+    </div>
+  </section>
+
+  <div class="case-body">
+    <div class="container">
+      <a href="index.html#work" class="case-back">&larr; All work</a>
+
+      <div class="case-section">
+        <div class="case-brand-inline">
+          <img src="assets/logos/steakking-wordmark.png" alt="Steak King" class="case-brand-inline__logo">
+        </div>
+        <p class="case-section__eyebrow">The brand</p>
+        <h2 class="case-section__title">Hong Kong's #1 online premium meat and seafood retailer.</h2>
+        <div class="case-section__text">
+          <p>Steak King sells premium meat and seafood direct to Hong Kong. Australian Wagyu, USDA Prime, Japanese A5. Five years on Shopify, most revenue from repeat buyers. I run their email and SMS through Klaviyo.</p>
+        </div>
+      </div>
+
+      <div class="case-section">
+        <p class="case-section__eyebrow">The Meat Emporium</p>
+        <h2 class="case-section__title">A monthly sale the audience already knows by heart.</h2>
+        <div class="case-section__text">
+          <p>Meat Emporium runs every month. About a week, 50+ products, 25-75% off. The audience expects it. Because they've seen it every month, the urgency has worn off. January's Day 1 did HK$325K. February did HK$370K. The owner wanted March to be different.</p>
+        </div>
+        <div class="case-previous-stats">
+          <div class="case-previous-stat">
+            <div class="case-previous-stat__value">HK$325K</div>
+            <div class="case-previous-stat__label">Jan Day 1 &middot; 218 orders</div>
+          </div>
+          <div class="case-previous-stat">
+            <div class="case-previous-stat__value">HK$370K</div>
+            <div class="case-previous-stat__label">Feb Day 1 &middot; 251 orders</div>
+          </div>
+          <div class="case-previous-stat">
+            <div class="case-previous-stat__value case-previous-stat__value--target">HK$500K</div>
+            <div class="case-previous-stat__label case-previous-stat__label--target">March target</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-section">
+        <p class="case-section__eyebrow">The challenge</p>
+        <h2 class="case-section__title">HK$500,000 on day one. No Meat Emporium had ever come close.</h2>
+        <div class="case-section__text">
+          <p>Steak King's revenue runs on repeat purchases. The customer base was already in the database. This was a lifecycle problem: how do you get people who've seen this sale every month to spend at a level they never have?</p>
+          <p>We pitched a strategy built on one idea: create real urgency around a single product, and the rest of the sale follows.</p>
+        </div>
+      </div>
+
+      <div class="case-section">
+        <p class="case-section__eyebrow">The strategy</p>
+        <h2 class="case-section__title">A loss leader, manufactured scarcity, and a three-phase lifecycle engine.</h2>
+      </div>
+
+      <div class="strategy-phases">
+        <div class="strategy-phase">
+          <div class="strategy-phase__number">1</div>
+          <div class="strategy-phase__content">
+            <h3>Pick the product from historical data</h3>
+            <p>We pulled Klaviyo data on every product from past ME campaigns. Rangers Station M3-4 Wagyu Ribeye had the strongest email performance. We recommended pricing it at HK$298 (down from $1,192). Razor-thin margins. The volume would compensate.</p>
+          </div>
+        </div>
+        <div class="strategy-phase">
+          <div class="strategy-phase__number">2</div>
+          <div class="strategy-phase__content">
+            <h3>Hype and tease, two days out</h3>
+            <p>Email 1 revealed the Ribeye at $298: "Not a typo." Email 2 opened up the broader sale. Neither felt like marketing. They read like intel.</p>
+          </div>
+        </div>
+        <div class="strategy-phase">
+          <div class="strategy-phase__number">3</div>
+          <div class="strategy-phase__content">
+            <h3>Launch with scarcity and purchase constraints</h3>
+            <p>200 units at launch. One per order. Minimum cart HK$1,000+. The Ribeye got people to the site. The minimum forced them to browse and fill their cart with everything else.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>We had 1,000+ units in stock.</strong> We advertised 200. We pulled the product at midnight even with stock remaining, so the next time we say "limited," people believe it.</p>
+      </div>
+
+      <div class="case-section">
+        <p class="case-section__eyebrow">The emails</p>
+        <h2 class="case-section__title">Four emails. The full Day 1 sequence.</h2>
+      </div>
+
+      <div class="email-showcase" id="emailShowcase">
+        <div class="email-frame">
+          <div class="email-frame__viewport">
+            <iframe src="assets/emails/me-hype1-template.html" scrolling="no" loading="lazy" title="Hype #1 email"></iframe>
+          </div>
+          <div class="email-frame__meta">
+            <div class="email-frame__label">Hype #1, T-2 days</div>
+            <div class="email-frame__subject">&#129385; $298 for M3-4 Wagyu Ribeye. Not a typo.</div>
+          </div>
+        </div>
+        <div class="email-frame">
+          <div class="email-frame__viewport">
+            <iframe src="assets/emails/me-hype2-template.html" scrolling="no" loading="lazy" title="Hype #2 email"></iframe>
+          </div>
+          <div class="email-frame__meta">
+            <div class="email-frame__label">Hype #2, T-1 day</div>
+            <div class="email-frame__subject">&#128293; Meat Emporium starts tomorrow. Up to 75% off.</div>
+          </div>
+        </div>
+        <div class="email-frame">
+          <div class="email-frame__viewport">
+            <iframe src="assets/emails/me-launch-template.html" scrolling="no" loading="lazy" title="Sale launch email"></iframe>
+          </div>
+          <div class="email-frame__meta">
+            <div class="email-frame__label">Launch, 8:30am HKT</div>
+            <div class="email-frame__subject">&#128680; IT'S LIVE. 200 units. Go go go.</div>
+          </div>
+        </div>
+        <div class="email-frame">
+          <div class="email-frame__viewport">
+            <iframe src="assets/emails/me-lowstock-template.html" scrolling="no" loading="lazy" title="Day 1 low stock email"></iframe>
+          </div>
+          <div class="email-frame__meta">
+            <div class="email-frame__label">Day 1, low stock</div>
+            <div class="email-frame__subject">&#128680; Only 50 left: $298 Wagyu Ribeye.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-section">
+        <p class="case-section__eyebrow">What happened</p>
+        <h2 class="case-section__title">Sales started at midnight. Before the announcement even sent.</h2>
+        <div class="case-section__text">
+          <p>Orders landed at midnight, eight hours before the launch email. By 8:30am, paired with a WhatsApp blast, the sale was already running. Customers kept coming back through the day, scared the Ribeye would disappear, placing multiple orders and filling their carts each time. 85.7% of all Day 1 orders had the Ribeye. 98.7% had two or more items.</p>
+          <p>End of day, we sent the last-chance email: 50 units left. At midnight we pulled the Ribeye. Revenue crossed HK$1M around 11pm.</p>
+        </div>
+      </div>
+
+      <div class="milestone-bar">
+        <div class="milestone"><div class="milestone__value">$100K</div><div class="milestone__time">7:35am</div></div>
+        <div class="milestone"><div class="milestone__value">$250K</div><div class="milestone__time">8:46am</div></div>
+        <div class="milestone"><div class="milestone__value">$500K</div><div class="milestone__time">11:22am</div></div>
+        <div class="milestone"><div class="milestone__value">$750K</div><div class="milestone__time">3:34pm</div></div>
+        <div class="milestone"><div class="milestone__value">$1,000,000</div><div class="milestone__time">11:04pm</div></div>
+      </div>
+
+      <div class="insight-row">
+        <div class="insight-card">
+          <div class="insight-card__icon">4x</div>
+          <div class="insight-card__text"><strong>One customer, 4 orders in 8 minutes at 6am.</strong> Every order was just the Ribeye. Panic-bought before the "200 units" ran out.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-card__icon">85.7%</div>
+          <div class="insight-card__text"><strong>Of all Day 1 orders had the Ribeye.</strong> Repeat buyers kept coming back, adding more to cart each time.</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-card__icon">$12.2K</div>
+          <div class="insight-card__text"><strong>Biggest single order: HK$12,176.</strong> 38 items. The Ribeye got them in. The collection did the rest.</div>
+        </div>
+      </div>
+
+      <div class="case-section">
+        <p class="case-section__eyebrow">The numbers</p>
+        <h2 class="case-section__title">Biggest revenue day in five years of Shopify.</h2>
+      </div>
+
+      <div class="case-stats-row">
+        <div class="case-stat-card"><div class="case-stat-card__value">HK$1.03M</div><div class="case-stat-card__label">Day 1 revenue (all-time record)</div></div>
+        <div class="case-stat-card"><div class="case-stat-card__value">824</div><div class="case-stat-card__label">Orders in a single day</div></div>
+        <div class="case-stat-card"><div class="case-stat-card__value">70.3%</div><div class="case-stat-card__label">Revenue from email</div></div>
+        <div class="case-stat-card"><div class="case-stat-card__value">HK$1,241</div><div class="case-stat-card__label">Average order value</div></div>
+        <div class="case-stat-card"><div class="case-stat-card__value">85.7%</div><div class="case-stat-card__label">Orders with the Ribeye</div></div>
+        <div class="case-stat-card"><div class="case-stat-card__value">0.11%</div><div class="case-stat-card__label">Unsub rate, 8 campaigns</div></div>
+      </div>
+
+      <div class="case-section" style="margin-top: 48px;">
+        <p class="case-section__eyebrow">In context</p>
+        <h2 class="case-section__title">March vs. every previous ME Day 1.</h2>
+      </div>
+
+      <div class="comparison-chart">
+        <div class="comparison-bar">
+          <div class="comparison-bar__value">HK$325K</div>
+          <div class="comparison-bar__fill" style="height: 31%;"></div>
+          <div class="comparison-bar__label">Jan ME</div>
+        </div>
+        <div class="comparison-bar">
+          <div class="comparison-bar__value">HK$370K</div>
+          <div class="comparison-bar__fill" style="height: 36%;"></div>
+          <div class="comparison-bar__label">Feb ME</div>
+        </div>
+        <div class="comparison-bar">
+          <div class="comparison-bar__value comparison-bar__value--highlight">HK$1.03M</div>
+          <div class="comparison-bar__fill comparison-bar__fill--highlight" style="height: 100%;"></div>
+          <div class="comparison-bar__label">Mar ME</div>
+        </div>
+      </div>
+
+      <div class="case-section" style="margin-top: 48px;">
+        <p class="case-section__eyebrow">The restock</p>
+        <h2 class="case-section__title">100 more units on the last day. Sold out in 24 hours.</h2>
+        <div class="case-section__text">
+          <p>End-of-sale days see a natural lift in purchase intent. We doubled down on that by dropping 100 Ribeye units at 8am on the final day. Sold out within 24 hours. Full sale: HK$1.78M from 1,373 orders.</p>
+        </div>
+      </div>
+
+      <div class="case-section" style="margin-top: 48px;">
+        <p class="case-section__eyebrow">Key takeaway</p>
+        <h2 class="case-section__title">Email was the revenue engine. Not a support channel.</h2>
+        <div class="case-section__text">
+          <p>70% of sale revenue came from email. Eight campaigns, 0.11% unsub rate, HK$1.2M in email-attributed revenue. No paid media windfall. No influencer spend. Just the database, Klaviyo, and WhatsApp.</p>
+          <p>The Ribeye sold out twice, both times in under 24 hours. Find a product the audience wants, price it at the edge of margin, restrict the quantity, build hype. Email does the rest. We'll run this again.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.04);">
+        <a href="index.html#work" class="case-back">&larr; Back to all work</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><div class="container"><p>&copy; 2026 Hani Siraj</p></div></footer>
+
+  <script>
+    function scaleEmailFrames() {
+      document.querySelectorAll('.email-frame__viewport').forEach(function(viewport) {
+        var iframe = viewport.querySelector('iframe');
+        if (!iframe) return;
+        var containerWidth = viewport.offsetWidth;
+        var scale = containerWidth / 600;
+        iframe.style.transform = 'scale(' + scale + ')';
+        viewport.style.height = (1000 * scale) + 'px';
+      });
+    }
+    window.addEventListener('load', scaleEmailFrames);
+    window.addEventListener('resize', scaleEmailFrames);
+  </script>
+
+</body>
+</html>
