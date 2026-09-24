@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T17:31:51",
+ "generated": "2026-09-24T17:31:53",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -167,10 +167,11 @@
   "2026-09-21",
   "2026-09-22",
   "2026-09-23",
-  "2026-09-24"
+  "2026-09-24",
+  "2026-09-25"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-09-24",
+ "last_date": "2026-09-25",
  "deals": [
   {
    "date": "2026-08-03",
@@ -5615,15 +5616,22 @@
    "deal": false
   },
   "2026-09-23": {
-   "rev": 616042.2,
+   "rev": 616715.2,
    "orders": 421,
    "bau": false,
    "promo": true,
    "deal": false
   },
   "2026-09-24": {
-   "rev": 8114.45,
-   "orders": 5,
+   "rev": 278930.55,
+   "orders": 206,
+   "bau": false,
+   "promo": true,
+   "deal": false
+  },
+  "2026-09-25": {
+   "rev": 7716.45,
+   "orders": 6,
    "bau": false,
    "promo": true,
    "deal": false
