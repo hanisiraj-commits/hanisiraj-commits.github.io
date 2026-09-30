@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29T17:31:56",
+ "generated": "2026-09-30T17:32:53",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -173,10 +173,11 @@
   "2026-09-27",
   "2026-09-28",
   "2026-09-29",
-  "2026-09-30"
+  "2026-09-30",
+  "2026-10-01"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-09-30",
+ "last_date": "2026-10-01",
  "deals": [
   {
    "date": "2026-08-03",
@@ -4175,6 +4176,99 @@
    ],
    "source_titles": [],
    "units_per_deal": null
+  },
+  {
+   "date": "2026-10-01",
+   "dow": 3,
+   "deal_id": "oct-chateaubriand-3",
+   "title": "Three Wagyu Chateaubriands, 2.4kg for $988",
+   "mech": "Quantity Flash",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/WagyuM4-5Tenderloin_Chateaubriand.webp?width=520",
+   "price": "$988",
+   "rev": 3480,
+   "orders": 2,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 2,
+   "returning": 1,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": true,
+   "promo_name": "Salmon Bar",
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 0,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-16",
+      "2026-06-11",
+      "2026-06-04",
+      "2026-05-21",
+      "2026-05-14",
+      "2026-05-07",
+      "2026-03-12"
+     ],
+     "dow_mean": 101057.24,
+     "dow_reach": "2026-03-12",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    },
+    "14": {
+     "prod_days_sold": 0,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-16",
+      "2026-06-11",
+      "2026-06-04",
+      "2026-05-21",
+      "2026-05-14",
+      "2026-05-07",
+      "2026-03-12"
+     ],
+     "dow_mean": 101057.24,
+     "dow_reach": "2026-03-12",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    }
+   },
+   "basket": [],
+   "source_titles": [
+    "Chilled Wagyu M4-5 Tenderloin (Chateaubriand) 800g"
+   ],
+   "units_per_deal": null
   }
  ],
  "daily": {
@@ -5642,7 +5736,7 @@
    "deal": false
   },
   "2026-09-26": {
-   "rev": 142785.3,
+   "rev": 142875.3,
    "orders": 107,
    "bau": false,
    "promo": true,
@@ -5663,18 +5757,25 @@
    "deal": false
   },
   "2026-09-29": {
-   "rev": 166235.3,
+   "rev": 166435.3,
    "orders": 137,
    "bau": false,
    "promo": true,
    "deal": false
   },
   "2026-09-30": {
-   "rev": 3342.8,
-   "orders": 4,
+   "rev": 171100.9,
+   "orders": 135,
    "bau": false,
    "promo": true,
    "deal": false
+  },
+  "2026-10-01": {
+   "rev": 3480,
+   "orders": 2,
+   "bau": false,
+   "promo": true,
+   "deal": true
   }
  }
 }
