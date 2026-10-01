@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-30T17:32:53",
+ "generated": "2026-10-01T17:31:51",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -177,7 +177,7 @@
   "2026-10-01"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-01",
+ "last_date": "2026-10-02",
  "deals": [
   {
    "date": "2026-08-03",
@@ -4185,15 +4185,15 @@
    "mech": "Quantity Flash",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/WagyuM4-5Tenderloin_Chateaubriand.webp?width=520",
    "price": "$988",
-   "rev": 3480,
-   "orders": 2,
+   "rev": 86397.5,
+   "orders": 70,
    "deal_rev": 0,
    "deal_units": 0,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 2,
-   "returning": 1,
+   "buyers": 64,
+   "returning": 42,
    "deal_buyers": null,
    "repeat_deal_buyers": null,
    "in_promo": true,
@@ -4267,6 +4267,97 @@
    "basket": [],
    "source_titles": [
     "Chilled Wagyu M4-5 Tenderloin (Chateaubriand) 800g"
+   ],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-10-02",
+   "dow": 4,
+   "deal_id": "oct-skirt-34",
+   "title": "Tajima MS6-7 Wagyu Skirt Steak, 3.4kg for $798",
+   "mech": "Quantity Flash",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/image_14.png?width=520",
+   "price": "$798",
+   "rev": 1653,
+   "orders": 2,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 2,
+   "returning": 2,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": false,
+   "promo_name": null,
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 1,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-17",
+      "2026-07-03",
+      "2026-06-05",
+      "2026-05-22",
+      "2026-05-15",
+      "2026-05-08"
+     ],
+     "dow_mean": 81297.22,
+     "dow_reach": "2026-05-08",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    },
+    "14": {
+     "prod_days_sold": 3,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-17",
+      "2026-07-03",
+      "2026-06-05",
+      "2026-05-22",
+      "2026-05-15",
+      "2026-05-08"
+     ],
+     "dow_mean": 81297.22,
+     "dow_reach": "2026-05-08",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    }
+   },
+   "basket": [],
+   "source_titles": [
+    "Chilled M4-5 Wagyu Thin Skirt Steak"
    ],
    "units_per_deal": null
   }
@@ -5771,10 +5862,17 @@
    "deal": false
   },
   "2026-10-01": {
-   "rev": 3480,
-   "orders": 2,
+   "rev": 86397.5,
+   "orders": 70,
    "bau": false,
    "promo": true,
+   "deal": true
+  },
+  "2026-10-02": {
+   "rev": 1653,
+   "orders": 2,
+   "bau": false,
+   "promo": false,
    "deal": true
   }
  }
