@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-01T17:31:51",
+ "generated": "2026-10-02T17:32:20",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -177,7 +177,7 @@
   "2026-10-01"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-02",
+ "last_date": "2026-10-03",
  "deals": [
   {
    "date": "2026-08-03",
@@ -4278,20 +4278,20 @@
    "mech": "Quantity Flash",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/image_14.png?width=520",
    "price": "$798",
-   "rev": 1653,
-   "orders": 2,
-   "deal_rev": 0,
-   "deal_units": 0,
+   "rev": 80024.5,
+   "orders": 66,
+   "deal_rev": 3192,
+   "deal_units": 4,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 2,
-   "returning": 2,
-   "deal_buyers": null,
-   "repeat_deal_buyers": null,
+   "buyers": 59,
+   "returning": 34,
+   "deal_buyers": 4,
+   "repeat_deal_buyers": 0,
    "in_promo": false,
    "promo_name": null,
-   "deal_returning": null,
+   "deal_returning": 2,
    "windows": {
     "7": {
      "prod_days_sold": 1,
@@ -4355,10 +4355,107 @@
      "prod_rev_mean": null
     }
    },
-   "basket": [],
+   "basket": [
+    {
+     "pid": "9262839169256",
+     "title": "Frozen Black Angus Grass Fed Minced Beef 1kg (2 x 500g Pac",
+     "buyers": 2,
+     "share": 50,
+     "rev": 3112
+    }
+   ],
    "source_titles": [
     "Chilled M4-5 Wagyu Thin Skirt Steak"
    ],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-10-03",
+   "dow": 5,
+   "deal_id": "oct-salmon-5kg",
+   "title": "5kg of Norwegian Salmon Pieces for $548",
+   "mech": "Quantity Flash",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/Salmon_5_1.png?width=520",
+   "price": "$548",
+   "rev": 1094,
+   "orders": 1,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 1,
+   "returning": 1,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": false,
+   "promo_name": null,
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 0,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-18",
+      "2026-07-04",
+      "2026-06-06",
+      "2026-05-16",
+      "2026-05-02",
+      "2026-03-07"
+     ],
+     "dow_mean": 79123.89,
+     "dow_reach": "2026-03-07",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    },
+    "14": {
+     "prod_days_sold": 0,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-18",
+      "2026-07-04",
+      "2026-06-06",
+      "2026-05-16",
+      "2026-05-02",
+      "2026-03-07"
+     ],
+     "dow_mean": 79123.89,
+     "dow_reach": "2026-03-07",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    }
+   },
+   "basket": [],
+   "source_titles": [],
    "units_per_deal": null
   }
  ],
@@ -5869,8 +5966,15 @@
    "deal": true
   },
   "2026-10-02": {
-   "rev": 1653,
-   "orders": 2,
+   "rev": 80024.5,
+   "orders": 66,
+   "bau": false,
+   "promo": false,
+   "deal": true
+  },
+  "2026-10-03": {
+   "rev": 1094,
+   "orders": 1,
    "bau": false,
    "promo": false,
    "deal": true
