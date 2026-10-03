@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-02T17:32:20",
+ "generated": "2026-10-03T17:31:41",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -177,7 +177,7 @@
   "2026-10-01"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-03",
+ "last_date": "2026-10-04",
  "deals": [
   {
    "date": "2026-08-03",
@@ -4377,15 +4377,15 @@
    "mech": "Quantity Flash",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/Salmon_5_1.png?width=520",
    "price": "$548",
-   "rev": 1094,
-   "orders": 1,
+   "rev": 132203.8,
+   "orders": 99,
    "deal_rev": 0,
    "deal_units": 0,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 1,
-   "returning": 1,
+   "buyers": 91,
+   "returning": 68,
    "deal_buyers": null,
    "repeat_deal_buyers": null,
    "in_promo": false,
@@ -4456,6 +4456,99 @@
    },
    "basket": [],
    "source_titles": [],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-10-04",
+   "dow": 6,
+   "deal_id": "oct-hanger-18",
+   "title": "A Whole Wagyu Hanger, 1.8kg for $398",
+   "mech": "Price Drop · Low Ticket",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/BeefHanger_8356e176-011d-46e7-952b-802ffb9c1e1c.jpg?width=520",
+   "price": "$398",
+   "rev": 3373.1,
+   "orders": 2,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 2,
+   "returning": 1,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": false,
+   "promo_name": null,
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 2,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-12",
+      "2026-07-05",
+      "2026-06-07",
+      "2026-05-17",
+      "2026-05-03",
+      "2026-03-15",
+      "2026-03-08"
+     ],
+     "dow_mean": 81470.73,
+     "dow_reach": "2026-03-08",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": 1.29,
+     "prod_rev_mean": 640.29
+    },
+    "14": {
+     "prod_days_sold": 7,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-12",
+      "2026-07-05",
+      "2026-06-07",
+      "2026-05-17",
+      "2026-05-03",
+      "2026-03-15",
+      "2026-03-08"
+     ],
+     "dow_mean": 81470.73,
+     "dow_reach": "2026-03-08",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": 2.21,
+     "prod_rev_mean": 1118.57
+    }
+   },
+   "basket": [],
+   "source_titles": [
+    "Chilled Wagyu M3-4 Untrimmed Hanger Steak"
+   ],
    "units_per_deal": null
   }
  ],
@@ -5973,8 +6066,15 @@
    "deal": true
   },
   "2026-10-03": {
-   "rev": 1094,
-   "orders": 1,
+   "rev": 132203.8,
+   "orders": 99,
+   "bau": false,
+   "promo": false,
+   "deal": true
+  },
+  "2026-10-04": {
+   "rev": 3373.1,
+   "orders": 2,
    "bau": false,
    "promo": false,
    "deal": true
