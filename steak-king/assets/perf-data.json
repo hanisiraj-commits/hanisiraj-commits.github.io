@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-03T17:31:41",
+ "generated": "2026-10-04T17:31:55",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -177,7 +177,7 @@
   "2026-10-01"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-04",
+ "last_date": "2026-10-05",
  "deals": [
   {
    "date": "2026-08-03",
@@ -4466,20 +4466,20 @@
    "mech": "Price Drop · Low Ticket",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/BeefHanger_8356e176-011d-46e7-952b-802ffb9c1e1c.jpg?width=520",
    "price": "$398",
-   "rev": 3373.1,
-   "orders": 2,
-   "deal_rev": 0,
-   "deal_units": 0,
+   "rev": 87552.85,
+   "orders": 71,
+   "deal_rev": 1990,
+   "deal_units": 5,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 2,
-   "returning": 1,
-   "deal_buyers": null,
-   "repeat_deal_buyers": null,
+   "buyers": 64,
+   "returning": 46,
+   "deal_buyers": 5,
+   "repeat_deal_buyers": 0,
    "in_promo": false,
    "promo_name": null,
-   "deal_returning": null,
+   "deal_returning": 4,
    "windows": {
     "7": {
      "prod_days_sold": 2,
@@ -4545,9 +4545,110 @@
      "prod_rev_mean": 1118.57
     }
    },
-   "basket": [],
+   "basket": [
+    {
+     "pid": "9355350114536",
+     "title": "Chilled Wagyu M4-5 Striploin 1kg",
+     "buyers": 3,
+     "share": 60,
+     "rev": 10348
+    }
+   ],
    "source_titles": [
     "Chilled Wagyu M3-4 Untrimmed Hanger Steak"
+   ],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-10-05",
+   "dow": 0,
+   "deal_id": "oct-m89-rump-cap",
+   "title": "The Whole M8-9 Picanha, 2.1kg for $1,048",
+   "mech": "Price Drop · Single SKU",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/M9_Picanhas.png?width=520",
+   "price": "$1,048",
+   "rev": 5121.8,
+   "orders": 4,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 4,
+   "returning": 3,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": false,
+   "promo_name": null,
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 5,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-13",
+      "2026-07-06",
+      "2026-05-18",
+      "2026-05-04",
+      "2026-04-06",
+      "2026-03-16",
+      "2026-03-09"
+     ],
+     "dow_mean": 92359.47,
+     "dow_reach": "2026-03-09",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": 1.29,
+     "prod_rev_mean": 1450.29
+    },
+    "14": {
+     "prod_days_sold": 7,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-13",
+      "2026-07-06",
+      "2026-05-18",
+      "2026-05-04",
+      "2026-04-06",
+      "2026-03-16",
+      "2026-03-09"
+     ],
+     "dow_mean": 92359.47,
+     "dow_reach": "2026-03-09",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": 0.86,
+     "prod_rev_mean": 966.86
+    }
+   },
+   "basket": [],
+   "source_titles": [
+    "Chilled Wagyu M8-9 Rump Cap"
    ],
    "units_per_deal": null
   }
@@ -6073,8 +6174,15 @@
    "deal": true
   },
   "2026-10-04": {
-   "rev": 3373.1,
-   "orders": 2,
+   "rev": 87552.85,
+   "orders": 71,
+   "bau": false,
+   "promo": false,
+   "deal": true
+  },
+  "2026-10-05": {
+   "rev": 5121.8,
+   "orders": 4,
    "bau": false,
    "promo": false,
    "deal": true
