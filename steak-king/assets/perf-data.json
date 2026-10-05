@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-04T17:31:55",
+ "generated": "2026-10-05T17:31:46",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -177,7 +177,7 @@
   "2026-10-01"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-05",
+ "last_date": "2026-10-06",
  "deals": [
   {
    "date": "2026-08-03",
@@ -4567,15 +4567,15 @@
    "mech": "Price Drop · Single SKU",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/M9_Picanhas.png?width=520",
    "price": "$1,048",
-   "rev": 5121.8,
-   "orders": 4,
+   "rev": 108263.4,
+   "orders": 85,
    "deal_rev": 0,
    "deal_units": 0,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 4,
-   "returning": 3,
+   "buyers": 84,
+   "returning": 62,
    "deal_buyers": null,
    "repeat_deal_buyers": null,
    "in_promo": false,
@@ -4649,6 +4649,99 @@
    "basket": [],
    "source_titles": [
     "Chilled Wagyu M8-9 Rump Cap"
+   ],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-10-06",
+   "dow": 1,
+   "deal_id": "oct-sausages-b2g2",
+   "title": "Buy Two Packs of Wagyu Sausages, Get Two Free",
+   "mech": "Buy 2, Get 2 Free",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/PlainWagyuBeefSausageBrand_d382b299-d49b-4ad4-95c1-d3f1880ae512.jpg?width=520",
+   "price": "$340",
+   "rev": 3800,
+   "orders": 3,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 3,
+   "returning": 2,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": false,
+   "promo_name": null,
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 5,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-07",
+      "2026-06-02",
+      "2026-05-19",
+      "2026-05-05",
+      "2026-04-07",
+      "2026-03-17",
+      "2026-03-10"
+     ],
+     "dow_mean": 95616.24,
+     "dow_reach": "2026-03-10",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": 1.29,
+     "prod_rev_mean": 218.57
+    },
+    "14": {
+     "prod_days_sold": 9,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-07",
+      "2026-06-02",
+      "2026-05-19",
+      "2026-05-05",
+      "2026-04-07",
+      "2026-03-17",
+      "2026-03-10"
+     ],
+     "dow_mean": 95616.24,
+     "dow_reach": "2026-03-10",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": 1,
+     "prod_rev_mean": 170
+    }
+   },
+   "basket": [],
+   "source_titles": [
+    "Rangers Station Wagyu, Caramelised Onion & Red Wine  Sausage"
    ],
    "units_per_deal": null
   }
@@ -6181,8 +6274,15 @@
    "deal": true
   },
   "2026-10-05": {
-   "rev": 5121.8,
-   "orders": 4,
+   "rev": 108263.4,
+   "orders": 85,
+   "bau": false,
+   "promo": false,
+   "deal": true
+  },
+  "2026-10-06": {
+   "rev": 3800,
+   "orders": 3,
    "bau": false,
    "promo": false,
    "deal": true
