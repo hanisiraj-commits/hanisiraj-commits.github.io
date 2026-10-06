@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T17:31:46",
+ "generated": "2026-10-06T17:31:55",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -174,10 +174,12 @@
   "2026-09-28",
   "2026-09-29",
   "2026-09-30",
-  "2026-10-01"
+  "2026-10-01",
+  "2026-10-06",
+  "2026-10-07"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-06",
+ "last_date": "2026-10-07",
  "deals": [
   {
    "date": "2026-08-03",
@@ -3876,18 +3878,18 @@
    "price": "$798",
    "rev": 142880.2,
    "orders": 124,
-   "deal_rev": 798,
-   "deal_units": 1,
+   "deal_rev": 0,
+   "deal_units": 0,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
    "buyers": 110,
    "returning": 81,
-   "deal_buyers": 1,
-   "repeat_deal_buyers": 0,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
    "in_promo": true,
    "promo_name": "Salmon Bar",
-   "deal_returning": 1,
+   "deal_returning": null,
    "windows": {
     "7": {
      "prod_days_sold": 2,
@@ -3913,11 +3915,11 @@
      ],
      "bau_mean": 81482.18,
      "bau_reach": "2026-07-06",
-     "prod_units_mean": 1.29,
-     "prod_rev_mean": 640.29
+     "prod_units_mean": 0.71,
+     "prod_rev_mean": 711.43
     },
     "14": {
-     "prod_days_sold": 7,
+     "prod_days_sold": 2,
      "prod_days_total": 14,
      "dow_days": [
       "2026-07-18",
@@ -3947,13 +3949,13 @@
      ],
      "bau_mean": 77075.79,
      "bau_reach": "2026-06-06",
-     "prod_units_mean": 2.21,
-     "prod_rev_mean": 1118.57
+     "prod_units_mean": null,
+     "prod_rev_mean": null
     }
    },
    "basket": [],
    "source_titles": [
-    "Chilled Wagyu M3-4 Untrimmed Hanger Steak"
+    "Buy 2kg, Get 1Kg Free - Chilled Wagyu M3-4 Untrimmed Hanger "
    ],
    "units_per_deal": null
   },
@@ -4506,11 +4508,11 @@
      ],
      "bau_mean": 81482.18,
      "bau_reach": "2026-07-06",
-     "prod_units_mean": 1.29,
-     "prod_rev_mean": 640.29
+     "prod_units_mean": 0.71,
+     "prod_rev_mean": 711.43
     },
     "14": {
-     "prod_days_sold": 7,
+     "prod_days_sold": 2,
      "prod_days_total": 14,
      "dow_days": [
       "2026-07-12",
@@ -4541,8 +4543,8 @@
      ],
      "bau_mean": 77075.79,
      "bau_reach": "2026-06-06",
-     "prod_units_mean": 2.21,
-     "prod_rev_mean": 1118.57
+     "prod_units_mean": null,
+     "prod_rev_mean": null
     }
    },
    "basket": [
@@ -4555,7 +4557,7 @@
     }
    ],
    "source_titles": [
-    "Chilled Wagyu M3-4 Untrimmed Hanger Steak"
+    "Buy 2kg, Get 1Kg Free - Chilled Wagyu M3-4 Untrimmed Hanger "
    ],
    "units_per_deal": null
   },
@@ -4660,20 +4662,20 @@
    "mech": "Buy 2, Get 2 Free",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/PlainWagyuBeefSausageBrand_d382b299-d49b-4ad4-95c1-d3f1880ae512.jpg?width=520",
    "price": "$340",
-   "rev": 3800,
-   "orders": 3,
-   "deal_rev": 0,
-   "deal_units": 0,
+   "rev": 84458.6,
+   "orders": 74,
+   "deal_rev": 510,
+   "deal_units": 6,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 3,
-   "returning": 2,
-   "deal_buyers": null,
-   "repeat_deal_buyers": null,
-   "in_promo": false,
-   "promo_name": null,
-   "deal_returning": null,
+   "buyers": 68,
+   "returning": 56,
+   "deal_buyers": 6,
+   "repeat_deal_buyers": 1,
+   "in_promo": true,
+   "promo_name": "Jc Recruitment",
+   "deal_returning": 4,
    "windows": {
     "7": {
      "prod_days_sold": 5,
@@ -4739,9 +4741,157 @@
      "prod_rev_mean": 170
     }
    },
-   "basket": [],
+   "basket": [
+    {
+     "pid": "9325662535912",
+     "title": "Rangers Station Wagyu Plain Beef Sausages 500g",
+     "buyers": 6,
+     "share": 100,
+     "rev": 1190
+    },
+    {
+     "pid": "9324900712680",
+     "title": "Rangers Station Wagyu Beef & Ghost Chilli  Sausages 500g",
+     "buyers": 6,
+     "share": 100,
+     "rev": 510
+    },
+    {
+     "pid": "10313074540776",
+     "title": "Chilled Wagyu M6-7  Ribeye Cap Pinwheels 1.2kg (200g x 6)",
+     "buyers": 2,
+     "share": 33,
+     "rev": 5520
+    },
+    {
+     "pid": "9355350114536",
+     "title": "Chilled Wagyu M4-5 Striploin 1kg",
+     "buyers": 2,
+     "share": 33,
+     "rev": 6368
+    },
+    {
+     "pid": "9041047322856",
+     "title": "FREE - Frozen Norwegian Salmon Pieces 500g",
+     "buyers": 2,
+     "share": 33,
+     "rev": 0
+    },
+    {
+     "pid": "7017702457538",
+     "title": "Frozen Barn Raised Chicken Thighs (Boneless & Skinless) 1k",
+     "buyers": 2,
+     "share": 33,
+     "rev": 3584
+    },
+    {
+     "pid": "7872761987304",
+     "title": "Chilled Wagyu M6-7 Flat Iron Steaks 250g x 4",
+     "buyers": 2,
+     "share": 33,
+     "rev": 2280
+    },
+    {
+     "pid": "8221222830312",
+     "title": "Chilled Wagyu M9+ Striploin 1kg",
+     "buyers": 2,
+     "share": 33,
+     "rev": 1896
+    }
+   ],
    "source_titles": [
     "Rangers Station Wagyu, Caramelised Onion & Red Wine  Sausage"
+   ],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-10-07",
+   "dow": 2,
+   "deal_id": "oct-lamb-racks-2",
+   "title": "Two Frenched Lamb Racks for $918",
+   "mech": "Quantity Flash",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/lambrackcapoff2.png?width=520",
+   "price": "$918",
+   "rev": 2599.2,
+   "orders": 3,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 3,
+   "returning": 2,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": true,
+   "promo_name": "Jc Recruitment",
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 0,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-06-10",
+      "2026-06-03",
+      "2026-05-20",
+      "2026-05-06",
+      "2026-03-18",
+      "2026-03-11"
+     ],
+     "dow_mean": 101747.67,
+     "dow_reach": "2026-03-11",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    },
+    "14": {
+     "prod_days_sold": 3,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-06-10",
+      "2026-06-03",
+      "2026-05-20",
+      "2026-05-06",
+      "2026-03-18",
+      "2026-03-11"
+     ],
+     "dow_mean": 101747.67,
+     "dow_reach": "2026-03-11",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": 0.5,
+     "prod_rev_mean": 275
+    }
+   },
+   "basket": [],
+   "source_titles": [
+    "Chilled Thomas Foods Signature Bone-In Frenched Lamb Rack Ca"
    ],
    "units_per_deal": null
   }
@@ -6281,10 +6431,17 @@
    "deal": true
   },
   "2026-10-06": {
-   "rev": 3800,
+   "rev": 84458.6,
+   "orders": 74,
+   "bau": false,
+   "promo": true,
+   "deal": true
+  },
+  "2026-10-07": {
+   "rev": 2599.2,
    "orders": 3,
    "bau": false,
-   "promo": false,
+   "promo": true,
    "deal": true
   }
  }
