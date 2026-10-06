@@ -749,9 +749,9 @@ body.is-offline .back-btn { top: 58px; }
   }
   if (!isEmail(params.email)) {
     QUESTIONS.push({
-      id: 'email', type: 'email', contact: true,
-      text: "Last one. What's your email?",
-      sublabel: 'So your answers sit with your Bendon account.',
+      id: 'email', type: 'email', contact: true, eyebrow: 'All done!',
+      text: "Last step: What's your email?",
+      sublabel: 'Enter your email to claim your $20 voucher.',
       placeholder: 'name@example.com'
     });
   }
@@ -948,7 +948,7 @@ body.is-offline .back-btn { top: 58px; }
     const inner = el('div', { class: 'screen__inner' });
     screen.appendChild(inner);
 
-    const label = q.contact ? 'Nearly done' : 'Question ' + (index + 1) + ' of ' + SURVEY_COUNT;
+    const label = q.contact ? (q.eyebrow || 'Nearly done') : 'Question ' + (index + 1) + ' of ' + SURVEY_COUNT;
     inner.appendChild(el('div', { class: 'question__number' }, label));
     inner.appendChild(el('h2', { class: 'question__text', id: 'qText' }, q.text));
     if (q.sublabel) inner.appendChild(el('p', { class: 'question__sublabel' }, q.sublabel));
