@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-market="au">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Bendon · Sports Bra Survey</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23DEFD74'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='900' font-size='16' text-anchor='middle' fill='%232E0531'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Bendon Lingerie retail palette (email-house-style.md) */
+  --bdn-cream: #FFFDD1;
+  --bdn-aubergine: #2E0531;
+  --bdn-plum: #6F1044;
+  --bdn-lime: #DEFD74;
+  --bdn-lilac: #F2CDFF;
+  --bdn-text: #2E0531;
+  --bdn-bg: #FFFFFF;
+  --bdn-bg-alt: #FBF8FB;
+  --bdn-muted: #7A6A7C;
+  --bdn-border: #E8E0E8;
+  --font-display: 'Archivo', 'Acumin Pro', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Archivo', 'Acumin Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  --transition: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--bdn-text);
+  background: var(--bdn-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+body {
+  height: 100dvh;
+  height: 100vh;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.offline-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 16px;
+  background: var(--bdn-aubergine);
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  text-align: center;
+  z-index: 200;
+  display: none;
+  line-height: 1.35;
+}
+.offline-banner.visible { display: block; }
+body.is-offline .progress { top: 38px; }
+body.is-offline #app { padding-top: 38px; }
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--bdn-bg-alt);
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+.progress.visible { opacity: 1; }
+.progress__fill {
+  height: 100%;
+  width: 0%;
+  background: var(--bdn-plum);
+  transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Screens */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 88px 24px 72px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--transition), transform var(--transition);
+  pointer-events: none;
+}
+.screen.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.screen.exit-up {
+  opacity: 0;
+  transform: translateY(-40px);
+}
+
+.screen__inner {
+  width: 100%;
+  max-width: 640px;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Lime discount dot, as on Bendon retail creative */
+.dot {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: var(--bdn-lime);
+  color: var(--bdn-aubergine);
+  font-family: var(--font-display);
+  line-height: 0.9;
+  transform: rotate(-8deg);
+  flex-shrink: 0;
+}
+.dot__big { font-weight: 900; font-size: 2.5rem; letter-spacing: -0.03em; }
+.dot__small { font-weight: 800; font-size: 1.125rem; letter-spacing: 0.02em; }
+
+/* WELCOME */
+.screen--welcome { background: var(--bdn-cream); }
+.screen--welcome .screen__inner {
+  align-items: center;
+  text-align: center;
+  gap: 28px;
+}
+.welcome__logo {
+  width: 170px;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.welcome__headline {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 85%;
+  text-transform: uppercase;
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--bdn-aubergine);
+}
+.welcome__subtext {
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  max-width: 480px;
+  color: var(--bdn-aubergine);
+}
+.welcome__meta {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bdn-plum);
+}
+
+/* THANK YOU */
+.screen--thanks { background: var(--bdn-cream); }
+.screen--thanks .screen__inner {
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+}
+.thanks__headline {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 85%;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.thanks__subtext {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  max-width: 460px;
+}
+.code-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 10px 10px 24px;
+  background: #FFFFFF;
+  border: 2px dashed var(--bdn-aubergine);
+  border-radius: 999px;
+}
+.code-box__code {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.75rem;
+  letter-spacing: 0.06em;
+}
+.code-box__copy {
+  border: none;
+  background: var(--bdn-aubergine);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  min-height: 40px;
+}
+.thanks__terms {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--bdn-muted);
+  max-width: 420px;
+}
+
+/* REVIEW */
+.screen--review .screen__inner { margin: 0; }
+.review__list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4px;
+  border-top: 1px solid var(--bdn-border);
+}
+.review__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "q     edit"
+    "a     edit";
+  column-gap: 16px;
+  row-gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--bdn-border);
+  align-items: start;
+}
+.review__q {
+  grid-area: q;
+  font-size: 0.8125rem;
+  color: var(--bdn-muted);
+  line-height: 1.4;
+}
+.review__a {
+  grid-area: a;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.review__edit {
+  grid-area: edit;
+  align-self: center;
+  background: none;
+  border: 1px solid var(--bdn-border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--bdn-muted);
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 150ms ease;
+  min-height: 32px;
+}
+.review__edit:hover, .review__edit:focus-visible {
+  border-color: var(--bdn-plum);
+  color: var(--bdn-plum);
+  outline: none;
+}
+.review__error {
+  padding: 12px 14px;
+  background: #FFF1F6;
+  border: 1px solid var(--bdn-plum);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+/* QUESTION */
+.screen--question .screen__inner { gap: 22px; }
+.question__number {
+  font-weight: 700;
+  font-size: 0.8125rem;
+  color: var(--bdn-plum);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.question__text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 90%;
+  font-size: clamp(1.625rem, 3.6vw, 2.375rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+.question__sublabel {
+  font-size: 0.9375rem;
+  color: var(--bdn-muted);
+  margin-top: -12px;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 54px;
+  padding: 11px 16px;
+  background: var(--bdn-bg);
+  border: 1.5px solid var(--bdn-border);
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--bdn-text);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.choice:hover, .choice:focus-visible {
+  border-color: var(--bdn-plum);
+  background: var(--bdn-bg-alt);
+  outline: none;
+}
+.choice.selected {
+  background: var(--bdn-aubergine);
+  border-color: var(--bdn-aubergine);
+  color: #FFFFFF;
+}
+.choice.is-locked { opacity: 0.45; cursor: not-allowed; }
+.choice__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--bdn-border);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  color: var(--bdn-muted);
+  flex-shrink: 0;
+  transition: all 150ms ease;
+}
+.choice:hover .choice__badge,
+.choice:focus-visible .choice__badge {
+  border-color: var(--bdn-plum);
+  color: var(--bdn-plum);
+}
+.choice.selected .choice__badge {
+  background: var(--bdn-lime);
+  border-color: var(--bdn-lime);
+  color: var(--bdn-aubergine);
+}
+.choice__text { flex: 1; line-height: 1.3; }
+.choice__check { display: none; }
+.choice.selected .choice__check {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.choice.selected .choice__check svg { width: 18px; height: 18px; stroke: var(--bdn-lime); }
+
+.pick-count {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--bdn-plum);
+}
+
+/* Text inputs */
+.text-input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--bdn-border);
+  background: transparent;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(1.125rem, 2.4vw, 1.375rem);
+  line-height: 1.45;
+  color: var(--bdn-text);
+  padding: 10px 0;
+  outline: none;
+  transition: border-color 200ms ease;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  resize: none;
+}
+.text-input:focus { border-bottom-color: var(--bdn-plum); }
+.text-input::placeholder { color: var(--bdn-muted); opacity: 0.6; }
+textarea.text-input { min-height: 96px; }
+.other-input {
+  width: 100%;
+  margin-top: -2px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--bdn-border);
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--bdn-text);
+  outline: none;
+}
+.other-input:focus { border-color: var(--bdn-plum); }
+
+/* Size pickers */
+.size-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.size-field { display: flex; flex-direction: column; gap: 8px; }
+.size-field label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bdn-muted);
+}
+.size-select {
+  width: 100%;
+  min-height: 56px;
+  padding: 12px 40px 12px 16px;
+  border: 1.5px solid var(--bdn-border);
+  border-radius: 12px;
+  background: #FFFFFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E0531' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 18px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--bdn-text);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+.size-select:focus { border-color: var(--bdn-plum); }
+
+/* Pill CTA */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--bdn-lime);
+  color: var(--bdn-aubergine);
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, transform 100ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-height: 50px;
+}
+.btn:hover { background: var(--bdn-aubergine); color: var(--bdn-lime); }
+.btn:active { transform: translateY(1px); }
+.btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+.btn[disabled]:hover { background: var(--bdn-lime); color: var(--bdn-aubergine); }
+.btn--lg { padding: 16px 40px; font-size: 1.0625rem; }
+.btn--dark { background: var(--bdn-aubergine); color: #FFFFFF; }
+.btn--dark:hover { background: var(--bdn-plum); color: #FFFFFF; }
+.btn__hint {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  opacity: 0.75;
+}
+
+.action-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px 9px 12px;
+  background: var(--bdn-bg);
+  border: 1.5px solid var(--bdn-aubergine);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bdn-aubergine);
+  cursor: pointer;
+  z-index: 90;
+  transition: all 150ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-height: 42px;
+}
+.back-btn.visible { display: inline-flex; }
+.back-btn:hover, .back-btn:focus-visible {
+  background: var(--bdn-aubergine);
+  color: #FFFFFF;
+  outline: none;
+}
+.back-btn svg { flex-shrink: 0; width: 18px; height: 18px; }
+body.is-offline .back-btn { top: 58px; }
+
+.top-logo {
+  position: fixed;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 104px;
+  z-index: 80;
+  opacity: 0;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+}
+.top-logo.visible { opacity: 1; }
+
+.hint {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8125rem;
+  color: var(--bdn-muted);
+  background: rgba(255,255,255,0.94);
+  padding: 6px 12px;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  white-space: nowrap;
+}
+.hint.visible { opacity: 1; }
+.hint kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid var(--bdn-border);
+  border-radius: 4px;
+  background: var(--bdn-bg-alt);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--bdn-text);
+  margin: 0 2px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hint { display: none; }
+}
+
+@media (max-width: 600px) {
+  .screen { padding: 76px 16px 40px; }
+  .screen__inner { gap: 20px; }
+  .back-btn { top: 14px; left: 14px; }
+  .top-logo { top: 24px; width: 88px; }
+  .welcome__logo { width: 140px; }
+  .dot { width: 96px; height: 96px; }
+  .dot__big { font-size: 2.125rem; }
+  .question__text { font-size: clamp(1.375rem, 6vw, 1.75rem); }
+  .btn { padding: 13px 26px; font-size: 0.9375rem; }
+  .text-input { font-size: 16px; }
+  .code-box__code { font-size: 1.375rem; }
+  .review__row { padding: 14px 0; column-gap: 12px; }
+  .review__a { font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen, .progress__fill { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="offline-banner" id="offlineBanner" role="status" aria-live="polite">
+  You're offline. Your answers are saved on this device and will send when you reconnect.
+</div>
+
+<div class="progress" id="progress" aria-hidden="true">
+  <div class="progress__fill" id="progressFill"></div>
+</div>
+
+<button class="back-btn" id="backBtn" type="button" aria-label="Go back to the previous question">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+  <span>Back</span>
+</button>
+
+<img class="top-logo" id="topLogo" src="logo.svg" alt="" aria-hidden="true">
+
+<main id="app" aria-live="polite"></main>
+
+<div class="hint" id="hint" aria-hidden="true"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---------- Config ----------
+  // Built into /au/ and /nz/ by build.py, which sets <html data-market>.
+  // Link from Klaviyo as: .../au/?email={{ email }}
+  // On submit: a "Completed Sports Bra Survey" event (every question + answer) in that
+  // market's Klaviyo account, the answers as profile properties, and a row in the shared
+  // sheet via n8n. ?test=1 runs everything without posting.
+  const SHEET_WEBHOOK = 'https://tethrd.app.n8n.cloud/webhook/bendon-sports-bra-survey';
+  const MARKETS = {
+    au: { label: 'Australia', companyId: 'XzQpnr', store: 'https://www.bendonlingerie.com.au' },
+    nz: { label: 'New Zealand', companyId: 'SJ6n87', store: 'https://www.bendonlingerie.co.nz' }
+  };
+  const KLAVIYO_REVISION = '2025-07-15';
+  const METRIC_NAME = 'Completed Sports Bra Survey';
+  const CODE = 'SPORT20';
+  const CODE_ENDS = '10/11/2026';
+  const COLLECTION_PATH = '/collections/sports-bras';
+
+  const STORAGE_KEY = 'bdn-sports-bra-survey-v1';
+  const STORAGE_VERSION = 1;
+  const PENDING_KEY = 'bdn-sports-bra-survey-pending-v1';
+  const SUBMIT_TIMEOUT_MS = 15000;
+  const SUBMIT_RETRY_DELAYS = [0, 2000, 6000];
+
+  const params = readParams();
+  const TEST_MODE = params.test === '1';
+  const PAGE_MARKET = (document.documentElement.getAttribute('data-market') || '').toLowerCase();
+  if (MARKETS[PAGE_MARKET]) params.m = PAGE_MARKET;
+
+  const SURVEY = [
+    {
+      id: 'q1', type: 'choice-multi', prop: 'Sports Bra Use',
+      text: 'What do you mostly wear a sports bra for?',
+      sublabel: 'Tick all that apply',
+      options: ['Running', 'Gym/weights', 'HIIT/classes', 'Yoga/pilates', 'Walking', 'Everyday', 'Other'],
+      otherOption: 'Other'
+    },
+    {
+      id: 'q2', type: 'choice-single', prop: 'Workout Frequency',
+      text: 'How often do you work out?',
+      options: ['1-2x a week', '3-4x a week', '5+ times a week', 'Rarely']
+    },
+    {
+      id: 'q3', type: 'size', prop: 'Bra Size',
+      text: 'What bra size do you usually wear?',
+      bands: ['8 / 30', '10 / 32', '12 / 34', '14 / 36', '16 / 38', '18 / 40', '20 / 42', '22 / 44', 'Not sure'],
+      cups: ['A', 'B', 'C', 'D', 'DD', 'E', 'F', 'G', 'H', 'Not sure']
+    },
+    {
+      id: 'q4', type: 'choice-single', prop: 'Sports Bra Support Level',
+      text: 'What support level do you usually buy?',
+      options: ['Light', 'Medium', 'High', 'Not sure']
+    },
+    {
+      id: 'q5', type: 'choice-single', prop: 'Sports Bra Support Style',
+      text: 'How do you like your support?',
+      options: ['Each cup separate, like a regular bra', 'Held in flat and firm', 'A mix of both', 'Not sure']
+    },
+    {
+      id: 'q6', type: 'choice-single', prop: 'Sports Bra Wire Preference',
+      text: 'Underwire or wirefree?',
+      options: ['Always wired', 'Wired for high impact only', 'Always wirefree', 'No preference']
+    },
+    {
+      id: 'q7', type: 'choice-multi', prop: 'Sports Bra Priorities',
+      text: 'Pick the 3 things that matter most.',
+      sublabel: 'Pick 3',
+      exact: 3,
+      options: ['Stopping bounce', 'Comfort all day', "Straps that don't dig", 'Easy on and off', 'Adjustable band and straps', 'Stays cool and dry', 'Looks good enough to wear out', 'Price']
+    },
+    {
+      id: 'q8', type: 'choice-single', prop: 'Sports Bra Fastening',
+      text: 'How do you like your sports bra to go on?',
+      options: ['Pulls on over the head', 'Does up at the back', 'Does up at the front', 'No preference']
+    },
+    {
+      id: 'q9', type: 'choice-multi', prop: 'Sports Bra Brands Worn',
+      text: 'Which brands have you worn in the last 12 months?',
+      sublabel: 'Tick all that apply',
+      options: ['Bendon', 'Lululemon', 'Nike', 'Berlei', 'Lorna Jane', 'Shock Absorber', 'Freya', 'Other'],
+      otherOption: 'Other'
+    },
+    {
+      id: 'q10', type: 'text', prop: 'Sports Bra Fix',
+      text: 'If you could fix one thing in your sports bra, what would it be?'
+    },
+    {
+      id: 'q11', type: 'choice-multi', prop: 'Sports Bra Would Buy',
+      text: 'Which of these would you buy?',
+      sublabel: 'Tick all that apply',
+      options: ['A high-impact bra built for fuller cups', 'A wired medium-impact bra', 'A light wirefree bra you can wear all day', 'None of these'],
+      exclusive: 'None of these'
+    },
+    {
+      id: 'q12', type: 'text', prop: 'Sports Bra Missing',
+      text: "What's missing from the sports bras you can buy now? Tell us everything.",
+      multiline: true
+    }
+  ];
+
+  // Contact steps only appear when the link didn't carry them.
+  const QUESTIONS = SURVEY.slice();
+  if (!MARKETS[params.m]) {
+    QUESTIONS.push({
+      id: 'market', type: 'choice-single', contact: true,
+      text: 'Where do you shop with us?',
+      options: [MARKETS.au.label, MARKETS.nz.label]
+    });
+  }
+  if (!isEmail(params.email)) {
+    QUESTIONS.push({
+      id: 'email', type: 'email', contact: true,
+      text: "Last one. What's your email?",
+      sublabel: 'So your answers sit with your Bendon account.',
+      placeholder: 'name@example.com'
+    });
+  }
+
+  const SURVEY_COUNT = SURVEY.length;
+  const TOTAL_QUESTIONS = QUESTIONS.length;
+  const STEP_WELCOME = 0;
+  const STEP_REVIEW = TOTAL_QUESTIONS + 1;
+  const STEP_DONE = TOTAL_QUESTIONS + 2;
+
+  function readParams() {
+    const out = {};
+    const query = window.location.search.replace(/^\?/, '');
+    if (!query) return out;
+    query.split('&').forEach(function (pair) {
+      const i = pair.indexOf('=');
+      const k = decodeURIComponent(i === -1 ? pair : pair.slice(0, i));
+      // Decode without turning "+" into a space, so name+tag@ emails survive.
+      let v = i === -1 ? '' : pair.slice(i + 1);
+      try { v = decodeURIComponent(v); } catch (_) {}
+      out[k.toLowerCase()] = v.trim();
+    });
+    if (out.m) out.m = out.m.toLowerCase();
+    return out;
+  }
+
+  function isEmail(v) {
+    return typeof v === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  // ---------- State ----------
+  const state = {
+    currentStep: STEP_WELCOME,
+    responses: {},
+    submissionId: null,
+    editFromReview: false,
+    submitting: false,
+    submitError: null
+  };
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        version: STORAGE_VERSION,
+        currentStep: state.currentStep,
+        responses: state.responses,
+        submissionId: state.submissionId
+      }));
+    } catch (e) { /* private mode / quota */ }
+  }
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw);
+      if (!parsed || parsed.version !== STORAGE_VERSION) {
+        localStorage.removeItem(STORAGE_KEY);
+        return;
+      }
+      if (typeof parsed.currentStep === 'number' && parsed.currentStep > 0 && parsed.currentStep <= STEP_DONE) {
+        state.currentStep = parsed.currentStep;
+      }
+      if (parsed.responses && typeof parsed.responses === 'object') state.responses = parsed.responses;
+      if (typeof parsed.submissionId === 'string') state.submissionId = parsed.submissionId;
+    } catch (e) {
+      try { localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+    }
+  }
+
+  // ---------- Market + identity ----------
+  function marketKey() {
+    if (MARKETS[params.m]) return params.m;
+    const picked = state.responses.market;
+    if (picked === MARKETS.nz.label) return 'nz';
+    if (picked === MARKETS.au.label) return 'au';
+    return null;
+  }
+
+  function respondentEmail() {
+    if (isEmail(params.email)) return params.email;
+    const v = state.responses.email;
+    return isEmail(v) ? v.trim() : '';
+  }
+
+  function shopUrl() {
+    const m = MARKETS[marketKey() || 'au'];
+    return m.store + '/discount/' + CODE + '?redirect=' + encodeURIComponent(COLLECTION_PATH);
+  }
+
+  // ---------- DOM helpers ----------
+  const app = document.getElementById('app');
+  const hintEl = document.getElementById('hint');
+  const progressEl = document.getElementById('progress');
+  const progressFillEl = document.getElementById('progressFill');
+  const backBtn = document.getElementById('backBtn');
+  const topLogo = document.getElementById('topLogo');
+  backBtn.addEventListener('click', function () {
+    if (isAnimating) return;
+    if (state.currentStep === STEP_WELCOME || state.currentStep === STEP_DONE) return;
+    goBack();
+  });
+
+  function el(tag, attrs, children) {
+    const node = document.createElement(tag);
+    if (attrs) {
+      for (const k in attrs) {
+        if (attrs[k] == null) continue;
+        if (k === 'class') node.className = attrs[k];
+        else if (k.startsWith('on') && typeof attrs[k] === 'function') {
+          node.addEventListener(k.slice(2).toLowerCase(), attrs[k]);
+        } else {
+          node.setAttribute(k, attrs[k]);
+        }
+      }
+    }
+    if (children) {
+      (Array.isArray(children) ? children : [children]).forEach(function (c) {
+        if (c == null) return;
+        node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+      });
+    }
+    return node;
+  }
+
+  function checkIcon() {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    const path = document.createElementNS(ns, 'path');
+    path.setAttribute('d', 'M5 12.5l4.5 4.5L19 7.5');
+    path.setAttribute('stroke', 'currentColor');
+    path.setAttribute('stroke-width', '2.5');
+    path.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(path);
+    return svg;
+  }
+
+  function dot() {
+    return el('div', { class: 'dot', 'aria-hidden': 'true' }, [
+      el('span', { class: 'dot__big' }, '$20'),
+      el('span', { class: 'dot__small' }, 'OFF')
+    ]);
+  }
+
+  // ---------- Chrome ----------
+  function updateProgress() {
+    if (state.currentStep === STEP_WELCOME || state.currentStep === STEP_DONE) {
+      progressEl.classList.remove('visible');
+      return;
+    }
+    progressEl.classList.add('visible');
+    const pct = state.currentStep === STEP_REVIEW ? 100 : (state.currentStep / TOTAL_QUESTIONS) * 100;
+    progressFillEl.style.width = pct + '%';
+  }
+
+  function updateChrome() {
+    const inFlow = state.currentStep !== STEP_WELCOME && state.currentStep !== STEP_DONE;
+    backBtn.classList.toggle('visible', inFlow);
+    topLogo.classList.toggle('visible', inFlow);
+  }
+
+  function setHint(html) {
+    hintEl.innerHTML = html || '';
+    hintEl.classList.toggle('visible', !!html);
+  }
+
+  // ---------- Screens ----------
+  let currentScreenEl = null;
+  let isAnimating = false;
+
+  function renderWelcome() {
+    return el('section', { class: 'screen screen--welcome' }, [
+      el('div', { class: 'screen__inner' }, [
+        el('img', { class: 'welcome__logo', src: 'logo.svg', alt: 'Bendon Lingerie' }),
+        dot(),
+        el('h1', { class: 'welcome__headline' }, 'Tell us what your sports bra gets wrong'),
+        el('p', { class: 'welcome__subtext' }, "We're designing our next sports bras now, and we'd rather build them around what you actually need. Answer 12 quick questions and get $20 off your next sports bra."),
+        el('p', { class: 'welcome__meta' }, 'Takes about 3 minutes'),
+        el('div', { class: 'action-row' }, [
+          el('button', { class: 'btn btn--lg', type: 'button', onclick: function () { advance(); } }, [
+            'Start',
+            el('span', { class: 'btn__hint' }, 'press Enter ↵')
+          ])
+        ])
+      ])
+    ]);
+  }
+
+  function renderQuestion(q, index) {
+    const screen = el('section', { class: 'screen screen--question' });
+    const inner = el('div', { class: 'screen__inner' });
+    screen.appendChild(inner);
+
+    const label = q.contact ? 'Nearly done' : 'Question ' + (index + 1) + ' of ' + SURVEY_COUNT;
+    inner.appendChild(el('div', { class: 'question__number' }, label));
+    inner.appendChild(el('h2', { class: 'question__text', id: 'qText' }, q.text));
+    if (q.sublabel) inner.appendChild(el('p', { class: 'question__sublabel' }, q.sublabel));
+
+    if (q.type === 'choice-single') {
+      inner.appendChild(renderChoiceSingle(q));
+    } else if (q.type === 'choice-multi') {
+      inner.appendChild(renderChoiceMulti(q));
+      if (q.otherOption) inner.appendChild(renderOtherInput(q));
+      inner.appendChild(renderOkRow(q));
+    } else if (q.type === 'size') {
+      inner.appendChild(renderSize(q));
+      inner.appendChild(renderOkRow(q));
+    } else if (q.type === 'text' || q.type === 'email') {
+      inner.appendChild(renderText(q));
+      inner.appendChild(renderOkRow(q));
+    }
+    return screen;
+  }
+
+  function letterFor(i) { return String.fromCharCode(65 + i); }
+
+  function renderChoiceSingle(q) {
+    const wrap = el('div', { class: 'choices', role: 'radiogroup', 'aria-labelledby': 'qText' });
+    q.options.forEach(function (opt, i) {
+      const isSelected = state.responses[q.id] === opt;
+      const btn = el('button', {
+        class: 'choice' + (isSelected ? ' selected' : ''),
+        type: 'button',
+        role: 'radio',
+        'aria-checked': isSelected ? 'true' : 'false',
+        onclick: function () {
+          state.responses[q.id] = opt;
+          saveState();
+          wrap.querySelectorAll('.choice').forEach(function (c) {
+            c.classList.remove('selected');
+            c.setAttribute('aria-checked', 'false');
+          });
+          btn.classList.add('selected');
+          btn.setAttribute('aria-checked', 'true');
+          setTimeout(function () { advance(); }, 200);
+        }
+      }, [
+        el('span', { class: 'choice__badge' }, letterFor(i)),
+        el('span', { class: 'choice__text' }, opt)
+      ]);
+      wrap.appendChild(btn);
+    });
+    return wrap;
+  }
+
+  function multiValue(q) {
+    return Array.isArray(state.responses[q.id]) ? state.responses[q.id] : [];
+  }
+
+  function renderChoiceMulti(q) {
+    const wrap = el('div', { class: 'choices', role: 'group', 'aria-labelledby': 'qText' });
+    const existing = multiValue(q);
+    q.options.forEach(function (opt, i) {
+      const isSelected = existing.indexOf(opt) !== -1;
+      const btn = el('button', {
+        class: 'choice' + (isSelected ? ' selected' : ''),
+        type: 'button',
+        role: 'checkbox',
+        'aria-checked': isSelected ? 'true' : 'false',
+        'data-option': opt,
+        onclick: function () { toggleMulti(q, opt); }
+      }, [
+        el('span', { class: 'choice__badge' }, letterFor(i)),
+        el('span', { class: 'choice__text' }, opt),
+        el('span', { class: 'choice__check' }, [checkIcon()])
+      ]);
+      wrap.appendChild(btn);
+    });
+    if (q.exact) wrap.appendChild(el('p', { class: 'pick-count', id: 'pickCount' }, ''));
+    return wrap;
+  }
+
+  function toggleMulti(q, opt) {
+    let arr = multiValue(q).slice();
+    const idx = arr.indexOf(opt);
+    if (idx !== -1) {
+      arr.splice(idx, 1);
+    } else {
+      if (q.exact && arr.length >= q.exact) return;
+      if (q.exclusive) {
+        arr = opt === q.exclusive ? [] : arr.filter(function (a) { return a !== q.exclusive; });
+      }
+      arr.push(opt);
+    }
+    state.responses[q.id] = arr;
+    saveState();
+    refreshMulti(q);
+  }
+
+  function refreshMulti(q) {
+    const arr = multiValue(q);
+    currentScreenEl.querySelectorAll('.choice').forEach(function (c) {
+      const on = arr.indexOf(c.getAttribute('data-option')) !== -1;
+      c.classList.toggle('selected', on);
+      c.setAttribute('aria-checked', on ? 'true' : 'false');
+      c.classList.toggle('is-locked', !!q.exact && !on && arr.length >= q.exact);
+    });
+    const count = document.getElementById('pickCount');
+    if (count) count.textContent = arr.length + ' of ' + q.exact + ' picked';
+    const other = document.getElementById('otherWrap');
+    if (other) other.style.display = arr.indexOf(q.otherOption) !== -1 ? '' : 'none';
+    refreshOkButton(q);
+  }
+
+  function renderOtherInput(q) {
+    const key = q.id + '_other';
+    const input = el('input', {
+      class: 'other-input',
+      id: 'otherInput',
+      type: 'text',
+      placeholder: q.id === 'q9' ? 'Which brand?' : 'Tell us what',
+      autocomplete: 'off',
+      'aria-label': 'Other, please specify',
+      value: typeof state.responses[key] === 'string' ? state.responses[key] : ''
+    });
+    input.addEventListener('input', function () {
+      state.responses[key] = input.value;
+      saveState();
+    });
+    const wrap = el('div', { id: 'otherWrap' }, [input]);
+    if (multiValue(q).indexOf(q.otherOption) === -1) wrap.style.display = 'none';
+    return wrap;
+  }
+
+  function renderSize(q) {
+    const current = state.responses[q.id] || {};
+    function field(key, label, options) {
+      const select = el('select', { class: 'size-select', id: 'size-' + key });
+      select.appendChild(el('option', { value: '' }, 'Choose'));
+      options.forEach(function (o) {
+        const opt = el('option', { value: o }, o);
+        if (current[key] === o) opt.selected = true;
+        select.appendChild(opt);
+      });
+      select.addEventListener('change', function () {
+        const v = Object.assign({}, state.responses[q.id] || {});
+        v[key] = select.value;
+        state.responses[q.id] = v;
+        saveState();
+        refreshOkButton(q);
+      });
+      return el('div', { class: 'size-field' }, [el('label', { for: 'size-' + key }, label), select]);
+    }
+    return el('div', { class: 'size-row' }, [
+      field('band', 'Band size', q.bands),
+      field('cup', 'Cup size', q.cups)
+    ]);
+  }
+
+  function renderText(q) {
+    const value = typeof state.responses[q.id] === 'string' ? state.responses[q.id] : '';
+    const attrs = {
+      class: 'text-input',
+      id: 'textInput',
+      placeholder: q.placeholder || 'Type your answer here…',
+      'aria-labelledby': 'qText',
+      autocomplete: q.type === 'email' ? 'email' : 'off'
+    };
+    let input;
+    if (q.type === 'email') {
+      input = el('input', Object.assign(attrs, { type: 'email', inputmode: 'email', autocapitalize: 'off', spellcheck: 'false' }));
+      input.value = value;
+    } else {
+      input = el('textarea', Object.assign(attrs, { rows: q.multiline ? '4' : '2', autocapitalize: 'sentences', spellcheck: 'true' }));
+      input.value = value;
+    }
+    input.addEventListener('input', function () {
+      state.responses[q.id] = input.value;
+      saveState();
+      refreshOkButton(q);
+    });
+    return input;
+  }
+
+  function renderOkRow(q) {
+    const ok = el('button', {
+      class: 'btn',
+      type: 'button',
+      id: 'okBtn',
+      onclick: function () { if (isAnswered(q)) advance(); }
+    }, ['OK', el('span', { class: 'btn__hint' }, 'press Enter ↵')]);
+    if (!isAnswered(q)) ok.setAttribute('disabled', '');
+    return el('div', { class: 'action-row' }, [ok]);
+  }
+
+  function refreshOkButton(q) {
+    const ok = document.getElementById('okBtn');
+    if (!ok) return;
+    if (isAnswered(q)) ok.removeAttribute('disabled');
+    else ok.setAttribute('disabled', '');
+  }
+
+  function formatAnswer(q) {
+    const v = state.responses[q.id];
+    if (q.type === 'size') return v && v.band && v.cup ? 'Band ' + v.band + ', cup ' + v.cup : '(no answer)';
+    if (Array.isArray(v)) return v.length ? withOther(q, v).join(', ') : '(no answer)';
+    if (typeof v === 'string') return v.trim() || '(no answer)';
+    return '(no answer)';
+  }
+
+  function withOther(q, arr) {
+    const extra = (state.responses[q.id + '_other'] || '').trim();
+    if (!q.otherOption || !extra) return arr.slice();
+    return arr.map(function (a) { return a === q.otherOption ? q.otherOption + ': ' + extra : a; });
+  }
+
+  function renderReview() {
+    const screen = el('section', { class: 'screen screen--review' });
+    const inner = el('div', { class: 'screen__inner' });
+    screen.appendChild(inner);
+
+    inner.appendChild(el('div', { class: 'question__number' }, 'Check your answers'));
+    inner.appendChild(el('h2', { class: 'question__text' }, 'All good? Send them through and your $20 code is next.'));
+
+    const list = el('div', { class: 'review__list' });
+    QUESTIONS.forEach(function (q, idx) {
+      list.appendChild(el('div', { class: 'review__row' }, [
+        el('div', { class: 'review__q' }, (q.contact ? '' : (idx + 1) + '. ') + q.text),
+        el('div', { class: 'review__a' }, formatAnswer(q)),
+        el('button', {
+          class: 'review__edit',
+          type: 'button',
+          onclick: function () {
+            state.editFromReview = true;
+            state.currentStep = idx + 1;
+            saveState();
+            renderCurrent('back');
+          }
+        }, 'Edit')
+      ]));
+    });
+    inner.appendChild(list);
+
+    if (state.submitError) {
+      inner.appendChild(el('div', { class: 'review__error', role: 'alert' }, [
+        el('strong', null, "That didn't send. "),
+        state.submitError
+      ]));
+    }
+
+    inner.appendChild(el('div', { class: 'action-row' }, [
+      el('button', { class: 'btn btn--lg', type: 'button', id: 'submitBtn', onclick: function () { submitResponses(); } }, [
+        'Send my answers',
+        el('span', { class: 'btn__hint' }, 'press Enter ↵')
+      ])
+    ]));
+    return screen;
+  }
+
+  function renderDone() {
+    const copyBtn = el('button', {
+      class: 'code-box__copy',
+      type: 'button',
+      onclick: function () {
+        const done = function () { copyBtn.textContent = 'Copied'; };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(CODE).then(done, done);
+        } else {
+          done();
+        }
+      }
+    }, 'Copy');
+
+    return el('section', { class: 'screen screen--thanks' }, [
+      el('div', { class: 'screen__inner' }, [
+        el('img', { class: 'welcome__logo', src: 'logo.svg', alt: 'Bendon Lingerie' }),
+        dot(),
+        el('h1', { class: 'thanks__headline' }, "Thank you. Here's your $20 off."),
+        el('p', { class: 'thanks__subtext' }, 'Your answers go straight to the team designing our next sports bras. Use this code on any sports bra.'),
+        el('div', { class: 'code-box' }, [el('span', { class: 'code-box__code' }, CODE), copyBtn]),
+        el('a', { class: 'btn btn--lg', href: shopUrl() }, 'Shop sports bras'),
+        el('p', { class: 'thanks__terms' }, '$20 off one sports bra. Ends ' + CODE_ENDS + '. One use per customer, no minimum spend. Sports bras only.')
+      ])
+    ]);
+  }
+
+  // ---------- Hints ----------
+  function isTouchDevice() {
+    return ('ontouchstart' in window) || (window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches);
+  }
+
+  function setHintForCurrent() {
+    if (isTouchDevice() || state.currentStep === STEP_DONE) { setHint(''); return; }
+    if (state.currentStep === STEP_WELCOME) { setHint('press <kbd>Enter</kbd> to start'); return; }
+    if (state.currentStep === STEP_REVIEW) { setHint(''); return; }
+    const q = QUESTIONS[state.currentStep - 1];
+    const last = q.options ? letterFor(q.options.length - 1) : '';
+    if (q.type === 'choice-single') setHint('press <kbd>A</kbd>-<kbd>' + last + '</kbd> to choose');
+    else if (q.type === 'choice-multi') setHint('press <kbd>A</kbd>-<kbd>' + last + '</kbd> to tick, <kbd>Enter</kbd> to continue');
+    else if (q.type === 'text') setHint('<kbd>Enter</kbd> to continue, <kbd>Shift</kbd>+<kbd>Enter</kbd> for a new line');
+    else setHint('press <kbd>Enter</kbd> to continue');
+  }
+
+  // ---------- Screen swap ----------
+  function renderCurrent(direction) {
+    const next = buildScreen(state.currentStep);
+    if (!currentScreenEl) {
+      app.appendChild(next);
+      void next.offsetWidth;
+      next.classList.add('active');
+      currentScreenEl = next;
+      afterScreenIn();
+      return;
+    }
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const old = currentScreenEl;
+    app.appendChild(next);
+    void next.offsetWidth;
+
+    if (direction === 'back') {
+      old.style.transform = 'translateY(40px)';
+      old.style.opacity = '0';
+      old.classList.remove('active');
+      next.style.transform = 'translateY(-40px)';
+      next.style.opacity = '0';
+      void next.offsetWidth;
+      next.style.transform = '';
+      next.style.opacity = '';
+      next.classList.add('active');
+    } else {
+      old.classList.add('exit-up');
+      old.classList.remove('active');
+      next.classList.add('active');
+    }
+    currentScreenEl = next;
+
+    setTimeout(function () {
+      if (old.parentNode) old.parentNode.removeChild(old);
+      isAnimating = false;
+      afterScreenIn();
+    }, 380);
+  }
+
+  function afterScreenIn() {
+    updateProgress();
+    updateChrome();
+    setHintForCurrent();
+    const q = QUESTIONS[state.currentStep - 1];
+    if (q && q.type === 'choice-multi') refreshMulti(q);
+    const ti = document.getElementById('textInput');
+    if (ti && !isTouchDevice()) {
+      try { ti.focus(); } catch (e) {}
+    }
+  }
+
+  function buildScreen(step) {
+    if (step === STEP_WELCOME) return renderWelcome();
+    if (step === STEP_REVIEW) return renderReview();
+    if (step === STEP_DONE) return renderDone();
+    return renderQuestion(QUESTIONS[step - 1], step - 1);
+  }
+
+  // ---------- Navigation ----------
+  function advance() {
+    if (state.currentStep === STEP_WELCOME) {
+      state.currentStep = 1;
+      saveState();
+      renderCurrent('forward');
+      return;
+    }
+    if (state.currentStep >= 1 && state.currentStep <= TOTAL_QUESTIONS) {
+      if (!isAnswered(QUESTIONS[state.currentStep - 1])) return;
+      if (state.editFromReview) {
+        state.editFromReview = false;
+        state.currentStep = STEP_REVIEW;
+      } else {
+        state.currentStep += 1;
+      }
+      saveState();
+      renderCurrent('forward');
+    }
+  }
+
+  function goBack() {
+    if (state.currentStep <= STEP_WELCOME) return;
+    state.editFromReview = false;
+    state.currentStep -= 1;
+    saveState();
+    renderCurrent('back');
+  }
+
+  function isAnswered(q) {
+    const v = state.responses[q.id];
+    if (q.type === 'choice-single') return typeof v === 'string' && q.options.indexOf(v) !== -1;
+    if (q.type === 'choice-multi') {
+      if (!Array.isArray(v) || !v.length) return false;
+      return q.exact ? v.length === q.exact : true;
+    }
+    if (q.type === 'size') return !!(v && v.band && v.cup);
+    if (q.type === 'text') return typeof v === 'string' && v.trim().length > 0;
+    if (q.type === 'email') return isEmail((v || '').trim());
+    return false;
+  }
+
+  // ---------- Keyboard ----------
+  document.addEventListener('keydown', function (e) {
+    if (isAnimating) return;
+    if (state.currentStep === STEP_WELCOME) {
+      if (e.key === 'Enter') { e.preventDefault(); advance(); }
+      return;
+    }
+    if (state.currentStep === STEP_DONE) return;
+    if (state.currentStep === STEP_REVIEW) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        if (!state.submitting) submitResponses();
+      }
+      return;
+    }
+
+    const q = QUESTIONS[state.currentStep - 1];
+    const tag = e.target && e.target.tagName;
+    const typing = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT';
+
+    if (e.key === 'Enter') {
+      if (tag === 'TEXTAREA' && e.shiftKey) return;
+      if (tag === 'SELECT') return;
+      if (isAnswered(q)) {
+        e.preventDefault();
+        advance();
+      } else if (tag === 'TEXTAREA') {
+        e.preventDefault();
+      }
+      return;
+    }
+
+    if (typing) return;
+
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      goBack();
+      return;
+    }
+
+    if (q.type === 'choice-single' || q.type === 'choice-multi') {
+      const code = e.key.length === 1 ? e.key.toUpperCase() : '';
+      if (/^[A-Z]$/.test(code)) {
+        const idx = code.charCodeAt(0) - 65;
+        const choices = currentScreenEl.querySelectorAll('.choice');
+        if (choices[idx]) {
+          e.preventDefault();
+          choices[idx].click();
+        }
+      }
+    }
+  });
+
+  // ---------- Submission ----------
+  function uuid() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      try { return window.crypto.randomUUID(); } catch (_) {}
+    }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      const r = Math.random() * 16 | 0;
+      return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+  }
+
+  function answerValue(q) {
+    const v = state.responses[q.id];
+    if (q.type === 'size') return v.band + ' ' + v.cup;
+    if (Array.isArray(v)) return withOther(q, v);
+    return (v || '').trim();
+  }
+
+  // Klaviyo client API body: one event carrying every answer, with the same
+  // answers written to the profile so they can be segmented on later.
+  function buildPayload() {
+    if (!state.submissionId) {
+      state.submissionId = uuid();
+      saveState();
+    }
+    const market = marketKey();
+    const now = new Date().toISOString();
+    const eventProps = { 'Submission ID': state.submissionId, Market: market.toUpperCase() };
+    const profileProps = { 'Sports Bra Survey Completed': now };
+    SURVEY.forEach(function (q, idx) {
+      const value = answerValue(q);
+      eventProps['Q' + (idx + 1) + ' ' + q.text] = Array.isArray(value) ? value.join(', ') : value;
+      eventProps[q.prop] = value;
+      profileProps[q.prop] = value;
+    });
+    return {
+      market: market,
+      done: { klaviyo: false, sheet: false },
+      sheet: {
+        market: market,
+        email: respondentEmail(),
+        answers: SURVEY.map(answerValue)
+      },
+      body: {
+        data: {
+          type: 'event',
+          attributes: {
+            properties: eventProps,
+            time: now,
+            unique_id: state.submissionId,
+            metric: { data: { type: 'metric', attributes: { name: METRIC_NAME } } },
+            profile: { data: { type: 'profile', attributes: { email: respondentEmail(), properties: profileProps } } }
+          }
+        }
+      }
+    };
+  }
+
+  function postJson(url, headers, body) {
+    const ctrl = ('AbortController' in window) ? new AbortController() : null;
+    const timer = ctrl ? setTimeout(function () { ctrl.abort(); }, SUBMIT_TIMEOUT_MS) : null;
+    return fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+    }, function (err) {
+      if (timer) clearTimeout(timer);
+      throw err;
+    });
+  }
+
+  // Klaviyo and the sheet are tracked separately so a retry never writes a
+  // second sheet row (Klaviyo also dedupes on unique_id).
+  function postOnce(job) {
+    job.done = job.done || { klaviyo: false, sheet: false };
+    if (TEST_MODE) {
+      window.__surveyLastPayload = job;
+      return Promise.resolve();
+    }
+    const tasks = [];
+    if (!job.done.klaviyo) {
+      tasks.push(postJson(
+        'https://a.klaviyo.com/client/events/?company_id=' + MARKETS[job.market].companyId,
+        { 'Content-Type': 'application/vnd.api+json', revision: KLAVIYO_REVISION },
+        job.body
+      ).then(function () { job.done.klaviyo = true; }));
+    }
+    if (!job.done.sheet) {
+      tasks.push(postJson(SHEET_WEBHOOK, { 'Content-Type': 'application/json' }, job.sheet)
+        .then(function () { job.done.sheet = true; }));
+    }
+    return Promise.allSettled(tasks).then(function (results) {
+      updatePending(job);
+      const failed = results.filter(function (r) { return r.status === 'rejected'; });
+      if (failed.length) throw failed[0].reason;
+    });
+  }
+
+  function postWithRetries(job) {
+    let attempt = 0;
+    function tryNext() {
+      const delay = SUBMIT_RETRY_DELAYS[attempt] || 0;
+      return new Promise(function (resolve) { setTimeout(resolve, delay); })
+        .then(function () { return postOnce(job); })
+        .catch(function (err) {
+          attempt += 1;
+          if (attempt < SUBMIT_RETRY_DELAYS.length) return tryNext();
+          throw err;
+        });
+    }
+    return tryNext();
+  }
+
+  // Failed sends wait in localStorage and retry when the tab is next online.
+  function readPending() {
+    try {
+      const arr = JSON.parse(localStorage.getItem(PENDING_KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+  function writePending(arr) {
+    try { localStorage.setItem(PENDING_KEY, JSON.stringify(arr)); } catch (e) {}
+  }
+  function jobId(job) { return job && job.body && job.body.data.attributes.unique_id; }
+  function enqueuePending(job) {
+    const queue = readPending();
+    if (queue.some(function (p) { return jobId(p) === jobId(job); })) return;
+    queue.push(job);
+    writePending(queue);
+  }
+  function updatePending(job) {
+    writePending(readPending().map(function (p) { return jobId(p) === jobId(job) ? job : p; }));
+  }
+  function removePending(id) {
+    writePending(readPending().filter(function (p) { return jobId(p) !== id; }));
+  }
+
+  let flushingQueue = false;
+  function flushPendingQueue() {
+    if (flushingQueue) return;
+    if (typeof navigator.onLine === 'boolean' && !navigator.onLine) return;
+    const queue = readPending();
+    if (!queue.length) return;
+    flushingQueue = true;
+    let chain = Promise.resolve();
+    queue.forEach(function (job) {
+      chain = chain.then(function () {
+        return postWithRetries(job).then(function () { removePending(jobId(job)); }, function () {});
+      });
+    });
+    chain.then(function () { flushingQueue = false; });
+  }
+
+  function setSubmitButtonState(label, disabled) {
+    const btn = document.getElementById('submitBtn');
+    if (!btn) return;
+    btn.textContent = label;
+    if (disabled) btn.setAttribute('disabled', '');
+    else btn.removeAttribute('disabled');
+  }
+
+  function submitResponses() {
+    if (state.submitting) return;
+
+    const missing = QUESTIONS.filter(function (q) { return !isAnswered(q); });
+    if (missing.length) {
+      state.submitError = missing.length + (missing.length > 1 ? ' questions need' : ' question needs') + ' an answer.';
+      renderCurrent('forward');
+      return;
+    }
+
+    const job = buildPayload();
+
+    if (typeof navigator.onLine === 'boolean' && !navigator.onLine) {
+      enqueuePending(job);
+      state.submitError = "You're offline. Your answers are saved here and will send when you're back online.";
+      renderCurrent('forward');
+      return;
+    }
+
+    state.submitting = true;
+    state.submitError = null;
+    setSubmitButtonState('Sending…', true);
+    enqueuePending(job);
+
+    postWithRetries(job)
+      .then(function () {
+        state.submitting = false;
+        removePending(jobId(job));
+        state.currentStep = STEP_DONE;
+        saveState();
+        renderCurrent('forward');
+      })
+      .catch(function (err) {
+        state.submitting = false;
+        const msg = (err && err.message) || '';
+        state.submitError = /abort/i.test(msg)
+          ? 'The connection timed out. Your answers are saved, so try again.'
+          : 'Something went wrong on our side. Your answers are saved, so try again.';
+        renderCurrent('forward');
+      });
+  }
+
+  // ---------- Connection ----------
+  const offlineBanner = document.getElementById('offlineBanner');
+  function refreshConnectionUI() {
+    const offline = typeof navigator.onLine === 'boolean' ? !navigator.onLine : false;
+    offlineBanner.classList.toggle('visible', offline);
+    document.body.classList.toggle('is-offline', offline);
+  }
+
+  window.addEventListener('online', function () { refreshConnectionUI(); flushPendingQueue(); });
+  window.addEventListener('offline', refreshConnectionUI);
+  window.addEventListener('pageshow', function () { refreshConnectionUI(); flushPendingQueue(); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') { refreshConnectionUI(); flushPendingQueue(); }
+  });
+
+  // ---------- Init ----------
+  loadState();
+  refreshConnectionUI();
+  renderCurrent();
+  setTimeout(flushPendingQueue, 500);
+})();
+</script>
+</body>
+</html>
