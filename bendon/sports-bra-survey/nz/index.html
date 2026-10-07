@@ -694,7 +694,7 @@ body.is-offline .back-btn { top: 58px; }
     {
       id: 'q5', type: 'choice-single', prop: 'Sports Bra Support Style',
       text: 'How do you like your support?',
-      options: ['Each cup separate, like a regular bra', 'Held in flat and firm', 'A mix of both', 'Not sure']
+      options: ['Each cup sized separately, like a regular bra', 'Held in flat and firm', 'A mix of both', 'Not sure']
     },
     {
       id: 'q6', type: 'choice-single', prop: 'Sports Bra Wire Preference',
@@ -717,7 +717,7 @@ body.is-offline .back-btn { top: 58px; }
       id: 'q9', type: 'choice-multi', prop: 'Sports Bra Brands Worn',
       text: 'Which brands have you worn in the last 12 months?',
       sublabel: 'Tick all that apply',
-      options: ['Bendon', 'Lululemon', 'Nike', 'Berlei', 'Lorna Jane', 'Shock Absorber', 'Freya', 'Other'],
+      options: ['Bendon', 'Lululemon', 'Nike', 'Berlei', 'Lorna Jane', 'Shock Absorber', 'Other'],
       otherOption: 'Other'
     },
     {
@@ -729,7 +729,10 @@ body.is-offline .back-btn { top: 58px; }
       text: 'Which of these would you buy?',
       sublabel: 'Tick all that apply',
       options: ['A high-impact bra built for fuller cups', 'A wired medium-impact bra', 'A light wirefree bra you can wear all day', 'None of these'],
-      exclusive: 'None of these'
+      exclusive: 'None of these',
+      otherOption: 'None of these',
+      otherPlaceholder: 'What would you buy?',
+      otherRequired: true
     },
     {
       id: 'q12', type: 'text', prop: 'Sports Bra Missing',
@@ -930,8 +933,8 @@ body.is-offline .back-btn { top: 58px; }
       el('div', { class: 'screen__inner' }, [
         el('img', { class: 'welcome__logo', src: 'logo.svg', alt: 'Bendon Lingerie' }),
         dot(),
-        el('h1', { class: 'welcome__headline' }, 'Tell us what your sports bra gets wrong'),
-        el('p', { class: 'welcome__subtext' }, "We're designing our next sports bras now, and we'd rather build them around what you actually need. Answer 12 quick questions and get $20 off your next sports bra."),
+        el('h1', { class: 'welcome__headline' }, 'Tell us how we can improve'),
+        el('p', { class: 'welcome__subtext' }, "We're designing our next range of sports bras now, and we want to build it based on your feedback. Answer 12 quick questions and unlock $20 off your next sports bra purchase."),
         el('p', { class: 'welcome__meta' }, 'Takes about 3 minutes'),
         el('div', { class: 'action-row' }, [
           el('button', { class: 'btn btn--lg', type: 'button', onclick: function () { advance(); } }, [
@@ -1065,7 +1068,7 @@ body.is-offline .back-btn { top: 58px; }
       class: 'other-input',
       id: 'otherInput',
       type: 'text',
-      placeholder: q.id === 'q9' ? 'Which brand?' : 'Tell us what',
+      placeholder: q.otherPlaceholder || (q.id === 'q9' ? 'Which brand?' : 'Tell us what'),
       autocomplete: 'off',
       'aria-label': 'Other, please specify',
       value: typeof state.responses[key] === 'string' ? state.responses[key] : ''
@@ -1073,6 +1076,7 @@ body.is-offline .back-btn { top: 58px; }
     input.addEventListener('input', function () {
       state.responses[key] = input.value;
       saveState();
+      refreshOkButton(q);
     });
     const wrap = el('div', { id: 'otherWrap' }, [input]);
     if (multiValue(q).indexOf(q.otherOption) === -1) wrap.style.display = 'none';
@@ -1343,6 +1347,7 @@ body.is-offline .back-btn { top: 58px; }
     if (q.type === 'choice-single') return typeof v === 'string' && q.options.indexOf(v) !== -1;
     if (q.type === 'choice-multi') {
       if (!Array.isArray(v) || !v.length) return false;
+      if (q.otherRequired && v.indexOf(q.otherOption) !== -1 && !(state.responses[q.id + '_other'] || '').trim()) return false;
       return q.exact ? v.length === q.exact : true;
     }
     if (q.type === 'size') return !!(v && v.band && v.cup);
