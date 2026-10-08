@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-07T17:31:55",
+ "generated": "2026-10-08T17:31:46",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -177,10 +177,11 @@
   "2026-10-01",
   "2026-10-06",
   "2026-10-07",
-  "2026-10-08"
+  "2026-10-08",
+  "2026-10-09"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-08",
+ "last_date": "2026-10-09",
  "deals": [
   {
    "date": "2026-08-03",
@@ -393,7 +394,7 @@
     }
    ],
    "source_titles": [
-    "Chilled Black Angus M2-3 Rump Cap (+ Free Chimichurri)"
+    "Chilled Black Angus M2-3 Rump Cap with Free Chimichurri & Fr"
    ],
    "units_per_deal": null
   },
@@ -769,21 +770,21 @@
    "price": "$899",
    "rev": 112522,
    "orders": 90,
-   "deal_rev": 0,
-   "deal_units": 0,
+   "deal_rev": 1288,
+   "deal_units": 1,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
    "buyers": 75,
    "returning": 52,
-   "deal_buyers": null,
-   "repeat_deal_buyers": null,
+   "deal_buyers": 1,
+   "repeat_deal_buyers": 0,
    "in_promo": false,
    "promo_name": null,
-   "deal_returning": null,
+   "deal_returning": 1,
    "windows": {
     "7": {
-     "prod_days_sold": 3,
+     "prod_days_sold": 2,
      "prod_days_total": 7,
      "dow_days": [
       "2026-07-18",
@@ -806,8 +807,8 @@
      ],
      "bau_mean": 81482.18,
      "bau_reach": "2026-07-06",
-     "prod_units_mean": 0.57,
-     "prod_rev_mean": 628
+     "prod_units_mean": null,
+     "prod_rev_mean": null
     },
     "14": {
      "prod_days_sold": 3,
@@ -846,7 +847,7 @@
    },
    "basket": [],
    "source_titles": [
-    "Picanha's Chilled Whole M6-7 Wagyu Rump Cap with Chimichurri"
+    "Chilled Wagyu M6-7 Rump Cap (Picanha)"
    ],
    "units_per_deal": null
   },
@@ -3956,7 +3957,7 @@
    },
    "basket": [],
    "source_titles": [
-    "Buy 2kg, Get 1Kg Free - Chilled Wagyu M3-4 Untrimmed Hanger "
+    "Buy 2 x 1.8kg, Get 1.8Kg Free - Chilled Wagyu M3-4 Untrimmed"
    ],
    "units_per_deal": null
   },
@@ -4558,7 +4559,7 @@
     }
    ],
    "source_titles": [
-    "Buy 2kg, Get 1Kg Free - Chilled Wagyu M3-4 Untrimmed Hanger "
+    "Buy 2 x 1.8kg, Get 1.8Kg Free - Chilled Wagyu M3-4 Untrimmed"
    ],
    "units_per_deal": null
   },
@@ -4813,7 +4814,7 @@
    "mech": "Quantity Flash",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/lambrackcapoff2.png?width=520",
    "price": "$918",
-   "rev": 125053.45,
+   "rev": 125751.45,
    "orders": 101,
    "deal_rev": 1156,
    "deal_units": 2,
@@ -4904,20 +4905,20 @@
    "mech": "Buy 2, Get 1 Free",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/BeefHanger_8356e176-011d-46e7-952b-802ffb9c1e1c.jpg?width=520",
    "price": "$1,076",
-   "rev": 4794,
-   "orders": 3,
-   "deal_rev": 0,
-   "deal_units": 0,
+   "rev": 151833.15,
+   "orders": 116,
+   "deal_rev": 13988,
+   "deal_units": 13,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 3,
-   "returning": 3,
-   "deal_buyers": null,
-   "repeat_deal_buyers": null,
+   "buyers": 111,
+   "returning": 78,
+   "deal_buyers": 13,
+   "repeat_deal_buyers": 4,
    "in_promo": true,
    "promo_name": "Jc Warehouse Sale",
-   "deal_returning": null,
+   "deal_returning": 12,
    "windows": {
     "7": {
      "prod_days_sold": 2,
@@ -4983,9 +4984,108 @@
      "prod_rev_mean": null
     }
    },
+   "basket": [
+    {
+     "pid": "9041047322856",
+     "title": "FREE - Frozen Norwegian Salmon Pieces 500g",
+     "buyers": 2,
+     "share": 15,
+     "rev": 0
+    }
+   ],
+   "source_titles": [
+    "Buy 2 x 1.8kg, Get 1.8Kg Free - Chilled Wagyu M3-4 Untrimmed"
+   ],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-10-09",
+   "dow": 4,
+   "deal_id": "oct-prawns-b2g1",
+   "title": "Buy Two Kilos of Jumbo King Prawns, Get the Third Free",
+   "mech": "Buy 2, Get 1 Free",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/skull-island.jpg?width=520",
+   "price": "$732",
+   "rev": 10600.45,
+   "orders": 12,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 11,
+   "returning": 4,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": true,
+   "promo_name": "Jc Warehouse Sale",
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 3,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-17",
+      "2026-07-03",
+      "2026-06-05",
+      "2026-05-22",
+      "2026-05-15",
+      "2026-05-08"
+     ],
+     "dow_mean": 81297.22,
+     "dow_reach": "2026-05-08",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": 0.71,
+     "prod_rev_mean": 261.43
+    },
+    "14": {
+     "prod_days_sold": 5,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-17",
+      "2026-07-03",
+      "2026-06-05",
+      "2026-05-22",
+      "2026-05-15",
+      "2026-05-08"
+     ],
+     "dow_mean": 81297.22,
+     "dow_reach": "2026-05-08",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": 0.5,
+     "prod_rev_mean": 183
+    }
+   },
    "basket": [],
    "source_titles": [
-    "Buy 2kg, Get 1Kg Free - Chilled Wagyu M3-4 Untrimmed Hanger "
+    "Frozen Shark Bay Jumbo King Prawns Head-On 1kg"
    ],
    "units_per_deal": null
   }
@@ -6532,15 +6632,22 @@
    "deal": true
   },
   "2026-10-07": {
-   "rev": 125053.45,
+   "rev": 125751.45,
    "orders": 101,
    "bau": false,
    "promo": true,
    "deal": true
   },
   "2026-10-08": {
-   "rev": 4794,
-   "orders": 3,
+   "rev": 151833.15,
+   "orders": 116,
+   "bau": false,
+   "promo": true,
+   "deal": true
+  },
+  "2026-10-09": {
+   "rev": 10600.45,
+   "orders": 12,
    "bau": false,
    "promo": true,
    "deal": true
