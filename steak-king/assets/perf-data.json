@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-08T17:31:46",
+ "generated": "2026-10-09T17:31:56",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -178,10 +178,11 @@
   "2026-10-06",
   "2026-10-07",
   "2026-10-08",
-  "2026-10-09"
+  "2026-10-09",
+  "2026-10-10"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-09",
+ "last_date": "2026-10-10",
  "deals": [
   {
    "date": "2026-08-03",
@@ -5006,15 +5007,15 @@
    "mech": "Buy 2, Get 1 Free",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/skull-island.jpg?width=520",
    "price": "$732",
-   "rev": 10600.45,
-   "orders": 12,
+   "rev": 120747.3,
+   "orders": 121,
    "deal_rev": 0,
    "deal_units": 0,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 11,
-   "returning": 4,
+   "buyers": 112,
+   "returning": 62,
    "deal_buyers": null,
    "repeat_deal_buyers": null,
    "in_promo": true,
@@ -5087,6 +5088,95 @@
    "source_titles": [
     "Frozen Shark Bay Jumbo King Prawns Head-On 1kg"
    ],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-10-10",
+   "dow": 5,
+   "deal_id": "oct-surf-turf",
+   "title": "The Surf and Turf Bundle: Wagyu Picanha and Two Lobster Tails for $868",
+   "mech": "Fixed Bundle · Surf and Turf",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/Screenshot2026-07-24110258.png?width=520",
+   "price": "$868",
+   "rev": 400,
+   "orders": 2,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 2,
+   "returning": 1,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": true,
+   "promo_name": "Jc Warehouse Sale",
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 0,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-18",
+      "2026-07-04",
+      "2026-06-06",
+      "2026-05-16",
+      "2026-05-02",
+      "2026-03-07"
+     ],
+     "dow_mean": 79123.89,
+     "dow_reach": "2026-03-07",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    },
+    "14": {
+     "prod_days_sold": 0,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-18",
+      "2026-07-04",
+      "2026-06-06",
+      "2026-05-16",
+      "2026-05-02",
+      "2026-03-07"
+     ],
+     "dow_mean": 79123.89,
+     "dow_reach": "2026-03-07",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    }
+   },
+   "basket": [],
+   "source_titles": [],
    "units_per_deal": null
   }
  ],
@@ -6646,8 +6736,15 @@
    "deal": true
   },
   "2026-10-09": {
-   "rev": 10600.45,
-   "orders": 12,
+   "rev": 120747.3,
+   "orders": 121,
+   "bau": false,
+   "promo": true,
+   "deal": true
+  },
+  "2026-10-10": {
+   "rev": 400,
+   "orders": 2,
    "bau": false,
    "promo": true,
    "deal": true
