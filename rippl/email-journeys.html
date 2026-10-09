@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rippl Email Journeys</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1E3F;
+    --ink: #0A1E3F;
+    --soft: #5B6578;
+    --line: #E3E7EE;
+    --wash: #F5F7FA;
+    --accent: #2F6FDB;
+    --accent-wash: #EAF1FC;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #fff; color: var(--ink); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  header.top { padding: 56px 0 28px; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); margin: 0 0 12px; }
+  h1 { font-size: 38px; line-height: 1.12; letter-spacing: -0.02em; margin: 0 0 14px; font-weight: 700; }
+  .thesis { font-size: 19px; color: var(--soft); margin: 0; max-width: 620px; }
+
+  nav.tabs { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid var(--line); }
+  nav.tabs .wrap { display: flex; gap: 6px; }
+  nav.tabs button { font: inherit; font-size: 15px; font-weight: 600; color: var(--soft); background: none; border: none; padding: 16px 14px 14px; border-bottom: 3px solid transparent; cursor: pointer; }
+  nav.tabs button[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--navy); }
+
+  section.flow { display: none; padding: 40px 0 80px; }
+  section.flow.active { display: block; }
+
+  h2 { font-size: 28px; line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 10px; }
+  h3.part { font-size: 20px; margin: 56px 0 6px; letter-spacing: -0.01em; }
+  .lede { font-size: 17px; color: var(--soft); margin: 0 0 28px; max-width: 640px; }
+
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-bottom: 36px; }
+  .facts div { background: #fff; padding: 16px 18px; }
+  .facts .k { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); margin-bottom: 4px; }
+  .facts .v { font-size: 15px; font-weight: 500; }
+
+  .arc { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 40px; }
+  .arc span.step { background: var(--accent-wash); color: var(--navy); font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; }
+  .arc span.to { color: #A3ADBD; font-size: 14px; }
+
+  ol.journey { list-style: none; margin: 0; padding: 0; position: relative; }
+  ol.journey::before { content: ""; position: absolute; left: 47px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
+  ol.journey > li { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 0 20px; margin-bottom: 22px; position: relative; }
+  .when { text-align: center; padding-top: 18px; position: relative; z-index: 1; }
+  .when .day { display: inline-block; background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 8px; white-space: nowrap; }
+  .when .sub { display: block; font-size: 12px; color: var(--soft); margin-top: 6px; line-height: 1.3; background: #fff; }
+
+  .card { border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; background: #fff; }
+  .card .num { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .card h4 { font-size: 20px; line-height: 1.25; margin: 0 0 16px; letter-spacing: -0.01em; }
+  .card dl { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px 18px; margin: 0; }
+  .card dt { font-size: 13px; font-weight: 600; color: var(--soft); padding-top: 1px; }
+  .card dd { margin: 0; font-size: 15px; }
+  .card dd.thought { font-weight: 600; }
+  .card .note { margin-top: 16px; padding: 12px 14px; background: var(--wash); border-radius: 10px; font-size: 14px; color: var(--soft); }
+
+  ol.journey > li.quiet .card { background: var(--wash); border-style: dashed; }
+  ol.journey > li.quiet .card h4 { margin-bottom: 6px; font-size: 17px; }
+  ol.journey > li.quiet .card p { margin: 0; font-size: 15px; color: var(--soft); }
+  ol.journey > li.quiet .when .day { background: #fff; color: var(--soft); border: 1px solid var(--line); }
+
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); border: 1px solid var(--line); border-radius: 6px; padding: 2px 7px; margin-left: 8px; vertical-align: 3px; }
+
+  footer { border-top: 1px solid var(--line); padding: 24px 0 40px; font-size: 13px; color: var(--soft); }
+
+
+  .card.has-mock { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 28px; align-items: start; }
+  .wrap { max-width: 1040px; }
+
+  figure.mock { margin: 0; }
+  figure.mock figcaption { font-size: 11px; color: #8A93A3; text-align: center; margin-top: 8px; }
+  .m-screen { position: relative; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #fff; box-shadow: 0 8px 24px rgba(10, 30, 63, 0.08); font-size: 11px; line-height: 1.4; color: var(--navy); }
+  .m-top { text-align: center; font-weight: 800; letter-spacing: 0.22em; font-size: 12px; padding: 12px 0 10px; border-bottom: 1px solid var(--line); }
+  .m-pad { padding: 14px 16px; }
+  .m-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .m-h { font-size: 16px; font-weight: 700; line-height: 1.2; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .m-bar { height: 6px; background: #E6EAF0; border-radius: 3px; margin: 0 0 6px; }
+  .m-btn { background: var(--navy); color: #fff; text-align: center; font-weight: 600; font-size: 11px; padding: 9px 10px; border-radius: 999px; margin-top: 12px; }
+  .m-src { font-size: 9px; color: #8A93A3; margin-top: 6px; }
+  .m-line { font-size: 10px; font-weight: 600; margin-top: 10px; padding: 6px 8px; background: var(--accent-wash); border-radius: 6px; }
+  .m-results { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 10px 0 0; }
+  .m-results div { border: 1px solid var(--line); border-radius: 8px; padding: 7px 8px; }
+  .m-results span { display: block; font-size: 9px; color: #6B7487; }
+  .m-results b { font-size: 12px; }
+  .m-mini { display: flex; gap: 10px; align-items: center; margin: 0 16px 14px; padding: 8px; border-radius: 10px; background: #F4F6F9; }
+  .m-mini img { width: 54px; height: 54px; object-fit: cover; border-radius: 6px; }
+  .m-mini > div { flex: 1; }
+  .m-mini b { display: block; font-size: 11px; margin-bottom: 5px; }
+  .m-ph { display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; font-size: 10px; font-weight: 600; color: #fff; background: linear-gradient(135deg, #0A1E3F, #2F6FDB); }
+  .m-img { overflow: hidden; background: #EEF1F5; }
+  .m-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .m-split { display: flex; gap: 4px; margin: 6px 0 10px; }
+  .m-split span { flex: 1; text-align: center; font-size: 9px; font-weight: 600; padding: 5px 2px; border: 1px dashed #9FB3D9; border-radius: 6px; color: var(--accent); }
+  .m-tip { margin: 8px 0 12px; padding: 10px 12px; border-left: 3px solid var(--accent); background: var(--accent-wash); border-radius: 0 8px 8px 0; font-size: 11px; font-weight: 600; }
+  .m-tip b { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 3px; }
+  .m-sign { font-size: 10px; font-style: italic; color: #6B7487; margin-top: 8px; }
+  .m-rows { display: grid; gap: 5px; margin: 8px 0 10px; }
+  .m-rows div { font-size: 10.5px; padding: 6px 8px 6px 22px; background: #F4F6F9; border-radius: 6px; position: relative; }
+  .m-rows div::before { content: ""; position: absolute; left: 8px; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .m-ticks div::before { content: "\2713"; width: auto; height: auto; background: none; top: 5px; left: 8px; color: var(--accent); font-weight: 700; font-size: 10px; border-radius: 0; }
+  .m-lab { background: var(--navy); color: #fff; border-radius: 10px; padding: 10px 12px; display: grid; gap: 4px; font-size: 10.5px; }
+  .m-lab b { font-weight: 700; }
+  .m-lab i { font-style: normal; opacity: 0.6; }
+  .m-lab small { font-size: 8.5px; opacity: 0.7; margin-top: 2px; }
+  .m-price { text-align: center; margin: 4px 0 12px; }
+  .m-price s { display: block; color: #8A93A3; font-size: 12px; }
+  .m-price b { display: block; font-size: 30px; line-height: 1.1; letter-spacing: -0.02em; }
+  .m-price span { font-size: 10px; color: #6B7487; }
+  .m-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
+  .m-vs div { border-radius: 8px; padding: 8px; text-align: center; background: #F4F6F9; }
+  .m-vs div:first-child { background: var(--navy); color: #fff; }
+  .m-vs span { display: block; font-size: 9px; opacity: 0.75; }
+  .m-vs b { font-size: 12px; }
+  .m-faq { border-top: 1px solid var(--line); margin-top: 4px; }
+  .m-faq div { font-size: 10px; padding: 7px 14px 7px 0; border-bottom: 1px solid var(--line); position: relative; }
+  .m-faq div::after { content: "+"; position: absolute; right: 2px; top: 5px; color: #8A93A3; font-size: 12px; }
+  .m-meta { font-size: 10px; color: #6B7487; margin-top: -4px; }
+  .m-table div { display: flex; justify-content: space-between; font-size: 10px; padding: 4px 0; border-bottom: 1px solid #EEF1F5; }
+  .m-table .m-total { font-weight: 700; font-size: 11.5px; border-bottom: none; padding-top: 6px; }
+  .m-table .m-gst { color: #8A93A3; font-size: 9px; border-bottom: none; padding-top: 0; }
+  .m-addr { margin-top: 10px; padding: 8px 10px; background: #F4F6F9; border-radius: 8px; }
+  .m-addr b { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: #6B7487; margin-bottom: 6px; }
+  .m-reply { margin-top: 10px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; text-align: center; font-weight: 600; font-size: 10.5px; }
+  .m-ideas { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
+  .m-ideas div { font-size: 10px; font-weight: 600; }
+  .m-ideas i { display: block; height: 46px; border-radius: 6px; margin-bottom: 4px; background: linear-gradient(135deg, #DCE4F0, #EEF2F8); }
+  .m-ig { padding: 9px 10px; border-radius: 8px; background: var(--accent-wash); font-size: 10.5px; }
+  .m-ig b { display: block; font-size: 11px; }
+  .m-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .m-steps div { text-align: center; font-size: 9.5px; font-weight: 600; }
+  .m-steps b { display: block; width: 22px; height: 22px; line-height: 22px; margin: 0 auto 4px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 10px; }
+  .m-foot { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 0 14px; background: #F4F6F9; }
+  .m-foot span { height: 4px; width: 50%; background: #DCE1E8; border-radius: 2px; }
+  .m-foot span + span { width: 32%; }
+  .m-tag { margin: 0 16px 12px; background: #FFF4D6; color: #7A5300; font-size: 9.5px; font-weight: 700; padding: 6px 8px; border-radius: 6px; text-align: center; }
+
+  @media (max-width: 860px) {
+    .card.has-mock { grid-template-columns: minmax(0, 1fr); }
+    figure.mock { max-width: 300px; margin: 4px auto 0; width: 100%; }
+  }
+
+  @media (max-width: 640px) {
+    header.top { padding: 36px 0 20px; }
+    h1 { font-size: 30px; }
+    .thesis { font-size: 17px; }
+    .facts { grid-template-columns: 1fr; }
+    ol.journey::before { left: 0; display: none; }
+    ol.journey > li { grid-template-columns: minmax(0, 1fr); }
+    .when { text-align: left; padding: 0 0 8px; }
+    .when .sub { display: inline; margin-left: 8px; }
+    .card { padding: 18px; }
+    .card dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .card dd { margin-bottom: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Rippl · Email journeys</p>
+    <h1>Water report and self-serve cans.</h1>
+    <p class="thesis">What each email does, when it lands, and how the reader should feel when they finish it.</p>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <div class="wrap">
+    <button role="tab" aria-selected="true" aria-controls="flow-water" id="tab-water">Water report</button>
+    <button role="tab" aria-selected="false" aria-controls="flow-cans" id="tab-cans">Self-serve cans</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- WATER REPORT -->
+<section class="flow active" id="flow-water" role="tabpanel" aria-labelledby="tab-water">
+  <h2>Take them from their report to the Nano.</h2>
+  <p class="lede">Six short emails over twelve days. Each one does one job, and together they move the reader from curious to ready to buy.</p>
+
+  <div class="facts">
+    <div><div class="k">Starts when</div><div class="v">They finish their water report</div></div>
+    <div><div class="k">Stops when</div><div class="v">They buy a Nano, or after email 6</div></div>
+    <div><div class="k">Who's left out</div><div class="v">Anyone who already owns a Nano</div></div>
+  </div>
+
+  <div class="arc" aria-label="The journey in one line">
+    <span class="step">You checked</span><span class="to">→</span>
+    <span class="step">What's inside</span><span class="to">→</span>
+    <span class="step">A useful tip</span><span class="to">→</span>
+    <span class="step">The fix</span><span class="to">→</span>
+    <span class="step">The price</span><span class="to">→</span>
+    <span class="step">Why now</span>
+  </div>
+
+  <ol class="journey">
+    <li>
+      <div class="when"><span class="day">Day 0</span><span class="sub">straight away</span></div>
+      <div class="card has-mock"><div class="card-text">
+        <div class="num">Email 1</div>
+        <h4>Your water report for [suburb]</h4>
+        <dl>
+          <dt>Sends</dt><dd>As soon as they finish the report on the page.</dd>
+          <dt>Motive</dt><dd>Here's what's in your water, in your own numbers.</dd>
+          <dt>Pushes them to</dt><dd>Their full report on the page. A small Nano mention at the bottom, no price.</dd>
+          <dt>Feeling</dt><dd>Curious. It's about their street, not water in general.</dd>
+          <dt>They leave thinking</dt><dd class="thought">"That's my water, in actual numbers."</dd>
+        </dl>
+        <div class="note">This email pulls in that person's own figures. If a reading is over a limit, the email says so plainly, as the utility's own published figure.</div>
+        </div>
+        <figure class="mock"><div class="m-screen"><div class="m-top">RIPPL</div><div class="m-pad">
+      <div class="m-eyebrow">Your water report</div>
+      <div class="m-h">Here's what's in Sydney's water</div>
+      <div class="m-bar" style="width:92%"></div><div class="m-bar" style="width:70%"></div>
+      <div class="m-results">
+        <div><span>Chlorine</span><b>0.88 mg/L</b></div>
+        <div><span>Chlorine by-products</span><b>0.05 mg/L</b></div>
+        <div><span>Lead</span><b>0.0008 mg/L</b></div>
+        <div><span>Hardness</span><b>Soft · 50.2</b></div>
+      </div>
+      <div class="m-line">Within the Australian limits</div>
+      <div class="m-src">Source: Sydney Water · Potts Hill · 2025-26</div>
+      <div class="m-btn">See your full report</div>
+    </div>
+    <div class="m-mini"><img src="https://cdn.shopify.com/s/files/1/0701/0549/7634/files/rippl-nano-water-filtration-system-3467011.png?v=1789062492&width=300" alt=""><div><b>Rippl Nano</b><div class="m-bar" style="width:90%"></div><div class="m-bar" style="width:60%"></div></div></div>
+    <div class="m-tag">Figures change for every postcode</div><div class="m-foot"><span></span><span></span></div></div><figcaption>Layout guide. Copy and images are placeholders.</figcaption></figure>
+      </div>
+    </li>
+    <li>
+      <div class="when"><span class="day">Day 2</span></div>
+      <div class="card has-mock"><div class="card-text">
+        <div class="num">Email 2</div>
+        <h4>What's in every glass</h4>
+        <dl>
+          <dt>Sends</dt><dd>Two days after the report.</dd>
+          <dt>Motive</dt><dd>The chlorine or chloramine their town adds, and why it stays in every glass.</dd>
+          <dt>Pushes them to</dt><dd>Back to their report.</dd>
+          <dt>Feeling</dt><dd>More aware, not alarmed.</dd>
+          <dt>They leave thinking</dt><dd class="thought">"So that's the taste. I hadn't thought about it being in every glass."</dd>
+        </dl>
+        <div class="note">Written three ways: chlorine towns, chloramine towns, and a neutral version for towns that use both. Towns that add neither skip this email.</div>
+        </div>
+        <figure class="mock"><div class="m-screen"><div class="m-top">RIPPL</div><div class="m-ph" style="height:120px;">Image: a glass filling at the tap</div>
+    <div class="m-pad">
+      <div class="m-eyebrow">From your water report</div>
+      <div class="m-h">What's in every glass</div>
+      <div class="m-bar" style="width:95%"></div><div class="m-bar" style="width:88%"></div><div class="m-bar" style="width:60%"></div>
+      <div class="m-split"><span>Chlorine town</span><span>Chloramine town</span><span>Both</span></div>
+      <div class="m-bar" style="width:90%"></div><div class="m-bar" style="width:75%"></div>
+      <div class="m-src">Source: your water authority's published figures</div>
+      <div class="m-btn">See your report</div>
+    </div><div class="m-foot"><span></span><span></span></div></div><figcaption>Layout guide. Copy and images are placeholders.</figcaption></figure>
+      </div>
+    </li>
+    <li>
+      <div class="when"><span class="day">Day 4</span></div>
+      <div class="card has-mock"><div class="card-text">
+        <div class="num">Email 3</div>
+        <h4>The first glass of the morning</h4>
+        <dl>
+          <dt>Sends</dt><dd>Two days later.</dd>
+          <dt>Motive</dt><dd>A tip worth knowing: run the cold tap before your first glass, because metal from pipes builds up while water sits overnight.</dd>
+          <dt>Pushes them to</dt><dd>Nothing. No product in this one.</dd>
+          <dt>Feeling</dt><dd>Helped. We gave them something useful and asked for nothing.</dd>
+          <dt>They leave thinking</dt><dd class="thought">"Good to know. These people are on my side."</dd>
+        </dl>
+        </div>
+        <figure class="mock"><div class="m-screen"><div class="m-top">RIPPL</div><div class="m-ph" style="height:120px;">Image: cold tap running, early morning</div>
+    <div class="m-pad">
+      <div class="m-h">The first glass of the morning</div>
+      <div class="m-bar" style="width:94%"></div><div class="m-bar" style="width:85%"></div><div class="m-bar" style="width:55%"></div>
+      <div class="m-tip"><b>The tip</b>Run the cold tap before your first glass of the day.</div>
+      <div class="m-bar" style="width:90%"></div><div class="m-bar" style="width:40%"></div>
+      <div class="m-sign">The Rippl team</div>
+    </div>
+    <div class="m-tag">No product, no button</div><div class="m-foot"><span></span><span></span></div></div><figcaption>Layout guide. Copy and images are placeholders.</figcaption></figure>
+      </div>
+    </li>
+    <li>
+      <div class="when"><span class="day">Day 6</span></div>
+      <div class="card has-mock"><div class="card-text">
+        <div class="num">Email 4</div>
+        <h4>The answer: Rippl Nano</h4>
+        <dl>
+          <dt>Sends</dt><dd>Two days later.</dd>
+          <dt>Motive</dt><dd>Here's what takes out what you've just read about. It sits on the bench, needs no plumbing, and gives hot and cold in seconds.</dd>
+          <dt>Pushes them to</dt><dd>The Nano page.</dd>
+          <dt>Feeling</dt><dd>Relief. There's a simple fix.</dd>
+          <dt>They leave thinking</dt><dd class="thought">"That sorts it, and it's easy."</dd>
+        </dl>
+        <div class="note">The lab results match their water. Chlorine towns see the chlorine result. Everyone else sees the chloroform result.</div>
+        </div>
+        <figure class="mock"><div class="m-screen"><div class="m-top">RIPPL</div><div class="m-img" style="height:180px;"><img src="https://cdn.shopify.com/s/files/1/0701/0549/7634/files/rippl-nano-water-filtration-system-4946820.png?v=1788233899&width=600" alt="" style="object-position:50% 45%;"></div>
+    <div class="m-pad">
+      <div class="m-h">Meet Rippl Nano</div>
+      <div class="m-bar" style="width:90%"></div><div class="m-bar" style="width:65%"></div>
+      <div class="m-rows">
+        <div>On the bench, no plumbing</div>
+        <div>UF nano filtration, then UV</div>
+        <div>Hot or cold in seconds</div>
+      </div>
+      <div class="m-lab">
+        <div><b>Up to 99%</b> of lead</div>
+        <div><b>Up to 99%</b> of PFAS, including PFOS and PFOA</div>
+        <div><b>Up to 99%</b> of chlorine <i>or</i> chloroform</div>
+        <small>In independent lab testing by SGS, on a new filter.</small>
+      </div>
+      <div class="m-btn">Shop Rippl Nano</div>
+    </div>
+    <div class="m-tag">Lab line matches their water</div><div class="m-foot"><span></span><span></span></div></div><figcaption>Layout guide. Copy and images are placeholders.</figcaption></figure>
+      </div>
+    </li>
+    <li>
+      <div class="when"><span class="day">Day 9</span></div>
+      <div class="card has-mock"><div class="card-text">
+        <div class="num">Email 5</div>
+        <h4>The price</h4>
+        <dl>
+          <dt>Sends</dt><dd>Three days later.</dd>
+          <dt>Motive</dt><dd>It costs less than you'd think: $599 on Subscribe &amp; Save, then 80c a day.</dd>
+          <dt>Pushes them to</dt><dd>The Nano page.</dd>
+          <dt>Feeling</dt><dd>Reassured. The price makes sense.</dd>
+          <dt>They leave thinking</dt><dd class="thought">"That's less than we spend on bottled water."</dd>
+        </dl>
+        </div>
+        <figure class="mock"><div class="m-screen"><div class="m-top">RIPPL</div><div class="m-pad">
+      <div class="m-h" style="text-align:center;">Clean water for 80c a day</div>
+      <div class="m-price"><s>$675</s><b>$599</b><span>on Subscribe &amp; Save</span></div>
+      <div class="m-vs">
+        <div><span>Rippl Nano</span><b>80c a day</b></div>
+        <div><span>Bottled water</span><b>$120+ a month</b></div>
+      </div>
+      <div class="m-bar" style="width:92%"></div><div class="m-bar" style="width:70%"></div>
+      <div class="m-btn">Shop Rippl Nano</div>
+    </div><div class="m-foot"><span></span><span></span></div></div><figcaption>Layout guide. Copy and images are placeholders.</figcaption></figure>
+      </div>
+    </li>
+    <li>
+      <div class="when"><span class="day">Day 12</span><span class="sub">last email</span></div>
+      <div class="card has-mock"><div class="card-text">
+        <div class="num">Email 6</div>
+        <h4>What you get, and why now</h4>
+        <dl>
+          <dt>Sends</dt><dd>Three days later.</dd>
+          <dt>Motive</dt><dd>Everything that comes with it: the free $95 welcome kit, free shipping and 30 days to send it back.</dd>
+          <dt>Pushes them to</dt><dd>The Nano page.</dd>
+          <dt>Feeling</dt><dd>Ready. Nothing to lose.</dd>
+          <dt>They leave thinking</dt><dd class="thought">"There's no reason to wait."</dd>
+        </dl>
+        </div>
+        <figure class="mock"><div class="m-screen"><div class="m-top">RIPPL</div><div class="m-img" style="height:150px;background:#fff;"><img src="https://cdn.shopify.com/s/files/1/0701/0549/7634/files/rippl-nano-water-filtration-system-7657650.jpg?v=1788648492&width=600" alt="" style="object-fit:contain;"></div>
+    <div class="m-pad">
+      <div class="m-h">Free $95 welcome kit</div>
+      <div class="m-rows m-ticks">
+        <div>Free shipping</div>
+        <div>30 days to send it back</div>
+        <div>Cancel any time</div>
+      </div>
+      <div class="m-faq">
+        <div>How long does set-up take?</div>
+        <div>How do I change the filter?</div>
+        <div>What if it's not for us?</div>
+      </div>
+      <div class="m-btn">Shop Rippl Nano</div>
+    </div><div class="m-foot"><span></span><span></span></div></div><figcaption>Layout guide. Copy and images are placeholders.</figcaption></figure>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- SELF-SERVE CANS -->
+<section class="flow" id="flow-cans" role="tabpanel" aria-labelledby="tab-cans">
+  <h2>Show them their cans, then make the most of them.</h2>
+  <p class="lede">One order email the moment they pay. Then three emails timed to when the cans arrive, not when they ship.</p>
+
+  <div class="facts">
+    <div><div class="k">Starts when</div><div class="v">They pay for their cans</div></div>
+    <div><div class="k">Stops when</div><div class="v">After the referral ask</div></div>
+    <div><div class="k">If they order again</div><div class="v">It starts over from the new order</div></div>
+  </div>
+
+  <div class="arc" aria-label="The journey in one line">
+    <span class="step">These are yours</span><span class="to">→</span>
+    <span class="step">Did they land well?</span><span class="to">→</span>
+    <span class="step">Show them off</span><span class="to">→</span>
+    <span class="step">Pass it on</span>
+  </div>
+
+  <h3 class="part" style="margin-top:0;">The order</h3>
+  <p class="lede">Every buyer gets this, including people who haven't joined the mailing list.</p>
+  <ol class="journey">
+    <li>
+      <div class="when"><span class="day">Paid</span><span class="sub">straight away</span></div>
+      <div class="card has-mock"><div class="card-text">
+        <div class="num">Order email</div>
+        <h4>Your cans are in</h4>
+        <dl>
+          <dt>Sends</dt><dd>The moment they pay.</dd>
+          <dt>Motive</dt><dd>This is exactly what you ordered: their artwork, their order and when it's due.</dd>
+          <dt>Pushes them to</dt><dd>Nothing. It's their order, not a sales email.</dd>
+          <dt>Feeling</dt><dd>Proud of their design, and sure the order is right.</dd>
+          <dt>They leave thinking</dt><dd class="thought">"Those are my cans, and everything's correct."</dd>
+        </dl>
+        <div class="note">Shows their cans, how many of each, the price, shipping, total and delivery address. Still-only and sparkling-only orders show just the one can.</div>
+        </div>
+        <figure class="mock"><div class="m-screen"><div class="m-top">RIPPL</div><div class="m-pad">
+      <div class="m-h">Your cans are in</div>
+      <div class="m-meta">Order #1042 · Matte finish</div>
+    </div>
+    <div class="m-img" style="height:150px;background:#F4F6F9;"><img src="https://wajhmgjynspdejyrjtbw.supabase.co/storage/v1/object/public/self-serve-email/sample/1791437590632/RPL-SAMPLE-pair.jpg" alt="" style="object-fit:contain;"></div>
+    <div class="m-pad">
+      <div class="m-table">
+        <div><span>Still · 240 × $3.30</span><b>$792.00</b></div>
+        <div><span>Sparkling · 240 × $3.63</span><b>$871.20</b></div>
+        <div><span>Shipping</span><b>$104.50</b></div>
+        <div class="m-total"><span>Total</span><b>$1,767.70</b></div>
+        <div class="m-gst"><span>Includes GST of $88.70</span></div>
+      </div>
+      <div class="m-addr"><b>Delivering to</b><div class="m-bar" style="width:60%"></div><div class="m-bar" style="width:80%"></div><div class="m-bar" style="width:50%"></div></div>
+      <div class="m-line">Arrives by Thu 5 Nov (estimate)</div>
+      <div class="m-src">Your tracking comes when it ships.</div>
+    </div>
+    <div class="m-tag">Every figure is from their own order</div><div class="m-foot"><span></span><span></span></div></div><figcaption>Layout guide. Copy and images are placeholders.</figcaption></figure>
+      </div>
+    </li>
+    <li class="quiet">
+      <div class="when"><span class="day">Ships</span></div>
+      <div class="card">
+        <h4>No email when it ships</h4>
+        <p>Customers already get your tracking email. Shipping only sets the timing for what comes next.</p>
+      </div>
+    </li>
+  </ol>
+
+  <h3 class="part">After delivery</h3>
+  <p class="lede">Timed from the day the cans are due to arrive.</p>
+  <ol class="journey">
+    <li>
+      <div class="when"><span class="day">+1 day</span><span class="sub">after arrival</span></div>
+      <div class="card has-mock"><div class="card-text">
+        <div class="num">Email 1</div>
+        <h4>Did your cans land well?</h4>
+        <dl>
+          <dt>Sends</dt><dd>The day after their cans are due.</dd>
+          <dt>Motive</dt><dd>We're checking everything arrived as it should.</dd>
+          <dt>Pushes them to</dt><dd>Reply if anything's off.</dd>
+          <dt>Feeling</dt><dd>Looked after.</dd>
+          <dt>They leave thinking</dt><dd class="thought">"They actually care that it turned up right."</dd>
+        </dl>
+        </div>
+        <figure class="mock"><div class="m-screen"><div class="m-top">RIPPL</div><div class="m-img" style="height:160px;background:#F4F6F9;"><img src="https://wajhmgjynspdejyrjtbw.supabase.co/storage/v1/object/public/self-serve-email/sample/1791437590632/RPL-SAMPLE-pair.jpg" alt="" style="object-fit:contain;"></div>
+    <div class="m-pad">
+      <div class="m-h" style="text-align:center;">Did your cans land well?</div>
+      <div class="m-bar" style="width:92%"></div><div class="m-bar" style="width:80%"></div><div class="m-bar" style="width:50%"></div>
+      <div class="m-reply">Anything not right? Just reply to this email.</div>
+      <div class="m-sign">The Rippl team</div>
+    </div><div class="m-foot"><span></span><span></span></div></div><figcaption>Layout guide. Copy and images are placeholders.</figcaption></figure>
+      </div>
+    </li>
+    <li>
+      <div class="when"><span class="day">+4 days</span></div>
+      <div class="card has-mock"><div class="card-text">
+        <div class="num">Email 2</div>
+        <h4>Put them to work</h4>
+        <dl>
+          <dt>Sends</dt><dd>Four days after arrival.</dd>
+          <dt>Motive</dt><dd>A few ways to use them (meetings, events, the office fridge, client gifts), then: share a photo and tag @drink.rippl.</dd>
+          <dt>Pushes them to</dt><dd>Instagram, with their cans.</dd>
+          <dt>Feeling</dt><dd>Proud, and keen to show them off.</dd>
+          <dt>They leave thinking</dt><dd class="thought">"Let's get these out and post one."</dd>
+        </dl>
+        </div>
+        <figure class="mock"><div class="m-screen"><div class="m-top">RIPPL</div><div class="m-img" style="height:120px;background:#F4F6F9;"><img src="https://wajhmgjynspdejyrjtbw.supabase.co/storage/v1/object/public/self-serve-email/sample/1791437590632/RPL-SAMPLE-pair.jpg" alt="" style="object-fit:contain;"></div>
+    <div class="m-pad">
+      <div class="m-h">Put them to work</div>
+      <div class="m-ideas">
+        <div><i></i>Meetings</div>
+        <div><i></i>Events</div>
+        <div><i></i>The office fridge</div>
+        <div><i></i>Client gifts</div>
+      </div>
+      <div class="m-ig"><b>Share a photo</b>Tag @drink.rippl</div>
+      <div class="m-btn">Open Instagram</div>
+    </div><div class="m-foot"><span></span><span></span></div></div><figcaption>Layout guide. Copy and images are placeholders.</figcaption></figure>
+      </div>
+    </li>
+    <li>
+      <div class="when"><span class="day">+10 days</span><span class="sub">last email</span></div>
+      <div class="card has-mock"><div class="card-text">
+        <div class="num">Email 3</div>
+        <h4>Know another business that would want their own?</h4>
+        <dl>
+          <dt>Sends</dt><dd>Ten days after arrival.</dd>
+          <dt>Motive</dt><dd>Pass it on. No reward for now, just the ask.</dd>
+          <dt>Pushes them to</dt><dd>The can designer, so whoever they send it to can start straight away.</dd>
+          <dt>Feeling</dt><dd>Generous. It's easy to pass on.</dd>
+          <dt>They leave thinking</dt><dd class="thought">"I know exactly who'd want these."</dd>
+        </dl>
+        <div class="note">When the Rippl Effect referral program is ready, it slots into this email.</div>
+        </div>
+        <figure class="mock"><div class="m-screen"><div class="m-top">RIPPL</div><div class="m-pad">
+      <div class="m-h" style="text-align:center;">Know another business that would want their own?</div>
+    </div>
+    <div class="m-img" style="height:120px;background:#F4F6F9;"><img src="https://wajhmgjynspdejyrjtbw.supabase.co/storage/v1/object/public/self-serve-email/sample/1791437590632/RPL-SAMPLE-pair.jpg" alt="" style="object-fit:contain;"></div>
+    <div class="m-pad">
+      <div class="m-steps"><div><b>1</b>Design online</div><div><b>2</b>Order</div><div><b>3</b>Delivered</div></div>
+      <div class="m-btn">Design their cans</div>
+      <div class="m-src" style="text-align:center;">Easy to forward on</div>
+    </div><div class="m-foot"><span></span><span></span></div></div><figcaption>Layout guide. Copy and images are placeholders.</figcaption></figure>
+      </div>
+    </li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Rippl · Email journeys · 09/10/2026</div>
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('nav.tabs button');
+  function show(id) {
+    tabs.forEach(t => t.setAttribute('aria-selected', String(t.getAttribute('aria-controls') === id)));
+    document.querySelectorAll('section.flow').forEach(s => s.classList.toggle('active', s.id === id));
+  }
+  tabs.forEach(t => t.addEventListener('click', () => {
+    show(t.getAttribute('aria-controls'));
+    history.replaceState(null, '', '#' + t.getAttribute('aria-controls').replace('flow-', ''));
+    window.scrollTo({ top: 0 });
+  }));
+  if (location.hash === "#cans") show("flow-cans");
+</script>
+</body>
+</html>
