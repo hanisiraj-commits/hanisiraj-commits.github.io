@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-09T17:31:56",
+ "generated": "2026-10-10T17:31:57",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -182,7 +182,7 @@
   "2026-10-10"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-10",
+ "last_date": "2026-10-11",
  "deals": [
   {
    "date": "2026-08-03",
@@ -5098,15 +5098,15 @@
    "mech": "Fixed Bundle · Surf and Turf",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/Screenshot2026-07-24110258.png?width=520",
    "price": "$868",
-   "rev": 400,
-   "orders": 2,
+   "rev": 247740,
+   "orders": 180,
    "deal_rev": 0,
    "deal_units": 0,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 2,
-   "returning": 1,
+   "buyers": 108,
+   "returning": 81,
    "deal_buyers": null,
    "repeat_deal_buyers": null,
    "in_promo": true,
@@ -5153,6 +5153,97 @@
      ],
      "dow_mean": 79123.89,
      "dow_reach": "2026-03-07",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    }
+   },
+   "basket": [],
+   "source_titles": [],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-10-11",
+   "dow": 6,
+   "deal_id": "oct-grill-pair",
+   "title": "The Butcher's Grill Pair: Wagyu Hanger and Tajima Skirt, 4.9kg for $1,098",
+   "mech": "Fixed Bundle · BBQ",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/BeefHanger_8356e176-011d-46e7-952b-802ffb9c1e1c.jpg?width=520",
+   "price": "$1,098",
+   "rev": 3494.7,
+   "orders": 3,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 3,
+   "returning": 3,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": false,
+   "promo_name": null,
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 0,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-12",
+      "2026-07-05",
+      "2026-06-07",
+      "2026-05-17",
+      "2026-05-03",
+      "2026-03-15",
+      "2026-03-08"
+     ],
+     "dow_mean": 81470.73,
+     "dow_reach": "2026-03-08",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    },
+    "14": {
+     "prod_days_sold": 0,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-12",
+      "2026-07-05",
+      "2026-06-07",
+      "2026-05-17",
+      "2026-05-03",
+      "2026-03-15",
+      "2026-03-08"
+     ],
+     "dow_mean": 81470.73,
+     "dow_reach": "2026-03-08",
      "bau_days": [
       "2026-07-18",
       "2026-07-17",
@@ -6743,10 +6834,17 @@
    "deal": true
   },
   "2026-10-10": {
-   "rev": 400,
-   "orders": 2,
+   "rev": 247740,
+   "orders": 180,
    "bau": false,
    "promo": true,
+   "deal": true
+  },
+  "2026-10-11": {
+   "rev": 3494.7,
+   "orders": 3,
+   "bau": false,
+   "promo": false,
    "deal": true
   }
  }
