@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-10T17:31:57",
+ "generated": "2026-10-11T17:31:57",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -179,10 +179,12 @@
   "2026-10-07",
   "2026-10-08",
   "2026-10-09",
-  "2026-10-10"
+  "2026-10-10",
+  "2026-10-11",
+  "2026-10-12"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-11",
+ "last_date": "2026-10-12",
  "deals": [
   {
    "date": "2026-08-03",
@@ -5187,19 +5189,19 @@
    "mech": "Fixed Bundle · BBQ",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/BeefHanger_8356e176-011d-46e7-952b-802ffb9c1e1c.jpg?width=520",
    "price": "$1,098",
-   "rev": 3494.7,
-   "orders": 3,
+   "rev": 158613.9,
+   "orders": 121,
    "deal_rev": 0,
    "deal_units": 0,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 3,
-   "returning": 3,
+   "buyers": 84,
+   "returning": 61,
    "deal_buyers": null,
    "repeat_deal_buyers": null,
-   "in_promo": false,
-   "promo_name": null,
+   "in_promo": true,
+   "promo_name": "Jc Warehouse Sale",
    "deal_returning": null,
    "windows": {
     "7": {
@@ -5268,6 +5270,99 @@
    },
    "basket": [],
    "source_titles": [],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-10-12",
+   "dow": 0,
+   "deal_id": "oct-flat-iron-4",
+   "title": "Four Wagyu M6-7 Flat Iron Steaks for $238",
+   "mech": "Price Drop · Low Ticket",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/image_25.png?width=520",
+   "price": "$238",
+   "rev": 2868.2,
+   "orders": 3,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 3,
+   "returning": 1,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": true,
+   "promo_name": "Jc Warehouse Sale",
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 1,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-13",
+      "2026-07-06",
+      "2026-05-18",
+      "2026-05-04",
+      "2026-04-06",
+      "2026-03-16",
+      "2026-03-09"
+     ],
+     "dow_mean": 92359.47,
+     "dow_reach": "2026-03-09",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    },
+    "14": {
+     "prod_days_sold": 1,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-13",
+      "2026-07-06",
+      "2026-05-18",
+      "2026-05-04",
+      "2026-04-06",
+      "2026-03-16",
+      "2026-03-09"
+     ],
+     "dow_mean": 92359.47,
+     "dow_reach": "2026-03-09",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    }
+   },
+   "basket": [],
+   "source_titles": [
+    "Flat Iron Steak Signature Chilled Guacho Steak with Shallot "
+   ],
    "units_per_deal": null
   }
  ],
@@ -6841,10 +6936,17 @@
    "deal": true
   },
   "2026-10-11": {
-   "rev": 3494.7,
+   "rev": 158613.9,
+   "orders": 121,
+   "bau": false,
+   "promo": true,
+   "deal": true
+  },
+  "2026-10-12": {
+   "rev": 2868.2,
    "orders": 3,
    "bau": false,
-   "promo": false,
+   "promo": true,
    "deal": true
   }
  }
