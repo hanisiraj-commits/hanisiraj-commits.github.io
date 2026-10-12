@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-11T17:31:57",
+ "generated": "2026-10-12T17:31:50",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -181,10 +181,11 @@
   "2026-10-09",
   "2026-10-10",
   "2026-10-11",
-  "2026-10-12"
+  "2026-10-12",
+  "2026-10-13"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-12",
+ "last_date": "2026-10-13",
  "deals": [
   {
    "date": "2026-08-03",
@@ -5280,20 +5281,20 @@
    "mech": "Price Drop · Low Ticket",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/image_25.png?width=520",
    "price": "$238",
-   "rev": 2868.2,
-   "orders": 3,
-   "deal_rev": 0,
-   "deal_units": 0,
+   "rev": 116430.65,
+   "orders": 92,
+   "deal_rev": 4776,
+   "deal_units": 12,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 3,
-   "returning": 1,
-   "deal_buyers": null,
-   "repeat_deal_buyers": null,
+   "buyers": 88,
+   "returning": 66,
+   "deal_buyers": 8,
+   "repeat_deal_buyers": 0,
    "in_promo": true,
    "promo_name": "Jc Warehouse Sale",
-   "deal_returning": null,
+   "deal_returning": 7,
    "windows": {
     "7": {
      "prod_days_sold": 1,
@@ -5359,7 +5360,22 @@
      "prod_rev_mean": null
     }
    },
-   "basket": [],
+   "basket": [
+    {
+     "pid": "9355350114536",
+     "title": "Chilled Wagyu M4-5 Striploin 1kg",
+     "buyers": 4,
+     "share": 50,
+     "rev": 11940
+    },
+    {
+     "pid": "9604001300712",
+     "title": "Frozen Norwegian Salmon Pieces - 1kg/5kg",
+     "buyers": 3,
+     "share": 38,
+     "rev": 6388
+    }
+   ],
    "source_titles": [
     "Flat Iron Steak Signature Chilled Guacho Steak with Shallot "
    ],
@@ -6943,11 +6959,18 @@
    "deal": true
   },
   "2026-10-12": {
-   "rev": 2868.2,
-   "orders": 3,
+   "rev": 116430.65,
+   "orders": 92,
    "bau": false,
    "promo": true,
    "deal": true
+  },
+  "2026-10-13": {
+   "rev": 7529.8,
+   "orders": 5,
+   "bau": false,
+   "promo": true,
+   "deal": false
   }
  }
 }
