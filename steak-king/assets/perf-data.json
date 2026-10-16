@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T17:31:13",
+ "generated": "2026-10-16T17:31:30",
  "currency": "HKD",
  "lookback_from": "2025-09-01",
  "bau_days_total": 46,
@@ -188,7 +188,7 @@
   "2026-10-16"
  ],
  "first_date": "2026-03-01",
- "last_date": "2026-10-16",
+ "last_date": "2026-10-17",
  "deals": [
   {
    "date": "2026-08-03",
@@ -5394,20 +5394,20 @@
    "mech": "Quantity Flash",
    "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/RumpCapChimichurri1_1.png?width=520",
    "price": "$1,598",
-   "rev": 3689,
-   "orders": 3,
-   "deal_rev": 0,
-   "deal_units": 0,
+   "rev": 86537.4,
+   "orders": 66,
+   "deal_rev": 3392,
+   "deal_units": 4,
    "matched": true,
    "verified": false,
    "sold_nothing": false,
-   "buyers": 3,
-   "returning": 1,
-   "deal_buyers": null,
-   "repeat_deal_buyers": null,
+   "buyers": 64,
+   "returning": 39,
+   "deal_buyers": 3,
+   "repeat_deal_buyers": 0,
    "in_promo": true,
    "promo_name": "Jc Warehouse Sale",
-   "deal_returning": null,
+   "deal_returning": 2,
    "windows": {
     "7": {
      "prod_days_sold": 3,
@@ -5471,10 +5471,107 @@
      "prod_rev_mean": null
     }
    },
-   "basket": [],
+   "basket": [
+    {
+     "pid": "9041047322856",
+     "title": "FREE - Frozen Norwegian Salmon Pieces 500g",
+     "buyers": 2,
+     "share": 67,
+     "rev": 0
+    }
+   ],
    "source_titles": [
     "Chilled Whole M6-7 Wagyu Rump Cap 1.8kg with Free Chimichurr"
    ],
+   "units_per_deal": null
+  },
+  {
+   "date": "2026-10-17",
+   "dow": 5,
+   "deal_id": "oct-bbq-box",
+   "title": "The Family BBQ Box, Five Things for the Grill, 6.2kg for $1,088",
+   "mech": "Fixed Bundle · Two-Day Hold",
+   "img": "https://cdn.shopify.com/s/files/1/0525/7638/7266/files/Slow-Cooker-Baby-Back-Ribs_1.jpg?width=520",
+   "price": "$1,088",
+   "rev": 8071,
+   "orders": 5,
+   "deal_rev": 0,
+   "deal_units": 0,
+   "matched": true,
+   "verified": false,
+   "sold_nothing": false,
+   "buyers": 5,
+   "returning": 3,
+   "deal_buyers": null,
+   "repeat_deal_buyers": null,
+   "in_promo": false,
+   "promo_name": null,
+   "deal_returning": null,
+   "windows": {
+    "7": {
+     "prod_days_sold": 0,
+     "prod_days_total": 7,
+     "dow_days": [
+      "2026-07-18",
+      "2026-07-04",
+      "2026-06-06",
+      "2026-05-16",
+      "2026-05-02",
+      "2026-03-07"
+     ],
+     "dow_mean": 79123.89,
+     "dow_reach": "2026-03-07",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06"
+     ],
+     "bau_mean": 81482.18,
+     "bau_reach": "2026-07-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    },
+    "14": {
+     "prod_days_sold": 0,
+     "prod_days_total": 14,
+     "dow_days": [
+      "2026-07-18",
+      "2026-07-04",
+      "2026-06-06",
+      "2026-05-16",
+      "2026-05-02",
+      "2026-03-07"
+     ],
+     "dow_mean": 79123.89,
+     "dow_reach": "2026-03-07",
+     "bau_days": [
+      "2026-07-18",
+      "2026-07-17",
+      "2026-07-16",
+      "2026-07-13",
+      "2026-07-12",
+      "2026-07-07",
+      "2026-07-06",
+      "2026-07-05",
+      "2026-07-04",
+      "2026-07-03",
+      "2026-06-11",
+      "2026-06-10",
+      "2026-06-07",
+      "2026-06-06"
+     ],
+     "bau_mean": 77075.79,
+     "bau_reach": "2026-06-06",
+     "prod_units_mean": null,
+     "prod_rev_mean": null
+    }
+   },
+   "basket": [],
+   "source_titles": [],
    "units_per_deal": null
   }
  ],
@@ -6964,7 +7061,7 @@
    "deal": false
   },
   "2026-09-29": {
-   "rev": 166435.3,
+   "rev": 166549.3,
    "orders": 137,
    "bau": false,
    "promo": true,
@@ -7069,7 +7166,7 @@
    "deal": false
   },
   "2026-10-14": {
-   "rev": 364527.45,
+   "rev": 364677.45,
    "orders": 292,
    "bau": false,
    "promo": true,
@@ -7083,10 +7180,17 @@
    "deal": false
   },
   "2026-10-16": {
-   "rev": 3689,
-   "orders": 3,
+   "rev": 86537.4,
+   "orders": 66,
    "bau": false,
    "promo": true,
+   "deal": true
+  },
+  "2026-10-17": {
+   "rev": 8071,
+   "orders": 5,
+   "bau": false,
+   "promo": false,
    "deal": true
   }
  }
